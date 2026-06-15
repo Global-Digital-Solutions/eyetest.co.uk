@@ -8,6 +8,7 @@ import { Benefits } from "@/components/Benefits";
 import { Testimonials } from "@/components/Testimonials";
 import { CTABanner } from "@/components/CTABanner";
 import { Footer } from "@/components/Footer";
+import { AtHomeCallout } from "@/components/AtHomeCallout";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <OffersTicker />
         <HowItWorks />
         <NHSBanner />
+        <AtHomeCallout />
         <Benefits />
         <Testimonials />
         <CTABanner />

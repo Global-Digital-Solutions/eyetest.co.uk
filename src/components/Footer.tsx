@@ -17,6 +17,7 @@ const footerLinks = {
     { label: "Dry Eye Assessment", href: "/eye-tests/dry-eye-assessment" },
     { label: "DVLA / Driving Test", href: "/eye-tests/dvla-driving-vision-test" },
     { label: "Home Visit Eye Test", href: "/eye-tests/home-visit-eye-test" },
+    { label: "At-Home Eye Tests", href: "/at-home-eye-tests" },
     { label: "View All Eye Tests", href: "/eye-tests" },
   ],
   Opticians: [

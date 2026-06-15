@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero, HeroSearchForm } from "@/components/PageHero";
+import { AtHomeCallout } from "@/components/AtHomeCallout";
 import {
   locations,
   getLocationBySlug,
@@ -590,6 +591,8 @@ export default async function CityPage({
             </div>
           </div>
         </section>
+
+        <AtHomeCallout location={location.name} compact />
       </main>
       <Footer />
     </>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero, HeroSearchForm } from "@/components/PageHero";
+import { AtHomeCallout } from "@/components/AtHomeCallout";
 import { eyeTests } from "@/data/eye-tests";
 
 // ---------------------------------------------------------------------------
@@ -424,6 +425,7 @@ export default function EyeTestsPage() {
             </Link>
           </div>
         </section>
+        <AtHomeCallout compact />
       </main>
       <Footer />
     </>
