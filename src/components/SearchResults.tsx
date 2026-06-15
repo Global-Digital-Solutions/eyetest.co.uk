@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { ResultCard, ComingSoonCard } from "./ResultCard";
+import { ResultsMap } from "./ResultsMap";
 import type { Optician, ComingSoonOptician } from "./ResultCard";
 
 // ---------------------------------------------------------------------------
@@ -22,6 +23,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8546 1122",
     address: "23-25 Clarence Street, Kingston upon Thames KT1 1RB",
     brandColor: "#0064d2",
+    lat: 51.4103,
+    lng: -0.3065,
   },
   {
     id: "rawlings-kingston",
@@ -36,6 +39,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8546 3082",
     address: "15 Castle Street, Kingston upon Thames KT1 1ST",
     brandColor: "#8b2252",
+    lat: 51.4120,
+    lng: -0.3040,
   },
   {
     id: "kingston-vision-care",
@@ -50,6 +55,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8549 0404",
     address: "8 Fife Road, Kingston upon Thames KT1 1SZ",
     brandColor: "#0ea5a0",
+    lat: 51.4112,
+    lng: -0.3020,
   },
   {
     id: "asda-kingston",
@@ -64,6 +71,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8974 5522",
     address: "ASDA Kingston, London Road, Kingston upon Thames KT2 6PY",
     brandColor: "#78b530",
+    lat: 51.4180,
+    lng: -0.2920,
   },
   {
     id: "leightons-kingston",
@@ -78,6 +87,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8546 3116",
     address: "34 Market Place, Kingston upon Thames KT1 1JH",
     brandColor: "#1e3a5f",
+    lat: 51.4095,
+    lng: -0.3075,
   },
   {
     id: "boots-surbiton",
@@ -92,6 +103,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8399 2233",
     address: "45 Victoria Road, Surbiton KT6 4JL",
     brandColor: "#0064d2",
+    lat: 51.3940,
+    lng: -0.3020,
   },
   {
     id: "thames-eye-centre",
@@ -106,6 +119,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8541 1730",
     address: "12 Thames Street, Kingston upon Thames KT1 1PE",
     brandColor: "#0ea5a0",
+    lat: 51.4088,
+    lng: -0.3100,
   },
   {
     id: "scrivens-new-malden",
@@ -120,6 +135,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8942 3366",
     address: "128 High Street, New Malden KT3 4EU",
     brandColor: "#c62828",
+    lat: 51.4030,
+    lng: -0.2580,
   },
   {
     id: "bayfields-richmond",
@@ -134,6 +151,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8940 5544",
     address: "22 The Quadrant, Richmond TW9 1BP",
     brandColor: "#4a148c",
+    lat: 51.4613,
+    lng: -0.3037,
   },
   {
     id: "duncan-todd-twickenham",
@@ -148,6 +167,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8892 7788",
     address: "9 King Street, Twickenham TW1 3SD",
     brandColor: "#00695c",
+    lat: 51.4491,
+    lng: -0.3283,
   },
   {
     id: "boots-richmond",
@@ -162,6 +183,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8940 0011",
     address: "6-8 George Street, Richmond TW9 1JY",
     brandColor: "#0064d2",
+    lat: 51.4610,
+    lng: -0.3050,
   },
   {
     id: "surbiton-eye-care",
@@ -176,6 +199,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8390 5511",
     address: "71 Brighton Road, Surbiton KT6 5LX",
     brandColor: "#0ea5a0",
+    lat: 51.3885,
+    lng: -0.2980,
   },
   {
     id: "leightons-wimbledon",
@@ -190,6 +215,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8944 2244",
     address: "60 High Street, Wimbledon Village SW19 5EE",
     brandColor: "#1e3a5f",
+    lat: 51.4340,
+    lng: -0.2130,
   },
   {
     id: "rawlings-esher",
@@ -204,6 +231,8 @@ const mockOpticians: Optician[] = [
     phone: "01372 462288",
     address: "82 High Street, Esher KT10 9QS",
     brandColor: "#8b2252",
+    lat: 51.3695,
+    lng: -0.3650,
   },
   {
     id: "asda-roehampton",
@@ -218,6 +247,8 @@ const mockOpticians: Optician[] = [
     phone: "020 8780 1199",
     address: "ASDA Roehampton, Roehampton Vale SW15 3DX",
     brandColor: "#78b530",
+    lat: 51.4395,
+    lng: -0.2480,
   },
 ];
 
@@ -255,6 +286,7 @@ const filterLabels: { key: FilterKey; label: string }[] = [
 
 export function SearchResults({ postcode }: { postcode: string }) {
   const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
+  const [showMobileMap, setShowMobileMap] = useState(false);
 
   const filtered = useMemo(() => {
     let results = [...mockOpticians];
@@ -278,6 +310,17 @@ export function SearchResults({ postcode }: { postcode: string }) {
   }, [activeFilter]);
 
   const availableCount = mockOpticians.filter((o) => o.available).length;
+
+  const handleSelectOptician = useCallback((id: string) => {
+    const el = document.getElementById(`optician-${id}`);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.classList.add("ring-2", "ring-[var(--color-primary)]");
+      setTimeout(() => {
+        el.classList.remove("ring-2", "ring-[var(--color-primary)]");
+      }, 2000);
+    }
+  }, []);
 
   if (!postcode) {
     return (
@@ -343,7 +386,25 @@ export function SearchResults({ postcode }: { postcode: string }) {
         ))}
       </div>
 
-      {/* Main content: results + map placeholder */}
+      {/* Mobile map toggle */}
+      <div className="lg:hidden mb-4">
+        <button
+          onClick={() => setShowMobileMap((v) => !v)}
+          className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] cursor-pointer"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+          {showMobileMap ? "Hide map" : "Show map"}
+        </button>
+        {showMobileMap && (
+          <div className="mt-3 rounded-xl overflow-hidden shadow-sm border border-gray-100" style={{ height: "300px" }}>
+            <ResultsMap opticians={filtered} onSelectOptician={handleSelectOptician} />
+          </div>
+        )}
+      </div>
+
+      {/* Main content: results + map */}
       <div className="lg:flex lg:gap-6">
         {/* Results list */}
         <div className="flex-1 space-y-3 sm:space-y-4">
@@ -355,7 +416,9 @@ export function SearchResults({ postcode }: { postcode: string }) {
             </div>
           ) : (
             filtered.map((optician) => (
-              <ResultCard key={optician.id} optician={optician} />
+              <div key={optician.id} id={`optician-${optician.id}`} className="transition-all duration-300 rounded-xl">
+                <ResultCard optician={optician} />
+              </div>
             ))
           )}
 
@@ -364,7 +427,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
             <h2
               className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3"
             >
-              Coming Soon
+              Other opticians in your area
             </h2>
             <div className="space-y-3 sm:space-y-4">
               {comingSoonOpticians.map((optician) => (
@@ -374,26 +437,13 @@ export function SearchResults({ postcode }: { postcode: string }) {
           </div>
         </div>
 
-        {/* Map placeholder — desktop only */}
+        {/* Map — desktop only */}
         <div className="hidden lg:block lg:w-96 lg:flex-shrink-0">
           <div className="sticky top-52 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-            <div className="aspect-[4/5] bg-gray-100 flex flex-col items-center justify-center text-gray-400">
-              <svg
-                className="w-12 h-12 mb-3"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-                />
-              </svg>
-              <p className="text-sm font-medium">Map view</p>
-              <p className="text-xs mt-1">Coming soon</p>
-            </div>
+            <ResultsMap
+              opticians={filtered}
+              onSelectOptician={handleSelectOptician}
+            />
           </div>
         </div>
       </div>

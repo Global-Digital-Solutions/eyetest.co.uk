@@ -15,6 +15,8 @@ export type Optician = {
   phone: string;
   address: string;
   brandColor: string;
+  lat: number;
+  lng: number;
 };
 
 export type ComingSoonOptician = {
@@ -253,7 +255,7 @@ export function ComingSoonCard({ optician }: { optician: ComingSoonOptician }) {
                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            Coming soon — availability not yet connected
+            No availability
           </span>
         </div>
       </div>
