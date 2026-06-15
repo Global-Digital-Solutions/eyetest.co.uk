@@ -16,18 +16,20 @@ export function Hero() {
   return (
     <section
       id="search"
-      className="relative overflow-hidden bg-gradient-to-br from-[var(--color-navy)] via-[#112247] to-[var(--color-navy-light)]"
+      className="relative overflow-hidden"
     >
-      {/* Subtle pattern overlay */}
+      {/* Background image */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-          backgroundSize: "32px 32px",
+          backgroundImage: `url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=1920&q=80')`,
         }}
       />
 
-      {/* Glowing orb accent */}
+      {/* Dark gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-navy)]/90 via-[#112247]/85 to-[var(--color-navy-light)]/90" />
+
+      {/* Glowing orb accents */}
       <div className="absolute -top-32 -right-32 w-96 h-96 bg-[var(--color-primary)] rounded-full opacity-10 blur-3xl" />
       <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[var(--color-primary)] rounded-full opacity-5 blur-3xl" />
 
