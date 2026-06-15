@@ -354,7 +354,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-5 sm:py-6">
+    <div className="max-w-[1400px] mx-auto px-4 py-5 sm:py-6">
       {/* Results summary */}
       <div className="mb-4">
         <h1
@@ -386,8 +386,8 @@ export function SearchResults({ postcode }: { postcode: string }) {
         ))}
       </div>
 
-      {/* Mobile map toggle */}
-      <div className="lg:hidden mb-4">
+      {/* Map toggle */}
+      <div className="mb-4">
         <button
           onClick={() => setShowMobileMap((v) => !v)}
           className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] cursor-pointer"
@@ -398,53 +398,40 @@ export function SearchResults({ postcode }: { postcode: string }) {
           {showMobileMap ? "Hide map" : "Show map"}
         </button>
         {showMobileMap && (
-          <div className="mt-3 rounded-xl overflow-hidden shadow-sm border border-gray-100" style={{ height: "300px" }}>
+          <div className="mt-3 rounded-xl overflow-hidden shadow-sm border border-gray-100" style={{ height: "280px" }}>
             <ResultsMap opticians={filtered} onSelectOptician={handleSelectOptician} />
           </div>
         )}
       </div>
 
-      {/* Main content: results + map */}
-      <div className="lg:flex lg:gap-6">
-        {/* Results list */}
-        <div className="flex-1 space-y-3 sm:space-y-4">
-          {filtered.length === 0 ? (
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center">
-              <p className="text-gray-500 text-sm">
-                No opticians match the current filter. Try a different option.
-              </p>
-            </div>
-          ) : (
-            filtered.map((optician) => (
-              <div key={optician.id} id={`optician-${optician.id}`} className="transition-all duration-300 rounded-xl">
-                <ResultCard optician={optician} />
-              </div>
-            ))
-          )}
-
-          {/* Coming Soon section */}
-          <div className="pt-4">
-            <h2
-              className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Other opticians in your area
-            </h2>
-            <div className="space-y-3 sm:space-y-4">
-              {comingSoonOpticians.map((optician) => (
-                <ComingSoonCard key={optician.id} optician={optician} />
-              ))}
-            </div>
-          </div>
+      {/* Results grid */}
+      {filtered.length === 0 ? (
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center">
+          <p className="text-gray-500 text-sm">
+            No opticians match the current filter. Try a different option.
+          </p>
         </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          {filtered.map((optician) => (
+            <div key={optician.id} id={`optician-${optician.id}`} className="transition-all duration-300 rounded-xl">
+              <ResultCard optician={optician} />
+            </div>
+          ))}
+        </div>
+      )}
 
-        {/* Map — desktop only */}
-        <div className="hidden lg:block lg:w-96 lg:flex-shrink-0">
-          <div className="sticky top-52 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-            <ResultsMap
-              opticians={filtered}
-              onSelectOptician={handleSelectOptician}
-            />
-          </div>
+      {/* Other opticians section */}
+      <div className="pt-6">
+        <h2
+          className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3"
+        >
+          Other opticians in your area
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          {comingSoonOpticians.map((optician) => (
+            <ComingSoonCard key={optician.id} optician={optician} />
+          ))}
         </div>
       </div>
     </div>

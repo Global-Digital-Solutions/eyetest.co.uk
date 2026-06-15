@@ -38,46 +38,46 @@ export function ResultCard({ optician }: { optician: Optician }) {
 
   return (
     <div
-      className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow"
+      className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col"
       style={{ borderLeftWidth: "4px", borderLeftColor: optician.brandColor }}
     >
-      <div className="p-4 sm:p-5">
+      <div className="p-3.5 sm:p-4 flex flex-col flex-1">
         {/* Top row: brand badge + distance */}
-        <div className="flex items-start justify-between gap-3 mb-2">
-          <div className="flex-1 min-w-0">
-            <span
-              className="inline-block text-xs font-semibold px-2 py-0.5 rounded-full mb-1.5"
-              style={{
-                backgroundColor: optician.brandColor + "18",
-                color: optician.brandColor,
-              }}
-            >
-              {optician.brand}
-            </span>
-            <h3
-              className="text-base sm:text-lg font-semibold text-[var(--color-navy)] leading-snug truncate"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              {optician.name}
-            </h3>
-          </div>
-          <span className="flex-shrink-0 text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-md whitespace-nowrap">
-            {optician.distance} miles
+        <div className="flex items-start justify-between gap-2 mb-1.5">
+          <span
+            className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full"
+            style={{
+              backgroundColor: optician.brandColor + "18",
+              color: optician.brandColor,
+            }}
+          >
+            {optician.brand}
+          </span>
+          <span className="flex-shrink-0 text-[10px] text-gray-500 bg-gray-50 px-1.5 py-0.5 rounded whitespace-nowrap">
+            {optician.distance} mi
           </span>
         </div>
 
+        {/* Name */}
+        <h3
+          className="text-sm font-semibold text-[var(--color-navy)] leading-snug mb-1 line-clamp-2"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          {optician.name}
+        </h3>
+
         {/* Address */}
-        <p className="text-xs text-gray-500 mb-2.5 truncate">
+        <p className="text-[11px] text-gray-400 mb-2 truncate">
           {optician.address}
         </p>
 
-        {/* Rating */}
-        <div className="flex items-center gap-1.5 mb-3">
+        {/* Rating — compact inline */}
+        <div className="flex items-center gap-1 mb-2">
           <div className="flex items-center" aria-label={`${optician.rating} out of 5 stars`}>
             {Array.from({ length: stars.full }).map((_, i) => (
               <svg
                 key={`full-${i}`}
-                className="w-4 h-4 text-amber-400"
+                className="w-3.5 h-3.5 text-amber-400"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -86,7 +86,7 @@ export function ResultCard({ optician }: { optician: Optician }) {
             ))}
             {stars.half && (
               <svg
-                className="w-4 h-4 text-amber-400"
+                className="w-3.5 h-3.5 text-amber-400"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -105,7 +105,7 @@ export function ResultCard({ optician }: { optician: Optician }) {
             {Array.from({ length: stars.empty }).map((_, i) => (
               <svg
                 key={`empty-${i}`}
-                className="w-4 h-4 text-gray-200"
+                className="w-3.5 h-3.5 text-gray-200"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -113,67 +113,69 @@ export function ResultCard({ optician }: { optician: Optician }) {
               </svg>
             ))}
           </div>
-          <span className="text-sm font-medium text-[var(--color-navy)]">
+          <span className="text-xs font-medium text-[var(--color-navy)]">
             {optician.rating}
           </span>
-          <span className="text-xs text-gray-400">
-            ({optician.reviewCount} reviews)
+          <span className="text-[10px] text-gray-400">
+            ({optician.reviewCount})
           </span>
         </div>
 
-        {/* Services tags */}
-        <div className="flex flex-wrap gap-1.5 mb-3">
-          {optician.services.map((service) => (
+        {/* Services tags — show top 3 max */}
+        <div className="flex flex-wrap gap-1 mb-2">
+          {optician.services.slice(0, 3).map((service) => (
             <span
               key={service}
-              className={`text-xs px-2 py-0.5 rounded-full ${
+              className={`text-[10px] px-1.5 py-0.5 rounded-full ${
                 service === "NHS"
                   ? "bg-blue-50 text-[var(--color-nhs-blue)] font-medium"
-                  : "bg-gray-100 text-gray-600"
+                  : "bg-gray-100 text-gray-500"
               }`}
             >
               {service}
             </span>
           ))}
+          {optician.services.length > 3 && (
+            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-400">
+              +{optician.services.length - 3}
+            </span>
+          )}
         </div>
 
         {/* Availability + Next slot */}
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-2 mb-3">
           {optician.available ? (
             <>
-              <span className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-success)] bg-green-50 px-2.5 py-1 rounded-full">
+              <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--color-success)] bg-green-50 px-2 py-0.5 rounded-full">
                 <span className="w-1.5 h-1.5 bg-[var(--color-success)] rounded-full" />
                 Available
               </span>
               {optician.nextSlot && (
-                <span className="text-xs text-gray-600">
-                  Next:{" "}
-                  <span className="font-medium text-[var(--color-navy)]">
-                    {optician.nextSlot}
-                  </span>
+                <span className="text-[10px] text-gray-500 truncate">
+                  {optician.nextSlot}
                 </span>
               )}
             </>
           ) : (
-            <span className="inline-flex items-center gap-1 text-xs font-medium text-gray-400 bg-gray-100 px-2.5 py-1 rounded-full">
+            <span className="inline-flex items-center gap-1 text-[10px] font-medium text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
               <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
               No slots
             </span>
           )}
         </div>
 
-        {/* Actions row */}
-        <div className="flex items-center gap-3">
+        {/* Actions row — pushed to bottom */}
+        <div className="flex items-center gap-2 mt-auto">
           <Link
             href={`/book/${optician.id}`}
-            className={`flex-1 inline-flex items-center justify-center gap-2 text-sm font-semibold py-2.5 rounded-lg transition-colors ${
+            className={`flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2 rounded-lg transition-colors ${
               optician.available
                 ? "bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white"
                 : "bg-gray-100 text-gray-400 pointer-events-none"
             }`}
           >
             <svg
-              className="w-4 h-4"
+              className="w-3.5 h-3.5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -189,11 +191,11 @@ export function ResultCard({ optician }: { optician: Optician }) {
           </Link>
           <a
             href={`tel:${optician.phone.replace(/\s/g, "")}`}
-            className="inline-flex items-center justify-center gap-1.5 text-sm font-medium text-[var(--color-navy)] hover:text-[var(--color-primary)] bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-lg transition-colors"
+            className="inline-flex items-center justify-center text-xs font-medium text-[var(--color-navy)] hover:text-[var(--color-primary)] bg-gray-50 hover:bg-gray-100 px-3 py-2 rounded-lg transition-colors"
             aria-label={`Call ${optician.name}`}
           >
             <svg
-              className="w-4 h-4"
+              className="w-3.5 h-3.5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -205,8 +207,7 @@ export function ResultCard({ optician }: { optician: Optician }) {
                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
               />
             </svg>
-            <span className="hidden sm:inline">{optician.phone}</span>
-            <span className="sm:hidden">Call</span>
+            <span className="ml-1.5 hidden sm:inline">{optician.phone}</span>
           </a>
         </div>
       </div>
