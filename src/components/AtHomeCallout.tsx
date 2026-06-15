@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 type AtHomeCalloutProps = {
@@ -129,88 +130,28 @@ export function AtHomeCallout({
               </div>
             </div>
 
-            {/* Right side: decorative visual / patient quote (desktop) */}
-            <div className="hidden lg:flex flex-shrink-0 w-72 xl:w-80 flex-col items-center gap-5">
-              {/* Decorative SVG illustration: eye with home */}
-              <svg
-                className="w-28 h-28 xl:w-32 xl:h-32"
-                viewBox="0 0 120 120"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                {/* Outer ring */}
-                <circle
-                  cx="60"
-                  cy="60"
-                  r="54"
-                  stroke="var(--color-primary)"
-                  strokeWidth="1.5"
-                  strokeDasharray="6 4"
-                  opacity="0.3"
+            {/* Right side: photo + patient quote (desktop) */}
+            <div className="hidden lg:flex flex-shrink-0 w-72 xl:w-80 flex-col items-center gap-4">
+              {/* Photo of elderly eye test */}
+              <div className="img-zoom rounded-2xl overflow-hidden shadow-md w-full">
+                <Image
+                  src="/images/elderly-eye-test-sm.jpg"
+                  alt="Elderly patient receiving a professional eye test at home"
+                  width={480}
+                  height={261}
+                  className="w-full h-auto object-cover"
+                  sizes="320px"
                 />
-                {/* Inner soft circle */}
-                <circle
-                  cx="60"
-                  cy="60"
-                  r="42"
-                  fill="var(--color-primary)"
-                  opacity="0.06"
-                />
-                {/* Eye shape */}
-                <path
-                  d="M28 60c0 0 14-22 32-22s32 22 32 22-14 22-32 22S28 60 28 60z"
-                  stroke="var(--color-primary)"
-                  strokeWidth="2"
-                  fill="var(--color-primary)"
-                  fillOpacity="0.08"
-                />
-                {/* Iris */}
-                <circle
-                  cx="60"
-                  cy="60"
-                  r="12"
-                  fill="var(--color-primary)"
-                  opacity="0.2"
-                />
-                {/* Pupil / home icon */}
-                <path
-                  d="M54 64v-3.5c0-.28.22-.5.5-.5h1c.28 0 .5.22.5.5V64h2v-3.5c0-.28.22-.5.5-.5h1c.28 0 .5.22.5.5V64h1.5a.5.5 0 00.5-.5v-5.09a.5.5 0 00-.17-.38L60.2 56.1a.5.5 0 00-.4 0l-4.63 1.93a.5.5 0 00-.17.38V63.5a.5.5 0 00.5.5H54z"
-                  fill="var(--color-primary)"
-                  opacity="0.5"
-                />
-                {/* Simplified house in pupil center */}
-                <path
-                  d="M60 52l-7 5.5v8a1 1 0 001 1h4v-4h4v4h4a1 1 0 001-1v-8L60 52z"
-                  fill="var(--color-primary)"
-                  opacity="0.35"
-                />
-                <path
-                  d="M60 52l-7 5.5v8a1 1 0 001 1h4v-4h4v4h4a1 1 0 001-1v-8L60 52z"
-                  stroke="var(--color-primary)"
-                  strokeWidth="1.5"
-                  fill="none"
-                  opacity="0.6"
-                />
-                {/* Roof line */}
-                <path
-                  d="M52 58l8-6 8 6"
-                  stroke="var(--color-primary)"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  opacity="0.6"
-                />
-              </svg>
+              </div>
 
               {/* Patient quote */}
-              <blockquote className="text-center px-3">
+              <blockquote className="text-center px-2">
                 <p className="text-sm text-gray-600 italic leading-relaxed">
                   &ldquo;Mum can&apos;t leave the house easily, so having the
                   optician come to her was a huge relief for the whole
                   family.&rdquo;
                 </p>
-                <footer className="mt-2.5 flex items-center justify-center gap-2">
+                <footer className="mt-2 flex items-center justify-center gap-2">
                   <div className="w-7 h-7 rounded-full bg-[var(--color-primary)] text-white text-xs font-bold flex items-center justify-center">
                     R
                   </div>

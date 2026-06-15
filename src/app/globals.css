@@ -81,3 +81,165 @@ body {
   outline-offset: 2px;
   border-radius: 4px;
 }
+
+/* ------------------------------------------------------------------ */
+/*  ScrollReveal animation system                                      */
+/* ------------------------------------------------------------------ */
+
+.sr-target {
+  will-change: transform, opacity;
+}
+
+.sr-visible.sr-target {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Animated gradient backgrounds for sections                         */
+/* ------------------------------------------------------------------ */
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-animated-gradient {
+  background: linear-gradient(
+    135deg,
+    #f0fdfc 0%,
+    #f8fffe 25%,
+    #eef7ff 50%,
+    #f5f0ff 75%,
+    #f0fdfc 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+.bg-animated-gradient-warm {
+  background: linear-gradient(
+    135deg,
+    #fffbf0 0%,
+    #fff8f0 25%,
+    #f0fdfc 50%,
+    #f0f4ff 75%,
+    #fffbf0 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 20s ease infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Subtle floating animation for decorative elements                  */
+/* ------------------------------------------------------------------ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float 6s ease-in-out 2s infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Pulse glow for CTA buttons                                        */
+/* ------------------------------------------------------------------ */
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(14, 165, 160, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(14, 165, 160, 0); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Image hover zoom for card images                                   */
+/* ------------------------------------------------------------------ */
+
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.img-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Card lift hover effect                                             */
+/* ------------------------------------------------------------------ */
+
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px -8px rgba(13, 27, 62, 0.12);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Parallax-ready image section                                       */
+/* ------------------------------------------------------------------ */
+
+.parallax-section {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .parallax-section {
+    background-attachment: scroll;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Shimmer loading effect                                             */
+/* ------------------------------------------------------------------ */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(14,165,160,0.06) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Counter animation helper                                           */
+/* ------------------------------------------------------------------ */
+
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count {
+  animation: count-up 0.8s ease-out forwards;
+}
