@@ -1,0 +1,56 @@
+import type { Metadata } from "next";
+import { Inter, Outfit } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+export const metadata: Metadata = {
+  title: "eyetest.co.uk — Find & Book Eye Tests Near You",
+  description:
+    "Compare thousands of opticians across the UK. Find available eye test appointments near you from Boots, Specsavers, Vision Express, ASDA and independent opticians. Book online in seconds.",
+  keywords: [
+    "eye test",
+    "book eye test",
+    "opticians near me",
+    "eye test appointment",
+    "NHS eye test",
+    "free eye test",
+    "compare opticians",
+  ],
+  openGraph: {
+    title: "eyetest.co.uk — Find & Book Eye Tests Near You",
+    description:
+      "Compare thousands of opticians across the UK. Find available appointments and book online in seconds.",
+    url: "https://eyetest.co.uk",
+    siteName: "eyetest.co.uk",
+    type: "website",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${inter.variable} ${outfit.variable} h-full`}
+    >
+      <body className="min-h-full flex flex-col bg-white text-[var(--color-navy)]">
+        {children}
+      </body>
+    </html>
+  );
+}
