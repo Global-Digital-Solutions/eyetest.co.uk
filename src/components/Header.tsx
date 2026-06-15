@@ -126,27 +126,45 @@ export function Header() {
 
   return (
     <header ref={headerRef} className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-      {/* Top utility bar */}
-      <div className="bg-[var(--color-navy)] text-white text-xs">
-        <div className="max-w-7xl mx-auto px-4 py-1.5 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <span className="hidden sm:inline">Compare 1,000+ UK opticians</span>
-            <span className="sm:hidden">1,000+ opticians</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1">
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+      {/* Top USP bar */}
+      <div className="bg-gradient-to-r from-[var(--color-navy)] via-[#0f2342] to-[var(--color-navy)]">
+        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-3 sm:gap-6 overflow-hidden">
+          <span className="flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-white/90 whitespace-nowrap">
+            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-primary)]/20">
+              <svg className="w-3 h-3 text-[var(--color-primary-light)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              Free to use
             </span>
-            <span className="hidden sm:flex items-center gap-1">
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <span className="hidden sm:inline"><strong className="text-white">1,000+</strong> opticians compared</span>
+            <span className="sm:hidden"><strong className="text-white">1,000+</strong> opticians</span>
+          </span>
+          <span className="w-px h-3.5 bg-white/20 hidden sm:block" />
+          <span className="flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-white/90 whitespace-nowrap">
+            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-success)]/20">
+              <svg className="w-3 h-3 text-[var(--color-success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
-              Same-day availability
             </span>
-          </div>
+            <strong className="text-white">100% free</strong> to use
+          </span>
+          <span className="w-px h-3.5 bg-white/20 hidden sm:block" />
+          <span className="hidden sm:flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-white/90 whitespace-nowrap">
+            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-amber-500/20">
+              <svg className="w-3 h-3 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </span>
+            <strong className="text-white">Same-day</strong> appointments
+          </span>
+          <span className="w-px h-3.5 bg-white/20 hidden md:block" />
+          <span className="hidden md:flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-white/90 whitespace-nowrap">
+            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-nhs-blue)]/20">
+              <svg className="w-3 h-3 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+              </svg>
+            </span>
+            <strong className="text-white">NHS</strong> &amp; private tests
+          </span>
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { PageHero } from "@/components/PageHero";
 import {
   eyeConditions,
   eyeHealthGuides,
@@ -113,102 +114,64 @@ export default function EyeHealthPage() {
         />
 
         {/* Hero */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-navy)] via-[#112247] to-[var(--color-navy-light)]" />
-          <div className="absolute -top-32 -right-32 w-96 h-96 bg-[var(--color-primary)] rounded-full opacity-10 blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[var(--color-primary)] rounded-full opacity-5 blur-3xl" />
-
-          <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-20 lg:py-24">
-            <div className="max-w-3xl mx-auto text-center">
-              {/* Breadcrumb */}
-              <nav aria-label="Breadcrumb" className="mb-6">
-                <ol className="flex items-center justify-center gap-2 text-sm text-white/50">
-                  <li>
-                    <Link
-                      href="/"
-                      className="hover:text-white/80 transition-colors"
-                    >
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </li>
-                  <li className="text-white/80">Eye Health</li>
-                </ol>
-              </nav>
-
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 text-white/90 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full mb-6">
-                <svg
-                  className="w-4 h-4 text-[var(--color-primary-light)]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-                <span>
-                  {eyeConditions.length} conditions &middot;{" "}
-                  {eyeHealthGuides.length} guides
-                </span>
-              </div>
-
-              <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Eye Health{" "}
-                <span className="text-[var(--color-primary-light)]">
-                  Information
-                </span>
-              </h1>
-              <p className="text-base sm:text-lg text-white/70 mb-8 max-w-xl mx-auto">
-                Evidence-based information about eye conditions, symptoms, and
-                treatments, plus expert guides to help you look after your sight.
-                Written by UK eye care professionals.
-              </p>
-
-              {/* Quick links */}
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                <a
-                  href="#conditions"
-                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-all"
-                >
-                  Eye Conditions
-                </a>
-                <a
-                  href="#guides"
-                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-all"
-                >
-                  Guides &amp; Advice
-                </a>
-              </div>
-            </div>
+        <PageHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Eye Health" }]}>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 text-white/90 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+            <svg
+              className="w-4 h-4 text-[var(--color-primary-light)]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
+            <span>
+              {eyeConditions.length} conditions &middot;{" "}
+              {eyeHealthGuides.length} guides
+            </span>
           </div>
-        </section>
+
+          <h1
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            Eye Health{" "}
+            <span className="text-[var(--color-primary-light)]">
+              Information
+            </span>
+          </h1>
+          <p className="text-base sm:text-lg text-white/70 mb-8 max-w-xl mx-auto">
+            Evidence-based information about eye conditions, symptoms, and
+            treatments, plus expert guides to help you look after your sight.
+            Written by UK eye care professionals.
+          </p>
+
+          {/* Quick links */}
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="#conditions"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-all"
+            >
+              Eye Conditions
+            </a>
+            <a
+              href="#guides"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-all"
+            >
+              Guides &amp; Advice
+            </a>
+          </div>
+        </PageHero>
 
         {/* Eye Conditions */}
         <section id="conditions" className="py-16 sm:py-20">

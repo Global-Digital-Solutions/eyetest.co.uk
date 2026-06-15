@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { PageHero } from "@/components/PageHero";
 import {
   eyeTests,
   getTestBySlug,
@@ -208,66 +209,14 @@ export default async function EyeTestPage({
         />
 
         {/* Hero */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-navy)] via-[#112247] to-[var(--color-navy-light)]" />
-          <div className="absolute -top-32 -right-32 w-96 h-96 bg-[var(--color-primary)] rounded-full opacity-10 blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[var(--color-primary)] rounded-full opacity-5 blur-3xl" />
-
-          <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-20 lg:py-24">
-            <div className="max-w-3xl mx-auto text-center">
-              {/* Breadcrumb */}
-              <nav aria-label="Breadcrumb" className="mb-6">
-                <ol className="flex items-center justify-center gap-2 text-sm text-white/50">
-                  <li>
-                    <Link
-                      href="/"
-                      className="hover:text-white/80 transition-colors"
-                    >
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </li>
-                  <li>
-                    <Link
-                      href="/eye-tests"
-                      className="hover:text-white/80 transition-colors"
-                    >
-                      Eye Tests
-                    </Link>
-                  </li>
-                  <li>
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </li>
-                  <li className="text-white/80">{test.name}</li>
-                </ol>
-              </nav>
-
+        <PageHero
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Eye Tests", href: "/eye-tests" },
+            { label: test.name },
+          ]}
+          compact
+        >
               {/* Icon */}
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 text-3xl mb-6">
                 {iconMap[test.icon] || "👁️"}
@@ -318,9 +267,7 @@ export default async function EyeTestPage({
                   </div>
                 )}
               </div>
-            </div>
-          </div>
-        </section>
+        </PageHero>
 
         {/* Main content */}
         <section className="py-16 sm:py-20">

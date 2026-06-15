@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { PageHero, HeroSearchForm } from "@/components/PageHero";
 import { eyeTests } from "@/data/eye-tests";
 
 // ---------------------------------------------------------------------------
@@ -151,132 +152,42 @@ export default function EyeTestsPage() {
         />
 
         {/* Hero */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-navy)] via-[#112247] to-[var(--color-navy-light)]" />
-          <div className="absolute -top-32 -right-32 w-96 h-96 bg-[var(--color-primary)] rounded-full opacity-10 blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[var(--color-primary)] rounded-full opacity-5 blur-3xl" />
-
-          <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-20 lg:py-24">
-            <div className="max-w-3xl mx-auto text-center">
-              {/* Breadcrumb */}
-              <nav aria-label="Breadcrumb" className="mb-6">
-                <ol className="flex items-center justify-center gap-2 text-sm text-white/50">
-                  <li>
-                    <Link
-                      href="/"
-                      className="hover:text-white/80 transition-colors"
-                    >
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </li>
-                  <li className="text-white/80">Eye Tests</li>
-                </ol>
-              </nav>
-
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 text-white/90 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full mb-6">
-                <svg
-                  className="w-4 h-4 text-[var(--color-primary-light)]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>{eyeTests.length} test types covered</span>
-              </div>
-
-              <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Types of{" "}
-                <span className="text-[var(--color-primary-light)]">
-                  Eye Tests
-                </span>
-              </h1>
-              <p className="text-base sm:text-lg text-white/70 mb-8 max-w-xl mx-auto">
-                From routine NHS sight tests to advanced OCT scans and specialist
-                screenings, discover every type of eye test available in the UK
-                and find out which ones you need.
-              </p>
-
-              {/* Search form */}
-              <form action="/search" method="GET" className="max-w-xl mx-auto">
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 sm:bg-white sm:rounded-full sm:p-1.5 sm:shadow-xl sm:shadow-black/10">
-                  <div className="relative flex-1">
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                    </div>
-                    <input
-                      type="text"
-                      name="postcode"
-                      placeholder="Enter your postcode to find appointments"
-                      className="w-full pl-12 pr-4 py-4 sm:py-3 text-base sm:text-lg text-[var(--color-navy)] bg-white sm:bg-transparent rounded-xl sm:rounded-full border border-gray-200 sm:border-none focus:outline-none placeholder:text-gray-400"
-                      aria-label="Enter your postcode"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="flex items-center justify-center gap-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-semibold text-base px-8 py-4 sm:py-3 rounded-xl sm:rounded-full transition-all hover:shadow-lg cursor-pointer"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      />
-                    </svg>
-                    Search
-                  </button>
-                </div>
-              </form>
-            </div>
+        <PageHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Eye Tests" }]}>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 text-white/90 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+            <svg
+              className="w-4 h-4 text-[var(--color-primary-light)]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>{eyeTests.length} test types covered</span>
           </div>
-        </section>
+
+          <h1
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            Types of{" "}
+            <span className="text-[var(--color-primary-light)]">
+              Eye Tests
+            </span>
+          </h1>
+          <p className="text-base sm:text-lg text-white/70 mb-8 max-w-xl mx-auto">
+            From routine NHS sight tests to advanced OCT scans and specialist
+            screenings, discover every type of eye test available in the UK
+            and find out which ones you need.
+          </p>
+
+          <HeroSearchForm placeholder="Enter your postcode to find appointments" />
+        </PageHero>
 
         {/* Test type cards grid */}
         <section className="py-16 sm:py-20">

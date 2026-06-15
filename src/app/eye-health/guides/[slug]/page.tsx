@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { PageHero } from "@/components/PageHero";
 import {
   getGuideBySlug,
   getConditionBySlug,
@@ -170,66 +171,14 @@ export default async function GuidePage({
         />
 
         {/* Hero */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-navy)] via-[#112247] to-[var(--color-navy-light)]" />
-          <div className="absolute -top-32 -right-32 w-96 h-96 bg-[var(--color-primary)] rounded-full opacity-10 blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[var(--color-primary)] rounded-full opacity-5 blur-3xl" />
-
-          <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-20 lg:py-24">
-            <div className="max-w-3xl mx-auto text-center">
-              {/* Breadcrumb */}
-              <nav aria-label="Breadcrumb" className="mb-6">
-                <ol className="flex items-center justify-center gap-2 text-sm text-white/50">
-                  <li>
-                    <Link
-                      href="/"
-                      className="hover:text-white/80 transition-colors"
-                    >
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </li>
-                  <li>
-                    <Link
-                      href="/eye-health"
-                      className="hover:text-white/80 transition-colors"
-                    >
-                      Eye Health
-                    </Link>
-                  </li>
-                  <li>
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </li>
-                  <li className="text-white/80">{guide.title}</li>
-                </ol>
-              </nav>
-
+        <PageHero
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Eye Health", href: "/eye-health" },
+            { label: guide.title },
+          ]}
+          compact
+        >
               {/* Category badge */}
               <div
                 className={`inline-flex items-center text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full mb-6 ${guideCategoryColors[guide.category]}`}
@@ -246,9 +195,7 @@ export default async function GuidePage({
               <p className="text-base sm:text-lg text-white/70 max-w-xl mx-auto">
                 {guide.summary}
               </p>
-            </div>
-          </div>
-        </section>
+        </PageHero>
 
         {/* Content */}
         <section className="py-12 sm:py-16">
