@@ -18,16 +18,16 @@ export function Hero() {
       id="search"
       className="relative overflow-hidden"
     >
-      {/* Background image */}
+      {/* Background image — bright optician setting */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=1920&q=80')`,
+          backgroundImage: `url('/images/optician-shop-lg.jpg')`,
         }}
       />
 
-      {/* Dark gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-navy)]/90 via-[#112247]/85 to-[var(--color-navy-light)]/90" />
+      {/* Lighter gradient overlay — lets image brightness show through */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-navy)]/78 via-[#112247]/70 to-[var(--color-navy-light)]/75" />
 
       {/* Glowing orb accents */}
       <div className="absolute -top-32 -right-32 w-96 h-96 bg-[var(--color-primary)] rounded-full opacity-10 blur-3xl" />

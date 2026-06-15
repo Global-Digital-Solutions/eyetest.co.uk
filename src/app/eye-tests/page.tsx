@@ -7,30 +7,6 @@ import { AtHomeCallout } from "@/components/AtHomeCallout";
 import { eyeTests } from "@/data/eye-tests";
 
 // ---------------------------------------------------------------------------
-// Icon helper — maps data icon strings to emoji for cards
-// ---------------------------------------------------------------------------
-
-const iconMap: Record<string, string> = {
-  eye: "👁️",
-  shield: "🛡️",
-  child: "👶",
-  "contact-lens": "👓",
-  scan: "🩻",
-  grid: "🟦",
-  camera: "📷",
-  droplet: "💧",
-  palette: "🎨",
-  car: "🚗",
-  alert: "🚨",
-  home: "🏠",
-  pressure: "🌡️",
-  eyelid: "🪴",
-  trending: "📈",
-  lens: "🔍",
-  target: "🎯",
-};
-
-// ---------------------------------------------------------------------------
 // SEO metadata
 // ---------------------------------------------------------------------------
 
@@ -214,17 +190,10 @@ export default function EyeTestsPage() {
                   href={`/eye-tests/${test.slug}`}
                   className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
                 >
-                  {/* Icon + title */}
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-2xl shrink-0">
-                      {iconMap[test.icon] || "👁️"}
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors leading-snug">
-                        {test.name}
-                      </h3>
-                    </div>
-                  </div>
+                  {/* Title */}
+                  <h3 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors leading-snug mb-3">
+                    {test.name}
+                  </h3>
 
                   {/* Description */}
                   <p className="text-sm text-gray-600 mb-4 line-clamp-2">

@@ -12,30 +12,6 @@ import {
 } from "@/data/eye-tests";
 
 // ---------------------------------------------------------------------------
-// Icon helper — maps data icon strings to emoji
-// ---------------------------------------------------------------------------
-
-const iconMap: Record<string, string> = {
-  eye: "👁️",
-  shield: "🛡️",
-  child: "👶",
-  "contact-lens": "👓",
-  scan: "🩻",
-  grid: "🟦",
-  camera: "📷",
-  droplet: "💧",
-  palette: "🎨",
-  car: "🚗",
-  alert: "🚨",
-  home: "🏠",
-  pressure: "🌡️",
-  eyelid: "🪴",
-  trending: "📈",
-  lens: "🔍",
-  target: "🎯",
-};
-
-// ---------------------------------------------------------------------------
 // Static generation
 // ---------------------------------------------------------------------------
 
@@ -217,11 +193,6 @@ export default async function EyeTestPage({
           ]}
           compact
         >
-              {/* Icon */}
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 text-3xl mb-6">
-                {iconMap[test.icon] || "👁️"}
-              </div>
-
               <h1
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
                 style={{ fontFamily: "var(--font-display)" }}
@@ -646,9 +617,6 @@ export default async function EyeTestPage({
                     href={`/eye-tests/${related.slug}`}
                     className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-2xl mb-4">
-                      {iconMap[related.icon] || "👁️"}
-                    </div>
                     <h3 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors mb-2">
                       {related.name}
                     </h3>
