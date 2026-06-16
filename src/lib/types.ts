@@ -1,3 +1,8 @@
+export interface DailySlot {
+  date: string; // YYYY-MM-DD
+  count: number; // exact count, or -1 for "available but count unknown"
+}
+
 export interface StoreResult {
   provider: string;
   storeName: string;
@@ -13,6 +18,7 @@ export interface StoreResult {
   lng?: number;
   featured?: boolean;
   featuredLabel?: string;
+  dailySlots?: DailySlot[];
 }
 
 export interface FeaturedProvider {

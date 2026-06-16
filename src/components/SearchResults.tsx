@@ -45,8 +45,18 @@ function formatDistance(m: number): string {
 /*  StoreCard                                                          */
 /* ------------------------------------------------------------------ */
 
+function DayLabel({ date, index }: { date: string; index: number }) {
+  if (index === 0) return <>Today</>;
+  if (index === 1) return <>Tomorrow</>;
+  const dt = new Date(date + "T12:00:00");
+  const day = dt.toLocaleDateString("en-GB", { weekday: "short" });
+  return <>{day}&nbsp;{dt.getDate()}</>;
+}
+
 function StoreCard({ store }: { store: StoreResult }) {
-  const hasSlots = Boolean(store.slotsAvailable);
+  const hasSlots = store.dailySlots
+    ? store.dailySlots.some((s) => s.count !== 0)
+    : Boolean(store.slotsAvailable);
   const style = getProviderStyle(store.provider);
 
   return (
@@ -107,25 +117,73 @@ function StoreCard({ store }: { store: StoreResult }) {
           <p className="text-[11px] text-gray-400 mb-2">{store.phone}</p>
         )}
 
-        {/* Availability */}
-        <div className="flex items-center gap-2 mb-3">
-          {hasSlots ? (
-            <>
-              <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--color-success)] bg-green-50 px-2 py-0.5 rounded-full">
-                <span className="w-1.5 h-1.5 bg-[var(--color-success)] rounded-full" />
-                Available
+        {/* 3-day availability calendar */}
+        {store.dailySlots && store.dailySlots.length > 0 ? (
+          <div className="grid grid-cols-3 gap-1.5 mb-3">
+            {store.dailySlots.map((slot, i) => {
+              const avail = slot.count !== 0;
+              return (
+                <div
+                  key={slot.date}
+                  className={`rounded-lg py-2 text-center ${
+                    avail
+                      ? "bg-green-50 border border-green-200"
+                      : "bg-gray-50 border border-gray-100"
+                  }`}
+                >
+                  <div
+                    className={`text-[9px] font-semibold uppercase tracking-wide ${
+                      avail ? "text-green-600" : "text-gray-400"
+                    }`}
+                  >
+                    <DayLabel date={slot.date} index={i} />
+                  </div>
+                  <div
+                    className={`text-base font-bold leading-tight mt-0.5 ${
+                      avail ? "text-green-700" : "text-gray-300"
+                    }`}
+                  >
+                    {slot.count > 0
+                      ? slot.count
+                      : slot.count === -1
+                        ? "✓"
+                        : "—"}
+                  </div>
+                  <div
+                    className={`text-[8px] mt-0.5 ${
+                      avail ? "text-green-500" : "text-gray-300"
+                    }`}
+                  >
+                    {slot.count > 0
+                      ? `slot${slot.count !== 1 ? "s" : ""}`
+                      : slot.count === -1
+                        ? "available"
+                        : "none"}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="flex items-center gap-2 mb-3">
+            {hasSlots ? (
+              <>
+                <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--color-success)] bg-green-50 px-2 py-0.5 rounded-full">
+                  <span className="w-1.5 h-1.5 bg-[var(--color-success)] rounded-full" />
+                  Available
+                </span>
+                <span className="text-[10px] text-gray-500 truncate">
+                  {store.slotsAvailable}
+                </span>
+              </>
+            ) : (
+              <span className="inline-flex items-center gap-1 text-[10px] font-medium text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
+                <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
+                No slots found
               </span>
-              <span className="text-[10px] text-gray-500 truncate">
-                {store.slotsAvailable}
-              </span>
-            </>
-          ) : (
-            <span className="inline-flex items-center gap-1 text-[10px] font-medium text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
-              <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
-              No slots found
-            </span>
-          )}
-        </div>
+            )}
+          </div>
+        )}
 
         {/* Actions */}
         <div className="flex items-center gap-2">
@@ -546,7 +604,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  No stores found within 15 km of{" "}
+                  No stores found within 5 miles of{" "}
                   <span className="font-medium">
                     {stream.postcode ?? postcode}
                   </span>

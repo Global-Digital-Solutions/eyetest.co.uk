@@ -1,4 +1,5 @@
 import type { StoreResult } from "../types";
+import { ukToday, getThreeDayDates } from "../dates";
 
 const OCUCO_BASE = "https://eu.oh.ocuco.com/api/omni/v303";
 const HEADERS = {
@@ -22,6 +23,8 @@ export async function fetchAsda(
   radius = 8047,
   limit = 10
 ): Promise<StoreResult[]> {
+  const todayStr = ukToday();
+  const threeDays = getThreeDayDates();
   const results: StoreResult[] = [];
   let offset = 0;
   const pageSize = Math.max(limit, 20);
@@ -56,6 +59,14 @@ export async function fetchAsda(
       const slotFound = item.slotFound as boolean;
       const nextSlot = item.nextAvailableSlot as Record<string, string> | null;
       const nextStart = nextSlot?.startTime ?? "";
+      const nextDateStr = nextStart ? nextStart.slice(0, 10) : "";
+      const isFuture = nextDateStr >= todayStr;
+
+      // Build 3-day availability calendar
+      const dailySlots = threeDays.map((date) => ({
+        date,
+        count: slotFound && isFuture && nextDateStr === date ? -1 : 0,
+      }));
 
       results.push({
         provider: "ASDA Opticians",
@@ -65,11 +76,12 @@ export async function fetchAsda(
         town: String(site.city ?? ""),
         phone: String(site.phoneNumber ?? ""),
         distanceM: Math.round(distM),
-        slotsAvailable: slotFound && nextStart ? formatSlot(nextStart) : null,
-        nextAvailable: nextStart ? nextStart.slice(0, 10) : null,
+        slotsAvailable: slotFound && isFuture && nextStart ? formatSlot(nextStart) : null,
+        nextAvailable: isFuture && nextStart ? nextDateStr : null,
         bookingUrl: `${BOOKING_BASE}?siteId=${siteId}`,
         lat: Number(site.latitude) || undefined,
         lng: Number(site.longitude) || undefined,
+        dailySlots,
       });
 
       if (results.length >= limit) break outer;

@@ -1,5 +1,6 @@
 import { haversine } from "../haversine";
 import type { StoreResult } from "../types";
+import { ukToday, getThreeDayDates } from "../dates";
 
 const GQL_URL = "https://graphql.mysight.uk/";
 const TIMEZONE = "Europe/London";
@@ -193,6 +194,9 @@ export async function fetchMysight(
   limit = 10,
   days = 14
 ): Promise<StoreResult[]> {
+  const todayStr = ukToday();
+  const threeDays = getThreeDayDates();
+
   const site = await fetchSiteInfo(siteHost);
   const { brandName, branches } = await fetchBranches(siteHost, site.brandingId);
   const dates = makeDates(days);
@@ -220,17 +224,38 @@ export async function fetchMysight(
       let slotStr: string | null = null;
       let nextDate: string | null = null;
 
+      // Count slots per day for the 3-day calendar
+      const dailyCounts: Record<string, number> = {};
+
       if (typeId) {
         const avail = await fetchAvailability(siteHost, branchId, typeId, dates);
         const slots = (avail.availableSlots ?? {}) as Record<string, unknown>;
-        const slotKeys = Object.keys(slots);
+        const slotKeys = Object.keys(slots)
+          .filter((k) => k.slice(0, 10) >= todayStr)
+          .sort();
+
+        for (const key of slotKeys) {
+          const dateStr = key.slice(0, 10);
+          const val = slots[key];
+          if (Array.isArray(val)) {
+            dailyCounts[dateStr] = (dailyCounts[dateStr] ?? 0) + val.length;
+          } else {
+            dailyCounts[dateStr] = (dailyCounts[dateStr] ?? 0) + 1;
+          }
+        }
+
         if (slotKeys.length > 0) {
-          const earliest = slotKeys.sort()[0];
+          const earliest = slotKeys[0];
           const dt = new Date(earliest);
           slotStr = `Available — next ${dt.toLocaleDateString("en-GB", { weekday: "short", day: "2-digit", month: "short" })} at ${dt.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}`;
           nextDate = earliest.slice(0, 10);
         }
       }
+
+      const dailySlots = threeDays.map((date) => ({
+        date,
+        count: dailyCounts[date] ?? 0,
+      }));
 
       const displayName =
         String(b.onlineFriendlyBranchName ?? "") || String(b.branchName ?? "");
@@ -249,6 +274,7 @@ export async function fetchMysight(
         bookingUrl: `https://${siteHost}/choose-appointment-type`,
         lat: Number(b.latitude) || undefined,
         lng: Number(b.longitude) || undefined,
+        dailySlots,
       });
     })
   );

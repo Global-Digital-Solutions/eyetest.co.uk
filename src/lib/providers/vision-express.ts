@@ -1,4 +1,5 @@
 import type { StoreResult } from "../types";
+import { ukToday, getThreeDayDates } from "../dates";
 
 const GQL_URL = "https://api.visionexpress.com/graphql";
 const APPOINTMENT_TYPE_ID = "22622"; // Eye Test
@@ -50,6 +51,9 @@ export async function fetchVisionExpress(
   limit = 10,
   days = 28
 ): Promise<StoreResult[]> {
+  const todayStr = ukToday();
+  const threeDays = getThreeDayDates();
+
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const endDate = new Date();
@@ -89,12 +93,20 @@ export async function fetchVisionExpress(
 
     const slotsAvailable = Number(item.slotsAvailable ?? 0);
     const nextDate = String(item.nextAvailableBookingDate ?? "");
+    const nextDateStr = nextDate ? nextDate.slice(0, 10) : "";
+    const isFuture = nextDateStr >= todayStr;
 
     let slotStr: string | null = null;
-    if (slotsAvailable > 0 && nextDate) {
+    if (slotsAvailable > 0 && nextDate && isFuture) {
       const dt = new Date(nextDate);
       slotStr = `Available — next ${dt.toLocaleDateString("en-GB", { weekday: "short", day: "2-digit", month: "short" })}`;
     }
+
+    // Build 3-day availability calendar
+    const dailySlots = threeDays.map((date) => ({
+      date,
+      count: slotsAvailable > 0 && isFuture && nextDateStr === date ? -1 : 0,
+    }));
 
     const streetNum = String(store.streetNumber ?? "").trim();
     const streetName = String(store.streetName ?? "").trim();
@@ -109,10 +121,11 @@ export async function fetchVisionExpress(
       phone: String(store.phone ?? ""),
       distanceM: Math.round(distM),
       slotsAvailable: slotStr,
-      nextAvailable: nextDate || null,
+      nextAvailable: isFuture ? nextDateStr || null : null,
       bookingUrl: "https://www.visionexpress.com/book-appointment",
       lat: Number(store.lat) || undefined,
       lng: Number(store.lon) || undefined,
+      dailySlots,
     });
 
     if (results.length >= limit) break;
