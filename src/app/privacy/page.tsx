@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     title: "Privacy Policy | eyetest.co.uk",
     description:
       "How eyetest.co.uk collects, uses, and protects your personal data. UK GDPR compliant.",
-    url: "https://eyetest.co.uk/privacy",
+    url: "https://www.eyetest.co.uk/privacy",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://eyetest.co.uk/privacy",
+    canonical: "https://www.eyetest.co.uk/privacy",
   },
 };
 
@@ -43,11 +43,11 @@ export default function PrivacyPolicyPage() {
     name: "Privacy Policy",
     description:
       "Read the eyetest.co.uk privacy policy. Learn how we collect, use, and protect your personal data in compliance with UK GDPR and the Data Protection Act 2018.",
-    url: "https://eyetest.co.uk/privacy",
+    url: "https://www.eyetest.co.uk/privacy",
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     dateModified: "2025-06-15",
     inLanguage: "en-GB",
@@ -61,13 +61,13 @@ export default function PrivacyPolicyPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Privacy Policy",
-        item: "https://eyetest.co.uk/privacy",
+        item: "https://www.eyetest.co.uk/privacy",
       },
     ],
   };

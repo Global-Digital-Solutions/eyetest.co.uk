@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     title: "About Us — The UK's Eye Test Comparison Platform | eyetest.co.uk",
     description:
       "Founded in 2019, eyetest.co.uk helps you compare 1,000+ opticians across the UK. Free, transparent, and independent.",
-    url: "https://eyetest.co.uk/about",
+    url: "https://www.eyetest.co.uk/about",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://eyetest.co.uk/about",
+    canonical: "https://www.eyetest.co.uk/about",
   },
 };
 
@@ -126,11 +126,11 @@ export default function AboutPage() {
     name: "About eyetest.co.uk",
     description:
       "Learn about eyetest.co.uk, the UK's dedicated eye test comparison platform. Founded in 2019, we help you compare 1,000+ opticians across 93 UK cities.",
-    url: "https://eyetest.co.uk/about",
+    url: "https://www.eyetest.co.uk/about",
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     inLanguage: "en-GB",
   };
@@ -143,13 +143,13 @@ export default function AboutPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "About Us",
-        item: "https://eyetest.co.uk/about",
+        item: "https://www.eyetest.co.uk/about",
       },
     ],
   };

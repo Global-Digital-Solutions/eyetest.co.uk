@@ -51,12 +51,12 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://eyetest.co.uk/eye-health/guides/${guide.slug}`,
+      url: `https://www.eyetest.co.uk/eye-health/guides/${guide.slug}`,
       siteName: "eyetest.co.uk",
       type: "article",
     },
     alternates: {
-      canonical: `https://eyetest.co.uk/eye-health/guides/${guide.slug}`,
+      canonical: `https://www.eyetest.co.uk/eye-health/guides/${guide.slug}`,
     },
   };
 }
@@ -111,22 +111,22 @@ export default async function GuidePage({
     "@type": "Article",
     headline: guide.title,
     description: guide.summary,
-    url: `https://eyetest.co.uk/eye-health/guides/${guide.slug}`,
+    url: `https://www.eyetest.co.uk/eye-health/guides/${guide.slug}`,
     author: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     datePublished: "2026-06-16",
     dateModified: "2026-06-16",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://eyetest.co.uk/eye-health/guides/${guide.slug}`,
+      "@id": `https://www.eyetest.co.uk/eye-health/guides/${guide.slug}`,
     },
     articleSection: "Eye Health",
     about: guide.relatedConditions.map((condSlug) => ({
@@ -146,19 +146,19 @@ export default async function GuidePage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Eye Health",
-        item: "https://eyetest.co.uk/eye-health",
+        item: "https://www.eyetest.co.uk/eye-health",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: guide.title,
-        item: `https://eyetest.co.uk/eye-health/guides/${guide.slug}`,
+        item: `https://www.eyetest.co.uk/eye-health/guides/${guide.slug}`,
       },
     ],
   };

@@ -126,12 +126,12 @@ export async function generateMetadata({
     openGraph: {
       title: query.title,
       description: query.shortDescription,
-      url: `https://eyetest.co.uk/find/${query.slug}`,
+      url: `https://www.eyetest.co.uk/find/${query.slug}`,
       siteName: "eyetest.co.uk",
       type: "article",
     },
     alternates: {
-      canonical: `https://eyetest.co.uk/find/${query.slug}`,
+      canonical: `https://www.eyetest.co.uk/find/${query.slug}`,
     },
   };
 }
@@ -175,16 +175,16 @@ export default async function SearchQueryPage({
     "@type": "WebPage",
     name: query.title,
     description: query.shortDescription,
-    url: `https://eyetest.co.uk/find/${query.slug}`,
+    url: `https://www.eyetest.co.uk/find/${query.slug}`,
     author: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     dateModified: "2026-06-16",
     breadcrumb: {
@@ -194,19 +194,19 @@ export default async function SearchQueryPage({
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://eyetest.co.uk",
+          item: "https://www.eyetest.co.uk",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Find",
-          item: "https://eyetest.co.uk/find",
+          item: "https://www.eyetest.co.uk/find",
         },
         {
           "@type": "ListItem",
           position: 3,
           name: query.title,
-          item: `https://eyetest.co.uk/find/${query.slug}`,
+          item: `https://www.eyetest.co.uk/find/${query.slug}`,
         },
       ],
     },

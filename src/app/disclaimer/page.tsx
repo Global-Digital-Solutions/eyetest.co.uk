@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     title: "Medical Disclaimer | eyetest.co.uk",
     description:
       "Important medical disclaimer. eyetest.co.uk does not provide medical advice. Always consult a qualified eye care professional.",
-    url: "https://eyetest.co.uk/disclaimer",
+    url: "https://www.eyetest.co.uk/disclaimer",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://eyetest.co.uk/disclaimer",
+    canonical: "https://www.eyetest.co.uk/disclaimer",
   },
 };
 
@@ -43,11 +43,11 @@ export default function DisclaimerPage() {
     name: "Medical Disclaimer",
     description:
       "Important medical disclaimer for eyetest.co.uk. The information on this site is for general educational purposes only and does not constitute medical advice.",
-    url: "https://eyetest.co.uk/disclaimer",
+    url: "https://www.eyetest.co.uk/disclaimer",
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     dateModified: "2025-06-15",
     inLanguage: "en-GB",
@@ -61,13 +61,13 @@ export default function DisclaimerPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Medical Disclaimer",
-        item: "https://eyetest.co.uk/disclaimer",
+        item: "https://www.eyetest.co.uk/disclaimer",
       },
     ],
   };

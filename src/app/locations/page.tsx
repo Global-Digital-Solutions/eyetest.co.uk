@@ -21,12 +21,12 @@ export const metadata: Metadata = {
     title: "Eye Test Locations Across the UK | eyetest.co.uk",
     description:
       "Find and compare eye test appointments in every major UK city and town. Browse opticians by region and book online.",
-    url: "https://eyetest.co.uk/locations",
+    url: "https://www.eyetest.co.uk/locations",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://eyetest.co.uk/locations",
+    canonical: "https://www.eyetest.co.uk/locations",
   },
 };
 
@@ -42,11 +42,11 @@ export default function LocationsPage() {
     name: "Eye Test Locations Across the UK",
     description:
       "Find and compare eye test appointments in every major UK city and town.",
-    url: "https://eyetest.co.uk/locations",
+    url: "https://www.eyetest.co.uk/locations",
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
   };
 
@@ -58,13 +58,13 @@ export default function LocationsPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Locations",
-        item: "https://eyetest.co.uk/locations",
+        item: "https://www.eyetest.co.uk/locations",
       },
     ],
   };

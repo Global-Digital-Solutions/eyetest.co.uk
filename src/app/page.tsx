@@ -35,12 +35,12 @@ export const metadata: Metadata = {
     title: "eyetest.co.uk — Find & Book Eye Tests Near You",
     description:
       "Compare 1,000+ opticians across the UK. Find available appointments and book online in seconds.",
-    url: "https://eyetest.co.uk",
+    url: "https://www.eyetest.co.uk",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://eyetest.co.uk",
+    canonical: "https://www.eyetest.co.uk",
   },
 };
 
@@ -53,14 +53,14 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "eyetest.co.uk",
-    url: "https://eyetest.co.uk",
+    url: "https://www.eyetest.co.uk",
     description:
       "Compare 1,000+ opticians across the UK. Find eye test appointments near you and book online free.",
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://eyetest.co.uk/search?postcode={search_term_string}",
+        urlTemplate: "https://www.eyetest.co.uk/search?postcode={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },
@@ -70,8 +70,8 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "eyetest.co.uk",
-    url: "https://eyetest.co.uk",
-    logo: "https://eyetest.co.uk/logo.png",
+    url: "https://www.eyetest.co.uk",
+    logo: "https://www.eyetest.co.uk/logo.png",
     description:
       "The UK's dedicated eye test comparison platform. Helping you find, compare, and book eye tests since 2019.",
     foundingDate: "2019",

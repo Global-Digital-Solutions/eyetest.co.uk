@@ -34,12 +34,12 @@ export const metadata: Metadata = {
       "Eye Test Offers & Deals — Compare UK Optician Promotions | eyetest.co.uk",
     description:
       "Compare the latest offers from 9 major UK opticians. 2-for-1 glasses, free eye tests, student discounts, and more — all in one place.",
-    url: "https://eyetest.co.uk/offers",
+    url: "https://www.eyetest.co.uk/offers",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://eyetest.co.uk/offers",
+    canonical: "https://www.eyetest.co.uk/offers",
   },
 };
 
@@ -75,11 +75,11 @@ export default function OffersPage() {
     name: "Eye Test Offers & Deals — UK Optician Promotions",
     description:
       "Compare the latest offers and deals from major UK optician chains including Specsavers, Boots Opticians, Vision Express, and ASDA.",
-    url: "https://eyetest.co.uk/offers",
+    url: "https://www.eyetest.co.uk/offers",
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
   };
 
@@ -91,13 +91,13 @@ export default function OffersPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Offers",
-        item: "https://eyetest.co.uk/offers",
+        item: "https://www.eyetest.co.uk/offers",
       },
     ],
   };

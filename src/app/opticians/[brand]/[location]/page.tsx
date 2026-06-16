@@ -84,12 +84,12 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://eyetest.co.uk/opticians/${optician.slug}/${loc.slug}`,
+      url: `https://www.eyetest.co.uk/opticians/${optician.slug}/${loc.slug}`,
       siteName: "eyetest.co.uk",
       type: "website",
     },
     alternates: {
-      canonical: `https://eyetest.co.uk/opticians/${optician.slug}/${loc.slug}`,
+      canonical: `https://www.eyetest.co.uk/opticians/${optician.slug}/${loc.slug}`,
     },
   };
 }
@@ -143,25 +143,25 @@ export default async function BrandLocationPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Opticians",
-        item: "https://eyetest.co.uk/opticians",
+        item: "https://www.eyetest.co.uk/opticians",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: optician.name,
-        item: `https://eyetest.co.uk/opticians/${optician.slug}`,
+        item: `https://www.eyetest.co.uk/opticians/${optician.slug}`,
       },
       {
         "@type": "ListItem",
         position: 4,
         name: loc.name,
-        item: `https://eyetest.co.uk/opticians/${optician.slug}/${loc.slug}`,
+        item: `https://www.eyetest.co.uk/opticians/${optician.slug}/${loc.slug}`,
       },
     ],
   };
@@ -171,7 +171,7 @@ export default async function BrandLocationPage({
     "@type": "LocalBusiness",
     name: `${optician.name} ${loc.name}`,
     description: optician.description,
-    url: `https://eyetest.co.uk/opticians/${optician.slug}/${loc.slug}`,
+    url: `https://www.eyetest.co.uk/opticians/${optician.slug}/${loc.slug}`,
     address: {
       "@type": "PostalAddress",
       addressLocality: loc.name,

@@ -6,7 +6,7 @@ import { getAllSlugs as getAllLocationSlugs } from "@/data/locations";
 import { getAllSlugs as getAllOpticianSlugs } from "@/data/opticians";
 import { getAllSlugs as getAllSearchQuerySlugs } from "@/data/search-queries";
 
-const BASE = "https://eyetest.co.uk";
+const BASE = "https://www.eyetest.co.uk";
 const NOW = new Date().toISOString();
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -24,6 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/opticians`, lastModified: NOW, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/locations`, lastModified: NOW, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/offers`, lastModified: NOW, changeFrequency: "weekly", priority: 0.6 },
+    { url: `${BASE}/articles`, lastModified: NOW, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE}/eye-health/conditions`, lastModified: NOW, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/get-listed`, lastModified: NOW, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE}/about`, lastModified: NOW, changeFrequency: "monthly", priority: 0.4 },
     { url: `${BASE}/privacy`, lastModified: NOW, changeFrequency: "monthly", priority: 0.3 },

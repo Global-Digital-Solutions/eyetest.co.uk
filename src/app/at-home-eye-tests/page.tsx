@@ -34,12 +34,12 @@ export const metadata: Metadata = {
     title: "At-Home Eye Tests UK — Free NHS Home Visits & How to Book",
     description:
       "Complete guide to at-home eye tests in the UK. Learn who qualifies for free NHS home visits, what to expect, and how to book a mobile optician near you.",
-    url: "https://eyetest.co.uk/at-home-eye-tests",
+    url: "https://www.eyetest.co.uk/at-home-eye-tests",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://eyetest.co.uk/at-home-eye-tests",
+    canonical: "https://www.eyetest.co.uk/at-home-eye-tests",
   },
 };
 
@@ -281,7 +281,7 @@ export default function AtHomeEyeTestsPage() {
     name: "At-Home Eye Tests UK — Free NHS Home Visits & How to Book",
     description:
       "A comprehensive guide to at-home eye tests in the UK, covering NHS eligibility, what happens during a domiciliary eye test, how to book, provider comparisons, costs, and frequently asked questions.",
-    url: "https://eyetest.co.uk/at-home-eye-tests",
+    url: "https://www.eyetest.co.uk/at-home-eye-tests",
     about: {
       "@type": "MedicalCondition",
       name: "Domiciliary eye test",
@@ -290,12 +290,12 @@ export default function AtHomeEyeTestsPage() {
     author: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     lastReviewed: "2026-06-16",
     dateModified: "2026-06-16",
@@ -318,13 +318,13 @@ export default function AtHomeEyeTestsPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "At-Home Eye Tests",
-        item: "https://eyetest.co.uk/at-home-eye-tests",
+        item: "https://www.eyetest.co.uk/at-home-eye-tests",
       },
     ],
   };

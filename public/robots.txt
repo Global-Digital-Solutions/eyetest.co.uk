@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 Disallow: /search?
-Sitemap: https://eyetest.co.uk/sitemap.xml
+Sitemap: https://www.eyetest.co.uk/sitemap.xml

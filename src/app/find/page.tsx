@@ -95,12 +95,12 @@ export const metadata: Metadata = {
     title: "Find Eye Tests — Comprehensive UK Guides | eyetest.co.uk",
     description:
       "Guides covering eye test costs, NHS eligibility, booking, optician comparisons, and vision concerns.",
-    url: "https://eyetest.co.uk/find",
+    url: "https://www.eyetest.co.uk/find",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://eyetest.co.uk/find",
+    canonical: "https://www.eyetest.co.uk/find",
   },
 };
 
@@ -118,11 +118,11 @@ export default function FindPage() {
     name: "Find Eye Tests — Comprehensive UK Guides",
     description:
       "Browse guides covering eye test costs, NHS eligibility, booking, optician comparisons, specialist tests, and vision concerns.",
-    url: "https://eyetest.co.uk/find",
+    url: "https://www.eyetest.co.uk/find",
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     mainEntity: {
       "@type": "ItemList",
@@ -131,7 +131,7 @@ export default function FindPage() {
         "@type": "ListItem",
         position: index + 1,
         name: q.title,
-        url: `https://eyetest.co.uk/find/${q.slug}`,
+        url: `https://www.eyetest.co.uk/find/${q.slug}`,
       })),
     },
   };
@@ -144,13 +144,13 @@ export default function FindPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Find",
-        item: "https://eyetest.co.uk/find",
+        item: "https://www.eyetest.co.uk/find",
       },
     ],
   };

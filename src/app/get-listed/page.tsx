@@ -27,12 +27,12 @@ export const metadata: Metadata = {
       "For Opticians — Get Your Practice Listed on eyetest.co.uk",
     description:
       "Partner with the UK's dedicated eye test comparison platform. Reach thousands of patients searching for eye tests every month.",
-    url: "https://eyetest.co.uk/get-listed",
+    url: "https://www.eyetest.co.uk/get-listed",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://eyetest.co.uk/get-listed",
+    canonical: "https://www.eyetest.co.uk/get-listed",
   },
 };
 
@@ -202,11 +202,11 @@ export default function GetListedPage() {
     name: "Get Your Practice Listed on eyetest.co.uk",
     description:
       "Join the UK's dedicated eye test comparison platform. Get your optician practice listed on eyetest.co.uk and reach thousands of patients.",
-    url: "https://eyetest.co.uk/get-listed",
+    url: "https://www.eyetest.co.uk/get-listed",
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     inLanguage: "en-GB",
   };
@@ -219,13 +219,13 @@ export default function GetListedPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Get Listed",
-        item: "https://eyetest.co.uk/get-listed",
+        item: "https://www.eyetest.co.uk/get-listed",
       },
     ],
   };

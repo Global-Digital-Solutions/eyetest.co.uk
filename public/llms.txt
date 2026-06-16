@@ -3,226 +3,226 @@
 > eyetest.co.uk is the UK's dedicated eye test comparison and booking platform, helping patients find and book eye tests from leading opticians across 91 UK cities since 2019.
 
 ## Main Pages
-- [Homepage](https://eyetest.co.uk/): Find and book eye tests near you
-- [Search](https://eyetest.co.uk/search): Search for opticians by postcode
-- [Find Opticians](https://eyetest.co.uk/find): Find opticians near your location
-- [Eye Tests](https://eyetest.co.uk/eye-tests): Browse all types of eye tests available in the UK
-- [Eye Health](https://eyetest.co.uk/eye-health): Eye health conditions, guides, and advice
-- [Opticians](https://eyetest.co.uk/opticians): Compare UK optician brands and chains
-- [UK Locations](https://eyetest.co.uk/locations): Find eye tests in 91 UK cities and towns
-- [At-Home Eye Tests](https://eyetest.co.uk/at-home-eye-tests): Home visit eye test services
-- [Offers](https://eyetest.co.uk/offers): Current eye test offers and deals
-- [Get Listed](https://eyetest.co.uk/get-listed): Optician sign-up for the platform
-- [About Us](https://eyetest.co.uk/about): About eyetest.co.uk
+- [Homepage](https://www.eyetest.co.uk/): Find and book eye tests near you
+- [Search](https://www.eyetest.co.uk/search): Search for opticians by postcode
+- [Find Opticians](https://www.eyetest.co.uk/find): Find opticians near your location
+- [Eye Tests](https://www.eyetest.co.uk/eye-tests): Browse all types of eye tests available in the UK
+- [Eye Health](https://www.eyetest.co.uk/eye-health): Eye health conditions, guides, and advice
+- [Opticians](https://www.eyetest.co.uk/opticians): Compare UK optician brands and chains
+- [UK Locations](https://www.eyetest.co.uk/locations): Find eye tests in 91 UK cities and towns
+- [At-Home Eye Tests](https://www.eyetest.co.uk/at-home-eye-tests): Home visit eye test services
+- [Offers](https://www.eyetest.co.uk/offers): Current eye test offers and deals
+- [Get Listed](https://www.eyetest.co.uk/get-listed): Optician sign-up for the platform
+- [About Us](https://www.eyetest.co.uk/about): About eyetest.co.uk
 
 ## Optician Brands
-- [Boots Opticians](https://eyetest.co.uk/opticians/boots-opticians): Boots Opticians eye tests, services, and store locations
-- [Specsavers Optical Group](https://eyetest.co.uk/opticians/specsavers): Specsavers Optical Group eye tests, services, and store locations
-- [Vision Express](https://eyetest.co.uk/opticians/vision-express): Vision Express eye tests, services, and store locations
-- [ASDA Opticians](https://eyetest.co.uk/opticians/asda-opticians): ASDA Opticians eye tests, services, and store locations
-- [Leightons Opticians & Hearing Care](https://eyetest.co.uk/opticians/leightons): Leightons Opticians & Hearing Care eye tests, services, and store locations
-- [Rawlings Opticians](https://eyetest.co.uk/opticians/rawlings): Rawlings Opticians eye tests, services, and store locations
-- [Scrivens Opticians & Hearing Care](https://eyetest.co.uk/opticians/scrivens): Scrivens Opticians & Hearing Care eye tests, services, and store locations
-- [Bayfields Opticians & Audiologists](https://eyetest.co.uk/opticians/bayfields): Bayfields Opticians & Audiologists eye tests, services, and store locations
-- [Duncan & Todd Group](https://eyetest.co.uk/opticians/duncan-and-todd): Duncan & Todd Group eye tests, services, and store locations
-- [Optical Express](https://eyetest.co.uk/opticians/optical-express): Optical Express eye tests, services, and store locations
+- [Boots Opticians](https://www.eyetest.co.uk/opticians/boots-opticians): Boots Opticians eye tests, services, and store locations
+- [Specsavers Optical Group](https://www.eyetest.co.uk/opticians/specsavers): Specsavers Optical Group eye tests, services, and store locations
+- [Vision Express](https://www.eyetest.co.uk/opticians/vision-express): Vision Express eye tests, services, and store locations
+- [ASDA Opticians](https://www.eyetest.co.uk/opticians/asda-opticians): ASDA Opticians eye tests, services, and store locations
+- [Leightons Opticians & Hearing Care](https://www.eyetest.co.uk/opticians/leightons): Leightons Opticians & Hearing Care eye tests, services, and store locations
+- [Rawlings Opticians](https://www.eyetest.co.uk/opticians/rawlings): Rawlings Opticians eye tests, services, and store locations
+- [Scrivens Opticians & Hearing Care](https://www.eyetest.co.uk/opticians/scrivens): Scrivens Opticians & Hearing Care eye tests, services, and store locations
+- [Bayfields Opticians & Audiologists](https://www.eyetest.co.uk/opticians/bayfields): Bayfields Opticians & Audiologists eye tests, services, and store locations
+- [Duncan & Todd Group](https://www.eyetest.co.uk/opticians/duncan-and-todd): Duncan & Todd Group eye tests, services, and store locations
+- [Optical Express](https://www.eyetest.co.uk/opticians/optical-express): Optical Express eye tests, services, and store locations
 
 ## Eye Test Types
-- [Standard Eye Test](https://eyetest.co.uk/eye-tests/standard-eye-test)
-- [NHS Eye Test](https://eyetest.co.uk/eye-tests/nhs-eye-test)
-- [Children's Eye Test](https://eyetest.co.uk/eye-tests/childrens-eye-test)
-- [Contact Lens Fitting & Check-up](https://eyetest.co.uk/eye-tests/contact-lens-fitting)
-- [OCT Scan (Optical Coherence Tomography)](https://eyetest.co.uk/eye-tests/oct-scan)
-- [Visual Field Test (Perimetry)](https://eyetest.co.uk/eye-tests/visual-field-test)
-- [Diabetic Eye Screening](https://eyetest.co.uk/eye-tests/diabetic-eye-screening)
-- [Dry Eye Assessment](https://eyetest.co.uk/eye-tests/dry-eye-assessment)
-- [Colour Vision Test](https://eyetest.co.uk/eye-tests/colour-vision-test)
-- [DVLA / Driving Vision Test](https://eyetest.co.uk/eye-tests/dvla-driving-vision-test)
-- [Emergency Eye Care](https://eyetest.co.uk/eye-tests/emergency-eye-care)
-- [Home Visit Eye Test](https://eyetest.co.uk/eye-tests/home-visit-eye-test)
-- [Glaucoma Assessment](https://eyetest.co.uk/eye-tests/glaucoma-assessment)
-- [Retinal Photography](https://eyetest.co.uk/eye-tests/retinal-photography)
-- [Blepharitis Assessment](https://eyetest.co.uk/eye-tests/blepharitis-assessment)
-- [Myopia Management Consultation](https://eyetest.co.uk/eye-tests/myopia-management)
-- [Cataract Assessment](https://eyetest.co.uk/eye-tests/cataract-assessment)
-- [Macular Degeneration Screening](https://eyetest.co.uk/eye-tests/macular-degeneration-screening)
+- [Standard Eye Test](https://www.eyetest.co.uk/eye-tests/standard-eye-test)
+- [NHS Eye Test](https://www.eyetest.co.uk/eye-tests/nhs-eye-test)
+- [Children's Eye Test](https://www.eyetest.co.uk/eye-tests/childrens-eye-test)
+- [Contact Lens Fitting & Check-up](https://www.eyetest.co.uk/eye-tests/contact-lens-fitting)
+- [OCT Scan (Optical Coherence Tomography)](https://www.eyetest.co.uk/eye-tests/oct-scan)
+- [Visual Field Test (Perimetry)](https://www.eyetest.co.uk/eye-tests/visual-field-test)
+- [Diabetic Eye Screening](https://www.eyetest.co.uk/eye-tests/diabetic-eye-screening)
+- [Dry Eye Assessment](https://www.eyetest.co.uk/eye-tests/dry-eye-assessment)
+- [Colour Vision Test](https://www.eyetest.co.uk/eye-tests/colour-vision-test)
+- [DVLA / Driving Vision Test](https://www.eyetest.co.uk/eye-tests/dvla-driving-vision-test)
+- [Emergency Eye Care](https://www.eyetest.co.uk/eye-tests/emergency-eye-care)
+- [Home Visit Eye Test](https://www.eyetest.co.uk/eye-tests/home-visit-eye-test)
+- [Glaucoma Assessment](https://www.eyetest.co.uk/eye-tests/glaucoma-assessment)
+- [Retinal Photography](https://www.eyetest.co.uk/eye-tests/retinal-photography)
+- [Blepharitis Assessment](https://www.eyetest.co.uk/eye-tests/blepharitis-assessment)
+- [Myopia Management Consultation](https://www.eyetest.co.uk/eye-tests/myopia-management)
+- [Cataract Assessment](https://www.eyetest.co.uk/eye-tests/cataract-assessment)
+- [Macular Degeneration Screening](https://www.eyetest.co.uk/eye-tests/macular-degeneration-screening)
 
 ## Eye Health Conditions
-- [Glaucoma](https://eyetest.co.uk/eye-health/conditions/glaucoma)
-- [Cataracts](https://eyetest.co.uk/eye-health/conditions/cataracts)
-- [Age-Related Macular Degeneration (AMD)](https://eyetest.co.uk/eye-health/conditions/age-related-macular-degeneration)
-- [Diabetic Retinopathy](https://eyetest.co.uk/eye-health/conditions/diabetic-retinopathy)
-- [Dry Eye Syndrome](https://eyetest.co.uk/eye-health/conditions/dry-eye-syndrome)
-- [Conjunctivitis](https://eyetest.co.uk/eye-health/conditions/conjunctivitis)
-- [Blepharitis](https://eyetest.co.uk/eye-health/conditions/blepharitis)
-- [Astigmatism](https://eyetest.co.uk/eye-health/conditions/astigmatism)
-- [Myopia (Short-sightedness)](https://eyetest.co.uk/eye-health/conditions/myopia)
-- [Hyperopia (Long-sightedness)](https://eyetest.co.uk/eye-health/conditions/hyperopia)
-- [Presbyopia](https://eyetest.co.uk/eye-health/conditions/presbyopia)
-- [Floaters and Flashes](https://eyetest.co.uk/eye-health/conditions/floaters-and-flashes)
-- [Keratoconus](https://eyetest.co.uk/eye-health/conditions/keratoconus)
-- [Colour Blindness (Colour Vision Deficiency)](https://eyetest.co.uk/eye-health/conditions/colour-blindness)
-- [Strabismus (Squint)](https://eyetest.co.uk/eye-health/conditions/strabismus)
+- [Glaucoma](https://www.eyetest.co.uk/eye-health/conditions/glaucoma)
+- [Cataracts](https://www.eyetest.co.uk/eye-health/conditions/cataracts)
+- [Age-Related Macular Degeneration (AMD)](https://www.eyetest.co.uk/eye-health/conditions/age-related-macular-degeneration)
+- [Diabetic Retinopathy](https://www.eyetest.co.uk/eye-health/conditions/diabetic-retinopathy)
+- [Dry Eye Syndrome](https://www.eyetest.co.uk/eye-health/conditions/dry-eye-syndrome)
+- [Conjunctivitis](https://www.eyetest.co.uk/eye-health/conditions/conjunctivitis)
+- [Blepharitis](https://www.eyetest.co.uk/eye-health/conditions/blepharitis)
+- [Astigmatism](https://www.eyetest.co.uk/eye-health/conditions/astigmatism)
+- [Myopia (Short-sightedness)](https://www.eyetest.co.uk/eye-health/conditions/myopia)
+- [Hyperopia (Long-sightedness)](https://www.eyetest.co.uk/eye-health/conditions/hyperopia)
+- [Presbyopia](https://www.eyetest.co.uk/eye-health/conditions/presbyopia)
+- [Floaters and Flashes](https://www.eyetest.co.uk/eye-health/conditions/floaters-and-flashes)
+- [Keratoconus](https://www.eyetest.co.uk/eye-health/conditions/keratoconus)
+- [Colour Blindness (Colour Vision Deficiency)](https://www.eyetest.co.uk/eye-health/conditions/colour-blindness)
+- [Strabismus (Squint)](https://www.eyetest.co.uk/eye-health/conditions/strabismus)
 
 ## Eye Health Guides
-- [How Often Should You Have an Eye Test?](https://eyetest.co.uk/eye-health/guides/how-often-should-you-have-an-eye-test)
-- [How to Read Your Glasses Prescription](https://eyetest.co.uk/eye-health/guides/how-to-read-your-prescription)
-- [What Happens During an Eye Test?](https://eyetest.co.uk/eye-health/guides/what-happens-during-an-eye-test)
-- [Tips for Healthy Eyes](https://eyetest.co.uk/eye-health/guides/tips-for-healthy-eyes)
-- [Screen Time and Eye Health](https://eyetest.co.uk/eye-health/guides/screen-time-and-eye-health)
-- [Eye Health for Children](https://eyetest.co.uk/eye-health/guides/eye-health-for-children)
-- [Understanding NHS Eye Test Eligibility](https://eyetest.co.uk/eye-health/guides/understanding-nhs-eye-test-eligibility)
-- [Choosing the Right Optician](https://eyetest.co.uk/eye-health/guides/choosing-the-right-optician)
-- [When to Get an Emergency Eye Test](https://eyetest.co.uk/eye-health/guides/when-to-get-an-emergency-eye-test)
-- [Eye Health and Driving](https://eyetest.co.uk/eye-health/guides/eye-health-and-driving)
+- [How Often Should You Have an Eye Test?](https://www.eyetest.co.uk/eye-health/guides/how-often-should-you-have-an-eye-test)
+- [How to Read Your Glasses Prescription](https://www.eyetest.co.uk/eye-health/guides/how-to-read-your-prescription)
+- [What Happens During an Eye Test?](https://www.eyetest.co.uk/eye-health/guides/what-happens-during-an-eye-test)
+- [Tips for Healthy Eyes](https://www.eyetest.co.uk/eye-health/guides/tips-for-healthy-eyes)
+- [Screen Time and Eye Health](https://www.eyetest.co.uk/eye-health/guides/screen-time-and-eye-health)
+- [Eye Health for Children](https://www.eyetest.co.uk/eye-health/guides/eye-health-for-children)
+- [Understanding NHS Eye Test Eligibility](https://www.eyetest.co.uk/eye-health/guides/understanding-nhs-eye-test-eligibility)
+- [Choosing the Right Optician](https://www.eyetest.co.uk/eye-health/guides/choosing-the-right-optician)
+- [When to Get an Emergency Eye Test](https://www.eyetest.co.uk/eye-health/guides/when-to-get-an-emergency-eye-test)
+- [Eye Health and Driving](https://www.eyetest.co.uk/eye-health/guides/eye-health-and-driving)
 
 ## Articles
-- [How Often Should You Have an Eye Test?](https://eyetest.co.uk/articles/how-often-should-you-have-an-eye-test)
-- [What Happens During an Eye Test? A Step-by-Step Guide](https://eyetest.co.uk/articles/what-happens-during-an-eye-test)
-- [10 Signs You Need an Eye Test](https://eyetest.co.uk/articles/signs-you-need-an-eye-test)
-- [Children’s Eye Tests: The Complete Parent’s Guide](https://eyetest.co.uk/articles/childrens-eye-tests-parents-guide)
-- [Understanding Your Eye Test Results & Prescription](https://eyetest.co.uk/articles/understanding-your-eye-test-results)
-- [NHS vs Private Eye Tests: What’s the Difference?](https://eyetest.co.uk/articles/nhs-vs-private-eye-tests)
+- [How Often Should You Have an Eye Test?](https://www.eyetest.co.uk/articles/how-often-should-you-have-an-eye-test)
+- [What Happens During an Eye Test? A Step-by-Step Guide](https://www.eyetest.co.uk/articles/what-happens-during-an-eye-test)
+- [10 Signs You Need an Eye Test](https://www.eyetest.co.uk/articles/signs-you-need-an-eye-test)
+- [Children’s Eye Tests: The Complete Parent’s Guide](https://www.eyetest.co.uk/articles/childrens-eye-tests-parents-guide)
+- [Understanding Your Eye Test Results & Prescription](https://www.eyetest.co.uk/articles/understanding-your-eye-test-results)
+- [NHS vs Private Eye Tests: What’s the Difference?](https://www.eyetest.co.uk/articles/nhs-vs-private-eye-tests)
 
 ## UK Locations
-- [Eye Tests in London](https://eyetest.co.uk/locations/london)
-- [Eye Tests in Croydon](https://eyetest.co.uk/locations/croydon)
-- [Eye Tests in Bromley](https://eyetest.co.uk/locations/bromley)
-- [Eye Tests in Kingston upon Thames](https://eyetest.co.uk/locations/kingston-upon-thames)
-- [Eye Tests in Richmond](https://eyetest.co.uk/locations/richmond)
-- [Eye Tests in Ealing](https://eyetest.co.uk/locations/ealing)
-- [Eye Tests in Brighton](https://eyetest.co.uk/locations/brighton)
-- [Eye Tests in Reading](https://eyetest.co.uk/locations/reading)
-- [Eye Tests in Oxford](https://eyetest.co.uk/locations/oxford)
-- [Eye Tests in Guildford](https://eyetest.co.uk/locations/guildford)
-- [Eye Tests in Canterbury](https://eyetest.co.uk/locations/canterbury)
-- [Eye Tests in Southampton](https://eyetest.co.uk/locations/southampton)
-- [Eye Tests in Portsmouth](https://eyetest.co.uk/locations/portsmouth)
-- [Eye Tests in Maidstone](https://eyetest.co.uk/locations/maidstone)
-- [Eye Tests in Milton Keynes](https://eyetest.co.uk/locations/milton-keynes)
-- [Eye Tests in Slough](https://eyetest.co.uk/locations/slough)
-- [Eye Tests in Crawley](https://eyetest.co.uk/locations/crawley)
-- [Eye Tests in Tunbridge Wells](https://eyetest.co.uk/locations/tunbridge-wells)
-- [Eye Tests in Basingstoke](https://eyetest.co.uk/locations/basingstoke)
-- [Eye Tests in Chichester](https://eyetest.co.uk/locations/chichester)
-- [Eye Tests in Worthing](https://eyetest.co.uk/locations/worthing)
-- [Eye Tests in Bristol](https://eyetest.co.uk/locations/bristol)
-- [Eye Tests in Bath](https://eyetest.co.uk/locations/bath)
-- [Eye Tests in Exeter](https://eyetest.co.uk/locations/exeter)
-- [Eye Tests in Plymouth](https://eyetest.co.uk/locations/plymouth)
-- [Eye Tests in Bournemouth](https://eyetest.co.uk/locations/bournemouth)
-- [Eye Tests in Swindon](https://eyetest.co.uk/locations/swindon)
-- [Eye Tests in Gloucester](https://eyetest.co.uk/locations/gloucester)
-- [Eye Tests in Cheltenham](https://eyetest.co.uk/locations/cheltenham)
-- [Eye Tests in Taunton](https://eyetest.co.uk/locations/taunton)
-- [Eye Tests in Torquay](https://eyetest.co.uk/locations/torquay)
-- [Eye Tests in Truro](https://eyetest.co.uk/locations/truro)
-- [Eye Tests in Cambridge](https://eyetest.co.uk/locations/cambridge)
-- [Eye Tests in Norwich](https://eyetest.co.uk/locations/norwich)
-- [Eye Tests in Ipswich](https://eyetest.co.uk/locations/ipswich)
-- [Eye Tests in Colchester](https://eyetest.co.uk/locations/colchester)
-- [Eye Tests in Chelmsford](https://eyetest.co.uk/locations/chelmsford)
-- [Eye Tests in Luton](https://eyetest.co.uk/locations/luton)
-- [Eye Tests in Peterborough](https://eyetest.co.uk/locations/peterborough)
-- [Eye Tests in Southend-on-Sea](https://eyetest.co.uk/locations/southend-on-sea)
-- [Eye Tests in Bedford](https://eyetest.co.uk/locations/bedford)
-- [Eye Tests in St Albans](https://eyetest.co.uk/locations/st-albans)
-- [Eye Tests in Birmingham](https://eyetest.co.uk/locations/birmingham)
-- [Eye Tests in Coventry](https://eyetest.co.uk/locations/coventry)
-- [Eye Tests in Wolverhampton](https://eyetest.co.uk/locations/wolverhampton)
-- [Eye Tests in Stoke-on-Trent](https://eyetest.co.uk/locations/stoke-on-trent)
-- [Eye Tests in Worcester](https://eyetest.co.uk/locations/worcester)
-- [Eye Tests in Hereford](https://eyetest.co.uk/locations/hereford)
-- [Eye Tests in Nottingham](https://eyetest.co.uk/locations/nottingham)
-- [Eye Tests in Leicester](https://eyetest.co.uk/locations/leicester)
-- [Eye Tests in Derby](https://eyetest.co.uk/locations/derby)
-- [Eye Tests in Northampton](https://eyetest.co.uk/locations/northampton)
-- [Eye Tests in Lincoln](https://eyetest.co.uk/locations/lincoln)
-- [Eye Tests in Manchester](https://eyetest.co.uk/locations/manchester)
-- [Eye Tests in Liverpool](https://eyetest.co.uk/locations/liverpool)
-- [Eye Tests in Chester](https://eyetest.co.uk/locations/chester)
-- [Eye Tests in Warrington](https://eyetest.co.uk/locations/warrington)
-- [Eye Tests in Preston](https://eyetest.co.uk/locations/preston)
-- [Eye Tests in Blackpool](https://eyetest.co.uk/locations/blackpool)
-- [Eye Tests in Bolton](https://eyetest.co.uk/locations/bolton)
-- [Eye Tests in Lancaster](https://eyetest.co.uk/locations/lancaster)
-- [Eye Tests in Carlisle](https://eyetest.co.uk/locations/carlisle)
-- [Eye Tests in Newcastle upon Tyne](https://eyetest.co.uk/locations/newcastle)
-- [Eye Tests in Sunderland](https://eyetest.co.uk/locations/sunderland)
-- [Eye Tests in Durham](https://eyetest.co.uk/locations/durham)
-- [Eye Tests in Middlesbrough](https://eyetest.co.uk/locations/middlesbrough)
-- [Eye Tests in Darlington](https://eyetest.co.uk/locations/darlington)
-- [Eye Tests in Leeds](https://eyetest.co.uk/locations/leeds)
-- [Eye Tests in Sheffield](https://eyetest.co.uk/locations/sheffield)
-- [Eye Tests in York](https://eyetest.co.uk/locations/york)
-- [Eye Tests in Bradford](https://eyetest.co.uk/locations/bradford)
-- [Eye Tests in Hull](https://eyetest.co.uk/locations/hull)
-- [Eye Tests in Huddersfield](https://eyetest.co.uk/locations/huddersfield)
-- [Eye Tests in Doncaster](https://eyetest.co.uk/locations/doncaster)
-- [Eye Tests in Harrogate](https://eyetest.co.uk/locations/harrogate)
-- [Eye Tests in Cardiff](https://eyetest.co.uk/locations/cardiff)
-- [Eye Tests in Swansea](https://eyetest.co.uk/locations/swansea)
-- [Eye Tests in Newport](https://eyetest.co.uk/locations/newport)
-- [Eye Tests in Wrexham](https://eyetest.co.uk/locations/wrexham)
-- [Eye Tests in Aberystwyth](https://eyetest.co.uk/locations/aberystwyth)
-- [Eye Tests in Bangor](https://eyetest.co.uk/locations/bangor)
-- [Eye Tests in Edinburgh](https://eyetest.co.uk/locations/edinburgh)
-- [Eye Tests in Glasgow](https://eyetest.co.uk/locations/glasgow)
-- [Eye Tests in Aberdeen](https://eyetest.co.uk/locations/aberdeen)
-- [Eye Tests in Dundee](https://eyetest.co.uk/locations/dundee)
-- [Eye Tests in Inverness](https://eyetest.co.uk/locations/inverness)
-- [Eye Tests in Stirling](https://eyetest.co.uk/locations/stirling)
-- [Eye Tests in Perth](https://eyetest.co.uk/locations/perth)
-- [Eye Tests in Belfast](https://eyetest.co.uk/locations/belfast)
-- [Eye Tests in Derry/Londonderry](https://eyetest.co.uk/locations/derry)
-- [Eye Tests in Newry](https://eyetest.co.uk/locations/newry)
+- [Eye Tests in London](https://www.eyetest.co.uk/locations/london)
+- [Eye Tests in Croydon](https://www.eyetest.co.uk/locations/croydon)
+- [Eye Tests in Bromley](https://www.eyetest.co.uk/locations/bromley)
+- [Eye Tests in Kingston upon Thames](https://www.eyetest.co.uk/locations/kingston-upon-thames)
+- [Eye Tests in Richmond](https://www.eyetest.co.uk/locations/richmond)
+- [Eye Tests in Ealing](https://www.eyetest.co.uk/locations/ealing)
+- [Eye Tests in Brighton](https://www.eyetest.co.uk/locations/brighton)
+- [Eye Tests in Reading](https://www.eyetest.co.uk/locations/reading)
+- [Eye Tests in Oxford](https://www.eyetest.co.uk/locations/oxford)
+- [Eye Tests in Guildford](https://www.eyetest.co.uk/locations/guildford)
+- [Eye Tests in Canterbury](https://www.eyetest.co.uk/locations/canterbury)
+- [Eye Tests in Southampton](https://www.eyetest.co.uk/locations/southampton)
+- [Eye Tests in Portsmouth](https://www.eyetest.co.uk/locations/portsmouth)
+- [Eye Tests in Maidstone](https://www.eyetest.co.uk/locations/maidstone)
+- [Eye Tests in Milton Keynes](https://www.eyetest.co.uk/locations/milton-keynes)
+- [Eye Tests in Slough](https://www.eyetest.co.uk/locations/slough)
+- [Eye Tests in Crawley](https://www.eyetest.co.uk/locations/crawley)
+- [Eye Tests in Tunbridge Wells](https://www.eyetest.co.uk/locations/tunbridge-wells)
+- [Eye Tests in Basingstoke](https://www.eyetest.co.uk/locations/basingstoke)
+- [Eye Tests in Chichester](https://www.eyetest.co.uk/locations/chichester)
+- [Eye Tests in Worthing](https://www.eyetest.co.uk/locations/worthing)
+- [Eye Tests in Bristol](https://www.eyetest.co.uk/locations/bristol)
+- [Eye Tests in Bath](https://www.eyetest.co.uk/locations/bath)
+- [Eye Tests in Exeter](https://www.eyetest.co.uk/locations/exeter)
+- [Eye Tests in Plymouth](https://www.eyetest.co.uk/locations/plymouth)
+- [Eye Tests in Bournemouth](https://www.eyetest.co.uk/locations/bournemouth)
+- [Eye Tests in Swindon](https://www.eyetest.co.uk/locations/swindon)
+- [Eye Tests in Gloucester](https://www.eyetest.co.uk/locations/gloucester)
+- [Eye Tests in Cheltenham](https://www.eyetest.co.uk/locations/cheltenham)
+- [Eye Tests in Taunton](https://www.eyetest.co.uk/locations/taunton)
+- [Eye Tests in Torquay](https://www.eyetest.co.uk/locations/torquay)
+- [Eye Tests in Truro](https://www.eyetest.co.uk/locations/truro)
+- [Eye Tests in Cambridge](https://www.eyetest.co.uk/locations/cambridge)
+- [Eye Tests in Norwich](https://www.eyetest.co.uk/locations/norwich)
+- [Eye Tests in Ipswich](https://www.eyetest.co.uk/locations/ipswich)
+- [Eye Tests in Colchester](https://www.eyetest.co.uk/locations/colchester)
+- [Eye Tests in Chelmsford](https://www.eyetest.co.uk/locations/chelmsford)
+- [Eye Tests in Luton](https://www.eyetest.co.uk/locations/luton)
+- [Eye Tests in Peterborough](https://www.eyetest.co.uk/locations/peterborough)
+- [Eye Tests in Southend-on-Sea](https://www.eyetest.co.uk/locations/southend-on-sea)
+- [Eye Tests in Bedford](https://www.eyetest.co.uk/locations/bedford)
+- [Eye Tests in St Albans](https://www.eyetest.co.uk/locations/st-albans)
+- [Eye Tests in Birmingham](https://www.eyetest.co.uk/locations/birmingham)
+- [Eye Tests in Coventry](https://www.eyetest.co.uk/locations/coventry)
+- [Eye Tests in Wolverhampton](https://www.eyetest.co.uk/locations/wolverhampton)
+- [Eye Tests in Stoke-on-Trent](https://www.eyetest.co.uk/locations/stoke-on-trent)
+- [Eye Tests in Worcester](https://www.eyetest.co.uk/locations/worcester)
+- [Eye Tests in Hereford](https://www.eyetest.co.uk/locations/hereford)
+- [Eye Tests in Nottingham](https://www.eyetest.co.uk/locations/nottingham)
+- [Eye Tests in Leicester](https://www.eyetest.co.uk/locations/leicester)
+- [Eye Tests in Derby](https://www.eyetest.co.uk/locations/derby)
+- [Eye Tests in Northampton](https://www.eyetest.co.uk/locations/northampton)
+- [Eye Tests in Lincoln](https://www.eyetest.co.uk/locations/lincoln)
+- [Eye Tests in Manchester](https://www.eyetest.co.uk/locations/manchester)
+- [Eye Tests in Liverpool](https://www.eyetest.co.uk/locations/liverpool)
+- [Eye Tests in Chester](https://www.eyetest.co.uk/locations/chester)
+- [Eye Tests in Warrington](https://www.eyetest.co.uk/locations/warrington)
+- [Eye Tests in Preston](https://www.eyetest.co.uk/locations/preston)
+- [Eye Tests in Blackpool](https://www.eyetest.co.uk/locations/blackpool)
+- [Eye Tests in Bolton](https://www.eyetest.co.uk/locations/bolton)
+- [Eye Tests in Lancaster](https://www.eyetest.co.uk/locations/lancaster)
+- [Eye Tests in Carlisle](https://www.eyetest.co.uk/locations/carlisle)
+- [Eye Tests in Newcastle upon Tyne](https://www.eyetest.co.uk/locations/newcastle)
+- [Eye Tests in Sunderland](https://www.eyetest.co.uk/locations/sunderland)
+- [Eye Tests in Durham](https://www.eyetest.co.uk/locations/durham)
+- [Eye Tests in Middlesbrough](https://www.eyetest.co.uk/locations/middlesbrough)
+- [Eye Tests in Darlington](https://www.eyetest.co.uk/locations/darlington)
+- [Eye Tests in Leeds](https://www.eyetest.co.uk/locations/leeds)
+- [Eye Tests in Sheffield](https://www.eyetest.co.uk/locations/sheffield)
+- [Eye Tests in York](https://www.eyetest.co.uk/locations/york)
+- [Eye Tests in Bradford](https://www.eyetest.co.uk/locations/bradford)
+- [Eye Tests in Hull](https://www.eyetest.co.uk/locations/hull)
+- [Eye Tests in Huddersfield](https://www.eyetest.co.uk/locations/huddersfield)
+- [Eye Tests in Doncaster](https://www.eyetest.co.uk/locations/doncaster)
+- [Eye Tests in Harrogate](https://www.eyetest.co.uk/locations/harrogate)
+- [Eye Tests in Cardiff](https://www.eyetest.co.uk/locations/cardiff)
+- [Eye Tests in Swansea](https://www.eyetest.co.uk/locations/swansea)
+- [Eye Tests in Newport](https://www.eyetest.co.uk/locations/newport)
+- [Eye Tests in Wrexham](https://www.eyetest.co.uk/locations/wrexham)
+- [Eye Tests in Aberystwyth](https://www.eyetest.co.uk/locations/aberystwyth)
+- [Eye Tests in Bangor](https://www.eyetest.co.uk/locations/bangor)
+- [Eye Tests in Edinburgh](https://www.eyetest.co.uk/locations/edinburgh)
+- [Eye Tests in Glasgow](https://www.eyetest.co.uk/locations/glasgow)
+- [Eye Tests in Aberdeen](https://www.eyetest.co.uk/locations/aberdeen)
+- [Eye Tests in Dundee](https://www.eyetest.co.uk/locations/dundee)
+- [Eye Tests in Inverness](https://www.eyetest.co.uk/locations/inverness)
+- [Eye Tests in Stirling](https://www.eyetest.co.uk/locations/stirling)
+- [Eye Tests in Perth](https://www.eyetest.co.uk/locations/perth)
+- [Eye Tests in Belfast](https://www.eyetest.co.uk/locations/belfast)
+- [Eye Tests in Derry/Londonderry](https://www.eyetest.co.uk/locations/derry)
+- [Eye Tests in Newry](https://www.eyetest.co.uk/locations/newry)
 
 ## Search Guides (Find)
-- [Eye Test Cost UK](https://eyetest.co.uk/find/eye-test-cost): How much does an eye test cost in the UK
-- [Free Eye Test](https://eyetest.co.uk/find/free-eye-test): Free eye tests — who qualifies and where to book
-- [Cheap Eye Test](https://eyetest.co.uk/find/cheap-eye-test): Cheapest eye tests near you
-- [Private Eye Test Cost](https://eyetest.co.uk/find/private-eye-test-cost): Private eye test costs UK
-- [Specsavers Eye Test Cost](https://eyetest.co.uk/find/specsavers-eye-test-cost): Specsavers pricing and what's included
-- [Boots Eye Test Cost](https://eyetest.co.uk/find/boots-eye-test-cost): Boots pricing, offers and what's included
-- [NHS Eye Test](https://eyetest.co.uk/find/nhs-eye-test): NHS eye test eligibility and how to book
-- [Free NHS Eye Test Eligibility](https://eyetest.co.uk/find/free-nhs-eye-test-eligibility): Full list of who qualifies
-- [Free Eye Test Over 60](https://eyetest.co.uk/find/free-eye-test-over-60): NHS free tests for over 60s
-- [Free Eye Test Children](https://eyetest.co.uk/find/free-eye-test-children): NHS entitlement for children
-- [Free Eye Test Diabetes](https://eyetest.co.uk/find/free-eye-test-diabetes): NHS entitlement for people with diabetes
-- [Free Eye Test Universal Credit](https://eyetest.co.uk/find/free-eye-test-universal-credit): How to claim on Universal Credit
-- [NHS Optical Voucher](https://eyetest.co.uk/find/nhs-optical-voucher): Values, eligibility and how to use
-- [Same-Day Eye Test](https://eyetest.co.uk/find/same-day-eye-test): Find last-minute appointments
-- [Walk-In Eye Test](https://eyetest.co.uk/find/walk-in-eye-test): No appointment needed opticians
-- [Weekend Eye Test](https://eyetest.co.uk/find/weekend-eye-test): Saturday and Sunday appointments
-- [Emergency Eye Test Near Me](https://eyetest.co.uk/find/emergency-eye-test-near-me): Urgent same-day eye care
-- [Book Eye Test Online](https://eyetest.co.uk/find/book-eye-test-online): Quick online appointment booking
-- [Eye Test at Home](https://eyetest.co.uk/find/eye-test-at-home): Domiciliary eye care in the UK
-- [Online Eye Test](https://eyetest.co.uk/find/online-eye-test): Can you test your eyes online?
-- [Specsavers Eye Test](https://eyetest.co.uk/find/specsavers-eye-test): What's included and how to book
-- [Boots Eye Test](https://eyetest.co.uk/find/boots-eye-test): Cost, enhanced checks and booking
-- [Vision Express Eye Test](https://eyetest.co.uk/find/vision-express-eye-test): Price, what's included and booking
-- [Specsavers vs Boots](https://eyetest.co.uk/find/specsavers-vs-boots): Eye test comparison
-- [Best Opticians Near Me](https://eyetest.co.uk/find/best-opticians-near-me): How to find the right optician
-- [Eye Test Near Me](https://eyetest.co.uk/find/eye-test-near-me): Find and book appointments in your area
-- [Book an Eye Test](https://eyetest.co.uk/find/book-eye-test): How to book and what you need to know
-- [Opticians Near Me](https://eyetest.co.uk/find/opticians-near-me): Find and compare local opticians
-- [What to Expect During an Eye Test](https://eyetest.co.uk/find/eye-test-what-to-expect): Step-by-step UK guide
-- [How Long Does an Eye Test Take?](https://eyetest.co.uk/find/how-long-does-eye-test-take): UK appointment guide
-- [How Often Should You Have an Eye Test?](https://eyetest.co.uk/find/how-often-eye-test): UK guidelines
-- [Do I Need an Eye Test?](https://eyetest.co.uk/find/do-i-need-an-eye-test): Signs you should book one
-- [Failed Eye Test Driving](https://eyetest.co.uk/find/eye-test-failed-driving): What to do next
-- [OCT Scan Cost UK](https://eyetest.co.uk/find/oct-scan-cost): How much is an OCT eye scan
-- [Eye Test for Driving](https://eyetest.co.uk/find/eye-test-for-driving): DVLA standards and where to get tested
-- [Contact Lens Eye Test](https://eyetest.co.uk/find/contact-lens-eye-test): Fitting, check-ups and cost
-- [Children's Eye Tests](https://eyetest.co.uk/find/childrens-eye-test-guide): Complete parent's guide
-- [Glaucoma Test](https://eyetest.co.uk/find/glaucoma-test): What it involves, cost and where to get tested
-- [Colour Blind Test](https://eyetest.co.uk/find/colour-blind-test): How to get tested for colour vision deficiency
-- [Blurry Vision Causes](https://eyetest.co.uk/find/blurry-vision-causes): When to see an optician
-- [Headaches and Vision](https://eyetest.co.uk/find/headaches-and-vision): Could your eyes be the cause?
-- [Floaters in Vision](https://eyetest.co.uk/find/floaters-in-vision): Causes, when to worry and what to do
-- [Sudden Vision Changes](https://eyetest.co.uk/find/sudden-vision-changes): When to seek urgent help
+- [Eye Test Cost UK](https://www.eyetest.co.uk/find/eye-test-cost): How much does an eye test cost in the UK
+- [Free Eye Test](https://www.eyetest.co.uk/find/free-eye-test): Free eye tests — who qualifies and where to book
+- [Cheap Eye Test](https://www.eyetest.co.uk/find/cheap-eye-test): Cheapest eye tests near you
+- [Private Eye Test Cost](https://www.eyetest.co.uk/find/private-eye-test-cost): Private eye test costs UK
+- [Specsavers Eye Test Cost](https://www.eyetest.co.uk/find/specsavers-eye-test-cost): Specsavers pricing and what's included
+- [Boots Eye Test Cost](https://www.eyetest.co.uk/find/boots-eye-test-cost): Boots pricing, offers and what's included
+- [NHS Eye Test](https://www.eyetest.co.uk/find/nhs-eye-test): NHS eye test eligibility and how to book
+- [Free NHS Eye Test Eligibility](https://www.eyetest.co.uk/find/free-nhs-eye-test-eligibility): Full list of who qualifies
+- [Free Eye Test Over 60](https://www.eyetest.co.uk/find/free-eye-test-over-60): NHS free tests for over 60s
+- [Free Eye Test Children](https://www.eyetest.co.uk/find/free-eye-test-children): NHS entitlement for children
+- [Free Eye Test Diabetes](https://www.eyetest.co.uk/find/free-eye-test-diabetes): NHS entitlement for people with diabetes
+- [Free Eye Test Universal Credit](https://www.eyetest.co.uk/find/free-eye-test-universal-credit): How to claim on Universal Credit
+- [NHS Optical Voucher](https://www.eyetest.co.uk/find/nhs-optical-voucher): Values, eligibility and how to use
+- [Same-Day Eye Test](https://www.eyetest.co.uk/find/same-day-eye-test): Find last-minute appointments
+- [Walk-In Eye Test](https://www.eyetest.co.uk/find/walk-in-eye-test): No appointment needed opticians
+- [Weekend Eye Test](https://www.eyetest.co.uk/find/weekend-eye-test): Saturday and Sunday appointments
+- [Emergency Eye Test Near Me](https://www.eyetest.co.uk/find/emergency-eye-test-near-me): Urgent same-day eye care
+- [Book Eye Test Online](https://www.eyetest.co.uk/find/book-eye-test-online): Quick online appointment booking
+- [Eye Test at Home](https://www.eyetest.co.uk/find/eye-test-at-home): Domiciliary eye care in the UK
+- [Online Eye Test](https://www.eyetest.co.uk/find/online-eye-test): Can you test your eyes online?
+- [Specsavers Eye Test](https://www.eyetest.co.uk/find/specsavers-eye-test): What's included and how to book
+- [Boots Eye Test](https://www.eyetest.co.uk/find/boots-eye-test): Cost, enhanced checks and booking
+- [Vision Express Eye Test](https://www.eyetest.co.uk/find/vision-express-eye-test): Price, what's included and booking
+- [Specsavers vs Boots](https://www.eyetest.co.uk/find/specsavers-vs-boots): Eye test comparison
+- [Best Opticians Near Me](https://www.eyetest.co.uk/find/best-opticians-near-me): How to find the right optician
+- [Eye Test Near Me](https://www.eyetest.co.uk/find/eye-test-near-me): Find and book appointments in your area
+- [Book an Eye Test](https://www.eyetest.co.uk/find/book-eye-test): How to book and what you need to know
+- [Opticians Near Me](https://www.eyetest.co.uk/find/opticians-near-me): Find and compare local opticians
+- [What to Expect During an Eye Test](https://www.eyetest.co.uk/find/eye-test-what-to-expect): Step-by-step UK guide
+- [How Long Does an Eye Test Take?](https://www.eyetest.co.uk/find/how-long-does-eye-test-take): UK appointment guide
+- [How Often Should You Have an Eye Test?](https://www.eyetest.co.uk/find/how-often-eye-test): UK guidelines
+- [Do I Need an Eye Test?](https://www.eyetest.co.uk/find/do-i-need-an-eye-test): Signs you should book one
+- [Failed Eye Test Driving](https://www.eyetest.co.uk/find/eye-test-failed-driving): What to do next
+- [OCT Scan Cost UK](https://www.eyetest.co.uk/find/oct-scan-cost): How much is an OCT eye scan
+- [Eye Test for Driving](https://www.eyetest.co.uk/find/eye-test-for-driving): DVLA standards and where to get tested
+- [Contact Lens Eye Test](https://www.eyetest.co.uk/find/contact-lens-eye-test): Fitting, check-ups and cost
+- [Children's Eye Tests](https://www.eyetest.co.uk/find/childrens-eye-test-guide): Complete parent's guide
+- [Glaucoma Test](https://www.eyetest.co.uk/find/glaucoma-test): What it involves, cost and where to get tested
+- [Colour Blind Test](https://www.eyetest.co.uk/find/colour-blind-test): How to get tested for colour vision deficiency
+- [Blurry Vision Causes](https://www.eyetest.co.uk/find/blurry-vision-causes): When to see an optician
+- [Headaches and Vision](https://www.eyetest.co.uk/find/headaches-and-vision): Could your eyes be the cause?
+- [Floaters in Vision](https://www.eyetest.co.uk/find/floaters-in-vision): Causes, when to worry and what to do
+- [Sudden Vision Changes](https://www.eyetest.co.uk/find/sudden-vision-changes): When to seek urgent help
 
 ## Legal
-- [Privacy Policy](https://eyetest.co.uk/privacy)
-- [Terms of Service](https://eyetest.co.uk/terms)
-- [Disclaimer](https://eyetest.co.uk/disclaimer)
+- [Privacy Policy](https://www.eyetest.co.uk/privacy)
+- [Terms of Service](https://www.eyetest.co.uk/terms)
+- [Disclaimer](https://www.eyetest.co.uk/disclaimer)

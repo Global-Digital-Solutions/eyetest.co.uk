@@ -5,9 +5,7 @@ import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 import {
   eyeConditions,
-  eyeHealthGuides,
   type EyeConditionCategory,
-  type EyeHealthGuideCategory,
 } from "@/data/eye-health";
 
 // ---------------------------------------------------------------------------
@@ -15,31 +13,33 @@ import {
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Eye Health — Conditions, Guides & Expert Advice | eyetest.co.uk",
+  title: "Eye Conditions — Symptoms, Causes & Treatments | eyetest.co.uk",
   description:
-    "Learn about common eye conditions, their symptoms and treatments, plus expert guides on eye health, NHS eye tests, and when to see an optician. Evidence-based advice from UK eye care professionals.",
+    "Browse all 15 eye conditions with symptoms, causes, and treatment options. From common conditions like dry eye and conjunctivitis to age-related conditions such as cataracts and glaucoma. Evidence-based advice from UK eye care professionals.",
   keywords: [
-    "eye health",
     "eye conditions",
-    "eye health guide",
-    "eye symptoms",
-    "eye care UK",
+    "eye conditions list",
+    "eye problems",
+    "eye disease symptoms",
+    "eye conditions UK",
     "glaucoma",
     "cataracts",
-    "dry eye",
+    "dry eye syndrome",
     "macular degeneration",
-    "eye test advice",
+    "conjunctivitis",
+    "myopia",
+    "astigmatism",
   ],
   openGraph: {
-    title: "Eye Health — Conditions, Guides & Expert Advice | eyetest.co.uk",
+    title: "Eye Conditions — Symptoms, Causes & Treatments | eyetest.co.uk",
     description:
-      "Learn about common eye conditions, their symptoms and treatments, plus expert guides on eye health, NHS eye tests, and when to see an optician.",
-    url: "https://www.eyetest.co.uk/eye-health",
+      "Browse all 15 eye conditions with symptoms, causes, and treatment options. Evidence-based information from UK eye care professionals.",
+    url: "https://www.eyetest.co.uk/eye-health/conditions",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://www.eyetest.co.uk/eye-health",
+    canonical: "https://www.eyetest.co.uk/eye-health/conditions",
   },
 };
 
@@ -48,10 +48,10 @@ export const metadata: Metadata = {
 // ---------------------------------------------------------------------------
 
 const categoryLabels: Record<EyeConditionCategory, string> = {
-  common: "Common",
-  "age-related": "Age-related",
-  refractive: "Refractive",
-  urgent: "Urgent",
+  common: "Common condition",
+  "age-related": "Age-related condition",
+  refractive: "Refractive error",
+  urgent: "Urgent condition",
 };
 
 const categoryColors: Record<EyeConditionCategory, string> = {
@@ -61,32 +61,18 @@ const categoryColors: Record<EyeConditionCategory, string> = {
   urgent: "bg-red-100 text-red-700",
 };
 
-const guideCategoryLabels: Record<EyeHealthGuideCategory, string> = {
-  "how-to": "How-to",
-  advice: "Advice",
-  nhs: "NHS",
-  lifestyle: "Lifestyle",
-};
-
-const guideCategoryColors: Record<EyeHealthGuideCategory, string> = {
-  "how-to": "bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
-  advice: "bg-indigo-100 text-indigo-700",
-  nhs: "bg-[var(--color-nhs-blue)]/10 text-[var(--color-nhs-blue)]",
-  lifestyle: "bg-emerald-100 text-emerald-700",
-};
-
 // ---------------------------------------------------------------------------
 // Page component
 // ---------------------------------------------------------------------------
 
-export default function EyeHealthPage() {
+export default function ConditionsListingPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Eye Health — Conditions, Guides & Expert Advice",
+    name: "Eye Conditions — Symptoms, Causes & Treatments",
     description:
-      "Learn about common eye conditions, their symptoms and treatments, plus expert guides on eye health, NHS eye tests, and when to see an optician.",
-    url: "https://www.eyetest.co.uk/eye-health",
+      "Browse all eye conditions with symptoms, causes, and treatment options. Evidence-based information from UK eye care professionals.",
+    url: "https://www.eyetest.co.uk/eye-health/conditions",
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
@@ -94,11 +80,12 @@ export default function EyeHealthPage() {
     },
     mainEntity: {
       "@type": "ItemList",
+      numberOfItems: eyeConditions.length,
       itemListElement: eyeConditions.map((condition, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: `https://www.eyetest.co.uk/eye-health/conditions/${condition.slug}`,
         name: condition.name,
+        url: `https://www.eyetest.co.uk/eye-health/conditions/${condition.slug}`,
       })),
     },
   };
@@ -119,6 +106,12 @@ export default function EyeHealthPage() {
         name: "Eye Health",
         item: "https://www.eyetest.co.uk/eye-health",
       },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Conditions",
+        item: "https://www.eyetest.co.uk/eye-health/conditions",
+      },
     ],
   };
 
@@ -137,7 +130,14 @@ export default function EyeHealthPage() {
         />
 
         {/* Hero */}
-        <PageHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Eye Health" }]}>
+        <PageHero
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Eye Health", href: "/eye-health" },
+            { label: "Conditions" },
+          ]}
+          compact
+        >
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 text-white/90 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full mb-6">
             <svg
@@ -158,61 +158,28 @@ export default function EyeHealthPage() {
                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            <span>
-              {eyeConditions.length} conditions &middot;{" "}
-              {eyeHealthGuides.length} guides
-            </span>
+            <span>{eyeConditions.length} conditions covered</span>
           </div>
 
           <h1
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Eye Health{" "}
+            Eye{" "}
             <span className="text-[var(--color-primary-light)]">
-              Information
+              Conditions
             </span>
           </h1>
           <p className="text-base sm:text-lg text-white/70 mb-8 max-w-xl mx-auto">
-            Evidence-based information about eye conditions, symptoms, and
-            treatments, plus expert guides to help you look after your sight.
-            Written by UK eye care professionals.
+            Learn about common eye conditions, their symptoms, causes, and
+            treatment options. Early detection through regular eye tests is
+            the best way to protect your vision.
           </p>
-
-          {/* Quick links */}
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="#conditions"
-              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-all"
-            >
-              Eye Conditions
-            </a>
-            <a
-              href="#guides"
-              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-all"
-            >
-              Guides &amp; Advice
-            </a>
-          </div>
         </PageHero>
 
-        {/* Eye Conditions */}
-        <section id="conditions" className="py-16 sm:py-20">
+        {/* Conditions grid */}
+        <section className="py-16 sm:py-20">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2
-                className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Eye Conditions
-              </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Learn about common eye conditions, their symptoms, causes, and
-                treatment options. Early detection through regular eye tests is
-                the best way to protect your vision.
-              </p>
-            </div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {eyeConditions.map((condition) => (
                 <Link
@@ -221,9 +188,9 @@ export default function EyeHealthPage() {
                   className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
                 >
                   <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors text-lg">
+                    <h2 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors text-lg">
                       {condition.name}
-                    </h3>
+                    </h2>
                     <span
                       className={`shrink-0 text-xs font-medium px-2.5 py-1 rounded-full ${categoryColors[condition.category]}`}
                     >
@@ -255,67 +222,6 @@ export default function EyeHealthPage() {
 
                   <span className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-primary)] group-hover:gap-2 transition-all">
                     Learn more
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Guides & Advice */}
-        <section id="guides" className="py-16 sm:py-20 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2
-                className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Guides &amp; Advice
-              </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Practical, expert-written guides covering everything from how
-                often to have an eye test to understanding your prescription and
-                NHS eligibility.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {eyeHealthGuides.map((guide) => (
-                <Link
-                  key={guide.slug}
-                  href={`/eye-health/guides/${guide.slug}`}
-                  className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
-                >
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors text-lg">
-                      {guide.title}
-                    </h3>
-                    <span
-                      className={`shrink-0 text-xs font-medium px-2.5 py-1 rounded-full ${guideCategoryColors[guide.category]}`}
-                    >
-                      {guideCategoryLabels[guide.category]}
-                    </span>
-                  </div>
-
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                    {guide.summary}
-                  </p>
-
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-primary)] group-hover:gap-2 transition-all">
-                    Read guide
                     <svg
                       className="w-4 h-4"
                       fill="none"

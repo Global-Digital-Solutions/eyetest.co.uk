@@ -31,12 +31,12 @@ export const metadata: Metadata = {
     title: "Types of Eye Tests — Complete UK Guide | eyetest.co.uk",
     description:
       "Explore all types of eye tests available in the UK. Learn what each test involves, who needs it, and how much it costs.",
-    url: "https://eyetest.co.uk/eye-tests",
+    url: "https://www.eyetest.co.uk/eye-tests",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://eyetest.co.uk/eye-tests",
+    canonical: "https://www.eyetest.co.uk/eye-tests",
   },
 };
 
@@ -83,11 +83,11 @@ export default function EyeTestsPage() {
     name: "Types of Eye Tests — Complete UK Guide",
     description:
       "A comprehensive guide to all types of eye tests available in the UK, including NHS eye tests, OCT scans, visual field tests, and specialist screenings.",
-    url: "https://eyetest.co.uk/eye-tests",
+    url: "https://www.eyetest.co.uk/eye-tests",
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     mainEntity: {
       "@type": "ItemList",
@@ -96,7 +96,7 @@ export default function EyeTestsPage() {
         "@type": "ListItem",
         position: index + 1,
         name: test.name,
-        url: `https://eyetest.co.uk/eye-tests/${test.slug}`,
+        url: `https://www.eyetest.co.uk/eye-tests/${test.slug}`,
       })),
     },
   };
@@ -122,13 +122,13 @@ export default function EyeTestsPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Eye Tests",
-        item: "https://eyetest.co.uk/eye-tests",
+        item: "https://www.eyetest.co.uk/eye-tests",
       },
     ],
   };

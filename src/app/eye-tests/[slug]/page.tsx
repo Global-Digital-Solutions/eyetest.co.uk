@@ -54,12 +54,12 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://eyetest.co.uk/eye-tests/${test.slug}`,
+      url: `https://www.eyetest.co.uk/eye-tests/${test.slug}`,
       siteName: "eyetest.co.uk",
       type: "article",
     },
     alternates: {
-      canonical: `https://eyetest.co.uk/eye-tests/${test.slug}`,
+      canonical: `https://www.eyetest.co.uk/eye-tests/${test.slug}`,
     },
   };
 }
@@ -117,7 +117,7 @@ export default async function EyeTestPage({
     "@type": "MedicalWebPage",
     name: test.name,
     description: test.shortDescription,
-    url: `https://eyetest.co.uk/eye-tests/${test.slug}`,
+    url: `https://www.eyetest.co.uk/eye-tests/${test.slug}`,
     mainContentOfPage: {
       "@type": "WebPageElement",
       cssSelector: "article",
@@ -125,12 +125,12 @@ export default async function EyeTestPage({
     author: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     dateModified: "2026-06-16",
     lastReviewed: "2026-06-16",
@@ -141,19 +141,19 @@ export default async function EyeTestPage({
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://eyetest.co.uk",
+          item: "https://www.eyetest.co.uk",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Eye Tests",
-          item: "https://eyetest.co.uk/eye-tests",
+          item: "https://www.eyetest.co.uk/eye-tests",
         },
         {
           "@type": "ListItem",
           position: 3,
           name: test.name,
-          item: `https://eyetest.co.uk/eye-tests/${test.slug}`,
+          item: `https://www.eyetest.co.uk/eye-tests/${test.slug}`,
         },
       ],
     },

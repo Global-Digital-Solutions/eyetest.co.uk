@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     title: "Compare UK Opticians — Find the Best Eye Test Near You",
     description:
       "Compare leading UK optician chains side by side. See services, prices, NHS availability, and book your eye test online.",
-    url: "https://eyetest.co.uk/opticians",
+    url: "https://www.eyetest.co.uk/opticians",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://eyetest.co.uk/opticians",
+    canonical: "https://www.eyetest.co.uk/opticians",
   },
 };
 
@@ -55,11 +55,11 @@ export default function OpticiansPage() {
     name: "Compare UK Opticians — Find the Best Eye Test Near You",
     description:
       "Compare leading UK optician chains side by side. See services, prices, NHS availability, and book your eye test online.",
-    url: "https://eyetest.co.uk/opticians",
+    url: "https://www.eyetest.co.uk/opticians",
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     mainEntity: {
       "@type": "ItemList",
@@ -69,7 +69,7 @@ export default function OpticiansPage() {
         item: {
           "@type": "Organization",
           name: o.name,
-          url: `https://eyetest.co.uk/opticians/${o.slug}`,
+          url: `https://www.eyetest.co.uk/opticians/${o.slug}`,
           numberOfEmployees: {
             "@type": "QuantitativeValue",
             name: "UK stores",
@@ -88,13 +88,13 @@ export default function OpticiansPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Opticians",
-        item: "https://eyetest.co.uk/opticians",
+        item: "https://www.eyetest.co.uk/opticians",
       },
     ],
   };

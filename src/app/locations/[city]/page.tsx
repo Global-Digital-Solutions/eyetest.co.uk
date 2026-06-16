@@ -71,12 +71,12 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://eyetest.co.uk/locations/${location.slug}`,
+      url: `https://www.eyetest.co.uk/locations/${location.slug}`,
       siteName: "eyetest.co.uk",
       type: "website",
     },
     alternates: {
-      canonical: `https://eyetest.co.uk/locations/${location.slug}`,
+      canonical: `https://www.eyetest.co.uk/locations/${location.slug}`,
     },
   };
 }
@@ -157,11 +157,11 @@ export default async function CityPage({
     "@type": "WebPage",
     name: `Eye Tests in ${location.name}`,
     description: location.description,
-    url: `https://eyetest.co.uk/locations/${location.slug}`,
+    url: `https://www.eyetest.co.uk/locations/${location.slug}`,
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     about: {
       "@type": "City",
@@ -199,19 +199,19 @@ export default async function CityPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Locations",
-        item: "https://eyetest.co.uk/locations",
+        item: "https://www.eyetest.co.uk/locations",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: location.name,
-        item: `https://eyetest.co.uk/locations/${location.slug}`,
+        item: `https://www.eyetest.co.uk/locations/${location.slug}`,
       },
     ],
   };
@@ -221,7 +221,7 @@ export default async function CityPage({
     "@type": "MedicalBusiness",
     name: `Eye Test Services in ${location.name}`,
     description: `Compare and book eye tests from opticians in ${nameWithCounty(location)}. NHS and private eye tests available.`,
-    url: `https://eyetest.co.uk/locations/${location.slug}`,
+    url: `https://www.eyetest.co.uk/locations/${location.slug}`,
     areaServed: {
       "@type": "City",
       name: location.name,

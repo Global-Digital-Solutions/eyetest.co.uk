@@ -33,12 +33,12 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       description: pc
         ? `Compare opticians and book eye test appointments near ${pc}.`
         : "Search for eye test appointments near you. Compare opticians across the UK.",
-      url: "https://eyetest.co.uk/search",
+      url: "https://www.eyetest.co.uk/search",
       siteName: "eyetest.co.uk",
       type: "website",
     },
     alternates: {
-      canonical: "https://eyetest.co.uk/search",
+      canonical: "https://www.eyetest.co.uk/search",
     },
   };
 }
@@ -54,11 +54,11 @@ export default async function SearchPage({ searchParams }: Props) {
     description: pc
       ? `Compare opticians and book eye test appointments near ${pc}.`
       : "Search for eye test appointments near you. Compare opticians across the UK.",
-    url: "https://eyetest.co.uk/search",
+    url: "https://www.eyetest.co.uk/search",
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
   };
 
@@ -70,13 +70,13 @@ export default async function SearchPage({ searchParams }: Props) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Search",
-        item: "https://eyetest.co.uk/search",
+        item: "https://www.eyetest.co.uk/search",
       },
     ],
   };

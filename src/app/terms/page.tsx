@@ -22,12 +22,12 @@ export const metadata: Metadata = {
     title: "Terms of Service | eyetest.co.uk",
     description:
       "Terms and conditions for using the eyetest.co.uk eye test comparison and booking platform.",
-    url: "https://eyetest.co.uk/terms",
+    url: "https://www.eyetest.co.uk/terms",
     siteName: "eyetest.co.uk",
     type: "website",
   },
   alternates: {
-    canonical: "https://eyetest.co.uk/terms",
+    canonical: "https://www.eyetest.co.uk/terms",
   },
 };
 
@@ -42,11 +42,11 @@ export default function TermsOfServicePage() {
     name: "Terms of Service",
     description:
       "Terms and conditions for using eyetest.co.uk. Understand your rights and responsibilities when using our eye test comparison and booking platform.",
-    url: "https://eyetest.co.uk/terms",
+    url: "https://www.eyetest.co.uk/terms",
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     dateModified: "2025-06-15",
     inLanguage: "en-GB",
@@ -60,13 +60,13 @@ export default function TermsOfServicePage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Terms of Service",
-        item: "https://eyetest.co.uk/terms",
+        item: "https://www.eyetest.co.uk/terms",
       },
     ],
   };

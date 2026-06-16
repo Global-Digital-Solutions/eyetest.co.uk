@@ -53,12 +53,12 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://eyetest.co.uk/eye-health/conditions/${condition.slug}`,
+      url: `https://www.eyetest.co.uk/eye-health/conditions/${condition.slug}`,
       siteName: "eyetest.co.uk",
       type: "article",
     },
     alternates: {
-      canonical: `https://eyetest.co.uk/eye-health/conditions/${condition.slug}`,
+      canonical: `https://www.eyetest.co.uk/eye-health/conditions/${condition.slug}`,
     },
   };
 }
@@ -108,7 +108,7 @@ export default async function ConditionPage({
     "@type": "MedicalCondition",
     name: condition.name,
     description: condition.overview,
-    url: `https://eyetest.co.uk/eye-health/conditions/${condition.slug}`,
+    url: `https://www.eyetest.co.uk/eye-health/conditions/${condition.slug}`,
     signOrSymptom: condition.symptoms.map((symptom) => ({
       "@type": "MedicalSymptom",
       name: symptom,
@@ -124,7 +124,7 @@ export default async function ConditionPage({
     author: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     dateModified: "2026-06-16",
     lastReviewed: "2026-06-16",
@@ -138,19 +138,19 @@ export default async function ConditionPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Eye Health",
-        item: "https://eyetest.co.uk/eye-health",
+        item: "https://www.eyetest.co.uk/eye-health",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: condition.name,
-        item: `https://eyetest.co.uk/eye-health/conditions/${condition.slug}`,
+        item: `https://www.eyetest.co.uk/eye-health/conditions/${condition.slug}`,
       },
     ],
   };

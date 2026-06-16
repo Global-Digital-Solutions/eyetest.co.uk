@@ -52,12 +52,12 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://eyetest.co.uk/articles/${article.slug}`,
+      url: `https://www.eyetest.co.uk/articles/${article.slug}`,
       siteName: "eyetest.co.uk",
       type: "article",
       images: [
         {
-          url: `https://eyetest.co.uk${article.image}`,
+          url: `https://www.eyetest.co.uk${article.image}`,
           width: 1200,
           height: 630,
           alt: article.title,
@@ -65,7 +65,7 @@ export async function generateMetadata({
       ],
     },
     alternates: {
-      canonical: `https://eyetest.co.uk/articles/${article.slug}`,
+      canonical: `https://www.eyetest.co.uk/articles/${article.slug}`,
     },
   };
 }
@@ -143,27 +143,27 @@ export default async function ArticlePage({
     "@type": "Article",
     headline: article.title,
     description: article.excerpt,
-    image: `https://eyetest.co.uk${article.image}`,
+    image: `https://www.eyetest.co.uk${article.image}`,
     datePublished: article.publishDate,
     dateModified: article.publishDate,
-    url: `https://eyetest.co.uk/articles/${article.slug}`,
+    url: `https://www.eyetest.co.uk/articles/${article.slug}`,
     author: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
       logo: {
         "@type": "ImageObject",
-        url: "https://eyetest.co.uk/logo.png",
+        url: "https://www.eyetest.co.uk/logo.png",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://eyetest.co.uk/articles/${article.slug}`,
+      "@id": `https://www.eyetest.co.uk/articles/${article.slug}`,
     },
     articleSection: article.category,
   };
@@ -176,19 +176,19 @@ export default async function ArticlePage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Articles",
-        item: "https://eyetest.co.uk/articles",
+        item: "https://www.eyetest.co.uk/articles",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: article.title,
-        item: `https://eyetest.co.uk/articles/${article.slug}`,
+        item: `https://www.eyetest.co.uk/articles/${article.slug}`,
       },
     ],
   };

@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "eyetest.co.uk — Find & Book Eye Tests Near You",
     description:
       "Compare thousands of opticians across the UK. Find available appointments and book online in seconds.",
-    url: "https://eyetest.co.uk",
+    url: "https://www.eyetest.co.uk",
     siteName: "eyetest.co.uk",
     type: "website",
   },

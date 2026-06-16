@@ -62,12 +62,12 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://eyetest.co.uk/opticians/${optician.slug}`,
+      url: `https://www.eyetest.co.uk/opticians/${optician.slug}`,
       siteName: "eyetest.co.uk",
       type: "website",
     },
     alternates: {
-      canonical: `https://eyetest.co.uk/opticians/${optician.slug}`,
+      canonical: `https://www.eyetest.co.uk/opticians/${optician.slug}`,
     },
   };
 }
@@ -137,7 +137,7 @@ export default async function OpticianPage({
     parentOrganization: {
       "@type": "Organization",
       name: "eyetest.co.uk",
-      url: "https://eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
     },
   };
 
@@ -149,19 +149,19 @@ export default async function OpticianPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://eyetest.co.uk",
+        item: "https://www.eyetest.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Opticians",
-        item: "https://eyetest.co.uk/opticians",
+        item: "https://www.eyetest.co.uk/opticians",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: optician.name,
-        item: `https://eyetest.co.uk/opticians/${optician.slug}`,
+        item: `https://www.eyetest.co.uk/opticians/${optician.slug}`,
       },
     ],
   };
