@@ -478,8 +478,26 @@ export function SearchResults({ postcode }: { postcode: string }) {
     <div className="max-w-7xl mx-auto px-4 py-5 sm:py-6">
       {/* Error state */}
       {globalError && (
-        <div className="rounded-xl border border-red-100 bg-red-50 p-4 text-red-700 mb-4">
-          {globalError}
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 mb-4">
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
+              <svg className="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-amber-800 mb-1">
+                We need your full postcode
+              </p>
+              <p className="text-sm text-amber-700 leading-relaxed">
+                {globalError}
+              </p>
+              <p className="text-xs text-amber-500 mt-2">
+                A full UK postcode looks like <strong>SW1A 1AA</strong> or <strong>TW11 8AB</strong>
+              </p>
+            </div>
+          </div>
         </div>
       )}
 
