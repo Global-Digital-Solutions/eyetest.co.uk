@@ -168,6 +168,110 @@ function isShiftedWindow(dailySlots: { date: string }[] | undefined): boolean {
 
 const HIDE_ACTIONS_PROVIDERS = /vision express|specsavers/i;
 
+/* ------------------------------------------------------------------ */
+/*  MobileStoreCard — compact 2-line card for small screens            */
+/* ------------------------------------------------------------------ */
+
+function getAvailabilitySummary(store: StoreResult): { text: string; available: boolean } {
+  if (!store.dailySlots || store.dailySlots.length === 0) {
+    if (store.slotsAvailable) return { text: "Available", available: true };
+    return { text: "No appointments", available: false };
+  }
+
+  const firstAvail = store.dailySlots.find((s) => s.count !== 0);
+  if (!firstAvail) return { text: "No appointments", available: false };
+
+  const { todayStr, tomorrowStr } = getDayLabels();
+  const shifted = isShiftedWindow(store.dailySlots);
+
+  if (firstAvail.date === todayStr) return { text: "Available today", available: true };
+  if (firstAvail.date === tomorrowStr) return { text: "Available tomorrow", available: true };
+
+  const dt = new Date(firstAvail.date + "T12:00:00");
+  const dayName = dt.toLocaleDateString("en-GB", { weekday: "short" });
+  const dayNum = dt.getDate();
+  const monthName = dt.toLocaleDateString("en-GB", { month: "short" });
+  const dateLabel = `${dayName} ${dayNum} ${monthName}`;
+
+  if (shifted) return { text: `Earliest: ${dateLabel}`, available: true };
+  return { text: `Available ${dateLabel}`, available: true };
+}
+
+function MobileStoreCard({ store }: { store: StoreResult }) {
+  const hasSlots = store.dailySlots
+    ? store.dailySlots.some((s) => s.count !== 0)
+    : Boolean(store.slotsAvailable);
+  const style = getProviderStyle(store.provider);
+  const hideActions = !hasSlots && HIDE_ACTIONS_PROVIDERS.test(store.provider);
+  const { text: availText, available: isAvail } = getAvailabilitySummary(store);
+
+  const borderColor = store.featured ? "#f59e0b" : hasSlots ? "#22c55e" : "#d1d5db";
+
+  return (
+    <div
+      className={`rounded-lg bg-white shadow-sm overflow-hidden ${
+        store.featured ? "ring-1 ring-amber-300" : ""
+      }`}
+      style={{ borderLeft: `3px solid ${borderColor}` }}
+    >
+      <div className="px-3 py-2.5">
+        {/* Line 1: badge + store name + distance */}
+        <div className="flex items-center gap-1.5 min-w-0">
+          {store.featured && (
+            <svg className="w-3 h-3 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          )}
+          <span
+            className={`inline-block rounded-full px-1.5 py-px text-[9px] font-semibold flex-shrink-0 ${style.bg} ${style.text}`}
+          >
+            {displayProviderName(store.provider)}
+          </span>
+          <span
+            className="text-xs font-semibold text-[var(--color-navy)] truncate min-w-0"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            {store.storeName}
+          </span>
+          <span className="flex-shrink-0 text-[10px] text-gray-400 ml-auto whitespace-nowrap">
+            {formatDistance(store.distanceM)}
+          </span>
+        </div>
+
+        {/* Line 2: availability dot + text + Book button */}
+        <div className="flex items-center gap-1.5 mt-1 min-w-0">
+          <span
+            className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+              isAvail ? "bg-green-500" : "bg-gray-300"
+            }`}
+          />
+          <span
+            className={`text-[11px] font-medium truncate min-w-0 ${
+              isAvail ? "text-green-600" : "text-gray-400"
+            }`}
+          >
+            {availText}
+          </span>
+          {!hideActions && (
+            <a
+              href={store.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex-shrink-0 ml-auto inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-md transition-colors ${
+                hasSlots
+                  ? "bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white"
+                  : "bg-gray-100 text-gray-400"
+              }`}
+            >
+              Book&nbsp;&rarr;
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function StoreCard({ store }: { store: StoreResult }) {
   const hasSlots = store.dailySlots
     ? store.dailySlots.some((s) => s.count !== 0)
@@ -420,7 +524,7 @@ function SearchProgressPanel({
     totalProviders > 0 ? (completedCount / totalProviders) * 100 : 0;
 
   return (
-    <div className="mb-6 rounded-2xl bg-gradient-to-br from-[var(--color-navy)] to-[#1a2d5a] p-5 sm:p-7 text-white overflow-hidden relative">
+    <div className="mb-6 rounded-2xl bg-gradient-to-br from-[var(--color-navy)] to-[#1a2d5a] p-4 sm:p-7 text-white overflow-hidden relative">
       {/* Background decoration */}
       <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/5 rounded-full blur-3xl" />
       <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[var(--color-primary)]/10 rounded-full blur-2xl" />
@@ -445,7 +549,7 @@ function SearchProgressPanel({
           </div>
           <div>
             <h3
-              className="text-base sm:text-lg font-bold mb-0.5"
+              className="text-sm sm:text-lg font-bold mb-0.5"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Relax &mdash; we&apos;re doing the hard work
@@ -483,7 +587,7 @@ function SearchProgressPanel({
         </div>
 
         {/* Provider badges */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2">
           {/* Major chains */}
           {chains.map((provider) => {
             const info = CHAIN_INFO[provider];
@@ -550,8 +654,8 @@ function SearchProgressPanel({
           )}
         </div>
 
-        {/* Value proposition */}
-        <p className="mt-4 text-[11px] text-white/30 leading-relaxed">
+        {/* Value proposition — hidden on mobile */}
+        <p className="hidden sm:block mt-4 text-[11px] text-white/30 leading-relaxed">
           The average person spends up to 2 hours arranging an eye test. We
           check real-time availability across every major chain and your local
           independents in seconds.
@@ -772,7 +876,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-5 sm:py-6">
+    <div className="max-w-7xl mx-auto px-4 py-5 sm:py-6 overflow-x-hidden">
       {/* Error state */}
       {globalError && (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 mb-4">
@@ -875,7 +979,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
 
           {/* Compact completed trust banner — shows after search finishes */}
           {!stillLoading && stream.done && results.length > 0 && (
-            <div className="mb-4 flex items-center gap-3 flex-wrap rounded-xl bg-[var(--color-navy)]/5 border border-[var(--color-navy)]/10 px-4 py-3">
+            <div className="mb-4 flex items-center gap-2 sm:gap-3 flex-wrap rounded-xl bg-[var(--color-navy)]/5 border border-[var(--color-navy)]/10 px-3 py-2 sm:px-4 sm:py-3">
               <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--color-navy)]">
                 <svg
                   className="w-4 h-4 text-[var(--color-success)]"
@@ -892,7 +996,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
                 </svg>
                 We searched {stream.activeProviders.length} opticians for you
               </div>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1 sm:gap-1.5">
                 {stream.activeProviders
                   .filter((p) => !p.endsWith(".mysight.uk"))
                   .map((p) => (
@@ -963,18 +1067,26 @@ export function SearchResults({ postcode }: { postcode: string }) {
 
               {/* Featured results */}
               {featured.map((store, i) => (
-                <StoreCard
-                  key={`feat-${i}-${store.storeName}`}
-                  store={store}
-                />
+                <div key={`feat-${i}-${store.storeName}`}>
+                  <div className="sm:hidden">
+                    <MobileStoreCard store={store} />
+                  </div>
+                  <div className="hidden sm:block">
+                    <StoreCard store={store} />
+                  </div>
+                </div>
               ))}
 
               {/* Available results */}
               {available.map((store, i) => (
-                <StoreCard
-                  key={`avail-${i}-${store.storeName}`}
-                  store={store}
-                />
+                <div key={`avail-${i}-${store.storeName}`}>
+                  <div className="sm:hidden">
+                    <MobileStoreCard store={store} />
+                  </div>
+                  <div className="hidden sm:block">
+                    <StoreCard store={store} />
+                  </div>
+                </div>
               ))}
 
               {/* Separator for unavailable */}
@@ -989,10 +1101,14 @@ export function SearchResults({ postcode }: { postcode: string }) {
               {/* Unavailable results */}
               {stream.done &&
                 unavailable.map((store, i) => (
-                  <StoreCard
-                    key={`unavail-${i}-${store.storeName}`}
-                    store={store}
-                  />
+                  <div key={`unavail-${i}-${store.storeName}`}>
+                    <div className="sm:hidden">
+                      <MobileStoreCard store={store} />
+                    </div>
+                    <div className="hidden sm:block">
+                      <StoreCard store={store} />
+                    </div>
+                  </div>
                 ))}
 
               {/* Still loading indicator */}
