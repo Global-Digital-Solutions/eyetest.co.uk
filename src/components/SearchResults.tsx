@@ -507,11 +507,13 @@ const CHAIN_INFO: Record<string, { name: string; color: string }> = {
 
 function SearchProgressPanel({
   postcode,
+  district,
   activeProviders,
   loadingProviders,
   resultsCount,
 }: {
   postcode: string;
+  district: string | null;
   activeProviders: string[];
   loadingProviders: string[];
   resultsCount: number;
@@ -649,7 +651,7 @@ function SearchProgressPanel({
               ) : (
                 <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-current" />
               )}
-              {independents.length} Local Independent Opticians
+              {independents.length} Independent Opticians{district ? ` near ${district}` : ""}
             </div>
           )}
         </div>
@@ -671,6 +673,7 @@ function SearchProgressPanel({
 
 interface StreamState {
   postcode: string | null;
+  district: string | null;
   center: [number, number] | null;
   results: StoreResult[];
   errors: { provider: string; message: string }[];
@@ -697,6 +700,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
     setGlobalError(null);
     setStream({
       postcode: null,
+      district: null,
       center: null,
       results: [],
       errors: [],
@@ -740,6 +744,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
                   ? {
                       ...s,
                       postcode: event.postcode as string,
+                      district: (event.district as string) || null,
                       center: [event.lat as number, event.lng as number],
                       activeProviders: active,
                       loadingProviders: active,
@@ -971,6 +976,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
           {stillLoading && stream.activeProviders.length > 0 && (
             <SearchProgressPanel
               postcode={stream.postcode ?? postcode}
+              district={stream.district}
               activeProviders={stream.activeProviders}
               loadingProviders={stream.loadingProviders}
               resultsCount={results.length}
@@ -1009,7 +1015,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
                   ))}
                 {stream.activeProviders.filter((p) => p.endsWith(".mysight.uk")).length > 0 && (
                   <span className="inline-block rounded-full bg-white px-2 py-0.5 text-[10px] font-medium text-[var(--color-primary)] border border-[var(--color-primary)]/20">
-                    + {stream.activeProviders.filter((p) => p.endsWith(".mysight.uk")).length} local independents
+                    + {stream.activeProviders.filter((p) => p.endsWith(".mysight.uk")).length} independents{stream.district ? ` near ${stream.district}` : ""}
                   </span>
                 )}
               </div>

@@ -99,7 +99,7 @@ export async function GET(req: NextRequest) {
     async start(controller) {
       // Send postcode + active provider list so the frontend knows what to show
       controller.enqueue(
-        line({ type: "meta", postcode: geo.postcode, lat, lng, activeProviders })
+        line({ type: "meta", postcode: geo.postcode, lat, lng, district: geo.district, activeProviders })
       );
 
       async function runProvider(
