@@ -26,11 +26,57 @@ function getProviderStyle(provider: string) {
   return { bg: "bg-gray-50", text: "text-gray-600", border: "border-gray-200" };
 }
 
+/* ------------------------------------------------------------------ */
+/*  Friendly MySight provider names (slugs → proper display names)    */
+/* ------------------------------------------------------------------ */
+
+const MYSIGHT_NAMES: Record<string, string> = {
+  "2020opticians": "2020 Opticians",
+  alldersopticians: "Allders Opticians",
+  barracloughs: "Barracloughs",
+  batemanopticians: "Bateman Opticians",
+  bayfieldsopticians: "Bayfields Opticians",
+  "cameron-davies": "Cameron Davies",
+  chalmersopticians: "Chalmers Opticians",
+  classiceyes: "Classic Eyes",
+  cranfordopticians: "Cranford Opticians",
+  duncanandtodd: "Duncan & Todd",
+  "exmouth-eyecare": "Exmouth Eyecare",
+  eyecollective: "Eye Collective",
+  eyelink: "Eyelink",
+  eyesentials: "Eyesentials",
+  eyesite: "Eyesite",
+  harroldopticians: "Harrold Opticians",
+  houghtonopticians: "Houghton Opticians",
+  johnhigheyecare: "John High Eyecare",
+  johnroseeyecare: "John Rose Eyecare",
+  leightons: "Leightons",
+  lynnefernandes: "Lynne Fernandes",
+  millicansopticians: "Millicans Opticians",
+  "norville-opticians": "Norville Opticians",
+  oakwoodeyecare: "Oakwood Eyecare",
+  observatoryopticians: "Observatory Opticians",
+  optimaopticians: "Optima Opticians",
+  peterbowersopticians: "Peter Bowers Opticians",
+  rawlingsopticians: "Rawlings Opticians",
+  reynoldsopticians: "Reynolds Opticians",
+  seoptom: "SE Optom",
+  suzannedennisoptometrist: "Suzanne Dennis Optometrist",
+  "the-eye-place": "The Eye Place",
+  viewpoint: "Viewpoint",
+  woodingopticians: "Wooding Opticians",
+};
+
 function displayProviderName(p: string): string {
   if (p.endsWith(".mysight.uk")) {
-    return p
-      .replace(".mysight.uk", "")
+    const slug = p.replace(".mysight.uk", "");
+    if (MYSIGHT_NAMES[slug]) return MYSIGHT_NAMES[slug];
+    // Fallback: split known suffixes, capitalize
+    return slug
       .replace(/-/g, " ")
+      .replace(/(opticians|optometrists?|eyecare|eyes)$/i, " $1")
+      .replace(/\s+/g, " ")
+      .trim()
       .replace(/\b\w/g, (c) => c.toUpperCase());
   }
   return p;

@@ -257,9 +257,15 @@ export async function fetchMysight(
         count: dailyCounts[date] ?? 0,
       }));
 
-      const displayName =
+      const branchLabel =
         String(b.onlineFriendlyBranchName ?? "") || String(b.branchName ?? "");
       const phone = String(b.telephone1 ?? "") || String(b.telephone2 ?? "");
+
+      // Avoid duplicated names like "Cranford Opticians Cranford Opticians"
+      // when the branch label already contains the brand name
+      const storeName = branchLabel.toLowerCase().startsWith(brandName.toLowerCase())
+        ? branchLabel
+        : `${brandName} ${branchLabel}`;
 
       // Deep-link: include branchId (and appointmentTypeId when available)
       // so users land on the specific branch's booking page
@@ -269,7 +275,7 @@ export async function fetchMysight(
 
       results.push({
         provider: siteHost,
-        storeName: `${brandName} ${displayName}`,
+        storeName,
         address: "",
         postcode: "",
         town: "",
