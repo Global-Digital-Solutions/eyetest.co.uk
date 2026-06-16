@@ -370,8 +370,8 @@ export function Header() {
                   </div>
                   <div className="mt-6 p-4 bg-gray-50 rounded-xl">
                     <p className="text-xs text-gray-500 mb-2">Are you an optician?</p>
-                    <Link href="/partners" className="text-sm font-medium text-[var(--color-primary)] hover:underline">
-                      Partner with us &rarr;
+                    <Link href="/get-listed" className="text-sm font-medium text-[var(--color-primary)] hover:underline">
+                      Get Listed &rarr;
                     </Link>
                   </div>
                 </div>

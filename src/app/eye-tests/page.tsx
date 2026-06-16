@@ -114,6 +114,25 @@ export default function EyeTestsPage() {
     })),
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://eyetest.co.uk",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Eye Tests",
+        item: "https://eyetest.co.uk/eye-tests",
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
@@ -126,6 +145,10 @@ export default function EyeTestsPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
 
         {/* Hero */}

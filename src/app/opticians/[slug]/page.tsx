@@ -372,18 +372,39 @@ export default async function OpticianPage({
                       </dd>
                     </div>
                   )}
-                <div className="pt-2 border-t border-gray-200">
-                  <dt className="text-gray-500 mb-1">Website</dt>
-                  <dd>
-                    <a
-                      href={optician.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[var(--color-primary)] hover:underline font-medium text-sm break-all"
+                <div className="pt-3 border-t border-gray-200">
+                  <h4 className="font-[family-name:var(--font-display)] text-sm font-semibold text-[var(--color-navy)] mb-2">
+                    Book an eye test
+                  </h4>
+                  <form action="/search" method="GET">
+                    <input
+                      type="text"
+                      name="postcode"
+                      placeholder="Enter postcode"
+                      aria-label="Enter your postcode"
+                      className="w-full px-3 py-2 text-sm text-[var(--color-navy)] bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/30 focus:border-[var(--color-primary)] placeholder:text-gray-400 mb-2"
+                    />
+                    <button
+                      type="submit"
+                      className="w-full flex items-center justify-center gap-2 text-sm font-semibold text-white py-2 px-4 rounded-lg transition-colors cursor-pointer"
+                      style={{ backgroundColor: "var(--color-primary)" }}
                     >
-                      {optician.website.replace(/^https?:\/\//, "")}
-                    </a>
-                  </dd>
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        />
+                      </svg>
+                      Search
+                    </button>
+                  </form>
                 </div>
               </dl>
             </div>
@@ -1170,6 +1191,20 @@ export default async function OpticianPage({
             </>
           )}
         </section>
+        {/* ── Subtle external website reference ─────────────────────── */}
+        <div className="max-w-7xl mx-auto px-4 py-4 text-center">
+          <p className="text-xs text-gray-400">
+            Visit {optician.name} directly:{" "}
+            <a
+              href={optician.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-gray-500 underline"
+            >
+              {optician.website.replace(/^https?:\/\//, "")}
+            </a>
+          </p>
+        </div>
       </main>
       <Footer />
     </>

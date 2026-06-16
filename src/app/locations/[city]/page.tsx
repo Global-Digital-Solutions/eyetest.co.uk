@@ -13,7 +13,10 @@ import {
 import {
   getAvailableOpticians,
   getUnavailableOpticians,
+  getOpticiansByLocation,
 } from "@/data/opticians";
+import { eyeTests } from "@/data/eye-tests";
+import { eyeConditions } from "@/data/eye-health";
 import { notFound } from "next/navigation";
 
 // ---------------------------------------------------------------------------
@@ -53,6 +56,15 @@ export async function generateMetadata({
       `NHS eye test ${location.name}`,
       `book eye test ${location.name}`,
       `${location.name} opticians`,
+      `free eye test ${location.name}`,
+      `eye test cost ${location.name}`,
+      `opticians near me ${location.name}`,
+      `${location.name} eye care`,
+      `private eye test ${location.name}`,
+      `children's eye test ${location.name}`,
+      `contact lens fitting ${location.name}`,
+      `OCT scan ${location.name}`,
+      `eye health ${location.name}`,
     ],
     openGraph: {
       title,
@@ -85,12 +97,57 @@ export default async function CityPage({
 
   const availableOpticians = getAvailableOpticians();
   const unavailableOpticians = getUnavailableOpticians();
+  const localOpticians = getOpticiansByLocation(location.slug);
+  const localAvailable = localOpticians.filter((o) => o.available);
+  const localUnavailable = localOpticians.filter((o) => !o.available);
   const nearbyLocations = location.nearbyAreas
     .map((slug) => getLocationBySlug(slug))
     .filter(Boolean);
   const regionSiblings = getLocationsByRegion(location.region).filter(
     (l) => l.slug !== location.slug
   );
+
+  // Eye test types for internal linking
+  const popularEyeTests = eyeTests.slice(0, 8);
+
+  // Eye conditions for internal linking
+  const commonConditions = eyeConditions.slice(0, 6);
+
+  // FAQ data
+  const faqItems = [
+    {
+      q: `Where can I get an eye test in ${location.name}?`,
+      a: `You can compare and book eye tests from multiple opticians in ${location.name} through eyetest.co.uk. We list both NHS and private providers, including high-street chains like Boots Opticians and ASDA Opticians, as well as independent practices in the ${location.county} area. Simply enter the postcode ${location.postcode} to see all available options near you, compare prices, and book an appointment online in seconds.`,
+    },
+    {
+      q: `How much does an eye test cost in ${location.name}?`,
+      a: `Eye test prices in ${location.name} typically range from free (NHS-funded) to around £39 for a private examination. Many people qualify for free NHS eye tests, including those over 60, under 16, those on certain benefits, and people with specific medical conditions. Budget opticians such as ASDA offer private tests from £20, while premium independent opticians may charge up to £79 for enhanced examinations with OCT scanning.`,
+    },
+    {
+      q: `Can I get a free eye test in ${location.name}?`,
+      a: `Yes, free NHS-funded eye tests are available at most opticians in ${location.name}. You qualify if you are under 16 (or under 19 in full-time education), aged 60 or over, receiving certain means-tested benefits such as Universal Credit or Income Support, diagnosed with diabetes or glaucoma, or aged 40 or over with a close family member who has glaucoma. Use eyetest.co.uk to find NHS-registered opticians near ${location.postcode}.`,
+    },
+    {
+      q: `Which opticians in ${location.name} offer NHS eye tests?`,
+      a: `Most opticians in ${location.name} accept NHS patients, including Boots Opticians, ASDA Opticians, and many independent practices. You can filter for NHS availability when searching on eyetest.co.uk. All NHS-registered opticians must provide the same standard of clinical care, so the quality of your eye test will be consistent regardless of which practice you choose.`,
+    },
+    {
+      q: `How often should I have an eye test?`,
+      a: `The NHS and the College of Optometrists recommend an eye test every two years for most adults. However, you may need more frequent tests if you are over 70, have diabetes, have a family history of glaucoma or other eye conditions, wear contact lenses, or have been advised by your optometrist to return sooner. Children should have their eyes tested annually. Your optician in ${location.name} can advise on the right frequency for your individual circumstances.`,
+    },
+    {
+      q: `Can I book an eye test online in ${location.name}?`,
+      a: `Yes, eyetest.co.uk makes it easy to book eye tests online in ${location.name}. Simply enter your postcode or the postcode ${location.postcode}, compare available appointments from multiple opticians, and book your preferred slot instantly. You will receive a confirmation email with all the details you need, including the practice address and what to bring to your appointment.`,
+    },
+    {
+      q: `Do I need a referral for an eye test?`,
+      a: `No, you do not need a GP referral to have an eye test in the UK. You can book directly with any optician in ${location.name} through eyetest.co.uk or by contacting the practice. Eye tests are provided by qualified optometrists who are registered with the General Optical Council. If your optometrist finds anything that needs further investigation, they can refer you directly to a hospital eye specialist.`,
+    },
+    {
+      q: `What should I bring to my eye test?`,
+      a: `When attending your eye test in ${location.name}, bring your current glasses or contact lenses, any previous prescription you have, a list of medications you take, and your NHS exemption certificate or proof of benefits if you are claiming a free NHS test. If you wear contact lenses, you may be asked to remove them before certain tests, so bringing your glasses case is useful. Arrive a few minutes early to complete any registration paperwork.`,
+    },
+  ];
 
   // Structured data
   const jsonLd = {
@@ -122,40 +179,61 @@ export default async function CityPage({
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
+    mainEntity: faqItems.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
       {
-        "@type": "Question",
-        name: `Where can I get an eye test in ${location.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `You can compare and book eye tests from multiple opticians in ${location.name} through eyetest.co.uk. We list both NHS and private providers, including high-street chains and independent practices in the ${location.county} area.`,
-        },
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://eyetest.co.uk",
       },
       {
-        "@type": "Question",
-        name: `How much does an eye test cost in ${location.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Eye test prices in ${location.name} typically range from free (NHS-funded) to around £39 for a private examination. Many people qualify for free NHS eye tests, including those over 60, under 16, or on certain benefits. Use eyetest.co.uk to compare prices from different opticians in ${location.name}.`,
-        },
+        "@type": "ListItem",
+        position: 2,
+        name: "Locations",
+        item: "https://eyetest.co.uk/locations",
       },
       {
-        "@type": "Question",
-        name: `Can I get a same-day eye test in ${location.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Yes, many opticians in ${location.name} offer same-day or next-day appointments. Search on eyetest.co.uk with the postcode ${location.postcode} to see current availability across all local opticians.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Are NHS eye tests available in ${location.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Yes. Most opticians in ${location.name} offer NHS-funded eye tests for eligible patients. You can filter by NHS availability on eyetest.co.uk to find providers near ${location.postcode}.`,
-        },
+        "@type": "ListItem",
+        position: 3,
+        name: location.name,
+        item: `https://eyetest.co.uk/locations/${location.slug}`,
       },
     ],
+  };
+
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    name: `Eye Test Services in ${location.name}`,
+    description: `Compare and book eye tests from opticians in ${location.name}, ${location.county}. NHS and private eye tests available.`,
+    url: `https://eyetest.co.uk/locations/${location.slug}`,
+    areaServed: {
+      "@type": "City",
+      name: location.name,
+      containedInPlace: {
+        "@type": "AdministrativeArea",
+        name: location.county,
+      },
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: location.lat,
+      longitude: location.lng,
+    },
+    medicalSpecialty: "Optometry",
   };
 
   return (
@@ -170,6 +248,16 @@ export default async function CityPage({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd),
+          }}
         />
 
         {/* Hero */}
@@ -231,7 +319,98 @@ export default async function CityPage({
               </div>
         </PageHero>
 
-        {/* Available opticians */}
+        {/* ================================================================= */}
+        {/* SECTION 1: Rich Introduction */}
+        {/* ================================================================= */}
+        <section className="py-16 sm:py-20">
+          <div className="max-w-4xl mx-auto px-4">
+            <h2
+              className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-6"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Finding the right eye test in {location.name}, {location.county}
+            </h2>
+            <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
+              <p>
+                Whether you need a routine sight test, a specialist contact lens fitting, or an advanced OCT scan to check for conditions like glaucoma and macular degeneration, {location.name} offers a wide range of eye care services from both national chains and trusted independent practices. With {localOpticians.length} optician brands serving the {location.name} area, residents of {location.county} have plenty of choice when it comes to looking after their vision.
+              </p>
+              <p>
+                Eye care in {location.name} spans the full spectrum, from affordable NHS-funded sight tests available at no cost to eligible patients, through to premium private examinations that incorporate the latest diagnostic technology. Major high-street names such as Boots Opticians and ASDA Opticians operate alongside smaller, community-focused independent practices that many locals prefer for their longer appointment times and more personal service. Each offers a slightly different experience, and eyetest.co.uk is here to help you compare them all in one place.
+              </p>
+              <p>
+                Regular eye tests are one of the most important health checks available, yet millions of people across the UK skip them or leave it too long between appointments. An eye test does far more than check whether you need glasses. It can detect early signs of serious conditions including glaucoma, cataracts, macular degeneration, and diabetic retinopathy, as well as general health issues such as high blood pressure and diabetes. The College of Optometrists recommends that most adults have their eyes tested at least every two years, and more frequently if they are over 70, have diabetes, or have a family history of eye disease.
+              </p>
+              <p>
+                For residents of {location.name} and the surrounding {location.county} area, booking an eye test has never been easier. You can search by the postcode {location.postcode} on eyetest.co.uk to see every available optician near you, compare prices and services side by side, check real-time appointment availability, and book online in seconds. Whether you are looking for a quick, affordable check-up at a supermarket optician or a thorough, technology-led examination at a specialist independent practice, you will find the right option for your needs and budget right here.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ================================================================= */}
+        {/* SECTION 2: Eye Test Costs in [Location] */}
+        {/* ================================================================= */}
+        <section className="py-16 sm:py-20 bg-gray-50">
+          <div className="max-w-4xl mx-auto px-4">
+            <h2
+              className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-6"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Eye test costs in {location.name}
+            </h2>
+            <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
+              <p>
+                The cost of an eye test in {location.name} depends on the type of examination you choose and whether you qualify for a free NHS-funded test. Here is what you can expect to pay at opticians across {location.county}:
+              </p>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-[var(--color-nhs-blue)]/10 flex items-center justify-center text-[var(--color-nhs-blue)] mb-4">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold text-[var(--color-navy)] mb-2">NHS eye test</h3>
+                <p className="text-2xl font-bold text-[var(--color-success)] mb-2">Free</p>
+                <p className="text-sm text-gray-600">Available to eligible patients including under-16s, over-60s, those on qualifying benefits, and people with diabetes or glaucoma.</p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-4">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold text-[var(--color-navy)] mb-2">Private eye test</h3>
+                <p className="text-2xl font-bold text-[var(--color-navy)] mb-2">£20 &ndash; £39</p>
+                <p className="text-sm text-gray-600">Standard private examinations at high-street opticians. ASDA offers from £20, Boots from £25, and independents typically from £30&ndash;£39.</p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 mb-4">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold text-[var(--color-navy)] mb-2">Enhanced with OCT scan</h3>
+                <p className="text-2xl font-bold text-[var(--color-navy)] mb-2">£35 &ndash; £79</p>
+                <p className="text-sm text-gray-600">Advanced examinations including Optical Coherence Tomography for early detection of glaucoma, macular degeneration, and diabetic eye disease.</p>
+              </div>
+            </div>
+
+            <div className="mt-8 prose prose-lg max-w-none text-gray-600 space-y-4">
+              <p>
+                Many residents of {location.name} qualify for a free NHS-funded eye test without realising it. If you receive Universal Credit, Income Support, Pension Credit, or other qualifying benefits, your eye test is fully covered. The NHS also provides optical vouchers towards the cost of glasses for eligible patients, which can mean a basic pair is entirely free. Even if you do not qualify for NHS funding, comparing prices across opticians in {location.name} on eyetest.co.uk can save you money, as prices vary significantly between providers.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ================================================================= */}
+        {/* SECTION 3: Available Opticians Comparison */}
+        {/* ================================================================= */}
         <section className="py-16 sm:py-20">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
@@ -242,14 +421,13 @@ export default async function CityPage({
                 Opticians in {location.name}
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Compare these optician brands available in the {location.name}{" "}
-                area. Book directly through eyetest.co.uk.
+                Compare {localOpticians.length} optician brands available in the {location.name} area. View services, pricing, and NHS availability, then book directly through eyetest.co.uk.
               </p>
             </div>
 
             {/* Available brands */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {availableOpticians.map((optician) => (
+              {localAvailable.map((optician) => (
                 <Link
                   key={optician.slug}
                   href={`/opticians/${optician.slug}`}
@@ -272,6 +450,10 @@ export default async function CityPage({
                     </div>
                   </div>
 
+                  <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                    {optician.description.slice(0, 150)}...
+                  </p>
+
                   <div className="flex flex-wrap gap-2 mb-4">
                     <span className="inline-flex items-center gap-1 text-xs bg-[var(--color-success)]/10 text-[var(--color-success)] px-2.5 py-1 rounded-full font-medium">
                       <span className="w-1.5 h-1.5 bg-[var(--color-success)] rounded-full" />
@@ -287,7 +469,7 @@ export default async function CityPage({
                     </span>
                   </div>
 
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-1.5 mb-4">
                     {optician.highlights.slice(0, 2).map((highlight) => (
                       <li
                         key={highlight}
@@ -300,18 +482,27 @@ export default async function CityPage({
                       </li>
                     ))}
                   </ul>
+
+                  <div className="pt-4 border-t border-gray-100">
+                    <span className="text-sm font-medium text-[var(--color-primary)] group-hover:text-[var(--color-primary-dark)] transition-colors flex items-center gap-1">
+                      View details &amp; book
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
 
             {/* Coming soon brands */}
-            {unavailableOpticians.length > 0 && (
+            {localUnavailable.length > 0 && (
               <div>
                 <h3 className="text-lg font-semibold text-[var(--color-navy)] mb-4">
-                  Coming soon
+                  Coming soon to eyetest.co.uk
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {unavailableOpticians.map((optician) => (
+                  {localUnavailable.map((optician) => (
                     <div
                       key={optician.slug}
                       className="bg-gray-50 border border-gray-100 rounded-xl p-4 flex items-center gap-4"
@@ -338,7 +529,246 @@ export default async function CityPage({
           </div>
         </section>
 
+        {/* ================================================================= */}
+        {/* SECTION 4: What to Expect from an Eye Test */}
+        {/* ================================================================= */}
+        <section className="py-16 sm:py-20 bg-gray-50">
+          <div className="max-w-4xl mx-auto px-4">
+            <h2
+              className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-6"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              What to expect from an eye test in {location.name}
+            </h2>
+            <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
+              <p>
+                If it has been a while since your last eye test, or if this is your first visit to an optician in {location.name}, it helps to know what to expect. A standard eye test typically lasts between 20 and 30 minutes, though enhanced examinations with additional tests such as OCT scanning may take up to 45 minutes. Here is a step-by-step guide to what happens during a typical appointment:
+              </p>
+            </div>
+
+            <div className="mt-8 space-y-6">
+              {[
+                {
+                  step: "1",
+                  title: "Health and lifestyle discussion",
+                  desc: `Your optometrist will begin by asking about your general health, any medications you take, your family history of eye conditions, and any specific concerns you have about your vision. This helps them tailor the examination to your individual needs.`,
+                },
+                {
+                  step: "2",
+                  title: "Visual acuity test",
+                  desc: `You will be asked to read letters on a chart at a distance, typically using one eye at a time and then both together. This measures how clearly you can see and whether your current prescription (if you have one) is still accurate.`,
+                },
+                {
+                  step: "3",
+                  title: "Refraction test",
+                  desc: `Using a trial frame or automated refractor, your optometrist will determine your exact prescription by asking you to compare different lens options. This is the "which is clearer, one or two?" part of the test that most people are familiar with.`,
+                },
+                {
+                  step: "4",
+                  title: "Eye pressure check",
+                  desc: `A tonometry test measures the pressure inside your eyes, which is an important screening tool for glaucoma. This may involve a gentle puff of air or a small probe touching the surface of your eye (after numbing drops are applied).`,
+                },
+                {
+                  step: "5",
+                  title: "Internal and external eye examination",
+                  desc: `Your optometrist will examine the front of your eyes using a slit lamp microscope and the back of your eyes (retina, optic nerve, and blood vessels) using an ophthalmoscope or retinal camera. This checks for signs of disease and damage.`,
+                },
+                {
+                  step: "6",
+                  title: "Results and recommendations",
+                  desc: `At the end of the appointment, your optometrist will explain their findings, provide your prescription if you need glasses or contact lenses, and advise when you should have your next test. If they detect anything that needs further investigation, they can refer you directly to a specialist.`,
+                },
+              ].map((item) => (
+                <div
+                  key={item.step}
+                  className="flex gap-4 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
+                >
+                  <div className="w-10 h-10 rounded-full bg-[var(--color-primary)] flex items-center justify-center text-white font-bold text-sm shrink-0">
+                    {item.step}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[var(--color-navy)] mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-gray-600">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 prose prose-lg max-w-none text-gray-600 space-y-4">
+              <p>
+                Many opticians in {location.name} also offer advanced tests that go beyond the standard examination. OCT scanning, for example, uses light waves to create detailed 3D images of the retina and optic nerve, detecting conditions like glaucoma and macular degeneration years before symptoms appear. Visual field testing maps your peripheral vision to identify blind spots. These tests are typically available as optional add-ons, and your optometrist can advise whether they would be beneficial based on your age, health, and risk factors.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ================================================================= */}
+        {/* SECTION 5: NHS Eye Tests in [Location] */}
+        {/* ================================================================= */}
+        <section className="py-16 sm:py-20">
+          <div className="max-w-4xl mx-auto px-4">
+            <h2
+              className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-6"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              NHS eye tests in {location.name}
+            </h2>
+            <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
+              <p>
+                The NHS provides free eye tests to a wide range of people, and most opticians in {location.name} are registered to offer NHS-funded sight tests. If you are eligible, you pay nothing for your eye test and may also receive an NHS optical voucher to help with the cost of glasses or contact lenses. Understanding who qualifies and how the system works can save you money and ensure you are getting the eye care you are entitled to.
+              </p>
+
+              <h3 className="text-xl font-semibold text-[var(--color-navy)] mt-8 mb-4" style={{ fontFamily: "var(--font-display)" }}>
+                Who qualifies for a free NHS eye test?
+              </h3>
+              <p>You are entitled to a free NHS-funded sight test if you meet any of the following criteria:</p>
+            </div>
+
+            <ul className="mt-4 space-y-3">
+              {[
+                "You are under 16 years of age",
+                "You are under 19 and in full-time education",
+                "You are aged 60 or over",
+                "You have been diagnosed with diabetes or glaucoma",
+                "You are aged 40 or over and have a close relative (parent, sibling, or child) with glaucoma",
+                "You are registered blind or partially sighted",
+                "You receive Income Support, income-based Jobseeker's Allowance, Pension Credit Guarantee Credit, or Universal Credit (and meet the criteria)",
+                "You are named on a valid NHS tax credit exemption certificate (HC2) or entitled to partial help (HC3)",
+                "You are a prisoner on leave from prison",
+                "You have been prescribed complex lenses",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-[var(--color-nhs-blue)] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 prose prose-lg max-w-none text-gray-600 space-y-4">
+              <h3 className="text-xl font-semibold text-[var(--color-navy)] mt-8 mb-4" style={{ fontFamily: "var(--font-display)" }}>
+                How to book an NHS eye test in {location.name}
+              </h3>
+              <p>
+                Booking an NHS eye test in {location.name} is straightforward. Simply search on eyetest.co.uk using the postcode {location.postcode} and filter for opticians that accept NHS patients. When you book your appointment, let the practice know you would like an NHS-funded test, and bring your proof of eligibility (such as your benefits letter, HC2 certificate, or proof of age) with you on the day.
+              </p>
+
+              <h3 className="text-xl font-semibold text-[var(--color-navy)] mt-8 mb-4" style={{ fontFamily: "var(--font-display)" }}>
+                NHS optical vouchers
+              </h3>
+              <p>
+                If you are eligible for a free NHS eye test and you need glasses or contact lenses, you may also receive an NHS optical voucher. This voucher provides a fixed amount towards the cost of your eyewear, with the value depending on your prescription strength. For many people, particularly children and those with straightforward prescriptions, the voucher can cover the full cost of a basic pair of glasses. Your optician in {location.name} will apply the voucher automatically and let you know if there is any remaining balance to pay.
+              </p>
+
+              <h3 className="text-xl font-semibold text-[var(--color-navy)] mt-8 mb-4" style={{ fontFamily: "var(--font-display)" }}>
+                Which opticians in {location.name} accept NHS patients?
+              </h3>
+              <p>
+                The majority of opticians in {location.name} are registered to provide NHS-funded eye tests. This includes major chains such as Boots Opticians and ASDA Opticians, as well as most independent practices. When comparing opticians on eyetest.co.uk, look for the NHS badge to confirm that a practice accepts NHS patients. If you are unsure about your eligibility, any optician can check for you when you call to book.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ================================================================= */}
+        {/* SECTION 6: Types of Eye Tests Available */}
+        {/* ================================================================= */}
+        <section className="py-16 sm:py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2
+                className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Types of eye tests available in {location.name}
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Opticians across {location.county} offer a range of eye tests to suit different needs, ages, and health conditions. Here are the main types available:
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {popularEyeTests.map((test) => (
+                <Link
+                  key={test.slug}
+                  href={`/eye-tests/${test.slug}`}
+                  className="group bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
+                >
+                  <h3 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors mb-2">
+                    {test.name}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-3 line-clamp-3">
+                    {test.shortDescription}
+                  </p>
+                  <div className="flex items-center justify-between text-xs text-gray-500">
+                    <span>{test.duration}</span>
+                    <span className="font-medium text-[var(--color-primary)]">
+                      Learn more &rarr;
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-8 max-w-4xl mx-auto prose prose-lg text-gray-600 space-y-4">
+              <p>
+                Beyond these standard offerings, many opticians in {location.name} also provide specialist services such as{" "}
+                <Link href="/eye-tests/dry-eye-assessment" className="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)]">dry eye assessments</Link>,{" "}
+                <Link href="/eye-tests/myopia-management" className="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)]">myopia management for children</Link>, and{" "}
+                <Link href="/eye-tests/cataract-assessment" className="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)]">cataract assessments</Link>. If you are unsure which type of eye test is right for you, your optician can advise based on your age, medical history, and any symptoms you are experiencing.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ================================================================= */}
+        {/* SECTION 7: Eye Health in [Location] */}
+        {/* ================================================================= */}
+        <section className="py-16 sm:py-20">
+          <div className="max-w-4xl mx-auto px-4">
+            <h2
+              className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-6"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Eye health in {location.name}
+            </h2>
+            <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
+              <p>
+                Protecting your eye health starts with regular eye tests, but it is also important to be aware of common conditions that can affect your vision. Many eye conditions develop gradually without obvious symptoms, which is why routine screening is so valuable. Opticians in {location.name} are equipped to detect and manage a wide range of eye health issues, and can refer you to specialist hospital services when needed.
+              </p>
+              <p>
+                Some of the most common eye conditions seen by optometrists in the {location.county} area include age-related macular degeneration, glaucoma, cataracts, dry eye syndrome, and diabetic retinopathy. Early detection through regular eye tests is the best way to protect your sight, as many of these conditions can be treated or managed effectively if caught early enough.
+              </p>
+              <p>
+                If you experience any sudden changes in your vision, such as flashes of light, a sudden increase in floaters, loss of vision, or a painful red eye, you should seek urgent attention from your optician or visit A&amp;E. Many opticians in {location.name} participate in the NHS Minor Eye Conditions Service (MECS), which provides free urgent eye care for conditions that do not require a hospital visit.
+              </p>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {commonConditions.map((condition) => (
+                <Link
+                  key={condition.slug}
+                  href={`/eye-health/conditions/${condition.slug}`}
+                  className="group flex items-center gap-3 bg-white border border-gray-100 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
+                >
+                  <svg className="w-5 h-5 text-[var(--color-primary)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-sm font-medium text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors">
+                    {condition.name}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ================================================================= */}
         {/* Why book through eyetest.co.uk */}
+        {/* ================================================================= */}
         <section className="py-16 sm:py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
@@ -429,7 +859,9 @@ export default async function CityPage({
           </div>
         </section>
 
-        {/* FAQ */}
+        {/* ================================================================= */}
+        {/* SECTION 8: FAQ */}
+        {/* ================================================================= */}
         <section className="py-16 sm:py-20">
           <div className="max-w-3xl mx-auto px-4">
             <div className="text-center mb-12">
@@ -439,31 +871,13 @@ export default async function CityPage({
               >
                 Eye test FAQs for {location.name}
               </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Common questions about booking and attending eye tests in {location.name}, {location.county}.
+              </p>
             </div>
 
-            <div className="space-y-6">
-              {[
-                {
-                  q: `Where can I get an eye test in ${location.name}?`,
-                  a: `You can compare and book eye tests from multiple opticians in ${location.name} through eyetest.co.uk. We list both NHS and private providers, including high-street chains like Boots Opticians and ASDA, as well as independent practices in the ${location.county} area. Simply search with the postcode ${location.postcode} to see all available options.`,
-                },
-                {
-                  q: `How much does an eye test cost in ${location.name}?`,
-                  a: `Eye test prices in ${location.name} typically range from free (NHS-funded) to around £39 for a private examination. Many people qualify for free NHS eye tests, including those over 60, under 16, those on certain benefits, and people with specific medical conditions. Use eyetest.co.uk to compare prices from different opticians in your area.`,
-                },
-                {
-                  q: `Can I get a same-day eye test in ${location.name}?`,
-                  a: `Yes, many opticians in ${location.name} offer same-day or next-day appointments, especially during weekdays. Availability varies, so we recommend searching on eyetest.co.uk with the postcode ${location.postcode} to see real-time appointment slots across all local opticians.`,
-                },
-                {
-                  q: `Are NHS eye tests available in ${location.name}?`,
-                  a: `Yes, most opticians in ${location.name} offer NHS-funded eye tests for eligible patients. Eligibility includes being under 16 (or under 19 in full-time education), aged 60 or over, receiving certain benefits, being diagnosed with diabetes or glaucoma, or being at risk of glaucoma. You can filter for NHS availability on eyetest.co.uk.`,
-                },
-                {
-                  q: `How often should I have an eye test?`,
-                  a: `The NHS recommends an eye test every two years for most adults. However, you may need more frequent tests if you are over 70, have diabetes, have a family history of glaucoma, or wear contact lenses. Children should have annual eye tests. Your optician in ${location.name} can advise on the right frequency for you.`,
-                },
-              ].map((faq) => (
+            <div className="space-y-4">
+              {faqItems.map((faq) => (
                 <details
                   key={faq.q}
                   className="group bg-white border border-gray-100 rounded-2xl shadow-sm"
@@ -489,7 +903,9 @@ export default async function CityPage({
           </div>
         </section>
 
+        {/* ================================================================= */}
         {/* CTA */}
+        {/* ================================================================= */}
         <section className="py-16 sm:py-20 bg-[var(--color-navy)]">
           <div className="max-w-3xl mx-auto px-4 text-center">
             <h2
@@ -514,28 +930,33 @@ export default async function CityPage({
           </div>
         </section>
 
-        {/* Nearby locations */}
+        {/* ================================================================= */}
+        {/* SECTION 9: Nearby Locations (enhanced) */}
+        {/* ================================================================= */}
         <section className="py-16 sm:py-20">
           <div className="max-w-7xl mx-auto px-4">
             {/* Nearby areas */}
             {nearbyLocations.length > 0 && (
               <div className="mb-12">
                 <h2
-                  className="text-2xl font-bold text-[var(--color-navy)] mb-6"
+                  className="text-2xl font-bold text-[var(--color-navy)] mb-3"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   Nearby locations
                 </h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                <p className="text-gray-600 mb-6">
+                  Looking for eye tests outside {location.name}? Browse opticians in these nearby areas across {location.county} and the wider {location.region} region.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {nearbyLocations.map((loc) =>
                     loc ? (
                       <Link
                         key={loc.slug}
                         href={`/locations/${loc.slug}`}
-                        className="group flex items-center gap-3 bg-white border border-gray-100 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
+                        className="group flex items-start gap-4 bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
                       >
                         <svg
-                          className="w-5 h-5 text-[var(--color-primary)] shrink-0"
+                          className="w-5 h-5 text-[var(--color-primary)] shrink-0 mt-0.5"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -544,9 +965,14 @@ export default async function CityPage({
                           <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        <span className="text-sm font-medium text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors">
-                          {loc.name}
-                        </span>
+                        <div>
+                          <span className="text-sm font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors block mb-1">
+                            Eye tests in {loc.name}
+                          </span>
+                          <span className="text-xs text-gray-500">
+                            {loc.county} &middot; {loc.postcode}
+                          </span>
+                        </div>
                       </Link>
                     ) : null
                   )}
@@ -588,6 +1014,178 @@ export default async function CityPage({
                 </svg>
                 View all UK locations
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ================================================================= */}
+        {/* SECTION 10: Internal Links / Explore More */}
+        {/* ================================================================= */}
+        <section className="py-16 sm:py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2
+                className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Explore more on eyetest.co.uk
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Learn more about eye tests, opticians, and eye health across the UK.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Optician brands */}
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                <h3 className="font-semibold text-[var(--color-navy)] mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.15c0 .415.336.75.75.75z" />
+                  </svg>
+                  Optician brands
+                </h3>
+                <ul className="space-y-2">
+                  {localAvailable.slice(0, 5).map((optician) => (
+                    <li key={optician.slug}>
+                      <Link
+                        href={`/opticians/${optician.slug}`}
+                        className="text-sm text-gray-600 hover:text-[var(--color-primary)] transition-colors"
+                      >
+                        {optician.name}
+                      </Link>
+                    </li>
+                  ))}
+                  <li>
+                    <Link
+                      href="/opticians"
+                      className="text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
+                    >
+                      View all opticians &rarr;
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Eye test types */}
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                <h3 className="font-semibold text-[var(--color-navy)] mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  Eye test types
+                </h3>
+                <ul className="space-y-2">
+                  {popularEyeTests.slice(0, 5).map((test) => (
+                    <li key={test.slug}>
+                      <Link
+                        href={`/eye-tests/${test.slug}`}
+                        className="text-sm text-gray-600 hover:text-[var(--color-primary)] transition-colors"
+                      >
+                        {test.name}
+                      </Link>
+                    </li>
+                  ))}
+                  <li>
+                    <Link
+                      href="/eye-tests"
+                      className="text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
+                    >
+                      View all eye tests &rarr;
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Eye conditions */}
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                <h3 className="font-semibold text-[var(--color-navy)] mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                  </svg>
+                  Eye conditions
+                </h3>
+                <ul className="space-y-2">
+                  {commonConditions.slice(0, 5).map((condition) => (
+                    <li key={condition.slug}>
+                      <Link
+                        href={`/eye-health/conditions/${condition.slug}`}
+                        className="text-sm text-gray-600 hover:text-[var(--color-primary)] transition-colors"
+                      >
+                        {condition.name}
+                      </Link>
+                    </li>
+                  ))}
+                  <li>
+                    <Link
+                      href="/eye-health"
+                      className="text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
+                    >
+                      View all conditions &rarr;
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Helpful guides */}
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                <h3 className="font-semibold text-[var(--color-navy)] mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                  </svg>
+                  Helpful articles
+                </h3>
+                <ul className="space-y-2">
+                  <li>
+                    <Link
+                      href="/articles/how-often-should-you-have-an-eye-test"
+                      className="text-sm text-gray-600 hover:text-[var(--color-primary)] transition-colors"
+                    >
+                      How often should you have an eye test?
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/articles/what-happens-during-an-eye-test"
+                      className="text-sm text-gray-600 hover:text-[var(--color-primary)] transition-colors"
+                    >
+                      What happens during an eye test?
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/articles/nhs-vs-private-eye-tests"
+                      className="text-sm text-gray-600 hover:text-[var(--color-primary)] transition-colors"
+                    >
+                      NHS vs private eye tests
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/articles/signs-you-need-an-eye-test"
+                      className="text-sm text-gray-600 hover:text-[var(--color-primary)] transition-colors"
+                    >
+                      Signs you need an eye test
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/articles/childrens-eye-tests-parents-guide"
+                      className="text-sm text-gray-600 hover:text-[var(--color-primary)] transition-colors"
+                    >
+                      Children&apos;s eye tests: parent&apos;s guide
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/articles"
+                      className="text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
+                    >
+                      View all articles &rarr;
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>

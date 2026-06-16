@@ -136,6 +136,25 @@ export default function FindPage() {
     },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://eyetest.co.uk",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Find",
+        item: "https://eyetest.co.uk/find",
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
@@ -144,6 +163,10 @@ export default function FindPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
 
         {/* ── Hero ───────────────────────────────────────────────────── */}

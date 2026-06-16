@@ -103,6 +103,25 @@ export default function EyeHealthPage() {
     },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://eyetest.co.uk",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Eye Health",
+        item: "https://eyetest.co.uk/eye-health",
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
@@ -111,6 +130,10 @@ export default function EyeHealthPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
 
         {/* Hero */}
