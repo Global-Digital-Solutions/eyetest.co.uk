@@ -52,8 +52,8 @@ export async function generateMetadata({
   }
 
   const title = optician.available
-    ? `${optician.name} Eye Test ${loc.name} — Book Your Eye Test | eyetest.co.uk`
-    : `${optician.shortName} Eye Test ${loc.name} — Alternatives & Availability | eyetest.co.uk`;
+    ? `${optician.name} ${loc.name} — Book Your Eye Test | eyetest.co.uk`
+    : `${optician.name} ${loc.name} — Alternatives & Availability | eyetest.co.uk`;
 
   const description = optician.available
     ? `Book a ${optician.shortName} eye test in ${loc.name}. ${optician.priceRange}. NHS tests available. Compare availability and book online through eyetest.co.uk.`
@@ -356,7 +356,7 @@ export default async function BrandLocationPage({
               </div>
 
               <h1 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-                {optician.shortName} Eye Test in{" "}
+                {optician.name}{" "}
                 <span className="text-[var(--color-primary-light)]">
                   {loc.name}
                 </span>

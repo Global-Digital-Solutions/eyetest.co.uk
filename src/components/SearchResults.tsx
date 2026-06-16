@@ -363,6 +363,176 @@ function SkeletonCard() {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Enhanced search progress panel                                     */
+/* ------------------------------------------------------------------ */
+
+const CHAIN_INFO: Record<string, { name: string; color: string }> = {
+  "Boots Opticians": { name: "Boots Opticians", color: "#0460a9" },
+  "ASDA Opticians": { name: "ASDA Opticians", color: "#78b83e" },
+  "Vision Express": { name: "Vision Express", color: "#7b2d8e" },
+};
+
+function SearchProgressPanel({
+  postcode,
+  activeProviders,
+  loadingProviders,
+  resultsCount,
+}: {
+  postcode: string;
+  activeProviders: string[];
+  loadingProviders: string[];
+  resultsCount: number;
+}) {
+  const chains = activeProviders.filter((p) => !p.endsWith(".mysight.uk"));
+  const independents = activeProviders.filter((p) => p.endsWith(".mysight.uk"));
+  const totalProviders = activeProviders.length;
+  const completedCount = totalProviders - loadingProviders.length;
+  const progress =
+    totalProviders > 0 ? (completedCount / totalProviders) * 100 : 0;
+
+  return (
+    <div className="mb-6 rounded-2xl bg-gradient-to-br from-[var(--color-navy)] to-[#1a2d5a] p-5 sm:p-7 text-white overflow-hidden relative">
+      {/* Background decoration */}
+      <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/5 rounded-full blur-3xl" />
+      <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[var(--color-primary)]/10 rounded-full blur-2xl" />
+
+      <div className="relative">
+        {/* Headline */}
+        <div className="flex items-start gap-3 sm:gap-4 mb-4">
+          <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
+            <svg
+              className="w-5 h-5 text-[var(--color-primary-light)] animate-pulse"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+          <div>
+            <h3
+              className="text-base sm:text-lg font-bold mb-0.5"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Relax &mdash; we&apos;re doing the hard work
+            </h3>
+            <p className="text-sm text-white/60">
+              Searching{" "}
+              <strong className="text-white">{totalProviders} opticians</strong>{" "}
+              near{" "}
+              <strong className="text-[var(--color-primary-light)]">
+                {postcode}
+              </strong>{" "}
+              so you don&apos;t have to
+            </p>
+          </div>
+        </div>
+
+        {/* Progress bar */}
+        <div className="mb-5">
+          <div className="flex items-center justify-between text-[11px] text-white/40 mb-1.5">
+            <span>
+              {completedCount} of {totalProviders} checked
+            </span>
+            {resultsCount > 0 && (
+              <span className="text-[var(--color-success)]">
+                {resultsCount} found so far
+              </span>
+            )}
+          </div>
+          <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)] rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${Math.max(progress, 3)}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Provider badges */}
+        <div className="flex flex-wrap gap-2">
+          {/* Major chains */}
+          {chains.map((provider) => {
+            const info = CHAIN_INFO[provider];
+            const done = !loadingProviders.includes(provider);
+            return (
+              <div
+                key={provider}
+                className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-300 ${
+                  done
+                    ? "bg-[var(--color-success)]/20 text-[var(--color-success)]"
+                    : "bg-white/10 text-white/80"
+                }`}
+              >
+                {done ? (
+                  <svg
+                    className="w-3.5 h-3.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                ) : (
+                  <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-current" />
+                )}
+                {info?.name ?? provider}
+              </div>
+            );
+          })}
+
+          {/* Independent opticians — grouped as one badge */}
+          {independents.length > 0 && (
+            <div
+              className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-300 ${
+                independents.every((p) => !loadingProviders.includes(p))
+                  ? "bg-[var(--color-success)]/20 text-[var(--color-success)]"
+                  : "bg-[var(--color-primary)]/20 text-[var(--color-primary-light)]"
+              }`}
+            >
+              {independents.every((p) => !loadingProviders.includes(p)) ? (
+                <svg
+                  className="w-3.5 h-3.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              ) : (
+                <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-current" />
+              )}
+              {independents.length} Local Independent Opticians
+            </div>
+          )}
+        </div>
+
+        {/* Value proposition */}
+        <p className="mt-4 text-[11px] text-white/30 leading-relaxed">
+          The average person spends up to 2 hours arranging an eye test. We
+          check real-time availability across every major chain and your local
+          independents in seconds.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Stream state                                                       */
 /* ------------------------------------------------------------------ */
 
@@ -664,23 +834,52 @@ export function SearchResults({ postcode }: { postcode: string }) {
             </button>
           </div>
 
-          {/* Loading provider pills */}
-          {stillLoading && stream.loadingProviders.length > 0 && (
-            <div className="mb-4 flex flex-wrap gap-2">
-              {stream.loadingProviders.slice(0, 4).map((p) => (
-                <span
-                  key={p}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-2.5 py-1 text-xs text-gray-500"
+          {/* Enhanced search progress panel — visible while searching */}
+          {stillLoading && stream.activeProviders.length > 0 && (
+            <SearchProgressPanel
+              postcode={stream.postcode ?? postcode}
+              activeProviders={stream.activeProviders}
+              loadingProviders={stream.loadingProviders}
+              resultsCount={results.length}
+            />
+          )}
+
+          {/* Compact completed trust banner — shows after search finishes */}
+          {!stillLoading && stream.done && results.length > 0 && (
+            <div className="mb-4 flex items-center gap-3 flex-wrap rounded-xl bg-[var(--color-navy)]/5 border border-[var(--color-navy)]/10 px-4 py-3">
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--color-navy)]">
+                <svg
+                  className="w-4 h-4 text-[var(--color-success)]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
                 >
-                  <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--color-primary)]" />
-                  {displayProviderName(p)}
-                </span>
-              ))}
-              {stream.loadingProviders.length > 4 && (
-                <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-1 text-xs text-gray-400">
-                  +{stream.loadingProviders.length - 4} more
-                </span>
-              )}
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                We searched {stream.activeProviders.length} opticians for you
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {stream.activeProviders
+                  .filter((p) => !p.endsWith(".mysight.uk"))
+                  .map((p) => (
+                    <span
+                      key={p}
+                      className="inline-block rounded-full bg-white px-2 py-0.5 text-[10px] font-medium text-gray-600 border border-gray-200"
+                    >
+                      {p}
+                    </span>
+                  ))}
+                {stream.activeProviders.filter((p) => p.endsWith(".mysight.uk")).length > 0 && (
+                  <span className="inline-block rounded-full bg-white px-2 py-0.5 text-[10px] font-medium text-[var(--color-primary)] border border-[var(--color-primary)]/20">
+                    + {stream.activeProviders.filter((p) => p.endsWith(".mysight.uk")).length} local independents
+                  </span>
+                )}
+              </div>
             </div>
           )}
 
@@ -769,9 +968,9 @@ export function SearchResults({ postcode }: { postcode: string }) {
 
               {/* Still loading indicator */}
               {stillLoading && results.length > 0 && (
-                <div className="flex items-center justify-center py-4 text-sm text-gray-400">
+                <div className="flex items-center justify-center py-4 gap-2 text-sm text-gray-400">
                   <svg
-                    className="animate-spin h-4 w-4 mr-2 text-[var(--color-primary)]"
+                    className="animate-spin h-4 w-4 text-[var(--color-primary)]"
                     fill="none"
                     viewBox="0 0 24 24"
                   >
@@ -789,7 +988,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     />
                   </svg>
-                  Checking more providers...
+                  Still searching &mdash; {stream.loadingProviders.length} more optician{stream.loadingProviders.length !== 1 ? "s" : ""} to check
                 </div>
               )}
 
@@ -907,27 +1106,37 @@ export function SearchResults({ postcode }: { postcode: string }) {
 
       {/* Initial loading state (before stream starts) */}
       {searching && !stream && (
-        <div className="flex items-center justify-center py-16 text-gray-400">
-          <svg
-            className="animate-spin h-6 w-6 mr-3 text-[var(--color-primary)]"
-            fill="none"
-            viewBox="0 0 24 24"
+        <div className="flex flex-col items-center justify-center py-16 gap-3">
+          <div className="w-14 h-14 rounded-2xl bg-[var(--color-primary)]/10 flex items-center justify-center">
+            <svg
+              className="animate-spin h-6 w-6 text-[var(--color-primary)]"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              />
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              />
+            </svg>
+          </div>
+          <p
+            className="text-base font-semibold text-[var(--color-navy)]"
+            style={{ fontFamily: "var(--font-display)" }}
           >
-            <circle
-              className="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth="4"
-            />
-            <path
-              className="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-            />
-          </svg>
-          Searching...
+            Finding opticians near you&hellip;
+          </p>
+          <p className="text-sm text-gray-400">
+            Hang tight &mdash; we&apos;re about to save you hours of searching
+          </p>
         </div>
       )}
     </div>

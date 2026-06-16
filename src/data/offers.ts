@@ -1,0 +1,592 @@
+/**
+ * Optician offers data — scraped and verified June 2026.
+ * Refresh schedule: fortnightly via Apify scraper.
+ */
+
+export interface Offer {
+  title: string;
+  description: string;
+  /** Short label shown in the badge, e.g. "2 for 1", "Free", "Save 25%" */
+  badge?: string;
+  /** Category for filtering */
+  category: "glasses" | "eye-test" | "contact-lenses" | "sunglasses" | "membership" | "nhs" | "discount";
+  /** Optional expiry date (YYYY-MM-DD). Omit for ongoing offers */
+  expires?: string;
+  /** Terms / fine print */
+  terms?: string;
+}
+
+export interface ProviderOffers {
+  slug: string;
+  name: string;
+  /** Short tagline for the provider */
+  tagline: string;
+  /** Brand primary colour (hex) */
+  color: string;
+  /** URL to provider website */
+  website: string;
+  /** Private eye test price */
+  eyeTestPrice: string;
+  /** Whether NHS eye tests are available */
+  nhsFree: boolean;
+  offers: Offer[];
+  /** Last verified date */
+  lastVerified: string;
+}
+
+export const providerOffers: ProviderOffers[] = [
+  {
+    slug: "specsavers",
+    name: "Specsavers",
+    tagline: "Should've gone to Specsavers",
+    color: "#1b5e20",
+    website: "https://www.specsavers.co.uk/offers",
+    eyeTestPrice: "£25",
+    nhsFree: true,
+    lastVerified: "2026-06-16",
+    offers: [
+      {
+        title: "2 for 1 Glasses from £70",
+        description:
+          "Buy any pair from the £70 range or above and get a second pair of single-vision glasses completely free. Same prescription required for both pairs.",
+        badge: "2 for 1",
+        category: "glasses",
+        terms: "Second pair from the same price range or below. Single vision lenses only on free pair.",
+      },
+      {
+        title: "2 for 1 Designer Glasses",
+        description:
+          "Choose two pairs from the £100–£170 designer ranges and pay for just one pair. Brands include Hugo Boss, Tommy Hilfiger, and more.",
+        badge: "2 for 1",
+        category: "glasses",
+      },
+      {
+        title: "Free Varifocal Lenses",
+        description:
+          "Buy any glasses from the £70 range or above and get standard varifocal lenses fitted free of charge.",
+        badge: "Free",
+        category: "glasses",
+      },
+      {
+        title: "£40 Off Lenses",
+        description:
+          "Save £40 on lens upgrades including thin & light, anti-reflection, and reactions lenses when buying glasses from the £70 range or above.",
+        badge: "Save £40",
+        category: "glasses",
+      },
+      {
+        title: "Complete Glasses from £15",
+        description:
+          "Budget-friendly complete glasses starting from just £15, including frames and single-vision lenses.",
+        badge: "From £15",
+        category: "glasses",
+      },
+      {
+        title: "Eye Test from £25",
+        description:
+          "Private eye test from £25 without OCT, or £30–£35 with an OCT scan. Free for NHS-eligible patients. Free for all residents in Scotland.",
+        badge: "From £25",
+        category: "eye-test",
+      },
+      {
+        title: "20% Off for Over 60s",
+        description:
+          "If you're 60 or over, enjoy 20% off a single pair of glasses from the £70 range or above. Plus free NHS eye test.",
+        badge: "20% off",
+        category: "discount",
+      },
+      {
+        title: "25% Off Student Discount",
+        description:
+          "Students get 25% off any pair of glasses from the £70 range and above with a valid student ID.",
+        badge: "25% off",
+        category: "discount",
+      },
+      {
+        title: "Free Contact Lens Trial",
+        description:
+          "Try before you buy with a free contact lens trial — 1 pair monthly or 5 pairs daily disposable lenses included at no cost.",
+        badge: "Free trial",
+        category: "contact-lenses",
+      },
+      {
+        title: "50% Off Contact Lenses for 3 Months",
+        description:
+          "New easycare subscribers get 50% off easyvision contact lenses for the first three months.",
+        badge: "50% off",
+        category: "contact-lenses",
+      },
+      {
+        title: "2 for 1 Glasses & Sunglasses",
+        description:
+          "Buy from the £70–£170 range and get a free pair of prescription sunglasses as your second pair.",
+        badge: "2 for 1",
+        category: "sunglasses",
+      },
+    ],
+  },
+  {
+    slug: "boots-opticians",
+    name: "Boots Opticians",
+    tagline: "See what you've been missing",
+    color: "#0d6efd",
+    website: "https://www.bootsopticians.com/offers/",
+    eyeTestPrice: "From £29.95",
+    nhsFree: true,
+    lastVerified: "2026-06-16",
+    offers: [
+      {
+        title: "Eye Test from £10 (Limited Offer)",
+        description:
+          "Essential Eye Test currently discounted by £19.95, bringing the price down to approximately £10. Includes a Dry Eye Evaluation.",
+        badge: "From £10",
+        category: "eye-test",
+        terms: "Promotional price. Standard price £29.95.",
+      },
+      {
+        title: "2nd Pair Half Price",
+        description:
+          "Choose any complete prescription pair and get additional pairs at half price. The cheapest pair is discounted. All pairs must be for the same customer within 3 months.",
+        badge: "50% off",
+        category: "glasses",
+      },
+      {
+        title: "2 for £75 Glasses",
+        description:
+          "Pick two complete pairs from the £50 range, including essential single-vision lenses, for just £75 total.",
+        badge: "2 for £75",
+        category: "glasses",
+      },
+      {
+        title: "Buy One, Get One Boots Pair Free",
+        description:
+          "Spend £150 or more on prescription glasses or sunglasses and receive a free Boots brand pair.",
+        badge: "Free pair",
+        category: "glasses",
+        terms: "Free pair from Boots own-brand range only.",
+      },
+      {
+        title: "25% Off Designer Sunglasses",
+        description:
+          "Summer sale — 25% off designer sunglasses. Brands include Ray-Ban, Oakley, and Prada. Maximum 3 pairs per customer.",
+        badge: "25% off",
+        category: "sunglasses",
+        expires: "2026-07-14",
+        terms: "Valid 22 April – 14 July 2026. Excludes Boots brand and Victoria Beckham.",
+      },
+      {
+        title: "10% Off for Over 60s",
+        description:
+          "Over 60? Get 10% off your first pair of glasses or prescription sunglasses, plus a free NHS eye test.",
+        badge: "10% off",
+        category: "discount",
+      },
+      {
+        title: "10% Student Discount",
+        description:
+          "Students save 10% on glasses, prescription sunglasses, or contact lenses with a valid student ID. Plus 3 months free on the Contact Lens Rewards Plan.",
+        badge: "10% off",
+        category: "discount",
+      },
+      {
+        title: "Free Contact Lens Trial",
+        description:
+          "Free contact lens assessment and trial — up to 5 pairs of daily disposables or 1 month of selected reusable lenses.",
+        badge: "Free trial",
+        category: "contact-lenses",
+      },
+      {
+        title: "Contact Lens Rewards Plan",
+        description:
+          "Subscribe via direct debit and get 50% off glasses and sunglasses, 10% off Boots own-brand products, and inclusive eye tests and contact lens checks with home delivery.",
+        badge: "Save 50%",
+        category: "membership",
+      },
+    ],
+  },
+  {
+    slug: "vision-express",
+    name: "Vision Express",
+    tagline: "Your vision. Our passion.",
+    color: "#7c3aed",
+    website: "https://www.visionexpress.com/offers",
+    eyeTestPrice: "£30",
+    nhsFree: true,
+    lastVerified: "2026-06-16",
+    offers: [
+      {
+        title: "50% Off 2nd Pair",
+        description:
+          "Buy 2 pairs of eyewear and get 50% off the cheapest pair. Applies to prescription glasses and sunglasses.",
+        badge: "50% off",
+        category: "glasses",
+      },
+      {
+        title: "20% Off for NHS & Key Workers",
+        description:
+          "NHS staff and key workers get 20% off prescription glasses, sunglasses, and contact lenses.",
+        badge: "20% off",
+        category: "discount",
+      },
+      {
+        title: "20% Off with Blue Light Card",
+        description:
+          "Blue Light Card holders enjoy 20% off across glasses, sunglasses, and contact lenses.",
+        badge: "20% off",
+        category: "discount",
+      },
+      {
+        title: "20% Student Discount",
+        description:
+          "Students get 20% off prescription glasses, sunglasses, or contact lenses in store with a valid student ID.",
+        badge: "20% off",
+        category: "discount",
+      },
+      {
+        title: "15% Off Contact Lenses Online",
+        description:
+          "Order contact lenses online and save 15%. Free contact lens assessment and trial also available in store.",
+        badge: "15% off",
+        category: "contact-lenses",
+      },
+      {
+        title: "20% Off Sunglasses Online",
+        description:
+          "Save 20% on selected sunglasses online with code SUN20. Minimum spend £130 on full-priced qualifying sunglasses.",
+        badge: "20% off",
+        category: "sunglasses",
+        terms: "Use code SUN20. Min spend £130 on qualifying sunglasses.",
+      },
+      {
+        title: "£10 Off When You Sign Up",
+        description:
+          "Sign up for Vision Express emails and receive £10 off your next order of £100 or more.",
+        badge: "Save £10",
+        category: "discount",
+      },
+      {
+        title: "Free Lifetime Servicing",
+        description:
+          "All glasses come with free lifetime servicing — adjustments, tightening, and cleaning at any Vision Express store.",
+        badge: "Free",
+        category: "glasses",
+      },
+    ],
+  },
+  {
+    slug: "asda-opticians",
+    name: "ASDA Opticians",
+    tagline: "Save money. See better.",
+    color: "#16a34a",
+    website: "https://opticians.asda.com/our-complete-price-on-glasses",
+    eyeTestPrice: "£24",
+    nhsFree: true,
+    lastVerified: "2026-06-16",
+    offers: [
+      {
+        title: "Eye Test for Just £24",
+        description:
+          "One of the cheapest private eye tests on the high street at just £24. Free under NHS for eligible groups.",
+        badge: "£24",
+        category: "eye-test",
+      },
+      {
+        title: "Complete Price Glasses — No Hidden Extras",
+        description:
+          "ASDA's complete price includes frames, lenses, anti-reflective coating, scratch-resistant coating, thinner lenses if needed, tints, and varifocals. Lifestyle glasses from £15 single vision.",
+        badge: "From £15",
+        category: "glasses",
+      },
+      {
+        title: "Designer Glasses from £80",
+        description:
+          "Designer frames at £80 each, or buy 2 pairs and save £40. Premium designer from £100, luxury from £130 — all with the same complete price promise.",
+        badge: "Save £40",
+        category: "glasses",
+        terms: "Buy 2 pairs and save £40. Same range or above.",
+      },
+      {
+        title: "Free Children's Glasses",
+        description:
+          "Selected children's frames completely free with an NHS voucher. All children's eye tests are free under NHS.",
+        badge: "Free",
+        category: "nhs",
+      },
+      {
+        title: "Free Contact Lens Delivery",
+        description:
+          "Free delivery to mainland UK on all contact lens orders, plus 1 free aftercare appointment within 12 months of purchase.",
+        badge: "Free delivery",
+        category: "contact-lenses",
+      },
+    ],
+  },
+  {
+    slug: "leightons",
+    name: "Leightons",
+    tagline: "Expert eye and hearing care since 1928",
+    color: "#1e3a5f",
+    website: "https://www.leightons.co.uk/offers",
+    eyeTestPrice: "Varies by tier",
+    nhsFree: true,
+    lastVerified: "2026-06-16",
+    offers: [
+      {
+        title: "MyLeightons Care Plan — £14/month",
+        description:
+          "Comprehensive membership including advanced eye examinations, exclusive discounts on glasses, sunglasses, contact lenses and hearing aids, plus free consultations. Family plan available at £24/month.",
+        badge: "£14/mo",
+        category: "membership",
+      },
+      {
+        title: "Interest-Free Payment Plans",
+        description:
+          "Spread the cost of your glasses over 10 months with no interest. See Now, Pay Later — making premium eyewear affordable.",
+        badge: "0% finance",
+        category: "glasses",
+      },
+      {
+        title: "Free Contact Lens Comfort Trial",
+        description:
+          "Try contact lenses before committing with a free comfort trial at any Leightons branch.",
+        badge: "Free trial",
+        category: "contact-lenses",
+      },
+      {
+        title: "£10 Off Your First Purchase",
+        description:
+          "Join the Leightons mailing list and receive £10 off your first purchase in store.",
+        badge: "Save £10",
+        category: "discount",
+      },
+      {
+        title: "Refer a Friend Rewards",
+        description:
+          "Recommend Leightons to a friend and both of you receive rewards. Ask in store for details.",
+        badge: "Reward",
+        category: "discount",
+      },
+    ],
+  },
+  {
+    slug: "scrivens",
+    name: "Scrivens",
+    tagline: "Caring for your eyes and ears since 1938",
+    color: "#b91c1c",
+    website: "https://scrivens.com/our-offers/",
+    eyeTestPrice: "Contact store",
+    nhsFree: true,
+    lastVerified: "2026-06-16",
+    offers: [
+      {
+        title: "2nd Pair Half Price",
+        description:
+          "Get your second pair of glasses at half price, including prescription sunglasses. Choose from an extensive range including designer frames.",
+        badge: "50% off",
+        category: "glasses",
+      },
+      {
+        title: "Kids' 2nd Pair for £15",
+        description:
+          "Children's second pair of glasses for just £15, plus discounts on designer frames and half-price anti-reflective coating for kids.",
+        badge: "£15",
+        category: "glasses",
+      },
+      {
+        title: "Complete Prescription Sunglasses from £95",
+        description:
+          "Prescription sunglasses starting from £95 — complete with lenses, coatings, and UV protection.",
+        badge: "From £95",
+        category: "sunglasses",
+      },
+      {
+        title: "15% Student Discount",
+        description:
+          "Students save 15% off optical products and services with a valid student ID. Under 16s also get 15% off contact lenses.",
+        badge: "15% off",
+        category: "discount",
+      },
+      {
+        title: "Free Varifocals with NHS Voucher",
+        description:
+          "NHS voucher customers can get free varifocal lenses — saving significantly on progressive lenses.",
+        badge: "Free",
+        category: "nhs",
+      },
+      {
+        title: "Free Contact Lens Trial",
+        description:
+          "Book a free contact lens demonstration and trial to see if contact lenses are right for you.",
+        badge: "Free trial",
+        category: "contact-lenses",
+      },
+    ],
+  },
+  {
+    slug: "duncan-and-todd",
+    name: "Duncan & Todd",
+    tagline: "Scotland's leading independent opticians",
+    color: "#0369a1",
+    website: "https://www.duncanandtoddgroup.com/duncan-and-todd",
+    eyeTestPrice: "Free in Scotland",
+    nhsFree: true,
+    lastVerified: "2026-06-16",
+    offers: [
+      {
+        title: "Free Eye Tests for Everyone in Scotland",
+        description:
+          "All residents in Scotland are entitled to a free NHS-funded eye test — no eligibility criteria required.",
+        badge: "Free",
+        category: "eye-test",
+      },
+      {
+        title: "2 for 1 on Glasses",
+        description:
+          "Second pair from the Duncan & Todd collection free, or 50% off designer frames. Second pair lenses up to the same value as your first.",
+        badge: "2 for 1",
+        category: "glasses",
+        terms: "Available at Duncan & Todd branded branches only. Second pair within 60 days.",
+      },
+      {
+        title: "2 for 1 on Sunglasses",
+        description:
+          "Second pair from the Duncan & Todd Spectrum collection free, or upgrade to designer sunglasses from £69.",
+        badge: "2 for 1",
+        category: "sunglasses",
+      },
+      {
+        title: "£99 Complete Prescription Sunglasses",
+        description:
+          "Prescription sunglasses from £99 complete, including Caledonian lenses and UV protection. Designer brands like Radley and Guess also available.",
+        badge: "£99",
+        category: "sunglasses",
+      },
+      {
+        title: "Red Spec Sale — 50% Off Selected Frames",
+        description:
+          "Half price on selected frames in the Red Spec Sale. Available in store while stocks last.",
+        badge: "50% off",
+        category: "glasses",
+      },
+    ],
+  },
+  {
+    slug: "bayfields",
+    name: "Bayfields",
+    tagline: "Your local experts in eye and hearing care",
+    color: "#0d9488",
+    website: "https://www.bayfieldsopticians.com/offers/",
+    eyeTestPrice: "Included in membership",
+    nhsFree: true,
+    lastVerified: "2026-06-16",
+    offers: [
+      {
+        title: "50% Off All Extra Pairs",
+        description:
+          "Buy one pair of glasses and get all additional pairs at half price — whether it's a spare pair, reading glasses, or prescription sunglasses.",
+        badge: "50% off",
+        category: "glasses",
+        expires: "2026-07-31",
+      },
+      {
+        title: "Prescription Sunglasses from £129",
+        description:
+          "Complete prescription sunglasses from just £129 for single-vision lenses. Full range of tints and coatings included.",
+        badge: "From £129",
+        category: "sunglasses",
+      },
+      {
+        title: "Connect Membership — £12/month",
+        description:
+          "Includes free eye exams, free earwax removals, free hearing checks, 20% off glasses and sunglasses, plus exclusive product discounts.",
+        badge: "£12/mo",
+        category: "membership",
+      },
+      {
+        title: "Refer a Friend — £50 Amazon Voucher",
+        description:
+          "Introduce someone to Bayfields and receive a £50 Amazon voucher as a thank you.",
+        badge: "£50 reward",
+        category: "discount",
+      },
+      {
+        title: "60-Day Money-Back Guarantee",
+        description:
+          "Not satisfied? Return your eyewear within 60 days for a full refund — no questions asked.",
+        badge: "60 days",
+        category: "glasses",
+      },
+    ],
+  },
+  {
+    slug: "rawlings",
+    name: "Rawlings",
+    tagline: "Independent opticians with a personal touch",
+    color: "#4338ca",
+    website: "https://rawlingsopticians.co.uk/promotions.php",
+    eyeTestPrice: "From £49",
+    nhsFree: true,
+    lastVerified: "2026-06-16",
+    offers: [
+      {
+        title: "Free WorkStyle Lenses with Premium Varifocals",
+        description:
+          "Purchase from the premium varifocal range and receive a free pair of WorkStyle lenses — optimised for screen use and office work.",
+        badge: "Free lenses",
+        category: "glasses",
+      },
+      {
+        title: "Rawlings Vision Plan — from £12/month",
+        description:
+          "Monthly membership includes eye examinations, 25% off frames, up to 40% off lenses, and OCT scans on the Plus plan. Contact lens and myopia management add-ons available.",
+        badge: "From £12/mo",
+        category: "membership",
+      },
+      {
+        title: "Price Match Guarantee",
+        description:
+          "Found the same glasses cheaper elsewhere? Rawlings will match the price — ensuring you always get the best deal.",
+        badge: "Price match",
+        category: "glasses",
+      },
+      {
+        title: "Free Lifetime Servicing",
+        description:
+          "Unlimited returns for adjustments, cleaning, and straightening of your glasses — for as long as you own them.",
+        badge: "Free",
+        category: "glasses",
+      },
+      {
+        title: "2-Year Warranty on All Glasses",
+        description:
+          "All glasses purchased from Rawlings come with a comprehensive 2-year warranty for peace of mind.",
+        badge: "2 years",
+        category: "glasses",
+      },
+      {
+        title: "Recommend a Friend — £10 Voucher",
+        description:
+          "Refer a friend to Rawlings and receive a £10 voucher to spend in store.",
+        badge: "£10 reward",
+        category: "discount",
+      },
+    ],
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Category helpers
+// ---------------------------------------------------------------------------
+
+export const OFFER_CATEGORIES = [
+  { key: "all", label: "All Offers" },
+  { key: "glasses", label: "Glasses" },
+  { key: "eye-test", label: "Eye Tests" },
+  { key: "contact-lenses", label: "Contact Lenses" },
+  { key: "sunglasses", label: "Sunglasses" },
+  { key: "discount", label: "Discounts" },
+  { key: "membership", label: "Memberships" },
+  { key: "nhs", label: "NHS" },
+] as const;
+
+export type OfferCategoryKey = (typeof OFFER_CATEGORIES)[number]["key"];
