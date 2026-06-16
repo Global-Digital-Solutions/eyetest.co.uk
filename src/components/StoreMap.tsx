@@ -113,9 +113,8 @@ export default function StoreMap({ stores, center }: Props) {
           longitude={popup.lng!}
           onClose={() => setPopup(null)}
           closeOnClick={false}
-          anchor="bottom"
-          offset={16}
-          maxWidth="240px"
+          offset={20}
+          maxWidth="220px"
         >
           <div style={{ padding: "6px 4px", fontFamily: "inherit" }}>
             {popup.featured && (
