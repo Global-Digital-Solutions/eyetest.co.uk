@@ -184,3 +184,13 @@ export function getTopLocations(count: number = 20): UKLocation[] {
 export function getAllSlugs(): string[] {
   return locations.map((l) => l.slug);
 }
+
+/** Return "Name, County" but suppress the county when it matches the city name */
+export function nameWithCounty(loc: UKLocation): string {
+  return loc.name === loc.county ? loc.name : `${loc.name}, ${loc.county}`;
+}
+
+/** Return "the County area" but avoid "the Cardiff area" when county = name — use "the wider area" instead */
+export function countyArea(loc: UKLocation): string {
+  return loc.name === loc.county ? "the wider" : `the ${loc.county}`;
+}

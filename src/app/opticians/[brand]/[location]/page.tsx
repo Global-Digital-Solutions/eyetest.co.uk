@@ -15,6 +15,8 @@ import {
   locations,
   getLocationBySlug,
   getAllSlugs as getAllLocationSlugs,
+  nameWithCounty,
+  countyArea,
   type UKLocation,
 } from "@/data/locations";
 import { eyeTests } from "@/data/eye-tests";
@@ -615,13 +617,13 @@ function AvailableBrandContent({
               {optician.description}
             </p>
             <p className="text-gray-600 leading-relaxed text-base mb-4">
-              {optician.name} in {location.name}, {location.county} is one of {optician.storeCount.toLocaleString()} {optician.shortName} branches across the United Kingdom. Whether you need a routine NHS sight test, a private eye examination, or a more advanced health screening such as an OCT scan, {optician.shortName} in {location.name} can help you keep your vision clear and your eyes healthy. The {location.name} area, covered by the postcode {location.postcode}, is well served by {optician.shortName} and other leading opticians, giving patients in {location.county} a wide choice of eye care providers.
+              {optician.name} in {nameWithCounty(location)} is one of {optician.storeCount.toLocaleString()} {optician.shortName} branches across the United Kingdom. Whether you need a routine NHS sight test, a private eye examination, or a more advanced health screening such as an OCT scan, {optician.shortName} in {location.name} can help you keep your vision clear and your eyes healthy. The {location.name} area, covered by the postcode {location.postcode}, is well served by {optician.shortName} and other leading opticians, giving local patients a wide choice of eye care providers.
             </p>
             <p className="text-gray-600 leading-relaxed text-base mb-4">
               Finding the right optician in {location.name} can be straightforward when you compare services, prices, and availability on eyetest.co.uk. {optician.shortName} is known for offering {optician.services.slice(0, 4).join(", ").toLowerCase()}, and more. Patients visiting {optician.shortName} in {location.name} benefit from {optician.nhsAvailable ? "both NHS-funded and private eye tests" : "private eye tests"}, professional optometrists registered with the General Optical Council, and a convenient location within the {location.name} area.
             </p>
             <p className="text-gray-600 leading-relaxed text-base mb-6">
-              {optician.shortName} was founded in {optician.founded} and has grown to become one of the most recognised names in UK eye care. Patients in {location.name} choose {optician.shortName} for a variety of reasons, including {optician.highlights[0]?.toLowerCase() ?? "quality service"} and {optician.highlights[1]?.toLowerCase() ?? "professional care"}. If you are looking for an eye test near {location.postcode}, {optician.shortName} in {location.name} is an excellent choice for comprehensive eye care in {location.county}.
+              {optician.shortName} was founded in {optician.founded} and has grown to become one of the most recognised names in UK eye care. Patients in {location.name} choose {optician.shortName} for a variety of reasons, including {optician.highlights[0]?.toLowerCase() ?? "quality service"} and {optician.highlights[1]?.toLowerCase() ?? "professional care"}. If you are looking for an eye test near {location.postcode}, {optician.shortName} in {location.name} is an excellent choice for comprehensive eye care in {location.name}.
             </p>
 
             {/* Services */}
@@ -941,7 +943,7 @@ function UnavailableBrandContent({
               {optician.description}
             </p>
             <p className="text-gray-600 text-sm leading-relaxed mb-3">
-              {optician.name} has {optician.storeCount.toLocaleString()} branches across the UK and has been providing eye care services since {optician.founded}. While {optician.shortName} eye tests in {location.name}, {location.county} are not currently available for online booking through eyetest.co.uk, patients in the {location.postcode} area have access to {alternatives.length} other opticians that offer instant online booking. These alternative opticians in {location.name} provide the same professional standard of care, with services including NHS eye tests, private examinations, contact lens fittings, and advanced screenings.
+              {optician.name} has {optician.storeCount.toLocaleString()} branches across the UK and has been providing eye care services since {optician.founded}. While {optician.shortName} eye tests in {nameWithCounty(location)} are not currently available for online booking through eyetest.co.uk, patients in the {location.postcode} area have access to {alternatives.length} other opticians that offer instant online booking. These alternative opticians in {location.name} provide the same professional standard of care, with services including NHS eye tests, private examinations, contact lens fittings, and advanced screenings.
             </p>
             <p className="text-gray-600 text-sm leading-relaxed">
               If you specifically need a {optician.shortName} appointment in {location.name}, you may wish to visit their website directly or call your local branch. Otherwise, explore the excellent alternative opticians available in {location.name} below, many of which offer same-day or next-day appointments with shorter waiting times.
@@ -1285,7 +1287,7 @@ function EyeTestPricingSection({
             Eye Test Cost at {optician.shortName} in {location.name}
           </h2>
           <p className="text-gray-600 leading-relaxed mb-8">
-            Understanding the cost of your eye test at {optician.shortName} in {location.name} helps you plan your visit and budget accordingly. {optician.shortName} offers a range of eye test options at different price points, from free NHS-funded tests to premium enhanced examinations. Here is a detailed breakdown of what you can expect to pay at {optician.shortName} in the {location.name}, {location.county} area.
+            Understanding the cost of your eye test at {optician.shortName} in {location.name} helps you plan your visit and budget accordingly. {optician.shortName} offers a range of eye test options at different price points, from free NHS-funded tests to premium enhanced examinations. Here is a detailed breakdown of what you can expect to pay at {optician.shortName} in the {nameWithCounty(location)} area.
           </p>
 
           {/* Pricing cards */}
@@ -1358,7 +1360,7 @@ function EyeTestPricingSection({
           </div>
 
           <p className="text-gray-600 leading-relaxed mb-4">
-            Prices at {optician.shortName} in {location.name} are competitive with other opticians in the {location.county} area. When comparing eye test costs across different opticians in {location.name}, bear in mind that the clinical quality of a standard eye test is the same regardless of which optician you visit, as all UK optometrists are qualified to the same professional standard and regulated by the General Optical Council. The main differences between providers tend to be in the additional technology offered, the range of frames and lenses available, and the time allocated to each appointment.
+            Prices at {optician.shortName} in {location.name} are competitive with other opticians in the {location.name} area. When comparing eye test costs across different opticians in {location.name}, bear in mind that the clinical quality of a standard eye test is the same regardless of which optician you visit, as all UK optometrists are qualified to the same professional standard and regulated by the General Optical Council. The main differences between providers tend to be in the additional technology offered, the range of frames and lenses available, and the time allocated to each appointment.
           </p>
           <p className="text-gray-600 leading-relaxed">
             Many patients in {location.name} are eligible for free NHS-funded eye tests and do not need to pay anything at all. Even if you are not eligible, a private eye test at {optician.shortName} represents excellent value for one of the most important health checks available. Use eyetest.co.uk to compare prices across all opticians near {location.postcode} and find the best deal for your needs.
@@ -1385,7 +1387,7 @@ function WhatToExpectSection({
             What to Expect at Your {optician.shortName} Eye Test in {location.name}
           </h2>
           <p className="text-gray-600 leading-relaxed mb-8">
-            If you are visiting {optician.shortName} in {location.name} for an eye test, knowing what to expect can help you feel prepared and get the most from your appointment. Whether this is your first eye test or you are a regular patient, here is a step-by-step guide to what happens before, during, and after your eye examination at {optician.shortName} in {location.name}, {location.county}.
+            If you are visiting {optician.shortName} in {location.name} for an eye test, knowing what to expect can help you feel prepared and get the most from your appointment. Whether this is your first eye test or you are a regular patient, here is a step-by-step guide to what happens before, during, and after your eye examination at {optician.shortName} in {nameWithCounty(location)}.
           </p>
 
           {/* Before your visit */}
@@ -1500,8 +1502,8 @@ function NHSEligibilitySection({
           </h2>
           <p className="text-gray-600 leading-relaxed mb-6">
             {optician.nhsAvailable
-              ? `${optician.shortName} in ${location.name} is registered to provide free NHS-funded eye tests for eligible patients. Understanding your NHS eligibility could save you the cost of your eye test entirely. Here is a comprehensive guide to who qualifies for free NHS eye tests at ${optician.shortName} and other opticians in ${location.name}, ${location.county}.`
-              : `While ${optician.shortName} primarily offers private eye tests, many opticians in ${location.name} provide free NHS-funded eye tests for eligible patients. Here is a comprehensive guide to who qualifies for free NHS eye tests in ${location.name}, ${location.county}.`}
+              ? `${optician.shortName} in ${location.name} is registered to provide free NHS-funded eye tests for eligible patients. Understanding your NHS eligibility could save you the cost of your eye test entirely. Here is a comprehensive guide to who qualifies for free NHS eye tests at ${optician.shortName} and other opticians in ${nameWithCounty(location)}.`
+              : `While ${optician.shortName} primarily offers private eye tests, many opticians in ${location.name} provide free NHS-funded eye tests for eligible patients. Here is a comprehensive guide to who qualifies for free NHS eye tests in ${nameWithCounty(location)}.`}
           </p>
 
           <h3 className="font-[family-name:var(--font-display)] text-xl font-semibold text-[var(--color-navy)] mb-3">
@@ -1665,7 +1667,7 @@ function GettingThereSection({
             Getting to {optician.shortName} in {location.name}
           </h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            {optician.shortName} in {location.name}, {location.county} is located in the {location.postcode} postcode area, making it accessible to patients across {location.name} and the surrounding {location.county} area. Whether you are travelling by car, public transport, or on foot, getting to your {optician.shortName} eye test appointment in {location.name} should be straightforward.
+            {optician.shortName} in {nameWithCounty(location)} is located in the {location.postcode} postcode area, making it accessible to patients across {location.name} and the surrounding area. Whether you are travelling by car, public transport, or on foot, getting to your {optician.shortName} eye test appointment in {location.name} should be straightforward.
           </p>
           <p className="text-gray-600 leading-relaxed mb-4">
             {location.name} is generally well served by public transport, with bus and rail connections to the town centre where many opticians, including {optician.shortName}, are typically located. If you are driving, there are usually a variety of parking options in the {location.name} area, including pay-and-display car parks and, in some cases, free supermarket parking nearby. It is worth checking the specific parking arrangements for your chosen {optician.shortName} branch before your visit, particularly if you are attending during busy shopping hours.

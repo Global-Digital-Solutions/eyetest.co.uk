@@ -9,6 +9,8 @@ import {
   getLocationBySlug,
   getAllSlugs,
   getLocationsByRegion,
+  nameWithCounty,
+  countyArea,
 } from "@/data/locations";
 import {
   getAvailableOpticians,
@@ -44,7 +46,7 @@ export async function generateMetadata({
   }
 
   const title = `Eye Tests in ${location.name} — Compare & Book | eyetest.co.uk`;
-  const description = `Compare eye test appointments in ${location.name}, ${location.county}. Find NHS and private opticians, check same-day availability, and book online for free.`;
+  const description = `Compare eye test appointments in ${nameWithCounty(location)}. Find NHS and private opticians, check same-day availability, and book online for free.`;
 
   return {
     title,
@@ -117,7 +119,7 @@ export default async function CityPage({
   const faqItems = [
     {
       q: `Where can I get an eye test in ${location.name}?`,
-      a: `You can compare and book eye tests from multiple opticians in ${location.name} through eyetest.co.uk. We list both NHS and private providers, including high-street chains like Boots Opticians and ASDA Opticians, as well as independent practices in the ${location.county} area. Simply enter the postcode ${location.postcode} to see all available options near you, compare prices, and book an appointment online in seconds.`,
+      a: `You can compare and book eye tests from multiple opticians in ${location.name} through eyetest.co.uk. We list both NHS and private providers, including high-street chains like Boots Opticians and ASDA Opticians, as well as independent practices in ${countyArea(location)} area. Simply enter the postcode ${location.postcode} to see all available options near you, compare prices, and book an appointment online in seconds.`,
     },
     {
       q: `How much does an eye test cost in ${location.name}?`,
@@ -218,7 +220,7 @@ export default async function CityPage({
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     name: `Eye Test Services in ${location.name}`,
-    description: `Compare and book eye tests from opticians in ${location.name}, ${location.county}. NHS and private eye tests available.`,
+    description: `Compare and book eye tests from opticians in ${nameWithCounty(location)}. NHS and private eye tests available.`,
     url: `https://eyetest.co.uk/locations/${location.slug}`,
     areaServed: {
       "@type": "City",
@@ -328,11 +330,11 @@ export default async function CityPage({
               className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-6"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Finding the right eye test in {location.name}, {location.county}
+              Finding the right eye test in {nameWithCounty(location)}
             </h2>
             <div className="prose prose-lg max-w-none text-gray-600 space-y-4 mb-10">
               <p>
-                Whether you need a routine sight test, a specialist contact lens fitting, or an advanced OCT scan to check for conditions like glaucoma and macular degeneration, {location.name} offers a wide range of eye care services from both national chains and trusted independent practices. With {localOpticians.length} optician brands serving the {location.name} area, residents of {location.county} have plenty of choice when it comes to looking after their vision.
+                Whether you need a routine sight test, a specialist contact lens fitting, or an advanced OCT scan to check for conditions like glaucoma and macular degeneration, {location.name} offers a wide range of eye care services from both national chains and trusted independent practices. With {localOpticians.length} optician brands serving the {location.name} area, residents have plenty of choice when it comes to looking after their vision.
               </p>
               <p>
                 Eye care in {location.name} spans the full spectrum, from affordable NHS-funded sight tests available at no cost to eligible patients, through to premium private examinations that incorporate the latest diagnostic technology. Major high-street names such as Boots Opticians and ASDA Opticians operate alongside smaller, community-focused independent practices that many locals prefer for their longer appointment times and more personal service. Each offers a slightly different experience, and eyetest.co.uk is here to help you compare them all in one place.
@@ -369,7 +371,7 @@ export default async function CityPage({
 
             <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
               <p>
-                Regular eye tests are one of the most important health checks available, yet millions of people across the UK skip them or leave it too long between appointments. For residents of {location.name} and the surrounding {location.county} area, booking an eye test has never been easier. You can search by the postcode {location.postcode} on eyetest.co.uk to see every available optician near you, compare prices and services side by side, check real-time appointment availability, and book online in seconds.
+                Regular eye tests are one of the most important health checks available, yet millions of people across the UK skip them or leave it too long between appointments. For residents of {location.name} and the surrounding area, booking an eye test has never been easier. You can search by the postcode {location.postcode} on eyetest.co.uk to see every available optician near you, compare prices and services side by side, check real-time appointment availability, and book online in seconds.
               </p>
             </div>
           </div>
@@ -390,7 +392,7 @@ export default async function CityPage({
             </h2>
             <div className="prose prose-lg max-w-none text-white/70 space-y-4">
               <p>
-                The cost of an eye test in {location.name} depends on the type of examination you choose and whether you qualify for a free NHS-funded test. Here is what you can expect to pay at opticians across {location.county}:
+                The cost of an eye test in {location.name} depends on the type of examination you choose and whether you qualify for a free NHS-funded test. Here is what you can expect to pay at opticians across {location.name}:
               </p>
             </div>
 
@@ -727,7 +729,7 @@ export default async function CityPage({
                 Types of eye tests available in {location.name}
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Opticians across {location.county} offer a range of eye tests to suit different needs, ages, and health conditions. Here are the main types available:
+                Opticians across {location.name} offer a range of eye tests to suit different needs, ages, and health conditions. Here are the main types available:
               </p>
             </div>
 
@@ -783,7 +785,7 @@ export default async function CityPage({
                 Protecting your eye health starts with regular eye tests, but it is also important to be aware of common conditions that can affect your vision. Many eye conditions develop gradually without obvious symptoms, which is why routine screening is so valuable. Opticians in {location.name} are equipped to detect and manage a wide range of eye health issues, and can refer you to specialist hospital services when needed.
               </p>
               <p>
-                Some of the most common eye conditions seen by optometrists in the {location.county} area include age-related macular degeneration, glaucoma, cataracts, dry eye syndrome, and diabetic retinopathy. Early detection through regular eye tests is the best way to protect your sight, as many of these conditions can be treated or managed effectively if caught early enough.
+                Some of the most common eye conditions seen by optometrists in the {location.name} area include age-related macular degeneration, glaucoma, cataracts, dry eye syndrome, and diabetic retinopathy. Early detection through regular eye tests is the best way to protect your sight, as many of these conditions can be treated or managed effectively if caught early enough.
               </p>
               <p>
                 If you experience any sudden changes in your vision, such as flashes of light, a sudden increase in floaters, loss of vision, or a painful red eye, you should seek urgent attention from your optician or visit A&amp;E. Many opticians in {location.name} participate in the NHS Minor Eye Conditions Service (MECS), which provides free urgent eye care for conditions that do not require a hospital visit.
@@ -915,7 +917,7 @@ export default async function CityPage({
                 Eye test FAQs for {location.name}
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Common questions about booking and attending eye tests in {location.name}, {location.county}.
+                Common questions about booking and attending eye tests in {nameWithCounty(location)}.
               </p>
             </div>
 
@@ -988,7 +990,7 @@ export default async function CityPage({
                   Nearby locations
                 </h2>
                 <p className="text-gray-600 mb-6">
-                  Looking for eye tests outside {location.name}? Browse opticians in these nearby areas across {location.county} and the wider {location.region} region.
+                  Looking for eye tests outside {location.name}? Browse opticians in these nearby areas across the wider {location.region} region.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {nearbyLocations.map((loc) =>
