@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -60,6 +61,18 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${outfit.variable} h-full`}
     >
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WMXJ8JKD79"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-WMXJ8JKD79');`}
+        </Script>
+      </head>
       <body className="min-h-full flex flex-col bg-white text-[var(--color-navy)]">
         {children}
       </body>
