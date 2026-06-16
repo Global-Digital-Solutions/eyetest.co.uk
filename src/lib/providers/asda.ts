@@ -19,7 +19,7 @@ function formatSlot(isoString: string): string {
 export async function fetchAsda(
   lat: number,
   lng: number,
-  radius = 15000,
+  radius = 8047,
   limit = 10
 ): Promise<StoreResult[]> {
   const results: StoreResult[] = [];

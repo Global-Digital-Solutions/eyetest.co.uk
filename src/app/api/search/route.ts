@@ -47,7 +47,7 @@ export async function GET(req: NextRequest) {
   }
 
   const { lat, lng } = geo;
-  const RADIUS = 15000;
+  const RADIUS = 8047; // 5 miles in metres
   const LIMIT = 10;
   const TIMEOUT_MS = 20000;
 
@@ -133,7 +133,7 @@ export async function GET(req: NextRequest) {
           ? [runProvider("Vision Express", () => fetchVisionExpress(lat, lng, RADIUS, LIMIT))]
           : []),
         ...MYSIGHT_SITES.filter((site) => enabled(site)).map(
-          (site) => runProvider(site, () => fetchMysight(site, lat, lng, 25000, LIMIT))
+          (site) => runProvider(site, () => fetchMysight(site, lat, lng, RADIUS, LIMIT))
         ),
       ];
 

@@ -189,7 +189,7 @@ export async function fetchMysight(
   siteHost: string,
   lat: number,
   lng: number,
-  radius = 25000,
+  radius = 8047,
   limit = 10,
   days = 14
 ): Promise<StoreResult[]> {

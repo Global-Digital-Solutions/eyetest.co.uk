@@ -46,7 +46,7 @@ function isoDate(date: Date): string {
 export async function fetchVisionExpress(
   lat: number,
   lng: number,
-  radius = 15000,
+  radius = 8047,
   limit = 10,
   days = 28
 ): Promise<StoreResult[]> {

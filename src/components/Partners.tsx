@@ -6,8 +6,6 @@ const partners = [
   { name: "Rawlings", available: true },
   { name: "Scrivens", available: true },
   { name: "Duncan & Todd", available: true },
-  { name: "Local Independent Opticians", available: true },
-  { name: "M&S Opticians", available: true },
   { name: "Specsavers", available: false },
   { name: "Vision Express", available: false },
 ];
