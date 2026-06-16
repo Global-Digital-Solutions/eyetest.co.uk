@@ -274,7 +274,7 @@ export function Footer() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-4">
             {[
               { brand: "Specsavers", slug: "specsavers", cities: ["london", "manchester", "birmingham", "leeds", "glasgow", "liverpool", "edinburgh", "bristol", "cardiff", "sheffield", "newcastle", "brighton"] },
-              { brand: "Boots", slug: "boots-opticians", cities: ["london", "manchester", "birmingham", "leeds", "glasgow", "liverpool", "edinburgh", "bristol", "cardiff", "nottingham", "reading", "southampton"] },
+              { brand: "Boots Opticians", slug: "boots-opticians", cities: ["london", "manchester", "birmingham", "leeds", "glasgow", "liverpool", "edinburgh", "bristol", "cardiff", "nottingham", "reading", "southampton"] },
               { brand: "Vision Express", slug: "vision-express", cities: ["london", "manchester", "birmingham", "leeds", "liverpool", "bristol", "sheffield", "newcastle", "cardiff", "leicester"] },
             ].map((item) => (
               <div key={item.slug}>
@@ -296,7 +296,7 @@ export function Footer() {
               </div>
             ))}
             {[
-              { brand: "ASDA", slug: "asda-opticians", cities: ["london", "manchester", "birmingham", "leeds", "liverpool", "bristol", "sheffield", "nottingham"] },
+              { brand: "ASDA Opticians", slug: "asda-opticians", cities: ["london", "manchester", "birmingham", "leeds", "liverpool", "bristol", "sheffield", "nottingham"] },
               { brand: "Leightons", slug: "leightons", cities: ["london", "guildford", "reading", "southampton", "brighton", "oxford", "basingstoke", "epsom"] },
             ].map((item) => (
               <div key={item.slug}>

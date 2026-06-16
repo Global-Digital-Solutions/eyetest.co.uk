@@ -1,5 +1,5 @@
 import type { StoreResult } from "../types";
-import { ukToday, getThreeDayDates } from "../dates";
+import { ukToday, getThreeDayDates, getThreeDayDatesFrom } from "../dates";
 
 const OCUCO_BASE = "https://eu.oh.ocuco.com/api/omni/v303";
 const HEADERS = {
@@ -63,10 +63,20 @@ export async function fetchBoots(
       const addressParts = [site.address1, site.address2].filter(Boolean).map(String);
 
       // Build 3-day availability calendar
-      const dailySlots = threeDays.map((date) => ({
+      let dailySlots = threeDays.map((date) => ({
         date,
         count: slotFound && isFuture && nextDateStr === date ? -1 : 0,
       }));
+
+      // If no slots in initial 3-day window but next available exists beyond it,
+      // shift the window to show 3 days starting from the next available date
+      if (dailySlots.every((s) => s.count === 0) && slotFound && isFuture && nextDateStr) {
+        const shiftedDays = getThreeDayDatesFrom(nextDateStr);
+        dailySlots = shiftedDays.map((date) => ({
+          date,
+          count: date === nextDateStr ? -1 : 0,
+        }));
+      }
 
       results.push({
         provider: "Boots Opticians",

@@ -1,5 +1,5 @@
 import type { StoreResult } from "../types";
-import { ukToday, getThreeDayDates } from "../dates";
+import { ukToday, getThreeDayDates, getThreeDayDatesFrom } from "../dates";
 
 const GQL_URL = "https://api.visionexpress.com/graphql";
 const APPOINTMENT_TYPE_ID = "22622"; // Eye Test
@@ -103,10 +103,20 @@ export async function fetchVisionExpress(
     }
 
     // Build 3-day availability calendar
-    const dailySlots = threeDays.map((date) => ({
+    let dailySlots = threeDays.map((date) => ({
       date,
       count: slotsAvailable > 0 && isFuture && nextDateStr === date ? -1 : 0,
     }));
+
+    // If no slots in initial 3-day window but next available exists beyond it,
+    // shift the window to show 3 days starting from the next available date
+    if (dailySlots.every((s) => s.count === 0) && slotsAvailable > 0 && isFuture && nextDateStr) {
+      const shiftedDays = getThreeDayDatesFrom(nextDateStr);
+      dailySlots = shiftedDays.map((date) => ({
+        date,
+        count: date === nextDateStr ? -1 : 0,
+      }));
+    }
 
     const streetNum = String(store.streetNumber ?? "").trim();
     const streetName = String(store.streetName ?? "").trim();

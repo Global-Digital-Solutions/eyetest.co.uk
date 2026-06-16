@@ -1,6 +1,6 @@
 import { haversine } from "../haversine";
 import type { StoreResult } from "../types";
-import { ukToday, getThreeDayDates } from "../dates";
+import { ukToday, getThreeDayDates, getThreeDayDatesFrom } from "../dates";
 
 const GQL_URL = "https://graphql.mysight.uk/";
 const TIMEZONE = "Europe/London";
@@ -252,10 +252,25 @@ export async function fetchMysight(
         }
       }
 
-      const dailySlots = threeDays.map((date) => ({
+      let dailySlots = threeDays.map((date) => ({
         date,
         count: dailyCounts[date] ?? 0,
       }));
+
+      // If no slots in initial 3-day window, find earliest available date
+      // and shift the window to show 3 days starting from that date
+      if (dailySlots.every((s) => s.count === 0) && Object.keys(dailyCounts).length > 0) {
+        const earliestDate = Object.keys(dailyCounts)
+          .sort()
+          .find((d) => (dailyCounts[d] ?? 0) > 0);
+        if (earliestDate) {
+          const shiftedDays = getThreeDayDatesFrom(earliestDate);
+          dailySlots = shiftedDays.map((date) => ({
+            date,
+            count: dailyCounts[date] ?? 0,
+          }));
+        }
+      }
 
       const branchLabel =
         String(b.onlineFriendlyBranchName ?? "") || String(b.branchName ?? "");

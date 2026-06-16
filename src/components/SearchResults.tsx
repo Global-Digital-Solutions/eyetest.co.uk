@@ -142,12 +142,28 @@ function deduplicateStores(stores: StoreResult[]): StoreResult[] {
 /*  StoreCard                                                          */
 /* ------------------------------------------------------------------ */
 
-function DayLabel({ date, index }: { date: string; index: number }) {
-  if (index === 0) return <>Today</>;
-  if (index === 1) return <>Tomorrow</>;
+function getDayLabels() {
+  const todayStr = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/London" }).format(new Date());
+  const tom = new Date();
+  tom.setDate(tom.getDate() + 1);
+  const tomorrowStr = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/London" }).format(tom);
+  return { todayStr, tomorrowStr };
+}
+
+function DayLabel({ date }: { date: string }) {
+  const { todayStr, tomorrowStr } = getDayLabels();
+  if (date === todayStr) return <>Today</>;
+  if (date === tomorrowStr) return <>Tomorrow</>;
   const dt = new Date(date + "T12:00:00");
   const day = dt.toLocaleDateString("en-GB", { weekday: "short" });
   return <>{day}&nbsp;{dt.getDate()}</>;
+}
+
+/** Check whether a store's dailySlots have been shifted beyond today */
+function isShiftedWindow(dailySlots: { date: string }[] | undefined): boolean {
+  if (!dailySlots || dailySlots.length === 0) return false;
+  const { todayStr } = getDayLabels();
+  return dailySlots[0].date > todayStr;
 }
 
 const HIDE_ACTIONS_PROVIDERS = /vision express|specsavers/i;
@@ -219,8 +235,20 @@ function StoreCard({ store }: { store: StoreResult }) {
 
         {/* 3-day availability calendar */}
         {store.dailySlots && store.dailySlots.length > 0 ? (
-          <div className="grid grid-cols-3 gap-1.5 mb-3">
-            {store.dailySlots.map((slot, i) => {
+          <div className="mb-3">
+            {/* Shifted-window indicator */}
+            {isShiftedWindow(store.dailySlots) && (
+              <div className="flex items-center gap-1.5 mb-1.5">
+                <span className="inline-flex items-center gap-1 text-[9px] font-semibold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-100">
+                  <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                  Earliest availability
+                </span>
+              </div>
+            )}
+            <div className="grid grid-cols-3 gap-1.5">
+            {store.dailySlots.map((slot) => {
               const avail = slot.count !== 0;
               return (
                 <div
@@ -236,7 +264,7 @@ function StoreCard({ store }: { store: StoreResult }) {
                       avail ? "text-green-600" : "text-gray-400"
                     }`}
                   >
-                    <DayLabel date={slot.date} index={i} />
+                    <DayLabel date={slot.date} />
                   </div>
                   <div
                     className={`text-base font-bold leading-tight mt-0.5 ${
@@ -263,6 +291,7 @@ function StoreCard({ store }: { store: StoreResult }) {
                 </div>
               );
             })}
+            </div>
           </div>
         ) : (
           <div className="flex items-center gap-2 mb-3">
