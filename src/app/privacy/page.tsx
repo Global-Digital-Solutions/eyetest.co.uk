@@ -154,10 +154,10 @@ export default function PrivacyPolicyPage() {
                 <p>
                   Email:{" "}
                   <a
-                    href="mailto:butlerdarin@gmail.com"
+                    href="mailto:hello@eyetest.co.uk"
                     className="text-[var(--color-primary)] hover:underline"
                   >
-                    butlerdarin@gmail.com
+                    hello@eyetest.co.uk
                   </a>
                 </p>
               </div>
@@ -389,10 +389,10 @@ export default function PrivacyPolicyPage() {
               <p className="text-gray-600 leading-relaxed">
                 To exercise any of these rights, please contact us at{" "}
                 <a
-                  href="mailto:butlerdarin@gmail.com"
+                  href="mailto:hello@eyetest.co.uk"
                   className="text-[var(--color-primary)] hover:underline"
                 >
-                  butlerdarin@gmail.com
+                  hello@eyetest.co.uk
                 </a>
                 . We will respond to your request within one month, as required by law.
               </p>
@@ -406,10 +406,10 @@ export default function PrivacyPolicyPage() {
               <p className="text-gray-600 leading-relaxed">
                 Our Site is not directed at children under the age of 13. We do not knowingly collect personal data from children under 13. If you become aware that a child has provided us with personal information, please contact us at{" "}
                 <a
-                  href="mailto:butlerdarin@gmail.com"
+                  href="mailto:hello@eyetest.co.uk"
                   className="text-[var(--color-primary)] hover:underline"
                 >
-                  butlerdarin@gmail.com
+                  hello@eyetest.co.uk
                 </a>
                 , and we will take steps to delete such information.
               </p>
@@ -458,10 +458,10 @@ export default function PrivacyPolicyPage() {
                 <p>
                   Email:{" "}
                   <a
-                    href="mailto:butlerdarin@gmail.com"
+                    href="mailto:hello@eyetest.co.uk"
                     className="text-[var(--color-primary)] hover:underline"
                   >
-                    butlerdarin@gmail.com
+                    hello@eyetest.co.uk
                   </a>
                 </p>
                 <p>Website: eyetest.co.uk</p>

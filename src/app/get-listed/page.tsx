@@ -9,9 +9,9 @@ import { GetListedForm } from "@/components/GetListedForm";
 
 export const metadata: Metadata = {
   title:
-    "Get Your Practice Listed on eyetest.co.uk — Reach More Patients",
+    "For Opticians — Get Your Practice Listed on eyetest.co.uk",
   description:
-    "Join the UK's dedicated eye test comparison platform. Get your optician practice listed on eyetest.co.uk and reach thousands of patients searching for eye tests every month. Free to apply.",
+    "Partner with the UK's dedicated eye test comparison platform. Get your optician practice listed on eyetest.co.uk and reach thousands of patients searching for eye tests every month. Free to apply.",
   keywords: [
     "list optician practice",
     "optician listing UK",
@@ -19,12 +19,14 @@ export const metadata: Metadata = {
     "get listed optician",
     "optician marketing",
     "eye test platform",
+    "optician partnership",
+    "for opticians",
   ],
   openGraph: {
     title:
-      "Get Your Practice Listed on eyetest.co.uk — Reach More Patients",
+      "For Opticians — Get Your Practice Listed on eyetest.co.uk",
     description:
-      "Join the UK's dedicated eye test comparison platform. Reach thousands of patients searching for eye tests every month.",
+      "Partner with the UK's dedicated eye test comparison platform. Reach thousands of patients searching for eye tests every month.",
     url: "https://eyetest.co.uk/get-listed",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -754,10 +756,10 @@ export default function GetListedPage() {
             <p className="text-white/40 text-sm mt-6">
               Or email us directly at{" "}
               <a
-                href="mailto:butlerdarin@gmail.com"
+                href="mailto:hello@eyetest.co.uk"
                 className="text-[var(--color-primary-light)] hover:underline"
               >
-                butlerdarin@gmail.com
+                hello@eyetest.co.uk
               </a>
             </p>
           </div>

@@ -5,7 +5,7 @@ import { useState, type FormEvent } from "react";
 /* ------------------------------------------------------------------ */
 /*  At-Home Eye Test Booking Form                                      */
 /*  Modelled on OutsideClinic's booking flow.                          */
-/*  Currently submits to butlerdarin@gmail.com via Formspree-style     */
+/*  Currently submits to hello@eyetest.co.uk via Formspree-style     */
 /*  POST. Will be replaced with a Cloudflare Worker once commercials   */
 /*  are agreed.                                                        */
 /* ------------------------------------------------------------------ */
@@ -116,7 +116,7 @@ export function AtHomeBookingForm() {
         .join("\n")
     );
 
-    window.location.href = `mailto:butlerdarin@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hello@eyetest.co.uk?subject=${subject}&body=${body}`;
 
     // Show success after a short delay
     setTimeout(() => {
@@ -147,10 +147,10 @@ export function AtHomeBookingForm() {
         <p className="text-sm text-gray-500">
           If you have any questions, email us at{" "}
           <a
-            href="mailto:butlerdarin@gmail.com"
+            href="mailto:hello@eyetest.co.uk"
             className="text-[var(--color-primary)] hover:underline"
           >
-            butlerdarin@gmail.com
+            hello@eyetest.co.uk
           </a>
         </p>
       </div>

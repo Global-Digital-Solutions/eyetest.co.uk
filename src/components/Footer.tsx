@@ -59,7 +59,7 @@ const footerLinks = {
     { label: "Guides & Advice", href: "/articles/how-often-should-you-have-an-eye-test" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
-    { label: "For Opticians", href: "/partners" },
+    { label: "For Opticians", href: "/get-listed" },
     { label: "Get Listed", href: "/get-listed" },
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },

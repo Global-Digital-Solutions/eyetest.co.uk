@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 
 /* ------------------------------------------------------------------ */
 /*  Get Listed Application Form                                        */
-/*  Sends application details via mailto to butlerdarin@gmail.com.     */
+/*  Sends application details via mailto to hello@eyetest.co.uk.     */
 /* ------------------------------------------------------------------ */
 
 type FormData = {
@@ -81,7 +81,7 @@ export function GetListedForm() {
       ].join("\n")
     );
 
-    window.location.href = `mailto:butlerdarin@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hello@eyetest.co.uk?subject=${subject}&body=${body}`;
 
     setTimeout(() => {
       setSubmitting(false);
@@ -111,10 +111,10 @@ export function GetListedForm() {
         <p className="text-sm text-gray-500">
           If you have any questions, email us at{" "}
           <a
-            href="mailto:butlerdarin@gmail.com"
+            href="mailto:hello@eyetest.co.uk"
             className="text-[var(--color-primary)] hover:underline"
           >
-            butlerdarin@gmail.com
+            hello@eyetest.co.uk
           </a>
         </p>
       </div>

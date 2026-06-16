@@ -333,10 +333,10 @@ export default function DisclaimerPage() {
                 <p>
                   Email:{" "}
                   <a
-                    href="mailto:butlerdarin@gmail.com"
+                    href="mailto:hello@eyetest.co.uk"
                     className="text-[var(--color-primary)] hover:underline"
                   >
-                    butlerdarin@gmail.com
+                    hello@eyetest.co.uk
                   </a>
                 </p>
                 <p>Website: eyetest.co.uk</p>

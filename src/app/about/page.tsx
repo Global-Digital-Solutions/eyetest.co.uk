@@ -406,10 +406,10 @@ export default function AboutPage() {
                     For questions, feedback, or support:
                   </p>
                   <a
-                    href="mailto:butlerdarin@gmail.com"
+                    href="mailto:hello@eyetest.co.uk"
                     className="text-sm text-[var(--color-primary)] hover:underline font-medium"
                   >
-                    butlerdarin@gmail.com
+                    hello@eyetest.co.uk
                   </a>
                 </div>
                 <div>
@@ -420,7 +420,7 @@ export default function AboutPage() {
                     Interested in listing your practice on eyetest.co.uk?
                   </p>
                   <Link
-                    href="/partners"
+                    href="/get-listed"
                     className="text-sm text-[var(--color-primary)] hover:underline font-medium"
                   >
                     Learn about partnering with us
