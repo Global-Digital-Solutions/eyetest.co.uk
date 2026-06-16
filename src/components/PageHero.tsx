@@ -87,7 +87,7 @@ const OVERLAY_CLASSES = {
 export function PageHero({ breadcrumbs, children, compact, backgroundImage, overlay = "dark" }: PageHeroProps) {
   const bgUrl =
     backgroundImage ??
-    "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1920&q=80";
+    "https://images.unsplash.com/photo-1766310549795-dd0fc75d499f?auto=format&fit=crop&w=1920&q=80";
 
   return (
     <section className="relative overflow-hidden">
