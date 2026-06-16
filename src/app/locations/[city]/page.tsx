@@ -330,18 +330,46 @@ export default async function CityPage({
             >
               Finding the right eye test in {location.name}, {location.county}
             </h2>
-            <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
+            <div className="prose prose-lg max-w-none text-gray-600 space-y-4 mb-10">
               <p>
                 Whether you need a routine sight test, a specialist contact lens fitting, or an advanced OCT scan to check for conditions like glaucoma and macular degeneration, {location.name} offers a wide range of eye care services from both national chains and trusted independent practices. With {localOpticians.length} optician brands serving the {location.name} area, residents of {location.county} have plenty of choice when it comes to looking after their vision.
               </p>
               <p>
                 Eye care in {location.name} spans the full spectrum, from affordable NHS-funded sight tests available at no cost to eligible patients, through to premium private examinations that incorporate the latest diagnostic technology. Major high-street names such as Boots Opticians and ASDA Opticians operate alongside smaller, community-focused independent practices that many locals prefer for their longer appointment times and more personal service. Each offers a slightly different experience, and eyetest.co.uk is here to help you compare them all in one place.
               </p>
+            </div>
+
+            {/* Visual highlight cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[var(--color-navy)] to-[#0f2342] p-6 text-white">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--color-primary)]/10 rounded-full -translate-y-8 translate-x-8" />
+                <svg className="w-8 h-8 text-[var(--color-primary-light)] mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+                <h3 className="font-semibold mb-1 text-sm">Early Detection</h3>
+                <p className="text-xs text-white/70">Eye tests detect glaucoma, cataracts, and macular degeneration years before symptoms appear</p>
+              </div>
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[var(--color-primary)] to-[#0a8a86] p-6 text-white">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-8 translate-x-8" />
+                <svg className="w-8 h-8 text-white/90 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 className="font-semibold mb-1 text-sm">Every 2 Years</h3>
+                <p className="text-xs text-white/80">The College of Optometrists recommends eye tests at least every two years for adults</p>
+              </div>
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#005eb8] to-[#003d7a] p-6 text-white">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-8 translate-x-8" />
+                <svg className="w-8 h-8 text-blue-200 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+                <h3 className="font-semibold mb-1 text-sm">Beyond Glasses</h3>
+                <p className="text-xs text-white/80">Eye tests also detect high blood pressure, diabetes, and other general health issues</p>
+              </div>
+            </div>
+
+            <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
               <p>
-                Regular eye tests are one of the most important health checks available, yet millions of people across the UK skip them or leave it too long between appointments. An eye test does far more than check whether you need glasses. It can detect early signs of serious conditions including glaucoma, cataracts, macular degeneration, and diabetic retinopathy, as well as general health issues such as high blood pressure and diabetes. The College of Optometrists recommends that most adults have their eyes tested at least every two years, and more frequently if they are over 70, have diabetes, or have a family history of eye disease.
-              </p>
-              <p>
-                For residents of {location.name} and the surrounding {location.county} area, booking an eye test has never been easier. You can search by the postcode {location.postcode} on eyetest.co.uk to see every available optician near you, compare prices and services side by side, check real-time appointment availability, and book online in seconds. Whether you are looking for a quick, affordable check-up at a supermarket optician or a thorough, technology-led examination at a specialist independent practice, you will find the right option for your needs and budget right here.
+                Regular eye tests are one of the most important health checks available, yet millions of people across the UK skip them or leave it too long between appointments. For residents of {location.name} and the surrounding {location.county} area, booking an eye test has never been easier. You can search by the postcode {location.postcode} on eyetest.co.uk to see every available optician near you, compare prices and services side by side, check real-time appointment availability, and book online in seconds.
               </p>
             </div>
           </div>
@@ -350,58 +378,66 @@ export default async function CityPage({
         {/* ================================================================= */}
         {/* SECTION 2: Eye Test Costs in [Location] */}
         {/* ================================================================= */}
-        <section className="py-16 sm:py-20 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4">
+        <section className="py-16 sm:py-20 bg-gradient-to-br from-[var(--color-navy)] via-[#0f2342] to-[var(--color-navy)] relative overflow-hidden">
+          {/* Dot pattern decoration */}
+          <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+          <div className="max-w-4xl mx-auto px-4 relative">
             <h2
-              className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-6"
+              className="text-2xl sm:text-3xl font-bold text-white mb-6"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Eye test costs in {location.name}
             </h2>
-            <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
+            <div className="prose prose-lg max-w-none text-white/70 space-y-4">
               <p>
                 The cost of an eye test in {location.name} depends on the type of examination you choose and whether you qualify for a free NHS-funded test. Here is what you can expect to pay at opticians across {location.county}:
               </p>
             </div>
 
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-                <div className="w-12 h-12 rounded-xl bg-[var(--color-nhs-blue)]/10 flex items-center justify-center text-[var(--color-nhs-blue)] mb-4">
+              <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                <span className="absolute top-4 right-4 text-[10px] font-semibold uppercase tracking-wider bg-[var(--color-nhs-blue)] text-white px-2.5 py-1 rounded-full">NHS</span>
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-[var(--color-primary-light)] mb-4">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-[var(--color-navy)] mb-2">NHS eye test</h3>
+                <h3 className="font-semibold text-white mb-2">NHS eye test</h3>
                 <p className="text-2xl font-bold text-[var(--color-success)] mb-2">Free</p>
-                <p className="text-sm text-gray-600">Available to eligible patients including under-16s, over-60s, those on qualifying benefits, and people with diabetes or glaucoma.</p>
+                <p className="text-sm text-white/60">Available to eligible patients including under-16s, over-60s, those on qualifying benefits, and people with diabetes or glaucoma.</p>
               </div>
 
-              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-                <div className="w-12 h-12 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-4">
+              <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                <span className="absolute top-4 right-4 text-[10px] font-semibold uppercase tracking-wider bg-[var(--color-primary)] text-white px-2.5 py-1 rounded-full">Standard</span>
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-[var(--color-primary-light)] mb-4">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-[var(--color-navy)] mb-2">Private eye test</h3>
-                <p className="text-2xl font-bold text-[var(--color-navy)] mb-2">£20 &ndash; £39</p>
-                <p className="text-sm text-gray-600">Standard private examinations at high-street opticians. ASDA offers from £20, Boots from £25, and independents typically from £30&ndash;£39.</p>
+                <h3 className="font-semibold text-white mb-2">Private eye test</h3>
+                <p className="text-2xl font-bold text-white mb-2">£20 &ndash; £39</p>
+                <p className="text-sm text-white/60">Standard private examinations at high-street opticians. ASDA offers from £20, Boots from £25, and independents typically from £30&ndash;£39.</p>
               </div>
 
-              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-                <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 mb-4">
+              <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                <span className="absolute top-4 right-4 text-[10px] font-semibold uppercase tracking-wider bg-purple-500 text-white px-2.5 py-1 rounded-full">Enhanced</span>
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-purple-300 mb-4">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5" />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-[var(--color-navy)] mb-2">Enhanced with OCT scan</h3>
-                <p className="text-2xl font-bold text-[var(--color-navy)] mb-2">£35 &ndash; £79</p>
-                <p className="text-sm text-gray-600">Advanced examinations including Optical Coherence Tomography for early detection of glaucoma, macular degeneration, and diabetic eye disease.</p>
+                <h3 className="font-semibold text-white mb-2">Enhanced with OCT scan</h3>
+                <p className="text-2xl font-bold text-white mb-2">£35 &ndash; £79</p>
+                <p className="text-sm text-white/60">Advanced examinations including Optical Coherence Tomography for early detection of glaucoma, macular degeneration, and diabetic eye disease.</p>
               </div>
             </div>
 
-            <div className="mt-8 prose prose-lg max-w-none text-gray-600 space-y-4">
-              <p>
+            <div className="mt-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex gap-4">
+              <svg className="w-6 h-6 text-[var(--color-primary-light)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+              </svg>
+              <p className="text-sm text-white/70 leading-relaxed">
                 Many residents of {location.name} qualify for a free NHS-funded eye test without realising it. If you receive Universal Credit, Income Support, Pension Credit, or other qualifying benefits, your eye test is fully covered. The NHS also provides optical vouchers towards the cost of glasses for eligible patients, which can mean a basic pair is entirely free. Even if you do not qualify for NHS funding, comparing prices across opticians in {location.name} on eyetest.co.uk can save you money, as prices vary significantly between providers.
               </p>
             </div>
@@ -432,6 +468,7 @@ export default async function CityPage({
                   key={optician.slug}
                   href={`/opticians/${optician.slug}`}
                   className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
+                  style={{ borderLeft: `4px solid ${optician.brandColor}` }}
                 >
                   <div className="flex items-start gap-4 mb-4">
                     <div
@@ -532,7 +569,7 @@ export default async function CityPage({
         {/* ================================================================= */}
         {/* SECTION 4: What to Expect from an Eye Test */}
         {/* ================================================================= */}
-        <section className="py-16 sm:py-20 bg-gray-50">
+        <section className="py-16 sm:py-20 bg-gradient-to-b from-[var(--color-primary)]/5 to-white">
           <div className="max-w-4xl mx-auto px-4">
             <h2
               className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-6"
@@ -546,7 +583,9 @@ export default async function CityPage({
               </p>
             </div>
 
-            <div className="mt-8 space-y-6">
+            <div className="mt-8 space-y-6 relative">
+              {/* Vertical timeline line */}
+              <div className="absolute left-[27px] top-[40px] bottom-[40px] w-0.5 bg-[var(--color-primary)]/20 hidden sm:block" />
               {[
                 {
                   step: "1",
@@ -581,9 +620,9 @@ export default async function CityPage({
               ].map((item) => (
                 <div
                   key={item.step}
-                  className="flex gap-4 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
+                  className="relative flex gap-4 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
                 >
-                  <div className="w-10 h-10 rounded-full bg-[var(--color-primary)] flex items-center justify-center text-white font-bold text-sm shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-[var(--color-primary)] flex items-center justify-center text-white font-bold text-base shrink-0 relative z-10">
                     {item.step}
                   </div>
                   <div>
@@ -626,27 +665,29 @@ export default async function CityPage({
               <p>You are entitled to a free NHS-funded sight test if you meet any of the following criteria:</p>
             </div>
 
-            <ul className="mt-4 space-y-3">
-              {[
-                "You are under 16 years of age",
-                "You are under 19 and in full-time education",
-                "You are aged 60 or over",
-                "You have been diagnosed with diabetes or glaucoma",
-                "You are aged 40 or over and have a close relative (parent, sibling, or child) with glaucoma",
-                "You are registered blind or partially sighted",
-                "You receive Income Support, income-based Jobseeker's Allowance, Pension Credit Guarantee Credit, or Universal Credit (and meet the criteria)",
-                "You are named on a valid NHS tax credit exemption certificate (HC2) or entitled to partial help (HC3)",
-                "You are a prisoner on leave from prison",
-                "You have been prescribed complex lenses",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-[var(--color-nhs-blue)] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-gray-600">{item}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-4 border-l-4 border-[var(--color-nhs-blue)] bg-[var(--color-nhs-blue)]/5 rounded-r-2xl p-6">
+              <ul className="space-y-3">
+                {[
+                  "You are under 16 years of age",
+                  "You are under 19 and in full-time education",
+                  "You are aged 60 or over",
+                  "You have been diagnosed with diabetes or glaucoma",
+                  "You are aged 40 or over and have a close relative (parent, sibling, or child) with glaucoma",
+                  "You are registered blind or partially sighted",
+                  "You receive Income Support, income-based Jobseeker's Allowance, Pension Credit Guarantee Credit, or Universal Credit (and meet the criteria)",
+                  "You are named on a valid NHS tax credit exemption certificate (HC2) or entitled to partial help (HC3)",
+                  "You are a prisoner on leave from prison",
+                  "You have been prescribed complex lenses",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-[var(--color-nhs-blue)] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-gray-600">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             <div className="mt-8 prose prose-lg max-w-none text-gray-600 space-y-4">
               <h3 className="text-xl font-semibold text-[var(--color-navy)] mt-8 mb-4" style={{ fontFamily: "var(--font-display)" }}>
@@ -695,7 +736,7 @@ export default async function CityPage({
                 <Link
                   key={test.slug}
                   href={`/eye-tests/${test.slug}`}
-                  className="group bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
+                  className="group bg-white rounded-2xl p-6 border border-gray-100 border-t-2 border-t-transparent hover:border-t-[var(--color-primary)] shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
                 >
                   <h3 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors mb-2">
                     {test.name}
@@ -727,15 +768,17 @@ export default async function CityPage({
         {/* ================================================================= */}
         {/* SECTION 7: Eye Health in [Location] */}
         {/* ================================================================= */}
-        <section className="py-16 sm:py-20">
-          <div className="max-w-4xl mx-auto px-4">
+        <section className="py-16 sm:py-20 bg-gradient-to-br from-[var(--color-navy)] to-[#0f2342] relative overflow-hidden">
+          {/* Dot pattern decoration */}
+          <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+          <div className="max-w-4xl mx-auto px-4 relative">
             <h2
-              className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-6"
+              className="text-2xl sm:text-3xl font-bold text-white mb-6"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Eye health in {location.name}
             </h2>
-            <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
+            <div className="prose prose-lg max-w-none text-white/70 space-y-4">
               <p>
                 Protecting your eye health starts with regular eye tests, but it is also important to be aware of common conditions that can affect your vision. Many eye conditions develop gradually without obvious symptoms, which is why routine screening is so valuable. Opticians in {location.name} are equipped to detect and manage a wide range of eye health issues, and can refer you to specialist hospital services when needed.
               </p>
@@ -752,12 +795,12 @@ export default async function CityPage({
                 <Link
                   key={condition.slug}
                   href={`/eye-health/conditions/${condition.slug}`}
-                  className="group flex items-center gap-3 bg-white border border-gray-100 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
+                  className="group flex items-center gap-3 bg-white/10 border border-white/10 rounded-xl p-4 hover:bg-white/15 transition-all"
                 >
-                  <svg className="w-5 h-5 text-[var(--color-primary)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <svg className="w-5 h-5 text-[var(--color-primary-light)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-sm font-medium text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors">
+                  <span className="text-sm font-medium text-white group-hover:text-[var(--color-primary-light)] transition-colors">
                     {condition.name}
                   </span>
                 </Link>
@@ -841,12 +884,12 @@ export default async function CityPage({
                   title: "NHS eligibility check",
                   desc: "Not sure if you qualify for a free NHS eye test? We help you check eligibility and find NHS-registered opticians near you.",
                 },
-              ].map((item) => (
+              ].map((item, index) => (
                 <div
                   key={item.title}
                   className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-4">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white mb-4 ${index < 3 ? 'bg-gradient-to-br from-[var(--color-primary)] to-[#0a8a86]' : 'bg-gradient-to-br from-[var(--color-navy)] to-[#0f2342]'}`}>
                     {item.icon}
                   </div>
                   <h3 className="font-semibold text-[var(--color-navy)] mb-2">
@@ -880,7 +923,7 @@ export default async function CityPage({
               {faqItems.map((faq) => (
                 <details
                   key={faq.q}
-                  className="group bg-white border border-gray-100 rounded-2xl shadow-sm"
+                  className="group bg-white border border-gray-100 rounded-2xl shadow-sm border-l-4 border-l-[var(--color-primary)]/30 group-open:border-l-[var(--color-primary)]"
                 >
                   <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer list-none font-semibold text-[var(--color-navy)] hover:text-[var(--color-primary)] transition-colors">
                     <span>{faq.q}</span>
@@ -953,7 +996,7 @@ export default async function CityPage({
                       <Link
                         key={loc.slug}
                         href={`/locations/${loc.slug}`}
-                        className="group flex items-start gap-4 bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
+                        className="group flex items-start gap-4 bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 hover:scale-[1.02] transition-all"
                       >
                         <svg
                           className="w-5 h-5 text-[var(--color-primary)] shrink-0 mt-0.5"
@@ -1021,7 +1064,7 @@ export default async function CityPage({
         {/* ================================================================= */}
         {/* SECTION 10: Internal Links / Explore More */}
         {/* ================================================================= */}
-        <section className="py-16 sm:py-20 bg-gray-50">
+        <section className="py-16 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
               <h2
@@ -1037,7 +1080,9 @@ export default async function CityPage({
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Optician brands */}
-              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                <div className="h-1 bg-[var(--color-primary)] rounded-t-2xl" />
+                <div className="p-6">
                 <h3 className="font-semibold text-[var(--color-navy)] mb-4 flex items-center gap-2">
                   <svg className="w-5 h-5 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.15c0 .415.336.75.75.75z" />
@@ -1064,10 +1109,13 @@ export default async function CityPage({
                     </Link>
                   </li>
                 </ul>
+                </div>
               </div>
 
               {/* Eye test types */}
-              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                <div className="h-1 bg-[var(--color-nhs-blue)]" />
+                <div className="p-6">
                 <h3 className="font-semibold text-[var(--color-navy)] mb-4 flex items-center gap-2">
                   <svg className="w-5 h-5 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
@@ -1095,10 +1143,13 @@ export default async function CityPage({
                     </Link>
                   </li>
                 </ul>
+                </div>
               </div>
 
               {/* Eye conditions */}
-              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                <div className="h-1 bg-purple-500" />
+                <div className="p-6">
                 <h3 className="font-semibold text-[var(--color-navy)] mb-4 flex items-center gap-2">
                   <svg className="w-5 h-5 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
@@ -1125,10 +1176,13 @@ export default async function CityPage({
                     </Link>
                   </li>
                 </ul>
+                </div>
               </div>
 
               {/* Helpful guides */}
-              <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                <div className="h-1 bg-amber-500" />
+                <div className="p-6">
                 <h3 className="font-semibold text-[var(--color-navy)] mb-4 flex items-center gap-2">
                   <svg className="w-5 h-5 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
@@ -1185,6 +1239,7 @@ export default async function CityPage({
                     </Link>
                   </li>
                 </ul>
+                </div>
               </div>
             </div>
           </div>
