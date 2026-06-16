@@ -511,15 +511,18 @@ function SearchProgressPanel({
   activeProviders,
   loadingProviders,
   resultsCount,
+  independentsFoundCount,
 }: {
   postcode: string;
   district: string | null;
   activeProviders: string[];
   loadingProviders: string[];
   resultsCount: number;
+  independentsFoundCount: number;
 }) {
   const chains = activeProviders.filter((p) => !p.endsWith(".mysight.uk"));
   const independents = activeProviders.filter((p) => p.endsWith(".mysight.uk"));
+  const independentsDone = independents.every((p) => !loadingProviders.includes(p));
   const totalProviders = activeProviders.length;
   const completedCount = totalProviders - loadingProviders.length;
   const progress =
@@ -629,12 +632,12 @@ function SearchProgressPanel({
           {independents.length > 0 && (
             <div
               className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-300 ${
-                independents.every((p) => !loadingProviders.includes(p))
+                independentsDone
                   ? "bg-[var(--color-success)]/20 text-[var(--color-success)]"
                   : "bg-[var(--color-primary)]/20 text-[var(--color-primary-light)]"
               }`}
             >
-              {independents.every((p) => !loadingProviders.includes(p)) ? (
+              {independentsDone ? (
                 <svg
                   className="w-3.5 h-3.5"
                   fill="none"
@@ -651,7 +654,9 @@ function SearchProgressPanel({
               ) : (
                 <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-current" />
               )}
-              {independents.length} Independent Opticians{district ? ` near ${district}` : ""}
+              {independentsDone
+                ? `${independentsFoundCount} Independent Optician${independentsFoundCount !== 1 ? "s" : ""}${district ? ` near ${district}` : ""}`
+                : `Checking ${independents.length} Independent Brands`}
             </div>
           )}
         </div>
@@ -980,6 +985,13 @@ export function SearchResults({ postcode }: { postcode: string }) {
               activeProviders={stream.activeProviders}
               loadingProviders={stream.loadingProviders}
               resultsCount={results.length}
+              independentsFoundCount={
+                new Set(
+                  results
+                    .filter((r) => r.provider.endsWith(".mysight.uk"))
+                    .map((r) => r.provider)
+                ).size
+              }
             />
           )}
 
@@ -1000,7 +1012,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                We searched {stream.activeProviders.length} opticians for you
+                We checked {stream.activeProviders.length} optician brands for you
               </div>
               <div className="flex flex-wrap gap-1 sm:gap-1.5">
                 {stream.activeProviders
@@ -1013,11 +1025,18 @@ export function SearchResults({ postcode }: { postcode: string }) {
                       {p}
                     </span>
                   ))}
-                {stream.activeProviders.filter((p) => p.endsWith(".mysight.uk")).length > 0 && (
-                  <span className="inline-block rounded-full bg-white px-2 py-0.5 text-[10px] font-medium text-[var(--color-primary)] border border-[var(--color-primary)]/20">
-                    + {stream.activeProviders.filter((p) => p.endsWith(".mysight.uk")).length} independents{stream.district ? ` near ${stream.district}` : ""}
-                  </span>
-                )}
+                {(() => {
+                  const indepFound = new Set(
+                    results
+                      .filter((r) => r.provider.endsWith(".mysight.uk"))
+                      .map((r) => r.provider)
+                  ).size;
+                  return indepFound > 0 ? (
+                    <span className="inline-block rounded-full bg-white px-2 py-0.5 text-[10px] font-medium text-[var(--color-primary)] border border-[var(--color-primary)]/20">
+                      + {indepFound} independent{indepFound !== 1 ? "s" : ""}{stream.district ? ` near ${stream.district}` : ""}
+                    </span>
+                  ) : null;
+                })()}
               </div>
             </div>
           )}
