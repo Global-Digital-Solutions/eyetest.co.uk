@@ -112,6 +112,12 @@ export async function fetchVisionExpress(
     const streetName = String(store.streetName ?? "").trim();
     const address = [streetNum, streetName].filter(Boolean).join(" ");
 
+    // Deep-link with store code so users land on the right branch
+    const storeCode = String(store.code ?? "");
+    const veBookingUrl = storeCode
+      ? `https://www.visionexpress.com/book-appointment?storeCode=${storeCode}`
+      : "https://www.visionexpress.com/book-appointment";
+
     results.push({
       provider: "Vision Express",
       storeName: String(store.name ?? "Vision Express"),
@@ -122,7 +128,7 @@ export async function fetchVisionExpress(
       distanceM: Math.round(distM),
       slotsAvailable: slotStr,
       nextAvailable: isFuture ? nextDateStr || null : null,
-      bookingUrl: "https://www.visionexpress.com/book-appointment",
+      bookingUrl: veBookingUrl,
       lat: Number(store.lat) || undefined,
       lng: Number(store.lon) || undefined,
       dailySlots,

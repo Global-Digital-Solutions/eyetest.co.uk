@@ -27,7 +27,7 @@ export const MYSIGHT_SITES = [
   "johnhigheyecare.mysight.uk",
   "johnroseeyecare.mysight.uk",
   "leightons.mysight.uk",
-  "leightonsopticians.mysight.uk",
+  // "leightonsopticians.mysight.uk", — duplicate of leightons.mysight.uk
   "lynnefernandes.mysight.uk",
   "millicansopticians.mysight.uk",
   "norville-opticians.mysight.uk",
@@ -261,6 +261,12 @@ export async function fetchMysight(
         String(b.onlineFriendlyBranchName ?? "") || String(b.branchName ?? "");
       const phone = String(b.telephone1 ?? "") || String(b.telephone2 ?? "");
 
+      // Deep-link: include branchId (and appointmentTypeId when available)
+      // so users land on the specific branch's booking page
+      const bookingParams = new URLSearchParams();
+      bookingParams.set("branchId", branchId);
+      if (typeId) bookingParams.set("appointmentTypeId", typeId);
+
       results.push({
         provider: siteHost,
         storeName: `${brandName} ${displayName}`,
@@ -271,7 +277,7 @@ export async function fetchMysight(
         distanceM: b.distanceM,
         slotsAvailable: slotStr,
         nextAvailable: nextDate,
-        bookingUrl: `https://${siteHost}/choose-appointment-type`,
+        bookingUrl: `https://${siteHost}/choose-appointment-type?${bookingParams.toString()}`,
         lat: Number(b.latitude) || undefined,
         lng: Number(b.longitude) || undefined,
         dailySlots,

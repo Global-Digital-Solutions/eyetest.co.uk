@@ -42,6 +42,57 @@ function formatDistance(m: number): string {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Deduplication — merge stores with similar names at the same spot  */
+/* ------------------------------------------------------------------ */
+
+function normaliseBrand(store: StoreResult): string {
+  return store.storeName
+    .toLowerCase()
+    .replace(/\bopticians\b|\boptometrists?\b|\beyecare\b|\beye care\b|\boptical\b/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function deduplicateStores(stores: StoreResult[]): StoreResult[] {
+  const result: StoreResult[] = [];
+  const consumed = new Set<number>();
+
+  for (let i = 0; i < stores.length; i++) {
+    if (consumed.has(i)) continue;
+    let best = stores[i];
+    const bestName = normaliseBrand(best);
+
+    for (let j = i + 1; j < stores.length; j++) {
+      if (consumed.has(j)) continue;
+      const other = stores[j];
+      const otherName = normaliseBrand(other);
+
+      // Name check: one must contain the other (handles "Leightons" vs "Leightons Opticians" etc.)
+      const nameMatch =
+        bestName === otherName ||
+        bestName.startsWith(otherName) ||
+        otherName.startsWith(bestName);
+      if (!nameMatch) continue;
+
+      // Location check: both must have coords and be within 500 m
+      if (!best.lat || !best.lng || !other.lat || !other.lng) continue;
+      const dLat = (best.lat - other.lat) * 111_000;
+      const dLng =
+        (best.lng - other.lng) * 111_000 * Math.cos((best.lat * Math.PI) / 180);
+      if (Math.sqrt(dLat * dLat + dLng * dLng) > 500) continue;
+
+      // It's a duplicate — keep whichever has better availability data
+      consumed.add(j);
+      const bestHasSlots = best.dailySlots?.some((s) => s.count !== 0) ?? Boolean(best.slotsAvailable);
+      const otherHasSlots = other.dailySlots?.some((s) => s.count !== 0) ?? Boolean(other.slotsAvailable);
+      if (otherHasSlots && !bestHasSlots) best = other;
+    }
+    result.push(best);
+  }
+  return result;
+}
+
+/* ------------------------------------------------------------------ */
 /*  StoreCard                                                          */
 /* ------------------------------------------------------------------ */
 
@@ -405,7 +456,8 @@ export function SearchResults({ postcode }: { postcode: string }) {
     }
   }, [postcode, handleSearch]);
 
-  const results = stream?.results ?? [];
+  const rawResults = stream?.results ?? [];
+  const results = deduplicateStores(rawResults);
 
   // Sort: featured first, then available (by next date), then unavailable (by distance)
   const featured = results
