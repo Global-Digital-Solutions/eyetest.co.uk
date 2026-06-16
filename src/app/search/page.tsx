@@ -18,6 +18,28 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     description: pc
       ? `Compare opticians and book eye test appointments near ${pc}. Find NHS and private eye tests with same-day availability.`
       : "Search for eye test appointments near you. Compare opticians across the UK.",
+    keywords: [
+      "eye test near me",
+      "opticians near me",
+      "book eye test",
+      "compare opticians",
+      "NHS eye test",
+      "eye test appointment",
+    ],
+    openGraph: {
+      title: pc
+        ? `Eye Tests near ${pc} — eyetest.co.uk`
+        : "Search Eye Tests — eyetest.co.uk",
+      description: pc
+        ? `Compare opticians and book eye test appointments near ${pc}.`
+        : "Search for eye test appointments near you. Compare opticians across the UK.",
+      url: "https://eyetest.co.uk/search",
+      siteName: "eyetest.co.uk",
+      type: "website",
+    },
+    alternates: {
+      canonical: "https://eyetest.co.uk/search",
+    },
   };
 }
 
@@ -25,10 +47,54 @@ export default async function SearchPage({ searchParams }: Props) {
   const { postcode } = await searchParams;
   const pc = typeof postcode === "string" ? postcode.trim().toUpperCase() : "";
 
+  const searchPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: pc ? `Eye Tests near ${pc}` : "Search Eye Tests",
+    description: pc
+      ? `Compare opticians and book eye test appointments near ${pc}.`
+      : "Search for eye test appointments near you. Compare opticians across the UK.",
+    url: "https://eyetest.co.uk/search",
+    publisher: {
+      "@type": "Organization",
+      name: "eyetest.co.uk",
+      url: "https://eyetest.co.uk",
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://eyetest.co.uk",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Search",
+        item: "https://eyetest.co.uk/search",
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
       <main className="flex-1 bg-gray-50">
+        {/* JSON-LD structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(searchPageJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+
         {/* Search refinement bar */}
         <div className="sticky top-[calc(var(--header-height,6.5rem))] z-40 bg-white border-b border-gray-200 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 py-3">
