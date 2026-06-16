@@ -24,6 +24,10 @@ type PageHeroProps = {
   children: React.ReactNode;
   /** Slightly reduce vertical padding for secondary pages */
   compact?: boolean;
+  /** Custom background image URL (defaults to Unsplash medical photo) */
+  backgroundImage?: string;
+  /** Overlay intensity — "dark" (default), "medium", or "light" */
+  overlay?: "dark" | "medium" | "light";
 };
 
 /* ------------------------------------------------------------------ */
@@ -74,19 +78,27 @@ export function HeroSearchForm({
 /*  Component                                                         */
 /* ------------------------------------------------------------------ */
 
-export function PageHero({ breadcrumbs, children, compact }: PageHeroProps) {
+const OVERLAY_CLASSES = {
+  dark: "from-[var(--color-navy)]/92 via-[#112247]/88 to-[var(--color-navy-light)]/92",
+  medium: "from-[var(--color-navy)]/78 via-[#112247]/72 to-[var(--color-navy-light)]/78",
+  light: "from-[var(--color-navy)]/65 via-[#112247]/58 to-[var(--color-navy-light)]/65",
+};
+
+export function PageHero({ breadcrumbs, children, compact, backgroundImage, overlay = "dark" }: PageHeroProps) {
+  const bgUrl =
+    backgroundImage ??
+    "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1920&q=80";
+
   return (
     <section className="relative overflow-hidden">
-      {/* Background image — person having an eye test */}
+      {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1920&q=80')`,
-        }}
+        style={{ backgroundImage: `url('${bgUrl}')` }}
       />
 
-      {/* Dark overlay for text contrast */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-navy)]/92 via-[#112247]/88 to-[var(--color-navy-light)]/92" />
+      {/* Overlay for text contrast */}
+      <div className={`absolute inset-0 bg-gradient-to-br ${OVERLAY_CLASSES[overlay]}`} />
 
       {/* Teal accent glows */}
       <div className="absolute -top-32 -right-32 w-96 h-96 bg-[var(--color-primary)] rounded-full opacity-[0.07] blur-3xl" />

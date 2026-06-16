@@ -152,7 +152,11 @@ export default function EyeTestsPage() {
         />
 
         {/* Hero */}
-        <PageHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Eye Tests" }]}>
+        <PageHero
+          breadcrumbs={[{ label: "Home", href: "/" }, { label: "Eye Tests" }]}
+          backgroundImage="/images/eye-test-phoropter-lg.jpg"
+          overlay="medium"
+        >
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 text-white/90 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full mb-6">
             <svg
