@@ -121,6 +121,13 @@ export default async function ConditionPage({
       "@type": "MedicalRiskFactor",
       name: cause,
     })),
+    author: {
+      "@type": "Organization",
+      name: "eyetest.co.uk",
+      url: "https://eyetest.co.uk",
+    },
+    dateModified: "2026-06-16",
+    lastReviewed: "2026-06-16",
   };
 
   const breadcrumbJsonLd = {
@@ -495,48 +502,33 @@ export default async function ConditionPage({
                     {condition.name.toLowerCase()}:
                   </p>
                   <ul className="space-y-2">
-                    <li className="flex items-center gap-2 text-sm text-gray-700">
-                      <svg
-                        className="w-4 h-4 text-[var(--color-primary)] shrink-0"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      Standard eye test
-                    </li>
-                    <li className="flex items-center gap-2 text-sm text-gray-700">
-                      <svg
-                        className="w-4 h-4 text-[var(--color-primary)] shrink-0"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      OCT retinal scan
-                    </li>
-                    <li className="flex items-center gap-2 text-sm text-gray-700">
-                      <svg
-                        className="w-4 h-4 text-[var(--color-primary)] shrink-0"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      Visual field test
-                    </li>
+                    {condition.relatedTests.map((testSlug) => (
+                      <li key={testSlug} className="flex items-center gap-2">
+                        <svg
+                          className="w-4 h-4 text-[var(--color-primary)] shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <Link
+                          href={`/eye-tests/${testSlug}`}
+                          className="text-sm text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-medium transition-colors"
+                        >
+                          {testSlug
+                            .split("-")
+                            .map(
+                              (w) =>
+                                w.charAt(0).toUpperCase() + w.slice(1)
+                            )
+                            .join(" ")}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                   <Link
                     href="/eye-tests"

@@ -112,11 +112,18 @@ export default async function GuidePage({
     headline: guide.title,
     description: guide.summary,
     url: `https://eyetest.co.uk/eye-health/guides/${guide.slug}`,
+    author: {
+      "@type": "Organization",
+      name: "eyetest.co.uk",
+      url: "https://eyetest.co.uk",
+    },
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
       url: "https://eyetest.co.uk",
     },
+    datePublished: "2026-06-16",
+    dateModified: "2026-06-16",
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `https://eyetest.co.uk/eye-health/guides/${guide.slug}`,
@@ -272,7 +279,10 @@ export default async function GuidePage({
                               clipRule="evenodd"
                             />
                           </svg>
-                          <span className="text-sm text-gray-700">
+                          <Link
+                            href={`/eye-tests/${test}`}
+                            className="text-sm text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-medium transition-colors"
+                          >
                             {test
                               .split("-")
                               .map(
@@ -280,7 +290,7 @@ export default async function GuidePage({
                                   w.charAt(0).toUpperCase() + w.slice(1)
                               )
                               .join(" ")}
-                          </span>
+                          </Link>
                         </li>
                       ))}
                     </ul>

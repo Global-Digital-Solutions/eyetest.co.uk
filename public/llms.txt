@@ -11,6 +11,7 @@
 - [Opticians](https://eyetest.co.uk/opticians): Compare UK optician brands and chains
 - [UK Locations](https://eyetest.co.uk/locations): Find eye tests in 91 UK cities and towns
 - [At-Home Eye Tests](https://eyetest.co.uk/at-home-eye-tests): Home visit eye test services
+- [Offers](https://eyetest.co.uk/offers): Current eye test offers and deals
 - [Get Listed](https://eyetest.co.uk/get-listed): Optician sign-up for the platform
 - [About Us](https://eyetest.co.uk/about): About eyetest.co.uk
 
@@ -175,6 +176,51 @@
 - [Eye Tests in Belfast](https://eyetest.co.uk/locations/belfast)
 - [Eye Tests in Derry/Londonderry](https://eyetest.co.uk/locations/derry)
 - [Eye Tests in Newry](https://eyetest.co.uk/locations/newry)
+
+## Search Guides (Find)
+- [Eye Test Cost UK](https://eyetest.co.uk/find/eye-test-cost): How much does an eye test cost in the UK
+- [Free Eye Test](https://eyetest.co.uk/find/free-eye-test): Free eye tests — who qualifies and where to book
+- [Cheap Eye Test](https://eyetest.co.uk/find/cheap-eye-test): Cheapest eye tests near you
+- [Private Eye Test Cost](https://eyetest.co.uk/find/private-eye-test-cost): Private eye test costs UK
+- [Specsavers Eye Test Cost](https://eyetest.co.uk/find/specsavers-eye-test-cost): Specsavers pricing and what's included
+- [Boots Eye Test Cost](https://eyetest.co.uk/find/boots-eye-test-cost): Boots pricing, offers and what's included
+- [NHS Eye Test](https://eyetest.co.uk/find/nhs-eye-test): NHS eye test eligibility and how to book
+- [Free NHS Eye Test Eligibility](https://eyetest.co.uk/find/free-nhs-eye-test-eligibility): Full list of who qualifies
+- [Free Eye Test Over 60](https://eyetest.co.uk/find/free-eye-test-over-60): NHS free tests for over 60s
+- [Free Eye Test Children](https://eyetest.co.uk/find/free-eye-test-children): NHS entitlement for children
+- [Free Eye Test Diabetes](https://eyetest.co.uk/find/free-eye-test-diabetes): NHS entitlement for people with diabetes
+- [Free Eye Test Universal Credit](https://eyetest.co.uk/find/free-eye-test-universal-credit): How to claim on Universal Credit
+- [NHS Optical Voucher](https://eyetest.co.uk/find/nhs-optical-voucher): Values, eligibility and how to use
+- [Same-Day Eye Test](https://eyetest.co.uk/find/same-day-eye-test): Find last-minute appointments
+- [Walk-In Eye Test](https://eyetest.co.uk/find/walk-in-eye-test): No appointment needed opticians
+- [Weekend Eye Test](https://eyetest.co.uk/find/weekend-eye-test): Saturday and Sunday appointments
+- [Emergency Eye Test Near Me](https://eyetest.co.uk/find/emergency-eye-test-near-me): Urgent same-day eye care
+- [Book Eye Test Online](https://eyetest.co.uk/find/book-eye-test-online): Quick online appointment booking
+- [Eye Test at Home](https://eyetest.co.uk/find/eye-test-at-home): Domiciliary eye care in the UK
+- [Online Eye Test](https://eyetest.co.uk/find/online-eye-test): Can you test your eyes online?
+- [Specsavers Eye Test](https://eyetest.co.uk/find/specsavers-eye-test): What's included and how to book
+- [Boots Eye Test](https://eyetest.co.uk/find/boots-eye-test): Cost, enhanced checks and booking
+- [Vision Express Eye Test](https://eyetest.co.uk/find/vision-express-eye-test): Price, what's included and booking
+- [Specsavers vs Boots](https://eyetest.co.uk/find/specsavers-vs-boots): Eye test comparison
+- [Best Opticians Near Me](https://eyetest.co.uk/find/best-opticians-near-me): How to find the right optician
+- [Eye Test Near Me](https://eyetest.co.uk/find/eye-test-near-me): Find and book appointments in your area
+- [Book an Eye Test](https://eyetest.co.uk/find/book-eye-test): How to book and what you need to know
+- [Opticians Near Me](https://eyetest.co.uk/find/opticians-near-me): Find and compare local opticians
+- [What to Expect During an Eye Test](https://eyetest.co.uk/find/eye-test-what-to-expect): Step-by-step UK guide
+- [How Long Does an Eye Test Take?](https://eyetest.co.uk/find/how-long-does-eye-test-take): UK appointment guide
+- [How Often Should You Have an Eye Test?](https://eyetest.co.uk/find/how-often-eye-test): UK guidelines
+- [Do I Need an Eye Test?](https://eyetest.co.uk/find/do-i-need-an-eye-test): Signs you should book one
+- [Failed Eye Test Driving](https://eyetest.co.uk/find/eye-test-failed-driving): What to do next
+- [OCT Scan Cost UK](https://eyetest.co.uk/find/oct-scan-cost): How much is an OCT eye scan
+- [Eye Test for Driving](https://eyetest.co.uk/find/eye-test-for-driving): DVLA standards and where to get tested
+- [Contact Lens Eye Test](https://eyetest.co.uk/find/contact-lens-eye-test): Fitting, check-ups and cost
+- [Children's Eye Tests](https://eyetest.co.uk/find/childrens-eye-test-guide): Complete parent's guide
+- [Glaucoma Test](https://eyetest.co.uk/find/glaucoma-test): What it involves, cost and where to get tested
+- [Colour Blind Test](https://eyetest.co.uk/find/colour-blind-test): How to get tested for colour vision deficiency
+- [Blurry Vision Causes](https://eyetest.co.uk/find/blurry-vision-causes): When to see an optician
+- [Headaches and Vision](https://eyetest.co.uk/find/headaches-and-vision): Could your eyes be the cause?
+- [Floaters in Vision](https://eyetest.co.uk/find/floaters-in-vision): Causes, when to worry and what to do
+- [Sudden Vision Changes](https://eyetest.co.uk/find/sudden-vision-changes): When to seek urgent help
 
 ## Legal
 - [Privacy Policy](https://eyetest.co.uk/privacy)

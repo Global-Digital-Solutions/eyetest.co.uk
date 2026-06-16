@@ -122,11 +122,18 @@ export default async function EyeTestPage({
       "@type": "WebPageElement",
       cssSelector: "article",
     },
+    author: {
+      "@type": "Organization",
+      name: "eyetest.co.uk",
+      url: "https://eyetest.co.uk",
+    },
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
       url: "https://eyetest.co.uk",
     },
+    dateModified: "2026-06-16",
+    lastReviewed: "2026-06-16",
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [

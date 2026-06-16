@@ -145,7 +145,13 @@ export default async function ArticlePage({
     description: article.excerpt,
     image: `https://eyetest.co.uk${article.image}`,
     datePublished: article.publishDate,
+    dateModified: article.publishDate,
     url: `https://eyetest.co.uk/articles/${article.slug}`,
+    author: {
+      "@type": "Organization",
+      name: "eyetest.co.uk",
+      url: "https://eyetest.co.uk",
+    },
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
@@ -205,7 +211,7 @@ export default async function ArticlePage({
         <PageHero
           breadcrumbs={[
             { label: "Home", href: "/" },
-            { label: "Articles", href: "/" },
+            { label: "Articles", href: "/articles" },
             { label: article.title },
           ]}
           compact

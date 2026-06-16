@@ -15,6 +15,7 @@ export type EyeCondition = {
   prevention: string[];
   whenToSeeOptician: string;
   relatedConditions: string[];
+  relatedTests: string[];
   affectedAge: string;
 };
 
@@ -79,6 +80,12 @@ In more advanced or difficult-to-control cases, surgical options include trabecu
       "myopia",
       "diabetic-retinopathy",
     ],
+    relatedTests: [
+      "glaucoma-assessment",
+      "oct-scan",
+      "visual-field-test",
+      "standard-eye-test",
+    ],
     affectedAge: "Over 40 (risk increases with age)",
   },
 
@@ -130,6 +137,11 @@ Modern cataract surgery is one of the safest and most effective operations avail
       "diabetic-retinopathy",
       "presbyopia",
     ],
+    relatedTests: [
+      "cataract-assessment",
+      "standard-eye-test",
+      "oct-scan",
+    ],
     affectedAge: "Over 60 (most common), but can occur at any age",
   },
 
@@ -178,6 +190,12 @@ Low-vision rehabilitation services are available through the NHS and charities s
       "cataracts",
       "diabetic-retinopathy",
       "floaters-and-flashes",
+    ],
+    relatedTests: [
+      "macular-degeneration-screening",
+      "oct-scan",
+      "retinal-photography",
+      "standard-eye-test",
     ],
     affectedAge: "Over 55 (risk increases sharply after 75)",
   },
@@ -228,6 +246,12 @@ For proliferative diabetic retinopathy — the most advanced stage, where fragil
       "glaucoma",
       "cataracts",
       "age-related-macular-degeneration",
+    ],
+    relatedTests: [
+      "diabetic-eye-screening",
+      "oct-scan",
+      "retinal-photography",
+      "standard-eye-test",
     ],
     affectedAge: "All ages with diabetes (risk increases with duration of diabetes)",
   },
@@ -282,6 +306,11 @@ For more severe or resistant dry eye, your optometrist or ophthalmologist may pr
       "conjunctivitis",
       "keratoconus",
     ],
+    relatedTests: [
+      "dry-eye-assessment",
+      "standard-eye-test",
+      "contact-lens-fitting",
+    ],
     affectedAge: "All ages (more common over 50 and in post-menopausal women)",
   },
 
@@ -330,6 +359,10 @@ If conjunctivitis is recurrent, persistent, painful, or associated with vision c
       "blepharitis",
       "dry-eye-syndrome",
       "keratoconus",
+    ],
+    relatedTests: [
+      "standard-eye-test",
+      "emergency-eye-care",
     ],
     affectedAge: "All ages",
   },
@@ -381,6 +414,11 @@ Because blepharitis is a chronic condition that tends to flare up if lid hygiene
       "conjunctivitis",
       "strabismus",
     ],
+    relatedTests: [
+      "blepharitis-assessment",
+      "dry-eye-assessment",
+      "standard-eye-test",
+    ],
     affectedAge: "All ages (more common in middle-aged and older adults)",
   },
 
@@ -425,6 +463,11 @@ In most cases, astigmatism remains stable throughout adulthood, though your over
       "hyperopia",
       "keratoconus",
       "presbyopia",
+    ],
+    relatedTests: [
+      "standard-eye-test",
+      "contact-lens-fitting",
+      "dvla-driving-vision-test",
     ],
     affectedAge: "All ages (usually present from birth)",
   },
@@ -475,6 +518,12 @@ For children with progressing myopia, myopia management is a rapidly growing are
       "floaters-and-flashes",
       "glaucoma",
     ],
+    relatedTests: [
+      "myopia-management",
+      "childrens-eye-test",
+      "standard-eye-test",
+      "contact-lens-fitting",
+    ],
     affectedAge: "Usually develops between ages 6 and 13; can progress into early adulthood",
   },
 
@@ -520,6 +569,11 @@ Laser eye surgery (LASIK or LASEK) can correct hyperopia in suitable adults, tho
       "presbyopia",
       "strabismus",
     ],
+    relatedTests: [
+      "standard-eye-test",
+      "childrens-eye-test",
+      "contact-lens-fitting",
+    ],
     affectedAge: "All ages (often present from birth; symptoms may increase with age)",
   },
 
@@ -560,6 +614,11 @@ Surgical options for presbyopia are evolving. Refractive lens exchange (RLE) rep
       "hyperopia",
       "astigmatism",
       "cataracts",
+    ],
+    relatedTests: [
+      "standard-eye-test",
+      "home-visit-eye-test",
+      "nhs-eye-test",
     ],
     affectedAge: "Over 40 (universal, progresses gradually through the 50s and 60s)",
   },
@@ -608,6 +667,12 @@ In rare cases where persistent floaters are severely debilitating and affecting 
       "diabetic-retinopathy",
       "myopia",
     ],
+    relatedTests: [
+      "emergency-eye-care",
+      "oct-scan",
+      "retinal-photography",
+      "standard-eye-test",
+    ],
     affectedAge: "Over 50 (most common), but can occur at any age, especially in myopic individuals",
   },
 
@@ -652,6 +717,11 @@ For advanced cases where contact lenses can no longer provide adequate vision an
       "astigmatism",
       "myopia",
       "dry-eye-syndrome",
+    ],
+    relatedTests: [
+      "standard-eye-test",
+      "oct-scan",
+      "contact-lens-fitting",
     ],
     affectedAge: "Usually develops between ages 10 and 25; may progress until the 30s or 40s",
   },
@@ -698,6 +768,11 @@ In terms of career implications, certain professions in the UK require specific 
       "glaucoma",
       "age-related-macular-degeneration",
     ],
+    relatedTests: [
+      "colour-vision-test",
+      "standard-eye-test",
+      "childrens-eye-test",
+    ],
     affectedAge: "All ages (usually present from birth if inherited)",
   },
 
@@ -743,6 +818,11 @@ In adults, a new squint always warrants investigation to rule out underlying con
       "hyperopia",
       "myopia",
       "astigmatism",
+    ],
+    relatedTests: [
+      "childrens-eye-test",
+      "standard-eye-test",
+      "visual-field-test",
     ],
     affectedAge: "Most commonly diagnosed in children under 5, but can develop at any age",
   },

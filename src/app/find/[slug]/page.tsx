@@ -176,11 +176,17 @@ export default async function SearchQueryPage({
     name: query.title,
     description: query.shortDescription,
     url: `https://eyetest.co.uk/find/${query.slug}`,
+    author: {
+      "@type": "Organization",
+      name: "eyetest.co.uk",
+      url: "https://eyetest.co.uk",
+    },
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
       url: "https://eyetest.co.uk",
     },
+    dateModified: "2026-06-16",
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [

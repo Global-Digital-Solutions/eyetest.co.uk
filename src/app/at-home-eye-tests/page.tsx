@@ -287,13 +287,18 @@ export default function AtHomeEyeTestsPage() {
       name: "Domiciliary eye test",
       alternateName: ["At-home eye test", "Home visit eye test", "Mobile eye test"],
     },
+    author: {
+      "@type": "Organization",
+      name: "eyetest.co.uk",
+      url: "https://eyetest.co.uk",
+    },
     publisher: {
       "@type": "Organization",
       name: "eyetest.co.uk",
       url: "https://eyetest.co.uk",
     },
-    lastReviewed: "2026-06-15",
-    dateModified: "2026-06-15",
+    lastReviewed: "2026-06-16",
+    dateModified: "2026-06-16",
     inLanguage: "en-GB",
     audience: {
       "@type": "PeopleAudience",
