@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 
 /* ------------------------------------------------------------------ */
 /*  Get Listed Application Form                                        */
-/*  Sends application details via mailto to hello@eyetest.co.uk.     */
+/*  Submits via /api/get-listed → Gmail SMTP → hello@eyetest.co.uk   */
 /* ------------------------------------------------------------------ */
 
 type FormData = {
@@ -14,6 +14,8 @@ type FormData = {
   phone: string;
   locationCount: string;
   website: string;
+  appointmentSystem: string;
+  appointmentSystemOther: string;
   services: string[];
   message: string;
 };
@@ -25,6 +27,8 @@ const initialFormData: FormData = {
   phone: "",
   locationCount: "1",
   website: "",
+  appointmentSystem: "",
+  appointmentSystemOther: "",
   services: [],
   message: "",
 };
@@ -39,10 +43,22 @@ const serviceOptions = [
   "Home Visits",
 ];
 
+const appointmentSystems = [
+  "Ocuco",
+  "MySight",
+  "Optix",
+  "VisionPlus",
+  "Optinet",
+  "Raven",
+  "Glasson",
+  "Other",
+];
+
 export function GetListedForm() {
   const [form, setForm] = useState<FormData>(initialFormData);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const set = (key: keyof FormData, value: string | string[]) =>
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -56,37 +72,28 @@ export function GetListedForm() {
     }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setSubmitError("");
 
-    const subject = encodeURIComponent(
-      `Get Listed Application — ${form.practiceName}`
-    );
-    const body = encodeURIComponent(
-      [
-        `--- Practice Details ---`,
-        `Practice name: ${form.practiceName}`,
-        `Contact name: ${form.contactName}`,
-        `Email: ${form.email}`,
-        `Phone: ${form.phone}`,
-        `Number of locations: ${form.locationCount}`,
-        `Website: ${form.website || "(not provided)"}`,
-        ``,
-        `--- Services Offered ---`,
-        form.services.length > 0 ? form.services.join(", ") : "(none selected)",
-        ``,
-        `--- Additional Information ---`,
-        form.message || "(none)",
-      ].join("\n")
-    );
+    try {
+      const res = await fetch("/api/get-listed", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    window.location.href = `mailto:hello@eyetest.co.uk?subject=${subject}&body=${body}`;
+      if (!res.ok) throw new Error("Submission failed");
 
-    setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
-    }, 1000);
+    } catch {
+      setSubmitting(false);
+      setSubmitError(
+        "Sorry, there was a problem submitting your application. Please try again or email us at hello@eyetest.co.uk."
+      );
+    }
   };
 
   /* ---- Success state ---- */
@@ -189,22 +196,26 @@ export function GetListedForm() {
               type="tel"
               value={form.phone}
               onChange={(e) => set("phone", e.target.value)}
-              placeholder="01onal 123 4567"
+              placeholder="0121 234 5678"
               className={inputClass}
               required
             />
           </div>
           <div>
-            <label className={labelClass}>Number of locations</label>
+            <label className={labelClass}>
+              Number of practices / locations <span className="text-red-500">*</span>
+            </label>
             <select
               value={form.locationCount}
               onChange={(e) => set("locationCount", e.target.value)}
               className={selectClass}
             >
               <option value="1">1</option>
-              <option value="2-5">2-5</option>
-              <option value="6-20">6-20</option>
-              <option value="20+">20+</option>
+              <option value="2-5">2–5</option>
+              <option value="6-20">6–20</option>
+              <option value="21-50">21–50</option>
+              <option value="51-100">51–100</option>
+              <option value="100+">100+</option>
             </select>
           </div>
         </div>
@@ -222,6 +233,37 @@ export function GetListedForm() {
             placeholder="https://www.yourpractice.co.uk"
             className={inputClass}
           />
+        </div>
+
+        {/* Appointment system */}
+        <div>
+          <label className={labelClass}>
+            Practice appointment system
+          </label>
+          <select
+            value={form.appointmentSystem}
+            onChange={(e) => set("appointmentSystem", e.target.value)}
+            className={selectClass}
+          >
+            <option value="">Select your appointment system</option>
+            {appointmentSystems.map((sys) => (
+              <option key={sys} value={sys}>
+                {sys}
+              </option>
+            ))}
+          </select>
+
+          {form.appointmentSystem === "Other" && (
+            <div className="mt-3">
+              <input
+                type="text"
+                value={form.appointmentSystemOther}
+                onChange={(e) => set("appointmentSystemOther", e.target.value)}
+                placeholder="Please specify your appointment system"
+                className={inputClass}
+              />
+            </div>
+          )}
         </div>
 
         {/* Services */}
@@ -271,6 +313,13 @@ export function GetListedForm() {
           </a>
           .
         </p>
+
+        {/* Error message */}
+        {submitError && (
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700">
+            {submitError}
+          </div>
+        )}
 
         {/* Submit */}
         <div className="flex justify-end pt-2">
