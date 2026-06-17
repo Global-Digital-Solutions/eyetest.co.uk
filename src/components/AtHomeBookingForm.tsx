@@ -6,9 +6,7 @@ import { useState, type FormEvent } from "react";
 /*  At-Home Eye Test Booking Form                                      */
 /*  Provider-agnostic — our team allocates the enquiry to the best    */
 /*  suitable at-home eye care provider based on submitted details.     */
-/*  Currently submits to hello@eyetest.co.uk via mailto fallback.     */
-/*  Will be replaced with a Cloudflare Worker once commercials         */
-/*  are agreed.                                                        */
+/*  Submits via /api/at-home-enquiry → Resend → hello@eyetest.co.uk  */
 /* ------------------------------------------------------------------ */
 
 type FormData = {
@@ -71,59 +69,30 @@ export function AtHomeBookingForm() {
     setForm((prev) => ({ ...prev, [key]: value }));
 
   /* ---- Submit handler ---- */
+  const [submitError, setSubmitError] = useState("");
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setSubmitError("");
 
-    // Build a mailto fallback — this will be replaced by a Worker
-    const subject = encodeURIComponent(
-      `At-Home Eye Test Booking — ${form.firstName} ${form.lastName}`
-    );
-    const body = encodeURIComponent(
-      [
-        `Test type: ${form.testType}`,
-        `NHS eligible: ${form.eligibleNHS}`,
-        ``,
-        `--- Patient Details ---`,
-        `Title: ${form.title}`,
-        `Name: ${form.firstName} ${form.lastName}`,
-        `Date of birth: ${form.dob}`,
-        ``,
-        `--- Contact ---`,
-        `Contact is: ${form.contactIs}`,
-        form.contactIs === "someone-else"
-          ? `Relationship: ${form.contactRelationship}\nContact name: ${form.contactFirstName} ${form.contactLastName}`
-          : "",
-        `Email: ${form.email}`,
-        `Phone: ${form.phone}`,
-        ``,
-        `--- Address ---`,
-        `${form.addressLine1}`,
-        form.addressLine2 ? `${form.addressLine2}` : "",
-        `${form.town}`,
-        `${form.postcode}`,
-        `${form.country}`,
-        ``,
-        `--- Additional info ---`,
-        form.furtherDetails || "(none)",
-        ``,
-        `--- Marketing consent ---`,
-        `Post: ${form.consentPost ? "Yes" : "No"}`,
-        `Text: ${form.consentText ? "Yes" : "No"}`,
-        `Email: ${form.consentEmail ? "Yes" : "No"}`,
-        `Phone: ${form.consentPhone ? "Yes" : "No"}`,
-      ]
-        .filter(Boolean)
-        .join("\n")
-    );
+    try {
+      const res = await fetch("/api/at-home-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    window.location.href = `mailto:hello@eyetest.co.uk?subject=${subject}&body=${body}`;
+      if (!res.ok) throw new Error("Submission failed");
 
-    // Show success after a short delay
-    setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
-    }, 1000);
+    } catch {
+      setSubmitting(false);
+      setSubmitError(
+        "Sorry, there was a problem submitting your enquiry. Please try again or call us on 0800 60 50 40."
+      );
+    }
   };
 
   /* ---- Success state ---- */
@@ -648,6 +617,12 @@ export function AtHomeBookingForm() {
               </a>
               .
             </p>
+
+            {submitError && (
+              <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700">
+                {submitError}
+              </div>
+            )}
 
             <div className="flex justify-between pt-2">
               <button
