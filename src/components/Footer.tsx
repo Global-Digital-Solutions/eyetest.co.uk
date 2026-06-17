@@ -22,6 +22,8 @@ const footerLinks = {
   Opticians: [
     { label: "Boots Opticians", href: "/opticians/boots-opticians" },
     { label: "ASDA Opticians", href: "/opticians/asda-opticians" },
+    { label: "M&S Opticians", href: "/opticians/mands-opticians" },
+    { label: "Ace & Tate", href: "/opticians/ace-and-tate" },
     { label: "Leightons", href: "/opticians/leightons" },
     { label: "Rawlings", href: "/opticians/rawlings" },
     { label: "Scrivens", href: "/opticians/scrivens" },
@@ -296,6 +298,8 @@ export function Footer() {
             ))}
             {[
               { brand: "ASDA Opticians", slug: "asda-opticians", cities: ["london", "manchester", "birmingham", "leeds", "liverpool", "bristol", "sheffield", "nottingham"] },
+              { brand: "M&S Opticians", slug: "mands-opticians", cities: ["london", "manchester", "glasgow", "birmingham", "leeds", "sheffield", "newcastle", "cardiff", "exeter", "oxford", "york", "derby"] },
+              { brand: "Ace & Tate", slug: "ace-and-tate", cities: ["london", "manchester", "bristol", "glasgow", "oxford", "brighton", "leeds", "cardiff"] },
               { brand: "Leightons", slug: "leightons", cities: ["london", "guildford", "reading", "southampton", "brighton", "oxford", "basingstoke", "epsom"] },
             ].map((item) => (
               <div key={item.slug}>

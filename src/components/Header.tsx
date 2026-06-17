@@ -33,6 +33,8 @@ const opticianLinks = {
   available: [
     { label: "Boots Opticians", href: "/opticians/boots-opticians" },
     { label: "ASDA Opticians", href: "/opticians/asda-opticians" },
+    { label: "M&S Opticians", href: "/opticians/mands-opticians" },
+    { label: "Ace & Tate", href: "/opticians/ace-and-tate" },
     { label: "Leightons", href: "/opticians/leightons" },
     { label: "Rawlings", href: "/opticians/rawlings" },
     { label: "Scrivens", href: "/opticians/scrivens" },

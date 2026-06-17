@@ -26,6 +26,8 @@
 - [Bayfields Opticians & Audiologists](https://www.eyetest.co.uk/opticians/bayfields): Bayfields Opticians & Audiologists eye tests, services, and store locations
 - [Duncan & Todd Group](https://www.eyetest.co.uk/opticians/duncan-and-todd): Duncan & Todd Group eye tests, services, and store locations
 - [Optical Express](https://www.eyetest.co.uk/opticians/optical-express): Optical Express eye tests, services, and store locations
+- [M&S Opticians](https://www.eyetest.co.uk/opticians/mands-opticians): M&S Opticians eye tests, services, and store locations across 37 UK stores
+- [Ace & Tate](https://www.eyetest.co.uk/opticians/ace-and-tate): Ace & Tate eye tests, designer frames, and store locations across 17 UK stores
 
 ## Eye Test Types
 - [Standard Eye Test](https://www.eyetest.co.uk/eye-tests/standard-eye-test)

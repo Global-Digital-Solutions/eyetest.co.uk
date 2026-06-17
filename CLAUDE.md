@@ -42,6 +42,8 @@ Darin Butler (butlerdarin@gmail.com) — Founder, eyetest.co.uk
 | ASDA | Ocuco (siteId deep links) | ~200 |
 | Vision Express | GraphQL (storeCode) | ~400 |
 | MySight | GraphQL | ~35 independent brands |
+| M&S Opticians | Static (Magento booking links) | 37 |
+| Ace & Tate | Static (Acuity Scheduling links) | 17 |
 
 ## Key Types
 - `DailySlot`: `{ date: string; count: number }` — count=-1 means "available but count unknown"
@@ -56,7 +58,7 @@ Darin Butler (butlerdarin@gmail.com) — Founder, eyetest.co.uk
 | Guides | 10 |
 | Articles | 6 |
 | Locations | 97 UK cities |
-| Optician brands | 10 |
+| Optician brands | 12 |
 | Brand × Location pages | ~970 |
 | Find/search queries | 43 |
 | **Total pages** | **~1,200** |
@@ -80,6 +82,8 @@ Darin Butler (butlerdarin@gmail.com) — Founder, eyetest.co.uk
 | At-home enquiry form + email API | Done |
 | Terminated postcodes fix | Done |
 | Gmail App Password + Vercel env vars | Done |
+| MySight deep-link fix (/recall route) | Done |
+| M&S Opticians + Ace & Tate connectors | Done |
 | **Optician subscription + Stripe billing** | **Next** |
 | Apify Google Reviews scraping | Pending |
 

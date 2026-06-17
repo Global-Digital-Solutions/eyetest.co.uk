@@ -1577,6 +1577,265 @@ export const opticians: OpticianBrand[] = [
       },
     ],
   },
+
+  // ─── M&S Opticians ──────────────────────────────────────────────────
+  {
+    slug: "mands-opticians",
+    name: "M&S Opticians",
+    shortName: "M&S",
+    brandColor: "#00573f",
+    description:
+      "M&S Opticians is the optical arm of Marks & Spencer, one of Britain's most trusted and iconic retail brands. Launched in 2017, M&S Opticians operates inside selected M&S stores across the UK in partnership with an experienced optical services provider. They offer a full range of eye care services including NHS and private eye tests, OCT scanning, contact lens fittings, and a carefully curated selection of quality eyewear. With the backing of the M&S name, customers can expect attentive service, stylish frames at fair prices, and the convenience of booking an eye test while visiting a store they already know and love.",
+    services: [
+      "NHS Eye Tests",
+      "Private Eye Tests",
+      "Contact Lenses",
+      "Glasses",
+      "Children's Eye Tests",
+      "OCT Scan",
+    ],
+    storeCount: 37,
+    website: "https://mandsopticians.com",
+    priceRange: "Free NHS / From £20 private",
+    nhsAvailable: true,
+    available: true,
+    highlights: [
+      "Backed by the trusted Marks & Spencer brand, known for quality and customer care",
+      "Conveniently located inside M&S stores — combine your eye test with everyday shopping",
+      "Quality frames at fair prices with a curated selection of stylish eyewear",
+      "NHS eye tests available for all eligible patients at every location",
+    ],
+    founded: "2017",
+    storeLocations: [
+      "birmingham", "bournemouth", "brighton", "canterbury", "cardiff", "chester",
+      "derby", "ealing", "exeter", "glasgow", "harrogate", "kingston-upon-thames",
+      "leeds", "london", "luton", "manchester", "milton-keynes", "newcastle",
+      "norwich", "oxford", "plymouth", "sheffield", "southampton", "st-albans",
+      "stoke-on-trent", "swansea", "torquay", "warrington", "woking", "york",
+    ],
+    history:
+      "Marks & Spencer entered the optical market in 2017, launching M&S Opticians as a natural extension of the retailer's long-standing commitment to health, wellbeing, and quality. The move reflected a broader trend among major UK retailers to offer in-store health services, and M&S was well positioned to capitalise on the trust and loyalty its brand commands across the country. By placing opticians inside existing M&S stores, the company gave customers a convenient new reason to visit — combining an eye test with their regular shopping trip.\n\nRather than building an optical business from scratch, M&S chose a partnership model, working with experienced optical services providers to staff and operate the in-store practices. This approach ensured that customers received clinical care from fully qualified optometrists and dispensing opticians from day one, while benefiting from the familiar M&S environment and service standards. The partnership model also allowed M&S to scale the offering without the complexity of recruiting and managing its own clinical workforce, a pragmatic strategy that has served the brand well as it expanded from its initial pilot stores.\n\nToday, M&S Opticians operates in 37 locations across England, Scotland, and Wales, housed within some of Marks & Spencer's larger stores. The practices offer a full range of services including NHS-funded and private eye tests, enhanced OCT scanning, contact lens fittings, and children's eye tests. The frame collection is curated to reflect the M&S aesthetic — classic, well-made, and fairly priced — sitting alongside NHS-voucher options. While the network is still smaller than the major optical chains, M&S Opticians has carved out a loyal customer base drawn by the trusted brand name, quality frames, and the simple convenience of a high-street location they already visit regularly.",
+    detailedServices: [
+      {
+        name: "NHS Eye Test",
+        description:
+          "A comprehensive eye examination carried out by a qualified optometrist, available free of charge to all eligible patients. Eligibility includes children under 16, adults over 60, those receiving qualifying benefits, and patients with certain medical conditions. The test covers visual acuity, refraction, eye pressure measurement, and an examination of the internal and external structures of the eye.",
+        price: "Free (if eligible)",
+        duration: "20-25 minutes",
+        nhsCovered: true,
+      },
+      {
+        name: "Private Eye Test",
+        description:
+          "A full eye examination for patients who do not qualify for NHS funding. The test includes all the same clinical checks as the NHS eye test — visual acuity, refraction, slit lamp examination, and ophthalmoscopy — providing a thorough assessment of your vision and eye health.",
+        price: "From £20",
+        duration: "25-30 minutes",
+        nhsCovered: false,
+      },
+      {
+        name: "Enhanced OCT Eye Test",
+        description:
+          "An advanced eye examination that includes Optical Coherence Tomography (OCT), a non-invasive scan that produces detailed cross-sectional images of the retina. OCT scanning can detect early signs of conditions such as glaucoma, macular degeneration, and diabetic retinopathy, often before symptoms appear. Recommended for patients who want the most thorough eye health assessment available.",
+        price: "From £45",
+        duration: "30-35 minutes",
+        nhsCovered: false,
+      },
+      {
+        name: "Contact Lens Fitting",
+        description:
+          "An initial assessment and fitting for contact lenses, carried out by a qualified optician. Includes measurements of corneal curvature, tear film evaluation, and a trial fitting with your chosen lens type. Your optician will advise on daily disposables, monthly lenses, or specialist lenses depending on your prescription and lifestyle.",
+        price: "From £35",
+        duration: "30-40 minutes",
+        nhsCovered: false,
+      },
+      {
+        name: "Children's Eye Test",
+        description:
+          "A specially adapted eye test designed for children, using age-appropriate charts and techniques. All children under 16 are entitled to a free NHS-funded eye test. The optometrist will check for common childhood vision problems including lazy eye, squint, and refractive errors. M&S stocks a range of children's frames, many available under the NHS voucher scheme.",
+        price: "Free (NHS funded)",
+        duration: "20-25 minutes",
+        nhsCovered: true,
+      },
+      {
+        name: "Style Consultation",
+        description:
+          "A complimentary one-to-one session with a dispensing optician to help you choose frames that suit your face shape, colouring, and personal style. The consultation covers frame materials, lens options, and coatings, helping you find eyewear that looks great and meets your practical needs. No purchase obligation.",
+        price: "Free",
+        duration: "15-20 minutes",
+        nhsCovered: false,
+      },
+    ],
+    bookingProcess: [
+      "Search for your nearest M&S Opticians by entering your postcode on eyetest.co.uk",
+      "Compare available appointment slots and services at nearby M&S stores",
+      "Select your preferred date and time for your eye test",
+      "Enter your personal details and any relevant medical information",
+      "Receive confirmation of your appointment by email",
+      "Attend your appointment at the M&S Opticians practice inside your chosen M&S store",
+    ],
+    prosAndCons: {
+      pros: [
+        "Backed by one of the UK's most trusted household brands with a reputation for quality",
+        "Conveniently located inside M&S stores — easy to combine with regular shopping",
+        "Quality frames at fair prices with a curated, stylish selection",
+        "NHS eye tests available for all eligible patients",
+      ],
+      cons: [
+        "Limited to just 37 locations across the UK, so not available in every town",
+        "No hearing care services offered alongside optical",
+        "A relatively new entrant to the optical market with a shorter track record than established chains",
+      ],
+    },
+    faqs: [
+      {
+        q: "Where are M&S Opticians located?",
+        a: "M&S Opticians operates from 37 locations across England, Scotland, and Wales, all situated inside Marks & Spencer stores. You will find them in major cities and towns including London, Birmingham, Manchester, Leeds, Glasgow, Cardiff, Sheffield, and Newcastle, as well as smaller centres such as Harrogate, Canterbury, and St Albans. Each practice is located within the M&S store itself, making it easy to combine an eye test with your regular shopping trip.",
+      },
+      {
+        q: "Do M&S Opticians offer NHS eye tests?",
+        a: "Yes, M&S Opticians provides free NHS-funded eye tests for all eligible patients. Eligibility includes children under 16, adults aged 60 and over, people receiving certain means-tested benefits, and individuals with specific medical conditions such as diabetes or glaucoma. In Scotland, all residents are entitled to a free NHS eye test regardless of age or income. If you are unsure whether you qualify, the team at your local M&S Opticians can advise you when you arrive.",
+      },
+      {
+        q: "Are M&S Opticians glasses expensive?",
+        a: "M&S Opticians offers a range of frames at various price points, reflecting the Marks & Spencer approach of quality at fair prices. You will find options starting from budget-friendly NHS-voucher frames through to premium designer styles. The emphasis is on well-made, stylish eyewear that represents good value rather than being the cheapest or most expensive on the market. Lens packages including anti-reflection coatings and thinning options are available at competitive prices, and the team can help you find the best combination for your budget.",
+      },
+      {
+        q: "Can I book an M&S Opticians appointment online?",
+        a: "Yes, you can search for available appointments at your nearest M&S Opticians through eyetest.co.uk. Simply enter your postcode, compare available dates and times at nearby M&S stores, and book directly. You will receive confirmation of your appointment by email. Booking online through eyetest.co.uk lets you compare availability across multiple M&S locations at a glance, making it easy to find a slot that fits your schedule.",
+      },
+      {
+        q: "What brands of glasses does M&S Opticians stock?",
+        a: "M&S Opticians offers a curated selection of quality frames chosen to reflect the classic, well-made aesthetic that Marks & Spencer is known for. The range includes own-brand M&S frames alongside a selection of recognisable designer labels. While the selection may not be as vast as the largest optical chains, the emphasis is on quality, style, and value. The dispensing team can help you find frames that suit your face shape, lifestyle, and budget during a complimentary style consultation.",
+      },
+      {
+        q: "Is M&S Opticians an independent optician?",
+        a: "M&S Opticians is not a fully independent optician — it operates as a partnership within Marks & Spencer stores. The optical practices are staffed and managed by an experienced optical services provider in collaboration with M&S, combining professional clinical care with the trusted M&S retail environment. This partnership model means you receive your eye care from fully qualified, registered optometrists and dispensing opticians while enjoying the comfort and familiarity of a Marks & Spencer store.",
+      },
+    ],
+  },
+
+  // ─── Ace & Tate ─────────────────────────────────────────────────────
+  {
+    slug: "ace-and-tate",
+    name: "Ace & Tate",
+    shortName: "Ace & Tate",
+    brandColor: "#1a1a1a",
+    description:
+      "Ace & Tate is a Dutch eyewear brand founded in Amsterdam in 2013, known for making designer-quality glasses accessible and affordable. By cutting out traditional middlemen and designing frames in-house, they offer stylish prescription glasses with lenses included from around £98. With 17 stores across the UK — including 10 in London — Ace & Tate has become a go-to destination for fashion-conscious customers who want distinctive eyewear without the luxury price tag. Their stores are designed as welcoming, gallery-like spaces where trying on frames feels like a curated experience.",
+    services: [
+      "Private Eye Tests",
+      "Contact Lenses",
+      "Glasses",
+      "Style Consultation",
+    ],
+    storeCount: 17,
+    website: "https://www.aceandtate.com/gb",
+    priceRange: "From £98 (frames + lenses)",
+    nhsAvailable: false,
+    available: true,
+    highlights: [
+      "Affordable designer-quality frames designed in-house in Amsterdam",
+      "Trendy, gallery-inspired store experiences in prime city locations",
+      "Transparent all-in pricing — frames with prescription lenses from £98",
+      "Commitment to sustainability with recycled acetate and B-Corp certification",
+    ],
+    founded: "2013",
+    storeLocations: [
+      "brighton", "bristol", "cardiff", "glasgow", "leeds", "london", "manchester",
+      "oxford",
+    ],
+    history:
+      "Ace & Tate was founded in Amsterdam in 2013 by Mark de Lange, who set out to disrupt the traditional optical industry by offering high-quality, design-led eyewear at a fraction of the price charged by established luxury brands. The premise was simple but powerful: by designing frames in-house, manufacturing directly with trusted factories, and selling through their own stores and website, Ace & Tate could cut out the layers of middlemen that inflate eyewear prices across the industry. The brand quickly gained a following in the Netherlands and Belgium, attracting customers who wanted stylish, well-made glasses without paying hundreds of pounds for a designer label.\n\nAce & Tate expanded rapidly across Europe throughout the mid-2010s, entering the UK market with its first London stores. The brand became known not just for its products but for its retail experience — stores are designed as bright, minimalist spaces with a gallery-like aesthetic, often located in trendy neighbourhoods alongside independent boutiques and cafés. This positioning, combined with strong social media marketing and collaborations with artists and designers, helped Ace & Tate build a distinctive identity that resonated with a younger, design-aware audience. The brand also invested in an online try-at-home service, allowing customers to order frames to try before committing.\n\nToday, Ace & Tate operates 17 stores across the UK, with 10 in London and additional locations in Brighton, Bristol, Cardiff, Glasgow, Leeds, Manchester, and Oxford. The brand positions itself as the accessible alternative to luxury eyewear — offering frames with prescription lenses from around £98, with no hidden costs for standard single-vision lenses. Ace & Tate has also made sustainability a core part of its identity, using recycled acetate and bio-based materials, and achieving B-Corp certification. While they do not offer NHS-funded eye tests, their private eye test service and all-in pricing model make them a compelling choice for customers who value design, transparency, and ethical production.",
+    detailedServices: [
+      {
+        name: "Eye Test",
+        description:
+          "A private eye examination carried out by a qualified optometrist at an Ace & Tate store. The test includes a thorough assessment of your vision and eye health, covering visual acuity, refraction, eye pressure, and an examination of the front and back of the eye. Results are used to provide an up-to-date prescription for glasses or contact lenses.",
+        price: "From £25",
+        duration: "20-25 minutes",
+        nhsCovered: false,
+      },
+      {
+        name: "Comprehensive Eye Test",
+        description:
+          "A more in-depth eye examination that includes additional diagnostic checks beyond the standard test. This may include digital retinal imaging, extended health screening, and a more detailed discussion of your visual needs. Recommended for patients who want a thorough assessment or who have a family history of eye conditions.",
+        price: "From £50",
+        duration: "30-35 minutes",
+        nhsCovered: false,
+      },
+      {
+        name: "Contact Lens Fitting",
+        description:
+          "An assessment and fitting for contact lenses, including corneal measurements, tear film evaluation, and a trial with your recommended lens type. Your optician will discuss options including daily disposables and monthly lenses, and advise on insertion, removal, and care. A follow-up appointment is included to check fit and comfort.",
+        price: "From £50",
+        duration: "30-40 minutes",
+        nhsCovered: false,
+      },
+      {
+        name: "Frame Styling Session",
+        description:
+          "A complimentary one-to-one session with an Ace & Tate stylist to help you find frames that suit your face shape, skin tone, and personal style. The team will guide you through the collection, explain frame materials and lens options, and help you narrow down your choices. No appointment needed — just walk in.",
+        price: "Free",
+        duration: "15-20 minutes",
+        nhsCovered: false,
+      },
+      {
+        name: "Glasses Adjustment",
+        description:
+          "A complimentary service to adjust and tighten your Ace & Tate glasses for a perfect fit. Whether your frames have become loose, uneven, or uncomfortable, the in-store team can make adjustments on the spot. This service is available for all Ace & Tate frames and is free of charge, no appointment required.",
+        price: "Free",
+        duration: "10 minutes",
+        nhsCovered: false,
+      },
+    ],
+    bookingProcess: [
+      "Search for your nearest Ace & Tate store by entering your postcode on eyetest.co.uk",
+      "Find the nearest Ace & Tate location and check available services",
+      "Select the type of appointment you need — eye test, comprehensive test, or contact lens fitting",
+      "Choose your preferred date and time from the available slots",
+      "Enter your personal details to confirm your booking",
+      "Attend your appointment at the Ace & Tate store and browse frames before or after your test",
+    ],
+    prosAndCons: {
+      pros: [
+        "Transparent all-in pricing with frames and prescription lenses from £98 — no hidden extras",
+        "Design-led, stylish frames created by an in-house team in Amsterdam",
+        "Sustainable materials including recycled acetate, with B-Corp certification",
+        "Trendy, welcoming stores with a gallery-like atmosphere and helpful stylists",
+      ],
+      cons: [
+        "Very limited UK coverage with only 17 stores, mostly concentrated in London",
+        "No NHS-funded eye tests — all services are private",
+        "No hearing care or clinical specialist services beyond standard eye care",
+      ],
+    },
+    faqs: [
+      {
+        q: "How much are Ace & Tate glasses?",
+        a: "Ace & Tate offers prescription glasses starting from £98, which includes the frame and standard single-vision lenses — there are no hidden costs for basic prescriptions. Prices increase for more complex prescriptions, progressive (varifocal) lenses, and premium lens coatings such as blue-light filtering or extra-thin options. Sunglasses with prescription lenses start from a similar price point. The transparent pricing model means you know exactly what you are paying before you commit, with no surprise add-ons at the till.",
+      },
+      {
+        q: "Where are Ace & Tate stores in the UK?",
+        a: "Ace & Tate operates 17 stores across the UK. Ten of these are in London, spread across popular neighbourhoods including Soho, Shoreditch, Covent Garden, Notting Hill, and King's Cross. Outside London, you will find stores in Brighton, Bristol, Cardiff, Glasgow, Leeds, Manchester, and Oxford. The stores are typically located in trendy, walkable areas alongside independent shops and cafés. If there is no store near you, Ace & Tate also offers a home try-on service where you can order up to four frames to try at home for free.",
+      },
+      {
+        q: "Do Ace & Tate offer NHS eye tests?",
+        a: "No, Ace & Tate does not offer NHS-funded eye tests. All eye tests at Ace & Tate are private, starting from £25 for a standard examination and from £50 for a comprehensive test. They do not participate in the NHS optical voucher scheme for glasses either. If you are looking for a free NHS eye test, you would need to visit an optician that participates in the NHS scheme, such as Boots Opticians or Specsavers. You can use eyetest.co.uk to compare NHS and private options near you.",
+      },
+      {
+        q: "Are Ace & Tate frames good quality?",
+        a: "Ace & Tate frames are designed in-house at their Amsterdam studio and manufactured using high-quality materials including Italian Mazzucchelli acetate, lightweight stainless steel, and increasingly, recycled and bio-based acetate. The brand puts significant emphasis on design and build quality, with frames that feel solid and well-finished. Hinges, nose pads, and temple tips are designed for comfort and durability. As a certified B-Corp, Ace & Tate also meets verified standards for social and environmental performance, which extends to their material sourcing and production processes.",
+      },
+      {
+        q: "Can I book an Ace & Tate eye test online?",
+        a: "Yes, you can book an eye test at your nearest Ace & Tate store through eyetest.co.uk. Simply enter your postcode, find the nearest location, and select an available appointment slot. You can also book directly through the Ace & Tate website or by contacting the store. Booking through eyetest.co.uk lets you compare availability and prices across multiple opticians in your area, making it easy to find the best option for your needs and schedule.",
+      },
+      {
+        q: "What makes Ace & Tate different from other opticians?",
+        a: "Ace & Tate operates on a direct-to-consumer model that cuts out the traditional middlemen in the eyewear industry — the brand designs its own frames, works directly with manufacturers, and sells through its own stores and website. This means they can offer designer-quality glasses at a significantly lower price than traditional opticians selling third-party designer labels. Their transparent pricing — frames with lenses from £98 — their design-first approach, sustainability commitments, and curated retail experience set them apart from both high-street chains and luxury boutiques.",
+      },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------

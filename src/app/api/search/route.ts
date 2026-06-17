@@ -4,6 +4,8 @@ import { fetchBoots } from "@/lib/providers/boots";
 import { fetchAsda } from "@/lib/providers/asda";
 import { fetchVisionExpress } from "@/lib/providers/vision-express";
 import { fetchMysight, MYSIGHT_SITES } from "@/lib/providers/mysight";
+import { fetchMandS } from "@/lib/providers/mands";
+import { fetchAceAndTate } from "@/lib/providers/aceandtate";
 import type { StoreResult, FeaturedProvider } from "@/lib/types";
 import { createClient } from "@/lib/supabase/server";
 import { haversine } from "@/lib/haversine";
@@ -91,7 +93,7 @@ export async function GET(req: NextRequest) {
   }
 
   const activeProviders = [
-    ...["Boots Opticians", "ASDA Opticians", "Vision Express"].filter(enabled),
+    ...["Boots Opticians", "ASDA Opticians", "Vision Express", "M&S Opticians", "Ace & Tate"].filter(enabled),
     ...MYSIGHT_SITES.filter(enabled),
   ];
 
@@ -131,6 +133,12 @@ export async function GET(req: NextRequest) {
           : []),
         ...(enabled("Vision Express")
           ? [runProvider("Vision Express", () => fetchVisionExpress(lat, lng, RADIUS, LIMIT))]
+          : []),
+        ...(enabled("M&S Opticians")
+          ? [runProvider("M&S Opticians", () => fetchMandS(lat, lng, RADIUS, LIMIT))]
+          : []),
+        ...(enabled("Ace & Tate")
+          ? [runProvider("Ace & Tate", () => fetchAceAndTate(lat, lng, RADIUS, LIMIT))]
           : []),
         ...MYSIGHT_SITES.filter((site) => enabled(site)).map(
           (site) => runProvider(site, () => fetchMysight(site, lat, lng, RADIUS, LIMIT))
