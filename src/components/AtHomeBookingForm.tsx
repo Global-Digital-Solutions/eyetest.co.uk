@@ -4,9 +4,10 @@ import { useState, type FormEvent } from "react";
 
 /* ------------------------------------------------------------------ */
 /*  At-Home Eye Test Booking Form                                      */
-/*  Modelled on OutsideClinic's booking flow.                          */
-/*  Currently submits to hello@eyetest.co.uk via Formspree-style     */
-/*  POST. Will be replaced with a Cloudflare Worker once commercials   */
+/*  Provider-agnostic — our team allocates the enquiry to the best    */
+/*  suitable at-home eye care provider based on submitted details.     */
+/*  Currently submits to hello@eyetest.co.uk via mailto fallback.     */
+/*  Will be replaced with a Cloudflare Worker once commercials         */
 /*  are agreed.                                                        */
 /* ------------------------------------------------------------------ */
 
@@ -138,11 +139,12 @@ export function AtHomeBookingForm() {
           className="text-2xl font-bold text-[var(--color-navy)] mb-3"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          Booking request sent
+          Enquiry submitted
         </h3>
         <p className="text-gray-600 mb-4 max-w-md mx-auto">
-          Thank you for your enquiry. A member of our team will be in touch
-          shortly to confirm your at-home eye test appointment.
+          Thank you for your enquiry. Our team will review your details and
+          match you with the most suitable at-home eye care provider in your
+          area. We&rsquo;ll be in touch shortly.
         </p>
         <p className="text-sm text-gray-500">
           If you have any questions, email us at{" "}
@@ -188,7 +190,7 @@ export function AtHomeBookingForm() {
                 className="text-xl font-bold text-[var(--color-navy)] mb-1"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Book an at-home eye test
+                Request an at-home eye test
               </h3>
               <p className="text-sm text-gray-500">
                 Step 1 of 3 — Test type &amp; eligibility
@@ -601,9 +603,9 @@ export function AtHomeBookingForm() {
             {/* Marketing consent */}
             <fieldset className="bg-gray-50 rounded-xl p-5">
               <legend className="text-sm font-medium text-gray-700 mb-3">
-                We&rsquo;d like to keep you informed with useful updates and
-                offers. Tick the channels you&rsquo;re happy to hear from us
-                on:
+                We&rsquo;d like to keep you informed about at-home eye care
+                services and offers. Tick the channels you&rsquo;re happy
+                to be contacted on:
               </legend>
               <div className="grid grid-cols-2 gap-3">
                 {(
@@ -638,8 +640,9 @@ export function AtHomeBookingForm() {
             <p className="text-xs text-gray-400 leading-relaxed">
               By submitting this form, you confirm that you have permission to
               share these contact details and that the patient is aware of this
-              booking. All data is processed in accordance with the Data
-              Protection Act 2018 and UK GDPR. Read our{" "}
+              enquiry. Your details will be shared with a suitable at-home eye
+              care provider in your area. All data is processed in accordance
+              with the Data Protection Act 2018 and UK GDPR. Read our{" "}
               <a href="/privacy" className="underline hover:text-gray-600">
                 Privacy Policy
               </a>
@@ -672,7 +675,7 @@ export function AtHomeBookingForm() {
                   </>
                 ) : (
                   <>
-                    Complete booking
+                    Submit enquiry
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
