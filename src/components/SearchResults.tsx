@@ -83,8 +83,9 @@ function displayProviderName(p: string): string {
 }
 
 function formatDistance(m: number): string {
-  if (m < 1000) return `${m} m`;
-  return `${(m / 1000).toFixed(1)} km`;
+  const miles = m / 1609.344;
+  if (miles < 0.1) return `${Math.round(m * 1.09361)} yds`;
+  return `${miles.toFixed(1)} mi`;
 }
 
 /* ------------------------------------------------------------------ */
