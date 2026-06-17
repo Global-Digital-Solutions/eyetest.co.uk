@@ -10,56 +10,76 @@ interface Props {
   center: [number, number]; // [lat, lng]
 }
 
-const MAX_LABEL = 22;
-function truncate(s: string) {
-  return s.length > MAX_LABEL ? s.slice(0, MAX_LABEL).trimEnd() + "…" : s;
+/** Check availability accounting for static providers (dailySlots count=-1) */
+function hasAvailability(store: StoreResult) {
+  return store.dailySlots
+    ? store.dailySlots.some((s) => s.count !== 0)
+    : Boolean(store.slotsAvailable);
 }
 
+/** Compact dot marker — shows store name on hover via CSS */
 function Pin({ store }: { store: StoreResult }) {
   const featured = store.featured;
-  const available = !!store.slotsAvailable;
+  const available = hasAvailability(store);
 
-  const bg = featured ? "#f59e0b" : available ? "#16a34a" : "#6b7280";
-  const shadow = featured
-    ? "0 2px 8px rgba(245,158,11,0.5)"
-    : available
-    ? "0 2px 8px rgba(22,163,74,0.4)"
-    : "0 1px 4px rgba(0,0,0,0.2)";
+  const bg = featured ? "#f59e0b" : available ? "#16a34a" : "#9ca3af";
 
   return (
-    <div style={{ position: "relative", display: "inline-block" }}>
-      {/* Label pill */}
+    <div className="group/pin" style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      {/* Hover label — appears above the dot */}
       <div
-        style={{
-          backgroundColor: bg,
-          color: "#fff",
-          borderRadius: 20,
-          padding: featured ? "4px 10px" : "3px 8px",
-          fontSize: featured ? 12 : 11,
-          fontWeight: featured ? 700 : 500,
-          whiteSpace: "nowrap",
-          boxShadow: shadow,
-          lineHeight: 1.3,
-          userSelect: "none",
-        }}
-      >
-        {featured && <span style={{ marginRight: 4 }}>★</span>}
-        {truncate(store.storeName)}
-      </div>
-
-      {/* Pointer triangle */}
-      <div
+        className="hidden group-hover/pin:block"
         style={{
           position: "absolute",
-          bottom: -6,
+          bottom: "100%",
           left: "50%",
           transform: "translateX(-50%)",
-          width: 0,
-          height: 0,
-          borderLeft: "6px solid transparent",
-          borderRight: "6px solid transparent",
-          borderTop: `7px solid ${bg}`,
+          marginBottom: 4,
+          zIndex: 50,
+          pointerEvents: "none",
         }}
+      >
+        <div
+          style={{
+            backgroundColor: bg,
+            color: "#fff",
+            borderRadius: 6,
+            padding: "3px 8px",
+            fontSize: 11,
+            fontWeight: 600,
+            whiteSpace: "nowrap",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.25)",
+            lineHeight: 1.3,
+          }}
+        >
+          {featured && <span style={{ marginRight: 3 }}>★</span>}
+          {store.storeName}
+        </div>
+        {/* Tooltip arrow */}
+        <div
+          style={{
+            width: 0,
+            height: 0,
+            margin: "0 auto",
+            borderLeft: "5px solid transparent",
+            borderRight: "5px solid transparent",
+            borderTop: `5px solid ${bg}`,
+          }}
+        />
+      </div>
+
+      {/* Dot marker — always visible */}
+      <div
+        style={{
+          width: featured ? 18 : 14,
+          height: featured ? 18 : 14,
+          borderRadius: "50%",
+          backgroundColor: bg,
+          border: "2.5px solid white",
+          boxShadow: "0 1px 4px rgba(0,0,0,0.3)",
+          transition: "transform 0.15s ease",
+        }}
+        className="group-hover/pin:scale-[1.4]"
       />
     </div>
   );
@@ -71,8 +91,8 @@ export default function StoreMap({ stores, center }: Props) {
 
   // Render featured pins last so they sit on top
   const sorted = [
-    ...mapped.filter((s) => !s.featured && !s.slotsAvailable),
-    ...mapped.filter((s) => !s.featured && s.slotsAvailable),
+    ...mapped.filter((s) => !s.featured && !hasAvailability(s)),
+    ...mapped.filter((s) => !s.featured && hasAvailability(s)),
     ...mapped.filter((s) => s.featured),
   ];
 
@@ -95,7 +115,7 @@ export default function StoreMap({ stores, center }: Props) {
           latitude={store.lat!}
           longitude={store.lng!}
           anchor="bottom"
-          offset={[0, -2]}
+          offset={[0, 2]}
           onClick={(e: {originalEvent: MouseEvent}) => {
             e.originalEvent.stopPropagation();
             setPopup(store);
@@ -114,7 +134,7 @@ export default function StoreMap({ stores, center }: Props) {
           onClose={() => setPopup(null)}
           closeOnClick={false}
           offset={20}
-          maxWidth="220px"
+          maxWidth="240px"
         >
           <div style={{ padding: "6px 4px", fontFamily: "inherit" }}>
             {popup.featured && (
@@ -136,9 +156,9 @@ export default function StoreMap({ stores, center }: Props) {
             <p style={{ fontSize: 13, fontWeight: 600, color: "#111827", marginBottom: 4, lineHeight: 1.4 }}>
               {popup.storeName}
             </p>
-            {popup.slotsAvailable ? (
+            {hasAvailability(popup) ? (
               <p style={{ fontSize: 11, color: "#15803d", marginBottom: 8, lineHeight: 1.4 }}>
-                ✓ {popup.slotsAvailable}
+                ✓ {popup.slotsAvailable ?? "Appointments available"}
               </p>
             ) : (
               <p style={{ fontSize: 11, color: "#9ca3af", marginBottom: 8 }}>No available slots</p>
@@ -149,7 +169,7 @@ export default function StoreMap({ stores, center }: Props) {
               rel="noopener noreferrer"
               style={{
                 display: "inline-block",
-                backgroundColor: popup.slotsAvailable ? "#16a34a" : "#4b5563",
+                backgroundColor: hasAvailability(popup) ? "#16a34a" : "#4b5563",
                 color: "#fff",
                 fontSize: 12,
                 fontWeight: 600,

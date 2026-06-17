@@ -1058,7 +1058,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
           {/* Split layout: results + map */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Results list */}
-            <div className="lg:col-span-7 space-y-3">
+            <div className="lg:col-span-5 space-y-3">
               {/* Loading skeleton while waiting for first results */}
               {stillLoading && results.length === 0 && (
                 <div className="space-y-3">
@@ -1191,7 +1191,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
             </div>
 
             {/* Sticky map (desktop only) */}
-            <div className="hidden lg:block lg:col-span-5">
+            <div className="hidden lg:block lg:col-span-7">
               <div
                 className="sticky rounded-xl overflow-hidden shadow-sm border border-gray-100"
                 style={{
