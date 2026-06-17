@@ -75,6 +75,8 @@ Planned features (discussed with Darin):
 | `SearchResults.tsx` | Main search results with streaming, progress panel, store cards |
 | `PageHero.tsx` | Reusable hero for content pages with breadcrumbs |
 | `ResultCard.tsx` / `StoreCard` | Individual optician result cards |
+| `GetListedForm.tsx` | Optician signup form — appointment system dropdown (Ocuco, MySight, Optix, VisionPlus, Optinet, Raven, Glasson, Other), location count ranges, API submission to `/api/get-listed` |
+| `AtHomeBookingForm.tsx` | At-home eye test enquiry form — submits to `/api/at-home-enquiry` |
 
 ### Pages Structure
 ```
@@ -98,6 +100,8 @@ Planned features (discussed with Darin):
 | Route | Purpose |
 |-------|---------|
 | `/api/search` | Main search — streams NDJSON results from all providers |
+| `/api/get-listed` | POST: Get-Listed form submissions via Nodemailer + Gmail SMTP → hello@eyetest.co.uk |
+| `/api/at-home-enquiry` | POST: At-home eye test enquiry form via Nodemailer + Gmail SMTP → hello@eyetest.co.uk |
 | `/api/admin/featured` | Admin: manage featured opticians |
 | `/api/admin/providers` | Admin: provider status |
 | `/api/admin/stores` | Admin: store management |
@@ -114,6 +118,7 @@ Planned features (discussed with Darin):
 - `/blog` → `/articles` (301)
 - `/blog/:slug` → `/articles/:slug` (301)
 - `/contact` → `/about` (301)
+- `/eye-tests/home-visit-eye-test` → `/at-home-eye-tests` (301)
 
 ## Design System
 
@@ -170,9 +175,15 @@ All canonical URLs, OG URLs, and schema URLs use `www.eyetest.co.uk`
 | 2026-06 | Mobile UX redesign: compact StoreCards, responsive progress panel |
 | 2026-06 | SEO audit: author schema, dynamic sitemap, internal linking |
 | 2026-06-17 | Indexability fix: www domain refs, 404 fixes, 6 new locations |
+| 2026-06-17 | Get-Listed form rewrite: appointment system dropdown, API submission via Nodemailer |
+| 2026-06-17 | At-home eye tests page redesign: comparison table, OutsideClinic as recommended provider |
+| 2026-06-17 | Email API routes: `/api/get-listed` and `/api/at-home-enquiry` (Nodemailer + Gmail SMTP) |
+| 2026-06-17 | Terminated postcodes fix in `src/lib/postcodes.ts`; Watford postcode updated (WD17 2BH → WD17 2NW) |
+| 2026-06-17 | Redirect: `/eye-tests/home-visit-eye-test` → `/at-home-eye-tests` (301) |
 | Next | Optician subscription model with Stripe billing |
 
 ## Pending Work
-1. **Optician subscription + Stripe** — Featured placement, self-service portal, monthly/annual billing
-2. **Apify Google Reviews** — Scrape and display optician reviews
-3. **SE Ranking re-scan** — Verify indexability fixes resolved all issues
+1. **Gmail App Password setup** — User needs to create Google App Password and add `GMAIL_USER` + `GMAIL_APP_PASSWORD` env vars on Vercel (user action required for email forms to work)
+2. **Optician subscription + Stripe** — Featured placement, self-service portal, monthly/annual billing (starting next)
+3. **Apify Google Reviews** — Scrape and display optician reviews
+4. **SE Ranking re-scan** — Verify indexability fixes resolved all issues

@@ -282,8 +282,9 @@ export async function fetchMysight(
         ? branchLabel
         : `${brandName} ${branchLabel}`;
 
-      // Deep-link: include branchId (and appointmentTypeId when available)
-      // so users land on the specific branch's booking page
+      // Deep-link via /recall route — the only MySight SPA route that reads
+      // branchId from URL params and auto-selects the branch in app state.
+      // This bypasses the branch-selection step for multi-branch sites.
       const bookingParams = new URLSearchParams();
       bookingParams.set("branchId", branchId);
       if (typeId) bookingParams.set("appointmentTypeId", typeId);
@@ -298,7 +299,7 @@ export async function fetchMysight(
         distanceM: b.distanceM,
         slotsAvailable: slotStr,
         nextAvailable: nextDate,
-        bookingUrl: `https://${siteHost}/choose-appointment-type?${bookingParams.toString()}`,
+        bookingUrl: `https://${siteHost}/recall?${bookingParams.toString()}`,
         lat: Number(b.latitude) || undefined,
         lng: Number(b.longitude) || undefined,
         dailySlots,

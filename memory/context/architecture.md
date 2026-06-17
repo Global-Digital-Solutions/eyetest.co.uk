@@ -21,6 +21,8 @@ eyetest.co.uk/
 │   │   ├── page.tsx             # Homepage
 │   │   ├── sitemap.ts           # Dynamic sitemap generator
 │   │   ├── api/search/route.ts  # NDJSON streaming search API
+│   │   ├── api/get-listed/route.ts  # POST: optician signup form → email via Nodemailer
+│   │   ├── api/at-home-enquiry/route.ts  # POST: at-home enquiry form → email via Nodemailer
 │   │   ├── api/admin/           # Admin API routes
 │   │   ├── admin/               # Admin dashboard
 │   │   ├── search/page.tsx      # Search results page
@@ -71,6 +73,13 @@ Currently used for:
 - Featured optician management
 - Future: subscription/billing data for optician portal
 
+### Email Submission (Nodemailer)
+Form submissions (Get-Listed, At-Home Enquiry) use Nodemailer with Gmail SMTP (`smtp.gmail.com:465`). Both API routes follow the same pattern:
+1. Validate required fields from POST body
+2. Create transporter with `GMAIL_USER` / `GMAIL_APP_PASSWORD` env vars
+3. Send formatted HTML email to hello@eyetest.co.uk
+4. Return JSON success/error response
+
 ### MapBox
 Used in `StoreMap.tsx` and `ResultsMap.tsx` for displaying optician locations on maps.
 
@@ -85,9 +94,13 @@ Used in `StoreMap.tsx` and `ResultsMap.tsx` for displaying optician locations on
 | react-map-gl | ^8.1 | React Mapbox wrapper |
 | tailwindcss | ^4 | Styling |
 | typescript | ^5 | Type safety |
+| nodemailer | ^9.0.1 | Email sending (Gmail SMTP) |
+| @types/nodemailer | ^6 | Nodemailer type definitions |
 
 ## Environment Variables (Expected)
 - `NEXT_PUBLIC_SUPABASE_URL` — Supabase project URL
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — Supabase anon key
 - `NEXT_PUBLIC_MAPBOX_TOKEN` — Mapbox GL access token
+- `GMAIL_USER` — Gmail address for SMTP sending (e.g. hello@eyetest.co.uk)
+- `GMAIL_APP_PASSWORD` — Google App Password for SMTP auth (NOT the Gmail login password; user must generate via Google Account → Security → App Passwords)
 - Future: `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` for billing

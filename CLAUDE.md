@@ -75,6 +75,11 @@ Darin Butler (butlerdarin@gmail.com) — Founder, eyetest.co.uk
 | Core site + search | Done |
 | SEO + indexability fixes | Done |
 | Internal linking | Done |
+| Get-Listed form + email API | Done |
+| At-home eye tests page redesign | Done |
+| At-home enquiry form + email API | Done |
+| Terminated postcodes fix | Done |
+| Gmail App Password + Vercel env vars | Done |
 | **Optician subscription + Stripe billing** | **Next** |
 | Apify Google Reviews scraping | Pending |
 
