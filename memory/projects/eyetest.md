@@ -1,0 +1,178 @@
+# eyetest.co.uk
+
+**Owner:** Darin Butler (butlerdarin@gmail.com)
+**Status:** Live, pre-search-engine-submission
+**Domain:** www.eyetest.co.uk (primary), eyetest-co-uk.vercel.app (Vercel preview)
+**Repo:** github.com/Global-Digital-Solutions/eyetest.co.uk.git
+
+## What It Is
+
+The UK's authority on booking eye tests. Users enter a postcode, the site queries multiple optician APIs in real-time (streaming NDJSON), and shows available appointment slots from Boots, ASDA, Vision Express, and 35+ independent opticians via MySight. Users can compare prices and availability, then book directly on the optician's site via deep links.
+
+## Business Model (Current)
+
+Free for users. Revenue model TBD — next phase is optician subscription with Stripe billing for featured placement in search results.
+
+## Next Phase: Optician Subscription Model
+
+Planned features (discussed with Darin):
+- **Value prop:** Featured placement in search results
+- **Pricing:** Flat monthly fee OR annual fee at discounted rate
+- **Target:** Any optician, including new ones not yet on the platform
+- **Approach:** Full self-service portal (signup, billing, manage listing)
+- **Payment:** Stripe integration
+- **Scope:** Optician can sign up, enter details, choose plan, pay, get featured
+
+## Technical Architecture
+
+### Framework
+- Next.js 16.2.9 with App Router (NOT Pages Router)
+- TypeScript throughout
+- Tailwind CSS v4 for styling
+- Turbopack for dev server
+
+### CRITICAL: Next.js 16 Breaking Changes
+- `params` and `searchParams` are Promises — MUST use `await params`
+- Always read `node_modules/next/dist/docs/` before writing new code patterns
+- AGENTS.md enforces this rule
+
+### Search Flow
+1. User enters postcode on homepage (`src/components/Hero.tsx`)
+2. Redirects to `/search?postcode=XX`
+3. `SearchResults.tsx` component streams from `/api/search` route
+4. API route (`src/app/api/search/route.ts`):
+   - Geocodes postcode via postcodes.io
+   - Queries all providers in parallel (Boots, ASDA, Vision Express, MySight)
+   - Streams NDJSON results back: meta event → store events → done event
+5. Frontend deduplicates, sorts, and displays results with StoreCards
+6. Deep links take users directly to optician booking pages
+
+### Providers
+| Provider | File | API Type | Deep Link |
+|----------|------|----------|-----------|
+| Boots | `src/lib/providers/boots.ts` | Ocuco REST | siteId-based URL |
+| ASDA | `src/lib/providers/asda.ts` | Ocuco REST | siteId-based URL |
+| Vision Express | `src/lib/providers/vision-express.ts` | GraphQL | storeCode-based URL |
+| MySight | `src/lib/providers/mysight.ts` | GraphQL | 35 independent optician brands |
+
+### Data Files
+| File | Contains |
+|------|----------|
+| `src/data/eye-tests.ts` | 18 eye test types with full clinical content |
+| `src/data/eye-health.ts` | 15 conditions + 10 guides, relatedTests per condition |
+| `src/data/articles.ts` | 6 editorial articles |
+| `src/data/locations.ts` | 97 UK cities with lat/lng, postcodes, nearbyAreas |
+| `src/data/opticians.ts` | 10 optician brands with store counts, descriptions |
+| `src/data/search-queries.ts` | 43 SEO search query pages |
+| `src/data/offers.ts` | Current optician offers/deals |
+
+### Key Components
+| Component | Purpose |
+|-----------|---------|
+| `Header.tsx` | Main nav with mega menus |
+| `Footer.tsx` | SEO footer with all links |
+| `Hero.tsx` | Homepage hero with postcode search |
+| `SearchResults.tsx` | Main search results with streaming, progress panel, store cards |
+| `PageHero.tsx` | Reusable hero for content pages with breadcrumbs |
+| `ResultCard.tsx` / `StoreCard` | Individual optician result cards |
+
+### Pages Structure
+```
+/ — Homepage (Hero + search + articles + CTA)
+/search — Search results (dynamic, streams from API)
+/eye-tests — Listing + /eye-tests/[slug] (18 types)
+/eye-health — Hub + /conditions/[slug] (15) + /guides/[slug] (10)
+/articles — Listing + /articles/[slug] (6)
+/opticians — Listing + /opticians/[slug] (10 brands)
+/opticians/[brand]/[location] — Brand × city combos (~970)
+/locations — Listing + /locations/[city] (97)
+/find — Listing + /find/[slug] (43 SEO queries)
+/offers — Current deals
+/at-home-eye-tests — Home visit info
+/about, /privacy, /terms, /disclaimer — Legal/info
+/get-listed — Optician signup CTA
+/admin — Admin dashboard (protected)
+```
+
+### API Routes
+| Route | Purpose |
+|-------|---------|
+| `/api/search` | Main search — streams NDJSON results from all providers |
+| `/api/admin/featured` | Admin: manage featured opticians |
+| `/api/admin/providers` | Admin: provider status |
+| `/api/admin/stores` | Admin: store management |
+
+### Infrastructure
+| Service | Purpose |
+|---------|---------|
+| Vercel | Hosting, auto-deploy from GitHub main branch |
+| Supabase | Database (admin features, future subscriptions) |
+| Mapbox | Store location maps |
+| postcodes.io | UK postcode geocoding |
+
+### Redirects (next.config.ts)
+- `/blog` → `/articles` (301)
+- `/blog/:slug` → `/articles/:slug` (301)
+- `/contact` → `/about` (301)
+
+## Design System
+
+### Colors
+- Primary teal: `#0ea5a0` (`--color-primary`)
+- Primary dark: darker teal (`--color-primary-dark`)
+- Primary light: lighter teal (`--color-primary-light`)
+- Navy: `#0d1b3e` (`--color-navy`)
+- Navy light: `--color-navy-light`
+- Success green: `#22c55e` (`--color-success`)
+- NHS blue: `#005eb8` (`--color-nhs-blue`)
+
+### Typography
+- Body: Inter font
+- Display/headings: Outfit font (`--font-display`)
+- Use `style={{ fontFamily: "var(--font-display)" }}` on headings
+
+### UI Patterns
+- Rounded corners: `rounded-2xl` on cards
+- Shadows: `shadow-sm` default, `hover:shadow-md` on hover
+- Cards: white bg, `border border-gray-100`, hover border teal
+- CTAs: teal bg, white text, rounded-full, hover shadow
+- PageHero: navy gradient bg, white text, breadcrumbs
+- Mobile-first responsive design throughout
+
+## SEO Implementation
+
+### Schema Types Used
+WebSite, Organization, AboutPage, WebPage, CollectionPage, FAQPage, MedicalWebPage, MedicalCondition, Article, LocalBusiness, MedicalBusiness, BreadcrumbList
+
+### Author Attribution
+All content pages have:
+```typescript
+author: {
+  "@type": "Organization",
+  name: "eyetest.co.uk",
+  url: "https://www.eyetest.co.uk",
+}
+```
+
+### Sitemap
+Dynamic via `src/app/sitemap.ts` — auto-generates from all data files (~1,200 URLs)
+
+### Domain
+Primary: `www.eyetest.co.uk` (non-www redirects via Vercel)
+All canonical URLs, OG URLs, and schema URLs use `www.eyetest.co.uk`
+
+## Build History
+
+| Date | Milestone |
+|------|-----------|
+| 2026-06 | Initial site build: homepage, search, all content pages |
+| 2026-06 | Search integration: Boots, ASDA, Vision Express, MySight APIs |
+| 2026-06 | Mobile UX redesign: compact StoreCards, responsive progress panel |
+| 2026-06 | SEO audit: author schema, dynamic sitemap, internal linking |
+| 2026-06-17 | Indexability fix: www domain refs, 404 fixes, 6 new locations |
+| Next | Optician subscription model with Stripe billing |
+
+## Pending Work
+1. **Optician subscription + Stripe** — Featured placement, self-service portal, monthly/annual billing
+2. **Apify Google Reviews** — Scrape and display optician reviews
+3. **SE Ranking re-scan** — Verify indexability fixes resolved all issues
