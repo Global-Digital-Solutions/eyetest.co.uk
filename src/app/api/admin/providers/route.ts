@@ -7,6 +7,8 @@ export const MAIN_PROVIDERS = [
   "Boots Opticians",
   "ASDA Opticians",
   "Vision Express",
+  "M&S Opticians",
+  "Ace & Tate",
 ];
 
 export async function GET() {

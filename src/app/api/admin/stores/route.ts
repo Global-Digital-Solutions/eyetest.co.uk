@@ -5,6 +5,8 @@ import { fetchBoots } from "@/lib/providers/boots";
 import { fetchAsda } from "@/lib/providers/asda";
 import { fetchVisionExpress } from "@/lib/providers/vision-express";
 import { fetchMysight } from "@/lib/providers/mysight";
+import { fetchMandS } from "@/lib/providers/mands";
+import { fetchAceAndTate } from "@/lib/providers/aceandtate";
 
 // Must match the search route's fetch window, otherwise admins could pin a
 // store here that the public search would never return.
@@ -45,6 +47,10 @@ export async function GET(req: NextRequest) {
       stores = await fetchAsda(lat, lng, MAIN_RADIUS, LIMIT);
     } else if (provider === "Vision Express") {
       stores = await fetchVisionExpress(lat, lng, MAIN_RADIUS, LIMIT);
+    } else if (provider === "M&S Opticians") {
+      stores = await fetchMandS(lat, lng, MAIN_RADIUS, LIMIT);
+    } else if (provider === "Ace & Tate") {
+      stores = await fetchAceAndTate(lat, lng, MAIN_RADIUS, LIMIT);
     } else if (provider.endsWith(".mysight.uk")) {
       stores = await fetchMysight(provider, lat, lng, MYSIGHT_RADIUS, LIMIT);
     } else {
