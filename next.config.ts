@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         destination: "/about",
         permanent: true,
       },
+      {
+        source: "/eye-tests/home-visit-eye-test",
+        destination: "/at-home-eye-tests",
+        permanent: true,
+      },
     ];
   },
 };

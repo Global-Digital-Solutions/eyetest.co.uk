@@ -20,7 +20,7 @@ const eyeTestLinks = [
   { label: "Colour Vision Test", href: "/eye-tests/colour-vision-test" },
   { label: "DVLA / Driving Test", href: "/eye-tests/dvla-driving-vision-test" },
   { label: "Emergency Eye Care", href: "/eye-tests/emergency-eye-care" },
-  { label: "Home Visit Eye Test", href: "/eye-tests/home-visit-eye-test" },
+  { label: "Home Visit Eye Test", href: "/at-home-eye-tests" },
   { label: "Glaucoma Assessment", href: "/eye-tests/glaucoma-assessment" },
   { label: "Retinal Photography", href: "/eye-tests/retinal-photography" },
   { label: "Blepharitis Assessment", href: "/eye-tests/blepharitis-assessment" },
