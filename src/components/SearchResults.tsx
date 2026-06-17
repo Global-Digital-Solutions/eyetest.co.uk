@@ -829,8 +829,15 @@ export function SearchResults({ postcode }: { postcode: string }) {
       return a.distanceM - b.distanceM;
     });
 
+  // Static providers (M&S, Ace & Tate) set slotsAvailable=null but have
+  // dailySlots with count=-1 meaning "available, count unknown". Check both.
+  const hasAvailability = (r: StoreResult) =>
+    r.dailySlots
+      ? r.dailySlots.some((s) => s.count !== 0)
+      : Boolean(r.slotsAvailable);
+
   const available = results
-    .filter((r) => !r.featured && r.slotsAvailable)
+    .filter((r) => !r.featured && hasAvailability(r))
     .sort((a, b) => {
       if (a.nextAvailable && b.nextAvailable)
         return a.nextAvailable.localeCompare(b.nextAvailable);
@@ -840,7 +847,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
     });
 
   const unavailable = results
-    .filter((r) => !r.featured && !r.slotsAvailable)
+    .filter((r) => !r.featured && !hasAvailability(r))
     .sort((a, b) => a.distanceM - b.distanceM);
 
   const stillLoading = stream !== null && !stream.done;
@@ -945,10 +952,10 @@ export function SearchResults({ postcode }: { postcode: string }) {
                   "No results"
                 )}
               </h2>
-              {(available.length + featured.filter((r) => r.slotsAvailable).length) > 0 && (
+              {(available.length + featured.filter((r) => hasAvailability(r)).length) > 0 && (
                 <p className="text-sm text-gray-500 mt-0.5">
                   <span className="font-medium text-[var(--color-success)]">
-                    {available.length + featured.filter((r) => r.slotsAvailable).length}
+                    {available.length + featured.filter((r) => hasAvailability(r)).length}
                   </span>{" "}
                   with available appointments
                 </p>
