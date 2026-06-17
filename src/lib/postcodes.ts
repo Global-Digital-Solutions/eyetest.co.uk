@@ -24,21 +24,35 @@ export async function geocodePostcode(postcode: string): Promise<GeoResult> {
   }
 
   const res = await fetch(`https://api.postcodes.io/postcodes/${clean}`);
-  if (!res.ok) {
-    throw new Error(
-      `We couldn't recognise "${postcode.trim()}" as a valid UK postcode. Please double-check and try again.`
-    );
-  }
   const data = await res.json();
-  if (data.status !== 200 || !data.result) {
-    throw new Error(
-      `We couldn't recognise "${postcode.trim()}" as a valid UK postcode. Please double-check and try again.`
-    );
+
+  /* ---- Active postcode ---- */
+  if (data.status === 200 && data.result) {
+    return {
+      postcode: data.result.postcode,
+      lat: data.result.latitude,
+      lng: data.result.longitude,
+      district: data.result.admin_district ?? "",
+    };
   }
-  return {
-    postcode: data.result.postcode,
-    lat: data.result.latitude,
-    lng: data.result.longitude,
-    district: data.result.admin_district ?? "",
-  };
+
+  /* ---- Terminated postcode (Royal Mail retired it but coords exist) ---- */
+  if (data.terminated && data.terminated.latitude && data.terminated.longitude) {
+    // Format the postcode nicely (e.g. "WD172BH" → "WD17 2BH")
+    const raw = data.terminated.postcode || clean;
+    const formatted = raw.length > 3
+      ? `${raw.slice(0, -3)} ${raw.slice(-3)}`
+      : raw;
+
+    return {
+      postcode: formatted,
+      lat: data.terminated.latitude,
+      lng: data.terminated.longitude,
+      district: "",
+    };
+  }
+
+  throw new Error(
+    `We couldn't recognise "${postcode.trim()}" as a valid UK postcode. Please double-check and try again.`
+  );
 }
