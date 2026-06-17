@@ -39,7 +39,7 @@ export function Hero() {
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 text-white/90 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full mb-6">
             <span className="w-2 h-2 bg-[var(--color-success)] rounded-full animate-pulse" />
             <span>
-              <strong className="text-white">4,200+</strong> appointments available today
+              <strong className="text-white">2,400+</strong> opticians nationwide
             </span>
           </div>
 
