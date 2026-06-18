@@ -37,14 +37,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   /* Eye tests — /eye-tests/[slug]                                       */
   /* ------------------------------------------------------------------ */
 
-  const eyeTestPages: MetadataRoute.Sitemap = getAllEyeTestSlugs().map(
-    (slug) => ({
+  /* Exclude slugs that redirect to standalone pages */
+  const excludedEyeTestSlugs = new Set(["home-visit-eye-test"]);
+
+  const eyeTestPages: MetadataRoute.Sitemap = getAllEyeTestSlugs()
+    .filter((slug) => !excludedEyeTestSlugs.has(slug))
+    .map((slug) => ({
       url: `${BASE}/eye-tests/${slug}`,
       lastModified: NOW,
       changeFrequency: "monthly" as const,
       priority: 0.7,
-    })
-  );
+    }));
 
   /* ------------------------------------------------------------------ */
   /* Eye health conditions — /eye-health/conditions/[slug]               */

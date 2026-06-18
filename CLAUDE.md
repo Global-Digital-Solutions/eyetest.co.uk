@@ -84,6 +84,7 @@ Darin Butler (butlerdarin@gmail.com) — Founder, eyetest.co.uk
 | Gmail App Password + Vercel env vars | Done |
 | MySight deep-link fix (/recall route) | Done |
 | M&S Opticians + Ace & Tate connectors | Done |
+| Search results UX: map pins, miles, trust banner | Done |
 | **Optician subscription + Stripe billing** | **Next** |
 | Apify Google Reviews scraping | Pending |
 

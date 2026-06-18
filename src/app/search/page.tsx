@@ -156,6 +156,11 @@ export default async function SearchPage({ searchParams }: Props) {
           </div>
         </div>
 
+        {/* Visually hidden H1 for SEO — the visible heading is inside SearchResults */}
+        <h1 className="sr-only">
+          {pc ? `Eye test appointments near ${pc}` : "Search eye test appointments"}
+        </h1>
+
         {/* Results */}
         <SearchResults postcode={pc} />
       </main>

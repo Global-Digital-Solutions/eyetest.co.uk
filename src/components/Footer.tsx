@@ -58,8 +58,8 @@ const footerLinks = {
   Company: [
     { label: "About Us", href: "/about" },
     { label: "Guides & Advice", href: "/articles/how-often-should-you-have-an-eye-test" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "/contact" },
+    { label: "Blog", href: "/articles" },
+    { label: "Contact", href: "/about" },
     { label: "For Opticians", href: "/get-listed" },
     { label: "Get Listed", href: "/get-listed" },
     { label: "Privacy Policy", href: "/privacy" },

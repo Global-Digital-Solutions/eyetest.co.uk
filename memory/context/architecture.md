@@ -36,7 +36,7 @@ eyetest.co.uk/
 │   ├── components/              # Shared React components
 │   ├── data/                    # Static data files (TS)
 │   └── lib/                     # Utilities, providers, Supabase
-│       ├── providers/           # boots.ts, asda.ts, vision-express.ts, mysight.ts
+│       ├── providers/           # boots.ts, asda.ts, vision-express.ts, mysight.ts, mands.ts, aceandtate.ts
 │       ├── dates.ts             # Date helpers (getThreeDayDatesFrom, etc.)
 │       ├── haversine.ts         # Distance calculation
 │       ├── postcodes.ts         # postcodes.io integration
@@ -63,9 +63,17 @@ Search results are the only truly dynamic page — they query live APIs on each 
 ### Provider Pattern
 Each provider in `src/lib/providers/` exports an async function that:
 1. Takes lat/lng coordinates and date range
-2. Queries the external API (Ocuco for Boots/ASDA, GraphQL for Vision Express/MySight)
+2. Queries the external API (Ocuco for Boots/ASDA, GraphQL for Vision Express/MySight) OR uses hardcoded stores with haversine filtering (M&S, Ace & Tate)
 3. Returns an array of store results with availability data
 4. Generates deep-link booking URLs
+
+**Static providers** (M&S, Ace & Tate) set `slotsAvailable: null` and `dailySlots` with `count: -1` (available, count unknown). The `hasAvailability()` helper must check `dailySlots.some(s => s.count !== 0)` before falling back to `Boolean(slotsAvailable)`. This pattern is used in SearchResults.tsx bucketing, StoreCard rendering, and StoreMap.tsx pins/popups.
+
+### Map (StoreMap.tsx)
+Mapbox GL with teardrop SVG pin markers. Pins are coloured: teal (available), gray (unavailable), amber (featured). Store name appears on hover via CSS `group-hover`. Click opens a popup with store details, availability badge, and Book Now CTA. Desktop layout is 5/7 split (results/map).
+
+### Trust Banner
+After search completes, shows: local optician count, time saved (distinct brands × 5 min), provider pills, and a value message about independent opticians. Time saving counts unique provider brands, not total stores (searching Boots once covers all their stores).
 
 ### Supabase Usage
 Currently used for:

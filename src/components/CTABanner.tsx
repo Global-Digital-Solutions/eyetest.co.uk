@@ -8,7 +8,7 @@ export function CTABanner() {
       {/* Background image with dark overlay */}
       <Image
         src="/images/eye-test-phoropter-lg.jpg"
-        alt=""
+        alt="Patient looking through a phoropter during an eye test"
         fill
         className="object-cover"
         sizes="100vw"

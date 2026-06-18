@@ -1674,7 +1674,7 @@ function GettingThereSection({
           </p>
           <p className="text-gray-600 leading-relaxed">
             If you have mobility requirements or accessibility needs, contact the {optician.shortName} branch in {location.name} before your appointment to ensure they can accommodate you comfortably. Many {optician.shortName} stores offer step-free access, and staff are trained to assist patients with disabilities. For patients who cannot travel to a branch at all, some opticians in the {location.name} area offer{" "}
-            <Link href="/eye-tests/home-visit-eye-test" className="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-medium underline">
+            <Link href="/at-home-eye-tests" className="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-medium underline">
               home visit eye tests
             </Link>{" "}
             for housebound or elderly patients.

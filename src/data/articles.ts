@@ -19,7 +19,7 @@ export const articles: Article[] = [
   /* ------------------------------------------------------------------ */
   {
     slug: "how-often-should-you-have-an-eye-test",
-    title: "How Often Should You Have an Eye Test?",
+    title: "How Often Should You Have an Eye Test? — Age-by-Age Advice",
     excerpt:
       "From toddlers to over-70s, the recommended frequency of eye tests varies by age, health, and risk factors. Learn exactly when to book your next appointment.",
     image: "/images/optician-shop-sm.jpg",

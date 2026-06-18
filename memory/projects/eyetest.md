@@ -54,6 +54,8 @@ Planned features (discussed with Darin):
 | ASDA | `src/lib/providers/asda.ts` | Ocuco REST | siteId-based URL |
 | Vision Express | `src/lib/providers/vision-express.ts` | GraphQL | storeCode-based URL |
 | MySight | `src/lib/providers/mysight.ts` | GraphQL | 35 independent optician brands |
+| M&S Opticians | `src/lib/providers/mands.ts` | Static (37 stores) | Magento booking link |
+| Ace & Tate | `src/lib/providers/aceandtate.ts` | Static (17 stores) | Acuity Scheduling link |
 
 ### Data Files
 | File | Contains |
@@ -62,7 +64,7 @@ Planned features (discussed with Darin):
 | `src/data/eye-health.ts` | 15 conditions + 10 guides, relatedTests per condition |
 | `src/data/articles.ts` | 6 editorial articles |
 | `src/data/locations.ts` | 97 UK cities with lat/lng, postcodes, nearbyAreas |
-| `src/data/opticians.ts` | 10 optician brands with store counts, descriptions |
+| `src/data/opticians.ts` | 12 optician brands with store counts, descriptions |
 | `src/data/search-queries.ts` | 43 SEO search query pages |
 | `src/data/offers.ts` | Current optician offers/deals |
 
@@ -180,10 +182,17 @@ All canonical URLs, OG URLs, and schema URLs use `www.eyetest.co.uk`
 | 2026-06-17 | Email API routes: `/api/get-listed` and `/api/at-home-enquiry` (Nodemailer + Gmail SMTP) |
 | 2026-06-17 | Terminated postcodes fix in `src/lib/postcodes.ts`; Watford postcode updated (WD17 2BH → WD17 2NW) |
 | 2026-06-17 | Redirect: `/eye-tests/home-visit-eye-test` → `/at-home-eye-tests` (301) |
+| 2026-06-18 | M&S Opticians provider (37 stores, static, Magento booking links) |
+| 2026-06-18 | Ace & Tate provider (17 stores, static, Acuity Scheduling links) |
+| 2026-06-18 | Both brands added to opticians.ts, Header, Footer, admin panel, llms.txt |
+| 2026-06-18 | Fixed static provider bucketing — `hasAvailability()` checks dailySlots before slotsAvailable |
+| 2026-06-18 | Map redesign — teardrop SVG pins, hover labels, rich popups with Book Now CTA |
+| 2026-06-18 | Desktop layout flipped to 5/7 (results/map) for wider map |
+| 2026-06-18 | Distance display changed from km to miles (UK audience) |
+| 2026-06-18 | Trust banner — shows local optician count, time saved (distinct brands × 5 min), independents value message |
 | Next | Optician subscription model with Stripe billing |
 
 ## Pending Work
-1. **Gmail App Password setup** — User needs to create Google App Password and add `GMAIL_USER` + `GMAIL_APP_PASSWORD` env vars on Vercel (user action required for email forms to work)
-2. **Optician subscription + Stripe** — Featured placement, self-service portal, monthly/annual billing (starting next)
-3. **Apify Google Reviews** — Scrape and display optician reviews
-4. **SE Ranking re-scan** — Verify indexability fixes resolved all issues
+1. **Optician subscription + Stripe** — Featured placement, self-service portal, monthly/annual billing (starting next)
+2. **Apify Google Reviews** — Scrape and display optician reviews
+3. **SE Ranking re-scan** — Verify indexability fixes resolved all issues
