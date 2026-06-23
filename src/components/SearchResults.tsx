@@ -236,6 +236,8 @@ type DepartureInfo = {
   providerName: string;
   storeName: string;
   url: string;
+  /** true when the booking URL was already opened in a new tab (desktop) */
+  openedNewTab?: boolean;
 };
 
 function DepartureOverlay({
@@ -251,12 +253,17 @@ function DepartureOverlay({
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // Navigate in the same tab to avoid mobile pop-up blockers
-      // (window.open inside setTimeout is not a user gesture)
-      window.location.href = info.url;
+      if (info.openedNewTab) {
+        // Desktop: new tab already opened — just close the overlay
+        // and keep the user on eyetest.co.uk
+        onClose();
+      } else {
+        // Mobile: navigate in the same tab to avoid pop-up blockers
+        window.location.href = info.url;
+      }
     }, DEPARTURE_DELAY_MS);
     return () => clearTimeout(timer);
-  }, [info.url]);
+  }, [info.url, info.openedNewTab, onClose]);
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
@@ -311,8 +318,17 @@ function DepartureOverlay({
               Booking with {info.providerName}
             </h3>
             <p className="text-sm text-gray-500 mb-1 leading-relaxed">
-              You&apos;re being connected to <strong className="text-[var(--color-navy)]">{info.storeName}</strong> to
-              complete your eye test booking.
+              {info.openedNewTab ? (
+                <>
+                  <strong className="text-[var(--color-navy)]">{info.storeName}</strong> has opened in a new tab
+                  for you to complete your eye test booking.
+                </>
+              ) : (
+                <>
+                  You&apos;re being connected to <strong className="text-[var(--color-navy)]">{info.storeName}</strong> to
+                  complete your eye test booking.
+                </>
+              )}
             </p>
             <p className="text-xs text-gray-400 mb-6">
               This is a completely free service — no fees, no sign-up.
@@ -334,11 +350,20 @@ function DepartureOverlay({
               </span>
             </div>
 
-            {/* Skip button — navigates in same tab (avoids pop-up blocker on mobile) */}
-            <a href={info.url}
-              className="inline-block text-xs text-gray-400 hover:text-[var(--color-primary)] transition-colors cursor-pointer">
-              Go now &rarr;
-            </a>
+            {/* Skip / close button */}
+            {info.openedNewTab ? (
+              <button
+                onClick={onClose}
+                className="inline-block text-xs text-gray-400 hover:text-[var(--color-primary)] transition-colors cursor-pointer"
+              >
+                Close &times;
+              </button>
+            ) : (
+              <a href={info.url}
+                className="inline-block text-xs text-gray-400 hover:text-[var(--color-primary)] transition-colors cursor-pointer">
+                Go now &rarr;
+              </a>
+            )}
           </div>
         </div>
 
@@ -1330,10 +1355,27 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
     (e: React.MouseEvent, store: StoreResult) => {
       e.preventDefault();
       const provName = displayProviderName(store.provider);
+
+      // Detect mobile via touch capability + narrow viewport
+      const isMobile =
+        ("ontouchstart" in window || navigator.maxTouchPoints > 0) &&
+        window.innerWidth < 768;
+
+      let openedNewTab = false;
+
+      if (!isMobile) {
+        // Desktop: open booking URL in a new tab immediately
+        // (within the user gesture so pop-up blocker won't block it)
+        window.open(store.bookingUrl, "_blank", "noopener,noreferrer");
+        openedNewTab = true;
+      }
+
+      // Show the branded departure overlay
       setDeparture({
         providerName: provName,
         storeName: store.storeName,
         url: store.bookingUrl,
+        openedNewTab,
       });
     },
     []
