@@ -30,6 +30,8 @@ const PROVIDER_BRANDS: Record<string, { color: string; initial: string }> = {
   "Ace & Tate": { color: "#2f26dd", initial: "A" },
   "Leightons": { color: "#a8228e", initial: "L" },
   "Rawlings Opticians": { color: "#ff6900", initial: "R" },
+  "Duncan & Todd": { color: "#1a3a5c", initial: "D" },
+  "Bayfields Opticians": { color: "#2d5a27", initial: "B" },
 };
 
 /* ------------------------------------------------------------------ */
@@ -44,6 +46,7 @@ const BRAND_LOGOS: Record<string, string> = {
   "Boots Opticians": "/logos/boots-opticians.svg",
   "Leightons": "/logos/leightons.png",
   "Rawlings Opticians": "/logos/rawlings.svg",
+  "Duncan & Todd": "/logos/duncan-and-todd.svg",
 };
 
 /** Default services taglines for demo mode + fallback */
@@ -53,6 +56,10 @@ const BRAND_SERVICES: Record<string, string> = {
   "M&S Opticians": "NHS & private eye tests • Same-day appointments • Contact lens fitting",
   "Ace & Tate": "Style-led eye tests • In-house frame design • Home try-on",
   "Boots Opticians": "NHS & private eye tests • Advantage Card points • Contact lenses",
+  "Duncan & Todd": "NHS & private eye tests • Contact lenses • Hearing care",
+  "Leightons": "NHS & private eye tests • Hearing care • Premium eyewear",
+  "Rawlings Opticians": "Family opticians since 1895 • NHS & private eye tests",
+  "Bayfields Opticians": "Independent opticians • NHS & private eye tests • Contact lenses",
 };
 
 /* ------------------------------------------------------------------ */
@@ -64,6 +71,10 @@ const PROVIDER_RATINGS: Record<string, { rating: number; count: number }> = {
   "ASDA Opticians": { rating: 4.1, count: 1400 },
   "Vision Express": { rating: 4.4, count: 3200 },
   "M&S Opticians": { rating: 4.5, count: 680 },
+  "Duncan & Todd": { rating: 4.7, count: 340 },
+  "Leightons": { rating: 4.6, count: 280 },
+  "Rawlings Opticians": { rating: 4.8, count: 190 },
+  "Bayfields Opticians": { rating: 4.5, count: 220 },
   "Ace & Tate": { rating: 4.6, count: 520 },
 };
 
@@ -1451,18 +1462,18 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
   // Demo mode: promote matching provider results to featured with Platinum treatment
   // Usage: /search?postcode=SW1A1AA&demo=vision-express
   const results = demoProvider
-    ? deduped.map((r) =>
-        isDemoMatch(r.provider, demoProvider)
-          ? {
-              ...r,
-              featured: true,
-              featuredLabel: r.featuredLabel ?? "Featured Partner",
-              tier: (r.tier ?? "platinum") as "gold" | "platinum",
-              logoUrl: r.logoUrl ?? BRAND_LOGOS[r.provider],
-              services: r.services ?? BRAND_SERVICES[r.provider],
-            }
-          : r
-      )
+    ? deduped.map((r) => {
+        if (!isDemoMatch(r.provider, demoProvider)) return r;
+        const name = displayProviderName(r.provider);
+        return {
+          ...r,
+          featured: true,
+          featuredLabel: r.featuredLabel ?? "Featured Partner",
+          tier: (r.tier ?? "platinum") as "gold" | "platinum",
+          logoUrl: r.logoUrl ?? BRAND_LOGOS[name] ?? BRAND_LOGOS[r.provider],
+          services: r.services ?? BRAND_SERVICES[name] ?? BRAND_SERVICES[r.provider],
+        };
+      })
     : deduped;
 
   // Sort: featured first, then available (by next date), then unavailable (by distance)
@@ -1692,13 +1703,9 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
             />
           )}
 
-          {/* Compact completed trust banner — shows after search finishes */}
+          {/* Compact trust line — shows after search finishes */}
           {!stillLoading && stream.done && results.length > 0 && (() => {
             const brandsChecked = new Set(results.map((r) => r.provider)).size;
-            const minutesSaved = brandsChecked * 5;
-            const timeSaved = minutesSaved >= 60
-              ? `${Math.floor(minutesSaved / 60)} hr${Math.floor(minutesSaved / 60) !== 1 ? "s" : ""} ${minutesSaved % 60 > 0 ? `${minutesSaved % 60} mins` : ""}`
-              : `${minutesSaved} mins`;
             const indepCount = new Set(
               results
                 .filter((r) => r.provider.endsWith(".mysight.uk"))
@@ -1706,66 +1713,15 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
             ).size;
 
             return (
-              <div className="mb-4 rounded-xl bg-[var(--color-navy)]/5 border border-[var(--color-navy)]/10 px-3 py-2.5 sm:px-4 sm:py-3 overflow-hidden">
-                {/* Top line: checked count + time saved */}
-                <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
-                  <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--color-navy)]">
-                    <svg
-                      className="w-4 h-4 text-[var(--color-success)]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    We checked {results.length} local optician{results.length !== 1 ? "s" : ""} for you
-                  </div>
-                  <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--color-primary)]">
-                    <svg
-                      className="w-3.5 h-3.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    Saving you ~{timeSaved}
-                  </div>
-                </div>
-
-                {/* Provider pills + independents */}
-                <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-2">
-                  {stream.activeProviders
-                    .filter((p) => !p.endsWith(".mysight.uk"))
-                    .map((p) => (
-                      <span
-                        key={p}
-                        className="inline-block rounded-full bg-white px-2 py-0.5 text-[10px] font-medium text-gray-600 border border-gray-200"
-                      >
-                        {p}
-                      </span>
-                    ))}
-                  {indepCount > 0 && (
-                    <span className="inline-block rounded-full bg-white px-2 py-0.5 text-[10px] font-medium text-[var(--color-primary)] border border-[var(--color-primary)]/20">
-                      + {indepCount} independent{indepCount !== 1 ? "s" : ""}{stream.district ? ` near ${stream.district}` : ""}
-                    </span>
-                  )}
-                </div>
-
-                {/* Value message */}
-                <p className="mt-1.5 text-[11px] text-gray-500 leading-snug">
-                  Including local independents most people don&apos;t know about — all compared in seconds, not hours.
-                </p>
+              <div className="mb-4 flex items-center gap-2 text-xs text-gray-500">
+                <svg className="w-3.5 h-3.5 text-[var(--color-success)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>
+                  Checked <span className="font-medium text-[var(--color-navy)]">{brandsChecked} brand{brandsChecked !== 1 ? "s" : ""}</span>
+                  {indepCount > 0 && <> incl. {indepCount} independent{indepCount !== 1 ? "s" : ""}</>}
+                  {stream.district ? ` near ${stream.district}` : ""}
+                </span>
               </div>
             );
           })()}
@@ -1996,14 +1952,51 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
               )}
             </div>
 
-            {/* Sticky map (desktop only) */}
+            {/* Sticky map + featured partner badge (desktop only) */}
             <div className="hidden lg:block lg:col-span-7">
               <div
-                className="sticky rounded-xl overflow-hidden shadow-sm border border-gray-100"
+                className="sticky flex flex-col"
                 style={{
                   top: "calc(var(--header-height, 6.5rem) + 4.5rem)",
-                  height: "calc(100vh - var(--header-height, 6.5rem) - 6rem)",
+                  maxHeight: "calc(100vh - var(--header-height, 6.5rem) - 6rem)",
                 }}
+              >
+              {/* Featured partner badge */}
+              {(() => {
+                const featured = results.find((r) => r.featured && r.tier === "platinum");
+                if (!featured) return null;
+                const name = displayProviderName(featured.provider);
+                const logo = featured.logoUrl ?? BRAND_LOGOS[name] ?? BRAND_LOGOS[featured.provider];
+                const rating = PROVIDER_RATINGS[name] ?? PROVIDER_RATINGS[featured.provider];
+                return (
+                  <div className="mb-3 rounded-xl bg-white border border-[var(--color-primary)]/15 px-4 py-3 flex items-center gap-3">
+                    {logo && (
+                      <img src={logo} alt={name} className="h-7 w-auto object-contain flex-shrink-0" />
+                    )}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-xs font-semibold text-[var(--color-navy)]">{name}</span>
+                        <span className="inline-flex items-center gap-0.5 rounded-full bg-[var(--color-primary)]/10 px-1.5 py-0.5 text-[10px] font-semibold text-[var(--color-primary)]">
+                          <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.403 12.652a3 3 0 010-5.304 3 3 0 00-3.75-3.751 3 3 0 00-5.305 0 3 3 0 00-3.751 3.75 3 3 0 000 5.305 3 3 0 003.75 3.751 3 3 0 005.305 0 3 3 0 003.751-3.75zm-2.546-4.46a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+                          Recommended
+                        </span>
+                      </div>
+                      {rating && (
+                        <div className="flex items-center gap-1 mt-0.5">
+                          <div className="flex">
+                            {[...Array(5)].map((_, i) => (
+                              <svg key={i} className={`w-2.5 h-2.5 ${i < Math.floor(rating.score) ? "text-amber-400" : "text-gray-200"}`} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            ))}
+                          </div>
+                          <span className="text-[10px] text-gray-500">{rating.score} ({rating.reviews.toLocaleString()})</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })()}
+              <div
+                className="rounded-xl overflow-hidden shadow-sm border border-gray-100 flex-1 min-h-0"
               >
                 {stream.center ? (
                   <StoreMap stores={allStoresForMap} center={stream.center} hoveredStoreId={hoveredStoreId} onHoverStore={setHoveredStoreId} />
@@ -2012,6 +2005,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
                     Loading map...
                   </div>
                 )}
+              </div>
               </div>
             </div>
           </div>
