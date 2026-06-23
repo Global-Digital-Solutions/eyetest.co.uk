@@ -1503,20 +1503,30 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
 
   // Demo mode: promote matching provider results to featured with Platinum treatment
   // Usage: /search?postcode=SW1A1AA&demo=vision-express
-  const results = demoProvider
-    ? deduped.map((r) => {
-        if (!isDemoMatch(r.provider, demoProvider)) return r;
-        const name = displayProviderName(r.provider);
-        return {
-          ...r,
-          featured: true,
-          featuredLabel: r.featuredLabel ?? "Featured Optician",
-          tier: (r.tier ?? "platinum") as "gold" | "platinum",
-          logoUrl: r.logoUrl ?? BRAND_LOGOS[name] ?? BRAND_LOGOS[r.provider],
-          services: r.services ?? BRAND_SERVICES[name] ?? BRAND_SERVICES[r.provider],
-        };
-      })
-    : deduped;
+  const results = deduped.map((r) => {
+    // Demo mode: promote matching provider results to featured with Platinum treatment
+    if (demoProvider && isDemoMatch(r.provider, demoProvider)) {
+      const name = displayProviderName(r.provider);
+      return {
+        ...r,
+        featured: true,
+        featuredLabel: r.featuredLabel ?? "Featured Optician",
+        tier: (r.tier ?? "platinum") as "gold" | "platinum",
+        logoUrl: r.logoUrl ?? BRAND_LOGOS[name] ?? BRAND_LOGOS[r.provider],
+        services: r.services ?? BRAND_SERVICES[name] ?? BRAND_SERVICES[r.provider],
+      };
+    }
+    // Real featured listings: ensure they have brand logo + services tagline
+    if (r.featured) {
+      const name = displayProviderName(r.provider);
+      return {
+        ...r,
+        logoUrl: r.logoUrl ?? BRAND_LOGOS[name] ?? BRAND_LOGOS[r.provider],
+        services: r.services ?? BRAND_SERVICES[name] ?? BRAND_SERVICES[r.provider],
+      };
+    }
+    return r;
+  });
 
   // Sort: featured first, then available (by next date), then unavailable (by distance)
   // Demo-promoted brand always sorts first among featured results
