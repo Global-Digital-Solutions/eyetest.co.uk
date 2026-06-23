@@ -1,5 +1,5 @@
 import { haversine } from "../haversine";
-import { getThreeDayDates } from "../dates";
+import { getStaticThreeDayDates } from "../dates";
 import type { StoreResult } from "../types";
 
 /* ------------------------------------------------------------------ */
@@ -191,7 +191,7 @@ export async function fetchScrivens(
   radius = 16093,
   limit = 10
 ): Promise<StoreResult[]> {
-  const threeDays = getThreeDayDates();
+  const threeDays = getStaticThreeDayDates();
 
   const nearby = STORES
     .map((store) => {
