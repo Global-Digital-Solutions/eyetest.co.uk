@@ -1955,10 +1955,9 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
             {/* Sticky map + featured partner badge (desktop only) */}
             <div className="hidden lg:block lg:col-span-7">
               <div
-                className="sticky flex flex-col"
+                className="sticky"
                 style={{
                   top: "calc(var(--header-height, 6.5rem) + 4.5rem)",
-                  maxHeight: "calc(100vh - var(--header-height, 6.5rem) - 6rem)",
                 }}
               >
               {/* Featured partner badge */}
@@ -1996,7 +1995,10 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
                 );
               })()}
               <div
-                className="rounded-xl overflow-hidden shadow-sm border border-gray-100 flex-1 min-h-0"
+                className="rounded-xl overflow-hidden shadow-sm border border-gray-100"
+                style={{
+                  height: `calc(100vh - var(--header-height, 6.5rem) - ${results.some((r) => r.featured && r.tier === "platinum") ? "10rem" : "6rem"})`,
+                }}
               >
                 {stream.center ? (
                   <StoreMap stores={allStoresForMap} center={stream.center} hoveredStoreId={hoveredStoreId} onHoverStore={setHoveredStoreId} />
