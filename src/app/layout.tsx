@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Outfit } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -15,6 +15,11 @@ const outfit = Outfit({
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "eyetest.co.uk — Find & Book Eye Tests Near You",
