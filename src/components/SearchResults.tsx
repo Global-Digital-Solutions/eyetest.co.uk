@@ -1762,25 +1762,96 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
             />
           )}
 
-          {/* Compact trust line — shows after search finishes */}
+          {/* Trust banner — shows after search finishes */}
           {!stillLoading && stream.done && results.length > 0 && (() => {
             const brandsChecked = new Set(results.map((r) => r.provider)).size;
-            const indepCount = new Set(
-              results
-                .filter((r) => r.provider.endsWith(".mysight.uk"))
-                .map((r) => r.provider)
-            ).size;
+            const minutesSaved = brandsChecked * 5;
+            const availableCount = results.filter((r) => r.dailySlots && r.dailySlots.length > 0 && r.dailySlots.some((s: { count: number }) => s.count !== 0)).length;
+            const MAX_MOBILE_BADGES = 4;
 
             return (
-              <div className="mb-4 flex items-center gap-2 text-xs text-gray-500">
-                <svg className="w-3.5 h-3.5 text-[var(--color-success)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>
-                  Checked <span className="font-medium text-[var(--color-navy)]">{brandsChecked} brand{brandsChecked !== 1 ? "s" : ""}</span>
-                  {indepCount > 0 && <> incl. {indepCount} independent{indepCount !== 1 ? "s" : ""}</>}
-                  {stream.district ? ` near ${stream.district}` : ""}
-                </span>
+              <div className="mb-5 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+                {/* Top section — success bar */}
+                <div className="bg-gradient-to-r from-[var(--color-success)]/5 to-[var(--color-primary)]/5 px-4 sm:px-5 py-3 sm:py-3.5 border-b border-gray-100">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[var(--color-success)]/10 flex items-center justify-center">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--color-success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm sm:text-base font-semibold text-[var(--color-navy)]" style={{ fontFamily: "var(--font-display)" }}>
+                        We just saved you ~{minutesSaved} minutes
+                      </p>
+                      <p className="text-[11px] sm:text-xs text-gray-500">
+                        by searching {results.length} optician{results.length !== 1 ? "s" : ""} across {brandsChecked} brands near <strong className="text-[var(--color-primary)]">{stream.postcode}</strong> — all in seconds
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stats + badges */}
+                <div className="px-4 sm:px-5 py-3 sm:py-4">
+                  {/* Inline stats */}
+                  <div className="flex items-center gap-4 sm:gap-6 mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg sm:text-xl font-bold text-[var(--color-navy)] tabular-nums" style={{ fontFamily: "var(--font-display)" }}>{results.length}</span>
+                      <span className="text-xs text-gray-400">checked</span>
+                    </div>
+                    <div className="w-px h-5 bg-gray-200" />
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg sm:text-xl font-bold text-[var(--color-success)] tabular-nums" style={{ fontFamily: "var(--font-display)" }}>{availableCount}</span>
+                      <span className="text-xs text-gray-400">with availability</span>
+                    </div>
+                  </div>
+
+                  {/* Provider badges */}
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                    {stream.activeProviders.map((p, i) => {
+                      const info = CHAIN_INFO[p];
+                      const hiddenOnMobile = i >= MAX_MOBILE_BADGES;
+                      return (
+                        <div
+                          key={p}
+                          className={`inline-flex items-center gap-1 sm:gap-1.5 rounded-full px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-medium bg-gray-50 border border-gray-200 text-gray-600${hiddenOnMobile ? " hidden sm:inline-flex" : ""}`}
+                        >
+                          <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[var(--color-success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                          {info?.name ?? displayProviderName(p)}
+                        </div>
+                      );
+                    })}
+                    {stream.activeProviders.length > MAX_MOBILE_BADGES && (
+                      <div className="inline-flex sm:hidden items-center rounded-full px-2 py-0.5 text-[10px] font-medium bg-gray-50 border border-gray-200 text-gray-400">
+                        +{stream.activeProviders.length - MAX_MOBILE_BADGES} more
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Footer — value props */}
+                <div className="flex items-center gap-3 sm:gap-5 px-4 sm:px-5 py-2 sm:py-2.5 bg-gray-50 border-t border-gray-100 text-[10px] sm:text-[11px] text-gray-400">
+                  <div className="flex items-center gap-1">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[var(--color-success)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    100% free
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[var(--color-primary)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                    </svg>
+                    <span className="hidden sm:inline">Real-time availability</span>
+                    <span className="sm:hidden">Live data</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[var(--color-primary)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                    </svg>
+                    No sign-up
+                  </div>
+                </div>
               </div>
             );
           })()}

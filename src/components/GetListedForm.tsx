@@ -209,6 +209,7 @@ export function GetListedForm() {
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
         errors.push("Please enter a valid email address");
       if (!form.phone.trim()) errors.push("Phone number is required");
+      if (!form.website.trim()) errors.push("Website URL is required");
     }
     if (s === 2) {
       if (!form.address.trim()) errors.push("Address is required");
@@ -359,8 +360,7 @@ export function GetListedForm() {
 
             <div>
               <label className={labelClass}>
-                Website URL{" "}
-                <span className="text-gray-400 font-normal">(optional)</span>
+                Website URL <span className="text-red-500">*</span>
               </label>
               <input
                 type="url"

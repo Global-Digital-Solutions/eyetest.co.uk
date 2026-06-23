@@ -41,7 +41,7 @@ export async function POST(request: Request) {
     } = data;
 
     /* ---- Validate required fields ---- */
-    if (!practiceName || !contactName || !email || !phone || !address || !postcode || !town) {
+    if (!practiceName || !contactName || !email || !phone || !website || !address || !postcode || !town) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
