@@ -657,6 +657,7 @@ function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
   // Step 3: configure rule
   const [radiusKm, setRadiusKm] = useState(10);
   const [label, setLabel] = useState("Recommended");
+  const [tier, setTier] = useState<"gold" | "platinum">("platinum");
 
   const [saving, setSaving] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
@@ -682,6 +683,7 @@ function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
     setStoreError(null);
     setRadiusKm(10);
     setLabel("Recommended");
+    setTier("platinum");
     setFormError(null);
   }
 
@@ -721,6 +723,7 @@ function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
         lng: selectedStore.lng,
         radius_km: radiusKm,
         label,
+        tier,
       }),
     });
     const data = await res.json();
@@ -901,6 +904,36 @@ function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
                 </div>
               </div>
               <div>
+                <label className={labelCls}>Listing tier</label>
+                <div className="flex gap-2 mt-1">
+                  <button
+                    type="button"
+                    onClick={() => setTier("platinum")}
+                    className={`flex-1 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors ${
+                      tier === "platinum"
+                        ? "border-purple-500 bg-purple-50 text-purple-700 ring-1 ring-purple-400"
+                        : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
+                    }`}
+                  >
+                    ★ Platinum
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setTier("gold")}
+                    className={`flex-1 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors ${
+                      tier === "gold"
+                        ? "border-amber-500 bg-amber-50 text-amber-700 ring-1 ring-amber-400"
+                        : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
+                    }`}
+                  >
+                    ★ Gold
+                  </button>
+                </div>
+                <p className="text-xs text-gray-400 mt-1">
+                  Platinum = premium card with logo &amp; services · Gold = highlighted in results
+                </p>
+              </div>
+              <div>
                 <label className={labelCls}>Badge label</label>
                 <input
                   type="text"
@@ -936,8 +969,12 @@ function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
                   <span className="text-sm font-semibold text-gray-900 truncate">
                     {rule.store_name ?? rule.provider.replace(".mysight.uk", "")}
                   </span>
-                  <span className="inline-block rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800">
-                    ★ {rule.label}
+                  <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${
+                    rule.tier === "platinum"
+                      ? "bg-purple-100 text-purple-800"
+                      : "bg-amber-100 text-amber-800"
+                  }`}>
+                    ★ {rule.tier === "platinum" ? "Platinum" : "Gold"} · {rule.label}
                   </span>
                 </div>
                 <p className="text-xs text-gray-500 mt-0.5">

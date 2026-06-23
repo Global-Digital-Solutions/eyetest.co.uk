@@ -198,7 +198,7 @@ export async function GET(req: NextRequest) {
         if (rule.store_name && rule.store_name !== r.storeName) return false;
         return true;
       });
-      if (rule) return { ...r, featured: true, featuredLabel: rule.label };
+      if (rule) return { ...r, featured: true, featuredLabel: rule.label, tier: (rule.tier || "platinum") as "gold" | "platinum" };
       return r;
     });
   }

@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
-  const { provider, store_name, store_postcode, lat, lng, radius_km, label } = body;
+  const { provider, store_name, store_postcode, lat, lng, radius_km, label, tier } = body;
 
   if (
     !provider ||
@@ -49,6 +49,7 @@ export async function POST(req: NextRequest) {
       lng,
       radius_km: Number(radius_km),
       label: label || "Recommended",
+      tier: tier === "gold" ? "gold" : "platinum",
       active: true,
     })
     .select()
@@ -63,13 +64,17 @@ export async function PATCH(req: NextRequest) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { id, active } = await req.json();
+  const { id, active, tier } = await req.json();
   if (!id) return Response.json({ error: "id required" }, { status: 400 });
+
+  const updates: Record<string, unknown> = {};
+  if (typeof active === "boolean") updates.active = active;
+  if (tier === "gold" || tier === "platinum") updates.tier = tier;
 
   const supabase = await createClient();
   const { error } = await supabase
     .from("featured_providers")
-    .update({ active })
+    .update(updates)
     .eq("id", id);
 
   if (error) return Response.json({ error: error.message }, { status: 500 });

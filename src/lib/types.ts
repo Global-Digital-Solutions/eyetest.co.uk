@@ -36,6 +36,7 @@ export interface FeaturedProvider {
   lng: number;
   radius_km: number;
   label: string;
+  tier: "gold" | "platinum";
   active: boolean;
   created_at: string;
 }
