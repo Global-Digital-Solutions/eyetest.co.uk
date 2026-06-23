@@ -32,6 +32,8 @@ const PROVIDER_BRANDS: Record<string, { color: string; initial: string }> = {
   "Rawlings Opticians": { color: "#ff6900", initial: "R" },
   "Duncan & Todd": { color: "#1a3a5c", initial: "D" },
   "Bayfields Opticians": { color: "#2d5a27", initial: "B" },
+  "Scrivens": { color: "#c62828", initial: "S" },
+  "scrivens": { color: "#c62828", initial: "S" },
 };
 
 /* ------------------------------------------------------------------ */
@@ -41,9 +43,9 @@ const PROVIDER_BRANDS: Record<string, { color: string; initial: string }> = {
 const BRAND_LOGOS: Record<string, string> = {
   "Vision Express": "/logos/vision-express.svg",
   "ASDA Opticians": "/logos/asda-opticians.svg",
-  "M&S Opticians": "/logos/mands-opticians.png",
+  "M&S Opticians": "/logos/mands-opticians.webp",
   "Ace & Tate": "/logos/ace-and-tate.png",
-  "Boots Opticians": "/logos/boots-opticians.svg",
+  "Boots Opticians": "/logos/boots-opticians.jpg",
   "Leightons": "/logos/leightons.png",
   "Rawlings Opticians": "/logos/rawlings.svg",
   "Duncan & Todd": "/logos/duncan-and-todd.svg",
@@ -60,6 +62,8 @@ const BRAND_SERVICES: Record<string, string> = {
   "Leightons": "NHS & private eye tests • Hearing care • Premium eyewear",
   "Rawlings Opticians": "Family opticians since 1895 • NHS & private eye tests",
   "Bayfields Opticians": "Independent opticians • NHS & private eye tests • Contact lenses",
+  "Scrivens": "Family opticians since 1938 • NHS eye tests • Hearing care • Home visits",
+  "scrivens": "Family opticians since 1938 • NHS eye tests • Hearing care • Home visits",
 };
 
 /* ------------------------------------------------------------------ */
@@ -76,6 +80,7 @@ const PROVIDER_RATINGS: Record<string, { rating: number; count: number }> = {
   "Rawlings Opticians": { rating: 4.8, count: 190 },
   "Bayfields Opticians": { rating: 4.5, count: 220 },
   "Ace & Tate": { rating: 4.6, count: 520 },
+  "Scrivens": { rating: 4.5, count: 450 },
 };
 
 /** Get rating for a store — prefer store-level, fall back to brand average */
@@ -143,6 +148,7 @@ const CHAIN_PROVIDERS = new Set([
   "Vision Express",
   "M&S Opticians",
   "Ace & Tate",
+  "scrivens",
 ]);
 
 function isIndependent(provider: string): boolean {
@@ -194,7 +200,12 @@ const MYSIGHT_NAMES: Record<string, string> = {
   woodingopticians: "Wooding Opticians",
 };
 
+const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
+  scrivens: "Scrivens",
+};
+
 function displayProviderName(p: string): string {
+  if (PROVIDER_DISPLAY_NAMES[p]) return PROVIDER_DISPLAY_NAMES[p];
   if (p.endsWith(".mysight.uk")) {
     const slug = p.replace(".mysight.uk", "");
     if (MYSIGHT_NAMES[slug]) return MYSIGHT_NAMES[slug];
@@ -1109,6 +1120,7 @@ const CHAIN_INFO: Record<string, { name: string; color: string }> = {
   "Boots Opticians": { name: "Boots Opticians", color: "#0460a9" },
   "ASDA Opticians": { name: "ASDA Opticians", color: "#78b83e" },
   "Vision Express": { name: "Vision Express", color: "#7b2d8e" },
+  "scrivens": { name: "Scrivens", color: "#c62828" },
 };
 
 function SearchProgressPanel({
@@ -1465,9 +1477,16 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
     : deduped;
 
   // Sort: featured first, then available (by next date), then unavailable (by distance)
+  // Demo-promoted brand always sorts first among featured results
   const featured = results
     .filter((r) => r.featured)
     .sort((a, b) => {
+      if (demoProvider) {
+        const aDemo = isDemoMatch(a.provider, demoProvider);
+        const bDemo = isDemoMatch(b.provider, demoProvider);
+        if (aDemo && !bDemo) return -1;
+        if (!aDemo && bDemo) return 1;
+      }
       if (a.nextAvailable && b.nextAvailable)
         return a.nextAvailable.localeCompare(b.nextAvailable);
       if (a.nextAvailable) return -1;

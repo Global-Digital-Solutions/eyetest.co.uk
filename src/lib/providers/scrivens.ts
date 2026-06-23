@@ -1,0 +1,223 @@
+import { haversine } from "../haversine";
+import { getThreeDayDates } from "../dates";
+import type { StoreResult } from "../types";
+
+/* ------------------------------------------------------------------ */
+/*  Scrivens Opticians — Static provider (164 UK stores)              */
+/*  Scrivens branches offer eye tests and hearing care services.       */
+/*  Booking via online booking system with branchId.                   */
+/* ------------------------------------------------------------------ */
+
+interface ScrivensStore {
+  address: string;
+  postcode: string;
+  town: string;
+  phone: string;
+  lat: number;
+  lng: number;
+  branchId: string;
+}
+
+const STORES: ScrivensStore[] = [
+  { address: "6 Bury Street, Abingdon, OX14 3QY", postcode: "OX14 3QY", town: "Abingdon", phone: "01235 523217", lat: 51.670402, lng: -1.282144, branchId: "17414" },
+  { address: "45 Anchor Road, Aldridge, WS9 8PT", postcode: "WS9 8PT", town: "Aldridge", phone: "01922 452305", lat: 52.603723, lng: -1.91939, branchId: "17492" },
+  { address: "84 High Street, Alfreton, DE55 7BE", postcode: "DE55 7BE", town: "Alfreton", phone: "01773 832474", lat: 53.097526, lng: -1.386687, branchId: "17384" },
+  { address: "10 Lawton Road, Alsager, ST7 2AF", postcode: "ST7 2AF", town: "Alsager", phone: "01270 873256", lat: 53.096353, lng: -2.30259, branchId: "17389" },
+  { address: "52 George Street, Altrincham, WA14 1RH", postcode: "WA14 1RH", town: "Altrincham", phone: "01619 411559", lat: 53.387749, lng: -2.350106, branchId: "17390" },
+  { address: "20 Market Street, Ashby De La Zouch, LE65 1AL", postcode: "LE65 1AL", town: "Ashby De La Zouch", phone: "01530 411464", lat: 52.746496, lng: -1.472562, branchId: "17426" },
+  { address: "6-8 Garswood Street, Ashton in Makerfield, WN4 9AF", postcode: "WN4 9AF", town: "Ashton in Makerfield", phone: "01942 713257", lat: 53.487126, lng: -2.638715, branchId: "17515" },
+  { address: "5 High Street, Banbury, OX16 5DZ", postcode: "OX16 5DZ", town: "Banbury", phone: "01295 262882", lat: 52.061663, lng: -1.33558, branchId: "17376" },
+  { address: "13 Market Street, Barnsley, S70 1SL", postcode: "S70 1SL", town: "Barnsley", phone: "01226 295293", lat: 53.551999, lng: -1.481391, branchId: "" },
+  { address: "42 High St, Barton-upon-Humber, DN18 5PD", postcode: "DN18 5PD", town: "Barton-upon-Humber", phone: "01652 635997", lat: 53.684939, lng: -0.440894, branchId: "118898" },
+  { address: "575 Bearwood Shopping Centre, Bearwood, B66 4BH", postcode: "B66 4BH", town: "Bearwood", phone: "01214 201089", lat: 52.474912, lng: -1.969077, branchId: "17391" },
+  { address: "100 East Street, Bedminster, BS3 4EY", postcode: "BS3 4EY", town: "Bedminster", phone: "01179 637105", lat: 51.4418, lng: -2.59803, branchId: "17373" },
+  { address: "21 Sheep Street, Bicester, OX26 6JF", postcode: "OX26 6JF", town: "Bicester", phone: "01869 253577", lat: 51.89802, lng: -1.151325, branchId: "17377" },
+  { address: "49 High Street, Biddulph, ST8 6AD", postcode: "ST8 6AD", town: "Biddulph", phone: "01782 514425", lat: 53.116907, lng: -2.175528, branchId: "34125" },
+  { address: "100a Church Street, Market Centre, Bilston, WV14 0DR", postcode: "WV14 0DR", town: "Bilston", phone: "01902 496471", lat: 52.564682, lng: -2.076915, branchId: "17393" },
+  { address: "41 Corporation Street, Birmingham, B2 4LS", postcode: "B2 4LS", town: "Birmingham", phone: "01212 367583", lat: 52.479995, lng: -1.897177, branchId: "17395" },
+  { address: "52 Cockton Hill, Bishop Auckland, DL14 6AH", postcode: "DL14 6AH", town: "Bishop Auckland", phone: "01388 603583", lat: 54.653861, lng: -1.677968, branchId: "17493" },
+  { address: "94-96 Waterloo Road, Blackpool, FY4 1AD", postcode: "FY4 1AD", town: "Blackpool", phone: "01253 342437", lat: 53.798622, lng: -3.052212, branchId: "17521" },
+  { address: "9 Market Place, Blandford Forum, DT11 7AF", postcode: "DT11 7AF", town: "Blandford Forum", phone: "01258 452443", lat: 50.856143, lng: -2.165071, branchId: "17351" },
+  { address: "12 Knowsley House, Knowsley Street, Bolton, BL1 2AH", postcode: "BL1 2AH", town: "Bolton", phone: "01204 523531", lat: 53.579949, lng: -2.430065, branchId: "17388" },
+  { address: "Unit 1 Crown Walk, West Street, Bourne, PE10 9PB", postcode: "PE10 9PB", town: "Bourne", phone: "01778 425995", lat: 52.768377, lng: -0.378275, branchId: "17428" },
+  { address: "20-24 The Parade, Bourne End, SL8 5SY", postcode: "SL8 5SY", town: "Bourne End", phone: "01628 525999", lat: 51.578492, lng: -0.711022, branchId: "17386" },
+  { address: "531 Roman Road, Bow, E3 5EL", postcode: "E3 5EL", town: "Bow", phone: "02089 805053", lat: 51.533125, lng: -0.029865, branchId: "17472" },
+  { address: "9a & 9b Market Hill, Brandon, IP27 0AA", postcode: "IP27 0AA", town: "Brandon", phone: "01842 815055", lat: 52.447293, lng: 0.624164, branchId: "29729" },
+  { address: "​19​ East Street, Bridport, DT6 3JX", postcode: "DT6 3JX", town: "Bridport", phone: "01308 423018", lat: 50.733511, lng: -2.756023, branchId: "17353" },
+  { address: "169-171 The Broadway, Broadstone, BH18 8DS", postcode: "BH18 8DS", town: "Broadstone", phone: "01202 692859", lat: 50.76055, lng: -1.99454, branchId: "17354" },
+  { address: "10 Broad Street, Bromyard, HR7 4BT", postcode: "HR7 4BT", town: "Bromyard", phone: "01885 482492", lat: 52.188713, lng: -2.505706, branchId: "17494" },
+  { address: "37 Market Place, Burslem, ST6 3AG", postcode: "ST6 3AG", town: "Burslem", phone: "01782 837530", lat: 53.045246, lng: -2.198223, branchId: "17408" },
+  { address: "43 Abbeygate Street, Bury St. Edmunds, IP33 1LW", postcode: "IP33 1LW", town: "Bury St. Edmunds", phone: "01284 702061", lat: 52.244768, lng: 0.714852, branchId: "17451" },
+  { address: "7 Market Street, Chapel en le Frith, SK23 0HH", postcode: "SK23 0HH", town: "Chapel en le Frith", phone: "01298 812427", lat: 53.323371, lng: -1.915227, branchId: "17495" },
+  { address: "50 High Street, Cheadle, ST10 1AF", postcode: "ST10 1AF", town: "Cheadle", phone: "01538 752085", lat: 52.987827, lng: -1.988681, branchId: "34126" },
+  { address: "21 Market Place, Chesterfield, S40 1PJ", postcode: "S40 1PJ", town: "Chesterfield", phone: "01246 232747", lat: 53.235597, lng: -1.428166, branchId: "17436" },
+  { address: "191 Manford Way, Hainault, IG7 4DJ", postcode: "IG7 4DJ", town: "Hainault", phone: "02085 002304", lat: 51.60835, lng: 0.107243, branchId: "17464" },
+  { address: "13 Old Church Road, Chingford, E4 6SJ", postcode: "E4 6SJ", town: "Chingford", phone: "02085 298998", lat: 51.617955, lng: -0.017224, branchId: "17475" },
+  { address: "18 High Street, Chippenham, SN15 3ER", postcode: "SN15 3ER", town: "Chippenham", phone: "01249 460425", lat: 51.458493, lng: -2.115609, branchId: "17684" },
+  { address: "8 High Street, Chipping Norton, OX7 5AD", postcode: "OX7 5AD", town: "Chipping Norton", phone: "01608 642949", lat: 51.94198, lng: -1.544622, branchId: "17378" },
+  { address: "15 Princess Victoria Street, Clifton, BS8 4BX", postcode: "BS8 4BX", town: "Clifton", phone: "01179 737764", lat: 51.454362, lng: -2.62043, branchId: "17374" },
+  { address: "35B Sir Isaacs Walk, Colchester, CO1 1JJ", postcode: "CO1 1JJ", town: "Colchester", phone: "01206 560735", lat: 51.887996, lng: 0.898147, branchId: "17491" },
+  { address: "91 High Street, Coleshill, B46 3AG", postcode: "B46 3AG", town: "Coleshill", phone: "01675 464507", lat: 52.49987, lng: -1.706792, branchId: "17394" },
+  { address: "37 Pershore Road South, Cotteridge, B30 3EG", postcode: "B30 3EG", town: "Cotteridge", phone: "01214 583335", lat: 52.415076, lng: -1.93123, branchId: "17396" },
+  { address: "160 Hallgate, Cottingham, HU16 4BD", postcode: "HU16 4BD", town: "Cottingham", phone: "01482 845056", lat: 53.782144, lng: -0.415225, branchId: "17445" },
+  { address: "182 The Broadway, Didcot, OX11 8RN", postcode: "OX11 8RN", town: "Didcot", phone: "01235 813305", lat: 51.606544, lng: -1.24341, branchId: "17379" },
+  { address: "45 Mere Street, Diss, IP22 4AG", postcode: "IP22 4AG", town: "Diss", phone: "01379 642739", lat: 52.375193, lng: 1.108814, branchId: "17448" },
+  { address: "23 Printing Office Street, Doncaster, DN1 1TP", postcode: "DN1 1TP", town: "Doncaster", phone: "01302 323157", lat: 53.522083, lng: -1.134269, branchId: "17439" },
+  { address: "41 South Street, Dorchester, DT1 1DF", postcode: "DT1 1DF", town: "Dorchester", phone: "01305 264966", lat: 50.712959, lng: -2.437332, branchId: "17355" },
+  { address: "71 Middle Street South, Driffield, YO25 6QF", postcode: "YO25 6QF", town: "Driffield", phone: "01377 253145", lat: 54.003843, lng: -0.437123, branchId: "17444" },
+  { address: "4A High Street, East Grinstead, RH19 3AW", postcode: "RH19 3AW", town: "East Grinstead", phone: "01342 321657", lat: 51.123769, lng: -0.007848, branchId: "17356" },
+  { address: "6 Buttermarket, Ely, CB7 4NY", postcode: "CB7 4NY", town: "Ely", phone: "01353 665282", lat: 52.399078, lng: 0.265797, branchId: "17452" },
+  { address: "33 Palace Gardens Shopping Centre, Enfield, EN2 6SN", postcode: "EN2 6SN", town: "Enfield", phone: "02083 670500", lat: 51.651258, lng: -0.083468, branchId: "17463" },
+  { address: "246 High Street, Erdington, B23 6SN", postcode: "B23 6SN", town: "Erdington", phone: "01213 730680", lat: 52.521955, lng: -1.843033, branchId: "17398" },
+  { address: "21-22 Queen Street, Exeter, EX4 3SH", postcode: "EX4 3SH", town: "Exeter", phone: "01392 349693", lat: 50.725066, lng: -3.532806, branchId: "" },
+  { address: "25 Norwich Street, Fakenham, NR21 9AF", postcode: "NR21 9AF", town: "Fakenham", phone: "01328 862216", lat: 52.830307, lng: 0.849346, branchId: "17454" },
+  { address: "14 Wilton Parade, High Street, TW13 4BU", postcode: "TW13 4BU", town: "High Street", phone: "02088 906546", lat: 51.445088, lng: -0.410951, branchId: "17467" },
+  { address: "752 High Road, North Finchley, N12 9QG", postcode: "N12 9QG", town: "North Finchley", phone: "02084 455881", lat: 51.614987, lng: -0.176271, branchId: "17477" },
+  { address: "745 Fishponds Road, Fishponds, BS16 3UP", postcode: "BS16 3UP", town: "Fishponds", phone: "01179 583395", lat: 51.480453, lng: -2.529341, branchId: "17438" },
+  { address: "127-131 Lord Street, Fleetwood, FY7 6LH", postcode: "FY7 6LH", town: "Fleetwood", phone: "01253 772777", lat: 53.921648, lng: -3.014126, branchId: "17496" },
+  { address: "103 High Street, Gosport, PO12 1DS", postcode: "PO12 1DS", town: "Gosport", phone: "02392 581719", lat: 50.794863, lng: -1.11963, branchId: "17357" },
+  { address: "35a High Street, Grantham, NG31 6PH", postcode: "NG31 6PH", town: "Grantham", phone: "01476 573931", lat: 52.911771, lng: -0.64176, branchId: "17443" },
+  { address: "Unit 37 Hagley Mall, Cornbow Shopping Centre, Halesowen, B63 4AJ", postcode: "B63 4AJ", town: "Halesowen", phone: "01215 011010", lat: 52.448618, lng: -2.051536, branchId: "17400" },
+  { address: "2 International House, Old Walsall Road, Hamstead, B42 1NN", postcode: "B42 1NN", town: "Hamstead", phone: "01213 573182", lat: 52.532036, lng: -1.930121, branchId: "17401" },
+  { address: "Unit 98, Middleton Grange Shopping Centre, TS24 7RF", postcode: "TS24 7RF", town: "Middleton Grange Shopping Centre", phone: "01429 273897", lat: 54.684671, lng: -1.213002, branchId: "17497" },
+  { address: "175 High Street, Harwich, CO12 3QB", postcode: "CO12 3QB", town: "Harwich", phone: "01255 553433", lat: 51.936893, lng: 1.279851, branchId: "17498" },
+  { address: "Unit 5, The Meridian Shopping Centre, Elm Lane, Havant, PO9 1UW", postcode: "PO9 1UW", town: "Havant", phone: "02392 483445", lat: 50.852129, lng: -0.982384, branchId: "17358" },
+  { address: "114-116 South Road, Haywards Heath, RH16 4LL", postcode: "RH16 4LL", town: "Haywards Heath", phone: "01444 454721", lat: 50.997558, lng: -0.10303, branchId: "17359" },
+  { address: "6 Market Street, Heanor, DE75 7NR", postcode: "DE75 7NR", town: "Heanor", phone: "01773 712047", lat: 53.01421, lng: -1.355239, branchId: "17499" },
+  { address: "18 Queen Square, High Wycombe, HP11 2DF", postcode: "HP11 2DF", town: "High Wycombe", phone: "01494 526058", lat: 51.630229, lng: -0.75238, branchId: "17461" },
+  { address: "7 Fawkon Walk, High Street, Hoddesdon, EN11 8TJ", postcode: "EN11 8TJ", town: "Hoddesdon", phone: "01992 469393", lat: 51.76017, lng: -0.012753, branchId: "17453" },
+  { address: "78 Town Street, Horsforth, LS18 4AP", postcode: "LS18 4AP", town: "Horsforth", phone: "01132 582574", lat: 53.838786, lng: -1.639095, branchId: "17500" },
+  { address: "52 New Street, Huddersfield, HD1 2BW", postcode: "HD1 2BW", town: "Huddersfield", phone: "01484 532176", lat: 53.644819, lng: -1.78344, branchId: "17440" },
+  { address: "24 Bath Street, Ilkeston, DE7 8FB", postcode: "DE7 8FB", town: "Ilkeston", phone: "01159 325431", lat: 52.972337, lng: -1.308582, branchId: "17385" },
+  { address: "271 Kentish Town Road, Kentish Town, NW5 2JS", postcode: "NW5 2JS", town: "Kentish Town", phone: "02074 852886", lat: 51.548829, lng: -0.141287, branchId: "17469" },
+  { address: "124 High Street, Kings Heath, B14 7LG", postcode: "B14 7LG", town: "Kings Heath", phone: "01214 442656", lat: 52.434026, lng: -1.893179, branchId: "17405" },
+  { address: "635  Kingstanding Road, Kingstanding, B44 9SU", postcode: "B44 9SU", town: "Kingstanding", phone: "01213 542100", lat: 52.552307, lng: -1.883808, branchId: "20873" },
+  { address: "231 Hawthorn Road, Kingstanding, B44 8PL", postcode: "B44 8PL", town: "Kingstanding", phone: "01213 731447", lat: 52.540917, lng: -1.883853, branchId: "17403" },
+  { address: "300 Kitts Green Road, Lea Hall, B33 9SB", postcode: "B33 9SB", town: "Lea Hall", phone: "01217 833159", lat: 52.483054, lng: -1.78003, branchId: "17407" },
+  { address: "Beeston District Centre, Town Street, Beeston, LS11 8PN", postcode: "LS11 8PN", town: "Beeston", phone: "01132 719894", lat: 53.772431, lng: -1.569156, branchId: "17437" },
+  { address: "Unit 3 Penny Hill Centre, Hunslet, LS10 2AP", postcode: "LS10 2AP", town: "Hunslet", phone: "01132 760025", lat: 53.778858, lng: -1.528665, branchId: "17434" },
+  { address: "27 West Street, Leominster, HR6 8EP", postcode: "HR6 8EP", town: "Leominster", phone: "01568 616434", lat: 52.226752, lng: -2.740534, branchId: "17501" },
+  { address: "262 High Road, Leyton, E10 5PW", postcode: "E10 5PW", town: "Leyton", phone: "02085 396784", lat: 51.560146, lng: -0.008918, branchId: "17470" },
+  { address: "583 Lea Bridge Road, Leyton, E10 6AJ", postcode: "E10 6AJ", town: "Leyton", phone: "02085 092467", lat: 51.576488, lng: -0.011711, branchId: "17460" },
+  { address: "5 Maxwell Drive, Gorse Covert Shopping Centre, Loughborough, LE11 4RZ", postcode: "LE11 4RZ", town: "Loughborough", phone: "01509 844254", lat: 52.779212, lng: -1.240453, branchId: "17420" },
+  { address: "22 Church Street, Lutterworth, LE17 4AW", postcode: "LE17 4AW", town: "Lutterworth", phone: "01455 552285", lat: 52.455678, lng: -1.200683, branchId: "17410" },
+  { address: "51 High Street, Lymington, SO41 9AG", postcode: "SO41 9AG", town: "Lymington", phone: "01590 672645", lat: 50.757803, lng: -1.542855, branchId: "17361" },
+  { address: "393 Harrow Road, Maida Hill, W9 3NF", postcode: "W9 3NF", town: "Maida Hill", phone: "02089 692564", lat: 51.525118, lng: -0.20378, branchId: "17466" },
+  { address: "79 High Street, Maidenhead, SL6 1JX", postcode: "SL6 1JX", town: "Maidenhead", phone: "01628 624632", lat: 51.522561, lng: -0.722432, branchId: "17471" },
+  { address: "40 Market Place, Malton, YO17 7LW", postcode: "YO17 7LW", town: "Malton", phone: "01653 692052", lat: 54.135751, lng: -0.798214, branchId: "17447" },
+  { address: "5 The Precinct, Market Deeping, PE6 8FG", postcode: "PE6 8FG", town: "Market Deeping", phone: "01778 346259", lat: 52.675681, lng: -0.315575, branchId: "17430" },
+  { address: "26 High Street, Midsomer Norton, BA3 2DW", postcode: "BA3 2DW", town: "Midsomer Norton", phone: "01761 414774", lat: 51.287232, lng: -2.48011, branchId: "17375" },
+  { address: "25 Market Place, Mildenhall, IP28 7EF", postcode: "IP28 7EF", town: "Mildenhall", phone: "01638 716383", lat: 52.343299, lng: 0.510586, branchId: "17455" },
+  { address: "47 The Broadway, Mill Hill, NW7 3DA", postcode: "NW7 3DA", town: "Mill Hill", phone: "02089 060626", lat: 51.614727, lng: -0.247781, branchId: "17468" },
+  { address: "172 Midsummer Arcade, The Centre: MK, Milton Keynes, MK9 3BA", postcode: "MK9 3BA", town: "Milton Keynes", phone: "01908 606520", lat: 52.044056, lng: -0.752993, branchId: "17380" },
+  { address: "123 Victoria Rd, New Brighton, CH45 2JD", postcode: "CH45 2JD", town: "New Brighton", phone: "01516 393263", lat: 53.437921, lng: -3.042617, branchId: "41686" },
+  { address: "3 Mallard Buildings, Station Road, New Milton, BH25 6HY", postcode: "BH25 6HY", town: "New Milton", phone: "01425 619060", lat: 50.753989, lng: -1.655097, branchId: "17372" },
+  { address: "St Marks Shopping Centre, Newark, NG24 1XT", postcode: "NG24 1XT", town: "Newark", phone: "01636 704503", lat: 53.075607, lng: -0.810278, branchId: "17449" },
+  { address: "78 High St, Newmarket, CB8 8JX", postcode: "CB8 8JX", town: "Newmarket", phone: "01638 661620", lat: 52.244218, lng: 0.405754, branchId: "17456" },
+  { address: "25 East Street, Newquay, TR7 1DN", postcode: "TR7 1DN", town: "Newquay", phone: "01637 872000", lat: 50.414121, lng: -5.080831, branchId: "17520" },
+  { address: "23 Market Place, North Walsham, NR28 9BS", postcode: "NR28 9BS", town: "North Walsham", phone: "01692 402323", lat: 52.821459, lng: 1.385556, branchId: "17482" },
+  { address: "731 Bristol Road South, Northfield, B31 2NG", postcode: "B31 2NG", town: "Northfield", phone: "01214 751152", lat: 52.416154, lng: -1.970794, branchId: "17411" },
+  { address: "209 Plumstead Road, Norwich, NR1 4AB", postcode: "NR1 4AB", town: "Norwich", phone: "01603 432804", lat: 52.636824, lng: 1.326834, branchId: "17481" },
+  { address: "87 Upper St Giles Street, Norwich, NR2 1AB", postcode: "NR2 1AB", town: "Norwich", phone: "01603 625728", lat: 52.629448, lng: 1.285996, branchId: "17480" },
+  { address: "44 High Road, Beeston, NG9 2JP", postcode: "NG9 2JP", town: "Beeston", phone: "01159 257505", lat: 52.927433, lng: -1.214286, branchId: "17392" },
+  { address: "9 Birmingham Street, Oldbury, Warley, B69 4DT", postcode: "B69 4DT", town: "Warley", phone: "01215 521189", lat: 52.50362, lng: -2.015566, branchId: "17412" },
+  { address: "5 Three Tuns Parade, Stafford Road, Oxley, WV10 6BA", postcode: "WV10 6BA", town: "Oxley", phone: "01902 782280", lat: 52.620733, lng: -2.129259, branchId: "17399" },
+  { address: "328-330 Green Lanes, Palmers Green, N13 5TW", postcode: "N13 5TW", town: "Palmers Green", phone: "02088 864838", lat: 51.618849, lng: -0.107284, branchId: "17473" },
+  { address: "201 South Coast Road, Peacehaven, BN10 8LA", postcode: "BN10 8LA", town: "Peacehaven", phone: "01273 585359", lat: 50.79092, lng: 1.8e-05, branchId: "17513" },
+  { address: "7 High Street, Penistone, S36 6BR", postcode: "S36 6BR", town: "Penistone", phone: "01226 762344", lat: 53.523259, lng: -1.630781, branchId: "17441" },
+  { address: "16 The Terrace, Market Jew Street, Penzance, TR18 2HR", postcode: "TR18 2HR", town: "Penzance", phone: "01736 363339", lat: 50.12008, lng: -5.534938, branchId: "17514" },
+  { address: "10 Westgate, Peterborough, PE1 1RA", postcode: "PE1 1RA", town: "Peterborough", phone: "01733 342464", lat: 52.574317, lng: -0.242486, branchId: "42226" },
+  { address: "4 George Street, Pocklington, YO42 2DF", postcode: "YO42 2DF", town: "Pocklington", phone: "01759 303150", lat: 53.931599, lng: -0.780932, branchId: "17446" },
+  { address: "20 Market Place, Poulton le Fylde, FY6 7AS", postcode: "FY6 7AS", town: "Poulton le Fylde", phone: "01253 884558", lat: 53.846619, lng: -2.992233, branchId: "17503" },
+  { address: "496 Hagley Road West, Quinton, Warley, B68 0DJ", postcode: "B68 0DJ", town: "Warley", phone: "01214 223007", lat: 52.464074, lng: -1.994857, branchId: "17413" },
+  { address: "26 Blackburn Street, Radcliffe, M26 1NQ", postcode: "M26 1NQ", town: "Radcliffe", phone: "01617 233397", lat: 53.559713, lng: -2.3258, branchId: "17518" },
+  { address: "39 High Street, Rhyl, LL18 1EN", postcode: "LL18 1EN", town: "Rhyl", phone: "01745 350458", lat: 53.32166, lng: -3.490976, branchId: "17504" },
+  { address: "31 Southampton Road, Ringwood, BH24 1HB", postcode: "BH24 1HB", town: "Ringwood", phone: "01425 472534", lat: 50.846683, lng: -1.790986, branchId: "17363" },
+  { address: "27 - 29 Oxford Street, Ripley, DE5 3AH", postcode: "DE5 3AH", town: "Ripley", phone: "01773 743167", lat: 53.049849, lng: -1.404594, branchId: "17505" },
+  { address: "Unit B 21-25 Effingham Street, Rotherham, S65 1AJ", postcode: "S65 1AJ", town: "Rotherham", phone: "01709 382366", lat: 53.431936, lng: -1.355173, branchId: "17435" },
+  { address: "42A High Street, Royston, SG8 9AW", postcode: "SG8 9AW", town: "Royston", phone: "01763 243050", lat: 52.046339, lng: -0.023355, branchId: "17457" },
+  { address: "33-37 High Street, Royston, SG8 9AA", postcode: "SG8 9AA", town: "Royston", phone: "01763 243132", lat: 52.047274, lng: -0.023838, branchId: "17517" },
+  { address: "3 Market Square, Royton, OL2 5QD", postcode: "OL2 5QD", town: "Royton", phone: "01616 200121", lat: 53.566161, lng: -2.123391, branchId: "17506" },
+  { address: "7 Regent Street, Rugby, CV21 2PE", postcode: "CV21 2PE", town: "Rugby", phone: "01788 572719", lat: 52.373692, lng: -1.261081, branchId: "17381" },
+  { address: "16a Upper Brook Street, Rugeley, WS15 2DN", postcode: "WS15 2DN", town: "Rugeley", phone: "01889 575257", lat: 52.758851, lng: -1.93631, branchId: "17507" },
+  { address: "55 High Street, Rushden, NN10 0QE", postcode: "NN10 0QE", town: "Rushden", phone: "01933 353978", lat: 52.289999, lng: -0.597607, branchId: "17382" },
+  { address: "79 Pendleton Way, Salford, M6 5FW", postcode: "M6 5FW", town: "Salford", phone: "01617 364732", lat: 53.48872, lng: -2.289025, branchId: "17490" },
+  { address: "63 Market Street, Shaw, OL2 8NP", postcode: "OL2 8NP", town: "Shaw", phone: "01706 847809", lat: 53.575787, lng: -2.093955, branchId: "17508" },
+  { address: "356 Glossop Road, Sheffield, S10 2HW", postcode: "S10 2HW", town: "Sheffield", phone: "01142 725864", lat: 53.380362, lng: -1.485565, branchId: "17459" },
+  { address: "Orchard Square Shopping Centre, Sheffield, S1 2FB", postcode: "S1 2FB", town: "Sheffield", phone: "01142 727307", lat: 53.381706, lng: -1.47029, branchId: "17415" },
+  { address: "2162a Coventry Road, Sheldon, B26 3JB", postcode: "B26 3JB", town: "Sheldon", phone: "01217 432704", lat: 52.452891, lng: -1.784183, branchId: "17416" },
+  { address: "44 Cheap Street, Sherborne, DT9 3PX", postcode: "DT9 3PX", town: "Sherborne", phone: "01935 812971", lat: 50.949348, lng: -2.516834, branchId: "17365" },
+  { address: "205 Stratford Road, Shirley, B90 3AH", postcode: "B90 3AH", town: "Shirley", phone: "01217 440354", lat: 52.411877, lng: -1.826517, branchId: "17512" },
+  { address: "1 Union Road, Shirley, B90 3BT", postcode: "B90 3BT", town: "Shirley", phone: "01217 446036", lat: 52.40556, lng: -1.822661, branchId: "17519" },
+  { address: "417a Bitterne Road, Bitterne, SO18 5EE", postcode: "SO18 5EE", town: "Bitterne", phone: "02380 420513", lat: 50.914674, lng: -1.358346, branchId: "17484" },
+  { address: "7 Lower Northam Road, Hedge End, SO30 4FN", postcode: "SO30 4FN", town: "Hedge End", phone: "01489 782131", lat: 50.914068, lng: -1.302862, branchId: "17486" },
+  { address: "6 High Street, Hythe, SO45 6AH", postcode: "SO45 6AH", town: "Hythe", phone: "02380 842230", lat: 50.870089, lng: -1.398906, branchId: "17485" },
+  { address: "40 Shirley High Street, Shirley, SO15 3NG", postcode: "SO15 3NG", town: "Shirley", phone: "02380 770804", lat: 50.921543, lng: -1.432802, branchId: "17483" },
+  { address: "104 Chase Side, Southgate, N14 5PH", postcode: "N14 5PH", town: "Southgate", phone: "02088 826381", lat: 51.633508, lng: -0.130934, branchId: "17476" },
+  { address: "1 Crown Place, St Ives, PE27 5PA", postcode: "PE27 5PA", town: "St Ives", phone: "01480 301337", lat: 52.324613, lng: -0.074051, branchId: "17458" },
+  { address: "32/33 Crabbery Street, Stafford, ST16 2BA", postcode: "ST16 2BA", town: "Stafford", phone: "01785 229549", lat: 52.807351, lng: -2.118482, branchId: "17686" },
+  { address: "10 Ironmonger Street, Stamford, PE9 1PL", postcode: "PE9 1PL", town: "Stamford", phone: "01780 753719", lat: 52.652978, lng: -0.478315, branchId: "17429" },
+  { address: "12 Derby Road, Stapleford, NG9 7AA", postcode: "NG9 7AA", town: "Stapleford", phone: "01159 397233", lat: 52.929216, lng: -1.275737, branchId: "17417" },
+  { address: "27 High Street, Stone, ST15 8AJ", postcode: "ST15 8AJ", town: "Stone", phone: "01785 814777", lat: 52.901808, lng: -2.145799, branchId: "34129" },
+  { address: "115 The Parade, Sutton Coldfield, B72 1PU", postcode: "B72 1PU", town: "Sutton Coldfield", phone: "01213 544534", lat: 52.560326, lng: -1.82487, branchId: "17418" },
+  { address: "Unit 7 Idlewells Centre, Sutton In Ashfield, NG17 1BJ", postcode: "NG17 1BJ", town: "Sutton In Ashfield", phone: "01623 513954", lat: 53.125524, lng: -1.262537, branchId: "17409" },
+  { address: "18 High Street, Swadlincote, DE11 8HY", postcode: "DE11 8HY", town: "Swadlincote", phone: "01283 217262", lat: 52.773358, lng: -1.556198, branchId: "17509" },
+  { address: "Unit 8A, Ankerside Shopping Centre, B79 7LQ", postcode: "B79 7LQ", town: "Ankerside Shopping Centre", phone: "0182755705", lat: 52.63268, lng: -1.693378, branchId: "17685" },
+  { address: "131 High Street, Tewkesbury, GL20 5JR", postcode: "GL20 5JR", town: "Tewkesbury", phone: "01684 299904", lat: 51.993454, lng: -2.157107, branchId: "17427" },
+  { address: "13 Market Place, Thirsk, YO7 1HQ", postcode: "YO7 1HQ", town: "Thirsk", phone: "01845 525996", lat: 54.23224, lng: -1.343771, branchId: "17488" },
+  { address: "27 Victoria Road East, Thornton Cleveleys, FY5 5BU", postcode: "FY5 5BU", town: "Thornton Cleveleys", phone: "01253 825176", lat: 53.870514, lng: -3.003551, branchId: "17522" },
+  { address: "70 School Road, Tilehurst, RG31 5AW", postcode: "RG31 5AW", town: "Tilehurst", phone: "01189 412911", lat: 51.458567, lng: -1.040505, branchId: "17387" },
+  { address: "8 The Pavilion, High Street, TN9 1TE", postcode: "TN9 1TE", town: "High Street", phone: "01732 352565", lat: 51.19289, lng: 0.27335, branchId: "17360" },
+  { address: "Unit 7A, Liscard Way, CH44 5TL", postcode: "CH44 5TL", town: "Liscard Way", phone: "01516 392280", lat: 53.419499, lng: -3.044152, branchId: "17510" },
+  { address: "Unit 38, 17&Central, 42 Selborne Rd, E17 7JR", postcode: "E17 7JR", town: "42 Selborne Rd", phone: "02085 203079", lat: 51.583368, lng: -0.023478, branchId: "17465" },
+  { address: "15 The Precinct (The Boulevard), London Rd, PO7 7DT", postcode: "PO7 7DT", town: "London Rd", phone: "02392 262054", lat: 50.880046, lng: -1.030262, branchId: "17367" },
+  { address: "167 Weoley Castle Road, Weoley Castle, B29 5QH", postcode: "B29 5QH", town: "Weoley Castle", phone: "01214 271021", lat: 52.438062, lng: -1.970971, branchId: "17421" },
+  { address: "89 Poole Road, Westbourne, BH4 9BB", postcode: "BH4 9BB", town: "Westbourne", phone: "01202 764545", lat: 50.722973, lng: -1.903365, branchId: "17368" },
+  { address: "51 High Street, Weston-Super-Mare, BS23 1HD", postcode: "BS23 1HD", town: "Weston-Super-Mare", phone: "01934 629755", lat: 51.348049, lng: -2.978927, branchId: "17516" },
+  { address: "95 St Mary Street, Weymouth, DT4 8NY", postcode: "DT4 8NY", town: "Weymouth", phone: "01305 785145", lat: 50.610987, lng: -2.453979, branchId: "17369" },
+  { address: "33 Greenend, Whitchurch, SY13 1AD", postcode: "SY13 1AD", town: "Whitchurch", phone: "01948 662919", lat: 52.969291, lng: -2.681767, branchId: "34159" },
+  { address: "4 Albert Square, Widnes, WA8 6JW", postcode: "WA8 6JW", town: "Widnes", phone: "01514 243207", lat: 53.36853, lng: -2.726693, branchId: "17422" },
+  { address: "33 Cross Street, Willenhall, WV13 1PG", postcode: "WV13 1PG", town: "Willenhall", phone: "01902 605386", lat: 52.583835, lng: -2.054072, branchId: "17433" },
+  { address: "6 The Square, Wimborne, BH21 1JA", postcode: "BH21 1JA", town: "Wimborne", phone: "01202 883827", lat: 50.800261, lng: -1.987568, branchId: "17370" },
+  { address: "373 Wimborne Road, Winton, BH9 2AQ", postcode: "BH9 2AQ", town: "Winton", phone: "01202 529700", lat: 50.74179, lng: -1.878639, branchId: "17371" },
+  { address: "16a High Street, Witney, OX28 6HB", postcode: "OX28 6HB", town: "Witney", phone: "01993 702543", lat: 51.785772, lng: -1.484843, branchId: "17383" },
+  { address: "107 High Street, Wolstanton, ST5 0EP", postcode: "ST5 0EP", town: "Wolstanton", phone: "01782 617072", lat: 53.032159, lng: -2.218308, branchId: "34128" },
+  { address: "16 Dudley Street, Wolverhampton, WV1 3EY", postcode: "WV1 3EY", town: "Wolverhampton", phone: "01902 424775", lat: 52.584929, lng: -2.126526, branchId: "17423" },
+];
+
+export async function fetchScrivens(
+  lat: number,
+  lng: number,
+  radius = 16093,
+  limit = 10
+): Promise<StoreResult[]> {
+  const threeDays = getThreeDayDates();
+
+  const nearby = STORES
+    .map((store) => {
+      const distM = haversine(lat, lng, store.lat, store.lng);
+      if (distM > radius) return null;
+      return { ...store, distanceM: Math.round(distM) };
+    })
+    .filter(Boolean)
+    .sort((a, b) => a!.distanceM - b!.distanceM)
+    .slice(0, limit) as (ScrivensStore & { distanceM: number })[];
+
+  return nearby.map((store) => ({
+    provider: "scrivens",
+    storeName: `Scrivens ${store.town}`,
+    address: store.address,
+    postcode: store.postcode,
+    town: store.town,
+    phone: store.phone,
+    distanceM: store.distanceM,
+    slotsAvailable: null,
+    nextAvailable: null,
+    bookingUrl: store.branchId
+      ? `https://scrivens.com/online-booking/?branchid=${store.branchId}`
+      : "https://scrivens.com/eye-care/",
+    lat: store.lat,
+    lng: store.lng,
+    dailySlots: threeDays.map((date) => ({ date, count: -1 })),
+  }));
+}

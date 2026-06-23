@@ -6,6 +6,7 @@ import { fetchVisionExpress } from "@/lib/providers/vision-express";
 import { fetchMysight, MYSIGHT_SITES } from "@/lib/providers/mysight";
 import { fetchMandS } from "@/lib/providers/mands";
 import { fetchAceAndTate } from "@/lib/providers/aceandtate";
+import { fetchScrivens } from "@/lib/providers/scrivens";
 import type { StoreResult, FeaturedProvider, OpticianListing } from "@/lib/types";
 import { createClient } from "@/lib/supabase/server";
 import { haversine } from "@/lib/haversine";
@@ -14,6 +15,69 @@ const enc = new TextEncoder();
 
 function line(data: object): Uint8Array {
   return enc.encode(JSON.stringify(data) + "\n");
+}
+
+/* ------------------------------------------------------------------ */
+/*  Density-aware featured radius                                      */
+/*  In dense urban areas the "recommended" radius is capped so that    */
+/*  listings don't blanket an entire city from a single store.         */
+/*  The cap is applied at query time — the DB value acts as a maximum. */
+/* ------------------------------------------------------------------ */
+
+interface CityZone {
+  lat: number;
+  lng: number;
+  /** How far from city centre counts as "in this city" (metres) */
+  boundaryM: number;
+  /** Max featured/listing radius within this zone (km) */
+  maxRadiusKm: number;
+}
+
+const CITY_ZONES: CityZone[] = [
+  // Tier 1 — Very dense: 1 mile (1.6 km) max featured radius
+  { lat: 51.5074, lng: -0.1278, boundaryM: 25000, maxRadiusKm: 1.6 },  // London (within M25)
+
+  // Tier 2 — Major cities: 2 miles (3.2 km)
+  { lat: 52.4862, lng: -1.8904, boundaryM: 12000, maxRadiusKm: 3.2 },  // Birmingham
+  { lat: 53.4808, lng: -2.2426, boundaryM: 12000, maxRadiusKm: 3.2 },  // Manchester
+  { lat: 53.8008, lng: -1.5491, boundaryM: 10000, maxRadiusKm: 3.2 },  // Leeds
+  { lat: 55.9533, lng: -3.1883, boundaryM: 10000, maxRadiusKm: 3.2 },  // Edinburgh
+  { lat: 55.8642, lng: -4.2518, boundaryM: 12000, maxRadiusKm: 3.2 },  // Glasgow
+  { lat: 53.4084, lng: -2.9916, boundaryM: 10000, maxRadiusKm: 3.2 },  // Liverpool
+  { lat: 51.4545, lng: -2.5879, boundaryM: 10000, maxRadiusKm: 3.2 },  // Bristol
+  { lat: 53.3811, lng: -1.4701, boundaryM: 10000, maxRadiusKm: 3.2 },  // Sheffield
+  { lat: 54.9783, lng: -1.6178, boundaryM: 10000, maxRadiusKm: 3.2 },  // Newcastle
+  { lat: 52.9548, lng: -1.1581, boundaryM: 10000, maxRadiusKm: 3.2 },  // Nottingham
+  { lat: 51.4816, lng: -3.1791, boundaryM: 10000, maxRadiusKm: 3.2 },  // Cardiff
+
+  // Tier 3 — Cities: 3 miles (4.8 km)
+  { lat: 52.6369, lng: -1.1398, boundaryM: 8000,  maxRadiusKm: 4.8 },  // Leicester
+  { lat: 50.9097, lng: -1.4044, boundaryM: 8000,  maxRadiusKm: 4.8 },  // Southampton
+  { lat: 50.3755, lng: -4.1427, boundaryM: 8000,  maxRadiusKm: 4.8 },  // Plymouth
+  { lat: 50.7184, lng: -3.5339, boundaryM: 8000,  maxRadiusKm: 4.8 },  // Exeter
+  { lat: 51.4545, lng: -0.9781, boundaryM: 8000,  maxRadiusKm: 4.8 },  // Reading
+  { lat: 52.2053, lng:  0.1218, boundaryM: 8000,  maxRadiusKm: 4.8 },  // Cambridge
+  { lat: 51.7520, lng: -1.2577, boundaryM: 8000,  maxRadiusKm: 4.8 },  // Oxford
+  { lat: 50.8225, lng: -0.1372, boundaryM: 8000,  maxRadiusKm: 4.8 },  // Brighton
+  { lat: 52.4068, lng: -1.5197, boundaryM: 8000,  maxRadiusKm: 4.8 },  // Coventry
+  { lat: 53.0027, lng: -2.1794, boundaryM: 8000,  maxRadiusKm: 4.8 },  // Stoke-on-Trent
+  { lat: 50.7956, lng: -1.0880, boundaryM: 8000,  maxRadiusKm: 4.8 },  // Portsmouth
+  { lat: 57.1497, lng: -2.0943, boundaryM: 8000,  maxRadiusKm: 4.8 },  // Aberdeen
+];
+
+/** Default max radius for non-urban areas (5 miles) */
+const DEFAULT_MAX_RADIUS_KM = 8;
+
+/**
+ * Returns the maximum featured/listing radius (in km) for a given location.
+ * Dense cities get tighter caps to prevent overlap; rural areas keep the default.
+ */
+function getDensityMaxRadiusKm(lat: number, lng: number): number {
+  for (const zone of CITY_ZONES) {
+    const distM = haversine(lat, lng, zone.lat, zone.lng);
+    if (distM <= zone.boundaryM) return zone.maxRadiusKm;
+  }
+  return DEFAULT_MAX_RADIUS_KM;
 }
 
 async function withTimeout<T>(
@@ -68,9 +132,14 @@ export async function GET(req: NextRequest) {
     .select("*")
     .eq("active", true);
 
+  // Cap the effective radius based on location density — prevents a single
+  // store from blanketing a large city like London
+  const densityCapKm = getDensityMaxRadiusKm(lat, lng);
+
   const applicableRules = (featuredRows ?? []).filter((rule: FeaturedProvider) => {
     const distM = haversine(lat, lng, rule.lat, rule.lng);
-    return distM <= rule.radius_km * 1000;
+    const effectiveRadiusKm = Math.min(rule.radius_km, densityCapKm);
+    return distM <= effectiveRadiusKm * 1000;
   });
 
   // Load subscribed/manual optician listings
@@ -85,7 +154,10 @@ export async function GET(req: NextRequest) {
       const distM = haversine(lat, lng, l.lat!, l.lng!);
       return { listing: l, distM };
     })
-    .filter(({ listing, distM }) => distM <= listing.radius_km * 1000)
+    .filter(({ listing, distM }) => {
+      const effectiveRadiusKm = Math.min(listing.radius_km, densityCapKm);
+      return distM <= effectiveRadiusKm * 1000;
+    })
     .map(({ listing, distM }) => ({
       provider: listing.practice_name,
       storeName: listing.practice_name,
@@ -173,6 +245,9 @@ export async function GET(req: NextRequest) {
           : []),
         ...(enabled("Ace & Tate")
           ? [runProvider("Ace & Tate", () => fetchAceAndTate(lat, lng, RADIUS, LIMIT))]
+          : []),
+        ...(enabled("scrivens")
+          ? [runProvider("scrivens", () => fetchScrivens(lat, lng, RADIUS, LIMIT))]
           : []),
         ...MYSIGHT_SITES.filter((site) => enabled(site)).map(
           (site) => runProvider(site, () => fetchMysight(site, lat, lng, RADIUS, LIMIT))
