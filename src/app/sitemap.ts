@@ -7,7 +7,7 @@ import { getAllSlugs as getAllOpticianSlugs } from "@/data/opticians";
 import { getAllSlugs as getAllSearchQuerySlugs } from "@/data/search-queries";
 
 const BASE = "https://www.eyetest.co.uk";
-const NOW = new Date().toISOString();
+const NOW = "2026-06-23T00:00:00.000Z";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   /* ------------------------------------------------------------------ */
@@ -16,7 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: `${BASE}/`, lastModified: NOW, changeFrequency: "daily", priority: 1.0 },
-    { url: `${BASE}/search`, lastModified: NOW, changeFrequency: "weekly", priority: 0.6 },
     { url: `${BASE}/find`, lastModified: NOW, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/at-home-eye-tests`, lastModified: NOW, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/eye-tests`, lastModified: NOW, changeFrequency: "weekly", priority: 0.8 },

@@ -59,7 +59,7 @@ const faqs = [
   },
   {
     q: "Do you list practices outside England?",
-    a: "Yes. eyetest.co.uk covers the entire United Kingdom, including England, Scotland, Wales, and Northern Ireland. We welcome applications from practices across all four nations. We currently feature opticians in over 93 cities across the UK.",
+    a: "Yes. eyetest.co.uk covers the entire United Kingdom, including England, Scotland, Wales, and Northern Ireland. We welcome applications from practices across all four nations. We currently feature opticians in over 97 cities across the UK.",
   },
 ];
 
@@ -379,8 +379,8 @@ export default function GetListedPage() {
           <div className="max-w-5xl mx-auto px-4">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
               {[
-                { value: "1,000+", label: "Opticians" },
-                { value: "93", label: "UK Cities" },
+                { value: "2,400+", label: "Opticians" },
+                { value: "97", label: "UK Cities" },
                 { value: "Since 2019", label: "Established" },
                 { value: "100%", label: "Free for Patients" },
               ].map((stat) => (
@@ -683,7 +683,7 @@ export default function GetListedPage() {
               Ready to reach more patients?
             </h2>
             <p className="text-white/70 mb-8 max-w-lg mx-auto">
-              Join over 1,000 opticians already listed on eyetest.co.uk. Apply
+              Join over 2,400 opticians already listed on eyetest.co.uk. Apply
               today and start connecting with patients in your area.
             </p>
             <a

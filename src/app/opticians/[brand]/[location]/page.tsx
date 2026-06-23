@@ -54,8 +54,8 @@ export async function generateMetadata({
   }
 
   const title = optician.available
-    ? `${optician.name} ${loc.name} — Book Your Eye Test | eyetest.co.uk`
-    : `${optician.name} ${loc.name} — Alternatives & Availability | eyetest.co.uk`;
+    ? `${optician.name} ${loc.name} — Eye Test Booking`
+    : `${optician.name} ${loc.name} — Alternatives & Availability`;
 
   const description = optician.available
     ? `Book a ${optician.shortName} eye test in ${loc.name}. ${optician.priceRange}. NHS tests available. Compare availability and book online through eyetest.co.uk.`

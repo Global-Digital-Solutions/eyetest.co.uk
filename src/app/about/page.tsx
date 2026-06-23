@@ -10,7 +10,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "About Us — The UK's Eye Test Comparison Platform | eyetest.co.uk",
   description:
-    "Learn about eyetest.co.uk, the UK's dedicated eye test comparison platform. Founded in 2019, we help you compare 1,000+ opticians across 93 UK cities. 100% free to use.",
+    "Learn about eyetest.co.uk, the UK's dedicated eye test comparison platform. Founded in 2019, we help you compare 2,400+ opticians across 97 UK cities. 100% free to use.",
   keywords: [
     "about eyetest.co.uk",
     "eye test comparison",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Us — The UK's Eye Test Comparison Platform | eyetest.co.uk",
     description:
-      "Founded in 2019, eyetest.co.uk helps you compare 1,000+ opticians across the UK. Free, transparent, and independent.",
+      "Founded in 2019, eyetest.co.uk helps you compare 2,400+ opticians across the UK. Free, transparent, and independent.",
     url: "https://www.eyetest.co.uk/about",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -37,8 +37,8 @@ export const metadata: Metadata = {
 // ---------------------------------------------------------------------------
 
 const stats = [
-  { value: "1,000+", label: "Opticians compared" },
-  { value: "93", label: "UK cities covered" },
+  { value: "2,400+", label: "Opticians compared" },
+  { value: "97", label: "UK cities covered" },
   { value: "100%", label: "Free to use" },
   { value: "Since 2019", label: "Serving the UK" },
 ];
@@ -125,7 +125,7 @@ export default function AboutPage() {
     "@type": "AboutPage",
     name: "About eyetest.co.uk",
     description:
-      "Learn about eyetest.co.uk, the UK's dedicated eye test comparison platform. Founded in 2019, we help you compare 1,000+ opticians across 93 UK cities.",
+      "Learn about eyetest.co.uk, the UK's dedicated eye test comparison platform. Founded in 2019, we help you compare 2,400+ opticians across 97 UK cities.",
     url: "https://www.eyetest.co.uk/about",
     publisher: {
       "@type": "Organization",
@@ -233,7 +233,7 @@ export default function AboutPage() {
                 eyetest.co.uk was founded in 2019 with a simple idea: booking an eye test in the UK should be easier, faster, and more transparent. We noticed that most people found it surprisingly difficult to compare opticians, understand the different types of eye tests available, or figure out whether they qualified for a free NHS eye test.
               </p>
               <p>
-                We set out to change that. Starting as a small comparison site, we have grown into the UK&apos;s most comprehensive eye test comparison platform, covering over 1,000 opticians across 93 cities. From high-street brands like Boots Opticians and Specsavers to trusted independent practices, we bring them all together in one place so you can find the right optician for your needs.
+                We set out to change that. Starting as a small comparison site, we have grown into the UK&apos;s most comprehensive eye test comparison platform, covering over 2,400 opticians across 97 cities. From high-street brands like Boots Opticians and Specsavers to trusted independent practices, we bring them all together in one place so you can find the right optician for your needs.
               </p>
               <p>
                 Today, eyetest.co.uk is operated by Global Digital Solutions and remains committed to its founding mission: making eye care accessible and understandable for everyone in the United Kingdom.
@@ -277,7 +277,7 @@ export default function AboutPage() {
                   Compare Opticians
                 </h3>
                 <p className="text-sm text-gray-600">
-                  Search by postcode to find and compare over 1,000 opticians near you. See services offered, test types available, and whether they accept NHS patients.
+                  Search by postcode to find and compare over 2,400 opticians near you. See services offered, test types available, and whether they accept NHS patients.
                 </p>
               </div>
 
@@ -330,7 +330,7 @@ export default function AboutPage() {
                   Find by Location
                 </h3>
                 <p className="text-sm text-gray-600">
-                  Discover opticians in 93 cities across England, Scotland, Wales, and Northern Ireland. Local results tailored to your area.
+                  Discover opticians in 97 cities across England, Scotland, Wales, and Northern Ireland. Local results tailored to your area.
                 </p>
               </div>
 

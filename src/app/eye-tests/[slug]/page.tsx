@@ -35,7 +35,7 @@ export async function generateMetadata({
     return { title: "Eye Test Not Found | eyetest.co.uk" };
   }
 
-  const title = `${test.name} — What to Expect, Cost & Where to Book | eyetest.co.uk`;
+  const title = `${test.name} — Cost, Expect & Book`;
   const description = `${test.shortDescription} Learn what a ${test.name.toLowerCase()} involves, who needs one, how much it costs (${test.cost.split(".")[0]}), and where to book in the UK.`;
 
   return {

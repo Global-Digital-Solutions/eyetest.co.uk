@@ -99,7 +99,6 @@ If you are unsure whether you qualify, your local optician can check your eligib
       "standard-eye-test",
       "childrens-eye-test",
       "diabetic-eye-screening",
-      "home-visit-eye-test",
     ],
     nhsCovered: true,
   },

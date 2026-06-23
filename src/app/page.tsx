@@ -19,7 +19,7 @@ import { ArticlesBlock } from "@/components/ArticlesBlock";
 export const metadata: Metadata = {
   title: "eyetest.co.uk — Find & Book Eye Tests Near You",
   description:
-    "Compare 1,000+ opticians across the UK. Find eye test appointments near you from Boots, Specsavers, Vision Express, ASDA and independents. Book online free.",
+    "Compare 2,400+ opticians across the UK. Find eye test appointments near you from Boots, Specsavers, Vision Express, ASDA and independents. Book online free.",
   keywords: [
     "eye test",
     "book eye test",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "eyetest.co.uk — Find & Book Eye Tests Near You",
     description:
-      "Compare 1,000+ opticians across the UK. Find available appointments and book online in seconds.",
+      "Compare 2,400+ opticians across the UK. Find available appointments and book online in seconds.",
     url: "https://www.eyetest.co.uk",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -55,7 +55,7 @@ export default function Home() {
     name: "eyetest.co.uk",
     url: "https://www.eyetest.co.uk",
     description:
-      "Compare 1,000+ opticians across the UK. Find eye test appointments near you and book online free.",
+      "Compare 2,400+ opticians across the UK. Find eye test appointments near you and book online free.",
     potentialAction: {
       "@type": "SearchAction",
       target: {

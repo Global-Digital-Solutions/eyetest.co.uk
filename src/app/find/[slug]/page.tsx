@@ -112,7 +112,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${query.title} | eyetest.co.uk`,
+    title: query.title,
     description: query.shortDescription,
     keywords: [
       query.keyword,

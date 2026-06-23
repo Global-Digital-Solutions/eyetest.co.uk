@@ -40,6 +40,10 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     alternates: {
       canonical: "https://www.eyetest.co.uk/search",
     },
+    robots: {
+      index: false,
+      follow: true,
+    },
   };
 }
 

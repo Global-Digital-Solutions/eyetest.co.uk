@@ -76,6 +76,9 @@ const faqs = [
 // ---------------------------------------------------------------------------
 
 export default function EyeTestsPage() {
+  // Filter out home-visit-eye-test (redirects to /at-home-eye-tests)
+  const visibleTests = eyeTests.filter(t => t.slug !== "home-visit-eye-test");
+
   // Structured data
   const jsonLd = {
     "@context": "https://schema.org",
@@ -91,8 +94,8 @@ export default function EyeTestsPage() {
     },
     mainEntity: {
       "@type": "ItemList",
-      numberOfItems: eyeTests.length,
-      itemListElement: eyeTests.map((test, index) => ({
+      numberOfItems: visibleTests.length,
+      itemListElement: visibleTests.map((test, index) => ({
         "@type": "ListItem",
         position: index + 1,
         name: test.name,
@@ -172,7 +175,7 @@ export default function EyeTestsPage() {
                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <span>{eyeTests.length} test types covered</span>
+            <span>{visibleTests.length} test types covered</span>
           </div>
 
           <h1
@@ -211,7 +214,7 @@ export default function EyeTestsPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {eyeTests.map((test) => (
+              {visibleTests.map((test) => (
                 <Link
                   key={test.slug}
                   href={`/eye-tests/${test.slug}`}
@@ -294,7 +297,7 @@ export default function EyeTestsPage() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-100">
-                  {eyeTests.map((test) => (
+                  {visibleTests.map((test) => (
                     <tr
                       key={test.slug}
                       className="hover:bg-gray-50 transition-colors"

@@ -543,7 +543,7 @@ export const opticians: OpticianBrand[] = [
       "Children's Eye Tests",
     ],
     storeCount: 200,
-    website: "https://www.asda.com/opticians",
+    website: "https://opticians.asda.com",
     priceRange: "Free NHS / From £20 private",
     nhsAvailable: true,
     available: true,

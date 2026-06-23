@@ -137,8 +137,8 @@ export function Header() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </span>
-            <span className="hidden sm:inline"><strong className="text-white">1,000+</strong> opticians compared</span>
-            <span className="sm:hidden"><strong className="text-white">1,000+</strong> opticians</span>
+            <span className="hidden sm:inline"><strong className="text-white">2,400+</strong> opticians compared</span>
+            <span className="sm:hidden"><strong className="text-white">2,400+</strong> opticians</span>
           </span>
           <span className="w-px h-3.5 bg-white/20 hidden sm:block" />
           <span className="flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-white/90 whitespace-nowrap">

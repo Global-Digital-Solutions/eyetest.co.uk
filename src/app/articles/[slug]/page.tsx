@@ -35,7 +35,7 @@ export async function generateMetadata({
     return { title: "Article Not Found | eyetest.co.uk" };
   }
 
-  const title = `${article.title} | eyetest.co.uk`;
+  const title = article.title;
   const description = article.excerpt;
 
   return {

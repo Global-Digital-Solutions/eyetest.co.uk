@@ -1,6 +1,6 @@
 # eyetest.co.uk
 
-> eyetest.co.uk is the UK's dedicated eye test comparison and booking platform, helping patients find and book eye tests from leading opticians across 91 UK cities since 2019.
+> eyetest.co.uk is the UK's dedicated eye test comparison and booking platform, helping patients find and book eye tests from leading opticians across 97 UK cities since 2019.
 
 ## Main Pages
 - [Homepage](https://www.eyetest.co.uk/): Find and book eye tests near you
@@ -9,7 +9,7 @@
 - [Eye Tests](https://www.eyetest.co.uk/eye-tests): Browse all types of eye tests available in the UK
 - [Eye Health](https://www.eyetest.co.uk/eye-health): Eye health conditions, guides, and advice
 - [Opticians](https://www.eyetest.co.uk/opticians): Compare UK optician brands and chains
-- [UK Locations](https://www.eyetest.co.uk/locations): Find eye tests in 91 UK cities and towns
+- [UK Locations](https://www.eyetest.co.uk/locations): Find eye tests in 97 UK cities and towns
 - [At-Home Eye Tests](https://www.eyetest.co.uk/at-home-eye-tests): Home visit eye test services
 - [Offers](https://www.eyetest.co.uk/offers): Current eye test offers and deals
 - [Get Listed](https://www.eyetest.co.uk/get-listed): Optician sign-up for the platform
@@ -97,6 +97,9 @@
 - [Eye Tests in Reading](https://www.eyetest.co.uk/locations/reading)
 - [Eye Tests in Oxford](https://www.eyetest.co.uk/locations/oxford)
 - [Eye Tests in Guildford](https://www.eyetest.co.uk/locations/guildford)
+- [Eye Tests in Woking](https://www.eyetest.co.uk/locations/woking)
+- [Eye Tests in Epsom](https://www.eyetest.co.uk/locations/epsom)
+- [Eye Tests in Watford](https://www.eyetest.co.uk/locations/watford)
 - [Eye Tests in Canterbury](https://www.eyetest.co.uk/locations/canterbury)
 - [Eye Tests in Southampton](https://www.eyetest.co.uk/locations/southampton)
 - [Eye Tests in Portsmouth](https://www.eyetest.co.uk/locations/portsmouth)
@@ -117,6 +120,7 @@
 - [Eye Tests in Gloucester](https://www.eyetest.co.uk/locations/gloucester)
 - [Eye Tests in Cheltenham](https://www.eyetest.co.uk/locations/cheltenham)
 - [Eye Tests in Taunton](https://www.eyetest.co.uk/locations/taunton)
+- [Eye Tests in Salisbury](https://www.eyetest.co.uk/locations/salisbury)
 - [Eye Tests in Torquay](https://www.eyetest.co.uk/locations/torquay)
 - [Eye Tests in Truro](https://www.eyetest.co.uk/locations/truro)
 - [Eye Tests in Cambridge](https://www.eyetest.co.uk/locations/cambridge)
@@ -147,6 +151,7 @@
 - [Eye Tests in Preston](https://www.eyetest.co.uk/locations/preston)
 - [Eye Tests in Blackpool](https://www.eyetest.co.uk/locations/blackpool)
 - [Eye Tests in Bolton](https://www.eyetest.co.uk/locations/bolton)
+- [Eye Tests in Wigan](https://www.eyetest.co.uk/locations/wigan)
 - [Eye Tests in Lancaster](https://www.eyetest.co.uk/locations/lancaster)
 - [Eye Tests in Carlisle](https://www.eyetest.co.uk/locations/carlisle)
 - [Eye Tests in Newcastle upon Tyne](https://www.eyetest.co.uk/locations/newcastle)
@@ -178,6 +183,7 @@
 - [Eye Tests in Belfast](https://www.eyetest.co.uk/locations/belfast)
 - [Eye Tests in Derry/Londonderry](https://www.eyetest.co.uk/locations/derry)
 - [Eye Tests in Newry](https://www.eyetest.co.uk/locations/newry)
+- [Eye Tests in Lisburn](https://www.eyetest.co.uk/locations/lisburn)
 
 ## Search Guides (Find)
 - [Eye Test Cost UK](https://www.eyetest.co.uk/find/eye-test-cost): How much does an eye test cost in the UK

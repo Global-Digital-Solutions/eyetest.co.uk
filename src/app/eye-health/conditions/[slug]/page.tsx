@@ -35,7 +35,7 @@ export async function generateMetadata({
     return { title: "Condition Not Found | eyetest.co.uk" };
   }
 
-  const title = `${condition.name} — Symptoms, Causes & Treatment | eyetest.co.uk`;
+  const title = `${condition.name} — Symptoms, Causes & Treatment`;
   const description = `Learn about ${condition.name.toLowerCase()}: symptoms, causes, treatment options, and prevention. Evidence-based information from UK eye care professionals.`;
 
   return {

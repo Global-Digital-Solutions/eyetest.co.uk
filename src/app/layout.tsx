@@ -41,6 +41,10 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "eyetest.co.uk — Find & Book Eye Tests Near You",
     description:

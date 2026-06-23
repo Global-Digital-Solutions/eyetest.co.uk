@@ -41,7 +41,7 @@ export async function generateMetadata({
     return { title: "Optician Not Found | eyetest.co.uk" };
   }
 
-  const title = `${optician.name} — Eye Tests, Prices, Services & Book Online | eyetest.co.uk`;
+  const title = `${optician.name} — Eye Tests, Prices & Booking`;
   const description = `${optician.name}: ${optician.storeCount} UK stores. ${optician.priceRange}. Full service breakdown, pros & cons, NHS availability, booking guide, FAQs, and store locations. Compare and book your eye test online.`;
 
   return {

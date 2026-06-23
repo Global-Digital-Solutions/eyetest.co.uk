@@ -2,5 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Disallow: /search?
+Disallow: /search
 Sitemap: https://www.eyetest.co.uk/sitemap.xml

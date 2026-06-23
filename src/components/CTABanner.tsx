@@ -61,7 +61,7 @@ export function CTABanner() {
                 className="text-3xl sm:text-4xl font-bold text-white"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                1,000+
+                2,400+
               </p>
               <p className="text-sm text-white/50 mt-1">Opticians</p>
             </div>

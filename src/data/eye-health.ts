@@ -617,7 +617,6 @@ Surgical options for presbyopia are evolving. Refractive lens exchange (RLE) rep
     ],
     relatedTests: [
       "standard-eye-test",
-      "home-visit-eye-test",
       "nhs-eye-test",
     ],
     affectedAge: "Over 40 (universal, progresses gradually through the 50s and 60s)",
@@ -1032,7 +1031,6 @@ If you are unsure whether you qualify, your optician can check your eligibility 
       "nhs-eye-test",
       "standard-eye-test",
       "childrens-eye-test",
-      "home-visit-eye-test",
     ],
     relatedConditions: [
       "glaucoma",
