@@ -174,8 +174,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0" onClick={() => { setActiveMega(null); setMobileOpen(false); }}>
-          <Logo className="h-8 w-auto hidden sm:block" variant="horizontal" />
-          <Logo className="h-8 w-auto sm:hidden" variant="icon" />
+          <Logo className="h-7 sm:h-8 w-auto" variant="horizontal" />
         </Link>
 
         {/* Desktop nav */}

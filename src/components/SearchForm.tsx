@@ -1,29 +1,50 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
 
 /**
  * Client-side search form that dismisses the mobile keyboard on submit.
  *
- * Next.js App Router intercepts <form action="/search"> for client-side navigation,
- * so iOS doesn't get a full page reload and the keyboard stays visible.
- * This component blurs the active input on submit to dismiss it.
+ * Problem: Next.js App Router intercepts <form action="/search"> for
+ * client-side navigation. iOS Safari doesn't dismiss the keyboard
+ * during a soft navigation because there's no full page reload.
+ *
+ * Solution: Prevent the default form submit, blur the input first
+ * (which tells iOS to close the keyboard), then navigate with
+ * router.push() after a short delay so the keyboard animation
+ * has time to start before the page re-renders.
  */
 export function SearchForm({ defaultPostcode }: { defaultPostcode: string }) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
+
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+      // Get the postcode value from the input
+      const pc = inputRef.current?.value?.trim() || "";
+
+      // Blur the input to dismiss the iOS keyboard
+      inputRef.current?.blur();
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+
+      // Navigate after a small delay so iOS has time to process the blur
+      // and begin dismissing the keyboard before the page re-renders
+      setTimeout(() => {
+        router.push(`/search?postcode=${encodeURIComponent(pc)}`);
+      }, 50);
+    },
+    [router]
+  );
 
   return (
     <form
-      action="/search"
-      method="GET"
       className="flex items-center gap-2"
-      onSubmit={() => {
-        // Blur input to dismiss mobile keyboard before navigation
-        inputRef.current?.blur();
-        if (document.activeElement instanceof HTMLElement) {
-          document.activeElement.blur();
-        }
-      }}
+      onSubmit={handleSubmit}
     >
       <div className="relative flex-1 max-w-sm">
         <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
