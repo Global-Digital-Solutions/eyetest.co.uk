@@ -6,7 +6,7 @@ import { fetchVisionExpress } from "@/lib/providers/vision-express";
 import { fetchMysight, MYSIGHT_SITES } from "@/lib/providers/mysight";
 import { fetchMandS } from "@/lib/providers/mands";
 import { fetchAceAndTate } from "@/lib/providers/aceandtate";
-import type { StoreResult, FeaturedProvider } from "@/lib/types";
+import type { StoreResult, FeaturedProvider, OpticianListing } from "@/lib/types";
 import { createClient } from "@/lib/supabase/server";
 import { haversine } from "@/lib/haversine";
 
@@ -72,6 +72,37 @@ export async function GET(req: NextRequest) {
     const distM = haversine(lat, lng, rule.lat, rule.lng);
     return distM <= rule.radius_km * 1000;
   });
+
+  // Load subscribed/manual optician listings
+  const { data: listingRows } = await supabase
+    .from("optician_listings")
+    .select("*")
+    .eq("active", true);
+
+  const listingResults: StoreResult[] = (listingRows ?? [])
+    .filter((l: OpticianListing) => l.lat != null && l.lng != null)
+    .map((l: OpticianListing) => {
+      const distM = haversine(lat, lng, l.lat!, l.lng!);
+      return { listing: l, distM };
+    })
+    .filter(({ listing, distM }) => distM <= listing.radius_km * 1000)
+    .map(({ listing, distM }) => ({
+      provider: listing.practice_name,
+      storeName: listing.practice_name,
+      address: listing.address || "",
+      postcode: listing.postcode,
+      town: listing.town || "",
+      phone: listing.phone || "",
+      distanceM: distM,
+      slotsAvailable: null,
+      nextAvailable: null,
+      bookingUrl: listing.booking_url || listing.website || "",
+      lat: listing.lat!,
+      lng: listing.lng!,
+      featured: listing.tier === "platinum",
+      featuredLabel: listing.tier === "platinum" ? listing.badge_label : undefined,
+      dailySlots: [{ date: new Date().toISOString().split("T")[0], count: -1 }],
+    }));
 
   const norm = (s: string) => s.replace(/\s/g, "").toUpperCase();
 
@@ -146,6 +177,13 @@ export async function GET(req: NextRequest) {
       ];
 
       await Promise.all(providers);
+
+      // Emit subscribed optician listings as standalone results
+      if (listingResults.length > 0) {
+        controller.enqueue(
+          line({ type: "results", provider: "Optician Listings", results: listingResults })
+        );
+      }
 
       controller.enqueue(line({ type: "done" }));
       controller.close();

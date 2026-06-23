@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { logout } from "./login/actions";
-import type { FeaturedProvider, StoreResult } from "@/lib/types";
+import type { FeaturedProvider, StoreResult, OpticianListing } from "@/lib/types";
 
 type Config = Record<string, boolean>;
 
@@ -47,6 +47,594 @@ function Toggle({
 function formatDistance(m: number) {
   return m < 1000 ? `${m} m` : `${(m / 1000).toFixed(1)} km`;
 }
+
+/* ------------------------------------------------------------------ */
+/*  Listings Section                                                   */
+/* ------------------------------------------------------------------ */
+
+type ListingFormData = {
+  practice_name: string;
+  contact_name: string;
+  email: string;
+  phone: string;
+  address: string;
+  postcode: string;
+  town: string;
+  website: string;
+  booking_url: string;
+  tier: "gold" | "platinum";
+  active: boolean;
+  audiology_addon: boolean;
+  badge_label: string;
+  radius_km: number;
+};
+
+const emptyForm: ListingFormData = {
+  practice_name: "",
+  contact_name: "",
+  email: "",
+  phone: "",
+  address: "",
+  postcode: "",
+  town: "",
+  website: "",
+  booking_url: "",
+  tier: "gold",
+  active: false,
+  audiology_addon: false,
+  badge_label: "Recommended",
+  radius_km: 8,
+};
+
+function ListingForm({
+  initial,
+  onSave,
+  onCancel,
+  saving,
+}: {
+  initial: ListingFormData;
+  onSave: (data: ListingFormData) => void;
+  onCancel: () => void;
+  saving: boolean;
+}) {
+  const [form, setForm] = useState<ListingFormData>(initial);
+
+  function set<K extends keyof ListingFormData>(key: K, val: ListingFormData[K]) {
+    setForm((prev) => {
+      const next = { ...prev, [key]: val };
+      // Auto-update badge label when tier changes
+      if (key === "tier") {
+        if (val === "platinum" && prev.badge_label === "Recommended") {
+          next.badge_label = "Top Rated";
+        } else if (val === "gold" && prev.badge_label === "Top Rated") {
+          next.badge_label = "Recommended";
+        }
+      }
+      return next;
+    });
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    onSave(form);
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="px-5 py-5 space-y-4 bg-gray-50 border-b border-gray-100">
+      {/* Row 1: Practice name + contact */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label className={labelCls}>Practice name *</label>
+          <input
+            type="text"
+            value={form.practice_name}
+            onChange={(e) => set("practice_name", e.target.value)}
+            required
+            placeholder="e.g. Smith & Jones Opticians"
+            className={inputCls}
+          />
+        </div>
+        <div>
+          <label className={labelCls}>Contact name</label>
+          <input
+            type="text"
+            value={form.contact_name}
+            onChange={(e) => set("contact_name", e.target.value)}
+            placeholder="e.g. John Smith"
+            className={inputCls}
+          />
+        </div>
+      </div>
+
+      {/* Row 2: Email + phone */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label className={labelCls}>Email</label>
+          <input
+            type="email"
+            value={form.email}
+            onChange={(e) => set("email", e.target.value)}
+            placeholder="info@example.com"
+            className={inputCls}
+          />
+        </div>
+        <div>
+          <label className={labelCls}>Phone</label>
+          <input
+            type="tel"
+            value={form.phone}
+            onChange={(e) => set("phone", e.target.value)}
+            placeholder="020 1234 5678"
+            className={inputCls}
+          />
+        </div>
+      </div>
+
+      {/* Row 3: Address */}
+      <div>
+        <label className={labelCls}>Address</label>
+        <input
+          type="text"
+          value={form.address}
+          onChange={(e) => set("address", e.target.value)}
+          placeholder="123 High Street"
+          className={inputCls}
+        />
+      </div>
+
+      {/* Row 4: Postcode + town */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label className={labelCls}>Postcode *</label>
+          <input
+            type="text"
+            value={form.postcode}
+            onChange={(e) => set("postcode", e.target.value.toUpperCase())}
+            required
+            maxLength={8}
+            placeholder="SW1A 1AA"
+            className={inputCls}
+          />
+        </div>
+        <div>
+          <label className={labelCls}>Town</label>
+          <input
+            type="text"
+            value={form.town}
+            onChange={(e) => set("town", e.target.value)}
+            placeholder="e.g. Manchester"
+            className={inputCls}
+          />
+        </div>
+      </div>
+
+      {/* Row 5: Website + booking URL */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label className={labelCls}>Website</label>
+          <input
+            type="url"
+            value={form.website}
+            onChange={(e) => set("website", e.target.value)}
+            placeholder="https://example.com"
+            className={inputCls}
+          />
+        </div>
+        <div>
+          <label className={labelCls}>Booking URL</label>
+          <input
+            type="url"
+            value={form.booking_url}
+            onChange={(e) => set("booking_url", e.target.value)}
+            placeholder="https://example.com/book"
+            className={inputCls}
+          />
+        </div>
+      </div>
+
+      {/* Row 6: Tier selector */}
+      <div>
+        <label className={labelCls}>Tier</label>
+        <div className="flex gap-4 mt-1">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="tier"
+              value="gold"
+              checked={form.tier === "gold"}
+              onChange={() => set("tier", "gold")}
+              className="accent-amber-500"
+            />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-800">
+              Gold
+            </span>
+          </label>
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="tier"
+              value="platinum"
+              checked={form.tier === "platinum"}
+              onChange={() => set("tier", "platinum")}
+              className="accent-teal-500"
+            />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-teal-100 px-2.5 py-0.5 text-xs font-semibold text-teal-800">
+              Platinum
+            </span>
+          </label>
+        </div>
+      </div>
+
+      {/* Row 7: Badge label */}
+      <div>
+        <label className={labelCls}>Badge label</label>
+        <input
+          type="text"
+          value={form.badge_label}
+          onChange={(e) => set("badge_label", e.target.value)}
+          placeholder="Recommended"
+          className={inputCls}
+        />
+      </div>
+
+      {/* Row 8: Radius slider */}
+      <div>
+        <label className={labelCls}>
+          Radius — <span className="font-bold text-gray-800">{form.radius_km} km</span>
+        </label>
+        <input
+          type="range"
+          min={1}
+          max={15}
+          step={1}
+          value={form.radius_km}
+          onChange={(e) => set("radius_km", Number(e.target.value))}
+          className="w-full mt-1 accent-blue-600"
+        />
+        <div className="flex justify-between text-xs text-gray-400 mt-0.5">
+          <span>1 km</span>
+          <span>15 km</span>
+        </div>
+      </div>
+
+      {/* Row 9: Toggles */}
+      <div className="flex flex-wrap gap-6">
+        <label className="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={form.active}
+            onChange={(e) => set("active", e.target.checked)}
+            className="accent-blue-600 h-4 w-4"
+          />
+          <span className="text-sm text-gray-700">Active</span>
+        </label>
+        <label className="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={form.audiology_addon}
+            onChange={(e) => set("audiology_addon", e.target.checked)}
+            className="accent-blue-600 h-4 w-4"
+          />
+          <span className="text-sm text-gray-700">Audiology addon</span>
+        </label>
+      </div>
+
+      {/* Actions */}
+      <div className="flex gap-3 pt-2">
+        <button
+          type="submit"
+          disabled={saving || !form.practice_name.trim() || !form.postcode.trim()}
+          className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          {saving ? "Saving…" : "Save listing"}
+        </button>
+        <button
+          type="button"
+          onClick={onCancel}
+          className="rounded-lg bg-white border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  );
+}
+
+function StatusDot({ listing }: { listing: OpticianListing }) {
+  if (listing.stripe_status === "pending" && !listing.active) {
+    return (
+      <span className="inline-flex items-center gap-1.5">
+        <span className="h-2 w-2 rounded-full bg-yellow-400" />
+        <span className="text-xs text-yellow-700">Pending</span>
+      </span>
+    );
+  }
+  if (listing.active) {
+    return (
+      <span className="inline-flex items-center gap-1.5">
+        <span className="h-2 w-2 rounded-full bg-green-500" />
+        <span className="text-xs text-green-700">Active</span>
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <span className="h-2 w-2 rounded-full bg-gray-400" />
+      <span className="text-xs text-gray-500">Inactive</span>
+    </span>
+  );
+}
+
+function TierBadge({ tier }: { tier: "gold" | "platinum" }) {
+  if (tier === "platinum") {
+    return (
+      <span className="inline-block rounded-full bg-teal-100 px-2 py-0.5 text-xs font-semibold text-teal-800">
+        Platinum
+      </span>
+    );
+  }
+  return (
+    <span className="inline-block rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800">
+      Gold
+    </span>
+  );
+}
+
+function ListingsSection() {
+  const [listings, setListings] = useState<OpticianListing[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/admin/listings");
+      if (res.ok) {
+        const data = await res.json();
+        setListings(data);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  async function handleAdd(form: ListingFormData) {
+    setSaving(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/admin/listings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Failed to create listing");
+        return;
+      }
+      setListings((prev) => [data, ...prev]);
+      setShowAddForm(false);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleEdit(form: ListingFormData) {
+    if (!editingId) return;
+    setSaving(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/admin/listings", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: editingId, ...form }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Failed to update listing");
+        return;
+      }
+      setListings((prev) => prev.map((l) => (l.id === editingId ? data : l)));
+      setEditingId(null);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function toggleActive(listing: OpticianListing) {
+    const newActive = !listing.active;
+    setListings((prev) =>
+      prev.map((l) => (l.id === listing.id ? { ...l, active: newActive } : l))
+    );
+    try {
+      await fetch("/api/admin/listings", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: listing.id, active: newActive }),
+      });
+    } catch {
+      // revert on error
+      setListings((prev) =>
+        prev.map((l) => (l.id === listing.id ? { ...l, active: listing.active } : l))
+      );
+    }
+  }
+
+  async function handleDelete(id: string) {
+    if (!confirm("Delete this listing? This cannot be undone.")) return;
+    setListings((prev) => prev.filter((l) => l.id !== id));
+    try {
+      await fetch("/api/admin/listings", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+    } catch {
+      // reload on error
+      load();
+    }
+  }
+
+  function formDataFromListing(l: OpticianListing): ListingFormData {
+    return {
+      practice_name: l.practice_name,
+      contact_name: l.contact_name,
+      email: l.email,
+      phone: l.phone,
+      address: l.address || "",
+      postcode: l.postcode,
+      town: l.town || "",
+      website: l.website || "",
+      booking_url: l.booking_url || "",
+      tier: l.tier,
+      active: l.active,
+      audiology_addon: l.audiology_addon,
+      badge_label: l.badge_label,
+      radius_km: l.radius_km,
+    };
+  }
+
+  return (
+    <section className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+      <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+        <div>
+          <h2 className="font-medium text-gray-900">Optician Listings</h2>
+          <p className="text-xs text-gray-500 mt-0.5">
+            {listings.length} listing{listings.length !== 1 ? "s" : ""}{" "}
+            ({listings.filter((l) => l.active).length} active)
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={() => {
+            setShowAddForm((v) => !v);
+            setEditingId(null);
+            setError(null);
+          }}
+          className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+        >
+          {showAddForm ? "Cancel" : "+ Add Listing"}
+        </button>
+      </div>
+
+      {error && (
+        <div className="px-5 py-3 bg-red-50 border-b border-red-100">
+          <p className="text-xs text-red-600 font-medium">{error}</p>
+        </div>
+      )}
+
+      {showAddForm && (
+        <ListingForm
+          initial={emptyForm}
+          onSave={handleAdd}
+          onCancel={() => {
+            setShowAddForm(false);
+            setError(null);
+          }}
+          saving={saving}
+        />
+      )}
+
+      {loading ? (
+        <p className="px-5 py-6 text-sm text-gray-400 text-center">Loading listings…</p>
+      ) : listings.length === 0 ? (
+        <p className="px-5 py-6 text-sm text-gray-400 text-center">No listings yet</p>
+      ) : (
+        <div className="divide-y divide-gray-100">
+          {listings.map((listing) => (
+            <div key={listing.id}>
+              {editingId === listing.id ? (
+                <ListingForm
+                  initial={formDataFromListing(listing)}
+                  onSave={handleEdit}
+                  onCancel={() => {
+                    setEditingId(null);
+                    setError(null);
+                  }}
+                  saving={saving}
+                />
+              ) : (
+                <div className="px-5 py-4">
+                  {/* Main row */}
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-sm font-semibold text-gray-900">
+                          {listing.practice_name}
+                        </span>
+                        <TierBadge tier={listing.tier} />
+                        {listing.audiology_addon && (
+                          <span className="inline-block rounded-full bg-purple-100 px-2 py-0.5 text-xs font-semibold text-purple-700">
+                            Audiology
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        {listing.postcode}
+                        {listing.town && ` · ${listing.town}`}
+                        {" · "}
+                        {listing.radius_km} km radius
+                        {listing.stripe_status && listing.stripe_status !== "pending" && (
+                          <> &middot; Stripe: {listing.stripe_status}</>
+                        )}
+                      </p>
+                      <p className="text-xs text-gray-400 mt-0.5">
+                        Created {new Date(listing.created_at).toLocaleDateString("en-GB", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        })}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3 shrink-0">
+                      <button
+                        type="button"
+                        onClick={() => toggleActive(listing)}
+                        className="cursor-pointer"
+                        title={listing.active ? "Click to deactivate" : "Click to activate"}
+                      >
+                        <StatusDot listing={listing} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setEditingId(listing.id);
+                          setShowAddForm(false);
+                          setError(null);
+                        }}
+                        className="text-xs text-blue-500 hover:text-blue-700 font-medium transition-colors"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleDelete(listing.id)}
+                        className="text-xs text-red-400 hover:text-red-600 transition-colors"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Featured Section (unchanged)                                       */
+/* ------------------------------------------------------------------ */
 
 function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
   const [rules, setRules] = useState<FeaturedProvider[]>([]);
@@ -372,7 +960,14 @@ function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
   );
 }
 
+/* ------------------------------------------------------------------ */
+/*  Main Dashboard                                                     */
+/* ------------------------------------------------------------------ */
+
+type Tab = "listings" | "providers" | "featured";
+
 export default function AdminDashboard() {
+  const [activeTab, setActiveTab] = useState<Tab>("listings");
   const [config, setConfig] = useState<Config>({});
   const [mainProviders, setMainProviders] = useState<string[]>([]);
   const [mysightSites, setMysightSites] = useState<string[]>([]);
@@ -407,6 +1002,12 @@ export default function AdminDashboard() {
   const mysightEnabled = mysightSites.filter((s) => config[s]).length;
   const mysightTotal = mysightSites.length;
 
+  const tabs: { key: Tab; label: string }[] = [
+    { key: "listings", label: "Listings" },
+    { key: "providers", label: "Providers" },
+    { key: "featured", label: "Featured" },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white border-b border-gray-200">
@@ -424,61 +1025,86 @@ export default function AdminDashboard() {
             </button>
           </form>
         </div>
+        {/* Tab bar */}
+        <div className="max-w-2xl mx-auto px-4">
+          <nav className="flex gap-1 -mb-px">
+            {tabs.map((tab) => (
+              <button
+                key={tab.key}
+                type="button"
+                onClick={() => setActiveTab(tab.key)}
+                className={`px-4 py-2.5 text-sm font-medium border-b-2 transition-colors ${
+                  activeTab === tab.key
+                    ? "border-blue-600 text-blue-600"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </nav>
+        </div>
       </header>
 
       <main className="max-w-2xl mx-auto px-4 py-8 space-y-6">
-        <section className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
-          <div className="px-5 py-4 border-b border-gray-100">
-            <h2 className="font-medium text-gray-900">Providers</h2>
-          </div>
-          <ul className="divide-y divide-gray-100">
-            {mainProviders.map((provider) => (
-              <li key={provider} className="flex items-center justify-between px-5 py-4">
-                <span className="text-sm text-gray-800">{provider}</span>
-                <Toggle
-                  enabled={config[provider] ?? true}
-                  onChange={(v) => toggle(provider, v)}
-                  disabled={toggling === provider}
-                />
-              </li>
-            ))}
-          </ul>
-        </section>
+        {activeTab === "listings" && <ListingsSection />}
 
-        <section className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
-          <button
-            type="button"
-            onClick={() => setShowMysight((v) => !v)}
-            className="w-full px-5 py-4 flex items-center justify-between border-b border-gray-100 hover:bg-gray-50 transition-colors"
-          >
-            <div className="text-left">
-              <h2 className="font-medium text-gray-900">MySight Opticians</h2>
-              <p className="text-xs text-gray-500 mt-0.5">
-                {mysightEnabled} of {mysightTotal} active
-              </p>
-            </div>
-            <span className="text-gray-400 text-xs">{showMysight ? "▲" : "▼"}</span>
-          </button>
+        {activeTab === "providers" && (
+          <>
+            <section className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+              <div className="px-5 py-4 border-b border-gray-100">
+                <h2 className="font-medium text-gray-900">Providers</h2>
+              </div>
+              <ul className="divide-y divide-gray-100">
+                {mainProviders.map((provider) => (
+                  <li key={provider} className="flex items-center justify-between px-5 py-4">
+                    <span className="text-sm text-gray-800">{provider}</span>
+                    <Toggle
+                      enabled={config[provider] ?? true}
+                      onChange={(v) => toggle(provider, v)}
+                      disabled={toggling === provider}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </section>
 
-          {showMysight && (
-            <ul className="divide-y divide-gray-100 max-h-[32rem] overflow-y-auto">
-              {mysightSites.map((site) => (
-                <li key={site} className="flex items-center justify-between px-5 py-3">
-                  <span className="text-sm text-gray-800 capitalize">
-                    {MYSIGHT_LABEL(site)}
-                  </span>
-                  <Toggle
-                    enabled={config[site] ?? true}
-                    onChange={(v) => toggle(site, v)}
-                    disabled={toggling === site}
-                  />
-                </li>
-              ))}
-            </ul>
-          )}
-        </section>
+            <section className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setShowMysight((v) => !v)}
+                className="w-full px-5 py-4 flex items-center justify-between border-b border-gray-100 hover:bg-gray-50 transition-colors"
+              >
+                <div className="text-left">
+                  <h2 className="font-medium text-gray-900">MySight Opticians</h2>
+                  <p className="text-xs text-gray-500 mt-0.5">
+                    {mysightEnabled} of {mysightTotal} active
+                  </p>
+                </div>
+                <span className="text-gray-400 text-xs">{showMysight ? "▲" : "▼"}</span>
+              </button>
 
-        <FeaturedSection mysightSites={mysightSites} />
+              {showMysight && (
+                <ul className="divide-y divide-gray-100 max-h-[32rem] overflow-y-auto">
+                  {mysightSites.map((site) => (
+                    <li key={site} className="flex items-center justify-between px-5 py-3">
+                      <span className="text-sm text-gray-800 capitalize">
+                        {MYSIGHT_LABEL(site)}
+                      </span>
+                      <Toggle
+                        enabled={config[site] ?? true}
+                        onChange={(v) => toggle(site, v)}
+                        disabled={toggling === site}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          </>
+        )}
+
+        {activeTab === "featured" && <FeaturedSection mysightSites={mysightSites} />}
       </main>
     </div>
   );

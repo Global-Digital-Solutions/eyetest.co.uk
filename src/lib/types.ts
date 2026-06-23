@@ -41,3 +41,39 @@ export interface SearchResponse {
   results: StoreResult[];
   errors: { provider: string; message: string }[];
 }
+
+export interface OpticianListing {
+  id: string;
+  practice_name: string;
+  contact_name: string;
+  email: string;
+  phone: string;
+  website: string | null;
+  booking_url: string | null;
+  address: string | null;
+  postcode: string;
+  town: string | null;
+  lat: number | null;
+  lng: number | null;
+  services: string[];
+  nhs_tests: boolean;
+  private_tests: boolean;
+  opening_hours: Record<string, string> | null;
+  location_count: string;
+  appointment_system: string | null;
+  appointment_system_other: string | null;
+  message: string | null;
+  tier: 'gold' | 'platinum';
+  radius_km: number;
+  badge_label: string;
+  active: boolean;
+  audiology_addon: boolean;
+  audiology_active: boolean;
+  stripe_customer_id: string | null;
+  stripe_subscription_id: string | null;
+  stripe_status: string;
+  created_at: string;
+  updated_at: string;
+  activated_at: string | null;
+  expires_at: string | null;
+}
