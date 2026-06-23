@@ -260,7 +260,7 @@ export function GetListedForm() {
     } catch {
       setSubmitting(false);
       setSubmitError(
-        "Sorry, there was a problem submitting your application. Please try again or email us at hello@eyetest.co.uk."
+        "Sorry, there was a problem submitting your practice. Please try again or email us at hello@eyetest.co.uk."
       );
     }
   };
@@ -595,7 +595,7 @@ export function GetListedForm() {
             {/* Privacy */}
             <p className="text-xs text-gray-400 leading-relaxed">
               By submitting this form, you agree to be contacted by the
-              eyetest.co.uk team regarding your listing application. All data is
+              eyetest.co.uk team regarding your practice listing. All data is
               processed in accordance with the Data Protection Act 2018 and UK
               GDPR. Read our{" "}
               <a href="/privacy" className="underline hover:text-gray-600">
@@ -657,7 +657,7 @@ export function GetListedForm() {
                 </>
               ) : (
                 <>
-                  Submit Application
+                  Submit Practice
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>
