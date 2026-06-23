@@ -7,7 +7,7 @@
 /* ------------------------------------------------------------------ */
 
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@supabase/supabase-js";
 import {
   getTransporter,
   getFromAddress,
@@ -68,8 +68,11 @@ export async function POST(request: Request) {
       console.warn("Postcode geocoding failed:", geoErr);
     }
 
-    /* ---- Save to Supabase ---- */
-    const supabase = await createClient();
+    /* ---- Save to Supabase (service role bypasses RLS) ---- */
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
 
     const { data: listing, error: dbError } = await supabase
       .from("optician_listings")
