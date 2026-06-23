@@ -184,12 +184,19 @@ export function GetListedForm() {
     setForm((prev) => ({ ...prev, [key]: value }));
 
   const toggleService = (service: string) => {
-    setForm((prev) => ({
-      ...prev,
-      services: prev.services.includes(service)
-        ? prev.services.filter((s) => s !== service)
-        : [...prev.services, service],
-    }));
+    setForm((prev) => {
+      const removing = prev.services.includes(service);
+      return {
+        ...prev,
+        services: removing
+          ? prev.services.filter((s) => s !== service)
+          : [...prev.services, service],
+        /* Auto-reset audiology addon when Hearing Tests is deselected */
+        ...(service === "Hearing Tests" && removing
+          ? { audiologyAddon: false }
+          : {}),
+      };
+    });
   };
 
   /* ---- Validation ---- */
@@ -228,6 +235,10 @@ export function GetListedForm() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    /* Only submit on the final step — prevents accidental Enter-key submission */
+    if (step < STEP_COUNT) return;
+
     setSubmitting(true);
     setSubmitError("");
 
@@ -487,6 +498,26 @@ export function GetListedForm() {
               />
             </div>
 
+            {/* hearingtest.co.uk cross-listing — shown when Hearing Tests selected */}
+            {form.services.includes("Hearing Tests") && (
+              <label className="flex items-start gap-3 bg-blue-50 border border-blue-200 rounded-xl p-4 cursor-pointer hover:bg-blue-50/80 transition-colors">
+                <input
+                  type="checkbox"
+                  checked={form.audiologyAddon}
+                  onChange={(e) => set("audiologyAddon", e.target.checked)}
+                  className="w-4 h-4 mt-0.5 rounded border-gray-300 text-[var(--color-primary)] focus:ring-[var(--color-primary)]"
+                />
+                <div>
+                  <span className="text-sm font-medium text-[var(--color-navy)]">
+                    Also list my practice on hearingtest.co.uk
+                  </span>
+                  <span className="block text-xs text-gray-500 mt-0.5">
+                    Our sister site for hearing tests &mdash; reach patients searching for audiologists too
+                  </span>
+                </div>
+              </label>
+            )}
+
             {/* Appointment system */}
             <div>
               <label className={labelClass}>Appointment system</label>
@@ -548,24 +579,6 @@ export function GetListedForm() {
                 className={inputClass + " resize-none"}
               />
             </div>
-
-            {/* Audiology addon */}
-            <label className="flex items-start gap-3 bg-blue-50 border border-blue-200 rounded-xl p-4 cursor-pointer hover:bg-blue-50/80 transition-colors">
-              <input
-                type="checkbox"
-                checked={form.audiologyAddon}
-                onChange={(e) => set("audiologyAddon", e.target.checked)}
-                className="w-4 h-4 mt-0.5 rounded border-gray-300 text-[var(--color-primary)] focus:ring-[var(--color-primary)]"
-              />
-              <div>
-                <span className="text-sm font-medium text-[var(--color-navy)]">
-                  I&rsquo;d also like to list my audiology practice on hearingtest.co.uk
-                </span>
-                <span className="block text-xs text-gray-500 mt-0.5">
-                  +&pound;49/year &mdash; our sister site for hearing tests
-                </span>
-              </div>
-            </label>
 
             {/* Privacy */}
             <p className="text-xs text-gray-400 leading-relaxed">
