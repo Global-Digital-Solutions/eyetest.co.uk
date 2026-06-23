@@ -240,10 +240,11 @@ function DepartureOverlay({
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.location.href = info.url;
+      window.open(info.url, "_blank", "noopener,noreferrer");
+      onClose();
     }, DEPARTURE_DELAY_MS);
     return () => clearTimeout(timer);
-  }, [info.url]);
+  }, [info.url, onClose]);
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
@@ -279,9 +280,15 @@ function DepartureOverlay({
 
             {/* Provider logo */}
             <div className="flex flex-col items-center gap-1.5">
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style={{ backgroundColor: brandColor }}>
-                <span className="text-white font-bold text-xl" style={{ fontFamily: "var(--font-display)" }}>{brandInitial}</span>
-              </div>
+              {BRAND_LOGOS[info.providerName] ? (
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm bg-white border border-gray-100 p-1.5">
+                  <img src={BRAND_LOGOS[info.providerName]} alt={info.providerName} className="w-full h-full object-contain" />
+                </div>
+              ) : (
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style={{ backgroundColor: brandColor }}>
+                  <span className="text-white font-bold text-xl" style={{ fontFamily: "var(--font-display)" }}>{brandInitial}</span>
+                </div>
+              )}
               <span className="text-[10px] font-medium text-gray-400 max-w-[80px] text-center leading-tight">{info.providerName}</span>
             </div>
           </div>
@@ -316,7 +323,8 @@ function DepartureOverlay({
             </div>
 
             {/* Skip button */}
-            <a href={info.url} rel="noopener noreferrer"
+            <a href={info.url} target="_blank" rel="noopener noreferrer"
+              onClick={() => { setTimeout(onClose, 300); }}
               className="inline-block text-xs text-gray-400 hover:text-[var(--color-primary)] transition-colors cursor-pointer">
               Go now &rarr;
             </a>
@@ -1127,21 +1135,17 @@ function SearchProgressPanel({
     totalProviders > 0 ? (completedCount / totalProviders) * 100 : 0;
 
   return (
-    <div className="mb-6 rounded-2xl bg-gradient-to-br from-[var(--color-navy)] to-[#1a2d5a] p-4 sm:p-7 text-white overflow-hidden relative">
-      {/* Background decoration */}
-      <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/5 rounded-full blur-3xl" />
-      <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[var(--color-primary)]/10 rounded-full blur-2xl" />
-
-      <div className="relative">
+    <div className="mb-4 rounded-xl bg-white border border-gray-200 p-3 sm:p-4 overflow-hidden">
+      <div>
         {/* Headline */}
-        <div className="flex items-start gap-3 sm:gap-4 mb-4">
-          <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
+        <div className="flex items-center gap-2.5 mb-3">
+          <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center">
             <svg
-              className="w-5 h-5 text-[var(--color-primary-light)] animate-pulse"
+              className="w-4 h-4 text-[var(--color-primary)] animate-pulse"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              strokeWidth="1.5"
+              strokeWidth="2"
             >
               <path
                 strokeLinecap="round"
@@ -1151,41 +1155,32 @@ function SearchProgressPanel({
             </svg>
           </div>
           <div className="min-w-0">
-            <h3
-              className="text-sm sm:text-lg font-bold mb-0.5"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Relax &mdash; we&apos;re doing the hard work
-            </h3>
-            <p className="text-sm text-white/60">
-              Searching{" "}
-              <strong className="text-white">{totalProviders} opticians</strong>{" "}
+            <p className="text-xs text-gray-500">
+              Checking{" "}
+              <span className="font-medium text-[var(--color-navy)]">{totalProviders} opticians</span>{" "}
               near{" "}
-              <strong className="text-[var(--color-primary-light)]">
+              <span className="font-medium text-[var(--color-primary)]">
                 {postcode}
-              </strong>{" "}
-              so you don&apos;t have to
+              </span>
+              {resultsCount > 0 && (
+                <span className="text-[var(--color-success)]"> &mdash; {resultsCount} found so far</span>
+              )}
             </p>
           </div>
         </div>
 
         {/* Progress bar */}
-        <div className="mb-5">
-          <div className="flex items-center justify-between text-[11px] text-white/40 mb-1.5">
+        <div className="mb-3">
+          <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-[var(--color-primary)]/40 rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${Math.max(progress, 3)}%` }}
+            />
+          </div>
+          <div className="flex items-center justify-between text-[10px] text-gray-400 mt-1">
             <span>
               {completedCount} of {totalProviders} checked
             </span>
-            {resultsCount > 0 && (
-              <span className="text-[var(--color-success)]">
-                {resultsCount} found so far
-              </span>
-            )}
-          </div>
-          <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)] rounded-full transition-all duration-500 ease-out"
-              style={{ width: `${Math.max(progress, 3)}%` }}
-            />
           </div>
         </div>
 
@@ -1198,15 +1193,15 @@ function SearchProgressPanel({
             return (
               <div
                 key={provider}
-                className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-300 ${
+                className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium transition-all duration-300 ${
                   done
-                    ? "bg-[var(--color-success)]/20 text-[var(--color-success)]"
-                    : "bg-white/10 text-white/80"
+                    ? "bg-[var(--color-success)]/10 text-[var(--color-success)]"
+                    : "bg-gray-100 text-gray-400"
                 }`}
               >
                 {done ? (
                   <svg
-                    className="w-3.5 h-3.5"
+                    className="w-3 h-3"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -1219,7 +1214,7 @@ function SearchProgressPanel({
                     />
                   </svg>
                 ) : (
-                  <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-current" />
+                  <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-current" />
                 )}
                 {info?.name ?? provider}
               </div>
@@ -1229,15 +1224,15 @@ function SearchProgressPanel({
           {/* Independent opticians — grouped as one badge */}
           {independents.length > 0 && (
             <div
-              className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-300 ${
+              className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium transition-all duration-300 ${
                 independentsDone
-                  ? "bg-[var(--color-success)]/20 text-[var(--color-success)]"
-                  : "bg-[var(--color-primary)]/20 text-[var(--color-primary-light)]"
+                  ? "bg-[var(--color-success)]/10 text-[var(--color-success)]"
+                  : "bg-[var(--color-primary)]/10 text-[var(--color-primary)]"
               }`}
             >
               {independentsDone ? (
                 <svg
-                  className="w-3.5 h-3.5"
+                  className="w-3 h-3"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -1250,7 +1245,7 @@ function SearchProgressPanel({
                   />
                 </svg>
               ) : (
-                <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-current" />
+                <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-current" />
               )}
               {independentsDone
                 ? `${independentsFoundCount} Independent Optician${independentsFoundCount !== 1 ? "s" : ""}${district ? ` near ${district}` : ""}`
@@ -1258,13 +1253,6 @@ function SearchProgressPanel({
             </div>
           )}
         </div>
-
-        {/* Value proposition — hidden on mobile */}
-        <p className="hidden sm:block mt-4 text-[11px] text-white/30 leading-relaxed">
-          The average person spends up to 2 hours arranging an eye test. We
-          check real-time availability across every major chain and your local
-          independents in seconds.
-        </p>
       </div>
     </div>
   );
