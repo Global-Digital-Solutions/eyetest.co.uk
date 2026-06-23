@@ -251,11 +251,12 @@ function DepartureOverlay({
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.open(info.url, "_blank", "noopener,noreferrer");
-      onClose();
+      // Navigate in the same tab to avoid mobile pop-up blockers
+      // (window.open inside setTimeout is not a user gesture)
+      window.location.href = info.url;
     }, DEPARTURE_DELAY_MS);
     return () => clearTimeout(timer);
-  }, [info.url, onClose]);
+  }, [info.url]);
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
@@ -333,9 +334,8 @@ function DepartureOverlay({
               </span>
             </div>
 
-            {/* Skip button */}
-            <a href={info.url} target="_blank" rel="noopener noreferrer"
-              onClick={() => { setTimeout(onClose, 300); }}
+            {/* Skip button — navigates in same tab (avoids pop-up blocker on mobile) */}
+            <a href={info.url}
               className="inline-block text-xs text-gray-400 hover:text-[var(--color-primary)] transition-colors cursor-pointer">
               Go now &rarr;
             </a>
@@ -1601,7 +1601,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-5 sm:py-6">
+    <div className="max-w-7xl mx-auto px-4 py-5 sm:py-6 overflow-x-hidden">
       {/* Error state */}
       {globalError && (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 mb-4">
@@ -1673,7 +1673,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
             {/* Mobile map toggle */}
             <button
               onClick={() => setShowMobileMap((v) => !v)}
-              className="lg:hidden inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] cursor-pointer"
+              className="lg:hidden inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] cursor-pointer flex-shrink-0 whitespace-nowrap"
             >
               <svg
                 className="w-4 h-4"
