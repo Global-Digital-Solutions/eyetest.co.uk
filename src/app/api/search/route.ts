@@ -138,12 +138,12 @@ export async function GET(req: NextRequest) {
   // store from blanketing a large city like London
   const densityCapMiles = getDensityMaxRadiusMiles(lat, lng);
 
+  // Featured provider rules are admin-configured paid placements — the admin
+  // has intentionally set the radius, so we respect it without the density cap.
+  // The density cap only applies to organic listing radius to prevent overlap.
   const applicableRules = (featuredRows ?? []).filter((rule: FeaturedProvider) => {
     const distM = haversine(lat, lng, rule.lat, rule.lng);
-    // DB stores radius_km; convert to miles for the density cap, then back to metres
-    const ruleRadiusMiles = rule.radius_km / 1.60934;
-    const effectiveRadiusMiles = Math.min(ruleRadiusMiles, densityCapMiles);
-    return distM <= effectiveRadiusMiles * MILES_TO_METRES;
+    return distM <= rule.radius_km * 1000; // radius_km → metres
   });
 
   // Load subscribed/manual optician listings
