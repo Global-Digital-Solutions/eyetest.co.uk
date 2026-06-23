@@ -609,7 +609,7 @@ export default function GetListedPage() {
                 className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Submit your application
+                Submit your practice
               </h2>
               <p className="text-gray-600 max-w-xl mx-auto">
                 Tell us about your practice and we&rsquo;ll be in touch to get

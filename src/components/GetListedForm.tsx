@@ -399,13 +399,41 @@ export function GetListedForm() {
           <div className="space-y-5">
             <div>
               <label className={labelClass}>
-                Address line <span className="text-red-500">*</span>
+                Number of practice locations
+              </label>
+              <select
+                value={form.locationCount}
+                onChange={(e) => set("locationCount", e.target.value)}
+                className={selectClass}
+              >
+                <option value="1">1</option>
+                <option value="2-5">2-5</option>
+                <option value="6-20">6-20</option>
+                <option value="21-50">21-50</option>
+                <option value="51-100">51-100</option>
+                <option value="100+">100+</option>
+              </select>
+            </div>
+
+            {form.locationCount !== "1" && (
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-[var(--color-navy)]">
+                <p className="font-medium mb-1">Multiple locations?</p>
+                <p className="text-gray-600">
+                  Just provide your head office details below. We&rsquo;ll get in touch after submission to collect your individual practice locations.
+                </p>
+              </div>
+            )}
+
+            <div>
+              <label className={labelClass}>
+                {form.locationCount !== "1" ? "Head office address" : "Address line"}{" "}
+                <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={form.address}
                 onChange={(e) => set("address", e.target.value)}
-                placeholder="123 High Street"
+                placeholder={form.locationCount !== "1" ? "Head office address" : "123 High Street"}
                 className={inputClass}
               />
             </div>
@@ -435,24 +463,6 @@ export function GetListedForm() {
                   className={inputClass}
                 />
               </div>
-            </div>
-
-            <div>
-              <label className={labelClass}>
-                Number of practice locations
-              </label>
-              <select
-                value={form.locationCount}
-                onChange={(e) => set("locationCount", e.target.value)}
-                className={selectClass}
-              >
-                <option value="1">1</option>
-                <option value="2-5">2-5</option>
-                <option value="6-20">6-20</option>
-                <option value="21-50">21-50</option>
-                <option value="51-100">51-100</option>
-                <option value="100+">100+</option>
-              </select>
             </div>
           </div>
         )}
