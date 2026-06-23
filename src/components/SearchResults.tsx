@@ -836,7 +836,7 @@ function PlatinumStoreCard({ store, highlighted, onBook }: { store: StoreResult;
             <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5 2a2 2 0 00-2 2v14l3.5-2 3.5 2 3.5-2 3.5 2V4a2 2 0 00-2-2H5zm4.707 3.707a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L8.414 9H10a3 3 0 013 3v1a1 1 0 102 0v-1a5 5 0 00-5-5H8.414l1.293-1.293z" clipRule="evenodd" />
             </svg>
-            {store.featuredLabel ?? "Featured Partner"}
+            {store.featuredLabel ?? "Featured Optician"}
           </span>
           <span className="inline-flex items-center gap-1 rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[10px] font-semibold text-green-700">
             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
@@ -1018,7 +1018,7 @@ function MobilePlatinumStoreCard({ store, highlighted, onBook }: { store: StoreR
             <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5 2a2 2 0 00-2 2v14l3.5-2 3.5 2 3.5-2 3.5 2V4a2 2 0 00-2-2H5zm4.707 3.707a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L8.414 9H10a3 3 0 013 3v1a1 1 0 102 0v-1a5 5 0 00-5-5H8.414l1.293-1.293z" clipRule="evenodd" />
             </svg>
-            {store.featuredLabel ?? "Featured Partner"}
+            {store.featuredLabel ?? "Featured Optician"}
           </span>
           <span className="inline-flex items-center gap-0.5 rounded-full bg-green-50 px-1.5 py-px text-[8px] font-semibold text-green-700">
             <svg className="w-2 h-2" fill="currentColor" viewBox="0 0 20 20">
@@ -1456,7 +1456,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
         return {
           ...r,
           featured: true,
-          featuredLabel: r.featuredLabel ?? "Featured Partner",
+          featuredLabel: r.featuredLabel ?? "Featured Optician",
           tier: (r.tier ?? "platinum") as "gold" | "platinum",
           logoUrl: r.logoUrl ?? BRAND_LOGOS[name] ?? BRAND_LOGOS[r.provider],
           services: r.services ?? BRAND_SERVICES[name] ?? BRAND_SERVICES[r.provider],
