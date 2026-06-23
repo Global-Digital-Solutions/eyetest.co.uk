@@ -132,21 +132,51 @@ async function fetchEyeTestTypeId(
         ?.availableAppointmentTypes ?? []
     ) as Record<string, unknown>[];
 
-    // Prefer adult eye/sight test
-    for (const t of types) {
+    // Only consider online-bookable types
+    const online = types.filter((t) => t.isOnlineType);
+
+    // Helpers
+    const isEyeTest = (name: string) =>
+      name.includes("eye test") ||
+      name.includes("sight test") ||
+      name.includes("eye exam");
+    const isChild = (name: string) =>
+      name.includes("child");    // covers "child", "children", "childs", "children's"
+    const isExcluded = (name: string) =>
+      isChild(name) ||
+      name.includes("contact") ||
+      name.includes("hearing") ||
+      name.includes("ear wax") ||
+      name.includes("tinnitus") ||
+      name.includes("adjustment") ||
+      name.includes("dry eye") ||
+      name.includes("style consultation");
+
+    // Priority 1: explicit adult eye/sight test (e.g. "Adult NHS Sight Test", "Eye Test - Adult")
+    for (const t of online) {
       const name = String(t.onlineName ?? "").toLowerCase();
-      if (!t.isOnlineType) continue;
-      if (
-        (name.includes("eye test") || name.includes("sight test")) &&
-        !name.includes("children") &&
-        !name.includes("contact")
-      )
+      if (isEyeTest(name) && name.includes("adult") && !isExcluded(name))
         return String(t.id);
     }
-    // Fallback: first online type
-    for (const t of types) {
-      if (t.isOnlineType) return String(t.id);
+    // Priority 2: private/standard eye test (not child, not contact, not hearing)
+    for (const t of online) {
+      const name = String(t.onlineName ?? "").toLowerCase();
+      if (isEyeTest(name) && !isExcluded(name))
+        return String(t.id);
     }
+    // Priority 3: any eye examination (e.g. "Enhanced Eye Examination")
+    for (const t of online) {
+      const name = String(t.onlineName ?? "").toLowerCase();
+      if (name.includes("eye") && !isExcluded(name))
+        return String(t.id);
+    }
+    // Fallback: first online type that isn't hearing/ear/child related
+    for (const t of online) {
+      const name = String(t.onlineName ?? "").toLowerCase();
+      if (!isExcluded(name)) return String(t.id);
+    }
+    // Last resort: first online type
+    if (online.length > 0) return String(online[0].id);
   } catch {
     // ignore
   }
