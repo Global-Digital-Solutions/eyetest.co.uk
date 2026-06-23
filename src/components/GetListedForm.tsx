@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 /* ------------------------------------------------------------------ */
@@ -235,12 +235,7 @@ export function GetListedForm() {
     setStep((prev) => Math.max(prev - 1, 1));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-
-    /* Only submit on the final step — prevents accidental Enter-key submission */
-    if (step < STEP_COUNT) return;
-
+  const handleSubmit = async () => {
     setSubmitting(true);
     setSubmitError("");
 
@@ -274,7 +269,8 @@ export function GetListedForm() {
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={(e) => e.preventDefault()}
+      onKeyDown={(e) => { if (e.key === "Enter") e.preventDefault(); }}
       className="bg-white rounded-2xl border border-gray-100 shadow-lg overflow-hidden"
     >
       <div className="p-6 sm:p-8 lg:p-10">
@@ -643,8 +639,9 @@ export function GetListedForm() {
             </button>
           ) : (
             <button
-              type="submit"
+              type="button"
               disabled={submitting}
+              onClick={handleSubmit}
               className="inline-flex items-center gap-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold text-sm px-7 py-3 rounded-full transition-all cursor-pointer"
             >
               {submitting ? (
