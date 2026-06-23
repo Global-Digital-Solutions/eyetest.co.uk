@@ -961,10 +961,190 @@ function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Bulk Import Section                                                */
+/* ------------------------------------------------------------------ */
+
+const IMPORT_PROVIDERS = [
+  { key: "mands", label: "M&S Opticians", stores: 37, static: true },
+  { key: "aceandtate", label: "Ace & Tate", stores: 17, static: true },
+  { key: "mysight", label: "MySight Independents", stores: 34, static: false, note: "34 brands — fetches branches from API" },
+];
+
+function BulkImportSection() {
+  const [importing, setImporting] = useState<string | null>(null);
+  const [results, setResults] = useState<Record<string, { message: string; inserted: number; skipped: number; errors: string[] }>>({});
+  const [brands, setBrands] = useState<Record<string, { total: number; active: number; source: string }>>({});
+  const [loading, setLoading] = useState(true);
+  const [activating, setActivating] = useState<string | null>(null);
+
+  const loadBrands = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/admin/bulk-import");
+      if (res.ok) {
+        const data = await res.json();
+        setBrands(data.brands || {});
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { loadBrands(); }, [loadBrands]);
+
+  async function runImport(provider: string) {
+    setImporting(provider);
+    try {
+      const res = await fetch(`/api/admin/bulk-import?provider=${provider}`, { method: "POST" });
+      const data = await res.json();
+      setResults((prev) => ({ ...prev, [provider]: data }));
+      loadBrands();
+    } catch (err) {
+      setResults((prev) => ({
+        ...prev,
+        [provider]: { message: `Error: ${err}`, inserted: 0, skipped: 0, errors: [] },
+      }));
+    } finally {
+      setImporting(null);
+    }
+  }
+
+  async function toggleBrand(brand: string, active: boolean, tier?: "gold" | "platinum") {
+    setActivating(brand);
+    try {
+      await fetch("/api/admin/bulk-import", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ brand, active, tier: tier || "gold" }),
+      });
+      loadBrands();
+    } finally {
+      setActivating(null);
+    }
+  }
+
+  const brandList = Object.entries(brands).sort((a, b) => b[1].total - a[1].total);
+
+  return (
+    <>
+      {/* Import buttons */}
+      <section className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+        <div className="px-5 py-4 border-b border-gray-100">
+          <h2 className="font-medium text-gray-900">Import Providers</h2>
+          <p className="text-xs text-gray-500 mt-0.5">Pull existing optician stores into the listings system</p>
+        </div>
+        <ul className="divide-y divide-gray-100">
+          {IMPORT_PROVIDERS.map((p) => (
+            <li key={p.key} className="px-5 py-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-sm font-medium text-gray-800">{p.label}</span>
+                  <span className="ml-2 text-xs text-gray-400">
+                    {p.static ? `${p.stores} stores (static)` : p.note}
+                  </span>
+                </div>
+                <button
+                  onClick={() => runImport(p.key)}
+                  disabled={importing !== null}
+                  className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {importing === p.key ? "Importing…" : "Import"}
+                </button>
+              </div>
+              {results[p.key] && (
+                <div className="mt-2 text-xs text-gray-600 bg-gray-50 rounded-lg p-2">
+                  <p>{results[p.key].message}</p>
+                  {results[p.key].inserted > 0 && (
+                    <p className="text-green-700 font-medium">✓ {results[p.key].inserted} new stores imported</p>
+                  )}
+                  {results[p.key].skipped > 0 && (
+                    <p className="text-yellow-700">↳ {results[p.key].skipped} already existed (skipped)</p>
+                  )}
+                  {results[p.key].errors.length > 0 && (
+                    <details className="mt-1">
+                      <summary className="text-red-600 cursor-pointer">{results[p.key].errors.length} errors</summary>
+                      <ul className="mt-1 space-y-0.5 text-red-500">
+                        {results[p.key].errors.map((e, i) => <li key={i}>{e}</li>)}
+                      </ul>
+                    </details>
+                  )}
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Imported brands */}
+      <section className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+        <div className="px-5 py-4 border-b border-gray-100">
+          <h2 className="font-medium text-gray-900">Imported Brands</h2>
+          <p className="text-xs text-gray-500 mt-0.5">
+            {brandList.length} brands — {brandList.reduce((s, [, v]) => s + v.total, 0)} total stores
+          </p>
+        </div>
+        {loading ? (
+          <div className="px-5 py-8 text-center text-sm text-gray-400">Loading…</div>
+        ) : brandList.length === 0 ? (
+          <div className="px-5 py-8 text-center text-sm text-gray-400">No imports yet. Use the buttons above to import providers.</div>
+        ) : (
+          <ul className="divide-y divide-gray-100 max-h-[32rem] overflow-y-auto">
+            {brandList.map(([brand, info]) => (
+              <li key={brand} className="px-5 py-3 flex items-center justify-between gap-3">
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium text-gray-800 truncate">{brand}</span>
+                    <span className="text-[10px] text-gray-400">{info.total} stores</span>
+                  </div>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <span className={`h-1.5 w-1.5 rounded-full ${info.active > 0 ? "bg-green-500" : "bg-gray-300"}`} />
+                    <span className="text-[10px] text-gray-500">
+                      {info.active > 0 ? `${info.active} active` : "Inactive"}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  {info.active > 0 ? (
+                    <button
+                      onClick={() => toggleBrand(brand, false)}
+                      disabled={activating === brand}
+                      className="rounded-lg border border-red-200 bg-red-50 px-2.5 py-1 text-xs font-medium text-red-700 hover:bg-red-100 disabled:opacity-50 transition-colors"
+                    >
+                      {activating === brand ? "…" : "Deactivate"}
+                    </button>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => toggleBrand(brand, true, "gold")}
+                        disabled={activating === brand}
+                        className="rounded-lg bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-800 hover:bg-amber-200 disabled:opacity-50 transition-colors"
+                      >
+                        {activating === brand ? "…" : "Gold"}
+                      </button>
+                      <button
+                        onClick={() => toggleBrand(brand, true, "platinum")}
+                        disabled={activating === brand}
+                        className="rounded-lg bg-teal-100 px-2.5 py-1 text-xs font-semibold text-teal-800 hover:bg-teal-200 disabled:opacity-50 transition-colors"
+                      >
+                        {activating === brand ? "…" : "Platinum"}
+                      </button>
+                    </>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Main Dashboard                                                     */
 /* ------------------------------------------------------------------ */
 
-type Tab = "listings" | "providers" | "featured";
+type Tab = "listings" | "providers" | "featured" | "bulk-import";
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>("listings");
@@ -1004,6 +1184,7 @@ export default function AdminDashboard() {
 
   const tabs: { key: Tab; label: string }[] = [
     { key: "listings", label: "Listings" },
+    { key: "bulk-import", label: "Bulk Import" },
     { key: "providers", label: "Providers" },
     { key: "featured", label: "Featured" },
   ];
@@ -1048,6 +1229,8 @@ export default function AdminDashboard() {
 
       <main className="max-w-2xl mx-auto px-4 py-8 space-y-6">
         {activeTab === "listings" && <ListingsSection />}
+
+        {activeTab === "bulk-import" && <BulkImportSection />}
 
         {activeTab === "providers" && (
           <>

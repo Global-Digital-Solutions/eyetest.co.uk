@@ -5,9 +5,16 @@ import Map, { Marker, Popup, NavigationControl } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 import type { StoreResult } from "@/lib/types";
 
+/** Stable ID for cross-component hover tracking */
+export function getStoreId(store: StoreResult): string {
+  return `${store.provider}|${store.storeName}`;
+}
+
 interface Props {
   stores: StoreResult[];
   center: [number, number]; // [lat, lng]
+  hoveredStoreId?: string | null;
+  onHoverStore?: (id: string | null) => void;
 }
 
 /** Check availability accounting for static providers (dailySlots count=-1) */
@@ -24,12 +31,14 @@ function formatDistance(m: number): string {
 }
 
 /** Teardrop-shaped map pin using inline SVG */
-function Pin({ store }: { store: StoreResult }) {
+function Pin({ store, highlighted }: { store: StoreResult; highlighted?: boolean }) {
   const featured = store.featured;
   const available = hasAvailability(store);
 
-  const fill = featured ? "#f59e0b" : available ? "#0ea5a0" : "#9ca3af";
-  const size = featured ? 36 : 30;
+  const baseFill = featured ? "#f59e0b" : available ? "#0ea5a0" : "#9ca3af";
+  // Brighter fill when highlighted from card hover
+  const fill = highlighted && !featured ? (available ? "#0d8a86" : "#6b7280") : baseFill;
+  const size = highlighted ? 40 : featured ? 36 : 30;
 
   return (
     <div
@@ -39,12 +48,14 @@ function Pin({ store }: { store: StoreResult }) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        filter: `drop-shadow(0 2px 3px rgba(0,0,0,0.3))`,
+        filter: highlighted
+          ? "drop-shadow(0 0 8px rgba(14,165,160,0.6))"
+          : "drop-shadow(0 2px 3px rgba(0,0,0,0.3))",
       }}
     >
-      {/* Hover label — store name tooltip */}
+      {/* Hover label — store name tooltip (shown on pin hover OR when highlighted from card) */}
       <div
-        className="hidden group-hover/pin:block"
+        className={highlighted ? "block" : "hidden group-hover/pin:block"}
         style={{
           position: "absolute",
           bottom: "100%",
@@ -57,14 +68,16 @@ function Pin({ store }: { store: StoreResult }) {
       >
         <div
           style={{
-            backgroundColor: "#1e293b",
+            backgroundColor: highlighted ? "#0ea5a0" : "#1e293b",
             color: "#fff",
             borderRadius: 6,
             padding: "4px 10px",
             fontSize: 12,
             fontWeight: 600,
             whiteSpace: "nowrap",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
+            boxShadow: highlighted
+              ? "0 2px 12px rgba(14,165,160,0.4)"
+              : "0 2px 8px rgba(0,0,0,0.2)",
             lineHeight: 1.3,
           }}
         >
@@ -77,10 +90,28 @@ function Pin({ store }: { store: StoreResult }) {
             margin: "0 auto",
             borderLeft: "5px solid transparent",
             borderRight: "5px solid transparent",
-            borderTop: "5px solid #1e293b",
+            borderTop: `5px solid ${highlighted ? "#0ea5a0" : "#1e293b"}`,
           }}
         />
       </div>
+
+      {/* Pulse ring when highlighted */}
+      {highlighted && (
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            width: size * 1.5,
+            height: size * 1.5,
+            borderRadius: "50%",
+            border: "2px solid #0ea5a0",
+            opacity: 0.5,
+            transform: "translate(-50%, -60%)",
+            animation: "ping 1.5s cubic-bezier(0,0,0.2,1) infinite",
+          }}
+        />
+      )}
 
       {/* Teardrop pin */}
       <svg
@@ -89,7 +120,11 @@ function Pin({ store }: { store: StoreResult }) {
         viewBox="0 0 30 39"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="transition-transform duration-150 group-hover/pin:scale-110"
+        style={{
+          transition: "transform 0.15s ease",
+          transform: highlighted ? "scale(1.25)" : "scale(1)",
+        }}
+        className="group-hover/pin:scale-110"
       >
         <path
           d="M15 0C6.716 0 0 6.716 0 15c0 10.969 13.256 22.748 13.82 23.254a1.8 1.8 0 002.36 0C16.744 37.748 30 25.969 30 15 30 6.716 23.284 0 15 0z"
@@ -107,15 +142,17 @@ function Pin({ store }: { store: StoreResult }) {
   );
 }
 
-export default function StoreMap({ stores, center }: Props) {
+export default function StoreMap({ stores, center, hoveredStoreId, onHoverStore }: Props) {
   const [popup, setPopup] = useState<StoreResult | null>(null);
   const mapped = stores.filter((s) => s.lat && s.lng);
 
-  // Render featured pins last so they sit on top
+  // Render featured pins last so they sit on top; highlighted pin always on top
   const sorted = [
-    ...mapped.filter((s) => !s.featured && !hasAvailability(s)),
-    ...mapped.filter((s) => !s.featured && hasAvailability(s)),
-    ...mapped.filter((s) => s.featured),
+    ...mapped.filter((s) => !s.featured && !hasAvailability(s) && getStoreId(s) !== hoveredStoreId),
+    ...mapped.filter((s) => !s.featured && hasAvailability(s) && getStoreId(s) !== hoveredStoreId),
+    ...mapped.filter((s) => s.featured && getStoreId(s) !== hoveredStoreId),
+    // Highlighted pin rendered last (on top of everything)
+    ...mapped.filter((s) => getStoreId(s) === hoveredStoreId),
   ];
 
   const popupAvailable = popup ? hasAvailability(popup) : false;
@@ -133,22 +170,32 @@ export default function StoreMap({ stores, center }: Props) {
     >
       <NavigationControl position="top-right" />
 
-      {sorted.map((store, i) => (
-        <Marker
-          key={i}
-          latitude={store.lat!}
-          longitude={store.lng!}
-          anchor="bottom"
-          onClick={(e: { originalEvent: MouseEvent }) => {
-            e.originalEvent.stopPropagation();
-            setPopup(store);
-          }}
-        >
-          <div style={{ cursor: "pointer" }}>
-            <Pin store={store} />
-          </div>
-        </Marker>
-      ))}
+      <style>{`@keyframes ping { 75%, 100% { transform: translate(-50%, -60%) scale(2); opacity: 0; } }`}</style>
+
+      {sorted.map((store) => {
+        const storeId = getStoreId(store);
+        const isHighlighted = storeId === hoveredStoreId;
+        return (
+          <Marker
+            key={storeId}
+            latitude={store.lat!}
+            longitude={store.lng!}
+            anchor="bottom"
+            onClick={(e: { originalEvent: MouseEvent }) => {
+              e.originalEvent.stopPropagation();
+              setPopup(store);
+            }}
+          >
+            <div
+              style={{ cursor: "pointer" }}
+              onMouseEnter={() => onHoverStore?.(storeId)}
+              onMouseLeave={() => onHoverStore?.(null)}
+            >
+              <Pin store={store} highlighted={isHighlighted} />
+            </div>
+          </Marker>
+        );
+      })}
 
       {popup && (
         <Popup

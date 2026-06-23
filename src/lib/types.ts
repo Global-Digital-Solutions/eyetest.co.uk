@@ -18,7 +18,12 @@ export interface StoreResult {
   lng?: number;
   featured?: boolean;
   featuredLabel?: string;
+  tier?: "gold" | "platinum"; // subscription tier (undefined = free)
+  logoUrl?: string; // brand logo image URL
+  services?: string; // short USP tagline for platinum cards
   dailySlots?: DailySlot[];
+  googleRating?: number; // 1.0–5.0
+  googleReviewCount?: number;
 }
 
 export interface FeaturedProvider {
@@ -67,6 +72,8 @@ export interface OpticianListing {
   radius_km: number;
   badge_label: string;
   active: boolean;
+  logo_url: string | null;
+  services_tagline: string | null;
   audiology_addon: boolean;
   audiology_active: boolean;
   stripe_customer_id: string | null;

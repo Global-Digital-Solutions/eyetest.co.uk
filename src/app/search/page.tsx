@@ -48,8 +48,9 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 }
 
 export default async function SearchPage({ searchParams }: Props) {
-  const { postcode } = await searchParams;
+  const { postcode, demo } = await searchParams;
   const pc = typeof postcode === "string" ? postcode.trim().toUpperCase() : "";
+  const demoProvider = typeof demo === "string" ? demo.trim().toLowerCase() : undefined;
 
   const searchPageJsonLd = {
     "@context": "https://schema.org",
@@ -166,7 +167,7 @@ export default async function SearchPage({ searchParams }: Props) {
         </h1>
 
         {/* Results */}
-        <SearchResults postcode={pc} />
+        <SearchResults postcode={pc} demoProvider={demoProvider} />
       </main>
       <Footer />
     </>

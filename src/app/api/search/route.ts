@@ -99,8 +99,11 @@ export async function GET(req: NextRequest) {
       bookingUrl: listing.booking_url || listing.website || "",
       lat: listing.lat!,
       lng: listing.lng!,
-      featured: listing.tier === "platinum",
-      featuredLabel: listing.tier === "platinum" ? listing.badge_label : undefined,
+      featured: true, // all active listings are featured (sorted above free)
+      featuredLabel: listing.badge_label || (listing.tier === "platinum" ? "Featured Partner" : "Recommended"),
+      tier: listing.tier,
+      logoUrl: listing.logo_url || undefined,
+      services: listing.services_tagline || undefined,
       dailySlots: [{ date: new Date().toISOString().split("T")[0], count: -1 }],
     }));
 
