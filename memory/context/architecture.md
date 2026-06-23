@@ -75,6 +75,15 @@ Mapbox GL with teardrop SVG pin markers. Pins are coloured: teal (available), gr
 ### Trust Banner
 After search completes, shows: local optician count, time saved (distinct brands × 5 min), provider pills, and a value message about independent opticians. Time saving counts unique provider brands, not total stores (searching Boots once covers all their stores).
 
+### SEO Fixes (June 18 SE Ranking Audit)
+- Footer links updated: `/blog` → `/articles`, `/contact` → `/about` (was causing 1,247 redirect chain warnings)
+- `home-visit-eye-test` excluded from `sitemap.ts` (redirects to `/at-home-eye-tests`)
+- Article title differentiated from guide: added "— Age-by-Age Advice" suffix to avoid duplicate `<title>` tags
+- Visually-hidden `<h1>` added to `/search` page
+- Alt text added to CTABanner background image on homepage
+- Brand/location page link updated: `/eye-tests/home-visit-eye-test` → `/at-home-eye-tests`
+- `llms.txt` link updated for home-visit-eye-test
+
 ### Supabase Usage
 Currently used for:
 - Admin authentication (`src/lib/admin-auth.ts`)

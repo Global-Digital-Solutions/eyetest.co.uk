@@ -190,9 +190,10 @@ All canonical URLs, OG URLs, and schema URLs use `www.eyetest.co.uk`
 | 2026-06-18 | Desktop layout flipped to 5/7 (results/map) for wider map |
 | 2026-06-18 | Distance display changed from km to miles (UK audience) |
 | 2026-06-18 | Trust banner — shows local optician count, time saved (distinct brands × 5 min), independents value message |
+| 2026-06-18 | SE Ranking audit fixes — duplicate titles, 1,247 redirect links, sitemap cleanup, H1/alt text |
 | Next | Optician subscription model with Stripe billing |
 
 ## Pending Work
 1. **Optician subscription + Stripe** — Featured placement, self-service portal, monthly/annual billing (starting next)
 2. **Apify Google Reviews** — Scrape and display optician reviews
-3. **SE Ranking re-scan** — Verify indexability fixes resolved all issues
+3. **SE Ranking re-scan** — Verify audit fixes resolved all issues (expect score 97→100)

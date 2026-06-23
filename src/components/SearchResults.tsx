@@ -27,11 +27,28 @@ const PROVIDER_BRANDS: Record<string, { color: string; initial: string }> = {
 
 function getProviderStyle(provider: string) {
   if (PROVIDER_COLORS[provider]) return PROVIDER_COLORS[provider];
-  // MySight sites get teal (site primary)
+  // MySight sites get indigo (independent)
   if (provider.endsWith(".mysight.uk")) {
-    return { bg: "bg-teal-50", text: "text-teal-700", border: "border-teal-200" };
+    return { bg: "bg-indigo-50", text: "text-indigo-700", border: "border-indigo-200" };
   }
   return { bg: "bg-gray-50", text: "text-gray-600", border: "border-gray-200" };
+}
+
+/** Chain providers — brands with many branches */
+const CHAIN_PROVIDERS = new Set([
+  "Boots Opticians",
+  "ASDA Opticians",
+  "Vision Express",
+  "M&S Opticians",
+  "Ace & Tate",
+]);
+
+function isIndependent(provider: string): boolean {
+  return provider.endsWith(".mysight.uk");
+}
+
+function isChain(provider: string): boolean {
+  return CHAIN_PROVIDERS.has(provider);
 }
 
 /* ------------------------------------------------------------------ */
@@ -339,22 +356,28 @@ function MobileStoreCard({ store, onBook }: { store: StoreResult; onBook?: (e: R
   const hideActions = !hasSlots && HIDE_ACTIONS_PROVIDERS.test(store.provider);
   const { text: availText, available: isAvail } = getAvailabilitySummary(store);
 
-  const borderColor = store.featured ? "#f59e0b" : hasSlots ? "#22c55e" : "#d1d5db";
+  const borderColor = store.featured ? "#f59e0b" : isIndependent(store.provider) ? "#6366f1" : hasSlots ? "#22c55e" : "#d1d5db";
 
   return (
     <div
       className={`rounded-lg bg-white shadow-sm overflow-hidden ${
-        store.featured ? "ring-1 ring-amber-300" : ""
+        store.featured ? "ring-1 ring-amber-300" : isIndependent(store.provider) ? "ring-1 ring-indigo-300" : ""
       }`}
       style={{ borderLeft: `3px solid ${borderColor}` }}
     >
       <div className="px-3 py-2.5">
         {/* Line 1: badge + store name + distance */}
         <div className="flex items-center gap-1.5 min-w-0">
-          {store.featured && (
-            <svg className="w-3 h-3 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
+          {(store.featured || isIndependent(store.provider)) && (
+            isIndependent(store.provider) ? (
+              <svg className="w-3 h-3 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
+              </svg>
+            ) : store.featured ? (
+              <svg className="w-3 h-3 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ) : null
           )}
           <span
             className={`inline-block rounded-full px-1.5 py-px text-[9px] font-semibold flex-shrink-0 ${style.bg} ${style.text}`}
@@ -417,24 +440,33 @@ function StoreCard({ store, onBook }: { store: StoreResult; onBook?: (e: React.M
   return (
     <div
       className={`rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden ${
-        store.featured ? "ring-1 ring-amber-300" : ""
+        store.featured ? "ring-1 ring-amber-300" : isIndependent(store.provider) ? "ring-1 ring-indigo-300" : ""
       }`}
       style={{
         borderLeft: `4px solid ${
-          store.featured ? "#f59e0b" : hasSlots ? "#22c55e" : "#d1d5db"
+          store.featured ? "#f59e0b" : isIndependent(store.provider) ? "#6366f1" : hasSlots ? "#22c55e" : "#d1d5db"
         }`,
       }}
     >
       <div className="p-4">
-        {/* Featured badge */}
-        {store.featured && (
+        {/* Featured / Independent badge */}
+        {(store.featured || isIndependent(store.provider)) && (
           <div className="mb-2">
-            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-bold text-amber-800">
-              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              {store.featuredLabel ?? "Recommended"}
-            </span>
+            {isIndependent(store.provider) ? (
+              <span className="inline-flex items-center gap-1 rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-bold text-indigo-800">
+                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
+                </svg>
+                {store.featured && store.featuredLabel === "Independent" ? store.featuredLabel : "Independent"}
+              </span>
+            ) : store.featured ? (
+              <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-bold text-amber-800">
+                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                {store.featuredLabel ?? "Recommended"}
+              </span>
+            ) : null}
           </div>
         )}
 
@@ -985,9 +1017,19 @@ export function SearchResults({ postcode }: { postcode: string }) {
       ? r.dailySlots.some((s) => s.count !== 0)
       : Boolean(r.slotsAvailable);
 
-  const available = results
-    .filter((r) => !r.featured && hasAvailability(r))
-    .sort((a, b) => {
+  // Separate primary vs additional for chain providers
+  // Primary = closest store per chain + all independents
+  // Additional = remaining chain locations
+  const nonFeatured = results.filter((r) => !r.featured);
+
+  function getChainKey(store: StoreResult): string | null {
+    if (isIndependent(store.provider)) return null; // independents are never grouped
+    if (isChain(store.provider)) return store.provider;
+    return null;
+  }
+
+  function splitPrimaryAdditional(stores: StoreResult[]) {
+    const sorted = [...stores].sort((a, b) => {
       if (a.nextAvailable && b.nextAvailable)
         return a.nextAvailable.localeCompare(b.nextAvailable);
       if (a.nextAvailable) return -1;
@@ -995,9 +1037,42 @@ export function SearchResults({ postcode }: { postcode: string }) {
       return a.distanceM - b.distanceM;
     });
 
-  const unavailable = results
-    .filter((r) => !r.featured && !hasAvailability(r))
-    .sort((a, b) => a.distanceM - b.distanceM);
+    const seenChains = new Set<string>();
+    const primary: StoreResult[] = [];
+    const additional: StoreResult[] = [];
+
+    for (const store of sorted) {
+      const chain = getChainKey(store);
+      if (chain === null) {
+        // Independent or non-chain — always primary
+        primary.push(store);
+      } else if (!seenChains.has(chain)) {
+        // First (best) result from this chain
+        seenChains.add(chain);
+        primary.push(store);
+      } else {
+        // Additional location from same chain
+        additional.push(store);
+      }
+    }
+
+    return { primary, additional };
+  }
+
+  // Run chain split ONCE across all non-featured stores so each chain
+  // only gets one primary entry (the best available, or closest if none).
+  // Splitting available/unavailable separately would give each chain TWO
+  // primary entries — one available and one unavailable.
+  const { primary, additional } = splitPrimaryAdditional(nonFeatured);
+
+  const primaryAvailable = primary.filter(hasAvailability);
+  const primaryUnavailable = primary.filter((r) => !hasAvailability(r));
+  const additionalAvailable = additional.filter(hasAvailability);
+  const additionalUnavailable = additional.filter((r) => !hasAvailability(r));
+
+  // Keep available/unavailable as computed values for count/map calculations
+  const available = [...primaryAvailable, ...additionalAvailable];
+  const unavailable = [...primaryUnavailable, ...additionalUnavailable];
 
   const stillLoading = stream !== null && !stream.done;
   const allWithSlots = [...featured, ...available];
@@ -1290,8 +1365,8 @@ export function SearchResults({ postcode }: { postcode: string }) {
                 </div>
               ))}
 
-              {/* Available results */}
-              {available.map((store, i) => (
+              {/* Primary available results (one per chain + all independents) */}
+              {primaryAvailable.map((store, i) => (
                 <div key={`avail-${i}-${store.storeName}`}>
                   <div className="sm:hidden">
                     <MobileStoreCard store={store} onBook={handleBookingClick} />
@@ -1302,18 +1377,18 @@ export function SearchResults({ postcode }: { postcode: string }) {
                 </div>
               ))}
 
-              {/* Separator for unavailable */}
-              {unavailable.length > 0 &&
-                (featured.length > 0 || available.length > 0) &&
+              {/* Separator for unavailable primary */}
+              {primaryUnavailable.length > 0 &&
+                (featured.length > 0 || primaryAvailable.length > 0) &&
                 stream.done && (
                   <p className="pt-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
                     No slots found
                   </p>
                 )}
 
-              {/* Unavailable results */}
+              {/* Primary unavailable results */}
               {stream.done &&
-                unavailable.map((store, i) => (
+                primaryUnavailable.map((store, i) => (
                   <div key={`unavail-${i}-${store.storeName}`}>
                     <div className="sm:hidden">
                       <MobileStoreCard store={store} onBook={handleBookingClick} />
@@ -1323,6 +1398,41 @@ export function SearchResults({ postcode }: { postcode: string }) {
                     </div>
                   </div>
                 ))}
+
+              {/* Additional chain locations section */}
+              {stream.done && (additionalAvailable.length > 0 || additionalUnavailable.length > 0) && (
+                <>
+                  <div className="pt-4 pb-2 border-t border-gray-100 mt-4">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 flex items-center gap-1.5">
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      More locations from these opticians
+                    </p>
+                  </div>
+                  {additionalAvailable.map((store, i) => (
+                    <div key={`add-avail-${i}-${store.storeName}`}>
+                      <div className="sm:hidden">
+                        <MobileStoreCard store={store} onBook={handleBookingClick} />
+                      </div>
+                      <div className="hidden sm:block">
+                        <StoreCard store={store} onBook={handleBookingClick} />
+                      </div>
+                    </div>
+                  ))}
+                  {additionalUnavailable.map((store, i) => (
+                    <div key={`add-unavail-${i}-${store.storeName}`}>
+                      <div className="sm:hidden">
+                        <MobileStoreCard store={store} onBook={handleBookingClick} />
+                      </div>
+                      <div className="hidden sm:block">
+                        <StoreCard store={store} onBook={handleBookingClick} />
+                      </div>
+                    </div>
+                  ))}
+                </>
+              )}
 
               {/* Still loading indicator */}
               {stillLoading && results.length > 0 && (
