@@ -225,11 +225,13 @@ export function GetListedForm() {
       return;
     }
     setStepErrors([]);
+    setSubmitError("");
     setStep((prev) => Math.min(prev + 1, STEP_COUNT));
   };
 
   const handleBack = () => {
     setStepErrors([]);
+    setSubmitError("");
     setStep((prev) => Math.max(prev - 1, 1));
   };
 
