@@ -9,7 +9,11 @@ type Config = Record<string, boolean>;
 const MYSIGHT_LABEL = (site: string) =>
   site.replace(".mysight.uk", "").replace(/-/g, " ");
 
-const MAIN_PROVIDERS = ["Boots Opticians", "ASDA Opticians", "Vision Express", "M&S Opticians", "Ace & Tate"];
+const MAIN_PROVIDERS = ["Boots Opticians", "ASDA Opticians", "Vision Express", "M&S Opticians", "Ace & Tate", "scrivens"];
+
+const PROVIDER_DISPLAY: Record<string, string> = {
+  scrivens: "Scrivens",
+};
 
 const inputCls =
   "w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors";
@@ -790,7 +794,7 @@ function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
                 >
                   {providerOptions.map((p) => (
                     <option key={p} value={p}>
-                      {p.replace(".mysight.uk", "")}
+                      {PROVIDER_DISPLAY[p] ?? p.replace(".mysight.uk", "")}
                     </option>
                   ))}
                 </select>
@@ -967,6 +971,7 @@ function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
 const IMPORT_PROVIDERS = [
   { key: "mands", label: "M&S Opticians", stores: 37, static: true },
   { key: "aceandtate", label: "Ace & Tate", stores: 17, static: true },
+  { key: "scrivens", label: "Scrivens", stores: 164, static: true },
   { key: "mysight", label: "MySight Independents", stores: 34, static: false, note: "34 brands — fetches branches from API" },
 ];
 
@@ -1241,7 +1246,7 @@ export default function AdminDashboard() {
               <ul className="divide-y divide-gray-100">
                 {mainProviders.map((provider) => (
                   <li key={provider} className="flex items-center justify-between px-5 py-4">
-                    <span className="text-sm text-gray-800">{provider}</span>
+                    <span className="text-sm text-gray-800">{PROVIDER_DISPLAY[provider] ?? provider}</span>
                     <Toggle
                       enabled={config[provider] ?? true}
                       onChange={(v) => toggle(provider, v)}
