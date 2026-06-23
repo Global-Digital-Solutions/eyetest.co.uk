@@ -139,9 +139,10 @@ async function fetchEyeTestTypeId(
     const isEyeTest = (name: string) =>
       name.includes("eye test") ||
       name.includes("sight test") ||
-      name.includes("eye exam");
+      name.includes("eye exam") ||
+      name.includes("examin");  // catches "examination", "examinaion" (typo), "NHS Examination" etc.
     const isChild = (name: string) =>
-      name.includes("child");    // covers "child", "children", "childs", "children's"
+      name.includes("child");   // covers "child", "children", "childs", "children's"
     const isExcluded = (name: string) =>
       isChild(name) ||
       name.includes("contact") ||
@@ -150,7 +151,8 @@ async function fetchEyeTestTypeId(
       name.includes("tinnitus") ||
       name.includes("adjustment") ||
       name.includes("dry eye") ||
-      name.includes("style consultation");
+      name.includes("style consultation") ||
+      name.includes("audio");
 
     // Priority 1: explicit adult eye/sight test (e.g. "Adult NHS Sight Test", "Eye Test - Adult")
     for (const t of online) {
@@ -164,19 +166,14 @@ async function fetchEyeTestTypeId(
       if (isEyeTest(name) && !isExcluded(name))
         return String(t.id);
     }
-    // Priority 3: any eye examination (e.g. "Enhanced Eye Examination")
+    // Priority 3: any eye-related type (e.g. "Enhanced Eye Examination")
     for (const t of online) {
       const name = String(t.onlineName ?? "").toLowerCase();
       if (name.includes("eye") && !isExcluded(name))
         return String(t.id);
     }
-    // Fallback: first online type that isn't hearing/ear/child related
-    for (const t of online) {
-      const name = String(t.onlineName ?? "").toLowerCase();
-      if (!isExcluded(name)) return String(t.id);
-    }
-    // Last resort: first online type
-    if (online.length > 0) return String(online[0].id);
+    // No eye-test type found — return null so the booking link opens
+    // the branch page without pre-selecting a non-eye appointment type
   } catch {
     // ignore
   }
