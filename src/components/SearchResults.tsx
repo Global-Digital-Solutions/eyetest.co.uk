@@ -17,6 +17,14 @@ const PROVIDER_COLORS: Record<string, { bg: string; text: string; border: string
   "Vision Express": { bg: "bg-purple-50", text: "text-purple-700", border: "border-purple-200" },
 };
 
+const PROVIDER_BRANDS: Record<string, { color: string; initial: string }> = {
+  "Boots Opticians": { color: "#0064d2", initial: "B" },
+  "ASDA Opticians": { color: "#78be20", initial: "A" },
+  "Vision Express": { color: "#6b21a8", initial: "V" },
+  "M&S Opticians": { color: "#007a33", initial: "M" },
+  "Ace & Tate": { color: "#000000", initial: "A" },
+};
+
 function getProviderStyle(provider: string) {
   if (PROVIDER_COLORS[provider]) return PROVIDER_COLORS[provider];
   // MySight sites get teal (site primary)
@@ -86,6 +94,131 @@ function formatDistance(m: number): string {
   const miles = m / 1609.344;
   if (miles < 0.1) return `${Math.round(m * 1.09361)} yds`;
   return `${miles.toFixed(1)} mi`;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Departure overlay — branded handoff before external redirect       */
+/* ------------------------------------------------------------------ */
+
+const DEPARTURE_DELAY_MS = 2500;
+
+type DepartureInfo = {
+  providerName: string;
+  storeName: string;
+  url: string;
+};
+
+function DepartureOverlay({
+  info,
+  onClose,
+}: {
+  info: DepartureInfo;
+  onClose: () => void;
+}) {
+  const brand = PROVIDER_BRANDS[info.providerName];
+  const brandColor = brand?.color ?? "#374151";
+  const brandInitial = brand?.initial ?? info.providerName.charAt(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.location.href = info.url;
+    }, DEPARTURE_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, [info.url]);
+
+  return (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+      <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden animate-in">
+        {/* Progress bar */}
+        <div className="h-1 bg-gray-100">
+          <div
+            className="h-full bg-[var(--color-primary)] rounded-r-full"
+            style={{ animation: `departure-progress ${DEPARTURE_DELAY_MS}ms linear forwards` }}
+          />
+        </div>
+
+        <div className="px-6 py-8 sm:px-8 sm:py-10">
+          {/* Logo handoff: eyetest.co.uk -> Provider */}
+          <div className="flex items-center justify-center gap-4 mb-6">
+            {/* eyetest.co.uk logo */}
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style={{ background: "linear-gradient(180deg, #0d1b3e 0%, #0ea5a0 100%)" }}>
+                <svg viewBox="0 0 32 32" className="w-9 h-9">
+                  <text x="7" y="22" fontFamily="system-ui,-apple-system,sans-serif" fontWeight="800" fontSize="18" fill="white">e</text>
+                  <text x="18" y="22" fontFamily="system-ui,-apple-system,sans-serif" fontWeight="800" fontSize="18" fill="#5eead4">t</text>
+                </svg>
+              </div>
+              <span className="text-[10px] font-medium text-gray-400">eyetest.co.uk</span>
+            </div>
+
+            {/* Arrow */}
+            <div className="flex flex-col items-center">
+              <svg className="w-8 h-8 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </div>
+
+            {/* Provider logo */}
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style={{ backgroundColor: brandColor }}>
+                <span className="text-white font-bold text-xl" style={{ fontFamily: "var(--font-display)" }}>{brandInitial}</span>
+              </div>
+              <span className="text-[10px] font-medium text-gray-400 max-w-[80px] text-center leading-tight">{info.providerName}</span>
+            </div>
+          </div>
+
+          {/* Message */}
+          <div className="text-center">
+            <h3 className="text-lg sm:text-xl font-bold text-[var(--color-navy)] mb-2" style={{ fontFamily: "var(--font-display)" }}>
+              Booking with {info.providerName}
+            </h3>
+            <p className="text-sm text-gray-500 mb-1 leading-relaxed">
+              You&apos;re being connected to <strong className="text-[var(--color-navy)]">{info.storeName}</strong> to
+              complete your eye test booking.
+            </p>
+            <p className="text-xs text-gray-400 mb-6">
+              This is a completely free service — no fees, no sign-up.
+            </p>
+
+            {/* Trust signals */}
+            <div className="flex items-center justify-center gap-4 text-[11px] text-gray-400 mb-6">
+              <span className="flex items-center gap-1">
+                <svg className="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                100% free
+              </span>
+              <span className="flex items-center gap-1">
+                <svg className="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                Direct booking
+              </span>
+              <span className="flex items-center gap-1">
+                <svg className="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                Secure
+              </span>
+            </div>
+
+            {/* Skip button */}
+            <a href={info.url} rel="noopener noreferrer"
+              className="inline-block text-xs text-gray-400 hover:text-[var(--color-primary)] transition-colors cursor-pointer">
+              Go now &rarr;
+            </a>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="bg-gray-50 border-t border-gray-100 px-6 py-3 text-center">
+          <p className="text-[10px] text-gray-400">
+            Found by <strong className="text-[var(--color-primary)]">eyetest.co.uk</strong> — the UK&apos;s free eye test comparison service
+          </p>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes departure-progress { from { width: 0%; } to { width: 100%; } }
+        .animate-in { animation: overlay-in 0.25s ease-out; }
+        @keyframes overlay-in { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+      `}</style>
+    </div>
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -198,7 +331,7 @@ function getAvailabilitySummary(store: StoreResult): { text: string; available: 
   return { text: `Available ${dateLabel}`, available: true };
 }
 
-function MobileStoreCard({ store }: { store: StoreResult }) {
+function MobileStoreCard({ store, onBook }: { store: StoreResult; onBook?: (e: React.MouseEvent, store: StoreResult) => void }) {
   const hasSlots = store.dailySlots
     ? store.dailySlots.some((s) => s.count !== 0)
     : Boolean(store.slotsAvailable);
@@ -258,6 +391,7 @@ function MobileStoreCard({ store }: { store: StoreResult }) {
               href={store.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={onBook ? (e) => onBook(e, store) : undefined}
               className={`flex-shrink-0 ml-auto inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-md transition-colors ${
                 hasSlots
                   ? "bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white"
@@ -273,7 +407,7 @@ function MobileStoreCard({ store }: { store: StoreResult }) {
   );
 }
 
-function StoreCard({ store }: { store: StoreResult }) {
+function StoreCard({ store, onBook }: { store: StoreResult; onBook?: (e: React.MouseEvent, store: StoreResult) => void }) {
   const hasSlots = store.dailySlots
     ? store.dailySlots.some((s) => s.count !== 0)
     : Boolean(store.slotsAvailable);
@@ -426,6 +560,7 @@ function StoreCard({ store }: { store: StoreResult }) {
               href={store.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={onBook ? (e) => onBook(e, store) : undefined}
               className={`flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2 rounded-lg transition-colors ${
                 hasSlots
                   ? "bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white"
@@ -553,7 +688,7 @@ function SearchProgressPanel({
               />
             </svg>
           </div>
-          <div>
+          <div className="min-w-0">
             <h3
               className="text-sm sm:text-lg font-bold mb-0.5"
               style={{ fontFamily: "var(--font-display)" }}
@@ -698,6 +833,19 @@ export function SearchResults({ postcode }: { postcode: string }) {
   const [stream, setStream] = useState<StreamState | null>(null);
   const [showMobileMap, setShowMobileMap] = useState(false);
   const hasSearched = useRef(false);
+  const [departure, setDeparture] = useState<DepartureInfo | null>(null);
+  const handleBookingClick = useCallback(
+    (e: React.MouseEvent, store: StoreResult) => {
+      e.preventDefault();
+      const provName = displayProviderName(store.provider);
+      setDeparture({
+        providerName: provName,
+        storeName: store.storeName,
+        url: store.bookingUrl,
+      });
+    },
+    []
+  );
 
   const handleSearch = useCallback(async (q: string) => {
     if (!q) return;
@@ -923,8 +1071,8 @@ export function SearchResults({ postcode }: { postcode: string }) {
       {stream && (
         <>
           {/* Results summary */}
-          <div className="mb-4 flex items-center justify-between">
-            <div>
+          <div className="mb-4 flex items-center justify-between gap-2">
+            <div className="min-w-0">
               <h2
                 className="text-lg sm:text-xl font-bold text-[var(--color-navy)]"
                 style={{ fontFamily: "var(--font-display)" }}
@@ -1017,7 +1165,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
             ).size;
 
             return (
-              <div className="mb-4 rounded-xl bg-[var(--color-navy)]/5 border border-[var(--color-navy)]/10 px-3 py-2.5 sm:px-4 sm:py-3">
+              <div className="mb-4 rounded-xl bg-[var(--color-navy)]/5 border border-[var(--color-navy)]/10 px-3 py-2.5 sm:px-4 sm:py-3 overflow-hidden">
                 {/* Top line: checked count + time saved */}
                 <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
                   <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--color-navy)]">
@@ -1134,10 +1282,10 @@ export function SearchResults({ postcode }: { postcode: string }) {
               {featured.map((store, i) => (
                 <div key={`feat-${i}-${store.storeName}`}>
                   <div className="sm:hidden">
-                    <MobileStoreCard store={store} />
+                    <MobileStoreCard store={store} onBook={handleBookingClick} />
                   </div>
                   <div className="hidden sm:block">
-                    <StoreCard store={store} />
+                    <StoreCard store={store} onBook={handleBookingClick} />
                   </div>
                 </div>
               ))}
@@ -1146,10 +1294,10 @@ export function SearchResults({ postcode }: { postcode: string }) {
               {available.map((store, i) => (
                 <div key={`avail-${i}-${store.storeName}`}>
                   <div className="sm:hidden">
-                    <MobileStoreCard store={store} />
+                    <MobileStoreCard store={store} onBook={handleBookingClick} />
                   </div>
                   <div className="hidden sm:block">
-                    <StoreCard store={store} />
+                    <StoreCard store={store} onBook={handleBookingClick} />
                   </div>
                 </div>
               ))}
@@ -1168,10 +1316,10 @@ export function SearchResults({ postcode }: { postcode: string }) {
                 unavailable.map((store, i) => (
                   <div key={`unavail-${i}-${store.storeName}`}>
                     <div className="sm:hidden">
-                      <MobileStoreCard store={store} />
+                      <MobileStoreCard store={store} onBook={handleBookingClick} />
                     </div>
                     <div className="hidden sm:block">
-                      <StoreCard store={store} />
+                      <StoreCard store={store} onBook={handleBookingClick} />
                     </div>
                   </div>
                 ))}
@@ -1249,7 +1397,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Link
                   href="/find"
-                  className="flex items-center gap-3 p-4 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow group"
+                  className="flex items-center gap-3 p-4 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow group min-w-0"
                 >
                   <div className="flex-shrink-0 w-10 h-10 bg-[var(--color-teal-50)] rounded-lg flex items-center justify-center">
                     <svg
@@ -1271,7 +1419,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
                       />
                     </svg>
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors">
                       Browse by location
                     </p>
@@ -1282,7 +1430,7 @@ export function SearchResults({ postcode }: { postcode: string }) {
                 </Link>
                 <Link
                   href="/opticians"
-                  className="flex items-center gap-3 p-4 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow group"
+                  className="flex items-center gap-3 p-4 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow group min-w-0"
                 >
                   <div className="flex-shrink-0 w-10 h-10 bg-[var(--color-teal-50)] rounded-lg flex items-center justify-center">
                     <svg
@@ -1299,11 +1447,11 @@ export function SearchResults({ postcode }: { postcode: string }) {
                       />
                     </svg>
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors">
                       Browse by optician
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-500 truncate">
                       Compare Boots, ASDA, Vision Express and more
                     </p>
                   </div>
@@ -1348,6 +1496,10 @@ export function SearchResults({ postcode }: { postcode: string }) {
             Hang tight &mdash; we&apos;re about to save you hours of searching
           </p>
         </div>
+      )}
+
+      {departure && (
+        <DepartureOverlay info={departure} onClose={() => setDeparture(null)} />
       )}
     </div>
   );
