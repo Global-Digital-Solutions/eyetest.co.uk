@@ -1653,7 +1653,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-5 sm:py-6 overflow-x-hidden">
+    <div className="max-w-7xl mx-auto px-4 py-5 sm:py-6" style={{ overflowX: "clip" }}>
       {/* Error state */}
       {globalError && (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 mb-4">
