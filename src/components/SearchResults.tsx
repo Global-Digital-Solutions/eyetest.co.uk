@@ -1806,29 +1806,53 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
                     </div>
                   </div>
 
-                  {/* Provider badges */}
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {stream.activeProviders.map((p, i) => {
-                      const info = CHAIN_INFO[p];
-                      const hiddenOnMobile = i >= MAX_MOBILE_BADGES;
-                      return (
-                        <div
-                          key={p}
-                          className={`inline-flex items-center gap-1 sm:gap-1.5 rounded-full px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-medium bg-gray-50 border border-gray-200 text-gray-600${hiddenOnMobile ? " hidden sm:inline-flex" : ""}`}
-                        >
-                          <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[var(--color-success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                          </svg>
-                          {info?.name ?? displayProviderName(p)}
-                        </div>
-                      );
-                    })}
-                    {stream.activeProviders.length > MAX_MOBILE_BADGES && (
-                      <div className="inline-flex sm:hidden items-center rounded-full px-2 py-0.5 text-[10px] font-medium bg-gray-50 border border-gray-200 text-gray-400">
-                        +{stream.activeProviders.length - MAX_MOBILE_BADGES} more
+                  {/* Provider badges — chains individually, independents grouped */}
+                  {(() => {
+                    const chains = stream.activeProviders.filter((p) => !p.endsWith(".mysight.uk"));
+                    const independentCount = stream.activeProviders.filter((p) => p.endsWith(".mysight.uk")).length;
+                    const badgeItems = [...chains];
+                    // How many independent stores actually returned results
+                    const indStoresFound = results.filter((r) => r.provider.endsWith(".mysight.uk")).length;
+
+                    return (
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                        {badgeItems.map((p, i) => {
+                          const info = CHAIN_INFO[p];
+                          const hiddenOnMobile = i >= MAX_MOBILE_BADGES;
+                          return (
+                            <div
+                              key={p}
+                              className={`inline-flex items-center gap-1 sm:gap-1.5 rounded-full px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-medium bg-gray-50 border border-gray-200 text-gray-600${hiddenOnMobile ? " hidden sm:inline-flex" : ""}`}
+                            >
+                              <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[var(--color-success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                              </svg>
+                              {info?.name ?? displayProviderName(p)}
+                            </div>
+                          );
+                        })}
+                        {/* Grouped independent opticians badge */}
+                        {independentCount > 0 && (
+                          <div
+                            className={`inline-flex items-center gap-1 sm:gap-1.5 rounded-full px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-medium bg-indigo-50 border border-indigo-200 text-indigo-600${badgeItems.length >= MAX_MOBILE_BADGES ? " hidden sm:inline-flex" : ""}`}
+                          >
+                            <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[var(--color-success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            {indStoresFound > 0
+                              ? `${indStoresFound} Independent Optician${indStoresFound !== 1 ? "s" : ""}`
+                              : `${independentCount} Independent Brands`}
+                          </div>
+                        )}
+                        {/* Mobile overflow */}
+                        {(badgeItems.length + (independentCount > 0 ? 1 : 0)) > MAX_MOBILE_BADGES && (
+                          <div className="inline-flex sm:hidden items-center rounded-full px-2 py-0.5 text-[10px] font-medium bg-gray-50 border border-gray-200 text-gray-400">
+                            +{(badgeItems.length + (independentCount > 0 ? 1 : 0)) - MAX_MOBILE_BADGES} more
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
+                    );
+                  })()}
                 </div>
 
                 {/* Footer — value props */}
