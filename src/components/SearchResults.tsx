@@ -1356,6 +1356,11 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
   const handleBookingClick = useCallback(
     (e: React.MouseEvent, store: StoreResult) => {
       e.preventDefault();
+
+      // --- DEBUG: remove after fix confirmed ---
+      console.log("[INTERSTITIAL] handler fired:", store.storeName);
+      // --- end debug ---
+
       const provName = displayProviderName(store.provider);
 
       // Detect mobile via touch capability + narrow viewport
@@ -2282,6 +2287,18 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
     {/* Departure overlay — rendered OUTSIDE the overflow-x:clip div so it isn't clipped */}
     {departure && (
       <DepartureOverlay info={departure} onClose={() => setDeparture(null)} />
+    )}
+
+    {/* --- DEBUG BANNER: remove after fix confirmed --- */}
+    {departure && (
+      <div style={{
+        position: "fixed", top: 0, left: 0, right: 0,
+        background: "red", color: "white", padding: "20px",
+        zIndex: 99999, fontSize: "24px", fontWeight: "bold",
+        textAlign: "center",
+      }}>
+        INTERSTITIAL DEBUG: departure state is SET for {departure.storeName}
+      </div>
     )}
     </>
   );
