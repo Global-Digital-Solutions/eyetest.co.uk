@@ -4,6 +4,22 @@ import { createClient } from "@supabase/supabase-js";
 
 export async function POST(req: NextRequest) {
   try {
+    /* Guard: Stripe must be configured */
+    if (!stripe) {
+      console.error("Stripe checkout error: stripe SDK not initialised (STRIPE_SECRET_KEY missing?)");
+      return NextResponse.json(
+        { error: "Payment system is not configured. Please contact support." },
+        { status: 503 }
+      );
+    }
+    if (!PRICES.gold || !PRICES.platinum) {
+      console.error("Stripe checkout error: price IDs missing (STRIPE_PRICE_GOLD / STRIPE_PRICE_PLATINUM env vars)");
+      return NextResponse.json(
+        { error: "Payment plans are not configured. Please contact support." },
+        { status: 503 }
+      );
+    }
+
     const body = await req.json();
     const { listingId, tier, audiologyAddon } = body as {
       listingId: string;

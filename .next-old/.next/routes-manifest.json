@@ -1,0 +1,339 @@
+{
+  "version": 3,
+  "pages404": true,
+  "appType": "app",
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    },
+    {
+      "source": "/blog",
+      "destination": "/articles",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/blog(?:/)?$"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/articles/:slug",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/blog(?:/([^/]+?))(?:/)?$"
+    },
+    {
+      "source": "/contact",
+      "destination": "/about",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/contact(?:/)?$"
+    },
+    {
+      "source": "/eye-tests/home-visit-eye-test",
+      "destination": "/at-home-eye-tests",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/eye-tests/home-visit-eye-test(?:/)?$"
+    }
+  ],
+  "headers": [],
+  "onMatchHeaders": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/articles/[slug]",
+      "regex": "^/articles/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/articles/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/eye-health/conditions/[slug]",
+      "regex": "^/eye\\-health/conditions/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/eye\\-health/conditions/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/eye-health/guides/[slug]",
+      "regex": "^/eye\\-health/guides/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/eye\\-health/guides/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/eye-tests/[slug]",
+      "regex": "^/eye\\-tests/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/eye\\-tests/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/find/[slug]",
+      "regex": "^/find/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/find/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/locations/[city]",
+      "regex": "^/locations/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPcity": "nxtPcity"
+      },
+      "namedRegex": "^/locations/(?<nxtPcity>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/opticians/[brand]/[location]",
+      "regex": "^/opticians/([^/]+?)/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPbrand": "nxtPbrand",
+        "nxtPlocation": "nxtPlocation"
+      },
+      "namedRegex": "^/opticians/(?<nxtPbrand>[^/]+?)/(?<nxtPlocation>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/opticians/[slug]",
+      "regex": "^/opticians/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/opticians/(?<nxtPslug>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/about",
+      "regex": "^/about(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about(?:/)?$"
+    },
+    {
+      "page": "/admin",
+      "regex": "^/admin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin(?:/)?$"
+    },
+    {
+      "page": "/admin/login",
+      "regex": "^/admin/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/login(?:/)?$"
+    },
+    {
+      "page": "/api/admin/featured",
+      "regex": "^/api/admin/featured(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/admin/featured(?:/)?$"
+    },
+    {
+      "page": "/api/admin/listings",
+      "regex": "^/api/admin/listings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/admin/listings(?:/)?$"
+    },
+    {
+      "page": "/api/admin/providers",
+      "regex": "^/api/admin/providers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/admin/providers(?:/)?$"
+    },
+    {
+      "page": "/api/admin/stores",
+      "regex": "^/api/admin/stores(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/admin/stores(?:/)?$"
+    },
+    {
+      "page": "/api/at-home-enquiry",
+      "regex": "^/api/at\\-home\\-enquiry(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/at\\-home\\-enquiry(?:/)?$"
+    },
+    {
+      "page": "/api/get-listed",
+      "regex": "^/api/get\\-listed(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/get\\-listed(?:/)?$"
+    },
+    {
+      "page": "/api/search",
+      "regex": "^/api/search(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/search(?:/)?$"
+    },
+    {
+      "page": "/api/stripe/checkout",
+      "regex": "^/api/stripe/checkout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/checkout(?:/)?$"
+    },
+    {
+      "page": "/api/stripe/webhook",
+      "regex": "^/api/stripe/webhook(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/webhook(?:/)?$"
+    },
+    {
+      "page": "/articles",
+      "regex": "^/articles(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/articles(?:/)?$"
+    },
+    {
+      "page": "/at-home-eye-tests",
+      "regex": "^/at\\-home\\-eye\\-tests(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/at\\-home\\-eye\\-tests(?:/)?$"
+    },
+    {
+      "page": "/disclaimer",
+      "regex": "^/disclaimer(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/disclaimer(?:/)?$"
+    },
+    {
+      "page": "/eye-health",
+      "regex": "^/eye\\-health(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/eye\\-health(?:/)?$"
+    },
+    {
+      "page": "/eye-health/conditions",
+      "regex": "^/eye\\-health/conditions(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/eye\\-health/conditions(?:/)?$"
+    },
+    {
+      "page": "/eye-tests",
+      "regex": "^/eye\\-tests(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/eye\\-tests(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/find",
+      "regex": "^/find(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/find(?:/)?$"
+    },
+    {
+      "page": "/get-listed",
+      "regex": "^/get\\-listed(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/get\\-listed(?:/)?$"
+    },
+    {
+      "page": "/get-listed/success",
+      "regex": "^/get\\-listed/success(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/get\\-listed/success(?:/)?$"
+    },
+    {
+      "page": "/get-listed/thank-you",
+      "regex": "^/get\\-listed/thank\\-you(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/get\\-listed/thank\\-you(?:/)?$"
+    },
+    {
+      "page": "/locations",
+      "regex": "^/locations(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/locations(?:/)?$"
+    },
+    {
+      "page": "/offers",
+      "regex": "^/offers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/offers(?:/)?$"
+    },
+    {
+      "page": "/opticians",
+      "regex": "^/opticians(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/opticians(?:/)?$"
+    },
+    {
+      "page": "/partners",
+      "regex": "^/partners(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/partners(?:/)?$"
+    },
+    {
+      "page": "/privacy",
+      "regex": "^/privacy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/privacy(?:/)?$"
+    },
+    {
+      "page": "/search",
+      "regex": "^/search(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/search(?:/)?$"
+    },
+    {
+      "page": "/sitemap.xml",
+      "regex": "^/sitemap\\.xml(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sitemap\\.xml(?:/)?$"
+    },
+    {
+      "page": "/terms",
+      "regex": "^/terms(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/terms(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

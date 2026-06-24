@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/eye-health/layout,_N_T_/eye-health/guides/layout,_N_T_/eye-health/guides/[slug]/layout,_N_T_/eye-health/guides/[slug]/page,_N_T_/eye-health/guides/screen-time-and-eye-health"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/eye-health/guides/$d$slug/__PAGE__",
+    "/eye-health/guides/$d$slug",
+    "/eye-health/guides",
+    "/eye-health",
+    "/_index",
+    "/_head"
+  ]
+}

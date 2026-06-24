@@ -242,10 +242,12 @@ export function TierSelection({
                 className="text-3xl font-bold text-[var(--color-navy)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                &pound;99
+                {audiologyAddon ? <>&pound;148</> : <>&pound;99</>}
               </span>
               <span className="text-gray-500 text-sm">/year</span>
-              <span className="ml-2 text-xs text-gray-400">(just &pound;8.25/mo)</span>
+              <span className="ml-2 text-xs text-gray-400">
+                {audiologyAddon ? "(just £12.33/mo)" : "(just £8.25/mo)"}
+              </span>
             </div>
             <ul className="space-y-3 text-sm text-gray-700">
               <li className="flex items-start gap-2">
@@ -270,6 +272,28 @@ export function TierSelection({
               </li>
             </ul>
           </div>
+          {/* Audiology add-on */}
+          <div className="border-t border-gray-100 pt-4 mb-5">
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={audiologyAddon}
+                onChange={(e) => setAudiologyAddon(e.target.checked)}
+                className="w-4 h-4 rounded border-gray-300 text-[var(--color-primary)] focus:ring-[var(--color-primary)] mt-0.5 cursor-pointer"
+              />
+              <div>
+                <span className="text-sm font-semibold text-[var(--color-navy)]">
+                  Add hearingtest.co.uk
+                </span>
+                <span className="text-sm text-[var(--color-primary)] font-semibold ml-1">
+                  +&pound;49/yr
+                </span>
+                <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                  Also appear in hearing test searches on our sister site
+                </p>
+              </div>
+            </label>
+          </div>
           <div className="mt-auto">
             <button
               onClick={() => handleChoose("gold")}
@@ -285,7 +309,7 @@ export function TierSelection({
                   Redirecting to payment...
                 </>
               ) : (
-                "Choose Gold"
+                <>Choose Gold &mdash; &pound;{audiologyAddon ? "148" : "99"}/yr</>
               )}
             </button>
           </div>
@@ -322,10 +346,12 @@ export function TierSelection({
                 className="text-3xl font-bold text-[var(--color-navy)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                &pound;149
+                {audiologyAddon ? <>&pound;198</> : <>&pound;149</>}
               </span>
               <span className="text-gray-500 text-sm">/year</span>
-              <span className="ml-2 text-xs text-gray-400">(just &pound;12.42/mo)</span>
+              <span className="ml-2 text-xs text-gray-400">
+                {audiologyAddon ? "(just £16.50/mo)" : "(just £12.42/mo)"}
+              </span>
             </div>
             <p className="text-xs text-[var(--color-primary)] font-semibold mb-4">
               Everything in Gold, PLUS:
@@ -351,6 +377,28 @@ export function TierSelection({
               </li>
             </ul>
           </div>
+          {/* Audiology add-on */}
+          <div className="border-t border-gray-100 pt-4 mb-5">
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={audiologyAddon}
+                onChange={(e) => setAudiologyAddon(e.target.checked)}
+                className="w-4 h-4 rounded border-gray-300 text-[var(--color-primary)] focus:ring-[var(--color-primary)] mt-0.5 cursor-pointer"
+              />
+              <div>
+                <span className="text-sm font-semibold text-[var(--color-navy)]">
+                  Add hearingtest.co.uk
+                </span>
+                <span className="text-sm text-[var(--color-primary)] font-semibold ml-1">
+                  +&pound;49/yr
+                </span>
+                <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                  Also appear in hearing test searches on our sister site
+                </p>
+              </div>
+            </label>
+          </div>
           <div className="mt-auto">
             <button
               onClick={() => handleChoose("platinum")}
@@ -366,35 +414,11 @@ export function TierSelection({
                   Redirecting to payment...
                 </>
               ) : (
-                "Choose Platinum"
+                <>Choose Platinum &mdash; &pound;{audiologyAddon ? "198" : "149"}/yr</>
               )}
             </button>
           </div>
         </div>
-      </div>
-
-      {/* ---- Audiology add-on (directly below pricing cards) ---- */}
-      <div className="bg-blue-50 rounded-xl border border-blue-200 p-5 sm:p-6 mb-6">
-        <label className="flex items-start gap-4 cursor-pointer">
-          <input
-            type="checkbox"
-            checked={audiologyAddon}
-            onChange={(e) => setAudiologyAddon(e.target.checked)}
-            className="w-5 h-5 rounded border-gray-300 text-[var(--color-primary)] focus:ring-[var(--color-primary)] mt-0.5 cursor-pointer"
-          />
-          <div>
-            <h3
-              className="font-bold text-[var(--color-navy)] mb-1"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Also list on hearingtest.co.uk? <span className="text-[var(--color-primary)] font-semibold">+&pound;49/year</span>
-            </h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Reach patients searching for hearing tests near you on our sister
-              site. Added to your selected plan at checkout.
-            </p>
-          </div>
-        </label>
       </div>
 
       {/* ---- Trust badges row ---- */}

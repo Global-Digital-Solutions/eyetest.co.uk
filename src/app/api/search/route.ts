@@ -7,6 +7,7 @@ import { fetchMysight, MYSIGHT_SITES } from "@/lib/providers/mysight";
 import { fetchMandS } from "@/lib/providers/mands";
 import { fetchAceAndTate } from "@/lib/providers/aceandtate";
 import { fetchScrivens } from "@/lib/providers/scrivens";
+import { fetchJimmyFairly } from "@/lib/providers/jimmyfairly";
 import type { StoreResult, FeaturedProvider, OpticianListing } from "@/lib/types";
 import { createClient } from "@/lib/supabase/server";
 import { haversine } from "@/lib/haversine";
@@ -204,7 +205,7 @@ export async function GET(req: NextRequest) {
   }
 
   const activeProviders = [
-    ...["Boots Opticians", "ASDA Opticians", "Vision Express", "M&S Opticians", "Ace & Tate"].filter(enabled),
+    ...["Boots Opticians", "ASDA Opticians", "Vision Express", "M&S Opticians", "Ace & Tate", "Jimmy Fairly"].filter(enabled),
     ...MYSIGHT_SITES.filter(enabled),
   ];
 
@@ -253,6 +254,9 @@ export async function GET(req: NextRequest) {
           : []),
         ...(enabled("scrivens")
           ? [runProvider("scrivens", () => fetchScrivens(lat, lng, RADIUS, LIMIT))]
+          : []),
+        ...(enabled("Jimmy Fairly")
+          ? [runProvider("Jimmy Fairly", () => fetchJimmyFairly(lat, lng, RADIUS, LIMIT))]
           : []),
         ...MYSIGHT_SITES.filter((site) => enabled(site)).map(
           (site) => runProvider(site, () => fetchMysight(site, lat, lng, RADIUS, LIMIT))

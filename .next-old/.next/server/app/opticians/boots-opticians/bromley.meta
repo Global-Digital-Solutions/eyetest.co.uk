@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/opticians/layout,_N_T_/opticians/[brand]/layout,_N_T_/opticians/[brand]/[location]/layout,_N_T_/opticians/[brand]/[location]/page,_N_T_/opticians/boots-opticians/bromley"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/opticians/$d$brand/$d$location/__PAGE__",
+    "/opticians/$d$brand/$d$location",
+    "/opticians/$d$brand",
+    "/opticians",
+    "/_index",
+    "/_head"
+  ]
+}

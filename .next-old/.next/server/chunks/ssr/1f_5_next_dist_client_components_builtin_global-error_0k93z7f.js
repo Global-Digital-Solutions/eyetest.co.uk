@@ -1,0 +1,3 @@
+module.exports=[60641,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(35886);a.n(d("[project]/Documents/Claude/Projects/eyetest.co.uk/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},42610,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(35886);a.n(d("[project]/Documents/Claude/Projects/eyetest.co.uk/node_modules/next/dist/client/components/builtin/global-error.js"))},30027,a=>{"use strict";a.i(60641);var b=a.i(42610);a.n(b)},65863,a=>{a.n(a.i(30027))}];
+
+//# sourceMappingURL=1f_5_next_dist_client_components_builtin_global-error_0k93z7f.js.map

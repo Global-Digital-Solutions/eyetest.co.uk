@@ -1,0 +1,36 @@
+{
+  "node": {
+    "00829744b6b83d1f638cad2050eefe611784b75a79": {
+      "workers": {
+        "app/admin/login/page": {
+          "moduleId": 20271,
+          "async": false,
+          "exportedName": "logout",
+          "filename": "Documents/Claude/Projects/eyetest.co.uk/src/app/admin/login/actions.ts"
+        },
+        "app/admin/page": {
+          "moduleId": 90079,
+          "async": false,
+          "exportedName": "logout",
+          "filename": "Documents/Claude/Projects/eyetest.co.uk/src/app/admin/login/actions.ts"
+        }
+      },
+      "filename": "Documents/Claude/Projects/eyetest.co.uk/src/app/admin/login/actions.ts",
+      "exportedName": "logout"
+    },
+    "406fd9ff99dc77db1ed3a5b0f8408ea26b0208dee2": {
+      "workers": {
+        "app/admin/login/page": {
+          "moduleId": 20271,
+          "async": false,
+          "exportedName": "login",
+          "filename": "Documents/Claude/Projects/eyetest.co.uk/src/app/admin/login/actions.ts"
+        }
+      },
+      "filename": "Documents/Claude/Projects/eyetest.co.uk/src/app/admin/login/actions.ts",
+      "exportedName": "login"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "0Puhmkj5TVaDJpYzE27hZSfPbDcRgQ2qwW9SvljjtwI="
+}

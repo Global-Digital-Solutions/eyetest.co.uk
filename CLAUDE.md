@@ -44,6 +44,9 @@ Darin Butler (butlerdarin@gmail.com) — Founder, eyetest.co.uk
 | MySight | GraphQL | ~35 independent brands |
 | M&S Opticians | Static (Magento booking links) | 37 |
 | Ace & Tate | Static (Acuity Scheduling links) | 17 |
+| Scrivens | Static (branchId deep links) | 164 |
+
+Static providers use `getStaticThreeDayDates()` — suppresses "today" after 6 PM UK time.
 
 ## Key Types
 - `DailySlot`: `{ date: string; count: number }` — count=-1 means "available but count unknown"
@@ -83,11 +86,17 @@ Darin Butler (butlerdarin@gmail.com) — Founder, eyetest.co.uk
 | Terminated postcodes fix | Done |
 | Gmail App Password + Vercel env vars | Done |
 | MySight deep-link fix (/recall route) | Done |
-| M&S Opticians + Ace & Tate connectors | Done |
+| M&S Opticians + Ace & Tate + Scrivens connectors | Done |
 | Search results UX: map pins, miles, trust banner | Done |
 | SE Ranking audit fixes (score 97→100) | Done |
-| **Optician subscription + Stripe billing** | **Next** |
-| Apify Google Reviews scraping | Pending |
+| Mobile UX: viewport zoom, keyboard dismiss, logo | Done |
+| Desktop booking handoff (new tab + interstitial) | Done |
+| Static provider after-hours suppression (6 PM cutoff) | Done |
+| Featured/Platinum listings (admin → search results) | Done |
+| Sticky desktop map (overflow-x: clip fix) | Done |
+| **Outbound provider communication** | **Next** |
+| Optician subscription + Stripe billing | Planned |
+| Apify Google Reviews scraping | Planned |
 
 ## Preferences
 - Git workflow: commit from workspace, push from Mac terminal

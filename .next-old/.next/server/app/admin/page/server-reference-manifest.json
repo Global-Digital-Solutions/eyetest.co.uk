@@ -1,0 +1,17 @@
+{
+  "node": {
+    "00829744b6b83d1f638cad2050eefe611784b75a79": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": 90079,
+          "async": false,
+          "exportedName": "logout",
+          "filename": "Documents/Claude/Projects/eyetest.co.uk/src/app/admin/login/actions.ts"
+        }
+      },
+      "exportedName": "logout",
+      "filename": "Documents/Claude/Projects/eyetest.co.uk/src/app/admin/login/actions.ts"
+    }
+  },
+  "edge": {}
+}

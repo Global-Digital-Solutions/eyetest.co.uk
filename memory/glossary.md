@@ -37,5 +37,20 @@
 | asda | ASDA Opticians |
 | vision-express | Vision Express |
 | mysight | MySight network (independents) |
+| mands | M&S Opticians (static, 37 stores) |
+| aceandtate | Ace & Tate (static, 17 stores) |
+| scrivens | Scrivens (static, 164 stores) |
 | specsavers | Specsavers (listed but no live API integration yet) |
 | optical-express | Optical Express (listed but no live API) |
+
+## Featured Listing Terms
+| Term | Meaning |
+|------|---------|
+| Platinum listing | Top-tier featured placement — full-width card, brand logo, badges, services tagline |
+| Gold listing | Enhanced card with small logo, priority sort above organic |
+| featured_providers | Supabase table for admin-configured featured placement rules |
+| optician_listings | Supabase table for subscribed opticians with self-service portal |
+| density cap | City-based radius cap to prevent overlap in urban areas (London=1mi, Tier2=3mi, default=5mi) |
+| getStaticThreeDayDates() | Date function for static providers — skips "today" after 6 PM UK time to avoid showing "Available today" when stores are closed |
+| SearchForm | Client component that dismisses iOS keyboard on submit via blur + delayed router.push |
+| overflow-x: clip | CSS property used instead of `hidden` to prevent breaking position:sticky |

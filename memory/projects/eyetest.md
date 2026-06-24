@@ -191,9 +191,34 @@ All canonical URLs, OG URLs, and schema URLs use `www.eyetest.co.uk`
 | 2026-06-18 | Distance display changed from km to miles (UK audience) |
 | 2026-06-18 | Trust banner — shows local optician count, time saved (distinct brands × 5 min), independents value message |
 | 2026-06-18 | SE Ranking audit fixes — duplicate titles, 1,247 redirect links, sitemap cleanup, H1/alt text |
-| Next | Optician subscription model with Stripe billing |
+| 2026-06-18 | Scrivens provider (164 stores, static, branchId booking links) |
+| 2026-06-23 | Mobile UX: iOS viewport zoom fix (16px min font), keyboard dismissal (SearchForm client component with blur+router.push), logo text on mobile header |
+| 2026-06-23 | Desktop booking handoff: new tab via window.open + interstitial overlay; mobile keeps same-tab navigation |
+| 2026-06-23 | Static provider after-hours fix: `getStaticThreeDayDates()` skips "today" after 6 PM UK time (M&S, Scrivens, Ace & Tate) |
+| 2026-06-23 | Featured/Platinum listings: density cap exemption for admin-configured featured rules; brand logos + services populated from BRAND_LOGOS mapping |
+| 2026-06-23 | Sticky desktop map: `overflow-x: clip` replaces `overflow-x: hidden` to avoid breaking position:sticky |
+| Next | Outbound provider communication + Stripe billing |
+
+## Featured Listings System
+
+### Tiers
+- **Platinum** — Full-width card at top of results with brand logo, "Recommended" + "Verified" badges, dark navy accent border, services tagline
+- **Gold** — Enhanced standard card with small logo, badge, priority sort above organic results
+
+### Admin Panel
+- `/admin` → Featured tab → manage featured_providers rules
+- Each rule: provider name, store name/postcode, lat/lng, radius_km, label, tier, active toggle
+
+### Density Cap (Search API)
+- City zones cap organic listing radius to prevent overlap (London = 1 mi, Tier 2 cities = 3 mi, rural = 5 mi)
+- **Featured provider rules are exempt** from the density cap — admin sets the radius intentionally for paid placements
+- Organic optician_listings still respect the density cap
+
+### Brand Assets
+Logos stored in `/public/logos/` — `boots-opticians.jpg`, `asda-opticians.svg`, `vision-express.svg`, `mands-opticians.webp`, `ace-and-tate.png`, `leightons.png`, `rawlings.svg`, `duncan-and-todd.svg`
+`BRAND_LOGOS` mapping in SearchResults.tsx auto-populates `logoUrl` for featured results
 
 ## Pending Work
-1. **Optician subscription + Stripe** — Featured placement, self-service portal, monthly/annual billing (starting next)
-2. **Apify Google Reviews** — Scrape and display optician reviews
-3. **SE Ranking re-scan** — Verify audit fixes resolved all issues (expect score 97→100)
+1. **Outbound provider communication** — Draft outreach to optician chains about featured listing subscriptions
+2. **Optician subscription + Stripe** — Featured placement, self-service portal, monthly/annual billing
+3. **Apify Google Reviews** — Scrape and display optician reviews

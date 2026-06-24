@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/eye-health/layout,_N_T_/eye-health/conditions/layout,_N_T_/eye-health/conditions/[slug]/layout,_N_T_/eye-health/conditions/[slug]/page,_N_T_/eye-health/conditions/strabismus"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/eye-health/conditions/$d$slug/__PAGE__",
+    "/eye-health/conditions/$d$slug",
+    "/eye-health/conditions",
+    "/eye-health",
+    "/_index",
+    "/_head"
+  ]
+}

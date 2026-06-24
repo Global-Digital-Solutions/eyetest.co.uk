@@ -63,11 +63,28 @@ Search results are the only truly dynamic page — they query live APIs on each 
 ### Provider Pattern
 Each provider in `src/lib/providers/` exports an async function that:
 1. Takes lat/lng coordinates and date range
-2. Queries the external API (Ocuco for Boots/ASDA, GraphQL for Vision Express/MySight) OR uses hardcoded stores with haversine filtering (M&S, Ace & Tate)
+2. Queries the external API (Ocuco for Boots/ASDA, GraphQL for Vision Express/MySight) OR uses hardcoded stores with haversine filtering (M&S, Ace & Tate, Scrivens)
 3. Returns an array of store results with availability data
 4. Generates deep-link booking URLs
 
-**Static providers** (M&S, Ace & Tate) set `slotsAvailable: null` and `dailySlots` with `count: -1` (available, count unknown). The `hasAvailability()` helper must check `dailySlots.some(s => s.count !== 0)` before falling back to `Boolean(slotsAvailable)`. This pattern is used in SearchResults.tsx bucketing, StoreCard rendering, and StoreMap.tsx pins/popups.
+**Static providers** (M&S, Ace & Tate, Scrivens) set `slotsAvailable: null` and `dailySlots` with `count: -1` (available, count unknown). The `hasAvailability()` helper must check `dailySlots.some(s => s.count !== 0)` before falling back to `Boolean(slotsAvailable)`. This pattern is used in SearchResults.tsx bucketing, StoreCard rendering, and StoreMap.tsx pins/popups.
+
+**Static providers use `getStaticThreeDayDates()`** instead of `getThreeDayDates()`. After 6 PM UK time, this shifts the 3-day window to start from tomorrow, preventing misleading "Available today" badges when stores are closed. Real-time providers (Boots, ASDA, Vision Express, MySight) use `getThreeDayDates()` since their APIs return actual slot data.
+
+### Featured Listings (Search API)
+The search API loads `featured_providers` rules from Supabase and matches them to provider results by postcode (primary) or store name (fallback). Matched results get `featured: true`, `featuredLabel`, and `tier` properties. Client-side, `SearchResults.tsx` populates `logoUrl` and `services` from `BRAND_LOGOS` and `BRAND_SERVICES` maps.
+
+**Density cap:** City zones cap organic listing radius (London=1mi, Tier 2=3mi, default=5mi). Featured provider rules are EXEMPT — admin-configured radii are respected as-is. Only `optician_listings` (self-service portal) respect the cap.
+
+### Booking Handoff
+Desktop: `window.open()` opens optician site in a new tab (within click gesture to avoid popup blockers), eyetest.co.uk shows interstitial overlay that auto-closes after delay.
+Mobile: Same-tab navigation via `window.location.href` after interstitial countdown.
+Detection: `ontouchstart` + `window.innerWidth < 768px`.
+
+### iOS Mobile Fixes
+- **Viewport zoom:** `font-size: 16px !important` on all inputs at `max-width: 767px` prevents iOS auto-zoom
+- **Keyboard dismissal:** `SearchForm.tsx` client component prevents default form submit, blurs input, then navigates via `router.push()` after 50ms delay
+- **Horizontal overflow:** `overflow-x: clip` on html/body (NOT `hidden`, which breaks position:sticky)
 
 ### Map (StoreMap.tsx)
 Mapbox GL with teardrop SVG pin markers. Pins are coloured: teal (available), gray (unavailable), amber (featured). Store name appears on hover via CSS `group-hover`. Click opens a popup with store details, availability badge, and Book Now CTA. Desktop layout is 5/7 split (results/map).

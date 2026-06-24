@@ -1146,6 +1146,7 @@ const CHAIN_INFO: Record<string, { name: string; color: string }> = {
   "ASDA Opticians": { name: "ASDA Opticians", color: "#78b83e" },
   "Vision Express": { name: "Vision Express", color: "#7b2d8e" },
   "scrivens": { name: "Scrivens", color: "#c62828" },
+  "Jimmy Fairly": { name: "Jimmy Fairly", color: "#e8b923" },
 };
 
 function SearchProgressPanel({
