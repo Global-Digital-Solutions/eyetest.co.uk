@@ -423,6 +423,55 @@ export function TierSelection({
         </div>
       </div>
 
+      {/* ---- Stripe payment bar ---- */}
+      <div className="flex flex-col items-center gap-2 mb-8 py-4">
+        <div className="flex items-center gap-2 text-xs text-gray-400">
+          <svg className="w-4 h-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+          </svg>
+          Secure checkout powered by
+        </div>
+        {/* Stripe logo */}
+        <svg className="h-7" viewBox="0 0 60 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Stripe">
+          <path fillRule="evenodd" clipRule="evenodd" d="M60 12.835c0-4.247-2.058-7.6-5.994-7.6-3.95 0-6.342 3.353-6.342 7.567 0 4.995 2.822 7.517 6.87 7.517 1.975 0 3.467-.448 4.594-1.078v-3.32c-1.127.563-2.42.912-4.06.912-1.608 0-3.035-.563-3.218-2.52h8.117c0-.215.033-1.078.033-1.478zm-8.2-1.578c0-1.874 1.144-2.653 2.19-2.653 1.01 0 2.09.78 2.09 2.653h-4.28zM41.483 5.235c-1.624 0-2.668.763-3.248 1.294l-.216-1.028h-3.616v19.36l4.11-.872.016-4.697c.596.432 1.474 1.044 2.938 1.044 2.97 0 5.676-2.388 5.676-7.65-.016-4.813-2.755-7.451-5.66-7.451zm-.996 11.465c-.98 0-1.558-.348-1.958-.78l-.016-6.153c.432-.48 1.027-.796 1.974-.796 1.508 0 2.553 1.693 2.553 3.848 0 2.205-1.028 3.881-2.553 3.881zM30.237 4.273l4.127-.88V0l-4.127.863v3.41zM34.364 5.5h-4.127v14.562h4.127V5.5zM25.813 6.926l-.266-1.426h-3.55v14.562h4.11V9.38c.97-1.261 2.613-1.028 3.118-.846V5.5c-.522-.198-2.438-.564-3.412 1.426zM17.73 1.76l-4.012.847-.016 13.319c0 2.454 1.842 4.263 4.296 4.263 1.36 0 2.354-.248 2.904-.547v-3.336c-.533.216-3.168.98-3.168-1.477V8.804h3.168V5.5H17.734l-.004-3.74zM5.994 9.562c0-.647.532-.896 1.41-.896 1.26 0 2.854.38 4.114 1.062V5.947c-1.376-.547-2.738-.763-4.114-.763C3.003 5.184 0 7.572 0 11.27c0 5.74 7.902 4.83 7.902 7.302 0 .763-.664 1.012-1.592 1.012-1.376 0-3.135-.564-4.528-1.327v3.832c1.542.664 3.1.946 4.528.946 4.462 0 7.531-2.205 7.531-5.953C13.825 11.02 5.994 12.115 5.994 9.562z" fill="#635BFF" />
+        </svg>
+        {/* Payment method icons */}
+        <div className="flex items-center gap-3 mt-1">
+          {/* Visa */}
+          <svg className="h-6 w-9" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Visa">
+            <rect width="36" height="24" rx="4" fill="#F6F9FC" stroke="#E0E6EB" />
+            <path d="M15.39 15.61h-2.2l1.38-8.48h2.2l-1.38 8.48z" fill="#3C58BF" />
+            <path d="M24.1 7.32c-.44-.17-1.12-.35-1.97-.35-2.18 0-3.71 1.16-3.72 2.81-.02 1.22 1.1 1.9 1.93 2.31.86.42 1.15.69 1.14 1.06-.01.57-.68.83-1.31.83-.88 0-1.34-.13-2.06-.44l-.28-.13-.31 1.89c.51.24 1.46.44 2.44.45 2.31 0 3.82-1.14 3.83-2.91.01-.97-.58-1.71-1.85-2.32-.77-.39-1.24-.66-1.24-1.06.01-.36.4-.74 1.26-.74.72-.01 1.24.15 1.64.33l.2.1.3-1.83z" fill="#3C58BF" />
+            <path d="M27.46 7.13h-1.7c-.53 0-.92.15-1.15.7l-3.27 7.78h2.31s.38-1.04.46-1.27h2.83c.07.3.27 1.27.27 1.27H29l-1.54-8.48zm-2.72 5.47c.18-.49.88-2.38.88-2.38-.01.02.18-.49.29-.81l.15.73s.42 2.05.51 2.46h-1.83z" fill="#3C58BF" />
+            <path d="M12.34 7.13l-2.16 5.78-.23-1.18c-.4-1.36-1.66-2.84-3.06-3.58l1.97 7.45h2.33l3.47-8.47h-2.32z" fill="#3C58BF" />
+            <path d="M8.42 7.13H4.94l-.03.18c2.76.7 4.59 2.41 5.35 4.46l-.77-3.92c-.13-.54-.52-.7-1.07-.72z" fill="#E6A540" />
+          </svg>
+          {/* Mastercard */}
+          <svg className="h-6 w-9" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mastercard">
+            <rect width="36" height="24" rx="4" fill="#F6F9FC" stroke="#E0E6EB" />
+            <circle cx="15" cy="12" r="6" fill="#EB001B" />
+            <circle cx="21" cy="12" r="6" fill="#F79E1B" />
+            <path d="M18 7.5a5.97 5.97 0 012.12 4.5A5.97 5.97 0 0118 16.5a5.97 5.97 0 01-2.12-4.5A5.97 5.97 0 0118 7.5z" fill="#FF5F00" />
+          </svg>
+          {/* Amex */}
+          <svg className="h-6 w-9" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Amex">
+            <rect width="36" height="24" rx="4" fill="#2557D6" />
+            <text x="18" y="14" textAnchor="middle" fontSize="7" fontWeight="bold" fill="white" fontFamily="system-ui">AMEX</text>
+          </svg>
+          {/* Apple Pay */}
+          <div className="flex items-center justify-center h-6 w-9 rounded border border-gray-200 bg-[#F6F9FC]">
+            <svg className="h-3.5" viewBox="0 0 40 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Apple Pay">
+              <path d="M7.4 2.2c-.5.6-1.3 1-2 1-.1-.8.3-1.6.7-2.1.5-.6 1.3-1 2-1.1.1.8-.2 1.6-.7 2.2zm.7 1.1c-1.1-.1-2.1.6-2.6.6-.5 0-1.4-.6-2.3-.6C1.9 3.4.5 4.6.5 7.1c0 1.6.6 3.2 1.4 4.3.7 1 1.3 1.8 2.2 1.8.9 0 1.2-.6 2.3-.6 1 0 1.3.6 2.2.6s1.4-.8 2-1.7c.7-1 .9-1.9.9-2 0 0-1.8-.7-1.8-2.7 0-1.7 1.4-2.5 1.4-2.6-.8-1.1-2-1.2-2.4-1.2h-.6z" fill="#000" />
+              <path d="M16.8 1.1c2.6 0 4.5 1.8 4.5 4.5 0 2.7-1.9 4.5-4.6 4.5h-2.9v4.6h-2.2V1.1h5.2zm-3 7.2h2.4c1.8 0 2.9-1 2.9-2.7s-1-2.7-2.8-2.7h-2.5v5.4zM22.2 11.4c0-1.8 1.3-2.8 3.7-3l2.7-.1v-.8c0-1.1-.8-1.8-2-1.8-1.1 0-1.9.6-2 1.5h-2c.1-1.9 1.7-3.3 4.1-3.3 2.4 0 4 1.3 4 3.3v6.5h-2v-1.6c-.6 1-1.8 1.8-3.2 1.8-2 0-3.3-1.2-3.3-2.9v.4zm6.4-.8v-.8l-2.4.2c-1.2.1-1.9.6-1.9 1.4 0 .8.7 1.4 1.8 1.4 1.4 0 2.5-1 2.5-2.2zM32 17c-.2 0-.5 0-.6 0v-1.7c.1 0 .5 0 .7 0 1 0 1.5-.4 1.8-1.5l.2-.5-3.7-10h2.3l2.5 8.2h0l2.5-8.2H40l-3.8 10.6c-.9 2.4-1.8 3.1-3.7 3.1h-.5z" fill="#000" />
+            </svg>
+          </div>
+          {/* Google Pay */}
+          <div className="flex items-center justify-center h-6 w-9 rounded border border-gray-200 bg-[#F6F9FC]">
+            <span className="text-[7px] font-bold text-gray-500">GPay</span>
+          </div>
+        </div>
+      </div>
+
       {/* ---- Trust badges row ---- */}
       <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-10 py-3">
         {[
@@ -499,6 +548,67 @@ export function TierSelection({
               appointments &mdash; every appointment after that is pure profit.
             </p>
           </div>
+        </div>
+      </div>
+
+      {/* ---- Terms & Conditions ---- */}
+      <div className="mb-8">
+        <h3
+          className="text-sm font-semibold text-[var(--color-navy)] mb-3"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          Terms &amp; Conditions
+        </h3>
+        <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 max-h-48 overflow-y-auto text-xs text-gray-500 leading-relaxed space-y-2.5 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300">
+          <p className="font-semibold text-gray-600">eyetest.co.uk Directory Listing Agreement</p>
+          <p>
+            By subscribing to a listing on eyetest.co.uk, you agree to the following terms. Please read them carefully before proceeding.
+          </p>
+          <p className="font-semibold text-gray-600">1. Service Description</p>
+          <p>
+            eyetest.co.uk provides a directory listing service that displays your optician practice information, location, and appointment availability to users searching for eye tests in the United Kingdom. Your listing may include your practice name, address, contact details, opening hours, services offered, and links to your booking system.
+          </p>
+          <p className="font-semibold text-gray-600">2. Subscription &amp; Payment</p>
+          <p>
+            Subscriptions are billed annually as a single upfront payment for a 12-month period. Payment is processed securely via Stripe. By subscribing, you authorise recurring annual payments until you cancel. All prices are exclusive of VAT where applicable.
+          </p>
+          <p className="font-semibold text-gray-600">3. Renewal</p>
+          <p>
+            Your subscription will automatically renew for a further 12-month period. Renewal payment may be taken up to 14 days prior to your subscription expiry date. You will receive an email reminder before renewal. If you do not wish to renew, you must cancel before the renewal payment is processed.
+          </p>
+          <p className="font-semibold text-gray-600">4. Cancellation</p>
+          <p>
+            You may cancel your subscription at any time by contacting us at hello@eyetest.co.uk or through your account settings. Cancellation will take effect at the end of your current 12-month billing period. No partial refunds are issued for the remaining portion of a paid subscription term. Upon cancellation, your listing will remain active until the end of the current billing period, after which it will be removed from the directory.
+          </p>
+          <p className="font-semibold text-gray-600">5. Money-Back Guarantee</p>
+          <p>
+            New subscribers are entitled to a 30-day money-back guarantee from the date of initial payment. If you are not satisfied with the service within the first 30 days, contact us for a full refund. This guarantee applies to first-time subscriptions only and does not apply to renewals.
+          </p>
+          <p className="font-semibold text-gray-600">6. Listing Content &amp; Accuracy</p>
+          <p>
+            You are responsible for ensuring that all information provided for your listing is accurate, up to date, and not misleading. eyetest.co.uk reserves the right to edit or remove listings that contain inaccurate, inappropriate, or misleading content. We may also update listing formats and presentation at our discretion.
+          </p>
+          <p className="font-semibold text-gray-600">7. Limitation of Liability</p>
+          <p>
+            eyetest.co.uk is a directory and comparison service only. We do not provide optical, medical, or healthcare services and accept no liability for the services provided by listed opticians. We make no guarantees regarding the volume of traffic, enquiries, or appointments generated by your listing. The platform is provided &ldquo;as is&rdquo; and we shall not be liable for any indirect, incidental, or consequential damages arising from your use of the service.
+          </p>
+          <p className="font-semibold text-gray-600">8. Intellectual Property</p>
+          <p>
+            By submitting content for your listing, you grant eyetest.co.uk a non-exclusive licence to display your practice name, logo, and associated information on our platform for the duration of your subscription. All other intellectual property rights remain with their respective owners.
+          </p>
+          <p className="font-semibold text-gray-600">9. Data Protection</p>
+          <p>
+            We process your data in accordance with our Privacy Policy and applicable UK data protection legislation, including the UK GDPR. Contact and listing information will be displayed publicly on the directory.
+          </p>
+          <p className="font-semibold text-gray-600">10. Modifications</p>
+          <p>
+            eyetest.co.uk reserves the right to modify these terms at any time. We will notify active subscribers of material changes by email at least 30 days in advance. Continued use of the service after notification constitutes acceptance of the updated terms.
+          </p>
+          <p className="font-semibold text-gray-600">11. Governing Law</p>
+          <p>
+            These terms are governed by and construed in accordance with the laws of England and Wales. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts of England and Wales.
+          </p>
+          <p className="text-gray-400 mt-3">Last updated: June 2025</p>
         </div>
       </div>
 

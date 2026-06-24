@@ -31,6 +31,7 @@ function hasAvailability(store: StoreResult) {
 /*  appears on StoreResult.provider.                                   */
 /* ------------------------------------------------------------------ */
 const PIN_BRAND_COLORS: Record<string, string> = {
+  // Main chains
   "Boots Opticians": "#0460a9",
   "ASDA Opticians": "#78b83e",
   "Vision Express": "#7b2d8e",
@@ -38,12 +39,19 @@ const PIN_BRAND_COLORS: Record<string, string> = {
   "Ace & Tate": "#1a1a1a",
   "scrivens": "#c62828",
   "Jimmy Fairly": "#e8b923",
-  // MySight / independents
-  "duncan-todd.mysight.uk": "#1a1a1a",
-  "leightons.mysight.uk": "#1b3a6b",
-  "rawlings.mysight.uk": "#003d6b",
-  "bayfields.mysight.uk": "#004d3d",
-  "harrold-opticians.mysight.uk": "#2c3e50",
+  // MySight independents — keyed by exact siteHost from MYSIGHT_SITES
+  "duncanandtodd.mysight.uk": "#1a1a1a",       // Duncan & Todd — black
+  "leightons.mysight.uk": "#1b3a6b",            // Leightons — navy
+  "rawlingsopticians.mysight.uk": "#003d6b",    // Rawlings — dark blue
+  "bayfieldsopticians.mysight.uk": "#004d3d",   // Bayfields — dark teal
+  "harroldopticians.mysight.uk": "#2c3e50",     // Harrold Opticians — charcoal
+  "cranfordopticians.mysight.uk": "#4a2c82",    // Cranford — purple
+  "lynnefernandes.mysight.uk": "#6b2c5e",       // Lynne Fernandes — plum
+  "eyesite.mysight.uk": "#1565c0",              // Eyesite — blue
+  "classiceyes.mysight.uk": "#8b5e3c",          // Classic Eyes — brown
+  "eyecollective.mysight.uk": "#2e7d32",        // Eye Collective — green
+  "optimaopticians.mysight.uk": "#0277bd",      // Optima — light blue
+  "viewpoint.mysight.uk": "#d84315",            // Viewpoint — burnt orange
 };
 
 /** Return the brand colour for a featured store's pin, with a fallback */

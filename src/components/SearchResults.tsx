@@ -1349,7 +1349,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
   const [globalError, setGlobalError] = useState<string | null>(null);
   const [stream, setStream] = useState<StreamState | null>(null);
   const [showMobileMap, setShowMobileMap] = useState(false);
-  const hasSearched = useRef(false);
+  const lastSearchedPc = useRef<string>("");
   const [departure, setDeparture] = useState<DepartureInfo | null>(null);
   const [hoveredStoreId, setHoveredStoreId] = useState<string | null>(null);
   const handleBookingClick = useCallback(
@@ -1491,10 +1491,11 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
     }
   }, []);
 
-  // Auto-search on page load if postcode param exists
+  // Auto-search on page load and whenever the postcode prop changes
+  // (e.g. user enters a new postcode in the search bar and hits Update)
   useEffect(() => {
-    if (postcode && !hasSearched.current) {
-      hasSearched.current = true;
+    if (postcode && postcode !== lastSearchedPc.current) {
+      lastSearchedPc.current = postcode;
       handleSearch(postcode);
     }
   }, [postcode, handleSearch]);
