@@ -1862,6 +1862,110 @@ export const opticians: OpticianBrand[] = [
     rating: 4.6,
     reviewCount: 520,
   },
+
+  // ─── Jimmy Fairly ─────────────────────────────────────────────────
+  {
+    slug: "jimmy-fairly",
+    name: "Jimmy Fairly",
+    shortName: "Jimmy Fairly",
+    brandColor: "#e8b923",
+    description:
+      "Jimmy Fairly is a French eyewear brand founded in Paris in 2010 with a mission to make high-quality, stylish glasses accessible and socially responsible. For every pair of glasses sold, a pair is donated to someone in need through their 'Buy One, Give One' programme. Jimmy Fairly designs all frames in-house at their Paris atelier, offering a curated collection of fashion-forward eyewear at transparent prices. With 17 UK stores — including 11 in London — they have quickly become a popular choice for style-conscious customers who want distinctive frames with a social conscience.",
+    services: [
+      "Private Eye Tests",
+      "Contact Lenses",
+      "Glasses",
+      "Style Consultation",
+    ],
+    storeCount: 17,
+    website: "https://www.jimmyfairly.com/en-gb",
+    priceRange: "From £89 (frames + lenses)",
+    nhsAvailable: false,
+    available: true,
+    highlights: [
+      "Buy One, Give One — a pair donated to someone in need with every purchase",
+      "Frames designed in-house at their Paris atelier",
+      "Transparent pricing with frames and prescription lenses from £89",
+      "17 UK stores including 11 across London",
+    ],
+    founded: "2010",
+    storeLocations: [
+      "london", "edinburgh", "bath", "bristol", "brighton", "cambridge", "leeds",
+    ],
+    history:
+      "Jimmy Fairly was founded in Paris in 2010 by Sacha Bostoni and Antonin Chartier, two friends who believed that quality eyewear should not come with an outrageous price tag. Inspired by the direct-to-consumer model and driven by a desire to make a positive social impact, they built the brand around a simple promise: for every pair sold, a pair is given to someone who cannot afford glasses. The brand expanded rapidly across France before launching in the UK, where they have opened 17 stores in premium high-street locations. Each store is designed to feel warm and inviting, with a distinctive French aesthetic that sets them apart from typical opticians.",
+    detailedServices: [
+      {
+        name: "Eye Test",
+        description:
+          "A private eye examination carried out by a qualified optometrist at a Jimmy Fairly store. The test includes a comprehensive assessment of your vision and eye health, with results used to provide an up-to-date prescription for glasses or contact lenses.",
+        price: "From £30",
+        duration: "20-25 minutes",
+        nhsCovered: false,
+      },
+      {
+        name: "Glasses",
+        description:
+          "A wide selection of fashion-forward frames designed in Paris, available with single-vision or progressive prescription lenses. All frames come with anti-reflective, anti-scratch lenses included in the price. Premium options include blue-light filtering and photochromic lenses.",
+        price: "From £89",
+        duration: "Frame selection + fitting",
+        nhsCovered: false,
+      },
+      {
+        name: "Contact Lens Fitting",
+        description:
+          "A professional contact lens fitting and assessment to find the best lenses for your eyes and lifestyle. Includes a trial of lenses and guidance on insertion, removal, and care.",
+        price: "From £50",
+        duration: "30 minutes",
+        nhsCovered: false,
+      },
+    ],
+    bookingProcess: [
+      "Search for your nearest Jimmy Fairly store by entering your postcode on eyetest.co.uk",
+      "Find the nearest location and check available appointment types",
+      "Click through to book directly on the Jimmy Fairly website",
+      "Select your preferred date and time from the available slots",
+      "Attend your appointment and browse the frame collection before or after your test",
+    ],
+    prosAndCons: {
+      pros: [
+        "Socially responsible — every purchase donates a pair of glasses to someone in need",
+        "Stylish, Paris-designed frames that stand out from mainstream high-street options",
+        "Transparent all-in pricing with frames and lenses from £89",
+        "Welcoming, well-designed stores with a distinctive French aesthetic",
+      ],
+      cons: [
+        "No NHS-funded eye tests — all services are private",
+        "Limited UK presence with 17 stores concentrated in London and select cities",
+        "Smaller frame selection compared to large chains like Specsavers or Boots",
+        "Not available in most towns outside London and a few major cities",
+      ],
+    },
+    faqs: [
+      {
+        q: "How much are Jimmy Fairly glasses?",
+        a: "Jimmy Fairly glasses start from £89 for frames with single-vision prescription lenses included. This transparent pricing means no hidden extras for standard lenses. Progressive lenses and premium lens options such as blue-light filtering or photochromic lenses are available at additional cost. Sunglasses and non-prescription frames are also available. All frames are designed in-house at their Paris atelier.",
+      },
+      {
+        q: "Where are Jimmy Fairly stores in the UK?",
+        a: "Jimmy Fairly has 17 stores across the UK. Eleven are in London, located in Chelsea, Covent Garden, Battersea, Soho, Hampstead, Wimbledon, Stoke Newington, Kingston, Angel, Portobello, and Soho Carnaby. Outside London, you can find stores in Edinburgh, Bath, Bristol, Brighton, Cambridge, and Leeds. You can search for your nearest store on eyetest.co.uk by entering your postcode.",
+      },
+      {
+        q: "Do Jimmy Fairly offer NHS eye tests?",
+        a: "No, Jimmy Fairly does not offer NHS-funded eye tests. All eye tests at Jimmy Fairly are private. If you are looking for a free NHS eye test, you would need to visit an optician that participates in the NHS scheme, such as Boots Opticians or Vision Express. You can use eyetest.co.uk to compare NHS and private options near you.",
+      },
+      {
+        q: "What is Jimmy Fairly's Buy One Give One programme?",
+        a: "For every pair of glasses sold, Jimmy Fairly donates a pair to someone in need through their Buy One, Give One programme. Since launching in 2010, they have donated hundreds of thousands of pairs of glasses to communities around the world. This social mission is central to the brand's identity and is one of the key reasons customers choose Jimmy Fairly over other opticians.",
+      },
+      {
+        q: "Can I book a Jimmy Fairly eye test online?",
+        a: "Yes, you can book an eye test at your nearest Jimmy Fairly store through eyetest.co.uk. Simply enter your postcode, find the nearest location, and click through to book directly. You can also book through the Jimmy Fairly website. Booking through eyetest.co.uk lets you compare availability and prices across multiple opticians in your area.",
+      },
+    ],
+    rating: 4.7,
+    reviewCount: 380,
+  },
 ];
 
 // ---------------------------------------------------------------------------

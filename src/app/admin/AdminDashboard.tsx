@@ -9,10 +9,11 @@ type Config = Record<string, boolean>;
 const MYSIGHT_LABEL = (site: string) =>
   site.replace(".mysight.uk", "").replace(/-/g, " ");
 
-const MAIN_PROVIDERS = ["Boots Opticians", "ASDA Opticians", "Vision Express", "M&S Opticians", "Ace & Tate", "scrivens"];
+const MAIN_PROVIDERS = ["Boots Opticians", "ASDA Opticians", "Vision Express", "M&S Opticians", "Ace & Tate", "scrivens", "Jimmy Fairly"];
 
 const PROVIDER_DISPLAY: Record<string, string> = {
   scrivens: "Scrivens",
+  "Jimmy Fairly": "Jimmy Fairly",
 };
 
 const inputCls =
@@ -1009,6 +1010,7 @@ const IMPORT_PROVIDERS = [
   { key: "mands", label: "M&S Opticians", stores: 37, static: true },
   { key: "aceandtate", label: "Ace & Tate", stores: 17, static: true },
   { key: "scrivens", label: "Scrivens", stores: 164, static: true },
+  { key: "jimmyfairly", label: "Jimmy Fairly", stores: 17, static: true },
   { key: "mysight", label: "MySight Independents", stores: 34, static: false, note: "34 brands — fetches branches from API" },
 ];
 
