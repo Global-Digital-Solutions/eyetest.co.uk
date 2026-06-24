@@ -251,11 +251,18 @@ function DepartureOverlay({
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // Navigate current tab to the booking page after the countdown
-      window.location.href = info.url;
+      // Try opening in a new tab (works if user activation is still valid)
+      const newTab = window.open(info.url, "_blank", "noopener,noreferrer");
+      if (newTab) {
+        // Success — user stays on eyetest.co.uk
+        onClose();
+      } else {
+        // Pop-up blocked — fall back to same-tab navigation
+        window.location.href = info.url;
+      }
     }, DEPARTURE_DELAY_MS);
     return () => clearTimeout(timer);
-  }, [info.url]);
+  }, [info.url, onClose]);
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
@@ -334,7 +341,8 @@ function DepartureOverlay({
             </div>
 
             {/* Skip button — jump straight to booking */}
-            <a href={info.url}
+            <a href={info.url} target="_blank" rel="noopener noreferrer"
+              onClick={onClose}
               className="inline-block text-xs text-gray-400 hover:text-[var(--color-primary)] transition-colors cursor-pointer">
               Go now &rarr;
             </a>
