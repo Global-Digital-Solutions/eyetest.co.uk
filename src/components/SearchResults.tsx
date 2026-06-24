@@ -251,10 +251,12 @@ function DepartureOverlay({
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // Try opening in a new tab (works if user activation is still valid)
-      const newTab = window.open(info.url, "_blank", "noopener,noreferrer");
+      // Try opening in a new tab (works if user activation is still valid).
+      // Note: do NOT pass "noopener" as windowFeatures — it forces a null
+      // return value per spec, which we need to detect pop-up blocking.
+      const newTab = window.open(info.url, "_blank");
       if (newTab) {
-        // Success — user stays on eyetest.co.uk
+        newTab.opener = null; // security: prevent opener access
         onClose();
       } else {
         // Pop-up blocked — fall back to same-tab navigation
