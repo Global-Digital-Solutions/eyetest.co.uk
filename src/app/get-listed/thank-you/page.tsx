@@ -112,11 +112,11 @@ export default async function ThankYouPage({
                   className="text-xl font-bold text-[var(--color-navy)] mb-3"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
-                  No application found
+                  No practice submission found
                 </h2>
                 <p className="text-gray-600 mb-6">
-                  It looks like you arrived here without an active application.
-                  Please submit your details first and we&rsquo;ll bring you
+                  It looks like you arrived here without an active submission.
+                  Please submit your practice details first and we&rsquo;ll bring you
                   back to choose a plan.
                 </p>
                 <a
