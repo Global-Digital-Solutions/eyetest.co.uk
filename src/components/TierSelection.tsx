@@ -20,7 +20,8 @@ export function TierSelection({
   postcode,
   initialAudiologyAddon,
 }: TierSelectionProps) {
-  const [audiologyAddon, setAudiologyAddon] = useState(initialAudiologyAddon);
+  const [goldAudiology, setGoldAudiology] = useState(initialAudiologyAddon);
+  const [platinumAudiology, setPlatinumAudiology] = useState(initialAudiologyAddon);
   const [loading, setLoading] = useState<"gold" | "platinum" | null>(null);
   const [error, setError] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -28,6 +29,7 @@ export function TierSelection({
   const handleChoose = async (tier: "gold" | "platinum") => {
     setLoading(tier);
     setError("");
+    const audiologyAddon = tier === "gold" ? goldAudiology : platinumAudiology;
 
     try {
       const res = await fetch("/api/stripe/checkout", {
@@ -242,11 +244,11 @@ export function TierSelection({
                 className="text-3xl font-bold text-[var(--color-navy)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                {audiologyAddon ? <>&pound;148</> : <>&pound;99</>}
+                {goldAudiology ? <>&pound;148</> : <>&pound;99</>}
               </span>
               <span className="text-gray-500 text-sm">/year</span>
               <span className="ml-2 text-xs text-gray-400">
-                {audiologyAddon ? "(just £12.33/mo)" : "(just £8.25/mo)"}
+                {goldAudiology ? "(just £12.33/mo)" : "(just £8.25/mo)"}
               </span>
             </div>
             <ul className="space-y-3 text-sm text-gray-700">
@@ -277,8 +279,8 @@ export function TierSelection({
             <label className="flex items-start gap-3 cursor-pointer">
               <input
                 type="checkbox"
-                checked={audiologyAddon}
-                onChange={(e) => setAudiologyAddon(e.target.checked)}
+                checked={goldAudiology}
+                onChange={(e) => setGoldAudiology(e.target.checked)}
                 className="w-4 h-4 rounded border-gray-300 text-[var(--color-primary)] focus:ring-[var(--color-primary)] mt-0.5 cursor-pointer"
               />
               <div>
@@ -309,7 +311,7 @@ export function TierSelection({
                   Redirecting to payment...
                 </>
               ) : (
-                <>Choose Gold &mdash; &pound;{audiologyAddon ? "148" : "99"}/yr</>
+                <>Choose Gold &mdash; &pound;{goldAudiology ? "148" : "99"}/yr</>
               )}
             </button>
           </div>
@@ -346,11 +348,11 @@ export function TierSelection({
                 className="text-3xl font-bold text-[var(--color-navy)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                {audiologyAddon ? <>&pound;198</> : <>&pound;149</>}
+                {platinumAudiology ? <>&pound;198</> : <>&pound;149</>}
               </span>
               <span className="text-gray-500 text-sm">/year</span>
               <span className="ml-2 text-xs text-gray-400">
-                {audiologyAddon ? "(just £16.50/mo)" : "(just £12.42/mo)"}
+                {platinumAudiology ? "(just £16.50/mo)" : "(just £12.42/mo)"}
               </span>
             </div>
             <p className="text-xs text-[var(--color-primary)] font-semibold mb-4">
@@ -382,8 +384,8 @@ export function TierSelection({
             <label className="flex items-start gap-3 cursor-pointer">
               <input
                 type="checkbox"
-                checked={audiologyAddon}
-                onChange={(e) => setAudiologyAddon(e.target.checked)}
+                checked={platinumAudiology}
+                onChange={(e) => setPlatinumAudiology(e.target.checked)}
                 className="w-4 h-4 rounded border-gray-300 text-[var(--color-primary)] focus:ring-[var(--color-primary)] mt-0.5 cursor-pointer"
               />
               <div>
@@ -414,7 +416,7 @@ export function TierSelection({
                   Redirecting to payment...
                 </>
               ) : (
-                <>Choose Platinum &mdash; &pound;{audiologyAddon ? "198" : "149"}/yr</>
+                <>Choose Platinum &mdash; &pound;{platinumAudiology ? "198" : "149"}/yr</>
               )}
             </button>
           </div>
