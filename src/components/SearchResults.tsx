@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { createPortal } from "react-dom";
+// (createPortal removed — overlay is rendered outside the clipped container via Fragment)
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import type { StoreResult } from "@/lib/types";
@@ -1656,6 +1656,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
   }
 
   return (
+    <>
     <div className="max-w-7xl mx-auto px-4 py-5 sm:py-6" style={{ overflowX: "clip" }}>
       {/* Error state */}
       {globalError && (
@@ -2276,10 +2277,12 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
         </div>
       )}
 
-      {departure && createPortal(
-        <DepartureOverlay info={departure} onClose={() => setDeparture(null)} />,
-        document.body
-      )}
     </div>
+
+    {/* Departure overlay — rendered OUTSIDE the overflow-x:clip div so it isn't clipped */}
+    {departure && (
+      <DepartureOverlay info={departure} onClose={() => setDeparture(null)} />
+    )}
+    </>
   );
 }
