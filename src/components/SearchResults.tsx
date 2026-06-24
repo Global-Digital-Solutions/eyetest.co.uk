@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import type { StoreResult } from "@/lib/types";
@@ -2275,8 +2276,9 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
         </div>
       )}
 
-      {departure && (
-        <DepartureOverlay info={departure} onClose={() => setDeparture(null)} />
+      {departure && createPortal(
+        <DepartureOverlay info={departure} onClose={() => setDeparture(null)} />,
+        document.body
       )}
     </div>
   );
