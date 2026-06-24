@@ -24,6 +24,37 @@ function hasAvailability(store: StoreResult) {
     : Boolean(store.slotsAvailable);
 }
 
+/* ------------------------------------------------------------------ */
+/*  Brand colours for map pins                                         */
+/*  Featured/platinum providers get their brand colour on the pin      */
+/*  instead of the generic amber. Keyed by provider name as it        */
+/*  appears on StoreResult.provider.                                   */
+/* ------------------------------------------------------------------ */
+const PIN_BRAND_COLORS: Record<string, string> = {
+  "Boots Opticians": "#0460a9",
+  "ASDA Opticians": "#78b83e",
+  "Vision Express": "#7b2d8e",
+  "M&S Opticians": "#007a33",
+  "Ace & Tate": "#1a1a1a",
+  "scrivens": "#c62828",
+  "Jimmy Fairly": "#e8b923",
+  // MySight / independents
+  "duncan-todd.mysight.uk": "#1a1a1a",
+  "leightons.mysight.uk": "#1b3a6b",
+  "rawlings.mysight.uk": "#003d6b",
+  "bayfields.mysight.uk": "#004d3d",
+  "harrold-opticians.mysight.uk": "#2c3e50",
+};
+
+/** Return the brand colour for a featured store's pin, with a fallback */
+function getFeaturedPinColor(store: StoreResult): string {
+  // Check explicit brand map first
+  const brandColor = PIN_BRAND_COLORS[store.provider];
+  if (brandColor) return brandColor;
+  // Fallback: amber for any other featured provider
+  return "#f59e0b";
+}
+
 function formatDistance(m: number): string {
   const miles = m / 1609.344;
   if (miles < 0.1) return `${Math.round(m * 1.09361)} yds`;
@@ -33,12 +64,16 @@ function formatDistance(m: number): string {
 /** Teardrop-shaped map pin using inline SVG */
 function Pin({ store, highlighted }: { store: StoreResult; highlighted?: boolean }) {
   const featured = store.featured;
+  const isPlatinum = store.tier === "platinum";
   const available = hasAvailability(store);
 
-  const baseFill = featured ? "#f59e0b" : available ? "#0ea5a0" : "#9ca3af";
+  // Featured pins use provider brand colour; others use teal/grey
+  const baseFill = featured
+    ? getFeaturedPinColor(store)
+    : available ? "#0ea5a0" : "#9ca3af";
   // Brighter fill when highlighted from card hover
   const fill = highlighted && !featured ? (available ? "#0d8a86" : "#6b7280") : baseFill;
-  const size = highlighted ? 40 : featured ? 36 : 30;
+  const size = highlighted ? 40 : isPlatinum ? 38 : featured ? 36 : 30;
 
   return (
     <div
@@ -126,10 +161,30 @@ function Pin({ store, highlighted }: { store: StoreResult; highlighted?: boolean
         }}
         className="group-hover/pin:scale-110"
       >
+        {/* Platinum outer glow ring */}
+        {isPlatinum && (
+          <path
+            d="M15 0C6.716 0 0 6.716 0 15c0 10.969 13.256 22.748 13.82 23.254a1.8 1.8 0 002.36 0C16.744 37.748 30 25.969 30 15 30 6.716 23.284 0 15 0z"
+            fill="none"
+            stroke={fill}
+            strokeWidth="2"
+            strokeOpacity="0.3"
+            style={{ filter: "blur(2px)" }}
+          />
+        )}
         <path
           d="M15 0C6.716 0 0 6.716 0 15c0 10.969 13.256 22.748 13.82 23.254a1.8 1.8 0 002.36 0C16.744 37.748 30 25.969 30 15 30 6.716 23.284 0 15 0z"
           fill={fill}
         />
+        {/* White border for platinum pins to help them stand out */}
+        {isPlatinum && (
+          <path
+            d="M15 0C6.716 0 0 6.716 0 15c0 10.969 13.256 22.748 13.82 23.254a1.8 1.8 0 002.36 0C16.744 37.748 30 25.969 30 15 30 6.716 23.284 0 15 0z"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+          />
+        )}
         <circle cx="15" cy="14" r="6" fill="white" fillOpacity="0.9" />
         {featured && (
           <text x="15" y="18" textAnchor="middle" fontSize="12" fill={fill} fontWeight="bold">★</text>
@@ -207,23 +262,27 @@ export default function StoreMap({ stores, center, hoveredStoreId, onHoverStore 
           maxWidth="280px"
         >
           <div style={{ padding: "8px 4px", fontFamily: "inherit" }}>
-            {/* Featured badge */}
-            {popup.featured && (
-              <div
-                style={{
-                  display: "inline-block",
-                  backgroundColor: "#fef3c7",
-                  color: "#92400e",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  borderRadius: 12,
-                  padding: "2px 8px",
-                  marginBottom: 8,
-                }}
-              >
-                ★ {popup.featuredLabel ?? "Recommended"}
-              </div>
-            )}
+            {/* Featured badge — uses provider brand colour */}
+            {popup.featured && (() => {
+              const brandCol = getFeaturedPinColor(popup);
+              return (
+                <div
+                  style={{
+                    display: "inline-block",
+                    backgroundColor: brandCol + "18",
+                    color: brandCol,
+                    fontSize: 11,
+                    fontWeight: 700,
+                    borderRadius: 12,
+                    padding: "2px 8px",
+                    marginBottom: 8,
+                    border: `1px solid ${brandCol}30`,
+                  }}
+                >
+                  ★ {popup.featuredLabel ?? "Recommended"}
+                </div>
+              );
+            })()}
 
             {/* Store name + distance */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8, marginBottom: 4 }}>
