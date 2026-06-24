@@ -243,46 +243,55 @@ type DepartureInfo = {
 function DepartureOverlay({
   info,
   onClose,
+  pendingTabRef,
 }: {
   info: DepartureInfo;
   onClose: () => void;
+  /** Desktop only: ref to blank tab that will be navigated after countdown */
+  pendingTabRef?: React.RefObject<Window | null>;
 }) {
   const brand = PROVIDER_BRANDS[info.providerName];
   const brandColor = brand?.color ?? "#374151";
   const brandInitial = brand?.initial ?? info.providerName.charAt(0);
 
-  useEffect(() => {
-    if (info.openedNewTab) {
-      // Desktop: new tab already opened — keep the overlay visible
-      // so the user sees it when they return to this tab.
-      // They dismiss it via the Close button or clicking the backdrop.
-      return;
+  /** Navigate the pending tab (or open fresh) and close overlay */
+  const finishHandoff = useCallback(() => {
+    if (pendingTabRef?.current) {
+      try {
+        pendingTabRef.current.location.href = info.url;
+        pendingTabRef.current.focus();
+      } catch {
+        // Lost reference (e.g. user closed the blank tab) — open fresh
+        window.open(info.url, "_blank");
+      }
+      pendingTabRef.current = null;
     }
-    // Mobile: navigate in the same tab after the countdown
+    onClose();
+  }, [info.url, onClose, pendingTabRef]);
+
+  useEffect(() => {
+    // Both desktop and mobile: countdown then navigate
     const timer = setTimeout(() => {
-      window.location.href = info.url;
+      if (info.openedNewTab) {
+        finishHandoff();
+      } else {
+        // Mobile: navigate in the same tab
+        window.location.href = info.url;
+      }
     }, DEPARTURE_DELAY_MS);
     return () => clearTimeout(timer);
-  }, [info.url, info.openedNewTab, onClose]);
+  }, [info.url, info.openedNewTab, finishHandoff]);
 
   return (
-    <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4"
-      onClick={info.openedNewTab ? onClose : undefined}
-    >
-      <div
-        className="w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden animate-in"
-        onClick={info.openedNewTab ? (e) => e.stopPropagation() : undefined}
-      >
-        {/* Progress bar — only on mobile where there's a countdown */}
-        {!info.openedNewTab && (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+      <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden animate-in">
+        {/* Progress bar */}
         <div className="h-1 bg-gray-100">
           <div
             className="h-full bg-[var(--color-primary)] rounded-r-full"
             style={{ animation: `departure-progress ${DEPARTURE_DELAY_MS}ms linear forwards` }}
           />
         </div>
-        )}
 
         <div className="px-6 py-8 sm:px-8 sm:py-10">
           {/* Logo handoff: eyetest.co.uk -> Provider */}
@@ -326,17 +335,8 @@ function DepartureOverlay({
               Booking with {info.providerName}
             </h3>
             <p className="text-sm text-gray-500 mb-1 leading-relaxed">
-              {info.openedNewTab ? (
-                <>
-                  <strong className="text-[var(--color-navy)]">{info.storeName}</strong> has opened in a new tab
-                  for you to complete your eye test booking.
-                </>
-              ) : (
-                <>
-                  You&apos;re being connected to <strong className="text-[var(--color-navy)]">{info.storeName}</strong> to
-                  complete your eye test booking.
-                </>
-              )}
+              You&apos;re being connected to <strong className="text-[var(--color-navy)]">{info.storeName}</strong> to
+              complete your eye test booking.
             </p>
             <p className="text-xs text-gray-400 mb-6">
               This is a completely free service — no fees, no sign-up.
@@ -358,13 +358,13 @@ function DepartureOverlay({
               </span>
             </div>
 
-            {/* Skip / close button */}
+            {/* Skip button — jump straight to booking */}
             {info.openedNewTab ? (
               <button
-                onClick={onClose}
+                onClick={finishHandoff}
                 className="inline-block text-xs text-gray-400 hover:text-[var(--color-primary)] transition-colors cursor-pointer"
               >
-                Close &times;
+                Go now &rarr;
               </button>
             ) : (
               <a href={info.url}
@@ -1360,6 +1360,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
   const lastSearchedPc = useRef<string>("");
   const [departure, setDeparture] = useState<DepartureInfo | null>(null);
   const [hoveredStoreId, setHoveredStoreId] = useState<string | null>(null);
+  const pendingTabRef = useRef<Window | null>(null);
   const handleBookingClick = useCallback(
     (e: React.MouseEvent, store: StoreResult) => {
       e.preventDefault();
@@ -1374,9 +1375,16 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
       let openedNewTab = false;
 
       if (!isMobile) {
-        // Desktop: open booking URL in a new tab immediately
-        // (within the user gesture so pop-up blocker won't block it)
-        window.open(store.bookingUrl, "_blank", "noopener,noreferrer");
+        // Desktop: open a blank tab NOW (within the user gesture so
+        // pop-up blockers allow it), then navigate it to the booking
+        // URL after the interstitial countdown finishes.
+        const blank = window.open("about:blank", "_blank");
+        if (blank) {
+          blank.document.title = "Loading…";
+          pendingTabRef.current = blank;
+        }
+        // Try to keep focus on eyetest.co.uk so the user sees the interstitial
+        try { window.focus(); } catch { /* some browsers block this */ }
         openedNewTab = true;
       }
 
@@ -2289,7 +2297,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
 
     {/* Departure overlay — rendered OUTSIDE the overflow-x:clip div so it isn't clipped */}
     {departure && (
-      <DepartureOverlay info={departure} onClose={() => setDeparture(null)} />
+      <DepartureOverlay info={departure} onClose={() => setDeparture(null)} pendingTabRef={pendingTabRef} />
     )}
     </>
   );
