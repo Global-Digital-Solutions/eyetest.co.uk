@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-// (createPortal removed — overlay is rendered outside the clipped container via Fragment)
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import type { StoreResult } from "@/lib/types";
@@ -253,29 +252,37 @@ function DepartureOverlay({
   const brandInitial = brand?.initial ?? info.providerName.charAt(0);
 
   useEffect(() => {
+    if (info.openedNewTab) {
+      // Desktop: new tab already opened — keep the overlay visible
+      // so the user sees it when they return to this tab.
+      // They dismiss it via the Close button or clicking the backdrop.
+      return;
+    }
+    // Mobile: navigate in the same tab after the countdown
     const timer = setTimeout(() => {
-      if (info.openedNewTab) {
-        // Desktop: new tab already opened — just close the overlay
-        // and keep the user on eyetest.co.uk
-        onClose();
-      } else {
-        // Mobile: navigate in the same tab to avoid pop-up blockers
-        window.location.href = info.url;
-      }
+      window.location.href = info.url;
     }, DEPARTURE_DELAY_MS);
     return () => clearTimeout(timer);
   }, [info.url, info.openedNewTab, onClose]);
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
-      <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden animate-in">
-        {/* Progress bar */}
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4"
+      onClick={info.openedNewTab ? onClose : undefined}
+    >
+      <div
+        className="w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden animate-in"
+        onClick={info.openedNewTab ? (e) => e.stopPropagation() : undefined}
+      >
+        {/* Progress bar — only on mobile where there's a countdown */}
+        {!info.openedNewTab && (
         <div className="h-1 bg-gray-100">
           <div
             className="h-full bg-[var(--color-primary)] rounded-r-full"
             style={{ animation: `departure-progress ${DEPARTURE_DELAY_MS}ms linear forwards` }}
           />
         </div>
+        )}
 
         <div className="px-6 py-8 sm:px-8 sm:py-10">
           {/* Logo handoff: eyetest.co.uk -> Provider */}
@@ -1357,10 +1364,6 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
     (e: React.MouseEvent, store: StoreResult) => {
       e.preventDefault();
 
-      // --- DEBUG: remove after fix confirmed ---
-      console.log("[INTERSTITIAL] handler fired:", store.storeName);
-      // --- end debug ---
-
       const provName = displayProviderName(store.provider);
 
       // Detect mobile via touch capability + narrow viewport
@@ -2287,18 +2290,6 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
     {/* Departure overlay — rendered OUTSIDE the overflow-x:clip div so it isn't clipped */}
     {departure && (
       <DepartureOverlay info={departure} onClose={() => setDeparture(null)} />
-    )}
-
-    {/* --- DEBUG BANNER: remove after fix confirmed --- */}
-    {departure && (
-      <div style={{
-        position: "fixed", top: 0, left: 0, right: 0,
-        background: "red", color: "white", padding: "20px",
-        zIndex: 99999, fontSize: "24px", fontWeight: "bold",
-        textAlign: "center",
-      }}>
-        INTERSTITIAL DEBUG: departure state is SET for {departure.storeName}
-      </div>
     )}
     </>
   );
