@@ -236,51 +236,26 @@ type DepartureInfo = {
   providerName: string;
   storeName: string;
   url: string;
-  /** true when the booking URL was already opened in a new tab (desktop) */
-  openedNewTab?: boolean;
 };
 
 function DepartureOverlay({
   info,
   onClose,
-  pendingTabRef,
 }: {
   info: DepartureInfo;
   onClose: () => void;
-  /** Desktop only: ref to blank tab that will be navigated after countdown */
-  pendingTabRef?: React.RefObject<Window | null>;
 }) {
   const brand = PROVIDER_BRANDS[info.providerName];
   const brandColor = brand?.color ?? "#374151";
   const brandInitial = brand?.initial ?? info.providerName.charAt(0);
 
-  /** Navigate the pending tab (or open fresh) and close overlay */
-  const finishHandoff = useCallback(() => {
-    if (pendingTabRef?.current) {
-      try {
-        pendingTabRef.current.location.href = info.url;
-        pendingTabRef.current.focus();
-      } catch {
-        // Lost reference (e.g. user closed the blank tab) — open fresh
-        window.open(info.url, "_blank");
-      }
-      pendingTabRef.current = null;
-    }
-    onClose();
-  }, [info.url, onClose, pendingTabRef]);
-
   useEffect(() => {
-    // Both desktop and mobile: countdown then navigate
     const timer = setTimeout(() => {
-      if (info.openedNewTab) {
-        finishHandoff();
-      } else {
-        // Mobile: navigate in the same tab
-        window.location.href = info.url;
-      }
+      // Navigate current tab to the booking page after the countdown
+      window.location.href = info.url;
     }, DEPARTURE_DELAY_MS);
     return () => clearTimeout(timer);
-  }, [info.url, info.openedNewTab, finishHandoff]);
+  }, [info.url]);
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
@@ -359,19 +334,10 @@ function DepartureOverlay({
             </div>
 
             {/* Skip button — jump straight to booking */}
-            {info.openedNewTab ? (
-              <button
-                onClick={finishHandoff}
-                className="inline-block text-xs text-gray-400 hover:text-[var(--color-primary)] transition-colors cursor-pointer"
-              >
-                Go now &rarr;
-              </button>
-            ) : (
-              <a href={info.url}
-                className="inline-block text-xs text-gray-400 hover:text-[var(--color-primary)] transition-colors cursor-pointer">
-                Go now &rarr;
-              </a>
-            )}
+            <a href={info.url}
+              className="inline-block text-xs text-gray-400 hover:text-[var(--color-primary)] transition-colors cursor-pointer">
+              Go now &rarr;
+            </a>
           </div>
         </div>
 
@@ -1360,40 +1326,16 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
   const lastSearchedPc = useRef<string>("");
   const [departure, setDeparture] = useState<DepartureInfo | null>(null);
   const [hoveredStoreId, setHoveredStoreId] = useState<string | null>(null);
-  const pendingTabRef = useRef<Window | null>(null);
   const handleBookingClick = useCallback(
     (e: React.MouseEvent, store: StoreResult) => {
       e.preventDefault();
 
-      const provName = displayProviderName(store.provider);
-
-      // Detect mobile via touch capability + narrow viewport
-      const isMobile =
-        ("ontouchstart" in window || navigator.maxTouchPoints > 0) &&
-        window.innerWidth < 768;
-
-      let openedNewTab = false;
-
-      if (!isMobile) {
-        // Desktop: open a blank tab NOW (within the user gesture so
-        // pop-up blockers allow it), then navigate it to the booking
-        // URL after the interstitial countdown finishes.
-        const blank = window.open("about:blank", "_blank");
-        if (blank) {
-          blank.document.title = "Loading…";
-          pendingTabRef.current = blank;
-        }
-        // Try to keep focus on eyetest.co.uk so the user sees the interstitial
-        try { window.focus(); } catch { /* some browsers block this */ }
-        openedNewTab = true;
-      }
-
-      // Show the branded departure overlay
+      // Show the branded departure overlay — after the countdown it
+      // navigates the current tab to the booking URL.
       setDeparture({
-        providerName: provName,
+        providerName: displayProviderName(store.provider),
         storeName: store.storeName,
         url: store.bookingUrl,
-        openedNewTab,
       });
     },
     []
@@ -2297,7 +2239,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
 
     {/* Departure overlay — rendered OUTSIDE the overflow-x:clip div so it isn't clipped */}
     {departure && (
-      <DepartureOverlay info={departure} onClose={() => setDeparture(null)} pendingTabRef={pendingTabRef} />
+      <DepartureOverlay info={departure} onClose={() => setDeparture(null)} />
     )}
     </>
   );
