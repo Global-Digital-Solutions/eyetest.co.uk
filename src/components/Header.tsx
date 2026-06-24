@@ -40,6 +40,7 @@ const opticianLinks = {
     { label: "Scrivens", href: "/opticians/scrivens" },
     { label: "Bayfields", href: "/opticians/bayfields" },
     { label: "Duncan & Todd", href: "/opticians/duncan-and-todd" },
+    { label: "Jimmy Fairly", href: "/opticians/jimmy-fairly" },
   ],
   comingSoon: [
     { label: "Specsavers", href: "/opticians/specsavers" },
@@ -339,7 +340,7 @@ export function Header() {
             {activeMega === "opticians" && (
               <div className="grid grid-cols-3 gap-8">
                 <div className="col-span-2">
-                  <h3 className="text-lg font-bold text-[var(--color-navy)] mb-4" style={{ fontFamily: "var(--font-display)" }}>Book With Our Partners</h3>
+                  <h3 className="text-lg font-bold text-[var(--color-navy)] mb-4" style={{ fontFamily: "var(--font-display)" }}>Book With A Great Optician</h3>
                   <div className="grid grid-cols-2 gap-2">
                     {opticianLinks.available.map((link) => (
                       <Link
