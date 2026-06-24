@@ -128,6 +128,13 @@ export function TierSelection({
         </p>
       </div>
 
+      {/* ---- Error message (top of page) ---- */}
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700 mb-8">
+          {error}
+        </div>
+      )}
+
       {/* ---- What happens next ---- */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
         {[
@@ -366,6 +373,30 @@ export function TierSelection({
         </div>
       </div>
 
+      {/* ---- Audiology add-on (directly below pricing cards) ---- */}
+      <div className="bg-blue-50 rounded-xl border border-blue-200 p-5 sm:p-6 mb-6">
+        <label className="flex items-start gap-4 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={audiologyAddon}
+            onChange={(e) => setAudiologyAddon(e.target.checked)}
+            className="w-5 h-5 rounded border-gray-300 text-[var(--color-primary)] focus:ring-[var(--color-primary)] mt-0.5 cursor-pointer"
+          />
+          <div>
+            <h3
+              className="font-bold text-[var(--color-navy)] mb-1"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Also list on hearingtest.co.uk? <span className="text-[var(--color-primary)] font-semibold">+&pound;49/year</span>
+            </h3>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Reach patients searching for hearing tests near you on our sister
+              site. Added to your selected plan at checkout.
+            </p>
+          </div>
+        </label>
+      </div>
+
       {/* ---- Trust badges row ---- */}
       <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-10 py-3">
         {[
@@ -438,38 +469,11 @@ export function TierSelection({
               Your listing pays for itself
             </h3>
             <p className="text-sm text-gray-600 leading-relaxed">
-              The average optician earns &pound;50+ per eye test booking from
-              test fees, lenses, and frames. Your listing pays for itself with
-              just 2&ndash;3 bookings per year &mdash; everything after that is
-              pure profit.
+              Your listing typically pays for itself in the first few
+              appointments &mdash; every appointment after that is pure profit.
             </p>
           </div>
         </div>
-      </div>
-
-      {/* ---- Audiology add-on ---- */}
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 mb-10">
-        <label className="flex items-start gap-4 cursor-pointer">
-          <input
-            type="checkbox"
-            checked={audiologyAddon}
-            onChange={(e) => setAudiologyAddon(e.target.checked)}
-            className="w-5 h-5 rounded border-gray-300 text-[var(--color-primary)] focus:ring-[var(--color-primary)] mt-0.5 cursor-pointer"
-          />
-          <div>
-            <h3
-              className="font-bold text-[var(--color-navy)] mb-1"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Also list on hearingtest.co.uk?
-            </h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Add your audiology practice at the same address for just{" "}
-              <span className="font-semibold">&pound;49/year</span>. Reach
-              patients searching for hearing tests near you on our sister site.
-            </p>
-          </div>
-        </label>
       </div>
 
       {/* ---- FAQ section ---- */}
@@ -554,12 +558,6 @@ export function TierSelection({
         </a>
       </div>
 
-      {/* ---- Error message ---- */}
-      {error && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700 mb-6">
-          {error}
-        </div>
-      )}
     </>
   );
 }
