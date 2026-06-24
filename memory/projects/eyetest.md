@@ -197,6 +197,10 @@ All canonical URLs, OG URLs, and schema URLs use `www.eyetest.co.uk`
 | 2026-06-23 | Static provider after-hours fix: `getStaticThreeDayDates()` skips "today" after 6 PM UK time (M&S, Scrivens, Ace & Tate) |
 | 2026-06-23 | Featured/Platinum listings: density cap exemption for admin-configured featured rules; brand logos + services populated from BRAND_LOGOS mapping |
 | 2026-06-23 | Sticky desktop map: `overflow-x: clip` replaces `overflow-x: hidden` to avoid breaking position:sticky |
+| 2026-06-24 | DepartureOverlay fix: removed `noopener` from `window.open()` 3rd arg (returns null per spec → double navigation); manual `opener=null` instead |
+| 2026-06-24 | Nav sub-title changed: "Book With Our Partners" → "Book With A Great Optician" |
+| 2026-06-24 | Jimmy Fairly added to header nav optician links (page already generated from opticians.ts data) |
+| Next | Registration process bug fix (issue reported but not yet investigated) |
 | Next | Outbound provider communication + Stripe billing |
 
 ## Featured Listings System

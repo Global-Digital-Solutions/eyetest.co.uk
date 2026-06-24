@@ -76,10 +76,12 @@ The search API loads `featured_providers` rules from Supabase and matches them t
 
 **Density cap:** City zones cap organic listing radius (London=1mi, Tier 2=3mi, default=5mi). Featured provider rules are EXEMPT — admin-configured radii are respected as-is. Only `optician_listings` (self-service portal) respect the cap.
 
-### Booking Handoff
-Desktop: `window.open()` opens optician site in a new tab (within click gesture to avoid popup blockers), eyetest.co.uk shows interstitial overlay that auto-closes after delay.
-Mobile: Same-tab navigation via `window.location.href` after interstitial countdown.
-Detection: `ontouchstart` + `window.innerWidth < 768px`.
+### Booking Handoff (DepartureOverlay)
+Click "Book Now" → `e.preventDefault()` stops the `<a>` tag → branded interstitial overlay appears with 2.5s progress bar countdown → after countdown, `window.open(url, "_blank")` opens booking page in a new tab → overlay closes → user stays on eyetest.co.uk. If pop-up blocked, falls back to `window.location.href` (same-tab navigation). "Go now →" link lets user skip the countdown.
+
+**Critical: do NOT pass `"noopener,noreferrer"` as the third arg to `window.open()`** — per spec, `noopener` forces a `null` return value even when the tab opens successfully. This breaks the pop-up-blocked detection (`if (newTab)`), causing a double navigation (new tab AND current tab both navigate to the booking URL). Instead, open without features and set `newTab.opener = null` manually for security.
+
+**Critical: do NOT call `window.open()` synchronously in the click handler** — the browser immediately switches focus to the new tab and the user never sees the interstitial. The 2.5s `setTimeout` delay works because Chrome's user activation window lasts ~5 seconds after a click, so `window.open()` at 2.5s is still within the allowed gesture window.
 
 ### iOS Mobile Fixes
 - **Viewport zoom:** `font-size: 16px !important` on all inputs at `max-width: 767px` prevents iOS auto-zoom

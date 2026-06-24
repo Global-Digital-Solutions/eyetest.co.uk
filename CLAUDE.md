@@ -94,7 +94,10 @@ Static providers use `getStaticThreeDayDates()` — suppresses "today" after 6 P
 | Static provider after-hours suppression (6 PM cutoff) | Done |
 | Featured/Platinum listings (admin → search results) | Done |
 | Sticky desktop map (overflow-x: clip fix) | Done |
-| **Outbound provider communication** | **Next** |
+| Jimmy Fairly added to nav + optician list | Done |
+| Nav sub-title: "Book With A Great Optician" | Done |
+| **Registration process bug fix** | **Next** |
+| Outbound provider communication | Planned |
 | Optician subscription + Stripe billing | Planned |
 | Apify Google Reviews scraping | Planned |
 
