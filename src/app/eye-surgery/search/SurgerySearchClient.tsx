@@ -6,7 +6,7 @@ import Link from "next/link";
 import { SurgeryCallout } from "@/components/SurgeryCallout";
 import { SurgeryResultsMap } from "@/components/SurgeryResultsMap";
 import type { SurgeryMapClinic } from "@/components/SurgeryResultsMap";
-import { surgeryProviders } from "@/data/surgery-providers";
+import { surgeryProviders, getClinicUrl } from "@/data/surgery-providers";
 import type { SurgeryClinic } from "@/data/surgery-providers";
 
 // ---------------------------------------------------------------------------
@@ -52,8 +52,10 @@ function isPreferredPartner(slug: string): boolean {
   return providerMap.get(slug)?.isPreferredPartner ?? false;
 }
 
-function getProviderBookingUrl(slug: string): string {
-  return providerMap.get(slug)?.bookingUrl ?? "#";
+function getClinicBookingUrl(clinic: ClinicResult): string {
+  const provider = providerMap.get(clinic.providerSlug);
+  if (!provider) return "#";
+  return getClinicUrl(provider, clinic);
 }
 
 // ---------------------------------------------------------------------------
@@ -119,7 +121,7 @@ function ClinicCard({
   const brandColor = getProviderBrandColor(clinic.providerSlug);
   const review = getProviderGoogleReview(clinic.providerSlug);
   const preferred = isPreferredPartner(clinic.providerSlug);
-  const bookingUrl = getProviderBookingUrl(clinic.providerSlug);
+  const bookingUrl = getClinicBookingUrl(clinic);
 
   return (
     <div
