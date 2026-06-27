@@ -11,6 +11,8 @@ export type SurgeryClinic = {
   phone: string | null;
   lat: number;
   lng: number;
+  /** Direct URL to this clinic's page on the provider's website */
+  clinicUrl?: string;
 };
 
 export type SurgeryService = {
@@ -41,7 +43,23 @@ export type SurgeryProvider = {
   services: SurgeryService[];
   keyFacts: string[];
   bookingUrl: string;
+  /** URL pattern for per-clinic pages — use {slug} as placeholder */
+  clinicUrlPattern?: string;
 };
+
+/**
+ * Get the best URL for a specific clinic.
+ * Priority: clinic.clinicUrl > provider.clinicUrlPattern > provider.bookingUrl
+ */
+export function getClinicUrl(
+  provider: SurgeryProvider,
+  clinic: SurgeryClinic,
+): string {
+  if (clinic.clinicUrl) return clinic.clinicUrl;
+  if (provider.clinicUrlPattern)
+    return provider.clinicUrlPattern.replace("{slug}", clinic.slug);
+  return provider.bookingUrl;
+}
 
 // ---------------------------------------------------------------------------
 // Provider data
@@ -69,7 +87,8 @@ export const surgeryProviders: SurgeryProvider[] = [
       "Both NHS and private treatment options",
       "Founded by eye patient and consultant ophthalmologist",
     ],
-    bookingUrl: "https://www.newmedica.co.uk/our-clinics/",
+    bookingUrl: "https://www.newmedica.co.uk/clinics/",
+    clinicUrlPattern: "https://www.newmedica.co.uk/clinics/{slug}/",
     clinics: [
       { name: "Newmedica Barlborough", slug: "barlborough", address: "Unit 1B and 1C Midland Place, Barlborough Links, Chesterfield, S43 4FR", postcode: "S43 4FR", phone: "01246 739005", lat: 53.282, lng: -1.29235 },
       { name: "Newmedica Birmingham", slug: "birmingham", address: "Aqueous One, Aston Cross Business Village, Rocky Lane, Birmingham, B6 5RQ", postcode: "B6 5RQ", phone: "0121 270 5048", lat: 52.497583, lng: -1.881434 },
@@ -220,7 +239,8 @@ export const surgeryProviders: SurgeryProvider[] = [
       "More than 2,000 employees",
       "Part of the Veonet Group",
     ],
-    bookingUrl: "https://www.spamedica.co.uk/find-a-hospital/",
+    bookingUrl: "https://www.spamedica.co.uk/locations/",
+    clinicUrlPattern: "https://www.spamedica.co.uk/location/{slug}/",
     clinics: [
       { name: "SpaMedica Bedford", slug: "bedford", address: "Bedford Heights, Ground Floor, Manton Lane, Brickhill Drive Entrance, Bedford, MK41 7PH", postcode: "MK41 7PH", phone: "0330 058 4280", lat: 52.150802, lng: -0.474729 },
       { name: "SpaMedica Bexhill", slug: "bexhill", address: "Ground Floor, High Weald House, Bexhill Enterprise Park, Bexhill, TN39 5ES", postcode: "TN39 5ES", phone: "0330 058 4280", lat: 50.856771, lng: 0.481077 },
@@ -369,7 +389,8 @@ export const surgeryProviders: SurgeryProvider[] = [
       "Consultant-led care throughout",
       "Interest-free finance available",
     ],
-    bookingUrl: "https://www.optegra.com/book-consultation/",
+    bookingUrl: "https://www.optegra.com/hospitals-and-clinics/",
+    clinicUrlPattern: "https://www.optegra.com/hospitals-and-clinics/{slug}/",
     clinics: [
       { name: "Bowcliffe Hall Eye Clinic", slug: "bowcliffe-hall-eye-clinic", address: "Bowcliffe Hall, Bramham, Wetherby, Yorkshire", postcode: null, phone: "0800 086 1064", lat: 53.9283, lng: -1.3856 },
       { name: "Optegra Eye Hospital London (Central)", slug: "optegra-eye-hospital-london", address: "Queen Anne Street, Marylebone, London", postcode: null, phone: "0800 086 1064", lat: 51.5155, lng: -0.1418 },
@@ -488,7 +509,8 @@ export const surgeryProviders: SurgeryProvider[] = [
       "Specialist cataract and glaucoma services",
       "Shorter waiting times than hospital",
     ],
-    bookingUrl: "https://www.chec.uk/find-a-clinic/",
+    bookingUrl: "https://chec.uk/our-locations/",
+    clinicUrlPattern: "https://chec.uk/location/{slug}/",
     clinics: [
       { name: "CHEC Accrington", slug: "accrington", address: "Accrington, Lancashire", postcode: null, phone: "0344 264 4160", lat: 53.7536, lng: -2.3641 },
       { name: "CHEC Blackpool", slug: "blackpool", address: "Progress House, Avroe Court, Avroe Crescent, Blackpool", postcode: "FY4 2DP", phone: "0344 264 4160", lat: 53.777146, lng: -3.035043 },
@@ -593,10 +615,10 @@ export const surgeryProviders: SurgeryProvider[] = [
       "Consultant specialists in every sub-specialty",
       "Two central London locations",
     ],
-    bookingUrl: "https://www.moorfields.nhs.uk/content/book-appointment-private-patient",
+    bookingUrl: "https://www.moorfields.nhs.uk/private/locations",
     clinics: [
-      { name: "Moorfields Private Eye Hospital", slug: "city-road", address: "9-11 Bath Street, London, EC1V 9LF", postcode: "EC1V 9LF", phone: "020 7566 2803", lat: 51.5265, lng: -0.0888 },
-      { name: "Moorfields Private Eye Centre", slug: "harley-street", address: "50-52 New Cavendish Street, London, W1G 8TL", postcode: "W1G 8TL", phone: "020 7566 2803", lat: 51.5199, lng: -0.1448 },
+      { name: "Moorfields Private Eye Hospital", slug: "city-road", address: "9-11 Bath Street, London, EC1V 9LF", postcode: "EC1V 9LF", phone: "020 7566 2803", lat: 51.5265, lng: -0.0888, clinicUrl: "https://www.moorfields.nhs.uk/private/locations/moorfields-private-bath-street" },
+      { name: "Moorfields Private Eye Centre", slug: "harley-street", address: "50-52 New Cavendish Street, London, W1G 8TL", postcode: "W1G 8TL", phone: "020 7566 2803", lat: 51.5199, lng: -0.1448, clinicUrl: "https://www.moorfields.nhs.uk/private/locations/moorfields-private-new-cavendish-street" },
     ],
     services: [
       {
