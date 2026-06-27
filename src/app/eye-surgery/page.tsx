@@ -1,11 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 import { SurgeryCallout } from "@/components/SurgeryCallout";
 import { surgeryProviders } from "@/data/surgery-providers";
 import { surgeryConditions } from "@/data/surgery-conditions";
+
+// Provider card images keyed by slug
+const providerImages: Record<string, string> = {
+  "new-medica": "/images/surgery/new-medica.jpg",
+  "spa-medica": "/images/surgery/spa-medica.jpg",
+  optegra: "/images/surgery/optegra.jpg",
+  chec: "/images/surgery/chec.jpg",
+  "moorfields-private": "/images/surgery/moorfields-private.jpg",
+};
 
 // ---------------------------------------------------------------------------
 // SEO metadata
@@ -366,93 +376,48 @@ export default function EyeSurgeryPage() {
                 <Link
                   key={provider.slug}
                   href={`/eye-surgery/providers/${provider.slug}`}
-                  className="group relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
+                  className="group relative bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg hover:border-[var(--color-primary)]/20 transition-all overflow-hidden"
                 >
-                  {/* Preferred Partner badge */}
-                  {provider.isPreferredPartner && (
-                    <span className="absolute top-4 right-4 inline-flex items-center gap-1 bg-amber-50 text-amber-700 text-xs font-semibold px-2.5 py-1 rounded-full border border-amber-200">
-                      <svg
-                        className="w-3.5 h-3.5"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                      Preferred Partner
-                    </span>
-                  )}
-
-                  <h3 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors text-lg mb-2 pr-28">
-                    {provider.name}
-                  </h3>
-
-                  {/* Store count + Google rating */}
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                    <span className="flex items-center gap-1">
-                      <svg
-                        className="w-4 h-4 text-gray-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      {provider.storeCount} clinics
-                    </span>
-                    <span className="flex items-center gap-1">
-                      {/* Star rating */}
-                      <span className="flex items-center">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <svg
-                            key={star}
-                            className={`w-4 h-4 ${
-                              star <= Math.round(provider.googleReview.rating)
-                                ? "text-amber-400"
-                                : "text-gray-200"
-                            }`}
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                          </svg>
-                        ))}
-                      </span>
-                      <span className="ml-1">
-                        {provider.googleReview.rating}
-                      </span>
-                    </span>
-                  </div>
-
-                  {/* NHS / Private badges */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {provider.nhsFunded && (
-                      <span className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full bg-[var(--color-nhs-blue)]/10 text-[var(--color-nhs-blue)]">
-                        NHS
-                      </span>
-                    )}
-                    {provider.privateSelfPay && (
-                      <span className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-700">
-                        Private
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Key facts (first 3) */}
-                  <ul className="text-sm text-gray-600 leading-relaxed mb-4 space-y-1.5">
-                    {provider.keyFacts.slice(0, 3).map((fact) => (
-                      <li key={fact} className="flex items-start gap-2">
+                  {/* Image header */}
+                  <div className="relative h-44 overflow-hidden">
+                    <Image
+                      src={providerImages[provider.slug] ?? "/images/retinal-scan-lg.jpg"}
+                      alt={`${provider.name} eye surgery`}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    {/* Brand colour strip at bottom of image */}
+                    <div
+                      className="absolute bottom-0 left-0 right-0 h-1"
+                      style={{ backgroundColor: provider.brandColor }}
+                    />
+                    {/* Preferred Partner badge overlaying the image */}
+                    {provider.isPreferredPartner && (
+                      <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-amber-500/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
                         <svg
-                          className="w-4 h-4 text-[var(--color-success)] mt-0.5 shrink-0"
+                          className="w-3.5 h-3.5"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        Preferred Partner
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Card body */}
+                  <div className="p-5">
+                    <h3 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors text-lg mb-2">
+                      {provider.name}
+                    </h3>
+
+                    {/* Store count + Google rating */}
+                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                      <span className="flex items-center gap-1">
+                        <svg
+                          className="w-4 h-4 text-gray-400"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -461,30 +426,92 @@ export default function EyeSurgeryPage() {
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            d="M5 13l4 4L19 7"
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                           />
                         </svg>
-                        <span>{fact}</span>
-                      </li>
-                    ))}
-                  </ul>
+                        {provider.storeCount} clinics
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <span className="flex items-center">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <svg
+                              key={star}
+                              className={`w-4 h-4 ${
+                                star <= Math.round(provider.googleReview.rating)
+                                  ? "text-amber-400"
+                                  : "text-gray-200"
+                              }`}
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                          ))}
+                        </span>
+                        <span className="ml-1">
+                          {provider.googleReview.rating}
+                        </span>
+                      </span>
+                    </div>
 
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-primary)] group-hover:gap-2 transition-all">
-                    View clinics
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </span>
+                    {/* NHS / Private badges */}
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {provider.nhsFunded && (
+                        <span className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full bg-[var(--color-nhs-blue)]/10 text-[var(--color-nhs-blue)]">
+                          NHS
+                        </span>
+                      )}
+                      {provider.privateSelfPay && (
+                        <span className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-700">
+                          Private
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Key facts (first 3) */}
+                    <ul className="text-sm text-gray-600 leading-relaxed mb-4 space-y-1.5">
+                      {provider.keyFacts.slice(0, 3).map((fact) => (
+                        <li key={fact} className="flex items-start gap-2">
+                          <svg
+                            className="w-4 h-4 text-[var(--color-success)] mt-0.5 shrink-0"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                          <span>{fact}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <span className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-primary)] group-hover:gap-2 transition-all">
+                      View clinics
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>

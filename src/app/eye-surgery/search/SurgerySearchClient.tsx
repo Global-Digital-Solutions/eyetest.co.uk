@@ -106,10 +106,12 @@ function StarRating({ rating, count }: { rating: number; count: number }) {
 // ---------------------------------------------------------------------------
 
 function ClinicCard({
+  id,
   clinic,
   muted = false,
   onHover,
 }: {
+  id: string;
   clinic: ClinicResult;
   muted?: boolean;
   onHover?: (id: string | null) => void;
@@ -128,7 +130,8 @@ function ClinicCard({
             ? "border-gray-200 opacity-75 hover:opacity-100 shadow-sm hover:shadow-md"
             : "border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300"
       }`}
-      onMouseEnter={() => onHover?.(clinic.slug)}
+      id={`clinic-${id}`}
+      onMouseEnter={() => onHover?.(id)}
       onMouseLeave={() => onHover?.(null)}
     >
       {/* Preferred Partner banner */}
@@ -295,13 +298,32 @@ export default function SurgerySearchClient() {
     });
   }
 
+  // ---- Helper: unique clinic ID (provider + clinic slug) ----
+  function clinicId(c: ClinicResult, i: number): string {
+    return `${c.providerSlug}--${c.slug || i}`;
+  }
+
+  // ---- Sort preferred partner clinics to the top of each group ----
+  function sortPreferredFirst(clinics: ClinicResult[]): ClinicResult[] {
+    return [...clinics].sort((a, b) => {
+      const aPref = isPreferredPartner(a.providerSlug) ? 0 : 1;
+      const bPref = isPreferredPartner(b.providerSlug) ? 0 : 1;
+      if (aPref !== bPref) return aPref - bPref;
+      return a.distanceMiles - b.distanceMiles;
+    });
+  }
+
+  // ---- Build sorted result lists ----
+  const sortedNearby = results ? sortPreferredFirst(results.nearby) : [];
+  const sortedAlsoAvailable = results ? sortPreferredFirst(results.alsoAvailable) : [];
+
   // ---- Build map clinics from results ----
   const allResultClinics = results
-    ? [...results.nearby, ...results.alsoAvailable]
+    ? [...sortedNearby, ...sortedAlsoAvailable]
     : [];
 
   const mapClinics: SurgeryMapClinic[] = allResultClinics.map((c, i) => ({
-    id: c.slug || `clinic-${i}`,
+    id: clinicId(c, i),
     name: c.name,
     providerName: c.providerName,
     providerSlug: c.providerSlug,
@@ -420,7 +442,7 @@ export default function SurgerySearchClient() {
               {/* Results list */}
               <div className="lg:col-span-5 space-y-8" style={{ overflowX: "clip" }}>
                 {/* Nearby clinics */}
-                {results.nearby.length > 0 && (
+                {sortedNearby.length > 0 && (
                   <div>
                     <h2
                       className="text-lg font-bold text-[var(--color-navy)] mb-4 flex items-center gap-2"
@@ -432,13 +454,14 @@ export default function SurgerySearchClient() {
                       </svg>
                       Clinics Near You
                       <span className="text-xs font-normal text-gray-400 ml-1">
-                        ({results.nearby.length} within 30 mi)
+                        ({sortedNearby.length} within 30 mi)
                       </span>
                     </h2>
                     <div className="space-y-4">
-                      {results.nearby.map((clinic, i) => (
+                      {sortedNearby.map((clinic, i) => (
                         <ClinicCard
-                          key={`nearby-${i}`}
+                          key={`nearby-${clinicId(clinic, i)}`}
+                          id={clinicId(clinic, i)}
                           clinic={clinic}
                           onHover={setHighlightedClinicId}
                         />
@@ -448,7 +471,7 @@ export default function SurgerySearchClient() {
                 )}
 
                 {/* No nearby results */}
-                {results.nearby.length === 0 && (
+                {sortedNearby.length === 0 && (
                   <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-center">
                     <p className="text-amber-700 font-medium text-sm mb-1">
                       No clinics found within 30 miles of {results.postcode}
@@ -460,7 +483,7 @@ export default function SurgerySearchClient() {
                 )}
 
                 {/* Also available */}
-                {results.alsoAvailable.length > 0 && (
+                {sortedAlsoAvailable.length > 0 && (
                   <div>
                     <h2
                       className="text-lg font-bold text-[var(--color-navy)] mb-4 flex items-center gap-2"
@@ -472,9 +495,10 @@ export default function SurgerySearchClient() {
                       </span>
                     </h2>
                     <div className="space-y-4">
-                      {results.alsoAvailable.map((clinic, i) => (
+                      {sortedAlsoAvailable.map((clinic, i) => (
                         <ClinicCard
-                          key={`also-${i}`}
+                          key={`also-${clinicId(clinic, i)}`}
+                          id={clinicId(clinic, i)}
                           clinic={clinic}
                           muted
                           onHover={setHighlightedClinicId}
@@ -485,7 +509,7 @@ export default function SurgerySearchClient() {
                 )}
 
                 {/* No results at all */}
-                {results.nearby.length === 0 && results.alsoAvailable.length === 0 && (
+                {sortedNearby.length === 0 && sortedAlsoAvailable.length === 0 && (
                   <div className="bg-gray-100 rounded-2xl p-8 text-center">
                     <svg className="w-12 h-12 text-gray-400 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.182 16.318A4.486 4.486 0 0012.016 15a4.486 4.486 0 00-3.198 1.318M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />

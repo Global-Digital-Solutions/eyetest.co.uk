@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ProviderClinicsMap } from "@/components/ProviderClinicsMap";
 import {
   getAllProviderSlugs,
   getProviderBySlug,
@@ -483,96 +484,13 @@ export default async function SurgeryProviderPage({
                   </div>
                 </div>
 
-                {/* Clinic Locations */}
+                {/* Clinic Locations — interactive map + list */}
                 {provider.clinics.length > 0 && (
-                  <div>
-                    <h2
-                      className="text-xl sm:text-2xl font-bold text-[var(--color-navy)] mb-6"
-                      style={{ fontFamily: "var(--font-display)" }}
-                    >
-                      Clinic Locations
-                    </h2>
-                    <p className="text-gray-600 mb-6">
-                      {provider.name} operates {provider.clinics.length} clinics
-                      across the UK.
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {provider.clinics.map((clinic) => (
-                        <div
-                          key={clinic.slug}
-                          className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow"
-                        >
-                          <h3 className="text-sm font-bold text-[var(--color-navy)] mb-2">
-                            {clinic.name}
-                          </h3>
-                          <div className="space-y-1.5">
-                            <div className="flex items-start gap-2 text-sm text-gray-600">
-                              <svg
-                                className="w-4 h-4 text-gray-400 shrink-0 mt-0.5"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth="1.5"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                                />
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                                />
-                              </svg>
-                              <span>{clinic.address}</span>
-                            </div>
-                            {clinic.postcode && (
-                              <div className="flex items-center gap-2 text-sm text-gray-500">
-                                <svg
-                                  className="w-4 h-4 text-gray-400 shrink-0"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  strokeWidth="1.5"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                                  />
-                                </svg>
-                                <span>{clinic.postcode}</span>
-                              </div>
-                            )}
-                            {clinic.phone && (
-                              <div className="flex items-center gap-2 text-sm">
-                                <svg
-                                  className="w-4 h-4 text-gray-400 shrink-0"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  strokeWidth="1.5"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
-                                  />
-                                </svg>
-                                <a
-                                  href={`tel:${clinic.phone.replace(/\s/g, "")}`}
-                                  className="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-medium transition-colors"
-                                >
-                                  {clinic.phone}
-                                </a>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <ProviderClinicsMap
+                    clinics={provider.clinics}
+                    providerName={provider.name}
+                    brandColor={provider.brandColor}
+                  />
                 )}
               </div>
 

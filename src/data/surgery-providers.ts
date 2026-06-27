@@ -475,7 +475,7 @@ export const surgeryProviders: SurgeryProvider[] = [
     slug: "chec",
     website: "https://www.chec.uk",
     about: "CHEC (Community Health and Eyecare) is one of the UK's leading providers of community healthcare, founded in 2012. For more than a decade, CHEC has worked in partnership with the NHS to increase patient choice and provide access to timely care and treatment locally. Through 35+ community hospitals nationwide, CHEC delivers specialist ophthalmology, gastroenterology, ENT, and dermatology services, with over 390,000 ophthalmology consultations per year. They also operate Clarity, a private healthcare brand offering self-pay cataract surgery with finance options. Headquartered at 1-6 Star Building, Broughton Business Park, Fulwood, Preston, PR2 9WT.",
-    brandColor: "#e31837",
+    brandColor: "#1f3b76",
     isPreferredPartner: false,
     storeCount: 29,
     nhsFunded: true,
