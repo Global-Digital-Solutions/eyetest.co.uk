@@ -311,7 +311,7 @@ export default function SurgerySearchClient() {
     distanceMiles: c.distanceMiles,
     preferred: isPreferredPartner(c.providerSlug),
     rating: getProviderGoogleReview(c.providerSlug)?.rating,
-    postcode: c.postcode,
+    postcode: c.postcode ?? undefined,
   }));
 
   const totalProviderClinics = surgeryProviders.reduce((s, p) => s + p.storeCount, 0);
