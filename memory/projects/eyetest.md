@@ -67,18 +67,22 @@ Planned features (discussed with Darin):
 | `src/data/opticians.ts` | 12 optician brands with store counts, descriptions |
 | `src/data/search-queries.ts` | 43 SEO search query pages |
 | `src/data/offers.ts` | Current optician offers/deals |
+| `src/data/surgery-providers.ts` | 5 surgery providers, 156 clinics with geocoded lat/lng, Google Reviews |
+| `src/data/surgery-conditions.ts` | 8 surgery conditions with E-E-A-T medical content |
 
 ### Key Components
 | Component | Purpose |
 |-----------|---------|
-| `Header.tsx` | Main nav with mega menus |
-| `Footer.tsx` | SEO footer with all links |
+| `Header.tsx` | Main nav with mega menus (incl. Eye Surgery dropdown) |
+| `Footer.tsx` | SEO footer with all links (incl. Eye Surgery column) |
 | `Hero.tsx` | Homepage hero with postcode search |
 | `SearchResults.tsx` | Main search results with streaming, progress panel, store cards |
 | `PageHero.tsx` | Reusable hero for content pages with breadcrumbs |
 | `ResultCard.tsx` / `StoreCard` | Individual optician result cards |
 | `GetListedForm.tsx` | Optician signup form — appointment system dropdown (Ocuco, MySight, Optix, VisionPlus, Optinet, Raven, Glasson, Other), location count ranges, API submission to `/api/get-listed` |
 | `AtHomeBookingForm.tsx` | At-home eye test enquiry form — submits to `/api/at-home-enquiry` |
+| `SurgeryCallout.tsx` | Promotes Newmedica as preferred eye surgery partner |
+| `SurgeryEnquiryForm.tsx` | Surgery enquiry form — submits to `/api/surgery-enquiry` |
 
 ### Pages Structure
 ```
@@ -91,6 +95,10 @@ Planned features (discussed with Darin):
 /opticians/[brand]/[location] — Brand × city combos (~970)
 /locations — Listing + /locations/[city] (97)
 /find — Listing + /find/[slug] (43 SEO queries)
+/eye-surgery — Hub + /eye-surgery/[slug] (8 conditions)
+/eye-surgery/providers/[slug] — 5 provider pages
+/eye-surgery/search — Postcode-based clinic search
+/eye-surgery/enquiry — Surgery enquiry form
 /offers — Current deals
 /at-home-eye-tests — Home visit info
 /about, /privacy, /terms, /disclaimer — Legal/info
@@ -104,6 +112,8 @@ Planned features (discussed with Darin):
 | `/api/search` | Main search — streams NDJSON results from all providers |
 | `/api/get-listed` | POST: Get-Listed form submissions via Nodemailer + Gmail SMTP → hello@eyetest.co.uk |
 | `/api/at-home-enquiry` | POST: At-home eye test enquiry form via Nodemailer + Gmail SMTP → hello@eyetest.co.uk |
+| `/api/surgery-search` | GET: Geocode postcode → haversine distance to 156 clinics → sorted JSON |
+| `/api/surgery-enquiry` | POST: Surgery enquiry form via Nodemailer + Gmail SMTP → hello@eyetest.co.uk |
 | `/api/admin/featured` | Admin: manage featured opticians |
 | `/api/admin/providers` | Admin: provider status |
 | `/api/admin/stores` | Admin: store management |
@@ -200,7 +210,13 @@ All canonical URLs, OG URLs, and schema URLs use `www.eyetest.co.uk`
 | 2026-06-24 | DepartureOverlay fix: removed `noopener` from `window.open()` 3rd arg (returns null per spec → double navigation); manual `opener=null` instead |
 | 2026-06-24 | Nav sub-title changed: "Book With Our Partners" → "Book With A Great Optician" |
 | 2026-06-24 | Jimmy Fairly added to header nav optician links (page already generated from opticians.ts data) |
+| 2026-06-27 | Eye Surgery section: hub page, 8 condition pages, 5 provider pages, postcode search, enquiry form |
+| 2026-06-27 | Surgery providers: Newmedica (39 clinics, preferred, 4.8★), SpaMedica (67), Optegra (19), CHEC (29), Moorfields Private (2) |
+| 2026-06-27 | Google Reviews scraped via Apify for all surgery providers, weighted average ratings |
+| 2026-06-27 | 156 clinics bulk geocoded via postcodes.io (incl. terminated postcode CH4 9QS fix) |
+| 2026-06-27 | Header mega menu + Footer + sitemap + llms.txt updated for Eye Surgery |
 | Next | Registration process bug fix (issue reported but not yet investigated) |
+| Next | Eye surgery consultation image (`/images/eye-surgery-consultation-sm.jpg`) |
 | Next | Outbound provider communication + Stripe billing |
 
 ## Featured Listings System
@@ -222,7 +238,33 @@ All canonical URLs, OG URLs, and schema URLs use `www.eyetest.co.uk`
 Logos stored in `/public/logos/` — `boots-opticians.jpg`, `asda-opticians.svg`, `vision-express.svg`, `mands-opticians.webp`, `ace-and-tate.png`, `leightons.png`, `rawlings.svg`, `duncan-and-todd.svg`
 `BRAND_LOGOS` mapping in SearchResults.tsx auto-populates `logoUrl` for featured results
 
+## Eye Surgery Section
+
+### Providers (156 clinics total)
+| Provider | Slug | Clinics | Rating | Notes |
+|----------|------|---------|--------|-------|
+| Newmedica | new-medica | 39 | 4.8★ | Preferred partner, NHS + private |
+| SpaMedica | spa-medica | 67 | 3.4★ | NHS cataract specialist |
+| Optegra | optegra | 19 | 4.5★ | Premium private eye hospitals |
+| CHEC | chec | 29 | 3.7★ | Community eye care |
+| Moorfields Private | moorfields-private | 2 | 3.8★ | London, manually added (site blocks crawlers) |
+
+### Conditions (8 pages)
+cataracts, glaucoma-surgery, macular-degeneration, laser-eye-surgery, retinal-detachment, eyelid-surgery, corneal-conditions, diabetic-eye-disease
+
+### Search
+- `/api/surgery-search?postcode=XX` — simple GET (not NDJSON streaming)
+- Geocodes postcode → haversine distance to all 156 clinics
+- Returns `nearby` (≤30 mi) + `alsoAvailable` (next 20)
+- Preferred partner badges on Newmedica clinics
+
+### Enquiry Form
+- `/api/surgery-enquiry` — Nodemailer + Gmail SMTP
+- Fields: name, email, phone, postcode, condition, NHS/private, notes
+- TODO: forward copy to preferred partner
+
 ## Pending Work
-1. **Outbound provider communication** — Draft outreach to optician chains about featured listing subscriptions
-2. **Optician subscription + Stripe** — Featured placement, self-service portal, monthly/annual billing
-3. **Apify Google Reviews** — Scrape and display optician reviews
+1. **Registration process bug fix** — Issue reported but not yet investigated
+2. **Eye surgery consultation image** — SurgeryCallout references `/images/eye-surgery-consultation-sm.jpg` (doesn't exist yet)
+3. **Outbound provider communication** — Draft outreach to optician chains about featured listing subscriptions
+4. **Optician subscription + Stripe** — Featured placement, self-service portal, monthly/annual billing

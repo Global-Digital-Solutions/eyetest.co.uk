@@ -53,6 +53,18 @@ Static providers use `getStaticThreeDayDates()` — suppresses "today" after 6 P
 - Search streams NDJSON via `/api/search` route
 - postcodes.io for UK postcode geocoding (returns district for area name)
 
+## Eye Surgery Section
+- Hub page: `/eye-surgery/`
+- 8 condition pages: `/eye-surgery/[slug]` (cataracts, glaucoma-surgery, laser-eye-surgery, etc.)
+- 5 provider pages: `/eye-surgery/providers/[slug]` (new-medica, spa-medica, optegra, chec, moorfields-private)
+- Postcode search: `/eye-surgery/search` (GET `/api/surgery-search?postcode=XX`, haversine distance)
+- Enquiry form: `/eye-surgery/enquiry` (POST `/api/surgery-enquiry`, Nodemailer)
+- 156 total clinics with geocoded lat/lng
+- Google Review ratings per provider (Apify-scraped)
+- Newmedica = preferred partner (4.8★, 39 clinics)
+- Data files: `src/data/surgery-providers.ts`, `src/data/surgery-conditions.ts`
+- Components: `SurgeryCallout.tsx`, `SurgeryEnquiryForm.tsx`
+
 ## Content Scale
 | Section | Count |
 |---------|-------|
@@ -64,7 +76,9 @@ Static providers use `getStaticThreeDayDates()` — suppresses "today" after 6 P
 | Optician brands | 12 |
 | Brand × Location pages | ~970 |
 | Find/search queries | 43 |
-| **Total pages** | **~1,200** |
+| Eye surgery conditions | 8 |
+| Eye surgery providers | 5 |
+| **Total pages** | **~1,215** |
 
 ## SEO
 - JSON-LD schema on all pages (WebSite, Organization, Article, MedicalWebPage, MedicalCondition, LocalBusiness, BreadcrumbList, FAQPage, CollectionPage)
@@ -96,10 +110,16 @@ Static providers use `getStaticThreeDayDates()` — suppresses "today" after 6 P
 | Sticky desktop map (overflow-x: clip fix) | Done |
 | Jimmy Fairly added to nav + optician list | Done |
 | Nav sub-title: "Book With A Great Optician" | Done |
+| Eye Surgery section (8 conditions, 5 providers, 156 clinics) | Done |
+| Eye Surgery navigation (Header mega menu + Footer) | Done |
+| Eye Surgery search API + results page | Done |
+| Eye Surgery enquiry form + email API | Done |
+| Google Reviews scraping (Apify) for surgery providers | Done |
+| Sitemap + llms.txt updated for surgery pages | Done |
 | **Registration process bug fix** | **Next** |
+| Eye surgery consultation image needed | Planned |
 | Outbound provider communication | Planned |
 | Optician subscription + Stripe billing | Planned |
-| Apify Google Reviews scraping | Planned |
 
 ## Preferences
 - Git workflow: commit from workspace, push from Mac terminal

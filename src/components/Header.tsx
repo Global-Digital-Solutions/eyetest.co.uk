@@ -73,6 +73,26 @@ const eyeHealthLinks = {
   ],
 };
 
+const eyeSurgeryLinks = {
+  conditions: [
+    { label: "Cataracts", href: "/eye-surgery/cataracts" },
+    { label: "Glaucoma Surgery", href: "/eye-surgery/glaucoma-surgery" },
+    { label: "Macular Degeneration", href: "/eye-surgery/macular-degeneration" },
+    { label: "Laser Eye Surgery", href: "/eye-surgery/laser-eye-surgery" },
+    { label: "Retinal Detachment", href: "/eye-surgery/retinal-detachment" },
+    { label: "Eyelid Surgery", href: "/eye-surgery/eyelid-surgery" },
+    { label: "Corneal Conditions", href: "/eye-surgery/corneal-conditions" },
+    { label: "Diabetic Eye Disease", href: "/eye-surgery/diabetic-eye-disease" },
+  ],
+  providers: [
+    { label: "Newmedica", href: "/eye-surgery/providers/new-medica", preferred: true },
+    { label: "Spa Medica", href: "/eye-surgery/providers/spa-medica", preferred: false },
+    { label: "Optegra", href: "/eye-surgery/providers/optegra", preferred: false },
+    { label: "CHEC", href: "/eye-surgery/providers/chec", preferred: false },
+    { label: "Moorfields Private", href: "/eye-surgery/providers/moorfields-private", preferred: false },
+  ],
+};
+
 const locationLinks = {
   "Top Cities": [
     { label: "London", href: "/locations/london" },
@@ -90,7 +110,7 @@ const locationLinks = {
   ],
 };
 
-type MegaMenuKey = "eye-tests" | "opticians" | "eye-health" | "locations" | null;
+type MegaMenuKey = "eye-tests" | "opticians" | "eye-health" | "eye-surgery" | "locations" | null;
 
 /* ------------------------------------------------------------------ */
 /*  Component                                                         */
@@ -238,6 +258,27 @@ export function Header() {
             >
               Eye Health
               <svg className={`w-3.5 h-3.5 transition-transform ${activeMega === "eye-health" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </Link>
+          </div>
+
+          {/* Eye Surgery */}
+          <div
+            className="relative"
+            onMouseEnter={() => openMega("eye-surgery")}
+            onMouseLeave={closeMega}
+          >
+            <Link
+              href="/eye-surgery"
+              className={`inline-flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                activeMega === "eye-surgery"
+                  ? "text-[var(--color-primary)] bg-gray-50"
+                  : "text-[var(--color-navy)] hover:text-[var(--color-primary)] hover:bg-gray-50"
+              }`}
+            >
+              Eye Surgery
+              <svg className={`w-3.5 h-3.5 transition-transform ${activeMega === "eye-surgery" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </Link>
@@ -422,6 +463,57 @@ export function Header() {
               </div>
             )}
 
+            {/* Eye Surgery mega menu */}
+            {activeMega === "eye-surgery" && (
+              <div className="grid grid-cols-3 gap-8">
+                <div className="col-span-2">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-lg font-bold text-[var(--color-navy)]" style={{ fontFamily: "var(--font-display)" }}>Eye Surgery Conditions</h3>
+                    <Link href="/eye-surgery" className="text-sm font-medium text-[var(--color-primary)] hover:underline" onClick={() => setActiveMega(null)}>View all &rarr;</Link>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    {eyeSurgeryLinks.conditions.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="flex items-center gap-3 py-2.5 px-3 text-sm font-medium text-[var(--color-navy)] hover:text-[var(--color-primary)] hover:bg-gray-50 rounded-lg transition-colors"
+                        onClick={() => setActiveMega(null)}
+                      >
+                        <svg className="w-4 h-4 text-[var(--color-primary)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Surgery Providers</h4>
+                  <div className="space-y-2">
+                    {eyeSurgeryLinks.providers.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="flex items-center gap-3 py-2 px-3 text-sm font-medium text-[var(--color-navy)] hover:text-[var(--color-primary)] hover:bg-gray-50 rounded-lg transition-colors"
+                        onClick={() => setActiveMega(null)}
+                      >
+                        <span className={`w-2 h-2 rounded-full ${link.preferred ? "bg-[var(--color-primary)]" : "bg-gray-300"}`} />
+                        {link.label}
+                        {link.preferred && <span className="text-[10px] font-bold text-[var(--color-primary)] bg-[var(--color-primary)]/10 px-1.5 py-0.5 rounded-full">PREFERRED</span>}
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="mt-6 p-4 bg-gray-50 rounded-xl">
+                    <p className="text-xs text-gray-500 mb-2">Find a surgeon near you</p>
+                    <Link href="/eye-surgery/search" className="text-sm font-medium text-[var(--color-primary)] hover:underline" onClick={() => setActiveMega(null)}>
+                      Search by Postcode &rarr;
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Locations mega menu */}
             {activeMega === "locations" && (
               <div>
@@ -527,6 +619,39 @@ export function Header() {
                       {link.label}
                     </Link>
                   ))}
+                </div>
+              )}
+            </div>
+
+            {/* Eye Surgery accordion */}
+            <div>
+              <button
+                className="w-full flex items-center justify-between px-3 py-2.5 text-base font-medium text-[var(--color-navy)] hover:bg-gray-50 rounded-lg cursor-pointer"
+                onClick={() => setMobileExpanded(mobileExpanded === "eye-surgery" ? null : "eye-surgery")}
+              >
+                Eye Surgery
+                <svg className={`w-4 h-4 transition-transform ${mobileExpanded === "eye-surgery" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {mobileExpanded === "eye-surgery" && (
+                <div className="pl-4 pb-2 space-y-0.5">
+                  <Link href="/eye-surgery" className="block px-3 py-2 text-sm font-medium text-[var(--color-primary)]" onClick={() => setMobileOpen(false)}>
+                    Eye Surgery Hub
+                  </Link>
+                  {eyeSurgeryLinks.conditions.map((link) => (
+                    <Link key={link.href} href={link.href} className="block px-3 py-2 text-sm text-[var(--color-navy)]/70 hover:text-[var(--color-primary)]" onClick={() => setMobileOpen(false)}>
+                      {link.label}
+                    </Link>
+                  ))}
+                  <div className="pt-1 mt-1 border-t border-gray-100">
+                    <p className="px-3 py-1 text-xs font-semibold text-gray-400 uppercase">Providers</p>
+                    {eyeSurgeryLinks.providers.map((link) => (
+                      <Link key={link.href} href={link.href} className="block px-3 py-2 text-sm text-[var(--color-navy)]/70 hover:text-[var(--color-primary)]" onClick={() => setMobileOpen(false)}>
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>

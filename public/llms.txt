@@ -49,6 +49,26 @@
 - [Cataract Assessment](https://www.eyetest.co.uk/eye-tests/cataract-assessment)
 - [Macular Degeneration Screening](https://www.eyetest.co.uk/eye-tests/macular-degeneration-screening)
 
+## Eye Surgery
+- [Eye Surgery Hub](https://www.eyetest.co.uk/eye-surgery): Find and compare specialist ophthalmic surgeons across the UK
+- [Cataract Surgery](https://www.eyetest.co.uk/eye-surgery/cataracts): Cataract surgery information, NHS and private options, costs, and recovery
+- [Glaucoma Surgery](https://www.eyetest.co.uk/eye-surgery/glaucoma-surgery): Glaucoma surgery options including SLT laser and trabeculectomy
+- [Laser Eye Surgery](https://www.eyetest.co.uk/eye-surgery/laser-eye-surgery): LASIK, LASEK, PRK, and ReLEx SMILE laser vision correction
+- [Macular Degeneration Treatment](https://www.eyetest.co.uk/eye-surgery/macular-degeneration): AMD treatment including anti-VEGF injections
+- [Retinal Detachment Surgery](https://www.eyetest.co.uk/eye-surgery/retinal-detachment): Emergency retinal detachment repair
+- [Eyelid Surgery](https://www.eyetest.co.uk/eye-surgery/eyelid-surgery): Blepharoplasty, ptosis repair, and eyelid conditions
+- [Corneal Conditions](https://www.eyetest.co.uk/eye-surgery/corneal-conditions): Keratoconus treatment, corneal cross-linking, and transplants
+- [Diabetic Eye Disease](https://www.eyetest.co.uk/eye-surgery/diabetic-eye-disease): Diabetic retinopathy treatment and management
+- [Find a Surgeon](https://www.eyetest.co.uk/eye-surgery/search): Search for eye surgery clinics by postcode
+- [Surgery Enquiry](https://www.eyetest.co.uk/eye-surgery/enquiry): Submit an eye surgery enquiry
+
+## Eye Surgery Providers
+- [Newmedica](https://www.eyetest.co.uk/eye-surgery/providers/new-medica): 39 clinics, NHS and private, 4.8★ Google rating
+- [Spa Medica](https://www.eyetest.co.uk/eye-surgery/providers/spa-medica): 67 clinics, UK's largest independent NHS cataract provider
+- [Optegra](https://www.eyetest.co.uk/eye-surgery/providers/optegra): 19 clinics, specialist private eye surgery, 4.5★ Google rating
+- [CHEC](https://www.eyetest.co.uk/eye-surgery/providers/chec): 29 clinics, community-based NHS ophthalmology
+- [Moorfields Private](https://www.eyetest.co.uk/eye-surgery/providers/moorfields-private): 2 London clinics, world-renowned specialist centre
+
 ## Eye Health Conditions
 - [Glaucoma](https://www.eyetest.co.uk/eye-health/conditions/glaucoma)
 - [Cataracts](https://www.eyetest.co.uk/eye-health/conditions/cataracts)

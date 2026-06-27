@@ -5,6 +5,8 @@ import { getAllArticleSlugs } from "@/data/articles";
 import { getAllSlugs as getAllLocationSlugs } from "@/data/locations";
 import { getAllSlugs as getAllOpticianSlugs } from "@/data/opticians";
 import { getAllSlugs as getAllSearchQuerySlugs } from "@/data/search-queries";
+import { getAllProviderSlugs } from "@/data/surgery-providers";
+import { getAllConditionSlugs as getAllSurgeryConditionSlugs } from "@/data/surgery-conditions";
 
 const BASE = "https://www.eyetest.co.uk";
 const NOW = "2026-06-23T00:00:00.000Z";
@@ -25,6 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/offers`, lastModified: NOW, changeFrequency: "weekly", priority: 0.6 },
     { url: `${BASE}/articles`, lastModified: NOW, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/eye-health/conditions`, lastModified: NOW, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE}/eye-surgery`, lastModified: NOW, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/eye-surgery/enquiry`, lastModified: NOW, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/get-listed`, lastModified: NOW, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE}/about`, lastModified: NOW, changeFrequency: "monthly", priority: 0.4 },
     { url: `${BASE}/privacy`, lastModified: NOW, changeFrequency: "monthly", priority: 0.3 },
@@ -141,6 +145,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     );
 
   /* ------------------------------------------------------------------ */
+  /* Eye surgery conditions — /eye-surgery/[slug]                        */
+  /* ------------------------------------------------------------------ */
+
+  const surgeryConditionPages: MetadataRoute.Sitemap =
+    getAllSurgeryConditionSlugs().map((slug) => ({
+      url: `${BASE}/eye-surgery/${slug}`,
+      lastModified: NOW,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
+
+  /* ------------------------------------------------------------------ */
+  /* Eye surgery providers — /eye-surgery/providers/[slug]               */
+  /* ------------------------------------------------------------------ */
+
+  const surgeryProviderPages: MetadataRoute.Sitemap =
+    getAllProviderSlugs().map((slug) => ({
+      url: `${BASE}/eye-surgery/providers/${slug}`,
+      lastModified: NOW,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }));
+
+  /* ------------------------------------------------------------------ */
   /* Combined                                                            */
   /* ------------------------------------------------------------------ */
 
@@ -154,5 +182,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...locationPages,
     ...opticianBrandPages,
     ...opticianLocationPages,
+    ...surgeryConditionPages,
+    ...surgeryProviderPages,
   ];
 }
