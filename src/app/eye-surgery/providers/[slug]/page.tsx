@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { PageHero } from "@/components/PageHero";
 import {
   getAllProviderSlugs,
   getProviderBySlug,
@@ -116,6 +115,26 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 // ---------------------------------------------------------------------------
+// Provider hero background images — high-quality clinical/medical photos
+// ---------------------------------------------------------------------------
+
+const HERO_BACKGROUNDS: Record<string, string> = {
+  "new-medica":
+    "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1920&q=80",
+  "spa-medica":
+    "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1920&q=80",
+  optegra:
+    "https://images.unsplash.com/photo-1631815588090-d4bfec5b1b89?auto=format&fit=crop&w=1920&q=80",
+  chec:
+    "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1920&q=80",
+  "moorfields-private":
+    "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1920&q=80",
+};
+
+const DEFAULT_HERO_BG =
+  "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1920&q=80";
+
+// ---------------------------------------------------------------------------
 // Page component
 // ---------------------------------------------------------------------------
 
@@ -130,6 +149,8 @@ export default async function SurgeryProviderPage({
   if (!provider) {
     notFound();
   }
+
+  const heroBg = HERO_BACKGROUNDS[provider.slug] ?? DEFAULT_HERO_BG;
 
   // ---------------------------------------------------------------------------
   // JSON-LD schemas
@@ -213,70 +234,160 @@ export default async function SurgeryProviderPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
 
-        {/* Hero */}
-        <PageHero
-          breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: "Eye Surgery", href: "/eye-surgery" },
-            { label: "Providers", href: "/eye-surgery/providers" },
-            { label: provider.name },
-          ]}
-          compact
-        >
-          {/* Preferred partner badge */}
-          {provider.isPreferredPartner && (
-            <div className="inline-flex items-center text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full mb-6 bg-amber-400/20 text-amber-300">
-              <svg
-                className="w-4 h-4 mr-1.5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Preferred Partner
-            </div>
-          )}
+        {/* ================================================================ */}
+        {/* Custom provider hero — full-width photo with overlay + stats     */}
+        {/* ================================================================ */}
+        <section className="relative overflow-hidden">
+          {/* Background image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url('${heroBg}')` }}
+          />
 
-          <h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            {provider.name}
-          </h1>
-          <p className="text-base sm:text-lg text-white/70 max-w-xl mx-auto">
-            {provider.storeCount} clinics &middot;{" "}
-            {provider.nhsFunded ? "NHS & Private" : "Private"} &middot;{" "}
-            {provider.googleReview.rating}★ Google rating
-          </p>
-        </PageHero>
+          {/* Dark gradient overlay with brand colour tint */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(135deg, rgba(13,27,62,0.92) 0%, ${provider.brandColor}33 50%, rgba(13,27,62,0.88) 100%)`,
+            }}
+          />
 
-        {/* Preferred partner banner */}
-        {provider.isPreferredPartner && (
-          <section className="bg-amber-50 border-b border-amber-200">
-            <div className="max-w-7xl mx-auto px-4 py-4 sm:py-5">
-              <div className="flex items-center gap-3 sm:gap-4">
-                <div className="w-10 h-10 rounded-xl bg-amber-400/20 flex items-center justify-center shrink-0">
-                  <svg
-                    className="w-5 h-5 text-amber-600"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
+          {/* Decorative glow using provider brand colour */}
+          <div
+            className="absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-[0.12] blur-[100px]"
+            style={{ backgroundColor: provider.brandColor }}
+          />
+          <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[var(--color-primary)] rounded-full opacity-[0.06] blur-[80px]" />
+
+          <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-20 lg:py-24">
+            {/* Breadcrumbs */}
+            <nav aria-label="Breadcrumb" className="mb-8">
+              <ol className="flex items-center gap-2 text-sm text-white/50 flex-wrap">
+                {[
+                  { label: "Home", href: "/" },
+                  { label: "Eye Surgery", href: "/eye-surgery" },
+                  { label: "Providers" },
+                  { label: provider.name },
+                ].map((crumb, i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    {i > 0 && (
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    )}
+                    {crumb.href ? (
+                      <Link href={crumb.href} className="hover:text-white/80 transition-colors">
+                        {crumb.label}
+                      </Link>
+                    ) : (
+                      <span className="text-white/80">{crumb.label}</span>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </nav>
+
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+              {/* Left: Provider name + badge */}
+              <div className="max-w-2xl">
+                {/* Preferred partner badge */}
+                {provider.isPreferredPartner && (
+                  <div
+                    className="inline-flex items-center gap-2 text-sm font-bold px-5 py-2 rounded-full mb-6"
+                    style={{
+                      background: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+                      color: "white",
+                      boxShadow: "0 4px 15px rgba(245, 158, 11, 0.35)",
+                    }}
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                      clipRule="evenodd"
-                    />
+                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
+                    </svg>
+                    Preferred Partner
+                  </div>
+                )}
+
+                <h1
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-4"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  {provider.name}
+                </h1>
+
+                <p className="text-lg sm:text-xl text-white/60 max-w-lg">
+                  {provider.nhsFunded ? "NHS & Private" : "Private"} eye surgery
+                  at {provider.storeCount} clinics across the UK
+                </p>
+              </div>
+
+              {/* Right: Floating stat cards */}
+              <div className="flex flex-wrap gap-3 lg:gap-4">
+                {/* Rating card */}
+                <div className="bg-white/[0.1] backdrop-blur-md border border-white/[0.12] rounded-2xl px-5 py-4 text-center min-w-[100px]">
+                  <div className="flex items-center justify-center gap-1.5 mb-1">
+                    <svg className="w-5 h-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <span className="text-2xl font-bold text-white">{provider.googleReview.rating}</span>
+                  </div>
+                  <p className="text-xs text-white/50 font-medium">{provider.googleReview.reviewCount.toLocaleString()} reviews</p>
+                </div>
+
+                {/* Clinics card */}
+                <div className="bg-white/[0.1] backdrop-blur-md border border-white/[0.12] rounded-2xl px-5 py-4 text-center min-w-[100px]">
+                  <div className="flex items-center justify-center gap-1.5 mb-1">
+                    <svg className="w-5 h-5 text-[var(--color-primary-light)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                    <span className="text-2xl font-bold text-white">{provider.storeCount}</span>
+                  </div>
+                  <p className="text-xs text-white/50 font-medium">UK clinics</p>
+                </div>
+
+                {/* NHS badge */}
+                {provider.nhsFunded && (
+                  <div className="bg-white/[0.1] backdrop-blur-md border border-white/[0.12] rounded-2xl px-5 py-4 text-center min-w-[100px]">
+                    <div className="flex items-center justify-center mb-1">
+                      <svg className="w-6 h-6 text-[var(--color-primary-light)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                      </svg>
+                    </div>
+                    <p className="text-xs text-white/50 font-medium">NHS funded</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Preferred partner recommendation bar */}
+        {provider.isPreferredPartner && (
+          <section
+            className="border-b"
+            style={{
+              background: "linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fffbeb 100%)",
+              borderColor: "#fbbf24",
+            }}
+          >
+            <div className="max-w-7xl mx-auto px-4 py-5 sm:py-6">
+              <div className="flex items-center gap-4 sm:gap-5">
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+                  style={{
+                    background: "linear-gradient(135deg, #f59e0b, #d97706)",
+                    boxShadow: "0 2px 8px rgba(245, 158, 11, 0.3)",
+                  }}
+                >
+                  <svg className="w-5 h-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm sm:text-base font-semibold text-amber-800">
+                  <p className="text-sm sm:text-base font-bold text-amber-900">
                     {provider.name} is an eyetest.co.uk Preferred Partner
                   </p>
-                  <p className="text-xs sm:text-sm text-amber-700/80">
+                  <p className="text-xs sm:text-sm text-amber-800/70">
                     We recommend {provider.name} for their outstanding patient
                     care, clinical expertise, and transparent pricing.
                   </p>
@@ -619,50 +730,61 @@ export default async function SurgeryProviderPage({
                 </div>
 
                 {/* Book CTA */}
-                <div className="bg-[var(--color-navy)] rounded-2xl p-6 text-center">
-                  <div className="w-12 h-12 mx-auto rounded-xl bg-white/10 flex items-center justify-center text-[var(--color-primary-light)] mb-4">
-                    <svg
-                      className="w-6 h-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
+                <div
+                  className="rounded-2xl p-6 text-center overflow-hidden relative"
+                  style={{
+                    background: `linear-gradient(135deg, #0d1b3e 0%, ${provider.brandColor}88 100%)`,
+                  }}
+                >
+                  <div
+                    className="absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-20 blur-2xl"
+                    style={{ backgroundColor: provider.brandColor }}
+                  />
+                  <div className="relative">
+                    <div className="w-12 h-12 mx-auto rounded-xl bg-white/10 flex items-center justify-center text-[var(--color-primary-light)] mb-4">
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2">
+                      Book with {provider.name}
+                    </h3>
+                    <p className="text-sm text-white/70 mb-4">
+                      Visit {provider.name}&apos;s website to book a consultation
+                      or find your nearest clinic.
+                    </p>
+                    <a
+                      href={provider.bookingUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-semibold text-sm px-6 py-3 rounded-full transition-all hover:shadow-lg w-full justify-center"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
-                      />
-                    </svg>
+                      Book with {provider.name}
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                        />
+                      </svg>
+                    </a>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">
-                    Book with {provider.name}
-                  </h3>
-                  <p className="text-sm text-white/70 mb-4">
-                    Visit {provider.name}&apos;s website to book a consultation
-                    or find your nearest clinic.
-                  </p>
-                  <a
-                    href={provider.bookingUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-semibold text-sm px-6 py-3 rounded-full transition-all hover:shadow-lg w-full justify-center"
-                  >
-                    Book with {provider.name}
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                      />
-                    </svg>
-                  </a>
                 </div>
               </div>
             </div>
