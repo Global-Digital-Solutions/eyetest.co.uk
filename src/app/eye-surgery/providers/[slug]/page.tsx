@@ -290,20 +290,37 @@ export default async function SurgeryProviderPage({
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
               {/* Left: Provider name + badge */}
               <div className="max-w-2xl">
-                {/* Preferred partner badge */}
+                {/* eyetest.co.uk Preferred Partner badge */}
                 {provider.isPreferredPartner && (
-                  <div
-                    className="inline-flex items-center gap-2 text-sm font-bold px-5 py-2 rounded-full mb-6"
-                    style={{
-                      background: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
-                      color: "white",
-                      boxShadow: "0 4px 15px rgba(245, 158, 11, 0.35)",
-                    }}
-                  >
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
-                    </svg>
-                    Preferred Partner
+                  <div className="mb-6">
+                    <div
+                      className="inline-flex items-center gap-3 px-5 py-2.5 rounded-2xl"
+                      style={{
+                        background: "linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(217,119,6,0.1) 100%)",
+                        border: "1.5px solid rgba(245,158,11,0.35)",
+                        backdropFilter: "blur(12px)",
+                      }}
+                    >
+                      <div
+                        className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                        style={{
+                          background: "linear-gradient(135deg, #f59e0b, #d97706)",
+                          boxShadow: "0 2px 8px rgba(245,158,11,0.4)",
+                        }}
+                      >
+                        <svg className="w-4 h-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-amber-300 leading-tight">
+                          eyetest.co.uk Preferred Partner
+                        </p>
+                        <p className="text-[11px] text-amber-200/60">
+                          Recommended for patient care &amp; clinical excellence
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 )}
 
@@ -361,41 +378,6 @@ export default async function SurgeryProviderPage({
           </div>
         </section>
 
-        {/* Preferred partner recommendation bar */}
-        {provider.isPreferredPartner && (
-          <section
-            className="border-b"
-            style={{
-              background: "linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fffbeb 100%)",
-              borderColor: "#fbbf24",
-            }}
-          >
-            <div className="max-w-7xl mx-auto px-4 py-5 sm:py-6">
-              <div className="flex items-center gap-4 sm:gap-5">
-                <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-                  style={{
-                    background: "linear-gradient(135deg, #f59e0b, #d97706)",
-                    boxShadow: "0 2px 8px rgba(245, 158, 11, 0.3)",
-                  }}
-                >
-                  <svg className="w-5 h-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm sm:text-base font-bold text-amber-900">
-                    {provider.name} is an eyetest.co.uk Preferred Partner
-                  </p>
-                  <p className="text-xs sm:text-sm text-amber-800/70">
-                    We recommend {provider.name} for their outstanding patient
-                    care, clinical expertise, and transparent pricing.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* Content */}
         <section className="py-12 sm:py-16">
@@ -485,6 +467,19 @@ export default async function SurgeryProviderPage({
                         </div>
                       </div>
                     ))}
+                  </div>
+
+                  {/* Pricing disclaimer */}
+                  <div className="mt-6 flex items-start gap-2.5 bg-gray-50 border border-gray-100 rounded-xl px-4 py-3">
+                    <svg className="w-4 h-4 text-gray-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                    </svg>
+                    <p className="text-xs text-gray-500 leading-relaxed">
+                      Prices shown are indicative and were last verified in June 2026.
+                      Actual costs may vary depending on your individual needs, location,
+                      and treatment plan. Please contact {provider.name} directly for a
+                      personalised quote.
+                    </p>
                   </div>
                 </div>
 
