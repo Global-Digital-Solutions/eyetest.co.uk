@@ -26,17 +26,24 @@ export function SearchForm({ defaultPostcode }: { defaultPostcode: string }) {
       // Get the postcode value from the input
       const pc = inputRef.current?.value?.trim() || "";
 
-      // Blur the input to dismiss the iOS keyboard
-      inputRef.current?.blur();
+      // Dismiss the iOS keyboard reliably:
+      // Setting readOnly before blur forces iOS Safari to close the
+      // keyboard immediately, even during a soft navigation.
+      if (inputRef.current) {
+        inputRef.current.readOnly = true;
+        inputRef.current.blur();
+      }
       if (document.activeElement instanceof HTMLElement) {
         document.activeElement.blur();
       }
 
-      // Navigate after a small delay so iOS has time to process the blur
-      // and begin dismissing the keyboard before the page re-renders
+      // Navigate after a short delay so iOS has time to process the
+      // keyboard dismiss animation before the page re-renders.
+      // Restore readOnly after navigation starts.
       setTimeout(() => {
+        if (inputRef.current) inputRef.current.readOnly = false;
         router.push(`/search?postcode=${encodeURIComponent(pc)}`);
-      }, 50);
+      }, 100);
     },
     [router]
   );

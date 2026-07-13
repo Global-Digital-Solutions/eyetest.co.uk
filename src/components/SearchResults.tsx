@@ -484,7 +484,6 @@ function MobileStoreCard({ store, highlighted, onBook }: { store: StoreResult; h
     : Boolean(store.slotsAvailable);
   const style = getProviderStyle(store.provider);
   const hideActions = !hasSlots && HIDE_ACTIONS_PROVIDERS.test(store.provider);
-  const { text: availText, available: isAvail } = getAvailabilitySummary(store);
 
   const borderColor = store.featured ? "#f59e0b" : isIndependent(store.provider) ? "#6366f1" : hasSlots ? "#22c55e" : "#d1d5db";
 
@@ -496,7 +495,7 @@ function MobileStoreCard({ store, highlighted, onBook }: { store: StoreResult; h
       style={{ borderLeft: `3px solid ${borderColor}` }}
     >
       <div className="px-3 py-2.5">
-        {/* Line 1: badge + store name + distance */}
+        {/* Single line: badge + store name + distance + Book CTA */}
         <div className="flex items-center gap-1.5 min-w-0">
           {(store.featured || isIndependent(store.provider)) && (
             isIndependent(store.provider) ? (
@@ -523,41 +522,13 @@ function MobileStoreCard({ store, highlighted, onBook }: { store: StoreResult; h
           <span className="flex-shrink-0 text-[10px] text-gray-400 ml-auto whitespace-nowrap">
             {formatDistance(store.distanceM)}
           </span>
-        </div>
-
-        {/* Line 2: availability dot + text + rating + Book button */}
-        <div className="flex items-center gap-1.5 mt-1 min-w-0">
-          <span
-            className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
-              isAvail ? "bg-green-500" : "bg-gray-300"
-            }`}
-          />
-          <span
-            className={`text-[11px] font-medium truncate min-w-0 ${
-              isAvail ? "text-green-600" : "text-gray-400"
-            }`}
-          >
-            {availText}
-          </span>
-          {/* Compact rating for mobile */}
-          {(() => {
-            const rd = getStoreRating(store);
-            return rd ? (
-              <span className="flex-shrink-0 inline-flex items-center gap-0.5 text-[10px] text-amber-500">
-                <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                <span className="font-semibold">{rd.rating.toFixed(1)}</span>
-              </span>
-            ) : null;
-          })()}
           {!hideActions && (
             <a
               href={store.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={onBook ? (e) => onBook(e, store) : undefined}
-              className={`flex-shrink-0 ml-auto inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-md transition-colors ${
+              className={`flex-shrink-0 inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-md transition-colors ${
                 hasSlots
                   ? "bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white"
                   : "bg-gray-100 text-gray-400"
@@ -1021,27 +992,27 @@ function MobilePlatinumStoreCard({ store, highlighted, onBook }: { store: StoreR
   const hasSlots = store.dailySlots
     ? store.dailySlots.some((s) => s.count !== 0)
     : Boolean(store.slotsAvailable);
-  const { text: availText, available: isAvail } = getAvailabilitySummary(store);
   const ratingData = getStoreRating(store);
+  const hideActions = !hasSlots && HIDE_ACTIONS_PROVIDERS.test(store.provider);
 
   return (
     <div
-      className={`rounded-lg bg-gradient-to-b from-teal-50/60 to-white shadow-sm overflow-hidden ${
-        highlighted ? "ring-2 ring-[var(--color-primary)] shadow-md" : ""
+      className={`rounded-xl bg-gradient-to-b from-teal-50/80 to-white shadow-md overflow-hidden ${
+        highlighted ? "ring-2 ring-[var(--color-primary)] shadow-lg" : ""
       }`}
-      style={{ border: "1.5px solid #0ea5a0", borderLeft: "4px solid #0d1b3e" }}
+      style={{ border: "2px solid #0ea5a0", borderLeft: "5px solid #0d1b3e" }}
     >
-      <div className="px-3 py-2.5">
+      <div className="px-3.5 py-3">
         {/* Badges */}
         <div className="flex items-center gap-1.5 mb-2">
-          <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-bold" style={{ backgroundColor: "#0d1b3e", color: "#5eead4" }}>
-            <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20">
+          <span className="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-bold" style={{ backgroundColor: "#0d1b3e", color: "#5eead4" }}>
+            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5 2a2 2 0 00-2 2v14l3.5-2 3.5 2 3.5-2 3.5 2V4a2 2 0 00-2-2H5zm4.707 3.707a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L8.414 9H10a3 3 0 013 3v1a1 1 0 102 0v-1a5 5 0 00-5-5H8.414l1.293-1.293z" clipRule="evenodd" />
             </svg>
-            {store.featuredLabel ?? "Featured Optician"}
+            {store.featuredLabel ?? "Recommended"}
           </span>
-          <span className="inline-flex items-center gap-0.5 rounded-full bg-green-50 px-1.5 py-px text-[8px] font-semibold text-green-700">
-            <svg className="w-2 h-2" fill="currentColor" viewBox="0 0 20 20">
+          <span className="inline-flex items-center gap-0.5 rounded-full bg-green-50 border border-green-200 px-1.5 py-px text-[9px] font-semibold text-green-700">
+            <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             Verified
@@ -1049,52 +1020,113 @@ function MobilePlatinumStoreCard({ store, highlighted, onBook }: { store: StoreR
         </div>
 
         {/* Logo + name + distance */}
-        <div className="flex items-center gap-2 mb-1.5">
-          <BrandLogo src={store.logoUrl} name={displayProviderName(store.provider)} size={28} />
-          {store.logoUrl && (
-            <div
-              className="rounded-lg flex items-center justify-center flex-shrink-0"
-              style={{ width: 28, height: 28, backgroundColor: PROVIDER_BRANDS[store.provider]?.color ?? "#374151", display: "none" }}
-            >
-              <span className="text-white font-bold text-xs" style={{ fontFamily: "var(--font-display)" }}>
-                {PROVIDER_BRANDS[store.provider]?.initial ?? store.provider.charAt(0)}
+        <div className="flex items-center gap-2.5 mb-2">
+          <BrandLogo src={store.logoUrl} name={displayProviderName(store.provider)} size={32} />
+          <div className="min-w-0 flex-1">
+            <span className="text-sm font-semibold text-[var(--color-navy)] truncate block" style={{ fontFamily: "var(--font-display)" }}>
+              {store.storeName}
+            </span>
+            {(store.address || store.town || store.postcode) && (
+              <span className="text-[10px] text-gray-400 truncate block">
+                {[store.address, store.town, store.postcode].filter(Boolean).join(", ")}
               </span>
-            </div>
-          )}
-          <span className="text-xs font-semibold text-[var(--color-navy)] truncate min-w-0" style={{ fontFamily: "var(--font-display)" }}>
-            {store.storeName}
-          </span>
-          <span className="flex-shrink-0 text-[10px] text-gray-400 ml-auto whitespace-nowrap">
+            )}
+          </div>
+          <span className="flex-shrink-0 text-[10px] text-gray-500 bg-gray-50 px-1.5 py-0.5 rounded whitespace-nowrap self-start">
             {formatDistance(store.distanceM)}
           </span>
         </div>
 
-        {/* Availability + rating + book */}
-        <div className="flex items-center gap-1.5 min-w-0">
-          <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${isAvail ? "bg-green-500" : "bg-gray-300"}`} />
-          <span className={`text-[11px] font-medium truncate min-w-0 ${isAvail ? "text-green-600" : "text-gray-400"}`}>
-            {availText}
-          </span>
-          {ratingData && (
-            <span className="flex-shrink-0 inline-flex items-center gap-0.5 text-[10px] text-amber-500">
-              <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <span className="font-semibold">{ratingData.rating.toFixed(1)}</span>
-            </span>
-          )}
-          {!hasSlots ? null : (
-            <a
-              href={store.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={onBook ? (e) => onBook(e, store) : undefined}
-              className="flex-shrink-0 ml-auto inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-md transition-colors bg-[var(--color-navy)] text-white"
-            >
-              Book&nbsp;&rarr;
-            </a>
-          )}
-        </div>
+        {/* Rating */}
+        {ratingData && (
+          <div className="flex items-center gap-1 mb-2">
+            <div className="flex items-center" aria-label={`${ratingData.rating} out of 5 stars`}>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg key={i} className={`w-3 h-3 ${i < Math.round(ratingData.rating) ? "text-amber-400" : "text-gray-200"}`} fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <span className="text-xs font-semibold text-amber-600">{ratingData.rating.toFixed(1)}</span>
+            <span className="text-[10px] text-gray-400">({ratingData.count.toLocaleString()})</span>
+          </div>
+        )}
+
+        {/* 3-day availability calendar */}
+        {store.dailySlots && store.dailySlots.length > 0 ? (
+          <div className="mb-3">
+            {isShiftedWindow(store.dailySlots) && (
+              <div className="flex items-center gap-1.5 mb-1.5">
+                <span className="inline-flex items-center gap-1 text-[9px] font-semibold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-100">
+                  <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                  Earliest availability
+                </span>
+              </div>
+            )}
+            <div className="grid grid-cols-3 gap-1.5">
+              {store.dailySlots.map((slot) => {
+                const avail = slot.count !== 0;
+                return (
+                  <div
+                    key={slot.date}
+                    className={`rounded-lg py-1.5 text-center ${
+                      avail ? "bg-green-50 border border-green-200" : "bg-gray-50 border border-gray-100"
+                    }`}
+                  >
+                    <div className={`text-[9px] font-semibold uppercase tracking-wide ${avail ? "text-green-600" : "text-gray-400"}`}>
+                      <DayLabel date={slot.date} />
+                    </div>
+                    <div className={`text-sm font-bold leading-tight mt-0.5 ${avail ? "text-green-700" : "text-gray-300"}`}>
+                      {slot.count > 0 ? slot.count : slot.count === -1 ? "✓" : "—"}
+                    </div>
+                    <div className={`text-[8px] mt-0.5 ${avail ? "text-green-500" : "text-gray-300"}`}>
+                      {slot.count > 0 ? `slot${slot.count !== 1 ? "s" : ""}` : slot.count === -1 ? "available" : "none"}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2 mb-3">
+            {hasSlots ? (
+              <>
+                <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--color-success)] bg-green-50 px-2 py-0.5 rounded-full">
+                  <span className="w-1.5 h-1.5 bg-[var(--color-success)] rounded-full" />
+                  Available
+                </span>
+                <span className="text-[10px] text-gray-500 truncate">{store.slotsAvailable}</span>
+              </>
+            ) : (
+              <span className="inline-flex items-center gap-1 text-[10px] font-medium text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
+                <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
+                No slots found
+              </span>
+            )}
+          </div>
+        )}
+
+        {/* Full-width Book Now CTA */}
+        {!hideActions && (
+          <a
+            href={store.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onBook ? (e) => onBook(e, store) : undefined}
+            className={`w-full inline-flex items-center justify-center gap-1.5 text-sm font-semibold py-2.5 rounded-lg transition-colors ${
+              hasSlots
+                ? "bg-[var(--color-navy)] hover:bg-[var(--color-navy)]/90 text-white"
+                : "bg-gray-100 text-gray-400"
+            }`}
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Book Now
+          </a>
+        )}
       </div>
     </div>
   );

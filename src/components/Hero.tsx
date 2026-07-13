@@ -1,15 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export function Hero() {
   const [postcode, setPostcode] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (postcode.trim()) {
-      // Will integrate with eyetest-locator search
-      window.location.href = `/search?postcode=${encodeURIComponent(postcode.trim())}`;
+      // Dismiss the iOS keyboard before navigating.
+      // readOnly trick forces iOS Safari to close immediately.
+      if (inputRef.current) {
+        inputRef.current.readOnly = true;
+        inputRef.current.blur();
+      }
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+      // Short delay for keyboard dismiss animation, then navigate
+      setTimeout(() => {
+        window.location.href = `/search?postcode=${encodeURIComponent(postcode.trim())}`;
+      }, 100);
     }
   };
 
@@ -67,12 +79,14 @@ export function Hero() {
                   </svg>
                 </div>
                 <input
+                  ref={inputRef}
                   type="text"
                   value={postcode}
                   onChange={(e) => setPostcode(e.target.value)}
                   placeholder="Enter your postcode, e.g. SW1A 1AA"
                   className="w-full pl-12 pr-4 py-4 sm:py-3 text-base sm:text-lg text-[var(--color-navy)] bg-white sm:bg-transparent rounded-xl sm:rounded-full border border-gray-200 sm:border-none focus:outline-none placeholder:text-gray-400"
                   aria-label="Enter your postcode"
+                  enterKeyHint="search"
                 />
               </div>
               <button
