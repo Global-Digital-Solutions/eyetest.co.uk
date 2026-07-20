@@ -206,13 +206,13 @@ export default function EyeSurgeryPage() {
               className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-navy)] leading-tight mb-3 text-center"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Find Eye Surgery{" "}
+              Find an Eye Health Clinic{" "}
               <span className="text-[var(--color-primary)]">Near You</span>
             </h1>
             <p className="text-gray-600 text-center mb-8 max-w-xl mx-auto">
               Compare {providerCount} specialist providers across {totalClinics}{" "}
-              clinics. Search by postcode to find NHS and private eye surgeons in
-              your area.
+              clinics. Search by postcode to find NHS and private eye health
+              clinics in your area.
             </p>
 
             {/* Postcode search */}
@@ -309,7 +309,7 @@ export default function EyeSurgeryPage() {
           </div>
         </section>
 
-        {/* ── Provider Comparison Table ────────────────────────────────── */}
+        {/* ── Provider Comparison Cards ────────────────────────────────── */}
         <section id="providers" className="py-12 sm:py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-10">
@@ -320,378 +320,63 @@ export default function EyeSurgeryPage() {
                 Compare Eye Surgery Providers
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Side-by-side comparison of the UK&apos;s leading eye surgery
-                providers. Click any row to view full details and clinic
-                locations.
+                Compare the UK&apos;s leading eye surgery providers side by side.
+                View ratings, pricing, and clinic locations.
               </p>
             </div>
 
-            {/* Desktop table — hidden on mobile */}
-            <div className="hidden md:block overflow-x-auto">
-              <table className="w-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                <thead>
-                  <tr className="border-b border-gray-100">
-                    <th className="text-left px-5 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Provider
-                    </th>
-                    <th className="text-center px-4 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Clinics
-                    </th>
-                    <th className="text-center px-4 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Google Rating
-                    </th>
-                    <th className="text-center px-4 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      NHS
-                    </th>
-                    <th className="text-center px-4 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Private
-                    </th>
-                    <th className="text-center px-4 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Cataracts From
-                    </th>
-                    <th className="text-center px-4 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      &nbsp;
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {surgeryProviders.map((provider) => (
-                    <tr
-                      key={provider.slug}
-                      className="border-b border-gray-50 last:border-b-0 hover:bg-gray-50/50 transition-colors group"
-                    >
-                      {/* Provider name with brand strip */}
-                      <td className="px-5 py-4">
-                        <div className="flex items-center gap-3">
-                          <div
-                            className="w-1 h-10 rounded-full shrink-0"
-                            style={{ backgroundColor: provider.brandColor }}
-                          />
-                          <div>
-                            <Link
-                              href={`/eye-surgery/providers/${provider.slug}`}
-                              className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors"
-                            >
-                              {provider.name}
-                            </Link>
-                            {provider.isPreferredPartner && (
-                              <span className="ml-2 inline-flex items-center gap-1 bg-amber-50 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-200">
-                                <svg
-                                  className="w-3 h-3"
-                                  fill="currentColor"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                                PREFERRED
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </td>
-                      {/* Clinic count */}
-                      <td className="text-center px-4 py-4 text-sm font-medium text-[var(--color-navy)]">
-                        {provider.storeCount}
-                      </td>
-                      {/* Google rating */}
-                      <td className="text-center px-4 py-4">
-                        <div className="inline-flex items-center gap-1.5">
-                          <span className="flex items-center">
-                            {[1, 2, 3, 4, 5].map((star) => (
-                              <svg
-                                key={star}
-                                className={`w-3.5 h-3.5 ${
-                                  star <=
-                                  Math.round(provider.googleReview.rating)
-                                    ? "text-amber-400"
-                                    : "text-gray-200"
-                                }`}
-                                fill="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                              </svg>
-                            ))}
-                          </span>
-                          <span className="text-sm font-semibold text-[var(--color-navy)]">
-                            {provider.googleReview.rating}
-                          </span>
-                          <span className="text-xs text-gray-400">
-                            ({provider.googleReview.reviewCount.toLocaleString()})
-                          </span>
-                        </div>
-                      </td>
-                      {/* NHS */}
-                      <td className="text-center px-4 py-4">
-                        {provider.nhsFunded ? (
-                          <svg
-                            className="w-5 h-5 text-[var(--color-success)] mx-auto"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                        ) : (
-                          <span className="text-gray-300">—</span>
-                        )}
-                      </td>
-                      {/* Private */}
-                      <td className="text-center px-4 py-4">
-                        {provider.privateSelfPay ? (
-                          <svg
-                            className="w-5 h-5 text-[var(--color-success)] mx-auto"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                        ) : (
-                          <span className="text-gray-300">—</span>
-                        )}
-                      </td>
-                      {/* Cataract price */}
-                      <td className="text-center px-4 py-4 text-sm text-gray-600">
-                        {getCataractPrice(provider)}
-                      </td>
-                      {/* CTA */}
-                      <td className="text-center px-4 py-4">
-                        <Link
-                          href={`/eye-surgery/providers/${provider.slug}`}
-                          className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
-                        >
-                          View
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M9 5l7 7-7 7"
-                            />
-                          </svg>
-                        </Link>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Mobile provider cards — shown on small screens */}
-            <div className="md:hidden space-y-4">
+            {/* Provider comparison cards */}
+            <div className="space-y-5">
               {surgeryProviders.map((provider) => (
                 <Link
                   key={provider.slug}
                   href={`/eye-surgery/providers/${provider.slug}`}
-                  className="group block bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all"
+                  className={`group block bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden ${
+                    provider.isPreferredPartner
+                      ? "ring-2 ring-amber-300/60 shadow-md"
+                      : "border border-gray-100 hover:border-gray-200"
+                  }`}
                 >
-                  <div className="flex items-start gap-3 mb-3">
-                    <div
-                      className="w-1 h-12 rounded-full shrink-0 mt-0.5"
-                      style={{ backgroundColor: provider.brandColor }}
-                    />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h3 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors">
-                          {provider.name}
-                        </h3>
-                        {provider.isPreferredPartner && (
-                          <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-200">
-                            <svg
-                              className="w-3 h-3"
-                              fill="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            PREFERRED
-                          </span>
-                        )}
-                      </div>
-                      <div className="flex items-center gap-1 mt-1">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <svg
-                            key={star}
-                            className={`w-3.5 h-3.5 ${
-                              star <=
-                              Math.round(provider.googleReview.rating)
-                                ? "text-amber-400"
-                                : "text-gray-200"
-                            }`}
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                          </svg>
-                        ))}
-                        <span className="text-sm font-semibold text-[var(--color-navy)] ml-1">
-                          {provider.googleReview.rating}
-                        </span>
-                        <span className="text-xs text-gray-400 ml-0.5">
-                          ({provider.googleReview.reviewCount.toLocaleString()})
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div className="bg-gray-50 rounded-lg px-3 py-2">
-                      <span className="text-gray-500 text-xs">Clinics</span>
-                      <p className="font-semibold text-[var(--color-navy)]">
-                        {provider.storeCount}
-                      </p>
-                    </div>
-                    <div className="bg-gray-50 rounded-lg px-3 py-2">
-                      <span className="text-gray-500 text-xs">Cataracts</span>
-                      <p className="font-semibold text-[var(--color-navy)] text-xs mt-0.5">
-                        {getCataractPrice(provider)}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2 mt-3">
-                    {provider.nhsFunded && (
-                      <span className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full bg-[var(--color-nhs-blue)]/10 text-[var(--color-nhs-blue)]">
-                        NHS
-                      </span>
-                    )}
-                    {provider.privateSelfPay && (
-                      <span className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-700">
-                        Private
-                      </span>
-                    )}
-                    <span className="ml-auto inline-flex items-center gap-1 text-sm font-medium text-[var(--color-primary)]">
-                      View
+                  {/* Preferred partner top banner */}
+                  {provider.isPreferredPartner && (
+                    <div className="bg-gradient-to-r from-amber-500 to-amber-400 px-5 py-2 flex items-center gap-2">
                       <svg
-                        className="w-4 h-4"
-                        fill="none"
+                        className="w-4 h-4 text-white"
+                        fill="currentColor"
                         viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="2"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M9 5l7 7-7 7"
-                        />
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            {/* CTA below table */}
-            <div className="text-center mt-8">
-              <p className="text-sm text-gray-500 mb-3">
-                Not sure which provider? Search by postcode and we&apos;ll show you
-                the nearest clinics from all providers.
-              </p>
-              <a
-                href="/eye-surgery/search"
-                className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
-              >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-                Search by postcode
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Provider Cards with Images ──────────────────────────────── */}
-        <section className="py-12 sm:py-16">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-10">
-              <h2
-                className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Our Surgery Providers
-              </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Explore each provider in detail — view clinic locations, read
-                patient reviews, and compare services.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {surgeryProviders.map((provider) => (
-                <Link
-                  key={provider.slug}
-                  href={`/eye-surgery/providers/${provider.slug}`}
-                  className="group relative bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg hover:border-[var(--color-primary)]/20 transition-all overflow-hidden"
-                >
-                  {/* Image header */}
-                  <div className="relative h-44 overflow-hidden">
-                    <Image
-                      src={
-                        providerImages[provider.slug] ??
-                        "/images/retinal-scan-lg.jpg"
-                      }
-                      alt={`${provider.name} eye surgery`}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    {/* Brand colour strip at bottom of image */}
-                    <div
-                      className="absolute bottom-0 left-0 right-0 h-1"
-                      style={{ backgroundColor: provider.brandColor }}
-                    />
-                    {/* Preferred Partner badge overlaying the image */}
-                    {provider.isPreferredPartner && (
-                      <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-amber-500/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
-                        <svg
-                          className="w-3.5 h-3.5"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                        </svg>
+                      <span className="text-white text-xs font-bold tracking-wide uppercase">
                         Preferred Partner
                       </span>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
-                  {/* Card body */}
-                  <div className="p-5">
-                    <h3 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors text-lg mb-2">
-                      {provider.name}
-                    </h3>
-
-                    {/* Store count + Google rating */}
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                      <span className="flex items-center gap-1">
+                  <div className="flex flex-col lg:flex-row">
+                    {/* Image section — left side */}
+                    <div className="relative lg:w-64 h-48 lg:h-auto shrink-0 overflow-hidden">
+                      <Image
+                        src={
+                          providerImages[provider.slug] ??
+                          "/images/retinal-scan-lg.jpg"
+                        }
+                        alt={`${provider.name} eye surgery clinics`}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 1024px) 100vw, 256px"
+                      />
+                      {/* Brand colour overlay gradient */}
+                      <div
+                        className="absolute inset-0 opacity-20"
+                        style={{
+                          background: `linear-gradient(135deg, ${provider.brandColor} 0%, transparent 60%)`,
+                        }}
+                      />
+                      {/* Clinic count badge on image */}
+                      <div className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full">
                         <svg
-                          className="w-4 h-4 text-gray-400"
+                          className="w-3.5 h-3.5"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -708,15 +393,149 @@ export default function EyeSurgeryPage() {
                             d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                           />
                         </svg>
-                        {provider.storeCount} clinics
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <span className="flex items-center">
+                        {provider.storeCount} clinics across the UK
+                      </div>
+                    </div>
+
+                    {/* Content section — right side */}
+                    <div className="flex-1 p-5 lg:p-6">
+                      {/* Top row: name + rating */}
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div>
+                          <h3
+                            className="text-xl font-bold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors mb-1"
+                            style={{ fontFamily: "var(--font-display)" }}
+                          >
+                            {provider.name}
+                          </h3>
+                          {/* NHS / Private / Cataract badges */}
+                          <div className="flex flex-wrap items-center gap-2">
+                            {provider.nhsFunded && (
+                              <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-[var(--color-nhs-blue)]/10 text-[var(--color-nhs-blue)]">
+                                <svg
+                                  className="w-3 h-3"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth="2.5"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M5 13l4 4L19 7"
+                                  />
+                                </svg>
+                                NHS Funded
+                              </span>
+                            )}
+                            {provider.privateSelfPay && (
+                              <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700">
+                                <svg
+                                  className="w-3 h-3"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth="2.5"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M5 13l4 4L19 7"
+                                  />
+                                </svg>
+                                Private
+                              </span>
+                            )}
+                            <span className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-gray-100 text-gray-600">
+                              Cataracts: {getCataractPrice(provider)}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Google review score */}
+                        <div className="flex items-center gap-2 shrink-0 bg-gray-50 rounded-xl px-3 py-2">
+                          <div className="flex flex-col items-center">
+                            <div className="flex items-center gap-1">
+                              <span className="text-2xl font-bold text-[var(--color-navy)]">
+                                {provider.googleReview.rating}
+                              </span>
+                              <svg
+                                className="w-5 h-5 text-amber-400"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                              </svg>
+                            </div>
+                            <span className="text-[10px] text-gray-400 font-medium">
+                              {provider.googleReview.reviewCount.toLocaleString()} reviews
+                            </span>
+                          </div>
+                          {/* Rating bar */}
+                          <div className="hidden sm:flex flex-col gap-0.5 ml-2">
+                            {[5, 4, 3, 2, 1].map((level) => (
+                              <div
+                                key={level}
+                                className="flex items-center gap-1"
+                              >
+                                <span className="text-[9px] text-gray-400 w-2 text-right">
+                                  {level}
+                                </span>
+                                <div className="w-16 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                  <div
+                                    className="h-full rounded-full"
+                                    style={{
+                                      width: `${level <= Math.round(provider.googleReview.rating) ? (level === Math.round(provider.googleReview.rating) ? 80 : 100) : level === Math.round(provider.googleReview.rating) + 1 ? 30 : 8}%`,
+                                      backgroundColor:
+                                        level >= 4
+                                          ? "#22c55e"
+                                          : level === 3
+                                            ? "#eab308"
+                                            : "#ef4444",
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Key facts */}
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-4">
+                        {provider.keyFacts.slice(0, 3).map((fact) => (
+                          <div
+                            key={fact}
+                            className="flex items-start gap-2 text-sm text-gray-600"
+                          >
+                            <svg
+                              className="w-4 h-4 mt-0.5 shrink-0"
+                              style={{ color: provider.brandColor }}
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                            <span className="leading-snug">{fact}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* CTA row */}
+                      <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                        <div className="flex items-center gap-1">
                           {[1, 2, 3, 4, 5].map((star) => (
                             <svg
                               key={star}
                               className={`w-4 h-4 ${
-                                star <= Math.round(provider.googleReview.rating)
+                                star <=
+                                Math.round(provider.googleReview.rating)
                                   ? "text-amber-400"
                                   : "text-gray-200"
                               }`}
@@ -726,68 +545,71 @@ export default function EyeSurgeryPage() {
                               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                             </svg>
                           ))}
-                        </span>
-                        <span className="ml-1">
-                          {provider.googleReview.rating}
-                        </span>
-                      </span>
-                    </div>
-
-                    {/* NHS / Private badges */}
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {provider.nhsFunded && (
-                        <span className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full bg-[var(--color-nhs-blue)]/10 text-[var(--color-nhs-blue)]">
-                          NHS
-                        </span>
-                      )}
-                      {provider.privateSelfPay && (
-                        <span className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-700">
-                          Private
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Key facts (first 3) */}
-                    <ul className="text-sm text-gray-600 leading-relaxed mb-4 space-y-1.5">
-                      {provider.keyFacts.slice(0, 3).map((fact) => (
-                        <li key={fact} className="flex items-start gap-2">
+                          <span className="text-xs text-gray-400 ml-1">
+                            Google Reviews
+                          </span>
+                        </div>
+                        <span
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold px-5 py-2 rounded-full transition-all group-hover:gap-2.5"
+                          style={{
+                            backgroundColor: `${provider.brandColor}10`,
+                            color: provider.brandColor,
+                          }}
+                        >
+                          View clinics &amp; book
                           <svg
-                            className="w-4 h-4 text-[var(--color-success)] mt-0.5 shrink-0"
+                            className="w-4 h-4"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
-                            strokeWidth="2"
+                            strokeWidth="2.5"
                           >
                             <path
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                              d="M5 13l4 4L19 7"
+                              d="M9 5l7 7-7 7"
                             />
                           </svg>
-                          <span>{fact}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-primary)] group-hover:gap-2 transition-all">
-                      View clinics
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </span>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </Link>
               ))}
+            </div>
+
+            {/* CTA below cards */}
+            <div className="text-center mt-10 bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8">
+              <h3
+                className="text-lg font-bold text-[var(--color-navy)] mb-2"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Not sure which provider?
+              </h3>
+              <p className="text-sm text-gray-500 mb-4 max-w-lg mx-auto">
+                Search by postcode and we&apos;ll show you the nearest clinics
+                from all providers, sorted by distance, with direct booking
+                links.
+              </p>
+              <Link
+                href="/eye-surgery/search"
+                className="inline-flex items-center gap-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-semibold text-sm px-6 py-3 rounded-full transition-all hover:shadow-lg"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+                Search by postcode
+              </Link>
             </div>
           </div>
         </section>
