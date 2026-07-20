@@ -203,7 +203,7 @@ export default function EyeSurgeryPage() {
 
             {/* Heading */}
             <h1
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-navy)] leading-tight mb-3 text-center"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-navy)] leading-tight mb-3 text-center"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Find an Eye Health Clinic{" "}
