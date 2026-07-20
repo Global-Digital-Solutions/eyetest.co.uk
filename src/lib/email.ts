@@ -3,7 +3,7 @@
 /*  Branded HTML templates + nodemailer transporter                    */
 /*                                                                      */
 /*  Requires env vars:                                                  */
-/*    GMAIL_USER         — e.g. hello@eyetest.co.uk                    */
+/*    GMAIL_USER         — primary Google account                      */
 /*    GMAIL_APP_PASSWORD — Google App Password                         */
 /* ------------------------------------------------------------------ */
 
@@ -34,18 +34,17 @@ export function getFromAddress(): string {
 /* ---- Brand constants ---- */
 
 const TEAL = "#0ea5a0";
+const TEAL_DARK = "#0c8a86";
 const NAVY = "#0d1b3e";
 const LIGHT_TEAL_BG = "#f0fdfa";
-const BORDER = "#e5e7eb";
-const GRAY_TEXT = "#555";
-const MUTED_TEXT = "#999";
+const BORDER = "#e2e8f0";
+const GRAY_TEXT = "#4a5568";
+const MUTED_TEXT = "#94a3b8";
+const LOGO_URL = "https://www.eyetest.co.uk/favicon-96x96.png";
+const SITE_URL = "https://www.eyetest.co.uk";
 
 /* ---- Branded email wrapper ---- */
 
-/**
- * Wraps body content in the branded eyetest.co.uk email layout.
- * Includes header with logo text, body area, and branded footer.
- */
 export function brandedEmail({
   preheader,
   heading,
@@ -73,58 +72,83 @@ export function brandedEmail({
       </o:OfficeDocumentSettings>
     </xml>
   </noscript>
+  <style>
+    table { border-collapse: collapse; }
+    td { font-family: Arial, sans-serif; }
+  </style>
   <![endif]-->
 </head>
-<body style="margin: 0; padding: 0; background-color: #f4f5f7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+<body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%;">
 
-  ${preheader ? `<div style="display: none; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #f4f5f7;">${preheader}</div>` : ""}
+  ${preheader ? `<div style="display: none; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #f1f5f9;">${preheader}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>` : ""}
 
   <!-- Outer wrapper -->
-  <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f5f7;">
+  <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f1f5f9;">
     <tr>
-      <td align="center" style="padding: 32px 16px;">
+      <td align="center" style="padding: 40px 16px 32px;">
 
         <!-- Inner card -->
         <table role="presentation" cellpadding="0" cellspacing="0" width="600" style="max-width: 600px; width: 100%;">
 
+          <!-- Logo bar -->
+          <tr>
+            <td style="padding: 0 0 20px; text-align: center;">
+              <a href="${SITE_URL}" style="text-decoration: none;">
+                <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+                  <tr>
+                    <td style="vertical-align: middle; padding-right: 10px;">
+                      <img src="${LOGO_URL}" alt="eyetest.co.uk" width="36" height="36" style="display: block; border: 0; border-radius: 8px;" />
+                    </td>
+                    <td style="vertical-align: middle;">
+                      <span style="font-size: 20px; font-weight: 700; color: ${NAVY}; letter-spacing: -0.3px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">eyetest<span style="color: ${TEAL};">.</span>co<span style="color: ${TEAL};">.</span>uk</span>
+                    </td>
+                  </tr>
+                </table>
+              </a>
+            </td>
+          </tr>
+
           <!-- Header -->
           <tr>
-            <td style="background: linear-gradient(135deg, ${NAVY} 0%, #162d5a 100%); padding: 32px 40px; border-radius: 16px 16px 0 0; text-align: center;">
-              <!-- Logo text -->
-              <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 0 auto 16px;">
-                <tr>
-                  <td style="background: ${TEAL}; width: 40px; height: 40px; border-radius: 10px; text-align: center; vertical-align: middle;">
-                    <span style="color: #fff; font-size: 20px; font-weight: 800; line-height: 40px;">e</span>
-                  </td>
-                  <td style="padding-left: 12px;">
-                    <span style="color: #fff; font-size: 22px; font-weight: 700; letter-spacing: -0.5px;">eyetest.co.uk</span>
-                  </td>
-                </tr>
-              </table>
-              <h1 style="color: #fff; font-size: 22px; font-weight: 700; margin: 0; line-height: 1.3;">${heading}</h1>
-              ${subheading ? `<p style="color: rgba(255,255,255,0.7); font-size: 14px; margin: 8px 0 0; line-height: 1.4;">${subheading}</p>` : ""}
+            <td style="background: linear-gradient(135deg, ${NAVY} 0%, #1a2f5a 50%, ${TEAL_DARK} 100%); padding: 40px 44px 36px; border-radius: 16px 16px 0 0; text-align: center;">
+              <h1 style="color: #ffffff; font-size: 24px; font-weight: 700; margin: 0 0 4px; line-height: 1.3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">${heading}</h1>
+              ${subheading ? `<p style="color: rgba(255,255,255,0.65); font-size: 14px; margin: 8px 0 0; line-height: 1.4;">${subheading}</p>` : ""}
             </td>
           </tr>
 
           <!-- Body -->
           <tr>
-            <td style="background: #ffffff; padding: 36px 40px; border-left: 1px solid ${BORDER}; border-right: 1px solid ${BORDER};">
+            <td style="background: #ffffff; padding: 40px 44px; border-left: 1px solid ${BORDER}; border-right: 1px solid ${BORDER};">
               ${body}
             </td>
           </tr>
 
           <!-- Footer -->
           <tr>
-            <td style="background: #fafafa; padding: 28px 40px; border: 1px solid ${BORDER}; border-top: none; border-radius: 0 0 16px 16px; text-align: center;">
-              <p style="font-size: 13px; color: ${MUTED_TEXT}; margin: 0 0 8px; line-height: 1.5;">
-                eyetest.co.uk &mdash; The UK&rsquo;s Eye Test Comparison Platform
+            <td style="background: #f8fafc; padding: 32px 44px; border: 1px solid ${BORDER}; border-top: none; border-radius: 0 0 16px 16px; text-align: center;">
+              <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 0 auto 16px;">
+                <tr>
+                  <td style="vertical-align: middle; padding-right: 8px;">
+                    <img src="${LOGO_URL}" alt="" width="20" height="20" style="display: block; border: 0; border-radius: 4px;" />
+                  </td>
+                  <td style="vertical-align: middle;">
+                    <span style="font-size: 14px; font-weight: 600; color: ${NAVY};">eyetest.co.uk</span>
+                  </td>
+                </tr>
+              </table>
+              <p style="font-size: 13px; color: ${MUTED_TEXT}; margin: 0 0 6px; line-height: 1.5;">
+                The UK&rsquo;s Eye Test Comparison &amp; Booking Platform
               </p>
-              <p style="font-size: 13px; margin: 0 0 12px;">
-                <a href="https://www.eyetest.co.uk" style="color: ${TEAL}; text-decoration: none;">www.eyetest.co.uk</a>
+              <p style="font-size: 13px; margin: 0 0 16px;">
+                <a href="${SITE_URL}" style="color: ${TEAL}; text-decoration: none; font-weight: 500;">www.eyetest.co.uk</a>
+                &nbsp;&middot;&nbsp;
+                <a href="mailto:hello@eyetest.co.uk" style="color: ${TEAL}; text-decoration: none; font-weight: 500;">hello@eyetest.co.uk</a>
               </p>
-              <p style="font-size: 11px; color: #bbb; margin: 0;">
-                &copy; ${new Date().getFullYear()} eyetest.co.uk. All rights reserved.
-              </p>
+              <div style="border-top: 1px solid ${BORDER}; padding-top: 16px; margin-top: 4px;">
+                <p style="font-size: 11px; color: #cbd5e1; margin: 0;">
+                  &copy; ${new Date().getFullYear()} eyetest.co.uk &middot; All rights reserved
+                </p>
+              </div>
             </td>
           </tr>
 
@@ -143,8 +167,8 @@ export function ctaButton(href: string, label: string): string {
   return `
     <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 28px auto;">
       <tr>
-        <td style="background: ${TEAL}; border-radius: 999px;">
-          <a href="${href}" style="display: inline-block; padding: 14px 32px; color: #fff; font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: 0.2px;">${label}</a>
+        <td style="background: linear-gradient(135deg, ${TEAL} 0%, ${TEAL_DARK} 100%); border-radius: 999px; box-shadow: 0 2px 8px rgba(14,165,160,0.3);">
+          <a href="${href}" style="display: inline-block; padding: 14px 36px; color: #fff; font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: 0.3px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">${label}</a>
         </td>
       </tr>
     </table>`;
@@ -153,19 +177,27 @@ export function ctaButton(href: string, label: string): string {
 /** Highlighted info box (teal left border) */
 export function infoBox(content: string): string {
   return `
-    <div style="background: ${LIGHT_TEAL_BG}; border-left: 4px solid ${TEAL}; border-radius: 0 8px 8px 0; padding: 20px; margin: 24px 0;">
+    <div style="background: ${LIGHT_TEAL_BG}; border-left: 4px solid ${TEAL}; border-radius: 0 12px 12px 0; padding: 24px; margin: 24px 0;">
       ${content}
     </div>`;
 }
 
 /** Navy section heading with teal underline */
 export function sectionHeading(text: string): string {
-  return `<h2 style="font-size: 16px; color: ${NAVY}; border-bottom: 2px solid ${TEAL}; padding-bottom: 8px; margin: 28px 0 16px;">${text}</h2>`;
+  return `
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; margin: 32px 0 16px;">
+      <tr>
+        <td style="padding-bottom: 10px; border-bottom: 2px solid ${TEAL};">
+          <h2 style="font-size: 15px; font-weight: 700; color: ${NAVY}; margin: 0; text-transform: uppercase; letter-spacing: 0.5px;">${text}</h2>
+        </td>
+      </tr>
+    </table>`;
 }
 
 /** Detail row for tables */
-export function detailRow(label: string, value: string): string {
-  return `<tr><td style="padding: 6px 0; color: #666; width: 160px; vertical-align: top;">${label}</td><td style="padding: 6px 0; font-weight: 500;">${value}</td></tr>`;
+export function detailRow(label: string, value: string, isAlt = false): string {
+  const bg = isAlt ? "#f8fafc" : "#ffffff";
+  return `<tr style="background: ${bg};"><td style="padding: 10px 12px; color: ${MUTED_TEXT}; font-size: 13px; width: 140px; vertical-align: top; border-bottom: 1px solid #f1f5f9;">${label}</td><td style="padding: 10px 12px; font-size: 14px; font-weight: 500; color: ${NAVY}; border-bottom: 1px solid #f1f5f9;">${value}</td></tr>`;
 }
 
 /** Paragraph */
@@ -175,7 +207,23 @@ export function para(text: string): string {
 
 /** Badge / pill */
 export function badge(text: string, bg: string, color: string): string {
-  return `<span style="display: inline-block; background: ${bg}; color: ${color}; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 999px; letter-spacing: 0.3px;">${text}</span>`;
+  return `<span style="display: inline-block; background: ${bg}; color: ${color}; font-size: 12px; font-weight: 700; padding: 5px 16px; border-radius: 999px; letter-spacing: 0.3px;">${text}</span>`;
+}
+
+/** Divider */
+export function divider(): string {
+  return `<div style="border-top: 1px solid ${BORDER}; margin: 28px 0;"></div>`;
+}
+
+/** Feature row for comparison tables */
+function featureRow(feature: string, standard: string, gold: string, platinum: string): string {
+  return `
+    <tr>
+      <td style="padding: 10px 12px; font-size: 13px; color: ${GRAY_TEXT}; border-bottom: 1px solid #f1f5f9;">${feature}</td>
+      <td style="padding: 10px 8px; font-size: 13px; text-align: center; border-bottom: 1px solid #f1f5f9;">${standard}</td>
+      <td style="padding: 10px 8px; font-size: 13px; text-align: center; border-bottom: 1px solid #f1f5f9; background: #fffbeb;">${gold}</td>
+      <td style="padding: 10px 8px; font-size: 13px; text-align: center; border-bottom: 1px solid #f1f5f9; background: ${LIGHT_TEAL_BG};">${platinum}</td>
+    </tr>`;
 }
 
 /* ---- Pre-built email templates ---- */
@@ -209,46 +257,62 @@ export function adminNotificationEmail(data: {
     : d.appointmentSystem || "Not specified";
 
   const body = `
+    <!-- Status badge -->
+    <div style="text-align: center; margin-bottom: 28px;">
+      ${badge("NEW APPLICATION", TEAL, "#fff")}
+    </div>
+
     ${sectionHeading("Practice Details")}
-    <table style="width: 100%; border-collapse: collapse;">
-      ${detailRow("Practice name", `<strong>${d.practiceName}</strong>`)}
-      ${detailRow("Contact name", d.contactName)}
-      ${detailRow("Email", `<a href="mailto:${d.email}" style="color: ${TEAL};">${d.email}</a>`)}
-      ${detailRow("Phone", `<a href="tel:${d.phone}" style="color: ${TEAL};">${d.phone}</a>`)}
-      ${detailRow("Website", d.website ? `<a href="${d.website}" style="color: ${TEAL};">${d.website}</a>` : "&mdash;")}
-      ${detailRow("Booking URL", d.bookingUrl ? `<a href="${d.bookingUrl}" style="color: ${TEAL};">${d.bookingUrl}</a>` : "&mdash;")}
+    <table style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; border: 1px solid #f1f5f9;">
+      ${detailRow("Practice", `<strong>${d.practiceName}</strong>`)}
+      ${detailRow("Contact", d.contactName, true)}
+      ${detailRow("Email", `<a href="mailto:${d.email}" style="color: ${TEAL}; text-decoration: none;">${d.email}</a>`)}
+      ${detailRow("Phone", `<a href="tel:${d.phone}" style="color: ${TEAL}; text-decoration: none;">${d.phone}</a>`, true)}
+      ${detailRow("Website", d.website ? `<a href="${d.website}" style="color: ${TEAL}; text-decoration: none;">${d.website}</a>` : "&mdash;")}
+      ${detailRow("Booking URL", d.bookingUrl ? `<a href="${d.bookingUrl}" style="color: ${TEAL}; text-decoration: none; word-break: break-all;">${d.bookingUrl}</a>` : "&mdash;", true)}
     </table>
 
     ${sectionHeading("Location")}
-    <table style="width: 100%; border-collapse: collapse;">
+    <table style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; border: 1px solid #f1f5f9;">
       ${detailRow("Address", d.address)}
-      ${detailRow("Postcode", `<strong>${d.postcode}</strong>`)}
+      ${detailRow("Postcode", `<strong>${d.postcode}</strong>`, true)}
       ${detailRow("Town/City", d.town)}
-      ${detailRow("Coordinates", d.lat && d.lng ? `${d.lat}, ${d.lng}` : "(geocoding failed)")}
-      ${detailRow("Locations", `<strong>${d.locationCount || "1"}</strong>`)}
+      ${detailRow("Coordinates", d.lat && d.lng ? `${d.lat}, ${d.lng}` : "<em style='color: ${MUTED_TEXT};'>geocoding failed</em>", true)}
+      ${detailRow("Total locations", `<strong>${d.locationCount || "1"}</strong>`)}
     </table>
 
     ${sectionHeading("Services &amp; Systems")}
-    <table style="width: 100%; border-collapse: collapse;">
-      ${detailRow("Services", d.services?.length ? d.services.join(", ") : "(none)")}
-      ${detailRow("NHS tests", d.nhsTests ? "&#9989; Yes" : "No")}
-      ${detailRow("Private tests", d.privateTests ? "&#9989; Yes" : "No")}
-      ${detailRow("Appointment system", systemDisplay)}
+    <table style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; border: 1px solid #f1f5f9;">
+      ${detailRow("Services", d.services?.length ? d.services.join(", ") : "<em>None specified</em>")}
+      ${detailRow("NHS tests", d.nhsTests ? `<span style="color: #16a34a; font-weight: 600;">&#10003; Yes</span>` : "No", true)}
+      ${detailRow("Private tests", d.privateTests ? `<span style="color: #16a34a; font-weight: 600;">&#10003; Yes</span>` : "No")}
+      ${detailRow("Booking system", systemDisplay, true)}
     </table>
 
-    ${d.openingHours ? sectionHeading("Opening Hours") + `<p style="background: #f9fafb; padding: 16px; border-radius: 8px; font-size: 14px; line-height: 1.6; margin: 0;">${d.openingHours}</p>` : ""}
+    ${d.openingHours ? `
+      ${sectionHeading("Opening Hours")}
+      <div style="background: #f8fafc; padding: 16px 20px; border-radius: 8px; border: 1px solid #f1f5f9; font-size: 14px; line-height: 1.6; color: ${GRAY_TEXT}; margin: 0; white-space: pre-line;">${d.openingHours}</div>
+    ` : ""}
 
-    ${d.message ? sectionHeading("Additional Information") + `<p style="background: #f9fafb; padding: 16px; border-radius: 8px; font-size: 14px; line-height: 1.6; margin: 0;">${d.message}</p>` : ""}
+    ${d.message ? `
+      ${sectionHeading("Additional Notes")}
+      <div style="background: #f8fafc; padding: 16px 20px; border-radius: 8px; border: 1px solid #f1f5f9; font-size: 14px; line-height: 1.6; color: ${GRAY_TEXT}; margin: 0;">${d.message}</div>
+    ` : ""}
 
     ${d.audiologyAddon ? `
-      <div style="background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 16px; margin: 24px 0;">
+      <div style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 10px; padding: 16px 20px; margin: 24px 0;">
         <p style="margin: 0; font-size: 13px; color: #1e40af; font-weight: 600;">&#128266; Also interested in hearingtest.co.uk listing (+&pound;49/year)</p>
       </div>` : ""}
 
-    <div style="background: ${LIGHT_TEAL_BG}; border: 1px solid ${TEAL}; border-radius: 8px; padding: 16px; margin-top: 24px;">
-      <p style="margin: 0; font-size: 13px; color: #666;">
-        Listing ID: <strong>${d.listingId}</strong>
-      </p>
+    ${divider()}
+
+    <div style="background: ${LIGHT_TEAL_BG}; border: 1px solid ${TEAL}40; border-radius: 10px; padding: 16px 20px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%;">
+        <tr>
+          <td style="font-size: 12px; color: ${MUTED_TEXT};">Listing ID</td>
+          <td style="font-size: 13px; color: ${NAVY}; font-weight: 600; text-align: right; font-family: monospace;">${d.listingId}</td>
+        </tr>
+      </table>
     </div>`;
 
   return brandedEmail({
@@ -265,24 +329,95 @@ export function applicantThankYouEmail(data: {
   practiceName: string;
   listingId: string;
 }): string {
+  const tick = `<span style="color: #16a34a; font-weight: 700;">&#10003;</span>`;
+  const cross = `<span style="color: #cbd5e1;">&mdash;</span>`;
+
   const body = `
     ${para(`Hi ${data.contactName},`)}
-    ${para(`Thank you for applying to get <strong>${data.practiceName}</strong> listed on eyetest.co.uk. We&rsquo;ve received your details and your application is being reviewed.`)}
+    ${para(`Thank you for applying to get <strong>${data.practiceName}</strong> listed on eyetest.co.uk. We&rsquo;ve received your details and your application is now being reviewed.`)}
 
     ${infoBox(`
-      <h3 style="font-size: 15px; color: ${NAVY}; margin: 0 0 12px;">What happens next?</h3>
-      <ol style="font-size: 14px; line-height: 2; margin: 0; padding-left: 20px; color: ${GRAY_TEXT};">
-        <li>Choose your listing tier on the next page (Gold or Platinum)</li>
-        <li>Complete payment via our secure checkout</li>
-        <li>Your listing goes live and patients in your area can find you</li>
-      </ol>
+      <h3 style="font-size: 15px; font-weight: 700; color: ${NAVY}; margin: 0 0 16px;">Your standard listing includes:</h3>
+      <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; font-size: 14px; color: ${GRAY_TEXT};">
+        <tr><td style="padding: 5px 0;"><span style="color: #16a34a; font-weight: 700; margin-right: 8px;">&#10003;</span> Listed on eyetest.co.uk search results</td></tr>
+        <tr><td style="padding: 5px 0;"><span style="color: #16a34a; font-weight: 700; margin-right: 8px;">&#10003;</span> Practice name &amp; contact details shown</td></tr>
+        <tr><td style="padding: 5px 0;"><span style="color: #16a34a; font-weight: 700; margin-right: 8px;">&#10003;</span> Visible to patients searching in your area</td></tr>
+      </table>
     `)}
+
+    ${divider()}
+
+    <!-- Upgrade teaser -->
+    <div style="text-align: center; margin-bottom: 20px;">
+      ${badge("RECOMMENDED", TEAL, "#fff")}
+    </div>
+
+    <h3 style="font-size: 18px; font-weight: 700; color: ${NAVY}; margin: 0 0 8px; text-align: center;">Stand out with a premium listing</h3>
+    ${para(`<span style="text-align: center; display: block;">Upgrade to <strong>Gold</strong> or <strong>Platinum</strong> to get priority placement, a verified badge, and more patients finding your practice.</span>`)}
+
+    <!-- Comparison table -->
+    <table style="width: 100%; border-collapse: collapse; border: 1px solid ${BORDER}; border-radius: 10px; overflow: hidden; margin: 24px 0;">
+      <thead>
+        <tr>
+          <th style="padding: 14px 12px; font-size: 12px; font-weight: 600; color: ${MUTED_TEXT}; text-align: left; background: #f8fafc; border-bottom: 2px solid ${BORDER}; width: 40%;">Feature</th>
+          <th style="padding: 14px 8px; font-size: 12px; font-weight: 600; color: ${MUTED_TEXT}; text-align: center; background: #f8fafc; border-bottom: 2px solid ${BORDER}; width: 20%;">Standard</th>
+          <th style="padding: 14px 8px; font-size: 12px; font-weight: 700; color: #b45309; text-align: center; background: #fffbeb; border-bottom: 2px solid #f59e0b; width: 20%;">&#11088; Gold</th>
+          <th style="padding: 14px 8px; font-size: 12px; font-weight: 700; color: ${TEAL}; text-align: center; background: ${LIGHT_TEAL_BG}; border-bottom: 2px solid ${TEAL}; width: 20%;">&#128142; Platinum</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${featureRow("Search results listing", tick, tick, tick)}
+        ${featureRow("Practice name &amp; details", tick, tick, tick)}
+        ${featureRow("Highlighted card", cross, tick, tick)}
+        ${featureRow("Trust badge", cross, tick, tick)}
+        ${featureRow("Priority placement", cross, tick, tick)}
+        ${featureRow("Practice logo", cross, tick, tick)}
+        ${featureRow("Services tagline", cross, cross, tick)}
+        ${featureRow("Verified partner status", cross, cross, tick)}
+        ${featureRow("Featured Partner card", cross, cross, tick)}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td style="padding: 16px 12px; font-size: 14px; font-weight: 700; color: ${NAVY}; border-top: 2px solid ${BORDER};">Price</td>
+          <td style="padding: 16px 8px; font-size: 15px; font-weight: 700; color: ${NAVY}; text-align: center; border-top: 2px solid ${BORDER};">Free</td>
+          <td style="padding: 16px 8px; font-size: 15px; font-weight: 800; color: #b45309; text-align: center; border-top: 2px solid #f59e0b; background: #fffbeb;">&pound;99<span style="font-size: 11px; font-weight: 400; color: ${MUTED_TEXT};">/yr</span></td>
+          <td style="padding: 16px 8px; font-size: 15px; font-weight: 800; color: ${TEAL}; text-align: center; border-top: 2px solid ${TEAL}; background: ${LIGHT_TEAL_BG};">&pound;149<span style="font-size: 11px; font-weight: 400; color: ${MUTED_TEXT};">/yr</span></td>
+        </tr>
+      </tfoot>
+    </table>
 
     ${ctaButton(`https://www.eyetest.co.uk/get-listed/thank-you?listing_id=${data.listingId}`, "Choose Your Plan &rarr;")}
 
-    ${para(`If you have any questions, just reply to this email or contact us at <a href="mailto:hello@eyetest.co.uk" style="color: ${TEAL};">hello@eyetest.co.uk</a>.`)}
+    <p style="font-size: 12px; color: ${MUTED_TEXT}; text-align: center; margin: 0 0 8px;">No commitment &mdash; upgrade any time. Cancel within 14 days for a full refund.</p>
 
-    ${para(`Best regards,<br/><strong>The eyetest.co.uk Team</strong>`)}`;
+    ${divider()}
+
+    <!-- Cross-sell: hearingtest.co.uk -->
+    <div style="background: linear-gradient(135deg, #1a2744 0%, #243b63 100%); border-radius: 14px; padding: 28px; margin: 0 0 28px; text-align: center;">
+      <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 0 auto 12px;">
+        <tr>
+          <td style="vertical-align: middle; padding-right: 8px;">
+            <img src="https://www.hearingtest.co.uk/favicon-96x96.png" alt="" width="28" height="28" style="display: block; border: 0; border-radius: 6px;" />
+          </td>
+          <td style="vertical-align: middle;">
+            <span style="font-size: 16px; font-weight: 700; color: #fff;">hearingtest.co.uk</span>
+          </td>
+        </tr>
+      </table>
+      <h3 style="color: #fff; font-size: 17px; font-weight: 700; margin: 0 0 8px;">Also offer audiology services?</h3>
+      <p style="color: rgba(255,255,255,0.7); font-size: 14px; margin: 0 0 16px; line-height: 1.5;">Most optician practices also provide hearing tests. Get listed on our sister site <strong style="color: #fff;">hearingtest.co.uk</strong> and reach even more patients &mdash; from just &pound;99/year.</p>
+      <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+        <tr>
+          <td style="background: #3b7dd8; border-radius: 999px;">
+            <a href="https://www.hearingtest.co.uk/get-listed" style="display: inline-block; padding: 12px 28px; color: #fff; font-size: 14px; font-weight: 700; text-decoration: none;">List on hearingtest.co.uk &rarr;</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    ${para(`If you have any questions, just reply to this email or contact us at <a href="mailto:hello@eyetest.co.uk" style="color: ${TEAL}; text-decoration: none; font-weight: 500;">hello@eyetest.co.uk</a>.`)}
+
+    ${para(`Best regards,<br/><strong style="color: ${NAVY};">The eyetest.co.uk Team</strong>`)}`;
 
   return brandedEmail({
     heading: "Thank you for your application",
@@ -309,31 +444,31 @@ export function paymentConfirmationEmail(data: {
   const body = `
     ${para(`Hi ${data.contactName},`)}
 
-    <div style="text-align: center; margin: 8px 0 28px;">
-      <div style="display: inline-block; background: #f0fdf4; border: 2px solid #22c55e; border-radius: 50%; width: 64px; height: 64px; line-height: 64px; text-align: center; margin-bottom: 12px;">
-        <span style="font-size: 32px;">&#9989;</span>
+    <div style="text-align: center; margin: 8px 0 32px;">
+      <div style="display: inline-block; background: #f0fdf4; border: 2px solid #22c55e; border-radius: 50%; width: 68px; height: 68px; line-height: 68px; text-align: center; margin-bottom: 16px;">
+        <span style="font-size: 34px;">&#9989;</span>
       </div>
-      <h2 style="font-size: 20px; color: ${NAVY}; margin: 0;">Your listing is live!</h2>
+      <h2 style="font-size: 22px; color: ${NAVY}; margin: 0; font-weight: 700;">Your listing is live!</h2>
     </div>
 
     ${para(`<strong>${data.practiceName}</strong> is now listed on eyetest.co.uk and visible to patients searching in the <strong>${data.postcode}</strong> area.`)}
 
-    <!-- Tier badge -->
-    <div style="background: ${tierBg}; border: 1px solid ${tierColor}33; border-radius: 12px; padding: 20px; margin: 24px 0; text-align: center;">
+    <!-- Tier card -->
+    <div style="background: ${tierBg}; border: 1px solid ${tierColor}30; border-radius: 14px; padding: 28px; margin: 28px 0; text-align: center;">
       ${badge(`&#11088; ${tierLabel} Listing`, tierColor, "#fff")}
-      <p style="font-size: 24px; font-weight: 800; color: ${NAVY}; margin: 12px 0 4px;">&pound;${tierPrice}<span style="font-size: 14px; font-weight: 400; color: #999;">/year</span></p>
-      ${data.audiologyAddon ? `<p style="font-size: 13px; color: ${TEAL}; margin: 4px 0 0;">+ hearingtest.co.uk listing (&pound;49/year)</p>` : ""}
+      <p style="font-size: 28px; font-weight: 800; color: ${NAVY}; margin: 16px 0 4px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">&pound;${tierPrice}<span style="font-size: 14px; font-weight: 400; color: ${MUTED_TEXT};">/year</span></p>
+      ${data.audiologyAddon ? `<p style="font-size: 13px; color: ${TEAL}; margin: 4px 0 0; font-weight: 500;">+ hearingtest.co.uk listing (&pound;49/year)</p>` : ""}
     </div>
 
     ${infoBox(`
-      <h3 style="font-size: 15px; color: ${NAVY}; margin: 0 0 12px;">What&rsquo;s included</h3>
-      <table style="width: 100%; font-size: 14px; color: ${GRAY_TEXT};">
-        <tr><td style="padding: 4px 0;">&#9989; ${data.tier === "platinum" ? "Premium Featured Partner card" : "Highlighted listing with badge"}</td></tr>
-        <tr><td style="padding: 4px 0;">&#9989; Your practice logo displayed</td></tr>
-        <tr><td style="padding: 4px 0;">&#9989; Priority placement in search results</td></tr>
-        ${data.tier === "platinum" ? `<tr><td style="padding: 4px 0;">&#9989; Services tagline &amp; verified badge</td></tr>` : ""}
-        <tr><td style="padding: 4px 0;">&#9989; Visible to patients within your coverage area</td></tr>
-        ${data.audiologyAddon ? `<tr><td style="padding: 4px 0;">&#9989; Cross-listed on hearingtest.co.uk</td></tr>` : ""}
+      <h3 style="font-size: 15px; font-weight: 700; color: ${NAVY}; margin: 0 0 16px;">What&rsquo;s included</h3>
+      <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; font-size: 14px; color: ${GRAY_TEXT};">
+        <tr><td style="padding: 5px 0; vertical-align: middle;"><span style="color: #16a34a; font-weight: 700; margin-right: 8px;">&#10003;</span> ${data.tier === "platinum" ? "Premium Featured Partner card" : "Highlighted listing with badge"}</td></tr>
+        <tr><td style="padding: 5px 0; vertical-align: middle;"><span style="color: #16a34a; font-weight: 700; margin-right: 8px;">&#10003;</span> Your practice logo displayed</td></tr>
+        <tr><td style="padding: 5px 0; vertical-align: middle;"><span style="color: #16a34a; font-weight: 700; margin-right: 8px;">&#10003;</span> Priority placement in search results</td></tr>
+        ${data.tier === "platinum" ? `<tr><td style="padding: 5px 0; vertical-align: middle;"><span style="color: #16a34a; font-weight: 700; margin-right: 8px;">&#10003;</span> Services tagline &amp; verified badge</td></tr>` : ""}
+        <tr><td style="padding: 5px 0; vertical-align: middle;"><span style="color: #16a34a; font-weight: 700; margin-right: 8px;">&#10003;</span> Visible to patients within your coverage area</td></tr>
+        ${data.audiologyAddon ? `<tr><td style="padding: 5px 0; vertical-align: middle;"><span style="color: #16a34a; font-weight: 700; margin-right: 8px;">&#10003;</span> Cross-listed on hearingtest.co.uk</td></tr>` : ""}
       </table>
     `)}
 
@@ -343,11 +478,13 @@ export function paymentConfirmationEmail(data: {
 
     ${ctaButton(`https://www.eyetest.co.uk/search?postcode=${encodeURIComponent(data.postcode)}`, "See Your Listing Live &rarr;")}
 
+    ${divider()}
+
     ${para(`Need to update your listing details, add a logo, or change anything? Just reply to this email and we&rsquo;ll take care of it.`)}
 
     ${para(`Thank you for choosing eyetest.co.uk &mdash; we&rsquo;re excited to help more patients find your practice.`)}
 
-    ${para(`Best regards,<br/><strong>The eyetest.co.uk Team</strong>`)}`;
+    ${para(`Best regards,<br/><strong style="color: ${NAVY};">The eyetest.co.uk Team</strong>`)}`;
 
   return brandedEmail({
     heading: "Your listing is live! &#127881;",
@@ -363,7 +500,7 @@ export function renewalReminderEmail(data: {
   practiceName: string;
   tier: "gold" | "platinum";
   daysUntilExpiry: number;
-  expiresAt: string; // ISO date string
+  expiresAt: string;
   postcode: string;
 }): string {
   const tierLabel = data.tier === "platinum" ? "Platinum" : "Gold";
@@ -379,14 +516,14 @@ export function renewalReminderEmail(data: {
     ${para(`Just a friendly heads-up &mdash; your <strong>${tierLabel}</strong> listing for <strong>${data.practiceName}</strong> on eyetest.co.uk is due to renew in <strong>${data.daysUntilExpiry} days</strong>.`)}
 
     <!-- Renewal summary -->
-    <div style="background: #fffbeb; border: 1px solid #f59e0b33; border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center;">
-      <p style="font-size: 14px; color: #92400e; margin: 0 0 8px; font-weight: 600;">Renewal date</p>
-      <p style="font-size: 22px; font-weight: 800; color: ${NAVY}; margin: 0;">${expiryDate}</p>
-      <p style="font-size: 13px; color: ${MUTED_TEXT}; margin: 8px 0 0;">${tierLabel} listing &mdash; renews automatically</p>
+    <div style="background: #fffbeb; border: 1px solid #fcd34d; border-radius: 14px; padding: 28px; margin: 28px 0; text-align: center;">
+      <p style="font-size: 13px; color: #92400e; margin: 0 0 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Renewal date</p>
+      <p style="font-size: 24px; font-weight: 800; color: ${NAVY}; margin: 0;">${expiryDate}</p>
+      <p style="font-size: 13px; color: ${MUTED_TEXT}; margin: 10px 0 0;">${tierLabel} listing &mdash; renews automatically</p>
     </div>
 
     ${infoBox(`
-      <h3 style="font-size: 15px; color: ${NAVY}; margin: 0 0 8px;">No action needed</h3>
+      <h3 style="font-size: 15px; font-weight: 700; color: ${NAVY}; margin: 0 0 10px;">No action needed</h3>
       <p style="font-size: 14px; color: ${GRAY_TEXT}; margin: 0; line-height: 1.6;">
         Your subscription will renew automatically using your payment method on file. Your listing will continue uninterrupted.
       </p>
@@ -394,13 +531,15 @@ export function renewalReminderEmail(data: {
 
     ${para(`If you&rsquo;d like to make any changes to your listing, upgrade your tier, or have any questions about your renewal, just reply to this email.`)}
 
-    ${para(`To manage your subscription or update your payment details, contact us at <a href="mailto:hello@eyetest.co.uk" style="color: ${TEAL};">hello@eyetest.co.uk</a>.`)}
+    ${para(`To manage your subscription or update your payment details, contact us at <a href="mailto:hello@eyetest.co.uk" style="color: ${TEAL}; text-decoration: none; font-weight: 500;">hello@eyetest.co.uk</a>.`)}
 
     ${ctaButton(`https://www.eyetest.co.uk/search?postcode=${encodeURIComponent(data.postcode)}`, "View Your Listing &rarr;")}
 
+    ${divider()}
+
     ${para(`Thanks for being part of eyetest.co.uk &mdash; your listing has been helping patients find your practice since you joined.`)}
 
-    ${para(`Best regards,<br/><strong>The eyetest.co.uk Team</strong>`)}`;
+    ${para(`Best regards,<br/><strong style="color: ${NAVY};">The eyetest.co.uk Team</strong>`)}`;
 
   return brandedEmail({
     heading: "Your listing renews soon",
