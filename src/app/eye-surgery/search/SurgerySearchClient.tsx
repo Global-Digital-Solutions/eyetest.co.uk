@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, FormEvent } from "react";
+import { useState, useEffect, useCallback, useMemo, FormEvent } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { SurgeryCallout } from "@/components/SurgeryCallout";
@@ -324,19 +324,30 @@ export default function SurgerySearchClient() {
     ? [...sortedNearby, ...sortedAlsoAvailable]
     : [];
 
-  const mapClinics: SurgeryMapClinic[] = allResultClinics.map((c, i) => ({
-    id: clinicId(c, i),
-    name: c.name,
-    providerName: c.providerName,
-    providerSlug: c.providerSlug,
-    brandColor: getProviderBrandColor(c.providerSlug),
-    lat: c.lat,
-    lng: c.lng,
-    distanceMiles: c.distanceMiles,
-    preferred: isPreferredPartner(c.providerSlug),
-    rating: getProviderGoogleReview(c.providerSlug)?.rating,
-    postcode: c.postcode ?? undefined,
-  }));
+  const mapClinics: SurgeryMapClinic[] = useMemo(
+    () =>
+      allResultClinics.map((c, i) => ({
+        id: clinicId(c, i),
+        name: c.name,
+        providerName: c.providerName,
+        providerSlug: c.providerSlug,
+        brandColor: getProviderBrandColor(c.providerSlug),
+        lat: c.lat,
+        lng: c.lng,
+        distanceMiles: c.distanceMiles,
+        preferred: isPreferredPartner(c.providerSlug),
+        rating: getProviderGoogleReview(c.providerSlug)?.rating,
+        postcode: c.postcode ?? undefined,
+      })),
+    // Only recompute when the actual result data changes, not on every render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [results],
+  );
+
+  const handleMapSelectClinic = useCallback((id: string) => {
+    const el = document.getElementById(`clinic-${id}`);
+    el?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, []);
 
   const totalProviderClinics = surgeryProviders.reduce((s, p) => s + p.storeCount, 0);
 
@@ -550,10 +561,7 @@ export default function SurgerySearchClient() {
                   <SurgeryResultsMap
                     clinics={mapClinics}
                     highlightedId={highlightedClinicId}
-                    onSelectClinic={(id) => {
-                      const el = document.getElementById(`clinic-${id}`);
-                      el?.scrollIntoView({ behavior: "smooth", block: "center" });
-                    }}
+                    onSelectClinic={handleMapSelectClinic}
                   />
                 </div>
               </div>

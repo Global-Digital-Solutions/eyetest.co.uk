@@ -30,6 +30,9 @@ export function SurgeryResultsMap({
   const mapRef = useRef<any>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const markersRef = useRef<Map<string, any>>(new Map());
+  // Stable ref for onSelectClinic so map init doesn't depend on it
+  const onSelectRef = useRef(onSelectClinic);
+  onSelectRef.current = onSelectClinic;
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -162,7 +165,7 @@ export function SurgeryResultsMap({
             .addTo(m);
 
           el.addEventListener("click", () => {
-            onSelectClinic?.(clinic.id);
+            onSelectRef.current?.(clinic.id);
           });
 
           markersRef.current.set(clinic.id, { marker, el });
@@ -187,7 +190,7 @@ export function SurgeryResultsMap({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [clinics, onSelectClinic]);
+  }, [clinics]);
 
   // Highlight effect
   useEffect(() => {
