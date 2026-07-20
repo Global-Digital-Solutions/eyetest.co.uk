@@ -317,10 +317,10 @@ export default function EyeSurgeryPage() {
                 className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Compare Eye Surgery Providers
+                Compare Eye Health Providers
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Compare the UK&apos;s leading eye surgery providers side by side.
+                Compare the UK&apos;s leading eye health providers side by side.
                 View ratings, pricing, and clinic locations.
               </p>
             </div>
