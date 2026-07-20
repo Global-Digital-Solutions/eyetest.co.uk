@@ -206,7 +206,8 @@ export default function EyeSurgeryPage() {
               className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-navy)] leading-tight mb-3 text-center"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Find an Eye Health Clinic{" "}
+              Find an Eye Health Clinic
+              <br />
               <span className="text-[var(--color-primary)]">Near You</span>
             </h1>
             <p className="text-gray-600 text-center mb-8 max-w-xl mx-auto">
