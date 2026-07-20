@@ -142,6 +142,50 @@ export default async function ThankYouPage({
             )}
           </div>
         </section>
+
+        {/* ================================================================ */}
+        {/* CROSS-SELL: hearingtest.co.uk                                    */}
+        {/* ================================================================ */}
+        <section className="pb-16 sm:pb-20">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="bg-gradient-to-br from-[#1a2744] to-[#243b63] rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+              {/* Icon + branding */}
+              <div className="flex-shrink-0 text-center sm:text-left">
+                <div className="w-14 h-14 bg-[#3b7dd8] rounded-xl flex items-center justify-center mx-auto sm:mx-0 mb-3">
+                  <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 8.5a6 6 0 0 1 12 0c0 3-2 4.5-2 7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2c0-1.5-.5-2-1.5-3" stroke="currentColor" />
+                    <path d="M11 12.5a2 2 0 0 0 2 2" stroke="currentColor" />
+                    <path d="M13.5 8.5a2.5 2.5 0 0 0-5 0" stroke="currentColor" />
+                  </svg>
+                </div>
+                <span className="text-white font-bold text-lg" style={{ fontFamily: "var(--font-display)" }}>
+                  hearing<span className="text-[#0d9488]">test</span><span className="text-white/40 text-sm">.co.uk</span>
+                </span>
+              </div>
+
+              {/* Copy */}
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-white font-bold text-lg sm:text-xl mb-2" style={{ fontFamily: "var(--font-display)" }}>
+                  Also offer audiology services?
+                </h3>
+                <p className="text-white/60 text-sm leading-relaxed mb-4">
+                  Most optician practices also provide hearing tests. Get listed on our sister site
+                  <strong className="text-white"> hearingtest.co.uk</strong> and reach patients looking for
+                  hearing tests in your area &mdash; from just &pound;99/year.
+                </p>
+                <a
+                  href="https://www.hearingtest.co.uk/get-listed"
+                  className="inline-flex items-center gap-2 bg-[#3b7dd8] hover:bg-[#2c6bbf] text-white font-semibold text-sm px-6 py-2.5 rounded-full transition-all"
+                >
+                  List on hearingtest.co.uk
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

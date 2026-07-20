@@ -313,6 +313,22 @@ export function adminNotificationEmail(data: {
           <td style="font-size: 13px; color: ${NAVY}; font-weight: 600; text-align: right; font-family: monospace;">${d.listingId}</td>
         </tr>
       </table>
+    </div>
+
+    <!-- Cross-sell: hearingtest.co.uk -->
+    <div style="background: linear-gradient(135deg, #1a2744 0%, #243b63 100%); border-radius: 14px; padding: 24px; margin: 24px 0; text-align: center;">
+      <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 0 auto 10px;">
+        <tr>
+          <td style="vertical-align: middle; padding-right: 8px;">
+            <img src="https://www.hearingtest.co.uk/favicon-96x96.png" alt="" width="24" height="24" style="display: block; border: 0; border-radius: 5px;" />
+          </td>
+          <td style="vertical-align: middle;">
+            <span style="font-size: 14px; font-weight: 700; color: #fff;">hearingtest.co.uk</span>
+          </td>
+        </tr>
+      </table>
+      <p style="color: rgba(255,255,255,0.75); font-size: 13px; margin: 0 0 12px; line-height: 1.5;">This practice may also offer audiology. Consider suggesting a listing on <strong style="color: #fff;">hearingtest.co.uk</strong> for additional reach.</p>
+      <a href="https://www.hearingtest.co.uk/get-listed" style="color: #93c5fd; font-size: 13px; font-weight: 600; text-decoration: none;">View hearingtest.co.uk listing options &rarr;</a>
     </div>`;
 
   return brandedEmail({
