@@ -19,7 +19,7 @@ interface JimmyFairlyStore {
   lng: number;
 }
 
-const STORES: JimmyFairlyStore[] = [
+export const JIMMY_FAIRLY_STORES: JimmyFairlyStore[] = [
   /* London */
   { name: "Chelsea", address: "170 King's Road", postcode: "SW3 4UP", town: "London", bookingCode: "kgrd", lat: 51.4882, lng: -0.1685 },
   { name: "Covent Garden", address: "24 Neal Street", postcode: "WC2H 9QW", town: "London", bookingCode: "neal", lat: 51.5131, lng: -0.1262 },
@@ -52,7 +52,7 @@ export async function fetchJimmyFairly(
 ): Promise<StoreResult[]> {
   const threeDays = getStaticThreeDayDates();
 
-  const nearby = STORES
+  const nearby = JIMMY_FAIRLY_STORES
     .map((store) => {
       const distM = haversine(lat, lng, store.lat, store.lng);
       if (distM > radius) return null;

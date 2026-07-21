@@ -1524,10 +1524,249 @@ function BulkImportSection() {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Store Health Section                                               */
+/* ------------------------------------------------------------------ */
+
+interface StoreHealthItem {
+  name: string;
+  postcode: string;
+  town: string;
+  status: "valid" | "invalid" | "no-postcode";
+  storedLat: number;
+  storedLng: number;
+  actualLat: number | null;
+  actualLng: number | null;
+  driftMetres: number | null;
+  district: string | null;
+}
+
+interface ProviderReport {
+  total: number;
+  valid: number;
+  invalid: number;
+  noPostcode: number;
+  significantDrift: number;
+  stores: StoreHealthItem[];
+}
+
+interface StoreHealthData {
+  timestamp: string;
+  summary: {
+    totalStores: number;
+    totalValid: number;
+    totalInvalid: number;
+    totalSignificantDrift: number;
+  };
+  providers: Record<string, ProviderReport>;
+}
+
+const PROVIDER_NAMES: Record<string, string> = {
+  mands: "M&S Opticians",
+  scrivens: "Scrivens",
+  aceandtate: "Ace & Tate",
+  jimmyfairly: "Jimmy Fairly",
+};
+
+function StoreHealthSection() {
+  const [data, setData] = useState<StoreHealthData | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [expandedProvider, setExpandedProvider] = useState<string | null>(null);
+  const [showOnlyIssues, setShowOnlyIssues] = useState(false);
+
+  async function runCheck() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/admin/store-refresh");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setData(await res.json());
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to run check");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="space-y-4">
+      {/* Header + run button */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-sm font-semibold text-gray-900">Store Health Check</h2>
+          <p className="text-xs text-gray-500 mt-0.5">
+            Validates postcodes for all 235 static provider stores via postcodes.io
+          </p>
+        </div>
+        <button
+          onClick={runCheck}
+          disabled={loading}
+          className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50 transition-colors"
+        >
+          {loading ? "Checking…" : "Run Check"}
+        </button>
+      </div>
+
+      {error && (
+        <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
+
+      {data && (
+        <>
+          {/* Summary cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="bg-white rounded-xl border border-gray-200 px-4 py-3">
+              <p className="text-xs text-gray-500 font-medium">Total Stores</p>
+              <p className="text-xl font-bold text-gray-900">{data.summary.totalStores}</p>
+            </div>
+            <div className="bg-white rounded-xl border border-gray-200 px-4 py-3">
+              <p className="text-xs text-gray-500 font-medium">Valid Postcodes</p>
+              <p className="text-xl font-bold text-green-700">{data.summary.totalValid}</p>
+            </div>
+            <div className="bg-white rounded-xl border border-gray-200 px-4 py-3">
+              <p className="text-xs text-gray-500 font-medium">Invalid / Terminated</p>
+              <p className={`text-xl font-bold ${data.summary.totalInvalid > 0 ? "text-red-600" : "text-gray-400"}`}>
+                {data.summary.totalInvalid}
+              </p>
+            </div>
+            <div className="bg-white rounded-xl border border-gray-200 px-4 py-3">
+              <p className="text-xs text-gray-500 font-medium">Coord Drift &gt;500m</p>
+              <p className={`text-xl font-bold ${data.summary.totalSignificantDrift > 0 ? "text-amber-600" : "text-gray-400"}`}>
+                {data.summary.totalSignificantDrift}
+              </p>
+            </div>
+          </div>
+
+          {/* Timestamp + filter */}
+          <div className="flex items-center justify-between text-xs text-gray-500">
+            <span>Last checked: {new Date(data.timestamp).toLocaleString("en-GB")}</span>
+            <label className="flex items-center gap-1.5 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={showOnlyIssues}
+                onChange={(e) => setShowOnlyIssues(e.target.checked)}
+                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              />
+              Show issues only
+            </label>
+          </div>
+
+          {/* Per-provider breakdown */}
+          {Object.entries(data.providers).map(([key, provider]) => {
+            const isExpanded = expandedProvider === key;
+            const hasIssues = provider.invalid > 0 || provider.significantDrift > 0;
+            const filteredStores = showOnlyIssues
+              ? provider.stores.filter(
+                  (s) => s.status !== "valid" || (s.driftMetres !== null && s.driftMetres > 500)
+                )
+              : provider.stores;
+
+            return (
+              <section
+                key={key}
+                className="bg-white rounded-2xl border border-gray-200 overflow-hidden"
+              >
+                <button
+                  type="button"
+                  onClick={() => setExpandedProvider(isExpanded ? null : key)}
+                  className="w-full px-5 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm font-medium text-gray-900">
+                      {PROVIDER_NAMES[key] ?? key}
+                    </span>
+                    <span className="text-xs text-gray-500">
+                      {provider.total} stores
+                    </span>
+                    {hasIssues && (
+                      <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700">
+                        {provider.invalid + provider.significantDrift} issue{provider.invalid + provider.significantDrift !== 1 ? "s" : ""}
+                      </span>
+                    )}
+                    {!hasIssues && (
+                      <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
+                        All OK
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-gray-400 text-xs">{isExpanded ? "▲" : "▼"}</span>
+                </button>
+
+                {isExpanded && (
+                  <div className="border-t border-gray-100 max-h-[28rem] overflow-y-auto">
+                    {filteredStores.length === 0 && (
+                      <p className="px-5 py-4 text-sm text-gray-500">No issues found.</p>
+                    )}
+                    <ul className="divide-y divide-gray-50">
+                      {filteredStores.map((store, i) => (
+                        <li key={i} className="px-5 py-3">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <span className="text-sm font-medium text-gray-800">{store.name}</span>
+                              <span className="ml-2 text-xs text-gray-500">
+                                {store.postcode || "No postcode"}
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              {store.status === "valid" && (
+                                <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
+                                  Valid
+                                </span>
+                              )}
+                              {store.status === "invalid" && (
+                                <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700">
+                                  Invalid / Terminated
+                                </span>
+                              )}
+                              {store.status === "no-postcode" && (
+                                <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
+                                  No Postcode
+                                </span>
+                              )}
+                              {store.driftMetres !== null && store.driftMetres > 500 && (
+                                <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700">
+                                  Drift: {store.driftMetres > 1000 ? `${(store.driftMetres / 1000).toFixed(1)}km` : `${store.driftMetres}m`}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                          {store.district && (
+                            <p className="text-xs text-gray-400 mt-0.5">
+                              District: {store.district}
+                            </p>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </section>
+            );
+          })}
+        </>
+      )}
+
+      {!data && !loading && (
+        <div className="bg-white rounded-2xl border border-gray-200 px-5 py-8 text-center">
+          <p className="text-sm text-gray-500">
+            Click &ldquo;Run Check&rdquo; to validate all static provider store postcodes.
+          </p>
+          <p className="text-xs text-gray-400 mt-1">
+            Checks M&amp;S (37), Scrivens (164), Jimmy Fairly (17), and Ace &amp; Tate (17) stores.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Main Dashboard                                                     */
 /* ------------------------------------------------------------------ */
 
-type Tab = "subscriptions" | "listings" | "providers" | "featured" | "bulk-import";
+type Tab = "subscriptions" | "listings" | "providers" | "featured" | "bulk-import" | "store-health";
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>("subscriptions");
@@ -1571,6 +1810,7 @@ export default function AdminDashboard() {
     { key: "bulk-import", label: "Bulk Import" },
     { key: "providers", label: "Providers" },
     { key: "featured", label: "Featured" },
+    { key: "store-health", label: "Store Health" },
   ];
 
   return (
@@ -1674,6 +1914,8 @@ export default function AdminDashboard() {
         )}
 
         {activeTab === "featured" && <FeaturedSection mysightSites={mysightSites} />}
+
+        {activeTab === "store-health" && <StoreHealthSection />}
       </main>
     </div>
   );

@@ -19,7 +19,7 @@ interface AceAndTateStore {
   lng: number;
 }
 
-const STORES: AceAndTateStore[] = [
+export const ACE_TATE_STORES: AceAndTateStore[] = [
   { city: "London", address: "Earlham Street 10", slug: "london-earlham-street", universalStoreId: "GBLON01", appointmentId: 4670991, lat: 51.513539692185816, lng: -0.1280083294477663 },
   { city: "Bristol", address: "Park Street 86", slug: "bristol-parkstreet", universalStoreId: "GBBRI01", appointmentId: 6794949, lat: 51.455597685362946, lng: -2.6039087668647865 },
   { city: "Manchester", address: "Oldham Street 21", slug: "manchester-oldham-street", universalStoreId: "GBMAN01", appointmentId: 6794972, lat: 53.48215155138749, lng: -2.2365019441803002 },
@@ -49,7 +49,7 @@ export async function fetchAceAndTate(
 ): Promise<StoreResult[]> {
   const threeDays = getStaticThreeDayDates();
 
-  const nearby = STORES
+  const nearby = ACE_TATE_STORES
     .map((store) => {
       const distM = haversine(lat, lng, store.lat, store.lng);
       if (distM > radius) return null;

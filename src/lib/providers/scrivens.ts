@@ -18,7 +18,7 @@ interface ScrivensStore {
   branchId: string;
 }
 
-const STORES: ScrivensStore[] = [
+export const SCRIVENS_STORES: ScrivensStore[] = [
   { address: "6 Bury Street, Abingdon, OX14 3QY", postcode: "OX14 3QY", town: "Abingdon", phone: "01235 523217", lat: 51.670402, lng: -1.282144, branchId: "17414" },
   { address: "45 Anchor Road, Aldridge, WS9 8PT", postcode: "WS9 8PT", town: "Aldridge", phone: "01922 452305", lat: 52.603723, lng: -1.91939, branchId: "17492" },
   { address: "84 High Street, Alfreton, DE55 7BE", postcode: "DE55 7BE", town: "Alfreton", phone: "01773 832474", lat: 53.097526, lng: -1.386687, branchId: "17384" },
@@ -193,7 +193,7 @@ export async function fetchScrivens(
 ): Promise<StoreResult[]> {
   const threeDays = getStaticThreeDayDates();
 
-  const nearby = STORES
+  const nearby = SCRIVENS_STORES
     .map((store) => {
       const distM = haversine(lat, lng, store.lat, store.lng);
       if (distM > radius) return null;

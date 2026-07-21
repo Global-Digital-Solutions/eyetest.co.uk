@@ -21,7 +21,7 @@ interface MandSStore {
   lng: number;
 }
 
-const STORES: MandSStore[] = [
+export const MANDS_STORES: MandSStore[] = [
   { slug: "argyle", storeId: "664", address: "2-12 Argyle Street, Glasgow, G2 8AA", postcode: "G2 8AA", town: "Glasgow", phone: "0141 260 5226", lat: 55.857745, lng: -4.249795 },
   { slug: "banbury-gateway", storeId: "661", address: "Banbury Gateway Shopping Park, Banbury, OX16 3ER", postcode: "OX16 3ER", town: "Banbury", phone: "01295 234 570", lat: 52.076036, lng: -1.319244 },
   { slug: "bluewater", storeId: "632", address: "Bluewater, Greenhithe, DA9 9SD", postcode: "DA9 9SD", town: "Greenhithe", phone: "01322 918085", lat: 51.43827, lng: 0.274018 },
@@ -71,7 +71,7 @@ export async function fetchMandS(
 ): Promise<StoreResult[]> {
   const threeDays = getStaticThreeDayDates();
 
-  const nearby = STORES
+  const nearby = MANDS_STORES
     .map((store) => {
       const distM = haversine(lat, lng, store.lat, store.lng);
       if (distM > radius) return null;
