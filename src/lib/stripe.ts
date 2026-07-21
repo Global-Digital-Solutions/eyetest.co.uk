@@ -23,7 +23,7 @@ export const stripe: any = Stripe
 
 // Price IDs — set these in Vercel env vars
 export const PRICES = {
-  gold: process.env.STRIPE_PRICE_GOLD!, // £99/year
-  platinum: process.env.STRIPE_PRICE_PLATINUM!, // £149/year
-  audiology: process.env.STRIPE_PRICE_AUDIOLOGY!, // £49/year add-on
+  gold: process.env.STRIPE_PRICE_GOLD!, // £149/year
+  platinum: process.env.STRIPE_PRICE_PLATINUM!, // £199/year
+  audiology: process.env.STRIPE_PRICE_AUDIOLOGY!, // £69/year add-on
 };

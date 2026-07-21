@@ -285,7 +285,7 @@ export default function DisclaimerPage() {
                 6. No Patient-Practitioner Relationship
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                Use of this Site does not create a patient-practitioner or patient-doctor relationship between you and eyetest.co.uk, Global Digital Solutions, or any of the opticians or practitioners listed on the Site. Such a relationship is only formed when you attend an appointment with a registered practitioner and they undertake to provide you with clinical care.
+                Use of this Site does not create a patient-practitioner or patient-doctor relationship between you and eyetest.co.uk, Global Digital Solutions Limited, or any of the opticians or practitioners listed on the Site. Such a relationship is only formed when you attend an appointment with a registered practitioner and they undertake to provide you with clinical care.
               </p>
             </div>
 
@@ -305,7 +305,7 @@ export default function DisclaimerPage() {
                 8. Limitation of Liability
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                To the fullest extent permitted by law, eyetest.co.uk and Global Digital Solutions shall not be liable for any injury, loss, or damage arising from your reliance on the information provided on this Site. Any reliance you place on such information is strictly at your own risk. We are not liable for any decisions you make, or actions you take or fail to take, based on the content of this Site.
+                To the fullest extent permitted by law, eyetest.co.uk and Global Digital Solutions Limited shall not be liable for any injury, loss, or damage arising from your reliance on the information provided on this Site. Any reliance you place on such information is strictly at your own risk. We are not liable for any decisions you make, or actions you take or fail to take, based on the content of this Site.
               </p>
             </div>
 
@@ -329,7 +329,7 @@ export default function DisclaimerPage() {
               </p>
               <div className="bg-gray-50 rounded-xl p-6 text-sm text-gray-700">
                 <p className="font-semibold text-[var(--color-navy)]">eyetest.co.uk</p>
-                <p>Operated by Global Digital Solutions</p>
+                <p>Operated by Global Digital Solutions Limited</p>
                 <p>
                   Email:{" "}
                   <a

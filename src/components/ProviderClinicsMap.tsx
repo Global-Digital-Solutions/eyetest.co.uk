@@ -56,16 +56,12 @@ export function ProviderClinicsMap({
 
       (mb.default as unknown as { accessToken: string }).accessToken = token;
 
-      const avgLat =
-        clinics.reduce((s, c) => s + c.lat, 0) / (clinics.length || 1);
-      const avgLng =
-        clinics.reduce((s, c) => s + c.lng, 0) / (clinics.length || 1);
-
+      // Centre on UK by default
       const m = new mb.default.Map({
         container: mapContainer.current!,
         style: "mapbox://styles/mapbox/light-v11",
-        center: [avgLng || -1.5, avgLat || 52.5],
-        zoom: 6,
+        center: [-2.5, 54.0],
+        zoom: 5.2,
         attributionControl: false,
       });
 
@@ -154,14 +150,14 @@ export function ProviderClinicsMap({
           markersRef.current.set(clinic.slug, { marker, el });
         });
 
-        // Fit bounds
+        // Fit bounds — show all pins at a comfortable UK-wide zoom
         if (clinics.length > 1) {
           const bounds = new mb.default.LngLatBounds();
           clinics.forEach((c) => bounds.extend([c.lng, c.lat]));
-          m.fitBounds(bounds, { padding: 50, maxZoom: 12 });
+          m.fitBounds(bounds, { padding: 40, maxZoom: 8 });
         } else if (clinics.length === 1) {
           m.setCenter([clinics[0].lng, clinics[0].lat]);
-          m.setZoom(12);
+          m.setZoom(10);
         }
       });
     })();
@@ -176,34 +172,26 @@ export function ProviderClinicsMap({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clinics, brandColor]);
 
-  // ── Highlight sync ─────────────────────────────────────────────────────
+  // ── Highlight sync — enlarge pin + add bright brand-colour ring ───────
   useEffect(() => {
     markersRef.current.forEach(({ el }, slug) => {
       if (slug === highlightedClinic) {
-        el.style.transform = "rotate(-45deg) scale(1.3)";
+        el.style.transform = "rotate(-45deg) scale(1.4)";
         el.style.zIndex = "20";
-        el.style.boxShadow = `0 3px 12px rgba(0,0,0,0.35)`;
+        el.style.border = `3px solid ${brandColor}`;
+        el.style.boxShadow = `0 0 0 3px ${brandColor}44, 0 4px 14px rgba(0,0,0,0.35)`;
       } else {
         el.style.transform = "rotate(-45deg) scale(1)";
         el.style.zIndex = "1";
-        el.style.boxShadow = `0 2px 6px rgba(0,0,0,0.25)`;
+        el.style.border = "2.5px solid white";
+        el.style.boxShadow = "0 2px 6px rgba(0,0,0,0.25)";
       }
     });
-  }, [highlightedClinic]);
+  }, [highlightedClinic, brandColor]);
 
-  // ── Fly to clinic when card is hovered ─────────────────────────────────
+  // ── Highlight pin when card is hovered (no zoom/fly) ────────────────
   const handleCardHover = (slug: string | null) => {
     setHighlightedClinic(slug);
-    if (slug && mapRef.current) {
-      const clinic = clinics.find((c) => c.slug === slug);
-      if (clinic) {
-        mapRef.current.flyTo({
-          center: [clinic.lng, clinic.lat],
-          zoom: Math.max(mapRef.current.getZoom(), 10),
-          duration: 600,
-        });
-      }
-    }
   };
 
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
@@ -224,19 +212,19 @@ export function ProviderClinicsMap({
         </span>
       </div>
 
-      {/* Map + List split */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Map */}
-        <div className="order-2 lg:order-1">
+      {/* Map + List split — map takes 7 cols, list takes 5 */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Map — wider */}
+        <div className="order-2 lg:order-1 lg:col-span-7">
           {token ? (
             <div
               ref={mapContainer}
               className="w-full rounded-2xl border border-gray-100 shadow-sm"
-              style={{ height: "480px" }}
+              style={{ height: "520px" }}
             />
           ) : (
             <div className="w-full rounded-2xl border border-gray-100 bg-gray-50 flex flex-col items-center justify-center text-gray-400 p-8 text-center"
-              style={{ height: "480px" }}
+              style={{ height: "520px" }}
             >
               <svg
                 className="w-12 h-12 mb-3"
@@ -259,10 +247,10 @@ export function ProviderClinicsMap({
           )}
         </div>
 
-        {/* Clinic cards list */}
+        {/* Clinic cards list — narrower */}
         <div
-          className="order-1 lg:order-2 space-y-3 overflow-y-auto pr-1"
-          style={{ maxHeight: "480px" }}
+          className="order-1 lg:order-2 lg:col-span-5 space-y-3 overflow-y-auto pr-1"
+          style={{ maxHeight: "520px" }}
         >
           {clinics.map((clinic) => (
             <div

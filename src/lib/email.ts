@@ -265,7 +265,7 @@ export function adminNotificationEmail(data: {
 
     ${d.audiologyAddon ? `
       ${divider()}
-      <p style="font-size: 13px; color: ${TEAL}; margin: 0;">Also interested in hearingtest.co.uk listing (+&pound;49/yr)</p>
+      <p style="font-size: 13px; color: ${TEAL}; margin: 0;">Also interested in hearingtest.co.uk listing (+&pound;69/yr)</p>
     ` : ""}
 
     ${divider()}
@@ -310,7 +310,7 @@ export function applicantThankYouEmail(data: {
     ${divider()}
 
     <p style="font-size: 14px; font-weight: 600; color: ${NAVY}; margin: 0 0 8px;">Want to stand out?</p>
-    ${para(`Upgrade to <strong>Gold</strong> (&pound;99/yr) or <strong>Platinum</strong> (&pound;149/yr) for priority placement, a trust badge, highlighted card, and your practice logo in search results.`)}
+    ${para(`Upgrade to <strong>Gold</strong> (&pound;149/yr) or <strong>Platinum</strong> (&pound;199/yr) for priority placement, a trust badge, highlighted card, and your practice logo in search results.`)}
 
     ${ctaButton(`https://www.eyetest.co.uk/get-listed/thank-you?listing_id=${data.listingId}`, "View upgrade options")}
 
@@ -319,7 +319,7 @@ export function applicantThankYouEmail(data: {
     <div style="padding: 16px; background: #f9fafb; border: 1px solid ${BORDER}; border-radius: 8px; margin: 0 0 20px;">
       <p style="font-size: 14px; font-weight: 600; color: ${NAVY}; margin: 0 0 6px;">Also offer hearing tests?</p>
       <p style="font-size: 13px; color: ${MUTED_TEXT}; margin: 0; line-height: 1.5;">
-        Get listed on our sister site <a href="https://www.hearingtest.co.uk/get-listed" style="color: ${TEAL}; text-decoration: none; font-weight: 500;">hearingtest.co.uk</a> from &pound;99/yr.
+        Get listed on our sister site <a href="https://www.hearingtest.co.uk/get-listed" style="color: ${TEAL}; text-decoration: none; font-weight: 500;">hearingtest.co.uk</a> from &pound;69/yr.
       </p>
     </div>
 
@@ -344,7 +344,7 @@ export function paymentConfirmationEmail(data: {
   listingId: string;
 }): string {
   const tierLabel = data.tier === "platinum" ? "Platinum" : "Gold";
-  const tierPrice = data.tier === "platinum" ? "149" : "99";
+  const tierPrice = data.tier === "platinum" ? "199" : "149";
 
   const body = `
     ${para(`Hi ${data.contactName},`)}

@@ -73,15 +73,16 @@ export async function POST(req: NextRequest) {
           console.error("Failed to activate listing:", updateError);
         }
 
-        // Send post-payment confirmation email
-        try {
-          const { data: listing } = await supabase
-            .from("optician_listings")
-            .select("contact_name, practice_name, email, postcode")
-            .eq("id", listingId)
-            .single();
+        // Fetch full listing data (needed for email + cross-listing)
+        const { data: listing } = await supabase
+          .from("optician_listings")
+          .select("*")
+          .eq("id", listingId)
+          .single();
 
-          if (listing) {
+        // Send post-payment confirmation email
+        if (listing) {
+          try {
             const transporter = getTransporter();
             if (transporter) {
               await transporter.sendMail({
@@ -98,10 +99,37 @@ export async function POST(req: NextRequest) {
                 }),
               });
             }
+          } catch (emailErr) {
+            console.error("Post-payment confirmation email failed:", emailErr);
           }
-        } catch (emailErr) {
-          console.error("Post-payment confirmation email failed:", emailErr);
-          // Non-fatal — listing is already activated
+
+          // Cross-list on hearingtest.co.uk if audiology add-on purchased
+          if (audiologyAddon) {
+            try {
+              const { error: crossListError } = await supabase
+                .from("audiologist_listings")
+                .insert({
+                  practice_name: listing.practice_name,
+                  contact_name: listing.contact_name,
+                  email: listing.email,
+                  phone: listing.phone,
+                  booking_system: listing.appointment_system || null,
+                  location_count: listing.location_count || "1",
+                  message: `Cross-listed from eyetest.co.uk (listing ${listingId})`,
+                  active: true,
+                  source: "eyetest-addon",
+                  eyetest_listing_id: listingId,
+                });
+
+              if (crossListError) {
+                console.error("Hearingtest cross-listing failed:", crossListError);
+              } else {
+                console.log(`Cross-listed ${listing.practice_name} on hearingtest.co.uk`);
+              }
+            } catch (crossErr) {
+              console.error("Hearingtest cross-listing error:", crossErr);
+            }
+          }
         }
       }
       break;
@@ -136,6 +164,13 @@ export async function POST(req: NextRequest) {
 
     case "customer.subscription.deleted": {
       const subscription = event.data.object as { id: string };
+
+      // Find the listing before deactivating (need ID for cross-listing cleanup)
+      const { data: cancelledListings } = await supabase
+        .from("optician_listings")
+        .select("id, audiology_addon")
+        .eq("stripe_subscription_id", subscription.id);
+
       await supabase
         .from("optician_listings")
         .update({
@@ -144,6 +179,18 @@ export async function POST(req: NextRequest) {
           audiology_active: false,
         })
         .eq("stripe_subscription_id", subscription.id);
+
+      // Deactivate any cross-listed hearingtest entries
+      if (cancelledListings?.length) {
+        for (const cl of cancelledListings) {
+          if (cl.audiology_addon) {
+            await supabase
+              .from("audiologist_listings")
+              .update({ active: false })
+              .eq("eyetest_listing_id", cl.id);
+          }
+        }
+      }
       break;
     }
   }

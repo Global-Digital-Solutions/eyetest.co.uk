@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Map, { Marker, Popup, NavigationControl } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 import type { StoreResult } from "@/lib/types";
@@ -209,13 +209,32 @@ export default function StoreMap({ stores, center, hoveredStoreId, onHoverStore 
   const [popup, setPopup] = useState<StoreResult | null>(null);
   const mapped = stores.filter((s) => s.lat && s.lng);
 
-  // Render featured pins last so they sit on top; highlighted pin always on top
-  const sorted = [
-    ...mapped.filter((s) => !s.featured && !hasAvailability(s) && getStoreId(s) !== hoveredStoreId),
-    ...mapped.filter((s) => !s.featured && hasAvailability(s) && getStoreId(s) !== hoveredStoreId),
-    ...mapped.filter((s) => s.featured && getStoreId(s) !== hoveredStoreId),
-    // Highlighted pin rendered last (on top of everything)
-    ...mapped.filter((s) => getStoreId(s) === hoveredStoreId),
+  /* Track marker wrapper elements for direct DOM z-index manipulation.
+     react-map-gl's Marker is wrapped in React.memo and uses portals —
+     directly setting z-index on the .mapboxgl-marker container is more
+     reliable than passing it through the Marker style prop. */
+  const markerEls = useRef<Record<string, HTMLDivElement>>({});
+
+  useEffect(() => {
+    for (const [id, wrapper] of Object.entries(markerEls.current)) {
+      const container = wrapper.closest(".mapboxgl-marker") as HTMLElement | null;
+      if (!container) continue;
+      if (id === hoveredStoreId) {
+        container.style.zIndex = "100";
+      } else {
+        container.style.zIndex = "";
+      }
+    }
+  }, [hoveredStoreId]);
+
+  // Stable render order — unavailable → available → featured.
+  // Never reorder based on hover state: reordering the React element
+  // array causes react-map-gl to reconcile Marker portals, which can
+  // swallow the highlight update.
+  const renderOrder = [
+    ...mapped.filter((s) => !s.featured && !hasAvailability(s)),
+    ...mapped.filter((s) => !s.featured && hasAvailability(s)),
+    ...mapped.filter((s) => s.featured),
   ];
 
   const popupAvailable = popup ? hasAvailability(popup) : false;
@@ -235,7 +254,7 @@ export default function StoreMap({ stores, center, hoveredStoreId, onHoverStore 
 
       <style>{`@keyframes ping { 75%, 100% { transform: translate(-50%, -60%) scale(2); opacity: 0; } }`}</style>
 
-      {sorted.map((store) => {
+      {renderOrder.map((store) => {
         const storeId = getStoreId(store);
         const isHighlighted = storeId === hoveredStoreId;
         return (
@@ -250,6 +269,10 @@ export default function StoreMap({ stores, center, hoveredStoreId, onHoverStore 
             }}
           >
             <div
+              ref={(el) => {
+                if (el) markerEls.current[storeId] = el;
+                else delete markerEls.current[storeId];
+              }}
               style={{ cursor: "pointer" }}
               onMouseEnter={() => onHoverStore?.(storeId)}
               onMouseLeave={() => onHoverStore?.(null)}

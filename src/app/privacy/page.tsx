@@ -133,7 +133,7 @@ export default function PrivacyPolicyPage() {
                 Welcome to eyetest.co.uk (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;). We are committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal data when you visit our website at eyetest.co.uk (the &quot;Site&quot;).
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
-                eyetest.co.uk is operated by Global Digital Solutions. We have been operating since 2019 and are dedicated to providing a transparent, trustworthy service for comparing and booking eye tests across the United Kingdom.
+                eyetest.co.uk is operated by Global Digital Solutions Limited. We have been operating since 2019 and are dedicated to providing a transparent, trustworthy service for comparing and booking eye tests across the United Kingdom.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 This policy is provided in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. Please read it carefully to understand our views and practices regarding your personal data and how we will treat it.
@@ -149,7 +149,7 @@ export default function PrivacyPolicyPage() {
                 The data controller responsible for your personal data is:
               </p>
               <div className="bg-gray-50 rounded-xl p-6 text-sm text-gray-700">
-                <p className="font-semibold text-[var(--color-navy)]">Global Digital Solutions</p>
+                <p className="font-semibold text-[var(--color-navy)]">Global Digital Solutions Limited</p>
                 <p>Trading as eyetest.co.uk</p>
                 <p>
                   Email:{" "}
@@ -454,7 +454,7 @@ export default function PrivacyPolicyPage() {
               </p>
               <div className="bg-gray-50 rounded-xl p-6 text-sm text-gray-700">
                 <p className="font-semibold text-[var(--color-navy)]">eyetest.co.uk</p>
-                <p>Operated by Global Digital Solutions</p>
+                <p>Operated by Global Digital Solutions Limited</p>
                 <p>
                   Email:{" "}
                   <a

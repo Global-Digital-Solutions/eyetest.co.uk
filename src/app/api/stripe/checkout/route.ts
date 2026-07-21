@@ -66,6 +66,7 @@ export async function POST(req: NextRequest) {
       mode: "subscription",
       payment_method_types: ["card"],
       customer_email: listing.email,
+      allow_promotion_codes: true,
       line_items,
       metadata: {
         listing_id: listingId,

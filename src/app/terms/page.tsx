@@ -115,7 +115,7 @@ export default function TermsOfServicePage() {
               Terms of Service
             </h1>
             <p className="mt-4 text-white/60 text-sm">
-              Last updated: 15 June 2025
+              Last updated: 20 July 2026
             </p>
           </div>
         </section>
@@ -132,7 +132,7 @@ export default function TermsOfServicePage() {
                 These Terms of Service (&quot;Terms&quot;) govern your use of the eyetest.co.uk website (the &quot;Site&quot;) and the services provided through it. By accessing or using the Site, you agree to be bound by these Terms. If you do not agree to these Terms, you must not use the Site.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                eyetest.co.uk is operated by Global Digital Solutions. References to &quot;we&quot;, &quot;us&quot;, or &quot;our&quot; in these Terms refer to Global Digital Solutions trading as eyetest.co.uk.
+                eyetest.co.uk is operated by Global Digital Solutions Limited. References to &quot;we&quot;, &quot;us&quot;, or &quot;our&quot; in these Terms refer to Global Digital Solutions Limited trading as eyetest.co.uk.
               </p>
             </div>
 
@@ -192,10 +192,10 @@ export default function TermsOfServicePage() {
                 5. Intellectual Property
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                All content on the Site, including but not limited to text, graphics, logos, icons, images, data compilations, and software, is the property of Global Digital Solutions or its content licensors and is protected by United Kingdom and international copyright, trademark, and other intellectual property laws.
+                All content on the Site, including but not limited to text, graphics, logos, icons, images, data compilations, and software, is the property of Global Digital Solutions Limited or its content licensors and is protected by United Kingdom and international copyright, trademark, and other intellectual property laws.
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
-                The eyetest.co.uk name, logo, and all related marks are trademarks of Global Digital Solutions. You may not use these marks without our prior written permission.
+                The eyetest.co.uk name, logo, and all related marks are trademarks of Global Digital Solutions Limited. You may not use these marks without our prior written permission.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 You are granted a limited, non-exclusive, non-transferable licence to access and use the Site for personal, non-commercial purposes. This licence does not include the right to modify, reproduce, distribute, or create derivative works from any content on the Site.
@@ -260,7 +260,7 @@ export default function TermsOfServicePage() {
                 9. Limitation of Liability
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                To the fullest extent permitted by applicable law, Global Digital Solutions and its directors, employees, and agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:
+                To the fullest extent permitted by applicable law, Global Digital Solutions Limited and its directors, employees, and agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:
               </p>
               <ul className="list-disc pl-6 text-gray-600 space-y-2 mb-4">
                 <li>Loss of profits, revenue, or data</li>
@@ -280,7 +280,7 @@ export default function TermsOfServicePage() {
                 10. Indemnification
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                You agree to indemnify, defend, and hold harmless Global Digital Solutions and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable legal fees) arising out of or in any way connected with your access to or use of the Site, your violation of these Terms, or your violation of any rights of another party.
+                You agree to indemnify, defend, and hold harmless Global Digital Solutions Limited and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable legal fees) arising out of or in any way connected with your access to or use of the Site, your violation of these Terms, or your violation of any rights of another party.
               </p>
             </div>
 
@@ -344,21 +344,68 @@ export default function TermsOfServicePage() {
                 <Link href="/disclaimer" className="text-[var(--color-primary)] hover:underline">
                   Medical Disclaimer
                 </Link>
-                , constitute the entire agreement between you and Global Digital Solutions regarding your use of the Site, and supersede all prior agreements, understandings, and representations.
+                , constitute the entire agreement between you and Global Digital Solutions Limited regarding your use of the Site, and supersede all prior agreements, understandings, and representations.
+              </p>
+            </div>
+
+            {/* Listing Services */}
+            <div className="mb-10">
+              <h2 className="text-xl sm:text-2xl font-bold text-[var(--color-navy)] mb-4 font-[family-name:var(--font-display)]">
+                16. Listing Services
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                eyetest.co.uk offers paid directory listing services (&quot;Listing Services&quot;) that allow optician practices and other eligible businesses to appear in search results on the Site. By subscribing to a Listing Service, you agree to the following additional terms, which supplement and form part of these Terms of Service.
+              </p>
+
+              <h3 className="text-lg font-semibold text-[var(--color-navy)] mb-2 font-[family-name:var(--font-display)]">
+                16.1 Search Radius and Display
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Listings are displayed to users based on geographic proximity to the postcode entered in a search query. The search radius used to determine which listings appear in results varies between approximately 0.6 miles and 2.4 miles, depending on the density of practices in a given area and the specific postcode searched. This radius is determined dynamically and is optimised based on a number of proprietary signals designed to present the most relevant and useful results for users. We reserve the right to adjust these parameters at any time without notice.
+              </p>
+
+              <h3 className="text-lg font-semibold text-[var(--color-navy)] mb-2 font-[family-name:var(--font-display)]">
+                16.2 Recommended, Featured, and Priority Placement
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Paid listing tiers (including &quot;Gold&quot; and &quot;Platinum&quot; tiers) may include enhanced placement, trust badges, highlighted cards, or other preferential treatment in search results. However, we do not guarantee that a listing will appear as &quot;Recommended&quot;, &quot;Featured&quot;, or in any specific position for a particular postcode or search query. Placement is influenced by multiple factors including geographic proximity, density of competing listings, and our optimisation algorithms. We accept no responsibility for a listing&apos;s relative position or visibility within any particular postcode area.
+              </p>
+
+              <h3 className="text-lg font-semibold text-[var(--color-navy)] mb-2 font-[family-name:var(--font-display)]">
+                16.3 Omissions and Accuracy
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                While we make reasonable efforts to display all active listings accurately, we cannot be held responsible for any omissions, errors, or inaccuracies in the display of listings. Factors such as technical issues, data synchronisation delays, or algorithmic optimisation may result in a listing not appearing in certain search results. We adopt a patient-centric (user-first) approach at all times, prioritising the experience and needs of users searching for eye tests over the commercial interests of listed practices.
+              </p>
+
+              <h3 className="text-lg font-semibold text-[var(--color-navy)] mb-2 font-[family-name:var(--font-display)]">
+                16.4 Reporting Anomalies
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                If a paid listing practice identifies any anomalies, errors, or unexpected behaviour in relation to their listing or its visibility, they should contact us in the first instance at{" "}
+                <a href="mailto:hello@eyetest.co.uk" className="text-[var(--color-primary)] hover:underline">hello@eyetest.co.uk</a>.
+                We will investigate all reports promptly and in good faith. However, we do not guarantee any particular outcome or resolution, and our decision on listing placement and display matters shall be final.
+              </p>
+
+              <h3 className="text-lg font-semibold text-[var(--color-navy)] mb-2 font-[family-name:var(--font-display)]">
+                16.5 No Guarantee of Results
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                We make no guarantees regarding the volume of traffic, enquiries, bookings, or appointments generated by any listing. Listing Services are provided on an &quot;as is&quot; basis, and we shall not be liable for any loss of revenue, loss of business, or any indirect or consequential damages arising from the performance or non-performance of a listing.
               </p>
             </div>
 
             {/* Contact */}
             <div className="mb-10">
               <h2 className="text-xl sm:text-2xl font-bold text-[var(--color-navy)] mb-4 font-[family-name:var(--font-display)]">
-                16. Contact Us
+                17. Contact Us
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
                 If you have any questions about these Terms of Service, please contact us:
               </p>
               <div className="bg-gray-50 rounded-xl p-6 text-sm text-gray-700">
                 <p className="font-semibold text-[var(--color-navy)]">eyetest.co.uk</p>
-                <p>Operated by Global Digital Solutions</p>
+                <p>Operated by Global Digital Solutions Limited</p>
                 <p>
                   Email:{" "}
                   <a

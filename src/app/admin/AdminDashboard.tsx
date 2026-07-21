@@ -1003,6 +1003,345 @@ function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Subscriptions Section                                              */
+/* ------------------------------------------------------------------ */
+
+type SubscriptionSummary = {
+  totalPaid: number;
+  gold: number;
+  platinum: number;
+  withAddon: number;
+  pending: number;
+  cancelled: number;
+  manual: number;
+  annualRevenue: number;
+  monthlyEquivalent: number;
+};
+
+type SubscriptionListing = OpticianListing & {
+  activated_at: string | null;
+  expires_at: string | null;
+};
+
+type CrossListing = {
+  id: string;
+  practice_name: string;
+  eyetest_listing_id: string;
+  active: boolean;
+  source: string;
+  created_at: string;
+};
+
+type SubFilter = "all" | "active" | "gold" | "platinum" | "addon" | "pending" | "cancelled" | "manual";
+
+function StatCard({ label, value, sub, color }: { label: string; value: string | number; sub?: string; color?: string }) {
+  return (
+    <div className="bg-white rounded-xl border border-gray-200 p-4">
+      <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{label}</p>
+      <p className={`text-2xl font-bold mt-1 ${color || "text-gray-900"}`}>{value}</p>
+      {sub && <p className="text-xs text-gray-400 mt-0.5">{sub}</p>}
+    </div>
+  );
+}
+
+function formatDate(iso: string | null): string {
+  if (!iso) return "—";
+  return new Date(iso).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
+
+function StripeStatusBadge({ status }: { status: string }) {
+  const map: Record<string, { bg: string; text: string; label: string }> = {
+    active: { bg: "bg-green-100", text: "text-green-800", label: "Active" },
+    trialing: { bg: "bg-blue-100", text: "text-blue-800", label: "Trialing" },
+    past_due: { bg: "bg-orange-100", text: "text-orange-800", label: "Past Due" },
+    cancelled: { bg: "bg-red-100", text: "text-red-800", label: "Cancelled" },
+    manual: { bg: "bg-indigo-100", text: "text-indigo-800", label: "Manual" },
+    pending: { bg: "bg-yellow-100", text: "text-yellow-800", label: "Pending" },
+  };
+  const s = map[status] || { bg: "bg-gray-100", text: "text-gray-700", label: status || "Unknown" };
+  return (
+    <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${s.bg} ${s.text}`}>
+      {s.label}
+    </span>
+  );
+}
+
+function SubscriptionsSection() {
+  const [summary, setSummary] = useState<SubscriptionSummary | null>(null);
+  const [listings, setListings] = useState<SubscriptionListing[]>([]);
+  const [crossListings, setCrossListings] = useState<CrossListing[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState<SubFilter>("all");
+  const [error, setError] = useState<string | null>(null);
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/admin/subscriptions");
+      if (res.ok) {
+        const data = await res.json();
+        setSummary(data.summary);
+        setListings(data.listings);
+        setCrossListings(data.crossListings);
+      } else {
+        setError("Failed to load subscriptions");
+      }
+    } catch {
+      setError("Network error");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  const filtered = listings.filter((l) => {
+    switch (filter) {
+      case "active":
+        return l.stripe_status === "active" || l.stripe_status === "trialing";
+      case "gold":
+        return l.tier === "gold" && (l.stripe_status === "active" || l.stripe_status === "trialing");
+      case "platinum":
+        return l.tier === "platinum" && (l.stripe_status === "active" || l.stripe_status === "trialing");
+      case "addon":
+        return l.audiology_addon && (l.stripe_status === "active" || l.stripe_status === "trialing");
+      case "pending":
+        return l.stripe_status === "pending" || !l.stripe_status;
+      case "cancelled":
+        return l.stripe_status === "cancelled";
+      case "manual":
+        return l.stripe_status === "manual";
+      default:
+        return true;
+    }
+  });
+
+  const filterBtns: { key: SubFilter; label: string; count?: number }[] = summary
+    ? [
+        { key: "all", label: "All", count: listings.length },
+        { key: "active", label: "Active", count: summary.totalPaid },
+        { key: "gold", label: "Gold", count: summary.gold },
+        { key: "platinum", label: "Platinum", count: summary.platinum },
+        { key: "addon", label: "Audiology", count: summary.withAddon },
+        { key: "pending", label: "Pending", count: summary.pending },
+        { key: "cancelled", label: "Cancelled", count: summary.cancelled },
+        { key: "manual", label: "Manual", count: summary.manual },
+      ]
+    : [];
+
+  if (loading) {
+    return <p className="text-sm text-gray-400 text-center py-12">Loading subscriptions…</p>;
+  }
+
+  if (error) {
+    return (
+      <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700">
+        {error}
+        <button onClick={load} className="ml-2 underline">
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  function getCrossListing(listingId: string): CrossListing | undefined {
+    return crossListings.find((cl) => cl.eyetest_listing_id === listingId);
+  }
+
+  function isExpiringSoon(expiresAt: string | null): boolean {
+    if (!expiresAt) return false;
+    const diff = new Date(expiresAt).getTime() - Date.now();
+    return diff > 0 && diff < 30 * 24 * 60 * 60 * 1000; // within 30 days
+  }
+
+  function isExpired(expiresAt: string | null): boolean {
+    if (!expiresAt) return false;
+    return new Date(expiresAt).getTime() < Date.now();
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Summary cards */}
+      {summary && (
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <StatCard label="Active Subscriptions" value={summary.totalPaid} color="text-green-700" />
+          <StatCard
+            label="Annual Revenue"
+            value={`£${summary.annualRevenue.toLocaleString()}`}
+            sub={`£${summary.monthlyEquivalent.toLocaleString()}/mo equiv.`}
+            color="text-blue-700"
+          />
+          <StatCard
+            label="Gold / Platinum"
+            value={`${summary.gold} / ${summary.platinum}`}
+            sub={`${summary.gold} × £149 + ${summary.platinum} × £199`}
+          />
+          <StatCard
+            label="Audiology Add-on"
+            value={summary.withAddon}
+            sub={`${summary.withAddon} × £69/yr`}
+            color="text-purple-700"
+          />
+        </div>
+      )}
+
+      {/* Filter bar */}
+      <div className="flex flex-wrap gap-1.5">
+        {filterBtns.map((f) => (
+          <button
+            key={f.key}
+            type="button"
+            onClick={() => setFilter(f.key)}
+            className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+              filter === f.key
+                ? "bg-gray-900 text-white"
+                : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50"
+            }`}
+          >
+            {f.label}
+            {f.count !== undefined && (
+              <span className={`ml-1.5 ${filter === f.key ? "text-gray-300" : "text-gray-400"}`}>
+                {f.count}
+              </span>
+            )}
+          </button>
+        ))}
+      </div>
+
+      {/* Listings table */}
+      <section className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+        <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+          <div>
+            <h2 className="font-medium text-gray-900">Subscriptions</h2>
+            <p className="text-xs text-gray-500 mt-0.5">
+              Showing {filtered.length} listing{filtered.length !== 1 ? "s" : ""}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={load}
+            className="text-xs text-blue-600 hover:text-blue-700 font-medium"
+          >
+            Refresh
+          </button>
+        </div>
+
+        {filtered.length === 0 ? (
+          <p className="px-5 py-8 text-sm text-gray-400 text-center">No listings match this filter</p>
+        ) : (
+          <div className="divide-y divide-gray-100">
+            {filtered.map((l) => {
+              const cl = getCrossListing(l.id);
+              const expiring = isExpiringSoon(l.expires_at);
+              const expired = isExpired(l.expires_at);
+
+              return (
+                <div key={l.id} className="px-5 py-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="min-w-0 flex-1">
+                      {/* Name + badges row */}
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-sm font-semibold text-gray-900">
+                          {l.practice_name}
+                        </span>
+                        <TierBadge tier={l.tier} />
+                        <StripeStatusBadge status={l.stripe_status || "pending"} />
+                        {l.audiology_addon && (
+                          <span className="inline-block rounded-full bg-purple-100 px-2 py-0.5 text-xs font-semibold text-purple-700">
+                            +Audiology
+                          </span>
+                        )}
+                        {expiring && !expired && (
+                          <span className="inline-block rounded-full bg-orange-100 px-2 py-0.5 text-xs font-semibold text-orange-700">
+                            Expiring soon
+                          </span>
+                        )}
+                        {expired && l.stripe_status !== "cancelled" && (
+                          <span className="inline-block rounded-full bg-red-100 px-2 py-0.5 text-xs font-semibold text-red-700">
+                            Expired
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Details row */}
+                      <p className="text-xs text-gray-500 mt-1">
+                        {l.contact_name}
+                        {l.email && <> &middot; <a href={`mailto:${l.email}`} className="text-blue-500 hover:underline">{l.email}</a></>}
+                        {l.phone && <> &middot; {l.phone}</>}
+                      </p>
+
+                      {/* Location row */}
+                      <p className="text-xs text-gray-400 mt-0.5">
+                        {l.postcode}
+                        {l.town && ` · ${l.town}`}
+                        {l.badge_label && ` · Badge: "${l.badge_label}"`}
+                      </p>
+
+                      {/* Dates row */}
+                      <div className="flex flex-wrap gap-x-4 gap-y-0.5 mt-1.5">
+                        <p className="text-xs text-gray-400">
+                          <span className="text-gray-500 font-medium">Applied:</span> {formatDate(l.created_at)}
+                        </p>
+                        {l.activated_at && (
+                          <p className="text-xs text-gray-400">
+                            <span className="text-gray-500 font-medium">Activated:</span> {formatDate(l.activated_at)}
+                          </p>
+                        )}
+                        {l.expires_at && (
+                          <p className={`text-xs ${expired ? "text-red-500 font-medium" : expiring ? "text-orange-500 font-medium" : "text-gray-400"}`}>
+                            <span className={expired ? "text-red-600" : expiring ? "text-orange-600" : "text-gray-500"}>{expired ? "Expired:" : "Expires:"}</span> {formatDate(l.expires_at)}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Cross-listing status */}
+                      {l.audiology_addon && (
+                        <div className="mt-1.5">
+                          {cl ? (
+                            <p className="text-xs">
+                              <span className={`inline-flex items-center gap-1 ${cl.active ? "text-green-600" : "text-gray-400"}`}>
+                                <span className={`h-1.5 w-1.5 rounded-full ${cl.active ? "bg-green-500" : "bg-gray-300"}`} />
+                                hearingtest.co.uk: {cl.active ? "Listed" : "Inactive"}
+                              </span>
+                            </p>
+                          ) : (
+                            <p className="text-xs text-yellow-600">
+                              hearingtest.co.uk: Not yet cross-listed
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Revenue column */}
+                    <div className="text-right shrink-0">
+                      <p className="text-sm font-bold text-gray-900">
+                        £{(l.tier === "platinum" ? 199 : 149) + (l.audiology_addon ? 69 : 0)}
+                        <span className="text-xs font-normal text-gray-400">/yr</span>
+                      </p>
+                      <p className="text-xs text-gray-400 mt-0.5">
+                        £{(((l.tier === "platinum" ? 199 : 149) + (l.audiology_addon ? 69 : 0)) / 12).toFixed(2)}/mo
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Bulk Import Section                                                */
 /* ------------------------------------------------------------------ */
 
@@ -1188,10 +1527,10 @@ function BulkImportSection() {
 /*  Main Dashboard                                                     */
 /* ------------------------------------------------------------------ */
 
-type Tab = "listings" | "providers" | "featured" | "bulk-import";
+type Tab = "subscriptions" | "listings" | "providers" | "featured" | "bulk-import";
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<Tab>("listings");
+  const [activeTab, setActiveTab] = useState<Tab>("subscriptions");
   const [config, setConfig] = useState<Config>({});
   const [mainProviders, setMainProviders] = useState<string[]>([]);
   const [mysightSites, setMysightSites] = useState<string[]>([]);
@@ -1227,6 +1566,7 @@ export default function AdminDashboard() {
   const mysightTotal = mysightSites.length;
 
   const tabs: { key: Tab; label: string }[] = [
+    { key: "subscriptions", label: "Subscriptions" },
     { key: "listings", label: "Listings" },
     { key: "bulk-import", label: "Bulk Import" },
     { key: "providers", label: "Providers" },
@@ -1272,6 +1612,8 @@ export default function AdminDashboard() {
       </header>
 
       <main className="max-w-2xl mx-auto px-4 py-8 space-y-6">
+        {activeTab === "subscriptions" && <SubscriptionsSection />}
+
         {activeTab === "listings" && <ListingsSection />}
 
         {activeTab === "bulk-import" && <BulkImportSection />}

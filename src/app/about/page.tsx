@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "UK opticians comparison",
     "book eye test online",
     "compare opticians",
-    "Global Digital Solutions",
+    "Global Digital Solutions Limited",
   ],
   openGraph: {
     title: "About Us — The UK's Eye Test Comparison Platform | eyetest.co.uk",
@@ -236,7 +236,7 @@ export default function AboutPage() {
                 We set out to change that. Starting as a small comparison site, we have grown into the UK&apos;s most comprehensive eye test comparison platform, covering over 2,400 opticians across 97 cities. From high-street brands like Boots Opticians and Specsavers to trusted independent practices, we bring them all together in one place so you can find the right optician for your needs.
               </p>
               <p>
-                Today, eyetest.co.uk is operated by Global Digital Solutions and remains committed to its founding mission: making eye care accessible and understandable for everyone in the United Kingdom.
+                Today, eyetest.co.uk is operated by Global Digital Solutions Limited and remains committed to its founding mission: making eye care accessible and understandable for everyone in the United Kingdom.
               </p>
             </div>
           </div>
@@ -429,7 +429,7 @@ export default function AboutPage() {
               </div>
               <div className="mt-6 pt-6 border-t border-gray-100">
                 <p className="text-xs text-gray-400">
-                  eyetest.co.uk is operated by Global Digital Solutions. Registered in England and Wales.
+                  eyetest.co.uk is a trading style of Global Digital Solutions Limited. Registered in England and Wales.
                 </p>
               </div>
             </div>

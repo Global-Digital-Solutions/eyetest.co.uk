@@ -25,8 +25,13 @@ export function TierSelection({
   const [loading, setLoading] = useState<"gold" | "platinum" | null>(null);
   const [error, setError] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const handleChoose = async (tier: "gold" | "platinum") => {
+    if (!termsAccepted) {
+      setError("Please accept the terms and conditions to proceed.");
+      return;
+    }
     setLoading(tier);
     setError("");
     const audiologyAddon = tier === "gold" ? goldAudiology : platinumAudiology;
@@ -244,11 +249,11 @@ export function TierSelection({
                 className="text-3xl font-bold text-[var(--color-navy)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                {goldAudiology ? <>&pound;148</> : <>&pound;99</>}
+                {goldAudiology ? <>&pound;218</> : <>&pound;149</>}
               </span>
               <span className="text-gray-500 text-sm">/year</span>
               <span className="ml-2 text-xs text-gray-400">
-                {goldAudiology ? "(just £12.33/mo)" : "(just £8.25/mo)"}
+                {goldAudiology ? "(just £18.17/mo)" : "(just £12.42/mo)"}
               </span>
             </div>
             <ul className="space-y-3 text-sm text-gray-700">
@@ -288,7 +293,7 @@ export function TierSelection({
                   Add hearingtest.co.uk
                 </span>
                 <span className="text-sm text-[var(--color-primary)] font-semibold ml-1">
-                  +&pound;49/yr
+                  +&pound;69/yr
                 </span>
                 <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
                   Also appear in hearing test searches on our sister site
@@ -311,7 +316,7 @@ export function TierSelection({
                   Redirecting to payment...
                 </>
               ) : (
-                <>Choose Gold &mdash; &pound;{goldAudiology ? "148" : "99"}/yr</>
+                <>Choose Gold &mdash; &pound;{goldAudiology ? "218" : "149"}/yr</>
               )}
             </button>
           </div>
@@ -348,11 +353,11 @@ export function TierSelection({
                 className="text-3xl font-bold text-[var(--color-navy)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                {platinumAudiology ? <>&pound;198</> : <>&pound;149</>}
+                {platinumAudiology ? <>&pound;268</> : <>&pound;199</>}
               </span>
               <span className="text-gray-500 text-sm">/year</span>
               <span className="ml-2 text-xs text-gray-400">
-                {platinumAudiology ? "(just £16.50/mo)" : "(just £12.42/mo)"}
+                {platinumAudiology ? "(just £22.33/mo)" : "(just £16.58/mo)"}
               </span>
             </div>
             <p className="text-xs text-[var(--color-primary)] font-semibold mb-4">
@@ -393,7 +398,7 @@ export function TierSelection({
                   Add hearingtest.co.uk
                 </span>
                 <span className="text-sm text-[var(--color-primary)] font-semibold ml-1">
-                  +&pound;49/yr
+                  +&pound;69/yr
                 </span>
                 <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
                   Also appear in hearing test searches on our sister site
@@ -416,7 +421,7 @@ export function TierSelection({
                   Redirecting to payment...
                 </>
               ) : (
-                <>Choose Platinum &mdash; &pound;{platinumAudiology ? "198" : "149"}/yr</>
+                <>Choose Platinum &mdash; &pound;{platinumAudiology ? "268" : "199"}/yr</>
               )}
             </button>
           </div>
@@ -562,7 +567,7 @@ export function TierSelection({
         <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 max-h-48 overflow-y-auto text-xs text-gray-500 leading-relaxed space-y-2.5 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300">
           <p className="font-semibold text-gray-600">eyetest.co.uk Directory Listing Agreement</p>
           <p>
-            By subscribing to a listing on eyetest.co.uk, you agree to the following terms. Please read them carefully before proceeding.
+            eyetest.co.uk is a trading style of Global Digital Solutions Limited. By subscribing to a listing on eyetest.co.uk, you agree to the following terms. Please read them carefully before proceeding.
           </p>
           <p className="font-semibold text-gray-600">1. Service Description</p>
           <p>
@@ -608,8 +613,44 @@ export function TierSelection({
           <p>
             These terms are governed by and construed in accordance with the laws of England and Wales. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts of England and Wales.
           </p>
-          <p className="text-gray-400 mt-3">Last updated: June 2025</p>
+          <p className="text-gray-400 mt-3">Last updated: July 2026</p>
         </div>
+
+        {/* Terms acceptance checkbox */}
+        <label className="flex items-start gap-3 mt-4 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={termsAccepted}
+            onChange={(e) => setTermsAccepted(e.target.checked)}
+            className="w-4 h-4 rounded border-gray-300 text-[var(--color-primary)] focus:ring-[var(--color-primary)] mt-0.5 cursor-pointer"
+          />
+          <span className="text-sm text-gray-600">
+            I have read and agree to the{" "}
+            <a
+              href="/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--color-primary)] hover:underline font-medium"
+            >
+              Terms of Service
+            </a>{" "}
+            including the{" "}
+            <a
+              href="/terms#listing-services"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--color-primary)] hover:underline font-medium"
+            >
+              Listing Services
+            </a>{" "}
+            terms and the Directory Listing Agreement above.
+            <span className="text-red-500 ml-0.5">*</span>
+          </span>
+        </label>
+
+        {!termsAccepted && error === "Please accept the terms and conditions to proceed." && (
+          <p className="text-sm text-red-600 mt-2">Please accept the terms and conditions to proceed.</p>
+        )}
       </div>
 
       {/* ---- FAQ section ---- */}
