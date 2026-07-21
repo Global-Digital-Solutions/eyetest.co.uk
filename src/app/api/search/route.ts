@@ -9,14 +9,13 @@ import { fetchAceAndTate } from "@/lib/providers/aceandtate";
 import { fetchScrivens } from "@/lib/providers/scrivens";
 import { fetchJimmyFairly } from "@/lib/providers/jimmyfairly";
 import type { StoreResult, FeaturedProvider, OpticianListing } from "@/lib/types";
-import { createClient } from "@/lib/supabase/server";
-import { createClient as createSupabaseClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 import { haversine } from "@/lib/haversine";
 
-// Service-role client bypasses RLS — needed because public search users
-// have no auth cookies, so the anon key can't read RLS-protected tables.
+// Service-role client bypasses RLS — public search users have no auth
+// cookies, so the anon key can't read RLS-protected tables.
 function getSupabaseAdmin() {
-  return createSupabaseClient(
+  return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
@@ -130,8 +129,11 @@ export async function GET(req: NextRequest) {
   const LIMIT = 10;
   const TIMEOUT_MS = 20000;
 
-  // Read provider config from Supabase before the stream starts
-  const supabase = await createClient();
+  // Use admin client for all DB reads — public search users have no auth
+  // cookies, so the anon key can't read RLS-protected tables.
+  const supabase = getSupabaseAdmin();
+
+  // Read provider config
   const { data: rows } = await supabase
     .from("providers")
     .select("name, enabled");
@@ -157,10 +159,8 @@ export async function GET(req: NextRequest) {
     return distM <= rule.radius_km * 1000; // radius_km → metres
   });
 
-  // Load subscribed/manual optician listings — use admin client to bypass
-  // RLS (public search users have no auth cookies)
-  const adminClient = getSupabaseAdmin();
-  const { data: listingRows } = await adminClient
+  // Load subscribed/manual optician listings
+  const { data: listingRows } = await supabase
     .from("optician_listings")
     .select("*")
     .eq("active", true);
