@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TierSelection } from "@/components/TierSelection";
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@supabase/supabase-js";
 
 // ---------------------------------------------------------------------------
 // SEO metadata — noindex (private flow page)
@@ -30,7 +30,11 @@ export default async function ThankYouPage({
   let audiologyAddon = false;
 
   if (listing_id) {
-    const supabase = await createClient();
+    // Service role bypasses RLS — new users aren't authenticated
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
     const { data } = await supabase
       .from("optician_listings")
       .select("practice_name, postcode, audiology_addon")
