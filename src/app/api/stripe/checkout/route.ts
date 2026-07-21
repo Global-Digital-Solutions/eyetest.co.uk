@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe, PRICES } from "@/lib/stripe";
 import { createClient } from "@supabase/supabase-js";
+import { geocodePostcode } from "@/lib/postcodes";
+import { haversine } from "@/lib/haversine";
 
 export async function POST(req: NextRequest) {
   try {
@@ -44,6 +46,34 @@ export async function POST(req: NextRequest) {
 
     if (error || !listing) {
       return NextResponse.json({ error: "Listing not found" }, { status: 404 });
+    }
+
+    // --- Tier exclusivity check: ensure the chosen tier isn't already taken ---
+    try {
+      const geo = await geocodePostcode(listing.postcode);
+      const { data: activeListings } = await supabase
+        .from("optician_listings")
+        .select("id, tier, lat, lng, radius_km")
+        .eq("active", true);
+
+      for (const existing of activeListings ?? []) {
+        if (existing.id === listingId) continue; // don't block own listing
+        if (existing.lat == null || existing.lng == null) continue;
+        if (existing.tier !== tier) continue; // only check same tier
+
+        const distM = haversine(geo.lat, geo.lng, existing.lat, existing.lng);
+        if (distM <= existing.radius_km * 1000) {
+          return NextResponse.json(
+            {
+              error: `The ${tier === "platinum" ? "Platinum" : "Gold"} tier is already taken for this area. Please choose a different tier or contact us.`,
+            },
+            { status: 409 }
+          );
+        }
+      }
+    } catch (geoErr) {
+      // If geocoding fails, skip the check — Stripe webhook will also validate
+      console.warn("Tier exclusivity check skipped (geocode failed):", geoErr);
     }
 
     // Build line items

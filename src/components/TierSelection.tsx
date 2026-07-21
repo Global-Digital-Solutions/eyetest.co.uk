@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /* ------------------------------------------------------------------ */
 /*  Tier Selection — interactive pricing cards + Stripe checkout       */
@@ -27,7 +27,53 @@ export function TierSelection({
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [termsAccepted, setTermsAccepted] = useState(false);
 
+  /* ---- Tier availability check ---- */
+  interface TierStatus {
+    available: boolean;
+    takenUntil?: string;
+    takenBy?: string;
+  }
+  const [tierAvail, setTierAvail] = useState<{
+    gold: TierStatus;
+    platinum: TierStatus;
+  } | null>(null);
+  const [availLoading, setAvailLoading] = useState(true);
+
+  useEffect(() => {
+    async function checkAvailability() {
+      try {
+        const res = await fetch(
+          `/api/tier-availability?postcode=${encodeURIComponent(postcode)}&exclude=${encodeURIComponent(listingId)}`
+        );
+        if (res.ok) {
+          const data = await res.json();
+          setTierAvail(data);
+        }
+      } catch {
+        // Fail open — show both tiers if the check fails
+      } finally {
+        setAvailLoading(false);
+      }
+    }
+    checkAvailability();
+  }, [postcode, listingId]);
+
+  const goldTaken = tierAvail?.gold?.available === false;
+  const platinumTaken = tierAvail?.platinum?.available === false;
+
+  /** Format expiry date for display */
+  const formatExpiry = (iso?: string) => {
+    if (!iso) return "renewal";
+    const d = new Date(iso);
+    return d.toLocaleDateString("en-GB", { month: "short", year: "numeric" });
+  };
+
   const handleChoose = async (tier: "gold" | "platinum") => {
+    // Block selection of a taken tier
+    if ((tier === "gold" && goldTaken) || (tier === "platinum" && platinumTaken)) {
+      setError(`The ${tier === "gold" ? "Gold" : "Platinum"} tier is already taken for this area.`);
+      return;
+    }
     if (!termsAccepted) {
       setError("Please accept the terms and conditions to proceed.");
       return;
@@ -226,19 +272,86 @@ export function TierSelection({
         ))}
       </div>
 
+      {/* ---- Availability loading state ---- */}
+      {availLoading && (
+        <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mb-6 py-4">
+          <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+          </svg>
+          Checking availability for {postcode}...
+        </div>
+      )}
+
+      {/* ---- Both tiers taken banner ---- */}
+      {!availLoading && goldTaken && platinumTaken && (
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-6 text-center">
+          <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-3">
+            <svg className="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+            </svg>
+          </div>
+          <h3 className="text-base font-bold text-[var(--color-navy)] mb-1" style={{ fontFamily: "var(--font-display)" }}>
+            Both tiers are currently taken for {postcode}
+          </h3>
+          <p className="text-sm text-gray-600 mb-3">
+            Both Gold and Platinum slots are reserved by other practices in your area.
+            Get in touch and we&rsquo;ll notify you as soon as a slot opens up.
+          </p>
+          <a
+            href="mailto:hello@eyetest.co.uk?subject=Waitlist%20for%20listing%20near%20{postcode}"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            Join the waitlist — hello@eyetest.co.uk
+          </a>
+        </div>
+      )}
+
+      {/* ---- One tier taken prompt ---- */}
+      {!availLoading && ((goldTaken && !platinumTaken) || (!goldTaken && platinumTaken)) && (
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
+          <p className="text-sm text-blue-800 text-center">
+            <span className="font-semibold">
+              {goldTaken ? "Gold" : "Platinum"} is taken
+            </span>{" "}
+            for your area &mdash;{" "}
+            <span className="font-semibold text-[var(--color-primary)]">
+              {goldTaken ? "Platinum" : "Gold"} is available!
+            </span>{" "}
+            Secure your spot before it&rsquo;s gone.
+          </p>
+        </div>
+      )}
+
       {/* ---- Pricing tier cards ---- */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         {/* Gold Card */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 sm:p-8 flex flex-col">
-          <div className="mb-6">
+        <div className={`rounded-xl p-6 sm:p-8 flex flex-col relative ${
+          goldTaken
+            ? "bg-gray-50 border border-gray-200 opacity-75"
+            : "bg-white border border-gray-200 shadow-sm"
+        }`}>
+          {/* Taken overlay banner */}
+          {goldTaken && (
+            <div className="absolute inset-x-0 top-0 bg-gray-600 text-white text-xs font-semibold text-center py-2 rounded-t-xl z-10">
+              <svg className="w-3.5 h-3.5 inline-block mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+              </svg>
+              Taken until {formatExpiry(tierAvail?.gold?.takenUntil)}
+            </div>
+          )}
+          <div className={`mb-6 ${goldTaken ? "mt-6" : ""}`}>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center">
-                <svg className="w-4 h-4 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${goldTaken ? "bg-gray-200" : "bg-amber-100"}`}>
+                <svg className={`w-4 h-4 ${goldTaken ? "text-gray-400" : "text-amber-600"}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
                 </svg>
               </div>
               <h3
-                className="text-xl font-bold text-[var(--color-navy)]"
+                className={`text-xl font-bold ${goldTaken ? "text-gray-400" : "text-[var(--color-navy)]"}`}
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Gold Listing
@@ -302,47 +415,71 @@ export function TierSelection({
             </label>
           </div>
           <div className="mt-auto">
-            <button
-              onClick={() => handleChoose("gold")}
-              disabled={loading !== null}
-              className="w-full inline-flex items-center justify-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy)]/90 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-full transition-all cursor-pointer"
-            >
-              {loading === "gold" ? (
-                <>
-                  <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                  </svg>
-                  Redirecting to payment...
-                </>
-              ) : (
-                <>Choose Gold &mdash; &pound;{goldAudiology ? "218" : "149"}/yr</>
-              )}
-            </button>
+            {goldTaken ? (
+              <div className="w-full text-center bg-gray-200 text-gray-500 font-semibold px-6 py-3 rounded-full text-sm">
+                <svg className="w-4 h-4 inline-block mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                </svg>
+                Unavailable for this area
+              </div>
+            ) : (
+              <button
+                onClick={() => handleChoose("gold")}
+                disabled={loading !== null}
+                className="w-full inline-flex items-center justify-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy)]/90 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-full transition-all cursor-pointer"
+              >
+                {loading === "gold" ? (
+                  <>
+                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Redirecting to payment...
+                  </>
+                ) : (
+                  <>Choose Gold &mdash; &pound;{goldAudiology ? "218" : "149"}/yr</>
+                )}
+              </button>
+            )}
           </div>
         </div>
 
         {/* Platinum Card */}
-        <div className="bg-white rounded-xl border-2 border-[var(--color-primary)] shadow-md p-6 sm:p-8 flex flex-col relative">
-          {/* Most Popular badge */}
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-            <span className="inline-flex items-center gap-1.5 bg-[var(--color-primary)] text-white text-xs font-semibold px-4 py-1 rounded-full shadow-sm">
-              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        <div className={`rounded-xl p-6 sm:p-8 flex flex-col relative ${
+          platinumTaken
+            ? "bg-gray-50 border border-gray-200 opacity-75"
+            : "bg-white border-2 border-[var(--color-primary)] shadow-md"
+        }`}>
+          {/* Taken overlay banner */}
+          {platinumTaken && (
+            <div className="absolute inset-x-0 top-0 bg-gray-600 text-white text-xs font-semibold text-center py-2 rounded-t-xl z-10">
+              <svg className="w-3.5 h-3.5 inline-block mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
               </svg>
-              Most Popular
-            </span>
-          </div>
+              Taken until {formatExpiry(tierAvail?.platinum?.takenUntil)}
+            </div>
+          )}
+          {/* Most Popular badge — only show if not taken */}
+          {!platinumTaken && (
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span className="inline-flex items-center gap-1.5 bg-[var(--color-primary)] text-white text-xs font-semibold px-4 py-1 rounded-full shadow-sm">
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                Most Popular
+              </span>
+            </div>
+          )}
 
-          <div className="mb-6 mt-2">
+          <div className={`mb-6 ${platinumTaken ? "mt-6" : "mt-2"}`}>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center">
-                <svg className="w-4 h-4 text-[var(--color-primary)]" fill="currentColor" viewBox="0 0 20 20">
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${platinumTaken ? "bg-gray-200" : "bg-[var(--color-primary)]/10"}`}>
+                <svg className={`w-4 h-4 ${platinumTaken ? "text-gray-400" : "text-[var(--color-primary)]"}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
                 </svg>
               </div>
               <h3
-                className="text-xl font-bold text-[var(--color-navy)]"
+                className={`text-xl font-bold ${platinumTaken ? "text-gray-400" : "text-[var(--color-navy)]"}`}
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Platinum Listing
@@ -407,23 +544,32 @@ export function TierSelection({
             </label>
           </div>
           <div className="mt-auto">
-            <button
-              onClick={() => handleChoose("platinum")}
-              disabled={loading !== null}
-              className="w-full inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-full transition-all cursor-pointer"
-            >
-              {loading === "platinum" ? (
-                <>
-                  <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                  </svg>
-                  Redirecting to payment...
-                </>
-              ) : (
-                <>Choose Platinum &mdash; &pound;{platinumAudiology ? "268" : "199"}/yr</>
-              )}
-            </button>
+            {platinumTaken ? (
+              <div className="w-full text-center bg-gray-200 text-gray-500 font-semibold px-6 py-3 rounded-full text-sm">
+                <svg className="w-4 h-4 inline-block mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                </svg>
+                Unavailable for this area
+              </div>
+            ) : (
+              <button
+                onClick={() => handleChoose("platinum")}
+                disabled={loading !== null}
+                className="w-full inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-full transition-all cursor-pointer"
+              >
+                {loading === "platinum" ? (
+                  <>
+                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Redirecting to payment...
+                  </>
+                ) : (
+                  <>Choose Platinum &mdash; &pound;{platinumAudiology ? "268" : "199"}/yr</>
+                )}
+              </button>
+            )}
           </div>
         </div>
       </div>

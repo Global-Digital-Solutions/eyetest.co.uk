@@ -10,7 +10,17 @@ import { fetchScrivens } from "@/lib/providers/scrivens";
 import { fetchJimmyFairly } from "@/lib/providers/jimmyfairly";
 import type { StoreResult, FeaturedProvider, OpticianListing } from "@/lib/types";
 import { createClient } from "@/lib/supabase/server";
+import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { haversine } from "@/lib/haversine";
+
+// Service-role client bypasses RLS — needed because public search users
+// have no auth cookies, so the anon key can't read RLS-protected tables.
+function getSupabaseAdmin() {
+  return createSupabaseClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+}
 
 const enc = new TextEncoder();
 
@@ -147,8 +157,10 @@ export async function GET(req: NextRequest) {
     return distM <= rule.radius_km * 1000; // radius_km → metres
   });
 
-  // Load subscribed/manual optician listings
-  const { data: listingRows } = await supabase
+  // Load subscribed/manual optician listings — use admin client to bypass
+  // RLS (public search users have no auth cookies)
+  const adminClient = getSupabaseAdmin();
+  const { data: listingRows } = await adminClient
     .from("optician_listings")
     .select("*")
     .eq("active", true);
