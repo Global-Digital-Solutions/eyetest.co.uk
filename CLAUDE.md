@@ -42,7 +42,7 @@ Darin Butler (butlerdarin@gmail.com) — Founder, eyetest.co.uk
 | ASDA | Ocuco (siteId deep links) | ~200 |
 | Vision Express | GraphQL (storeCode) | ~400 |
 | MySight | GraphQL | ~35 independent brands |
-| M&S Opticians | Static (Magento booking links) | 37 |
+| M&S Opticians | Static (Magento booking links) | 36 |
 | Ace & Tate | Static (Acuity Scheduling links) | 17 |
 | Scrivens | Static (branchId deep links) | 164 |
 
@@ -116,10 +116,40 @@ Static providers use `getStaticThreeDayDates()` — suppresses "today" after 6 P
 | Eye Surgery enquiry form + email API | Done |
 | Google Reviews scraping (Apify) for surgery providers | Done |
 | Sitemap + llms.txt updated for surgery pages | Done |
-| **Registration process bug fix** | **Next** |
+| Registration process bug fix | Done |
+| Optician subscription + Stripe billing | Done |
+| Tier exclusivity (one gold/platinum per postcode area) | Done |
+| Supabase RLS enabled on all tables | Done |
+| Search API: service-role client for all DB reads | Done |
+| Thank-you page: service-role fix for unauthenticated users | Done |
+| Success page redesign (Mapbox map + practice card) | Done |
+| Terms checkbox repositioned (above payment bar) | Done |
+| Store health check (postcodes.io validation, admin tab) | Done |
+| M&S Banbury removed (invalid postcode) | Done |
+| Outbound partner communication (Apollo sequences) | In Progress |
 | Eye surgery consultation image needed | Planned |
-| Outbound provider communication | Planned |
-| Optician subscription + Stripe billing | Planned |
+| Apify store scraping (Layer 2 store refresh) | Planned |
+
+## Outbound Campaign (Apollo)
+- **Strategy**: Independents first, nationals later
+- **4 regional sequences** (3-step auto_email, Day 0 / Day 4 / Day 8):
+  - Wales: `6a5fd77b6bb787000c0e64d1` — **Active**
+  - Scotland: `6a5fd77e08775a001846402d` — **Active**
+  - Northern Ireland: `6a5fd7866bb787001026bcff` — **Active**
+  - England: `6a5fd7796bb7870014f93e3a` — Inactive (launch after reviewing regional performance)
+- **Sending from**: admin@eyetest.co.uk (account `6a5fd4c8935bac000c7c57e6`)
+- **Apollo user**: `69bd75eb43a7cb0015f79882` (butlerdarin@gmail.com — personal account)
+- **Intro email**: 2019 founding, unbooked appointments angle, Gold £149/yr + Platinum £199/yr exclusivity, hearingtest.co.uk £69/yr add-on tease
+- **Contact CSVs** (in repo root):
+  - `independent_opticians_wales.csv` — 224 practices (134 with email)
+  - `independent_opticians_scotland.csv` — 308 practices (184 with email)
+  - `independent_opticians_northern_ireland.csv` — 223 practices (126 with email)
+  - `independent_opticians_england.csv` — 898 practices (510 with email)
+  - National retailer CSVs also ready (708 stores, 4 regions)
+- **NEVER mention Specsavers in any communications**
+- **NEVER use darinbutler@digitalcounsel.co.uk Apollo account** (belongs to a client)
+- **API lesson**: `sequences_update` requires `body_html` for ALL step templates, not just the one being changed
+- Old superseded sequence: `6a5f9ac5ded4a60014b68f7d` (can archive/delete)
 
 ## Preferences
 - Git workflow: commit from workspace, push from Mac terminal

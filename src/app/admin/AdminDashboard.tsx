@@ -1077,6 +1077,7 @@ function SubscriptionsSection() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<SubFilter>("all");
   const [error, setError] = useState<string | null>(null);
+  const [cancelling, setCancelling] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -1097,6 +1098,30 @@ function SubscriptionsSection() {
       setLoading(false);
     }
   }, []);
+
+  const handleCancel = useCallback(async (listingId: string, practiceName: string) => {
+    if (!confirm(`Cancel subscription and deactivate "${practiceName}"? This will cancel the Stripe subscription and remove the listing from search results.`)) {
+      return;
+    }
+    setCancelling(listingId);
+    try {
+      const res = await fetch("/api/admin/cancel-subscription", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ listingId }),
+      });
+      if (res.ok) {
+        await load(); // Refresh the list
+      } else {
+        const data = await res.json();
+        alert(`Failed to cancel: ${data.error || "Unknown error"}`);
+      }
+    } catch {
+      alert("Network error — could not cancel subscription");
+    } finally {
+      setCancelling(null);
+    }
+  }, [load]);
 
   useEffect(() => {
     load();
@@ -1320,15 +1345,27 @@ function SubscriptionsSection() {
                       )}
                     </div>
 
-                    {/* Revenue column */}
-                    <div className="text-right shrink-0">
-                      <p className="text-sm font-bold text-gray-900">
-                        £{(l.tier === "platinum" ? 199 : 149) + (l.audiology_addon ? 69 : 0)}
-                        <span className="text-xs font-normal text-gray-400">/yr</span>
-                      </p>
-                      <p className="text-xs text-gray-400 mt-0.5">
-                        £{(((l.tier === "platinum" ? 199 : 149) + (l.audiology_addon ? 69 : 0)) / 12).toFixed(2)}/mo
-                      </p>
+                    {/* Revenue + actions column */}
+                    <div className="text-right shrink-0 flex flex-col items-end gap-2">
+                      <div>
+                        <p className="text-sm font-bold text-gray-900">
+                          £{(l.tier === "platinum" ? 199 : 149) + (l.audiology_addon ? 69 : 0)}
+                          <span className="text-xs font-normal text-gray-400">/yr</span>
+                        </p>
+                        <p className="text-xs text-gray-400 mt-0.5">
+                          £{(((l.tier === "platinum" ? 199 : 149) + (l.audiology_addon ? 69 : 0)) / 12).toFixed(2)}/mo
+                        </p>
+                      </div>
+                      {(l.stripe_status === "active" || l.stripe_status === "trialing") && (
+                        <button
+                          type="button"
+                          onClick={() => handleCancel(l.id, l.practice_name)}
+                          disabled={cancelling === l.id}
+                          className="text-xs font-medium text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 px-2.5 py-1 rounded transition-colors disabled:opacity-50"
+                        >
+                          {cancelling === l.id ? "Cancelling…" : "Cancel"}
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

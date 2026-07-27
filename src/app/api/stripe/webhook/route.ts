@@ -143,11 +143,19 @@ export async function POST(req: NextRequest) {
         .eq("stripe_subscription_id", subscription.id);
 
       if (!findError && listings?.length) {
-        const status = subscription.status;
+        // Normalise Stripe's American "canceled" to British "cancelled"
+        const rawStatus = subscription.status;
+        const status = rawStatus === "canceled" ? "cancelled" : rawStatus;
+        const isActive = status === "active" || status === "trialing";
         const updateData: Record<string, unknown> = {
           stripe_status: status,
-          active: status === "active" || status === "trialing",
+          active: isActive,
         };
+
+        // Deactivate audiology cross-listing when subscription is no longer active
+        if (!isActive) {
+          updateData.audiology_active = false;
+        }
 
         // Update expires_at from Stripe's current_period_end
         if (subscription.current_period_end) {
@@ -158,6 +166,16 @@ export async function POST(req: NextRequest) {
           .from("optician_listings")
           .update(updateData)
           .eq("stripe_subscription_id", subscription.id);
+
+        // Deactivate any cross-listed hearingtest entries when cancelled
+        if (!isActive) {
+          for (const l of listings) {
+            await supabase
+              .from("audiologist_listings")
+              .update({ active: false })
+              .eq("eyetest_listing_id", l.id);
+          }
+        }
       }
       break;
     }

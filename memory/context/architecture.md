@@ -104,10 +104,24 @@ After search completes, shows: local optician count, time saved (distinct brands
 - `llms.txt` link updated for home-visit-eye-test
 
 ### Supabase Usage
-Currently used for:
-- Admin authentication (`src/lib/admin-auth.ts`)
-- Featured optician management
-- Future: subscription/billing data for optician portal
+Tables (all have RLS enabled):
+- `optician_listings` — paid subscription listings (Gold/Platinum)
+- `featured_providers` — admin-configured featured badges on provider results
+- `providers` — provider enable/disable toggle
+- `audiologist_listings` — cross-listed hearing test entries (from audiology add-on)
+
+RLS policies: "Admin full access" (authenticated) on all 4 tables + "Public can submit listings" (INSERT) on optician_listings. All public reads go through server-side API routes using SUPABASE_SERVICE_ROLE_KEY.
+
+### Listing Subscription System
+- Registration: `/get-listed` form → `/api/get-listed` (INSERT) → `/get-listed/thank-you` (tier selection)
+- Tier exclusivity: `/api/tier-availability` checks gold/platinum availability per postcode area (haversine overlap). One gold + one platinum per coverage area.
+- Payment: `/api/stripe/checkout` (creates Stripe session, validates tier availability server-side)
+- Activation: `/api/stripe/webhook` handles `checkout.session.completed` → sets `active: true`, badge_label, expiry
+- Cancellation: webhook handles `customer.subscription.deleted` → sets `active: false`
+- Success page: `/get-listed/success` fetches listing from Stripe session, shows Mapbox map preview
+- Pricing: Gold £149/yr, Platinum £199/yr, Audiology add-on £69/yr
+- Badge defaults: Platinum → "Top Rated", Gold → "Recommended" (editable in admin Listings tab)
+- Cross-listing: audiology add-on auto-creates entry in `audiologist_listings` for hearingtest.co.uk
 
 ### Email Submission (Nodemailer)
 Form submissions (Get-Listed, At-Home Enquiry) use Nodemailer with Gmail SMTP (`smtp.gmail.com:465`). Both API routes follow the same pattern:
@@ -139,4 +153,9 @@ Used in `StoreMap.tsx` and `ResultsMap.tsx` for displaying optician locations on
 - `NEXT_PUBLIC_MAPBOX_TOKEN` — Mapbox GL access token
 - `GMAIL_USER` — Gmail address for SMTP sending (e.g. hello@eyetest.co.uk)
 - `GMAIL_APP_PASSWORD` — Google App Password for SMTP auth (NOT the Gmail login password; user must generate via Google Account → Security → App Passwords)
-- Future: `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` for billing
+- `SUPABASE_SERVICE_ROLE_KEY` — Supabase service role (server-side only, bypasses RLS)
+- `STRIPE_SECRET_KEY` — Stripe API key
+- `STRIPE_WEBHOOK_SECRET` — Stripe webhook signing secret
+- `STRIPE_PRICE_GOLD` — Stripe price ID for Gold tier
+- `STRIPE_PRICE_PLATINUM` — Stripe price ID for Platinum tier
+- `STRIPE_PRICE_AUDIOLOGY` — Stripe price ID for audiology add-on

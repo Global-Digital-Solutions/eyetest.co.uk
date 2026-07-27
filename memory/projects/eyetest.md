@@ -263,8 +263,50 @@ cataracts, glaucoma-surgery, macular-degeneration, laser-eye-surgery, retinal-de
 - Fields: name, email, phone, postcode, condition, NHS/private, notes
 - TODO: forward copy to preferred partner
 
+## Outreach Data (July 2026)
+
+### Independent Opticians (Phase 1 — launch partners)
+Scraped from Google Maps via Apify (city-level searches), filtered by optician category whitelist, chain regex filter, deduped by placeId.
+
+| Region | CSV File | Practices | With Email |
+|--------|----------|-----------|------------|
+| England | `independent_opticians_england.csv` | 898 | 510 |
+| Scotland | `independent_opticians_scotland.csv` | 308 | 184 |
+| Wales | `independent_opticians_wales.csv` | 224 | 134 |
+| Northern Ireland | `independent_opticians_northern_ireland.csv` | 223 | 126 |
+| **Total** | | **1,653** | **954** |
+
+CSV columns: practice_name, email, all_emails, phone, website, address, city, postcode, google_rating, review_count, category, region, google_maps_url, place_id
+
+### National Retailers (Phase 2 — after independents covered)
+Segmented separately. Strategy: give independents head start to level the playing field, secure them as launch practices, then open to nationals.
+
+| Region | CSV File | Stores |
+|--------|----------|--------|
+| England | `national_retailers_england.csv` | 381 |
+| Scotland | `national_retailers_scotland.csv` | 170 |
+| Wales | `national_retailers_wales.csv` | 112 |
+| Northern Ireland | `national_retailers_northern_ireland.csv` | 45 |
+| **Total** | | **708** |
+
+### Apollo Account
+- Connected account: butlerdarin@gmail.com
+- Credits: 2,530 lead / 2,500 direct dial (as of July 2026)
+- All 4 independent CSVs uploaded to Apollo
+- SECURITY: Do NOT use the darinbutler@digitalcounsel.co.uk Apollo account (client account)
+- SECURITY: Do not mention competitor brands in any outreach communications
+
+### Listing Tiers (for outreach)
+- **Gold** — £149/year
+- **Platinum** — £199/year
+- One gold/platinum per postcode area (exclusivity)
+
+### Next Steps
+- Build outreach email sequence in Apollo (soft-sell, value-first)
+- Independents first, nationals Phase 2
+
 ## Pending Work
 1. **Registration process bug fix** — Issue reported but not yet investigated
 2. **Eye surgery consultation image** — SurgeryCallout references `/images/eye-surgery-consultation-sm.jpg` (doesn't exist yet)
-3. **Outbound provider communication** — Draft outreach to optician chains about featured listing subscriptions
+3. **Outbound provider communication** — Outreach sequence to independents (data ready, Apollo connected)
 4. **Optician subscription + Stripe** — Featured placement, self-service portal, monthly/annual billing
