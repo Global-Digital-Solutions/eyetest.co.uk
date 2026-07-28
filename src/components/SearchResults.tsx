@@ -1771,15 +1771,15 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
             const brandsChecked = new Set(results.map((r) => r.provider)).size;
             const minutesSaved = brandsChecked * 5;
             const availableCount = results.filter((r) => r.dailySlots && r.dailySlots.length > 0 && r.dailySlots.some((s: { count: number }) => s.count !== 0)).length;
-            const MAX_MOBILE_BADGES = 4;
+            const MAX_MOBILE_BADGES = 3;
 
             return (
-              <div className="mb-5 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+              <div className="mb-4 sm:mb-5 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
                 {/* Top section — success bar */}
-                <div className="bg-gradient-to-r from-[var(--color-success)]/5 to-[var(--color-primary)]/5 px-4 sm:px-5 py-3 sm:py-3.5 border-b border-gray-100">
+                <div className="bg-gradient-to-r from-[var(--color-success)]/5 to-[var(--color-primary)]/5 px-3 sm:px-5 py-2 sm:py-3.5 border-b border-gray-100">
                   <div className="flex items-center gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[var(--color-success)]/10 flex items-center justify-center">
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--color-success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <div className="flex-shrink-0 w-6 h-6 sm:w-9 sm:h-9 rounded-full bg-[var(--color-success)]/10 flex items-center justify-center">
+                      <svg className="w-3 h-3 sm:w-5 sm:h-5 text-[var(--color-success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
@@ -1795,9 +1795,9 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
                 </div>
 
                 {/* Stats + badges */}
-                <div className="px-4 sm:px-5 py-3 sm:py-4">
-                  {/* Inline stats */}
-                  <div className="flex items-center gap-4 sm:gap-6 mb-3">
+                <div className="px-4 sm:px-5 py-2 sm:py-4">
+                  {/* Inline stats — hidden on mobile to save space */}
+                  <div className="hidden sm:flex items-center gap-4 sm:gap-6 mb-3">
                     <div className="flex items-center gap-2">
                       <span className="text-lg sm:text-xl font-bold text-[var(--color-navy)] tabular-nums" style={{ fontFamily: "var(--font-display)" }}>{results.length}</span>
                       <span className="text-xs text-gray-400">checked</span>
@@ -1858,8 +1858,8 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
                   })()}
                 </div>
 
-                {/* Footer — value props */}
-                <div className="flex items-center gap-3 sm:gap-5 px-4 sm:px-5 py-2 sm:py-2.5 bg-gray-50 border-t border-gray-100 text-[10px] sm:text-[11px] text-gray-400">
+                {/* Footer — value props (hidden on mobile, already in top bar) */}
+                <div className="hidden sm:flex items-center gap-3 sm:gap-5 px-4 sm:px-5 py-2 sm:py-2.5 bg-gray-50 border-t border-gray-100 text-[10px] sm:text-[11px] text-gray-400">
                   <div className="flex items-center gap-1">
                     <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[var(--color-success)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
