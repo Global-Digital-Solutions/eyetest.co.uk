@@ -27,8 +27,10 @@ export function SearchForm({ defaultPostcode }: { defaultPostcode: string }) {
       const pc = inputRef.current?.value?.trim() || "";
 
       // Dismiss the iOS keyboard reliably:
-      // Setting readOnly before blur forces iOS Safari to close the
-      // keyboard immediately, even during a soft navigation.
+      // 1. Set readOnly to prevent keyboard re-opening
+      // 2. Blur the input
+      // 3. Focus window (Safari hint to close keyboard)
+      // 4. Scroll slightly to force iOS layout recalculation
       if (inputRef.current) {
         inputRef.current.readOnly = true;
         inputRef.current.blur();
@@ -36,6 +38,8 @@ export function SearchForm({ defaultPostcode }: { defaultPostcode: string }) {
       if (document.activeElement instanceof HTMLElement) {
         document.activeElement.blur();
       }
+      window.focus();
+      window.scrollTo(window.scrollX, window.scrollY);
 
       // Navigate after a short delay so iOS has time to process the
       // keyboard dismiss animation before the page re-renders.
