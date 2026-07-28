@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { isAuthenticated } from "@/lib/admin-auth";
+
+// Service-role client bypasses RLS — safe here because every handler checks isAuthenticated()
+function adminClient() {
+  return createSupabaseClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+}
 
 // GET — list all optician listings
 export async function GET() {
@@ -8,7 +16,7 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const supabase = await createClient();
+  const supabase = adminClient();
   const { data, error } = await supabase
     .from("optician_listings")
     .select("*")
@@ -28,7 +36,7 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
-  const supabase = await createClient();
+  const supabase = adminClient();
 
   // Geocode postcode if provided
   let lat = body.lat || null;
@@ -105,7 +113,7 @@ export async function PATCH(req: NextRequest) {
     } catch { /* non-fatal */ }
   }
 
-  const supabase = await createClient();
+  const supabase = adminClient();
   const { data, error } = await supabase
     .from("optician_listings")
     .update(updates)
@@ -132,7 +140,7 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ error: "Missing id" }, { status: 400 });
   }
 
-  const supabase = await createClient();
+  const supabase = adminClient();
   const { error } = await supabase
     .from("optician_listings")
     .delete()
