@@ -48,10 +48,12 @@ interface CityZone {
 }
 
 const CITY_ZONES: CityZone[] = [
-  // Tier 1 — Large/dense cities: 1 mile max featured radius
-  { lat: 51.5074, lng: -0.1278, boundaryMiles: 15, maxRadiusMiles: 1 },  // London (within M25)
-  { lat: 52.4862, lng: -1.8904, boundaryMiles: 7,  maxRadiusMiles: 1 },  // Birmingham
-  { lat: 53.4808, lng: -2.2426, boundaryMiles: 7,  maxRadiusMiles: 1 },  // Manchester
+  // Tier 1a — Highest-density cities: 0.6 mile max radius
+  { lat: 51.5074, lng: -0.1278, boundaryMiles: 15, maxRadiusMiles: 0.6 }, // London (within M25)
+  { lat: 53.4808, lng: -2.2426, boundaryMiles: 7,  maxRadiusMiles: 0.6 }, // Manchester
+  { lat: 52.4862, lng: -1.8904, boundaryMiles: 7,  maxRadiusMiles: 0.6 }, // Birmingham
+
+  // Tier 1b — Large cities: 1 mile max radius
   { lat: 53.8008, lng: -1.5491, boundaryMiles: 6,  maxRadiusMiles: 1 },  // Leeds
   { lat: 55.9533, lng: -3.1883, boundaryMiles: 6,  maxRadiusMiles: 1 },  // Edinburgh
   { lat: 55.8642, lng: -4.2518, boundaryMiles: 7,  maxRadiusMiles: 1 },  // Glasgow
