@@ -1,13 +1,21 @@
 import { NextRequest } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { isAuthenticated } from "@/lib/admin-auth";
+
+// Service-role client bypasses RLS — safe here because every handler checks isAuthenticated()
+function adminClient() {
+  return createSupabaseClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+}
 
 export async function GET() {
   if (!(await isAuthenticated())) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const supabase = await createClient();
+  const supabase = adminClient();
   const { data, error } = await supabase
     .from("featured_providers")
     .select("*")
@@ -37,7 +45,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const supabase = await createClient();
+  const supabase = adminClient();
   const { data, error } = await supabase
     .from("featured_providers")
     .insert({
@@ -64,14 +72,15 @@ export async function PATCH(req: NextRequest) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { id, active, tier } = await req.json();
+  const { id, active, tier, label } = await req.json();
   if (!id) return Response.json({ error: "id required" }, { status: 400 });
 
   const updates: Record<string, unknown> = {};
   if (typeof active === "boolean") updates.active = active;
   if (tier === "gold" || tier === "platinum") updates.tier = tier;
+  if (typeof label === "string") updates.label = label;
 
-  const supabase = await createClient();
+  const supabase = adminClient();
   const { error } = await supabase
     .from("featured_providers")
     .update(updates)
@@ -89,7 +98,7 @@ export async function DELETE(req: NextRequest) {
   const { id } = await req.json();
   if (!id) return Response.json({ error: "id required" }, { status: 400 });
 
-  const supabase = await createClient();
+  const supabase = adminClient();
   const { error } = await supabase
     .from("featured_providers")
     .delete()

@@ -747,6 +747,15 @@ function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
     });
   }
 
+  async function updateLabel(id: string, label: string) {
+    setRules((prev) => prev.map((r) => (r.id === id ? { ...r, label } : r)));
+    await fetch("/api/admin/featured", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, label }),
+    });
+  }
+
   async function deleteRule(id: string) {
     setRules((prev) => prev.filter((r) => r.id !== id));
     await fetch("/api/admin/featured", {
@@ -986,6 +995,16 @@ function FeaturedSection({ mysightSites }: { mysightSites: string[] }) {
               </div>
               <div className="flex items-center gap-3 shrink-0">
                 <Toggle enabled={rule.active} onChange={(v) => toggleRule(rule.id, v)} />
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newLabel = prompt("Badge label:", rule.label || "Recommended");
+                    if (newLabel && newLabel !== rule.label) updateLabel(rule.id, newLabel);
+                  }}
+                  className="text-xs text-blue-500 hover:text-blue-700 font-medium transition-colors"
+                >
+                  Edit
+                </button>
                 <button
                   type="button"
                   onClick={() => deleteRule(rule.id)}
