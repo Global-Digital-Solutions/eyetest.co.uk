@@ -1686,10 +1686,10 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
       {stream && (
         <>
           {/* Results summary */}
-          <div className="mb-4 flex items-center justify-between gap-2">
+          <div className="mb-2 sm:mb-4 flex items-center justify-between gap-2">
             <div className="min-w-0">
               <h2
-                className="text-lg sm:text-xl font-bold text-[var(--color-navy)]"
+                className="text-base sm:text-xl font-bold text-[var(--color-navy)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 {results.length > 0 ? (
@@ -1774,7 +1774,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
             const MAX_MOBILE_BADGES = 3;
 
             return (
-              <div className="mb-4 sm:mb-5 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+              <div className="hidden sm:block mb-4 sm:mb-5 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
                 {/* Top section — success bar */}
                 <div className="bg-gradient-to-r from-[var(--color-success)]/5 to-[var(--color-primary)]/5 px-3 sm:px-5 py-2 sm:py-3.5 border-b border-gray-100">
                   <div className="flex items-center gap-3">
