@@ -27,27 +27,33 @@ export function SearchForm({ defaultPostcode }: { defaultPostcode: string }) {
       const pc = inputRef.current?.value?.trim() || "";
 
       // Dismiss the iOS keyboard reliably:
-      // 1. Set readOnly to prevent keyboard re-opening
-      // 2. Blur the input
-      // 3. Focus window (Safari hint to close keyboard)
-      // 4. Scroll slightly to force iOS layout recalculation
+      // The trick is to create a temporary off-screen input, focus it
+      // (which steals focus from the search input), then immediately
+      // blur and remove it. This forces iOS Safari to close the keyboard
+      // because no input retains focus. Setting the original input to
+      // readOnly prevents iOS from reopening it during re-render.
       if (inputRef.current) {
         inputRef.current.readOnly = true;
         inputRef.current.blur();
       }
-      if (document.activeElement instanceof HTMLElement) {
-        document.activeElement.blur();
-      }
-      window.focus();
-      window.scrollTo(window.scrollX, window.scrollY);
 
-      // Navigate after a short delay so iOS has time to process the
-      // keyboard dismiss animation before the page re-renders.
-      // Restore readOnly after navigation starts.
+      // Temporary input trick — most reliable iOS keyboard dismiss
+      const tmp = document.createElement("input");
+      tmp.setAttribute("type", "text");
+      tmp.setAttribute("style", "position:fixed;top:-100px;opacity:0;height:0;font-size:16px;");
+      document.body.appendChild(tmp);
+      tmp.focus();
+      requestAnimationFrame(() => {
+        tmp.blur();
+        document.body.removeChild(tmp);
+      });
+
+      // Navigate after delay — do NOT restore readOnly before pushing,
+      // as that can reopen the keyboard. React re-render creates a fresh
+      // input so readOnly resets naturally.
       setTimeout(() => {
-        if (inputRef.current) inputRef.current.readOnly = false;
         router.push(`/search?postcode=${encodeURIComponent(pc)}`);
-      }, 100);
+      }, 150);
     },
     [router]
   );
