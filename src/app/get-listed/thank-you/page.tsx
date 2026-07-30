@@ -9,7 +9,7 @@ import { createClient } from "@supabase/supabase-js";
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Choose Your Listing Plan — eyetest.co.uk",
+  title: "Listing Received — eyetest.co.uk",
   robots: { index: false, follow: false },
 };
 
@@ -69,15 +69,21 @@ export default async function ThankYouPage({
           </div>
 
           <div className="relative max-w-4xl mx-auto px-4 py-16 sm:py-20 text-center">
+            {/* Green confirmation tick */}
+            <div className="w-16 h-16 rounded-full bg-[var(--color-success)]/20 flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8 text-[var(--color-success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+            </div>
             <h1
               className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Choose Your Listing
+              We&rsquo;ve received your listing
             </h1>
             <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
-              Select a plan to get your practice live on eyetest.co.uk and start
-              reaching patients in your area
+              Your free listing for <strong className="text-white">{practiceName || "your practice"}</strong> is
+              now under review. We&rsquo;ll check the details and get it live shortly.
             </p>
           </div>
         </section>
@@ -87,6 +93,23 @@ export default async function ThankYouPage({
         {/* ================================================================ */}
         <section className="py-12 sm:py-16">
           <div className="max-w-4xl mx-auto px-4">
+            {/* ---- Premium upsell intro ---- */}
+            {listing_id && (
+              <div className="text-center mb-10">
+                <h2
+                  className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  Boost your visibility
+                </h2>
+                <p className="text-gray-600 max-w-xl mx-auto text-base sm:text-lg">
+                  After years of helping patients find eye tests, many practices asked
+                  how they could stand out more in their area. So we built premium listings &mdash;
+                  increased visibility exclusive to your postcode area, from as little as 40p
+                  per day, locked in for a whole year.
+                </p>
+              </div>
+            )}
             {listing_id ? (
               <TierSelection
                 listingId={listing_id}
