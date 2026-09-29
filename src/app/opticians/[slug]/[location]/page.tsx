@@ -27,12 +27,12 @@ import { notFound } from "next/navigation";
 // Static generation — every brand x location combination
 // ---------------------------------------------------------------------------
 
-export function generateStaticParams(): { brand: string; location: string }[] {
+export function generateStaticParams(): { slug: string; location: string }[] {
   const brandSlugs = getAllOpticianSlugs();
   const locationSlugs = getAllLocationSlugs();
 
   return brandSlugs.flatMap((brand) =>
-    locationSlugs.map((location) => ({ brand, location }))
+    locationSlugs.map((location) => ({ slug: brand, location }))
   );
 }
 
@@ -43,9 +43,9 @@ export function generateStaticParams(): { brand: string; location: string }[] {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ brand: string; location: string }>;
+  params: Promise<{ slug: string; location: string }>;
 }): Promise<Metadata> {
-  const { brand, location } = await params;
+  const { slug: brand, location } = await params;
   const optician = getOpticianBySlug(brand);
   const loc = getLocationBySlug(location);
 
@@ -101,9 +101,9 @@ export async function generateMetadata({
 export default async function BrandLocationPage({
   params,
 }: {
-  params: Promise<{ brand: string; location: string }>;
+  params: Promise<{ slug: string; location: string }>;
 }) {
-  const { brand, location } = await params;
+  const { slug: brand, location } = await params;
   const optician = getOpticianBySlug(brand);
   const loc = getLocationBySlug(location);
 
