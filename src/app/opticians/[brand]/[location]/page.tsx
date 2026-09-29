@@ -70,11 +70,13 @@ export async function generateMetadata({
       `${optician.name} ${loc.name}`,
       `eye test ${loc.name}`,
       `opticians ${loc.name}`,
+
       `book eye test ${loc.name}`,
       `NHS eye test ${loc.name}`,
       `${optician.shortName} opticians ${loc.name}`,
       `eye test cost ${loc.name}`,
       `free eye test ${loc.name}`,
+
       `${loc.name} opticians`,
       `${loc.name} eye care`,
       `${optician.shortName} ${loc.county}`,
@@ -1144,14 +1146,7 @@ function UnavailableBrandContent({
           <p className="text-white/70 mb-8 max-w-lg mx-auto">
             Don&apos;t wait for {optician.shortName}. Compare{" "}
             {alternatives.length} opticians with instant online booking in the{" "}
-            {location.name} area. For prices across every chain nationally, see our{" "}
-            <Link
-              href="/find/eye-test-cost"
-              className="text-[var(--color-primary)] underline underline-offset-2 hover:text-[var(--color-primary-dark)]"
-            >
-              guide to UK eye test costs
-            </Link>
-            .
+            {location.name} area.
           </p>
           <form action="/search" method="GET" className="max-w-xl mx-auto">
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 sm:bg-white/10 sm:backdrop-blur-sm sm:rounded-full sm:p-1.5 sm:border sm:border-white/10">
@@ -1292,7 +1287,14 @@ function EyeTestPricingSection({
             Eye Test Cost at {optician.shortName} in {location.name}
           </h2>
           <p className="text-gray-600 leading-relaxed mb-8">
-            Understanding the cost of your eye test at {optician.shortName} in {location.name} helps you plan your visit and budget accordingly. {optician.shortName} offers a range of eye test options at different price points, from free NHS-funded tests to premium enhanced examinations. Here is a detailed breakdown of what you can expect to pay at {optician.shortName} in the {nameWithCounty(location)} area.
+            Understanding the cost of your eye test at {optician.shortName} in {location.name} helps you plan your visit and budget accordingly. {optician.shortName} offers a range of eye test options at different price points, from free NHS-funded tests to premium enhanced examinations. Here is a detailed breakdown of what you can expect to pay at {optician.shortName} in the {nameWithCounty(location)} area. For prices across every chain nationally, see our{" "}
+            <Link
+              href="/find/eye-test-cost"
+              className="text-[var(--color-primary)] underline underline-offset-2 hover:text-[var(--color-primary-dark)]"
+            >
+              guide to UK eye test costs
+            </Link>
+            .
           </p>
 
           {/* Pricing cards */}
