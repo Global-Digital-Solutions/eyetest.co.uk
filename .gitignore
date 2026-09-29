@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# stale build output — a renamed .next escapes the /.next/ rule above,
+# which is how .next-old came to be committed (15,954 files).
+.next-old/
+.next-*/
