@@ -8,6 +8,7 @@ import {
   getAllProviderSlugs,
   getProviderBySlug,
 } from "@/data/surgery-providers";
+import { getConditionBySlug } from "@/data/surgery-conditions";
 
 // ---------------------------------------------------------------------------
 // Static generation
@@ -448,12 +449,21 @@ export default async function SurgeryProviderPage({
                           <h3 className="text-base sm:text-lg font-bold text-[var(--color-navy)]">
                             {service.name}
                           </h3>
-                          <Link
-                            href={`/eye-surgery/${service.slug}`}
-                            className="text-xs font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] whitespace-nowrap transition-colors"
-                          >
-                            Learn more
-                          </Link>
+                          {/* Provider service slugs are the provider's own
+                              naming, not our condition slugs — some are even
+                              multi-segment ("laser-eye-surgery/lasik"), so they
+                              can never resolve at /eye-surgery/[slug]. Link
+                              only when the slug maps to a page we actually
+                              build; otherwise render nothing rather than a
+                              404. */}
+                          {getConditionBySlug(service.slug) ? (
+                            <Link
+                              href={`/eye-surgery/${service.slug}`}
+                              className="text-xs font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] whitespace-nowrap transition-colors"
+                            >
+                              Learn more
+                            </Link>
+                          ) : null}
                         </div>
                         <p className="text-sm text-gray-600 leading-relaxed mb-3">
                           {service.description}

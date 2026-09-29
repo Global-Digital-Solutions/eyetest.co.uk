@@ -12,7 +12,7 @@ import { OffersGrid } from "./OffersGrid";
 
 export const metadata: Metadata = {
   title:
-    "Eye Test Offers & Deals — Compare UK Optician Promotions | eyetest.co.uk",
+    "Eye Test Offers & Optician Deals | eyetest.co.uk",
   description:
     "Compare the latest offers and deals from Specsavers, Boots Opticians, Vision Express, ASDA and independent opticians. Find 2-for-1 glasses, free eye tests, student discounts, and contact lens deals — updated fortnightly.",
   keywords: [

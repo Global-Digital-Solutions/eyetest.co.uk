@@ -70,13 +70,11 @@ export async function generateMetadata({
       `${optician.name} ${loc.name}`,
       `eye test ${loc.name}`,
       `opticians ${loc.name}`,
-      `${optician.shortName} eye test near me`,
       `book eye test ${loc.name}`,
       `NHS eye test ${loc.name}`,
       `${optician.shortName} opticians ${loc.name}`,
       `eye test cost ${loc.name}`,
       `free eye test ${loc.name}`,
-      `${optician.shortName} eye test cost`,
       `${loc.name} opticians`,
       `${loc.name} eye care`,
       `${optician.shortName} ${loc.county}`,
@@ -1146,7 +1144,14 @@ function UnavailableBrandContent({
           <p className="text-white/70 mb-8 max-w-lg mx-auto">
             Don&apos;t wait for {optician.shortName}. Compare{" "}
             {alternatives.length} opticians with instant online booking in the{" "}
-            {location.name} area.
+            {location.name} area. For prices across every chain nationally, see our{" "}
+            <Link
+              href="/find/eye-test-cost"
+              className="text-[var(--color-primary)] underline underline-offset-2 hover:text-[var(--color-primary-dark)]"
+            >
+              guide to UK eye test costs
+            </Link>
+            .
           </p>
           <form action="/search" method="GET" className="max-w-xl mx-auto">
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 sm:bg-white/10 sm:backdrop-blur-sm sm:rounded-full sm:p-1.5 sm:border sm:border-white/10">

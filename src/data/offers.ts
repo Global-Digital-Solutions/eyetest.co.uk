@@ -523,7 +523,7 @@ export const providerOffers: ProviderOffers[] = [
     name: "Rawlings",
     tagline: "Independent opticians with a personal touch",
     color: "#4338ca",
-    website: "https://rawlingsopticians.co.uk/promotions.php",
+    website: "https://www.rawlings.co.uk",
     eyeTestPrice: "From £49",
     nhsFree: true,
     lastVerified: "2026-06-16",

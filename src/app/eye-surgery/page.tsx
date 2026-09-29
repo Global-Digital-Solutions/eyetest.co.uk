@@ -22,7 +22,7 @@ const providerImages: Record<string, string> = {
 
 export const metadata: Metadata = {
   title:
-    "Eye Surgery in the UK — Find Specialist Ophthalmic Surgeons | eyetest.co.uk",
+    "UK Eye Surgery — Compare Specialist Surgeons | eyetest.co.uk",
   description:
     "Find and compare eye surgery providers across the UK. Compare NHS and private ophthalmic surgeons, read patient reviews, and book consultations for cataract surgery, laser eye surgery, glaucoma treatment, and more.",
   keywords: [
@@ -611,6 +611,21 @@ export default function EyeSurgeryPage() {
                 </svg>
                 Search by postcode
               </Link>
+
+              {/* The enquiry form was reachable only from a client-rendered
+                  link inside the search results, so crawlers never saw it —
+                  it audited as the site's one orphan page despite being a
+                  lead-capture page. Static link from the hub fixes that. */}
+              <p className="text-sm text-gray-500 mt-5">
+                Or{" "}
+                <Link
+                  href="/eye-surgery/enquiry"
+                  className="font-semibold text-[var(--color-primary)] underline underline-offset-2 hover:text-[var(--color-primary-dark)]"
+                >
+                  tell us what you need
+                </Link>{" "}
+                and we will match you with a specialist.
+              </p>
             </div>
           </div>
         </section>

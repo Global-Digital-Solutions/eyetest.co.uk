@@ -13,7 +13,7 @@ import {
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Compare UK Opticians — Find the Best Eye Test Near You | eyetest.co.uk",
+  title: "Compare UK Opticians & Eye Test Prices | eyetest.co.uk",
   description:
     "Compare leading UK optician chains side by side. See services, prices, NHS availability, and store locations for Boots, ASDA, Leightons, Scrivens, and more. Book your eye test online.",
   keywords: [

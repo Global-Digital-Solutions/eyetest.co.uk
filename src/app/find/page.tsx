@@ -92,7 +92,7 @@ export const metadata: Metadata = {
     "eye test guide UK",
   ],
   openGraph: {
-    title: "Find Eye Tests — Comprehensive UK Guides | eyetest.co.uk",
+    title: "Eye Test Guides & Costs | eyetest.co.uk",
     description:
       "Guides covering eye test costs, NHS eligibility, booking, optician comparisons, and vision concerns.",
     url: "https://www.eyetest.co.uk/find",
