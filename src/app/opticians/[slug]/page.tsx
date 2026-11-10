@@ -41,8 +41,11 @@ export async function generateMetadata({
     return { title: "Optician Not Found | eyetest.co.uk" };
   }
 
-  const title = `${optician.name} — Eye Tests, Prices & Booking`;
-  const description = `${optician.name}: ${optician.storeCount} UK stores. ${optician.priceRange}. Full service breakdown, pros & cons, NHS availability, booking guide, FAQs, and store locations. Compare and book your eye test online.`;
+  const title =
+    optician.seoTitle ?? `${optician.name} — Eye Tests, Prices & Booking`;
+  const description =
+    optician.seoDescription ??
+    `${optician.name}: ${optician.storeCount} UK stores. ${optician.priceRange}. Full service breakdown, pros & cons, NHS availability, booking guide, FAQs, and store locations. Compare and book your eye test online.`;
 
   return {
     title,
@@ -1172,10 +1175,10 @@ export default async function OpticianPage({
                   </svg>
                 </div>
                 <h2 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl font-bold text-gray-700 mb-4">
-                  {optician.shortName} &mdash; Coming Soon
+                  {optician.shortName}{" "}&mdash; Coming Soon
                 </h2>
                 <p className="text-gray-500 max-w-xl mx-auto mb-8">
-                  We&apos;re working on adding {optician.name} to
+                  We&apos;re working on adding {optician.name}{" "}to
                   eyetest.co.uk. Once available, you&apos;ll be able to compare
                   prices and book appointments at their{" "}
                   {optician.storeCount.toLocaleString()} UK locations directly
@@ -1191,6 +1194,38 @@ export default async function OpticianPage({
             </>
           )}
         </section>
+        {/* ── Sources and last reviewed date (when provided) ─────────── */}
+        {optician.sources && optician.sources.length > 0 && (
+          <section className="max-w-7xl mx-auto px-4 pt-10">
+            <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6">
+              <h2 className="font-[family-name:var(--font-display)] text-lg font-semibold text-[var(--color-navy)] mb-2">
+                Sources
+              </h2>
+              {optician.lastReviewed && (
+                <p className="text-sm text-gray-500 mb-3">
+                  Prices and details on this page were checked against the
+                  sources below in {optician.lastReviewed}. Prices and offers
+                  can change and may vary by store, so please confirm with{" "}
+                  {optician.shortName} before you book.
+                </p>
+              )}
+              <ul className="space-y-1 text-sm">
+                {optician.sources.map((src) => (
+                  <li key={src.url}>
+                    <a
+                      href={src.url}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className="text-[var(--color-primary)] hover:underline"
+                    >
+                      {src.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
         {/* ── Subtle external website reference ─────────────────────── */}
         <div className="max-w-7xl mx-auto px-4 py-4 text-center">
           <p className="text-xs text-gray-400">

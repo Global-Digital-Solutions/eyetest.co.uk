@@ -35,6 +35,13 @@ export type OpticianBrand = {
   faqs: { q: string; a: string }[];
   rating?: number;
   reviewCount?: number;
+  /** Optional page title / meta description overriding the generic template */
+  seoTitle?: string;
+  seoDescription?: string;
+  /** When the facts on this page were last checked against the sources */
+  lastReviewed?: string;
+  /** Sources the page's facts were checked against, shown on the page */
+  sources?: { label: string; url: string }[];
 };
 
 // ---------------------------------------------------------------------------
@@ -210,34 +217,40 @@ export const opticians: OpticianBrand[] = [
   },
 
   // ─── Specsavers ─────────────────────────────────────────────────────
+  // Facts checked against specsavers.co.uk and NHS guidance, November 2026.
+  // Prices and offers change: recheck the sources below before editing.
   {
     slug: "specsavers",
-    name: "Specsavers Optical Group",
+    name: "Specsavers",
     shortName: "Specsavers",
     brandColor: "#1b5e20",
+    seoTitle: "Specsavers Eye Test: Prices, Free NHS Tests & OCT Costs",
+    seoDescription:
+      "Specsavers eye tests cost £20 to £25, OCT scans up to £10 extra, and NHS-funded tests are free if you qualify. Home visits, hearing tests and how to book.",
+    lastReviewed: "November 2026",
     description:
-      "Specsavers is the UK's largest optical retailer, founded in Guernsey by Doug and Dame Mary Perkins. Known for their value-for-money approach and iconic advertising campaigns, they operate a joint-venture partnership model where each store is co-owned by local optometrists. They provide comprehensive eye care, hearing services, and home visit testing across the UK and internationally.",
+      "Specsavers is a family-run optical and hearing care business with more than 900 locations across the UK. A routine Specsavers eye test costs £20 to £25 depending on the store, an OCT scan can be added for up to £10 in most stores, and NHS-funded eye tests are free for anyone who qualifies. Specsavers also offers free hearing tests, home eye tests for people who cannot get to a store unaccompanied, and eyecare for employers.",
     services: [
       "NHS Eye Tests",
       "Private Eye Tests",
+      "OCT Scan",
+      "Children's Eye Tests",
+      "Home Visits",
       "Contact Lenses",
       "Glasses",
       "Hearing Tests",
-      "Home Visits",
-      "Children's Eye Tests",
-      "OCT Scan",
-      "Diabetic Screening",
+      "Corporate Eyecare",
     ],
     storeCount: 900,
     website: "https://www.specsavers.co.uk",
-    priceRange: "Free NHS / From £25 private",
+    priceRange: "Free NHS / £20 to £25 private",
     nhsAvailable: true,
     available: false,
     highlights: [
-      "UK's largest optical chain with over 900 stores",
-      "Two-for-one offers on a wide range of glasses",
-      "Home visit service available for those unable to attend a store",
-      "Joint-venture model means each store is part-owned by its optometrists",
+      "Routine eye tests from £20 to £25, and free for anyone eligible for an NHS-funded test",
+      "Free hearing tests at participating stores, with no obligation to buy a hearing aid",
+      "Home eye tests for people who cannot leave home unaccompanied, free if NHS-eligible",
+      "More than 900 locations across the UK, so most people have a store nearby",
     ],
     founded: "1984",
     storeLocations: [
@@ -258,123 +271,132 @@ export const opticians: OpticianBrand[] = [
       "dundee", "inverness", "stirling", "perth", "belfast", "derry", "newry",
     ],
     history:
-      "Specsavers was founded in 1984 by Doug and Dame Mary Perkins, both qualified optometrists, on the island of Guernsey. The couple had previously run a small chain of optical practices in the West Country but sold up and moved to the Channel Islands with a vision to create an entirely new kind of opticians — one that would bring professional eye care to the high street at genuinely affordable prices. The timing proved crucial: the UK government had recently deregulated the optical industry, allowing advertising of spectacle prices for the first time and opening the door to competitive pricing.\n\nThe first Specsavers stores opened in Guernsey and Bristol, and the business expanded rapidly through the late 1980s and 1990s. The founders introduced a joint-venture partnership model that proved central to the company's success: each store is co-owned by the resident optometrists, who share profits with the Specsavers group. This model aligns clinical and commercial interests, giving store directors a direct stake in patient satisfaction and store performance. By the early 2000s, Specsavers had become the UK's largest optical retailer, and the brand expanded into Australia, New Zealand, and northern Europe.\n\nToday, Specsavers operates over 2,700 stores globally, with more than 900 in the United Kingdom alone. The brand is known for its value-driven offers — particularly its iconic two-for-one deals — and its memorable advertising campaigns, including the long-running \"Should've gone to Specsavers\" slogan that has become a fixture of British popular culture. The company has diversified into hearing care, domiciliary eye care (home visits), and workplace eye care programmes. It remains privately owned by the Perkins family, with its headquarters still on Guernsey, and employs over 40,000 people worldwide.",
+      "Specsavers was founded in Guernsey in 1984 by Doug and Mary Perkins, both optometrists, who had moved to the island to be close to Mary's retired parents. At the time, high prices and limited choice were the norm in UK optics. The Perkinses set out to offer affordable, fashionable eyecare to everyone, and built the business around a joint venture partnership model they pioneered.\n\nUnder that model, Specsavers stores are part-owned and run by their own directors, typically the optometrists and other professionals who work in them, while Specsavers provides the brand, buying, training and support behind them. It is the same model the business uses for its home visits and hearing services today.\n\nMore than 40 years on, Specsavers is still family-run. It operates in the UK, Ireland, the Netherlands, Norway, Sweden, Denmark, Finland, Australia, New Zealand, Canada and North America, and employs more than 45,000 people. Alongside eye tests, glasses and contact lenses, its stores provide audiology, and Specsavers is accredited by the NHS to provide hearing services in over half of England.",
     detailedServices: [
       {
-        name: "NHS Eye Test",
+        name: "NHS-funded eye test",
         description:
-          "A thorough eye examination covered by the NHS for eligible patients. Specsavers optometrists assess visual acuity, refraction, eye coordination, and eye health using slit lamp examination and ophthalmoscopy. The test also includes a screening for glaucoma through intraocular pressure measurement. Eligible patients include children under 16, adults over 60, those receiving qualifying benefits, and people with certain medical conditions or a family history of glaucoma.",
+          "In England you qualify for a free NHS sight test if you are under 16, aged 16 to 18 and in full-time education, aged 60 or over, or meet other criteria such as having diabetes or glaucoma, being at risk of glaucoma, being registered sight impaired, or receiving certain benefits. In Scotland, NHS eye examinations are free for everyone. Let the store know you qualify when you book, and bring proof to your appointment.",
         price: "Free (if eligible)",
-        duration: "20-25 minutes",
+        duration: "Ask your store",
         nhsCovered: true,
       },
       {
-        name: "Private Eye Test",
+        name: "Private eye test (comprehensive)",
         description:
-          "A full eye examination for patients who do not qualify for a free NHS eye test. The examination includes all the same clinical checks as the NHS test, including visual acuity, refraction, eye pressure measurement, and a detailed assessment of the internal and external health of the eyes. Specsavers recommends eye tests every two years for most adults, or more frequently if advised by your optometrist.",
-        price: "From £25",
-        duration: "20-25 minutes",
+          "Specsavers' standard eye test for anyone who does not qualify for an NHS-funded test. It includes a discussion of your history and symptoms, pre-tests such as the air-puff eye pressure check, a vision test with a letter chart to work out your prescription, and a detailed check of the health of your eyes. Specsavers says a routine test costs £25, though some stores charge less and promotional vouchers are sometimes available.",
+        price: "£20 to £25",
+        duration: "Ask your store",
         nhsCovered: false,
       },
       {
-        name: "OCT Eye Health Check",
+        name: "OCT scan",
         description:
-          "An enhanced screening that uses Optical Coherence Tomography (OCT) to produce 3D cross-section images of the retina and optic nerve. This advanced scan can detect signs of serious eye conditions — including glaucoma, macular degeneration, and diabetic eye disease — at a much earlier stage than a standard eye test alone. Specsavers recommends this for patients over 25 as a baseline measurement.",
-        price: "From £25 (in addition to eye test)",
-        duration: "10 minutes (plus eye test)",
+          "An add-on to your eye test. OCT (optical coherence tomography) is a 3D scan of the back of the eye that looks beneath the surface of the retina, and Specsavers says it can help spot signs of conditions such as glaucoma and diabetic retinopathy up to four years earlier than traditional methods. Not every store offers it, so check with your local store when you book.",
+        price: "Up to £10 extra in most stores (may vary in Scotland)",
+        duration: "A few seconds (on top of your eye test)",
         nhsCovered: false,
       },
       {
-        name: "Contact Lens Assessment",
+        name: "Home eye test",
         description:
-          "An initial appointment to assess your suitability for contact lenses. Includes corneal topography measurements, tear film evaluation, and a trial lens fitting. Your optometrist will discuss the available lens options — including daily disposables, extended wear, toric lenses for astigmatism, and multifocal lenses for presbyopia — and recommend the most suitable type for your eyes and lifestyle.",
-        price: "From £30",
-        duration: "30-40 minutes",
-        nhsCovered: false,
-      },
-      {
-        name: "Home Visit Eye Test",
-        description:
-          "A full NHS or private eye test carried out in the patient's own home by a Specsavers domiciliary optometrist. This service is available for people who cannot visit a store unaccompanied due to a physical or mental disability or illness. The optometrist brings portable equipment and a selection of frames, so glasses can be ordered during the same visit. NHS-funded home visits are free for eligible patients.",
-        price: "Free (NHS eligible) / From £30 (private)",
-        duration: "30-40 minutes",
+          "For people who cannot leave home unaccompanied because of a physical or mental illness or disability, including care home residents. A visiting optometrist carries out a full eye test with portable equipment and brings a selection of frames. Glasses are made to your prescription and should be ready within 21 days, then delivered and fitted at home. Most glasses sales on a home visit carry a £30 non-refundable home visit fee, which does not apply to the free NHS eye test itself or to fully funded NHS glasses.",
+        price: "Free (if NHS-eligible) / £60 private",
+        duration: "Ask when you book",
         nhsCovered: true,
       },
       {
-        name: "Hearing Test",
+        name: "Hearing test",
         description:
-          "A comprehensive hearing assessment provided at Specsavers audiology clinics within their opticians stores. The test includes a discussion of your hearing history, an otoscopic examination of your ear canal, and a pure tone audiometry test carried out in a soundproof booth. If hearing loss is detected, the audiologist will explain your options, including NHS-funded and private digital hearing aids.",
+          "A free hearing check with an audiologist at participating stores, with no obligation to buy a hearing aid. The audiologist examines your ear canals and eardrums with a small camera, then plays sounds at different pitches to measure the quietest sounds you can hear. If you qualify for NHS hearing aids in an area where Specsavers provides NHS hearing services, the test, two digital hearing aids and aftercare are free.",
         price: "Free",
-        duration: "30 minutes",
+        duration: "Around an hour for a first appointment",
         nhsCovered: false,
       },
       {
-        name: "Children's Eye Test",
+        name: "Children's eye test",
         description:
-          "A specially adapted eye test for children from age 3 upwards, carried out by experienced paediatric-friendly optometrists. The test uses picture charts, matching games, and retinoscopy to assess vision in younger children who may not yet recognise letters. All children under 16 (and under 19 in full-time education) qualify for a free NHS eye test, and Specsavers offers a wide range of children's frames covered by the NHS voucher.",
-        price: "Free (NHS funded)",
-        duration: "20-30 minutes",
+          "Children under 16 qualify for a free NHS-funded eye test, and Specsavers recommends children have one every year as their eyes develop. You can book a child's test online, or call your local store to book a family appointment so an adult and child are seen together.",
+        price: "Free (NHS-funded)",
+        duration: "Ask your store",
         nhsCovered: true,
+      },
+      {
+        name: "Corporate eyecare",
+        description:
+          "If your employer is registered with Specsavers' corporate eyecare scheme, you can use an employer voucher for an eye test. The scheme covers screen users, company drivers and industrial roles, including prescription safety glasses.",
+        price: "Covered by employer voucher",
+        duration: "Ask your store",
+        nhsCovered: false,
       },
     ],
     bookingProcess: [
-      "Enter your postcode on eyetest.co.uk to find Specsavers stores near you",
-      "Browse available appointment types — NHS eye test, private test, OCT scan, contact lens assessment, or hearing test",
-      "Select a convenient date and time slot from the available appointments",
-      "Provide your personal details and let us know if you have any accessibility requirements",
-      "Confirm your booking and receive a confirmation email with your appointment details and what to bring",
-      "Arrive at your appointment with your current glasses or lenses, any NHS exemption evidence, and a list of any medications you take",
+      "Check whether you qualify for a free NHS-funded eye test before you book. Use our free eye test guide if you are not sure.",
+      "Find your nearest Specsavers using the store finder on specsavers.co.uk, or pick your town from the Specsavers locations listed on this page.",
+      "Book online at specsavers.co.uk or call the store. Children's tests can be booked online, and family appointments by phone.",
+      "If you would like an OCT scan, add it when you book and check that your store offers it. It costs up to £10 extra in most stores.",
+      "On the day, bring your current glasses or contact lenses, a list of any medicines you take, and proof if you qualify for an NHS-funded test.",
+      "If you cannot get to a store unaccompanied, request a home visit through specsavers.co.uk instead.",
     ],
     prosAndCons: {
       pros: [
-        "The largest store network in the UK, making it easy to find a branch near you",
-        "Excellent value with regular two-for-one offers on a wide range of frames",
-        "Joint-venture model means your optometrist has a personal stake in your care",
-        "Comprehensive home visit service for housebound or elderly patients",
-        "Free hearing tests alongside optical services at most locations",
+        "Clear published pricing: a routine eye test is £20 to £25, and an OCT scan is up to £10 extra in most stores",
+        "Free NHS-funded eye tests for anyone who qualifies, and free eye examinations for everyone in Scotland",
+        "Free hearing tests with no obligation to buy",
+        "Home eye tests for people who cannot leave home unaccompanied",
+        "More than 900 UK locations, so most people have a store nearby",
       ],
       cons: [
-        "High-volume appointment scheduling means some patients feel rushed during their tests",
-        "Premium designer frame range is smaller than some competitors such as Boots or Vision Express",
-        "Not currently available for booking through eyetest.co.uk — check specsavers.co.uk directly",
+        "Not yet bookable through eyetest.co.uk, so you book directly with Specsavers",
+        "OCT scans cost extra and are not available in every store",
+        "Glasses bought on a home visit usually carry a £30 home visit fee",
+        "Prices vary by store, and offers change regularly",
       ],
     },
     faqs: [
       {
-        q: "How do I get a free eye test at Specsavers?",
-        a: "You qualify for a free NHS-funded eye test if you are under 16 (or under 19 in full-time education), aged 60 or over, receiving certain means-tested benefits such as Income Support or Pension Credit, diagnosed with diabetes or glaucoma, or if you are over 40 and have a close family member with glaucoma. Simply let the receptionist know your eligibility when booking, and bring proof to your appointment.",
+        q: "How much is an eye test at Specsavers?",
+        a: "Specsavers says a routine eye test costs £25, with prices between £20 and £25 depending on the store. Adding an OCT scan costs up to £10 extra in most stores, though this may vary in Scotland. A private home eye test costs £60. If you qualify for an NHS-funded eye test, your test is free.",
       },
       {
-        q: "What does the Specsavers two-for-one deal include?",
-        a: "Specsavers' two-for-one offer lets you choose two pairs of glasses from selected ranges for the price of one pair, starting from £25. Many customers use this to get a pair of prescription glasses and a pair of prescription sunglasses, or to choose different frames for work and leisure. The offer applies to frame and lens combinations from the designated two-for-one range, and additional lens upgrades such as anti-reflection coatings may cost extra.",
+        q: "Can I get a free eye test at Specsavers?",
+        a: "Yes, if you qualify for an NHS-funded eye test. In England that includes children under 16, 16 to 18 year olds in full-time education, people aged 60 or over, and people who meet other criteria such as having diabetes or glaucoma or receiving certain benefits. Everyone in Scotland is entitled to a free NHS eye examination. You can also have a free test with a valid employer eyecare voucher. Otherwise there is a charge, although some stores run promotional vouchers.",
       },
       {
-        q: "Can Specsavers come to my home for an eye test?",
-        a: "Yes, Specsavers operates a domiciliary (home visit) eye test service for patients who are unable to leave home unaccompanied due to a physical or mental health condition or disability. A Specsavers optometrist will visit you at home with portable testing equipment and a selection of frames. If you qualify for an NHS eye test, the home visit is also free. To arrange a home visit, contact your local Specsavers store directly.",
+        q: "What is an OCT scan and how much does it cost at Specsavers?",
+        a: "OCT stands for optical coherence tomography. It is a 3D scan of the back of your eye, added to your normal eye test, that lets the optometrist see beneath the surface of the retina. Specsavers says it can help spot signs of conditions such as glaucoma and diabetic retinopathy up to four years earlier than traditional methods. It costs up to £10 extra in most stores, and not every store offers it.",
       },
       {
-        q: "How often should I have an eye test at Specsavers?",
-        a: "Specsavers recommends that most adults have an eye test every two years, or more frequently if advised by their optometrist. Children, people with diabetes, those over 70, and anyone with a family history of eye disease should typically have their eyes tested annually. Regular eye tests are important not just for updating your prescription but for detecting eye conditions early, when they are most treatable.",
+        q: "Can Specsavers do an eye test at home?",
+        a: "Yes. Specsavers offers home eye tests for people who cannot leave home unaccompanied because of a physical or mental illness or disability, including people in care homes. The test is free if you qualify for an NHS-funded home eye test; otherwise a private home test costs £60. Glasses ordered at home should be ready within 21 days and are delivered and fitted at home.",
       },
       {
-        q: "Does Specsavers offer laser eye surgery?",
-        a: "No, Specsavers does not offer laser eye surgery or any surgical eye procedures. They are an optical retailer focused on eye testing, glasses, contact lenses, and hearing care. If you are interested in laser eye surgery, your Specsavers optometrist can advise you and refer you to an appropriate specialist or clinic.",
+        q: "Are Specsavers hearing tests free?",
+        a: "Yes. A hearing check with a Specsavers audiologist is free at participating stores, and there is no obligation to buy a hearing aid. A first appointment usually takes around an hour. Specsavers notes that a fuller hearing assessment may be chargeable, so ask in store.",
+      },
+      {
+        q: "What is the Specsavers 2 for 1 offer?",
+        a: "At the time of writing, Specsavers offers 2 for 1 glasses from £70, where you get a second pair free from the same price range or below with single-vision lenses to the same prescription, and 2 for 1 designer glasses from £100 to £170. There are also 2 for 1 offers on varifocals and on glasses with sunglasses. Offers change regularly, so check specsavers.co.uk for current terms.",
+      },
+      {
+        q: "How often should I have an eye test?",
+        a: "Specsavers recommends an eye test at least every two years for adults and every year for children. People with a family history of glaucoma, and those aged 40 or over or 60 or over, may need more frequent tests, so ask your optometrist. If your vision changes, book a test straight away.",
       },
       {
         q: "Can I book a Specsavers appointment through eyetest.co.uk?",
-        a: "Specsavers is not currently available for booking through eyetest.co.uk. We list Specsavers as a reference so customers can compare services and prices across different opticians. To book directly, visit specsavers.co.uk or call your local Specsavers store. We are working to bring Specsavers availability to our platform in the future.",
-      },
-      {
-        q: "What hearing aid brands does Specsavers offer?",
-        a: "Specsavers works with major hearing aid manufacturers and also offers its own Advance range of digital hearing aids. NHS hearing aids are available free of charge for eligible patients through Specsavers audiology clinics. Private hearing aids start from around £495 per ear. All hearing aids come with an aftercare package including follow-up appointments and adjustments.",
-      },
-      {
-        q: "How long does it take to get glasses from Specsavers?",
-        a: "Standard glasses orders from Specsavers typically take 7 to 10 working days to be ready for collection. More complex prescriptions, including varifocals and high-index lenses, may take a little longer. Specsavers will contact you by text message when your glasses are ready to pick up from the store. Some stores offer an express service for simple single-vision prescriptions, but availability varies.",
+        a: "Not yet. Specsavers appointments are not currently bookable through eyetest.co.uk, so book directly at specsavers.co.uk or by calling your local store. If you would like to compare other opticians near you that you can book through us, enter your postcode in the search box.",
       },
     ],
-    rating: 4.3,
-    reviewCount: 5000,
+    sources: [
+      { label: "Specsavers: How much is an eye test?", url: "https://www.specsavers.co.uk/help-and-faqs/how-much-is-an-eye-test" },
+      { label: "Specsavers: Book an eye test", url: "https://www.specsavers.co.uk/eye-test" },
+      { label: "Specsavers: Home eye tests", url: "https://www.specsavers.co.uk/home-visits/home-eye-tests" },
+      { label: "Specsavers: Hearing test", url: "https://www.specsavers.co.uk/hearing/hearing-test" },
+      { label: "Specsavers: About Specsavers", url: "https://www.specsavers.co.uk/about" },
+      { label: "Specsavers: UK tax strategy (company history)", url: "https://www.specsavers.co.uk/about/uk-tax-strategy" },
+      { label: "Specsavers: 2 for 1 glasses from £70", url: "https://www.specsavers.co.uk/offers/2-for-1-glasses-from-gbp70" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+    ],
   },
 
   // ─── Vision Express ─────────────────────────────────────────────────
