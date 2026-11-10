@@ -3,7 +3,10 @@ import { getAllSlugs as getAllEyeTestSlugs } from "@/data/eye-tests";
 import { getAllConditionSlugs, getAllGuideSlugs } from "@/data/eye-health";
 import { getAllArticleSlugs } from "@/data/articles";
 import { getAllSlugs as getAllLocationSlugs } from "@/data/locations";
-import { getAllSlugs as getAllOpticianSlugs } from "@/data/opticians";
+import {
+  getAllSlugs as getAllOpticianSlugs,
+  getOpticianBySlug,
+} from "@/data/opticians";
 import { getAllSlugs as getAllSearchQuerySlugs } from "@/data/search-queries";
 import { getAllProviderSlugs } from "@/data/surgery-providers";
 import { getAllConditionSlugs as getAllSurgeryConditionSlugs } from "@/data/surgery-conditions";
@@ -124,9 +127,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const opticianBrandPages: MetadataRoute.Sitemap = getAllOpticianSlugs().map(
     (slug) => ({
       url: `${BASE}/opticians/${slug}`,
-      lastModified: NOW,
+      // Use the brand's real content date when it has one
+      lastModified: getOpticianBySlug(slug)?.dateModified ?? NOW,
       changeFrequency: "monthly" as const,
-      priority: 0.6,
+      priority: 0.7,
     })
   );
 
@@ -138,7 +142,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     getAllOpticianSlugs().flatMap((brand) =>
       getAllLocationSlugs().map((location) => ({
         url: `${BASE}/opticians/${brand}/${location}`,
-        lastModified: NOW,
+        // Town pages pull prices from the brand data, so share its date
+        lastModified: getOpticianBySlug(brand)?.dateModified ?? NOW,
         changeFrequency: "weekly" as const,
         priority: 0.5,
       }))

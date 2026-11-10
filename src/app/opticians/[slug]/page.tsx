@@ -120,28 +120,44 @@ export default async function OpticianPage({
   // JSON-LD schemas
   // ---------------------------------------------------------------------------
 
+  // The page is published by eyetest.co.uk and is *about* the optician brand.
+  // (Previously this declared eyetest.co.uk as the brand's parent organisation
+  // and used the store count as numberOfEmployees, both incorrect.)
+  const pageUrl = `https://www.eyetest.co.uk/opticians/${optician.slug}`;
   const organizationJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: optician.name,
-    url: optician.website,
-    description: optician.description,
-    foundingDate: optician.founded,
-    areaServed: {
-      "@type": "Country",
-      name: "United Kingdom",
-    },
-    numberOfEmployees: {
-      "@type": "QuantitativeValue",
-      name: "UK stores",
-      value: optician.storeCount,
-    },
-    sameAs: [optician.website],
-    parentOrganization: {
-      "@type": "Organization",
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: optician.seoTitle ?? `${optician.name} — Eye Tests, Prices & Booking`,
+    description: optician.seoDescription ?? optician.description,
+    inLanguage: "en-GB",
+    ...(optician.dateModified ? { dateModified: optician.dateModified } : {}),
+    isPartOf: {
+      "@type": "WebSite",
       name: "eyetest.co.uk",
       url: "https://www.eyetest.co.uk",
     },
+    publisher: {
+      "@type": "Organization",
+      name: "eyetest.co.uk",
+      url: "https://www.eyetest.co.uk",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.eyetest.co.uk/android-chrome-512x512.png",
+      },
+    },
+    about: {
+      "@type": "Organization",
+      name: optician.name,
+      url: optician.website,
+      foundingDate: optician.founded,
+      areaServed: { "@type": "Country", name: "United Kingdom" },
+      sameAs: [optician.website],
+    },
+    ...(optician.sources && optician.sources.length > 0
+      ? { citation: optician.sources.map((src) => src.url) }
+      : {}),
   };
 
   const breadcrumbJsonLd = {
@@ -809,6 +825,49 @@ export default async function OpticianPage({
             </div>
           </section>
         )}
+
+        {/* ── Extra sections (products, offers etc.) when provided ───── */}
+        {optician.extraSections?.map((section) => (
+          <section key={section.heading} className="max-w-7xl mx-auto px-4 py-16 sm:py-20">
+            <div className="text-center mb-10">
+              <h2 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3">
+                {section.heading}
+              </h2>
+              {section.intro && (
+                <p className="text-gray-500 max-w-2xl mx-auto">{section.intro}</p>
+              )}
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {section.items.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
+                >
+                  <h3 className="font-[family-name:var(--font-display)] text-lg font-semibold text-[var(--color-navy)] mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{item.text}</p>
+                </div>
+              ))}
+            </div>
+            {optician.externalRating && (
+              <p className="mt-8 text-center text-sm text-gray-500">
+                Customer reviews: {optician.shortName} is rated{" "}
+                {optician.externalRating.score} on{" "}
+                <a
+                  href={optician.externalRating.url}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="text-[var(--color-primary)] hover:underline"
+                >
+                  {optician.externalRating.source}
+                </a>{" "}
+                from {optician.externalRating.count} (checked{" "}
+                {optician.externalRating.checked}).
+              </p>
+            )}
+          </section>
+        ))}
 
         {/* ── 7. How to Book ─────────────────────────────────────────────── */}
         {optician.bookingProcess &&

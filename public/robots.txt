@@ -1,6 +1,30 @@
+# robots.txt for www.eyetest.co.uk
+# Search engines and AI assistants are welcome: they send visitors and cite
+# our pages. Aggressive scrapers and SEO data crawlers that send no traffic
+# are blocked to save crawl load and keep our data out of competitor tools.
+
+# --- Blocked: scrapers and third-party SEO data crawlers -------------------
+User-agent: Bytespider
+User-agent: PetalBot
+User-agent: MJ12bot
+User-agent: DotBot
+User-agent: BLEXBot
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DataForSeoBot
+User-agent: serpstatbot
+User-agent: Barkrowler
+User-agent: MegaIndex.ru
+User-agent: SeekportBot
+User-agent: ImagesiftBot
+Disallow: /
+
+# --- Everyone else (Google, Bing, Apple, DuckDuckGo, ChatGPT, Claude,
+# --- Perplexity, Gemini, SE Ranking and others) ----------------------------
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
 Disallow: /search
+
 Sitemap: https://www.eyetest.co.uk/sitemap.xml

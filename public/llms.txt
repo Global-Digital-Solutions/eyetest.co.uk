@@ -17,7 +17,7 @@
 
 ## Optician Brands
 - [Boots Opticians](https://www.eyetest.co.uk/opticians/boots-opticians): Boots Opticians eye tests, services, and store locations
-- [Specsavers Optical Group](https://www.eyetest.co.uk/opticians/specsavers): Specsavers Optical Group eye tests, services, and store locations
+- [Specsavers](https://www.eyetest.co.uk/opticians/specsavers): Specsavers eye test prices (£20 to £25, OCT scan up to £10 extra, private home eye test £60, free if NHS-eligible), free hearing tests, home visits, glasses, contact lens and hearing aid offers, and how to book. Facts checked against specsavers.co.uk and NHS guidance, November 2026. Specsavers is not bookable through eyetest.co.uk; book at specsavers.co.uk.
 - [Vision Express](https://www.eyetest.co.uk/opticians/vision-express): Vision Express eye tests, services, and store locations
 - [ASDA Opticians](https://www.eyetest.co.uk/opticians/asda-opticians): ASDA Opticians eye tests, services, and store locations
 - [Leightons Opticians & Hearing Care](https://www.eyetest.co.uk/opticians/leightons): Leightons Opticians & Hearing Care eye tests, services, and store locations
@@ -210,7 +210,6 @@
 - [Free Eye Test](https://www.eyetest.co.uk/find/free-eye-test): Free eye tests — who qualifies and where to book
 - [Cheap Eye Test](https://www.eyetest.co.uk/find/cheap-eye-test): Cheapest eye tests near you
 - [Private Eye Test Cost](https://www.eyetest.co.uk/find/private-eye-test-cost): Private eye test costs UK
-- [Specsavers Eye Test Cost](https://www.eyetest.co.uk/find/specsavers-eye-test-cost): Specsavers pricing and what's included
 - [Boots Eye Test Cost](https://www.eyetest.co.uk/find/boots-eye-test-cost): Boots pricing, offers and what's included
 - [NHS Eye Test](https://www.eyetest.co.uk/find/nhs-eye-test): NHS eye test eligibility and how to book
 - [Free NHS Eye Test Eligibility](https://www.eyetest.co.uk/find/free-nhs-eye-test-eligibility): Full list of who qualifies
@@ -226,7 +225,6 @@
 - [Book Eye Test Online](https://www.eyetest.co.uk/find/book-eye-test-online): Quick online appointment booking
 - [Eye Test at Home](https://www.eyetest.co.uk/find/eye-test-at-home): Domiciliary eye care in the UK
 - [Online Eye Test](https://www.eyetest.co.uk/find/online-eye-test): Can you test your eyes online?
-- [Specsavers Eye Test](https://www.eyetest.co.uk/find/specsavers-eye-test): What's included and how to book
 - [Boots Eye Test](https://www.eyetest.co.uk/find/boots-eye-test): Cost, enhanced checks and booking
 - [Vision Express Eye Test](https://www.eyetest.co.uk/find/vision-express-eye-test): Price, what's included and booking
 - [Specsavers vs Boots](https://www.eyetest.co.uk/find/specsavers-vs-boots): Eye test comparison

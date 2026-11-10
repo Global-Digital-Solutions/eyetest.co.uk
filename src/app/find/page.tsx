@@ -65,7 +65,6 @@ const popularSlugs = [
   "free-eye-test",
   "eye-test-cost",
   "nhs-eye-test",
-  "specsavers-eye-test",
   "book-eye-test-online",
   "same-day-eye-test",
   "eye-test-what-to-expect",

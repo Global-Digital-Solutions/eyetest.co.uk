@@ -71,7 +71,7 @@ The bottom line is that a standard eye test in the UK is very affordable, and th
       {
         question: "How much is an eye test at Specsavers?",
         answer:
-          "A standard eye test at Specsavers costs approximately £25. However, Specsavers frequently offers free eye test promotions — check their website or app before booking. If you qualify for an NHS-funded test, it is always free.",
+          "Specsavers says a routine eye test costs £25, with prices between £20 and £25 depending on the store, and an OCT scan costs up to £10 extra in most stores. Some stores run promotional vouchers. If you qualify for an NHS-funded eye test, it is free. See our Specsavers guide for full prices and what is included.",
       },
       {
         question: "Can I get a free eye test if I'm on Universal Credit?",
@@ -92,7 +92,6 @@ The bottom line is that a standard eye test in the UK is very affordable, and th
     relatedQueries: [
       "free-eye-test",
       "cheap-eye-test",
-      "specsavers-eye-test-cost",
       "boots-eye-test-cost",
       "private-eye-test-cost",
     ],
@@ -181,7 +180,6 @@ Remember that the cheapest option is not always the least thorough. All UK optom
     relatedQueries: [
       "eye-test-cost",
       "free-eye-test",
-      "specsavers-eye-test-cost",
       "boots-eye-test-cost",
       "best-opticians-near-me",
     ],
@@ -223,58 +221,10 @@ Keep in mind that even if you are paying privately, many opticians run regular p
     relatedQueries: [
       "eye-test-cost",
       "oct-scan-cost",
-      "specsavers-eye-test-cost",
       "boots-eye-test-cost",
       "free-eye-test",
     ],
     ctaText: "Compare private eye test prices near you",
-  },
-  {
-    slug: "specsavers-eye-test-cost",
-    keyword: "Specsavers eye test cost",
-    title: "Specsavers Eye Test Cost — Prices, Free Tests & What's Included",
-    category: "cost",
-    shortDescription:
-      "How much a Specsavers eye test costs in 2026, what is included, and how to get a free test.",
-    content: `A standard eye test at Specsavers costs approximately £25 in 2026, making it one of the most affordable options on the UK high street. However, Specsavers frequently offers free eye test promotions, so there is a good chance you will not need to pay anything at all.
-
-The standard Specsavers eye test takes around 20 to 30 minutes and includes a full assessment of your visual acuity, a refraction to determine your glasses prescription, an eye pressure check (tonometry), and an examination of the health of your eyes using an ophthalmoscope and slit lamp. This is a thorough, clinically comprehensive sight test carried out by a qualified optometrist.
-
-Specsavers also offers an OCT (Optical Coherence Tomography) scan as an optional upgrade for approximately £10 extra. This advanced scan creates a detailed 3D image of the retina and can detect conditions such as glaucoma and macular degeneration years before symptoms appear. Many optometrists recommend this for patients over 25 as a baseline scan. Some Specsavers stores also offer digital retinal photography as part of the standard test at no extra charge.
-
-If you qualify for a free NHS-funded eye test, Specsavers provides this at no cost to you. Eligible groups include everyone aged 60 and over, children under 16, people with diabetes, and those on qualifying benefits. In addition, Specsavers regularly runs free test promotions for private patients — check the Specsavers website or app before booking.
-
-Contact lens appointments at Specsavers are separate from the sight test. A contact lens assessment and fitting typically costs from around £30 to £50, though this is often included as part of a monthly contact lens plan. Specsavers' easyvision plans start from around £8 per month and include lenses, a contact lens check-up, and solutions.`,
-    faqs: [
-      {
-        question: "Are Specsavers eye tests really free?",
-        answer:
-          "Specsavers frequently offers free eye test promotions through their website and app. NHS-funded tests are always free for eligible patients. Check the Specsavers website for current offers in your area — free test deals are available more often than not.",
-      },
-      {
-        question: "How much is an OCT scan at Specsavers?",
-        answer:
-          "An OCT scan at Specsavers costs approximately £10 as an add-on to your standard eye test. This makes it one of the most affordable OCT options on the high street.",
-      },
-      {
-        question: "Do I need to buy glasses at Specsavers after my eye test?",
-        answer:
-          "No. You are under no obligation to purchase glasses at Specsavers after your eye test. By law, you must be given a copy of your prescription, which you can use anywhere — online or at any other optician.",
-      },
-      {
-        question: "How do I book a free eye test at Specsavers?",
-        answer:
-          "Visit the Specsavers website or download the Specsavers app and look for current free eye test offers. You can also call your local store directly. If you are eligible for an NHS-funded test, simply mention this when booking.",
-      },
-    ],
-    relatedQueries: [
-      "eye-test-cost",
-      "boots-eye-test-cost",
-      "specsavers-eye-test",
-      "specsavers-vs-boots",
-      "oct-scan-cost",
-    ],
-    ctaText: "Find Specsavers appointments near you",
   },
   {
     slug: "boots-eye-test-cost",
@@ -311,7 +261,6 @@ Boots Opticians is generally considered to offer a slightly more premium experie
     ],
     relatedQueries: [
       "eye-test-cost",
-      "specsavers-eye-test-cost",
       "boots-eye-test",
       "specsavers-vs-boots",
       "oct-scan-cost",
@@ -931,53 +880,6 @@ The best approach is to use online tools as a rough check and conversation start
 
   // ─── Brand ─────────────────────────────────────────────────────────────
   {
-    slug: "specsavers-eye-test",
-    keyword: "Specsavers eye test",
-    title: "Specsavers Eye Test — What's Included, Cost & How to Book",
-    category: "brand",
-    shortDescription:
-      "Everything you need to know about getting an eye test at Specsavers, including what is included, current pricing, and how to book online.",
-    content: `Specsavers is the UK's largest optician chain, with over 900 stores nationwide. Their eye tests are among the most affordable on the high street, and they frequently run free test promotions that make them even more accessible.
-
-A standard Specsavers eye test costs approximately £25 and includes a comprehensive assessment of your vision and eye health. During the appointment, a qualified optometrist will test your visual acuity, carry out a refraction to determine your glasses prescription, measure your eye pressure to screen for glaucoma, and examine the internal health of your eyes. The appointment typically takes 20 to 30 minutes.
-
-Specsavers offers an optional OCT scan upgrade for approximately £10 extra. This advanced scan creates a detailed 3D image of the back of your eye and can detect conditions such as glaucoma, macular degeneration, and diabetic retinopathy years before symptoms appear. Many Specsavers stores now include digital retinal photography as standard at no extra charge.
-
-Booking at Specsavers is straightforward. You can book online through the Specsavers website, use the Specsavers app, or call your local store. Online booking shows real-time availability, making it easy to find a convenient time. Specsavers stores are typically open Monday to Saturday, with many larger stores also opening on Sundays.
-
-Specsavers provides NHS-funded eye tests for all eligible patients at no cost. They are one of the largest providers of NHS eye care in the UK. If you are unsure whether you qualify for a free test, the staff can check your eligibility when you book or arrive. Specsavers also offers contact lens services, home visit eye tests for housebound patients, and specialist services such as emergency eye care and children's eye tests.`,
-    faqs: [
-      {
-        question: "How do I book an eye test at Specsavers?",
-        answer:
-          "You can book online at specsavers.co.uk, through the Specsavers app, or by calling your local store. Online booking is quickest and shows real-time availability.",
-      },
-      {
-        question: "What is included in a Specsavers eye test?",
-        answer:
-          "A standard test includes visual acuity checks, refraction (prescription), eye pressure measurement, and examination of eye health. An OCT scan is available as an upgrade for approximately £10. Some stores include retinal photography at no extra charge.",
-      },
-      {
-        question: "Do Specsavers offer free eye tests?",
-        answer:
-          "Specsavers frequently runs free eye test promotions — check their website or app for current offers. NHS-funded tests are always free for eligible patients.",
-      },
-      {
-        question: "Can I take my Specsavers prescription to another optician?",
-        answer:
-          "Yes. By law, you must be given a copy of your prescription after your eye test. You can use it to buy glasses at any optician or online retailer. Your prescription is valid for two years (one year for under-16s).",
-      },
-    ],
-    relatedQueries: [
-      "specsavers-eye-test-cost",
-      "specsavers-vs-boots",
-      "boots-eye-test",
-      "best-opticians-near-me",
-      "book-eye-test-online",
-    ],
-    ctaText: "Find Specsavers appointments near you",
-  },
-  {
     slug: "boots-eye-test",
     keyword: "Boots eye test",
     title: "Boots Eye Test — Cost, Enhanced Checks & How to Book",
@@ -1013,7 +915,6 @@ In addition to standard eye tests, Boots offers specialist services including co
     relatedQueries: [
       "boots-eye-test-cost",
       "specsavers-vs-boots",
-      "specsavers-eye-test",
       "best-opticians-near-me",
       "oct-scan-cost",
     ],
@@ -1055,7 +956,6 @@ Booking at Vision Express is available online, by phone, or in store. Their onli
     relatedQueries: [
       "eye-test-cost",
       "specsavers-vs-boots",
-      "specsavers-eye-test",
       "boots-eye-test",
       "best-opticians-near-me",
     ],
@@ -1095,9 +995,7 @@ Both chains provide NHS-funded eye tests, contact lens services, children's eye 
       },
     ],
     relatedQueries: [
-      "specsavers-eye-test",
       "boots-eye-test",
-      "specsavers-eye-test-cost",
       "boots-eye-test-cost",
       "best-opticians-near-me",
     ],
@@ -1137,7 +1035,6 @@ The most efficient way to compare options is to search by postcode and see which
       },
     ],
     relatedQueries: [
-      "specsavers-eye-test",
       "boots-eye-test",
       "vision-express-eye-test",
       "specsavers-vs-boots",
@@ -1269,7 +1166,6 @@ All UK opticians — whether chain or independent — must be registered with th
       "best-opticians-near-me",
       "book-eye-test-online",
       "eye-test-cost",
-      "specsavers-eye-test",
     ],
     ctaText: "Find opticians near you",
   },
@@ -1536,7 +1432,6 @@ Whether an OCT scan is worth the extra cost depends on your individual risk fact
     ],
     relatedQueries: [
       "eye-test-cost",
-      "specsavers-eye-test-cost",
       "boots-eye-test-cost",
       "glaucoma-test",
       "private-eye-test-cost",
@@ -1621,7 +1516,6 @@ It is important to understand that a sight test and a contact lens appointment a
     relatedQueries: [
       "eye-test-cost",
       "eye-test-near-me",
-      "specsavers-eye-test",
       "boots-eye-test",
       "book-eye-test-online",
     ],
