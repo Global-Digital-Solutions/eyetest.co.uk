@@ -16,6 +16,7 @@ import {
   type Region,
 } from "@/data/locations";
 import { notFound } from "next/navigation";
+import { PRICE_DISCLAIMER } from "@/data/search-queries";
 
 // ---------------------------------------------------------------------------
 // Static generation
@@ -1252,6 +1253,13 @@ export default async function OpticianPage({
               </div>
             </>
           )}
+        </section>
+        {/* ── Pricing and offers disclaimer ─────────────────────────── */}
+        <section className="max-w-7xl mx-auto px-4 pt-10">
+          <div className="rounded-2xl border border-amber-100 bg-amber-50 p-5 text-sm text-amber-900 leading-relaxed">
+            <strong className="font-semibold">Please note: </strong>
+            {PRICE_DISCLAIMER}
+          </div>
         </section>
         {/* ── Sources and last reviewed date (when provided) ─────────── */}
         {optician.sources && optician.sources.length > 0 && (

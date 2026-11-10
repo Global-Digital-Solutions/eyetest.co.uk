@@ -9,8 +9,10 @@ import {
   getQueryBySlug,
   getAllSlugs,
   categoryLabels,
+  PRICE_DISCLAIMER,
   type SearchQuery,
 } from "@/data/search-queries";
+import { locations, regions } from "@/data/locations";
 
 // ---------------------------------------------------------------------------
 // Category badge colours
@@ -37,52 +39,52 @@ function getKeyFacts(query: SearchQuery): { label: string; value: string }[] {
   switch (query.category) {
     case "cost":
       return [
-        { label: "Specsavers", value: "~£25" },
-        { label: "Boots Opticians", value: "~£29.95" },
-        { label: "Vision Express", value: "~£30" },
-        { label: "NHS funded", value: "Free for eligible" },
+        { label: "Specsavers", value: "£20 to £25" },
+        { label: "Boots Opticians", value: "From £29.95" },
+        { label: "Vision Express", value: "£30 (includes OCT)" },
+        { label: "NHS funded", value: "Free if eligible" },
       ];
     case "nhs":
       return [
         { label: "NHS test cost", value: "Free" },
         { label: "Over 60s", value: "Always eligible" },
         { label: "Under 16s", value: "Always eligible" },
-        { label: "Optical voucher", value: "£39.10–£215.50" },
+        { label: "Optical voucher (England)", value: "£42.40 to £233.56" },
       ];
     case "availability":
       return [
-        { label: "Same-day slots", value: "Widely available" },
-        { label: "Weekend testing", value: "Saturday + many Sundays" },
         { label: "Online booking", value: "All major chains" },
-        { label: "NHS urgent care", value: "Free MECS scheme" },
+        { label: "Weekend testing", value: "Most chains, varies by store" },
+        { label: "Urgent eye problem", value: "Call an optician or NHS 111" },
+        { label: "Scotland", value: "Free for all UK residents" },
       ];
     case "brand":
       return [
-        { label: "Specsavers stores", value: "900+ UK" },
-        { label: "Boots stores", value: "~500 UK" },
-        { label: "Vision Express", value: "~400 UK" },
-        { label: "All NHS accredited", value: "Yes" },
+        { label: "Specsavers", value: "£20 to £25" },
+        { label: "Boots Opticians", value: "From £29.95" },
+        { label: "Vision Express", value: "£30 (includes OCT)" },
+        { label: "NHS tests", value: "Offered by all major chains" },
       ];
     case "specialist":
       return [
-        { label: "OCT scan", value: "£10–£39 add-on" },
-        { label: "Driving standard", value: "6/12 visual acuity" },
-        { label: "Contact lens fitting", value: "£30–£60" },
-        { label: "Children's tests", value: "Free on NHS" },
+        { label: "OCT scan", value: "Included or extra, varies by chain" },
+        { label: "Driving standard", value: "Read a number plate at 20 metres" },
+        { label: "Children under 16", value: "Free NHS eye test" },
+        { label: "Scotland", value: "Free for all UK residents" },
       ];
     case "general":
       return [
-        { label: "Standard test duration", value: "20–30 minutes" },
-        { label: "Recommended frequency", value: "Every 2 years" },
-        { label: "Average cost", value: "£25–£45" },
-        { label: "NHS eligible", value: "14m+ people" },
+        { label: "Typical test length", value: "20 to 30 minutes" },
+        { label: "NHS advice", value: "Every 2 years, or as advised" },
+        { label: "Major chains", value: "£20 to £40 private" },
+        { label: "NHS funded", value: "Free if eligible" },
       ];
     case "concern":
       return [
-        { label: "Urgent symptoms", value: "Call optician same day" },
-        { label: "Emergency care", value: "Free via MECS" },
+        { label: "Urgent symptoms", value: "Call an optician the same day" },
+        { label: "Sudden loss of sight", value: "Go to A&E or call 999" },
         { label: "NHS 111", value: "24/7 advice line" },
-        { label: "Eye test", value: "From £25 or free" },
+        { label: "Eye test", value: "Free if eligible, or about £20 to £40" },
       ];
   }
 }
@@ -112,8 +114,8 @@ export async function generateMetadata({
   }
 
   return {
-    title: query.title,
-    description: query.shortDescription,
+    title: query.seoTitle ?? query.title,
+    description: query.seoDescription ?? query.shortDescription,
     keywords: [
       query.keyword,
       `${query.keyword} UK`,
@@ -124,8 +126,8 @@ export async function generateMetadata({
       "book eye test",
     ],
     openGraph: {
-      title: query.title,
-      description: query.shortDescription,
+      title: query.seoTitle ?? query.title,
+      description: query.seoDescription ?? query.shortDescription,
       url: `https://www.eyetest.co.uk/find/${query.slug}`,
       siteName: "eyetest.co.uk",
       type: "article",
@@ -161,7 +163,24 @@ export default async function SearchQueryPage({
   const contentParagraphs = query.content.split("\n\n").filter((p) => p.trim());
 
   // Key facts for this category
-  const keyFacts = getKeyFacts(query);
+  const keyFacts = query.keyFacts ?? getKeyFacts(query);
+  const showDisclaimer =
+    query.disclaimer !== undefined ||
+    query.category === "cost" ||
+    query.category === "nhs" ||
+    query.category === "brand";
+  const disclaimerText = query.disclaimer ?? PRICE_DISCLAIMER;
+  const sections = query.sections ?? [];
+  const townsByRegion = query.showTownIndex
+    ? regions
+        .map((region) => ({
+          region,
+          towns: locations
+            .filter((l) => l.region === region)
+            .sort((a, b) => a.name.localeCompare(b.name)),
+        }))
+        .filter((g) => g.towns.length > 0)
+    : [];
 
   // Category colour
   const catColour = categoryColours[query.category];
@@ -186,7 +205,16 @@ export default async function SearchQueryPage({
       name: "eyetest.co.uk",
       url: "https://www.eyetest.co.uk",
     },
-    dateModified: "2026-06-16",
+    dateModified: query.dateModified ?? "2026-06-16",
+    ...(query.sources && query.sources.length > 0
+      ? {
+          citation: query.sources.map((src) => ({
+            "@type": "CreativeWork",
+            name: src.label,
+            url: src.url,
+          })),
+        }
+      : {}),
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
@@ -259,10 +287,11 @@ export default async function SearchQueryPage({
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                {query.keyword
-                  .split(" ")
-                  .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-                  .join(" ")}
+                {query.h1 ??
+                  query.keyword
+                    .split(" ")
+                    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+                    .join(" ")}
               </h1>
               <p className="text-base sm:text-lg text-white/70 mb-8 max-w-xl mx-auto">
                 {query.shortDescription}
@@ -288,6 +317,156 @@ export default async function SearchQueryPage({
                     </p>
                   ))}
                 </div>
+
+                {sections.map((section) => (
+                  <section key={section.heading} className="mt-10">
+                    <h2
+                      className="text-2xl font-bold text-[var(--color-navy)] mb-4"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    >
+                      {section.heading}
+                    </h2>
+                    {section.body &&
+                      section.body
+                        .split("\n\n")
+                        .filter((p) => p.trim())
+                        .map((p, i) => (
+                          <p
+                            key={i}
+                            className="text-gray-600 leading-relaxed mb-4 text-base"
+                          >
+                            {p.trim()}
+                          </p>
+                        ))}
+                    {section.items && section.items.length > 0 && (
+                      <ul className="list-disc pl-6 space-y-2 text-gray-600 mb-4">
+                        {section.items.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                    {section.table && (
+                      <div className="overflow-x-auto mb-4">
+                        <table className="w-full text-sm text-left border border-gray-100 rounded-xl overflow-hidden">
+                          {section.table.caption && (
+                            <caption className="text-xs text-gray-500 text-left mb-2">
+                              {section.table.caption}
+                            </caption>
+                          )}
+                          <thead className="bg-gray-50 text-[var(--color-navy)]">
+                            <tr>
+                              {section.table.headers.map((h) => (
+                                <th key={h} scope="col" className="px-4 py-3 font-semibold">
+                                  {h}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {section.table.rows.map((row) => (
+                              <tr key={row.join("|")} className="border-t border-gray-100">
+                                {row.map((cell, ci) => (
+                                  <td key={ci} className="px-4 py-3 text-gray-600 align-top">
+                                    {cell}
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                    {section.links && section.links.length > 0 && (
+                      <ul className="flex flex-wrap gap-2 mb-4">
+                        {section.links.map((l) => (
+                          <li key={l.href}>
+                            <Link
+                              href={l.href}
+                              className="inline-block text-sm font-medium text-[var(--color-primary)] bg-[var(--color-primary)]/5 hover:bg-[var(--color-primary)]/10 px-3 py-1.5 rounded-full transition-colors"
+                            >
+                              {l.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
+                ))}
+
+                {townsByRegion.length > 0 && (
+                  <section className="mt-10" id="towns">
+                    <h2
+                      className="text-2xl font-bold text-[var(--color-navy)] mb-4"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    >
+                      Opticians and eye tests by town
+                    </h2>
+                    <p className="text-gray-600 leading-relaxed mb-6 text-base">
+                      Choose your town to see opticians, NHS eye test details and
+                      local prices.
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      {townsByRegion.map((group) => (
+                        <div key={group.region}>
+                          <h3 className="font-semibold text-[var(--color-navy)] mb-2">
+                            {group.region}
+                          </h3>
+                          <ul className="space-y-1">
+                            {group.towns.map((town) => (
+                              <li key={town.slug}>
+                                <Link
+                                  href={`/locations/${town.slug}`}
+                                  className="text-sm text-[var(--color-primary)] hover:underline"
+                                >
+                                  Opticians in {town.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                )}
+
+                {showDisclaimer && (
+                  <div className="mt-10 bg-amber-50 border border-amber-100 rounded-2xl p-5 text-sm text-amber-900 leading-relaxed">
+                    <strong className="font-semibold">Please note: </strong>
+                    {disclaimerText}
+                  </div>
+                )}
+
+                {query.sources && query.sources.length > 0 && (
+                  <div className="mt-6 bg-gray-50 border border-gray-100 rounded-2xl p-5">
+                    <h2 className="text-base font-semibold text-[var(--color-navy)] mb-2">
+                      Sources
+                    </h2>
+                    <ul className="list-disc pl-5 space-y-1 text-sm">
+                      {query.sources.map((src) => (
+                        <li key={src.url}>
+                          <a
+                            href={src.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[var(--color-primary)] hover:underline"
+                          >
+                            {src.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    {query.dateModified && (
+                      <p className="text-xs text-gray-500 mt-3">
+                        Last checked:{" "}
+                        {new Date(query.dateModified).toLocaleDateString("en-GB", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })}
+                      </p>
+                    )}
+                  </div>
+                )}
               </article>
 
               {/* Sidebar */}

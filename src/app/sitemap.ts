@@ -7,7 +7,10 @@ import {
   getAllSlugs as getAllOpticianSlugs,
   getOpticianBySlug,
 } from "@/data/opticians";
-import { getAllSlugs as getAllSearchQuerySlugs } from "@/data/search-queries";
+import {
+  getAllSlugs as getAllSearchQuerySlugs,
+  getQueryBySlug,
+} from "@/data/search-queries";
 import { getAllProviderSlugs } from "@/data/surgery-providers";
 import { getAllConditionSlugs as getAllSurgeryConditionSlugs } from "@/data/surgery-conditions";
 
@@ -101,7 +104,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const findPages: MetadataRoute.Sitemap = getAllSearchQuerySlugs().map(
     (slug) => ({
       url: `${BASE}/find/${slug}`,
-      lastModified: NOW,
+      lastModified: getQueryBySlug(slug)?.dateModified ?? NOW,
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })

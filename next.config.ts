@@ -30,6 +30,31 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/find/nhs-eye-test",
+        destination: "/find/free-eye-test",
+        permanent: true,
+      },
+      {
+        source: "/find/free-nhs-eye-test-eligibility",
+        destination: "/find/free-eye-test",
+        permanent: true,
+      },
+      {
+        source: "/find/eye-test-near-me",
+        destination: "/find/opticians-near-me",
+        permanent: true,
+      },
+      {
+        source: "/find/best-opticians-near-me",
+        destination: "/find/opticians-near-me",
+        permanent: true,
+      },
+      {
+        source: "/find/book-eye-test-online",
+        destination: "/find/book-eye-test",
+        permanent: true,
+      },
+      {
         source: "/eye-tests/home-visit-eye-test",
         destination: "/at-home-eye-tests",
         permanent: true,

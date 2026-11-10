@@ -61,11 +61,11 @@ const categoryConfig: Record<
 // ---------------------------------------------------------------------------
 
 const popularSlugs = [
-  "eye-test-near-me",
+  "opticians-near-me",
   "free-eye-test",
   "eye-test-cost",
-  "nhs-eye-test",
-  "book-eye-test-online",
+  "cheap-eye-test",
+  "book-eye-test",
   "same-day-eye-test",
   "eye-test-what-to-expect",
 ];

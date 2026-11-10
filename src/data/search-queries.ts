@@ -19,7 +19,29 @@ export type SearchQuery = {
   faqs: { question: string; answer: string }[];
   relatedQueries: string[];
   ctaText: string;
+  /** Optional overrides and richer content, used by the rebuilt hub pages */
+  seoTitle?: string;
+  seoDescription?: string;
+  h1?: string;
+  dateModified?: string;
+  keyFacts?: { label: string; value: string }[];
+  sections?: QuerySection[];
+  showTownIndex?: boolean;
+  disclaimer?: string;
+  sources?: { label: string; url: string }[];
 };
+
+export type QuerySection = {
+  heading: string;
+  body?: string;
+  items?: string[];
+  table?: { headers: string[]; rows: string[][]; caption?: string };
+  links?: { label: string; href: string }[];
+};
+
+/** Shared wording for pages that mention prices, offers or free tests */
+export const PRICE_DISCLAIMER =
+  "Prices, offers and NHS rules change from time to time. Promotions such as free or discounted eye tests are time-limited, subject to availability and may only apply at some locations. Always check with the optician or the official NHS website for your country before you book.";
 
 // ---------------------------------------------------------------------------
 // Category display metadata
@@ -55,38 +77,93 @@ export const searchQueries: SearchQuery[] = [
     slug: "eye-test-cost",
     keyword: "eye test cost",
     title: "How Much Does an Eye Test Cost in the UK? (2026 Prices)",
+    seoTitle: "Eye Test Cost UK 2026: Specsavers, Boots, Vision Express Prices",
+    seoDescription:
+      "Eye test prices at Specsavers, Boots, Vision Express, Asda and M&S, checked November 2026, plus who gets a free NHS eye test.",
+    h1: "How Much Does an Eye Test Cost?",
+    dateModified: "2026-11-10",
     category: "cost",
     shortDescription:
-      "A clear breakdown of eye test prices across the UK, from free NHS sight tests to private appointments at high-street opticians.",
-    content: `The cost of an eye test in the UK varies depending on where you go and whether you qualify for a free NHS-funded sight test. In 2026, you can expect to pay between £20 and £45 for a standard private eye test at most high-street opticians. The major chains typically charge around £25 at Specsavers, £29.95 at Boots Opticians, and approximately £30 at Vision Express. Independent opticians often fall in the £25 to £45 range, though some charge more for enhanced examinations.
+      "Eye test prices at the main UK opticians, checked against each brand's own website, plus who gets a free NHS-funded eye test.",
+    content: `A private eye test at the main UK high-street opticians costs between about £20 and £40, and many people pay nothing at all because they qualify for a free NHS-funded sight test. Prices below come from each optician's own website and were checked in November 2026.
 
-Many people in the UK are entitled to a completely free eye test funded by the NHS. Eligible groups include children under 16 (or under 19 in full-time education), adults aged 60 and over, people with diabetes or glaucoma, those receiving certain means-tested benefits such as Universal Credit or Income Support, and people aged 40 or over with a close family member diagnosed with glaucoma. If you fall into any of these groups, you will pay nothing at all for your sight test.
-
-It is worth noting that many opticians regularly offer free eye test promotions, even if you do not qualify for an NHS-funded test. Specsavers, for example, frequently runs free eye test offers through their website and app. Some opticians also bundle free eye tests with contact lens plans or when purchasing glasses. Always check for current offers before booking, as you may be able to get your test at no cost regardless of your NHS eligibility.
-
-If you want additional tests beyond the standard sight test, these typically carry an extra charge. An OCT scan (optical coherence tomography) usually costs between £10 and £39 as an add-on, while retinal photography may cost £5 to £15 or be included free of charge. Specialist assessments such as dry eye clinics or contact lens fittings are priced separately, typically ranging from £30 to £100 depending on the complexity.
-
-The bottom line is that a standard eye test in the UK is very affordable, and there is a good chance you may not need to pay anything at all. Regular eye tests are one of the most important health checks you can have — they can detect not only vision problems but also early signs of serious conditions like glaucoma, diabetes, and high blood pressure.`,
+The biggest difference between opticians is what the price includes. Some include an OCT scan (a 3D scan of the back of the eye), while others charge extra for it or offer it as a separate, higher-priced test. Prices can also vary from store to store, so confirm the fee with your local practice when you book.`,
+    sections: [
+      {
+        heading: "Eye test prices at the main UK opticians",
+        table: {
+          caption: "Private eye test prices published by each optician, checked November 2026",
+          headers: ["Optician", "Private eye test", "OCT scan", "Source"],
+          rows: [
+            ["Specsavers", "£20 to £25, depending on the store", "Up to £10 extra in most stores", "specsavers.co.uk"],
+            ["Asda Opticians", "£24", "Ask in store", "opticians.asda.com"],
+            ["Boots Opticians", "From £29.95", "Available at extra cost", "boots.com"],
+            ["Vision Express", "£30 (Advanced Eye Test)", "Included in the Advanced Eye Test", "visionexpress.com"],
+            ["M&S Opticians", "£40", "Included at no extra cost", "mandsopticians.com"],
+          ],
+        },
+        links: [
+          { label: "Specsavers eye test prices", href: "/opticians/specsavers" },
+          { label: "Boots Opticians", href: "/opticians/boots-opticians" },
+          { label: "Vision Express", href: "/opticians/vision-express" },
+          { label: "Asda Opticians", href: "/opticians/asda-opticians" },
+          { label: "M&S Opticians", href: "/opticians/mands-opticians" },
+        ],
+      },
+      {
+        heading: "Who gets a free NHS eye test?",
+        body: `In England you get a free NHS sight test if you are under 16, aged 16 to 18 and in full-time education, aged 60 or over, registered as sight impaired or blind, have diabetes or glaucoma, are 40 or over with a parent, sibling or child who has glaucoma, have been told by an ophthalmologist you are at risk of glaucoma, or receive certain benefits or hold an HC2 certificate. Rules in Wales and Northern Ireland are similar, and in Scotland NHS eye examinations are free for everyone who is ordinarily resident in the UK.`,
+        links: [
+          { label: "Full free eye test guide", href: "/find/free-eye-test" },
+          { label: "Over 60s", href: "/find/free-eye-test-over-60" },
+          { label: "Universal Credit", href: "/find/free-eye-test-universal-credit" },
+          { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
+        ],
+      },
+      {
+        heading: "Free and discounted eye test offers",
+        body: `The NHS is the main route to a free eye test. As well as that, Specsavers and other chains run time-limited free or discounted eye test offers at certain times of the year, and some employers provide eyecare vouchers. Offers like these are subject to availability, may only apply at some stores and change often, so check the optician's website before you book.`,
+      },
+      {
+        heading: "Extra tests and what they cost",
+        body: `An OCT scan is the most common optional extra. Specsavers says it costs up to £10 extra in most stores, Vision Express includes it in its £30 Advanced Eye Test, and M&S Opticians includes it at no extra cost. A contact lens check is a separate appointment from a sight test; Boots, for example, lists its contact lens check at £50 on top of the eye test.`,
+        links: [
+          { label: "OCT scan cost", href: "/find/oct-scan-cost" },
+          { label: "Contact lens eye test", href: "/find/contact-lens-eye-test" },
+          { label: "Cheapest eye tests", href: "/find/cheap-eye-test" },
+        ],
+      },
+    ],
     faqs: [
       {
         question: "How much is an eye test at Specsavers?",
         answer:
-          "Specsavers says a routine eye test costs £25, with prices between £20 and £25 depending on the store, and an OCT scan costs up to £10 extra in most stores. Some stores run promotional vouchers. If you qualify for an NHS-funded eye test, it is free. See our Specsavers guide for full prices and what is included.",
+          "Specsavers says a routine eye test costs £25, with prices between £20 and £25 depending on the store, and an OCT scan costs up to £10 extra in most stores. If you qualify for an NHS-funded eye test, it is free. Specsavers also runs time-limited offers, so check its website for current deals.",
+      },
+      {
+        question: "How much is an eye test at Boots?",
+        answer:
+          "Boots Opticians says the cost of an eye test is from £29.95. OCT and other scans cost extra, and a contact lens check is £50. NHS-funded eye tests are free at Boots if you qualify.",
+      },
+      {
+        question: "How much is an eye test at Vision Express?",
+        answer:
+          "Vision Express says its Advanced Eye Test costs £30 and includes an OCT 3D eye scan, a UV protection assessment and a dry eye assessment. If you qualify for an NHS-funded test, you can upgrade to the Advanced Eye Test from £6.",
+      },
+      {
+        question: "What is the cheapest eye test in the UK?",
+        answer:
+          "Of the main chains, Specsavers (£20 to £25, depending on the store) and Asda Opticians (£24) have the lowest published prices. The cheapest option is a free NHS-funded test if you qualify, and in Scotland NHS eye examinations are free for all UK residents.",
       },
       {
         question: "Can I get a free eye test if I'm on Universal Credit?",
         answer:
-          "Yes. If you receive Universal Credit and meet certain income thresholds, you are entitled to a free NHS-funded eye test. You may also receive an NHS optical voucher to help towards the cost of glasses. Check your eligibility with your optician when booking.",
-      },
-      {
-        question: "Is an eye test more expensive at an independent optician?",
-        answer:
-          "Independent opticians typically charge between £25 and £45 for a standard eye test, which is comparable to or slightly higher than the major chains. However, many independents include additional tests such as retinal photography or OCT scans in their standard fee, which the chains often charge extra for.",
+          "Yes, if you have no earnings or your take-home pay in your last assessment period was £435 or less (£935 or less if your award includes a child element or you have limited capability for work). You also get an NHS optical voucher towards glasses. If your income is higher, you may still get help through the NHS Low Income Scheme.",
       },
       {
         question: "Do I need to pay for an eye test if I wear contact lenses?",
         answer:
-          "A standard sight test and a contact lens check-up are separate appointments. You need both if you wear contacts. The sight test checks your overall vision and eye health, while the contact lens check-up assesses your lenses specifically. Contact lens check-ups are often included in monthly lens plans but cost £15 to £40 if paid separately.",
+          "A sight test and a contact lens check are separate appointments, and the contact lens check is not covered by the NHS. Many opticians include contact lens checks in their monthly lens plans; otherwise there is a separate fee, such as £50 at Boots.",
       },
     ],
     relatedQueries: [
@@ -94,96 +171,247 @@ The bottom line is that a standard eye test in the UK is very affordable, and th
       "cheap-eye-test",
       "boots-eye-test-cost",
       "private-eye-test-cost",
+      "oct-scan-cost",
     ],
     ctaText: "Compare eye test prices near you",
+    sources: [
+      { label: "Specsavers: How much is an eye test?", url: "https://www.specsavers.co.uk/help-and-faqs/how-much-is-an-eye-test" },
+      { label: "Boots Opticians: Your eye test explained", url: "https://www.boots.com/opticians-your-eye-check-explained" },
+      { label: "Boots Opticians: Book an eye test", url: "https://www.boots.com/eyetest" },
+      { label: "Vision Express: Book an eye test", url: "https://www.visionexpress.com/eye-test" },
+      { label: "Asda Opticians: Having an eye test", url: "https://opticians.asda.com/having-an-eye-test" },
+      { label: "M&S Opticians: Eye test FAQs", url: "https://mandsopticians.com/eye-care/help/" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+      { label: "NHSBSA: HC12 quick guide to help with health costs (April 2026)", url: "https://www.nhsbsa.nhs.uk/sites/default/files/2026-04/HC12%20(V24)%2004.2026.pdf" },
+    ],
   },
   {
     slug: "free-eye-test",
     keyword: "free eye test",
-    title: "Free Eye Tests in the UK — Who Qualifies & Where to Book",
-    category: "cost",
+    title: "Free Eye Tests in the UK: Who Qualifies and How to Book",
+    seoTitle: "Free Eye Test: Who Gets a Free NHS Eye Test? (2026 Guide)",
+    seoDescription:
+      "Check if you get a free NHS eye test in England, Scotland, Wales or Northern Ireland, what proof to bring, and when opticians run free test offers.",
+    h1: "Free Eye Tests: Who Qualifies?",
+    dateModified: "2026-11-10",
+    category: "nhs",
     shortDescription:
-      "Find out if you qualify for a free eye test in the UK, including NHS-funded tests and promotional offers from high-street opticians.",
-    content: `Millions of people in the UK are entitled to a completely free eye test, either through NHS funding or through promotional offers from opticians. Understanding your options can save you money while ensuring your eyes stay healthy.
+      "Who gets a free NHS-funded eye test in each UK nation, what proof to bring, help with glasses, and how opticians' free test offers work.",
+    content: `Millions of people in the UK can have an eye test without paying. The main route is an NHS-funded sight test, which is free if you meet the rules for the country you live in. In Scotland, NHS eye examinations are free for everyone who is ordinarily resident in the UK. In England, Wales and Northern Ireland they are free for specific groups, including children, people aged 60 or over, people with diabetes or glaucoma and people on certain benefits.
 
-The NHS funds free sight tests for a wide range of people. You qualify if you are: under 16 (or under 19 and in full-time education), aged 60 or over, diagnosed with diabetes or glaucoma, receiving certain means-tested benefits (including Universal Credit with qualifying income, Income Support, Income-based Jobseeker's Allowance, or Pension Credit Guarantee Credit), aged 40 or over with a parent, sibling, or child diagnosed with glaucoma, registered blind or partially sighted, or a prisoner on leave from prison. If you are eligible, you may also receive an NHS optical voucher worth between £39.10 and £215.50 towards the cost of glasses or contact lenses.
-
-Even if you do not qualify for an NHS-funded test, many high-street opticians offer free eye tests as part of their marketing. Specsavers regularly runs free eye test promotions through their website and app. Boots Opticians occasionally offers free tests through promotional codes or as part of their Advantage Card scheme. Some independent opticians offer free tests when you purchase glasses. It is always worth checking current offers online before booking a private appointment.
-
-Additionally, some employers provide free eye tests as part of workplace health benefits, particularly if you use a computer screen (VDU) for a significant part of your working day. Under the Health and Safety (Display Screen Equipment) Regulations 1992, your employer must pay for an eye test if you request one and you are a regular VDU user. If the test shows you need glasses specifically for screen use, your employer must also contribute towards the cost.
-
-There is no compromise on quality with a free eye test. Whether your test is funded by the NHS, offered as a promotion, or paid for privately, the clinical standard is exactly the same. A qualified optometrist carries out the same comprehensive checks on your vision and eye health regardless of how the test is paid for.`,
+An NHS-funded test checks your vision and the health of your eyes and is carried out by a qualified optometrist, just like a private test. You can have it at almost any high-street optician, including Specsavers, Boots, Vision Express, Asda and M&S Opticians, as well as many independent practices.`,
+    sections: [
+      {
+        heading: "Who gets a free NHS eye test in England",
+        body: `You are entitled to a free NHS sight test if any of these apply:`,
+        items: [
+          "You are under 16",
+          "You are 16, 17 or 18 and in full-time education",
+          "You are 60 or over",
+          "You are registered as sight impaired (partially sighted) or severely sight impaired (blind)",
+          "You have diabetes or glaucoma",
+          "You are 40 or over and your mother, father, brother, sister, son or daughter has glaucoma",
+          "An ophthalmologist has told you that you are at risk of glaucoma",
+          "You are eligible for an NHS complex lens voucher",
+          "You are a prisoner on leave from prison",
+          "You or your partner receive income-based Jobseeker's Allowance, income-related Employment and Support Allowance or Pension Credit Guarantee Credit",
+          "You or your partner receive Universal Credit with no earnings, or take-home pay of £435 or less in your last assessment period (£935 or less with a child element or limited capability for work)",
+          "You are named on a valid HC2 certificate (full help with health costs)",
+        ],
+        links: [
+          { label: "Over 60s", href: "/find/free-eye-test-over-60" },
+          { label: "Children", href: "/find/free-eye-test-children" },
+          { label: "Diabetes", href: "/find/free-eye-test-diabetes" },
+          { label: "Universal Credit", href: "/find/free-eye-test-universal-credit" },
+        ],
+      },
+      {
+        heading: "Scotland, Wales and Northern Ireland",
+        table: {
+          headers: ["Country", "Who gets a free NHS eye test"],
+          rows: [
+            ["Scotland", "Everyone ordinarily resident in the UK. Routine tests are every two years for ages 16 to 59, and every year for under 16s, people aged 60 or over, people with diabetes and people who are sight impaired."],
+            ["Wales", "Similar groups to England, including under 16s, under 19s in full-time education and people aged 60 or over, plus some extra groups such as people with sight in one eye, people with a hearing impairment and people assessed as at risk of eye disease. Examinations for urgent eye problems are also free at most practices."],
+            ["Northern Ireland", "Similar groups to England. HSC sight tests are free for those who qualify, and optical voucher values are set separately."],
+          ],
+        },
+      },
+      {
+        heading: "What proof to bring",
+        body: `When you book, tell the optician you think you qualify for an NHS sight test. You may be asked for proof, such as your date of birth for age-based entitlement, an award letter for benefits, or your HC2 certificate number. Children under 16 do not need proof of benefits, and the optician can tell you what they need to see.`,
+      },
+      {
+        heading: "Help with the cost of glasses",
+        body: `If you get a free sight test because of your age alone (60 or over), that does not automatically include help with glasses. You do get an NHS optical voucher if you are under 16, 16 to 18 in full-time education, on a qualifying benefit, named on an HC2 certificate, or need complex lenses. In England voucher values range from £42.40 to £233.56 depending on your prescription. HC3 certificate holders may get partial help.`,
+        links: [
+          { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
+        ],
+      },
+      {
+        heading: "Low income? Check the NHS Low Income Scheme",
+        body: `If you do not qualify through a benefit but your income is low, you can apply to the NHS Low Income Scheme. If you are awarded an HC2 certificate you get free NHS sight tests and help with glasses. An HC3 certificate gives partial help. You can apply online in some cases or by post using form HC1.`,
+      },
+      {
+        heading: "Free eye tests through your employer",
+        body: `If you use a computer or other display screen as a significant part of your job, your employer must arrange and pay for an eye test if you ask for one, and pay for basic glasses if you need them only for screen work. Many employers do this with an eyecare voucher from a chain such as Specsavers, Boots or Vision Express.`,
+      },
+      {
+        heading: "Free eye test offers from opticians",
+        body: `Outside the NHS, Specsavers and other opticians run time-limited free or discounted eye test offers at certain times of the year, for example through vouchers, app offers or seasonal promotions. These offers are subject to availability, may only apply at some stores and change often, so check the optician's own website for current terms before you book.`,
+        links: [
+          { label: "Eye test prices", href: "/find/eye-test-cost" },
+          { label: "Cheapest eye tests", href: "/find/cheap-eye-test" },
+          { label: "Home eye tests", href: "/find/eye-test-at-home" },
+        ],
+      },
+    ],
     faqs: [
       {
-        question: "Is a free eye test the same as a paid one?",
+        question: "Is a free NHS eye test the same as a paid one?",
         answer:
-          "Yes. A free NHS-funded eye test is clinically identical to a private sight test. You receive exactly the same examination of your vision and eye health, carried out by a qualified optometrist to the same professional standards.",
+          "An NHS-funded sight test checks your vision and eye health and is carried out by a qualified optometrist, just like a private test. Some opticians offer optional extras at a cost, such as an OCT scan, which are not part of the NHS test.",
       },
       {
-        question: "How do I prove I'm eligible for a free NHS eye test?",
+        question: "Do you get a free eye test at 60?",
         answer:
-          "Bring proof of eligibility such as your HC2 or HC3 certificate, benefit award letter, or valid NHS exemption certificate. If you are over 60, your date of birth is sufficient. Your optician can also check eligibility for you through the NHS system.",
+          "Yes. Everyone aged 60 or over is entitled to a free NHS sight test in England, Wales and Northern Ireland, and in Scotland NHS eye examinations are free for all UK residents.",
       },
       {
-        question: "Can I get a free eye test if I work at a computer all day?",
+        question: "How often can I have a free NHS eye test?",
         answer:
-          "Yes. Under Health and Safety regulations, if you are a regular display screen equipment (VDU) user, your employer must pay for an eye test if you request one. Ask your HR department — they may have an arrangement with a specific optician or provide a voucher.",
+          "The NHS recommends an eye test every two years for most adults. Some people can have free tests more often, for example children and people with certain conditions, if the optometrist says it is clinically needed. In Scotland, routine tests are every two years for ages 16 to 59 and every year for under 16s and people aged 60 or over.",
+      },
+      {
+        question: "Can I get a free eye test on Universal Credit?",
+        answer:
+          "Yes, if you have no earnings or your take-home pay in your last assessment period was £435 or less, or £935 or less if your award includes a child element or you have limited capability for work. You also get an NHS optical voucher towards glasses.",
       },
       {
         question: "Do Specsavers do free eye tests?",
         answer:
-          "Specsavers regularly offers free eye test promotions. Check their website or download the Specsavers app to see current offers in your area. Free tests are often available when you book online. NHS-funded tests are always free at Specsavers.",
+          "Yes, if you qualify for an NHS-funded test, and everyone in Scotland gets a free NHS eye examination. Specsavers also runs time-limited free or discounted eye test offers at certain times of the year, subject to availability and location, and accepts employer eyecare vouchers.",
+      },
+      {
+        question: "Are eye tests free in Scotland?",
+        answer:
+          "Yes. NHS eye examinations in Scotland are free for everyone who is ordinarily resident in the UK, as well as refugees, asylum seekers and some eligible overseas visitors.",
+      },
+      {
+        question: "Can my employer pay for my eye test?",
+        answer:
+          "If you use a screen as a significant part of your work, your employer must arrange and pay for an eye test if you ask, and pay for basic glasses if you need them only for screen work.",
       },
     ],
     relatedQueries: [
-      "eye-test-cost",
-      "free-nhs-eye-test-eligibility",
       "free-eye-test-over-60",
+      "free-eye-test-children",
+      "free-eye-test-diabetes",
       "free-eye-test-universal-credit",
       "nhs-optical-voucher",
+      "eye-test-cost",
     ],
-    ctaText: "Find a free eye test near you",
+    ctaText: "Find a free NHS eye test near you",
+    keyFacts: [
+      { label: "Over 60s", value: "Free NHS eye test" },
+      { label: "Under 16s", value: "Free NHS eye test and voucher" },
+      { label: "Scotland", value: "Free for all UK residents" },
+      { label: "Optical voucher (England)", value: "£42.40 to £233.56" },
+    ],
+    sources: [
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+      { label: "NHSBSA: HC12 quick guide to help with health costs (April 2026)", url: "https://www.nhsbsa.nhs.uk/sites/default/files/2026-04/HC12%20(V24)%2004.2026.pdf" },
+      { label: "NHSBSA: NHS Low Income Scheme", url: "https://www.nhsbsa.nhs.uk/nhs-low-income-scheme" },
+      { label: "NHS Inform: Eye examinations in Scotland", url: "https://www.nhsinform.scot/care-support-and-rights/nhs-services/ophthalmics/your-entitlements-to-nhs-ophthalmic-services" },
+      { label: "NHS Wales: Wales General Ophthalmic Services", url: "https://www.nhs.wales/sa/eye-care-wales/wgos/member-of-the-public" },
+      { label: "GOV.WALES: Get help with NHS eye care costs", url: "https://www.gov.wales/get-help-nhs-eye-care-costs" },
+      { label: "HSC Business Services Organisation: Optical voucher values (Northern Ireland)", url: "https://bso.hscni.net/directorates/operations/family-practitioner-services/ophthalmic-services/general-public-information/current-optical-voucher-values-sight-test-prices/" },
+      { label: "HSE: Eye tests for display screen equipment users", url: "https://www.hse.gov.uk/msd/dse/eye-tests.htm" },
+    ],
   },
   {
     slug: "cheap-eye-test",
     keyword: "cheap eye test",
-    title: "Cheapest Eye Tests Near You — UK Price Comparison (2026)",
+    title: "Cheapest Eye Tests in the UK (2026 Price Comparison)",
+    seoTitle: "Cheapest Eye Test UK 2026: Prices Compared and How to Pay Less",
+    seoDescription:
+      "Where to get the cheapest eye test in the UK: published prices at Specsavers, Asda, Boots, Vision Express and M&S, free NHS tests and current ways to pay less.",
+    dateModified: "2026-11-10",
     category: "cost",
     shortDescription:
-      "Find the cheapest eye tests in the UK. Compare prices at Specsavers, Boots, Vision Express, and independent opticians.",
-    content: `If you are looking for an affordable eye test in the UK, there are plenty of options. Many people pay far less than they expect — and a significant number qualify for a completely free test without even realising it.
+      "The cheapest private eye tests at the main UK opticians, plus free NHS tests and other ways to pay less.",
+    content: `The cheapest eye test is a free one, and many people qualify for a free NHS-funded sight test without realising. If you do need to pay, the lowest published prices at the main high-street chains are at Specsavers (£20 to £25, depending on the store) and Asda Opticians (£24). Prices below were checked on each optician's own website in November 2026.
 
-The cheapest standard eye tests on the high street are typically found at Specsavers, where a private sight test costs around £25. Boots Opticians charges approximately £29.95, and Vision Express around £30. ASDA Opticians offers tests from around £20, making them one of the most affordable options. Independent opticians vary more widely, with prices generally ranging from £20 to £45. Some budget-focused independents in smaller towns may charge as little as £15 to £20.
-
-Before paying for a test, always check whether you qualify for a free NHS-funded eye test. Over 14 million people in the UK are eligible, including everyone over 60, children under 16, people with diabetes, and those on certain benefits. Even if you don't qualify, many chains run regular free test promotions — Specsavers, for example, frequently offers free tests through their website and app.
-
-Another way to reduce costs is to look for bundled offers. Many opticians offer free eye tests when you purchase glasses or sign up for a contact lens plan. Some supermarket opticians (ASDA, Tesco) offer very competitive prices and frequent promotions. Online voucher sites and cashback platforms sometimes have eye test deals as well.
-
-Remember that the cheapest option is not always the least thorough. All UK optometrists must meet the same professional standards regardless of where they work. However, some budget tests may not include extras like OCT scans or retinal photography, which typically cost an additional £10 to £39. If you are over 40 or have risk factors for eye conditions, these additional tests can be valuable and are worth the small extra investment.`,
+A lower price does not mean a less thorough sight test, since every test is carried out by a qualified optometrist. The difference is usually in the extras. Some opticians include an OCT scan in the price, while others charge for it separately, so compare what is included as well as the headline fee.`,
+    sections: [
+      {
+        heading: "Cheapest eye tests at the main chains",
+        table: {
+          caption: "Published private eye test prices, lowest first, checked November 2026",
+          headers: ["Optician", "Private eye test", "OCT scan"],
+          rows: [
+            ["Specsavers", "£20 to £25, depending on the store", "Up to £10 extra in most stores"],
+            ["Asda Opticians", "£24", "Ask in store"],
+            ["Boots Opticians", "From £29.95", "Available at extra cost"],
+            ["Vision Express", "£30 (Advanced Eye Test)", "Included"],
+            ["M&S Opticians", "£40", "Included"],
+          ],
+        },
+      },
+      {
+        heading: "Ways to pay less",
+        items: [
+          "Check whether you qualify for a free NHS-funded eye test before you book",
+          "Live in Scotland? NHS eye examinations are free for all UK residents",
+          "Ask your employer: screen users are entitled to an employer-paid eye test",
+          "Look for time-limited free or discounted eye test offers, which Specsavers and other chains run at certain times of the year",
+          "Compare what is included: an OCT scan included in the price can be better value than a cheaper test plus a paid scan",
+          "If you need glasses, check whether you qualify for an NHS optical voucher",
+        ],
+        links: [
+          { label: "Free eye test guide", href: "/find/free-eye-test" },
+          { label: "Full eye test price guide", href: "/find/eye-test-cost" },
+          { label: "OCT scan cost", href: "/find/oct-scan-cost" },
+        ],
+      },
+    ],
     faqs: [
       {
         question: "Where is the cheapest place to get an eye test?",
         answer:
-          "ASDA Opticians and Specsavers are typically the cheapest options at around £20 to £25. However, always check for free test promotions first — you may pay nothing at all. If you qualify for an NHS-funded test, it is free at any participating optician.",
+          "Of the main chains, Specsavers (£20 to £25, depending on the store) and Asda Opticians (£24) have the lowest published prices. The cheapest option of all is a free NHS-funded test if you qualify. Time-limited offers can also reduce the price, subject to availability and location.",
       },
       {
-        question: "Is it worth paying more for a private eye test?",
+        question: "Is it worth paying more for an eye test?",
         answer:
-          "All standard eye tests in the UK meet the same clinical standards. However, more expensive tests may include additional technology such as OCT scans or ultra-wide-field retinal imaging. These extras can detect conditions earlier but are not essential for everyone.",
+          "Every sight test is carried out by a qualified optometrist. Higher-priced tests usually add extras such as an OCT scan, which gives a detailed 3D view of the back of the eye. Your optometrist can advise whether an extra scan is useful for you.",
       },
       {
         question: "Can I use an NHS voucher at any optician?",
         answer:
-          "Yes. If you receive an NHS optical voucher, it can be used at any optician that provides NHS services, which includes virtually all high-street opticians. The voucher contributes towards the cost of glasses or contact lenses.",
+          "You can take an NHS optical voucher to any supplier that accepts NHS vouchers, which includes most high-street opticians. If your glasses cost more than the voucher, you pay the difference.",
       },
     ],
     relatedQueries: [
       "eye-test-cost",
       "free-eye-test",
       "boots-eye-test-cost",
-      "best-opticians-near-me",
+      "opticians-near-me",
     ],
     ctaText: "Find the cheapest eye test near you",
+    keyFacts: [
+      { label: "Specsavers", value: "£20 to £25" },
+      { label: "Asda Opticians", value: "£24" },
+      { label: "Boots Opticians", value: "From £29.95" },
+      { label: "Vision Express", value: "£30 (includes OCT)" },
+    ],
+    sources: [
+      { label: "Specsavers: How much is an eye test?", url: "https://www.specsavers.co.uk/help-and-faqs/how-much-is-an-eye-test" },
+      { label: "Asda Opticians: Having an eye test", url: "https://opticians.asda.com/having-an-eye-test" },
+      { label: "Boots Opticians: Your eye test explained", url: "https://www.boots.com/opticians-your-eye-check-explained" },
+      { label: "Vision Express: Book an eye test", url: "https://www.visionexpress.com/eye-test" },
+      { label: "M&S Opticians: Eye test FAQs", url: "https://mandsopticians.com/eye-care/help/" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+    ],
   },
   {
     slug: "private-eye-test-cost",
@@ -270,135 +498,40 @@ Boots Opticians is generally considered to offer a slightly more premium experie
 
   // ─── NHS ──────────────────────────────────────────────────────────────
   {
-    slug: "nhs-eye-test",
-    keyword: "NHS eye test",
-    title: "NHS Eye Test — Who Qualifies, What's Included & How to Book",
-    category: "nhs",
-    shortDescription:
-      "Everything you need to know about NHS-funded eye tests in the UK, including who qualifies, what the test involves, and how to book.",
-    content: `An NHS eye test is a comprehensive sight test funded by the National Health Service. It is clinically identical to a private eye test — you receive exactly the same thorough examination of your vision and eye health, carried out by a qualified optometrist. The only difference is that the NHS pays the fee, so you pay nothing.
-
-Eligibility for a free NHS eye test covers a broad range of people. You qualify if you are: aged 60 or over, under 16 (or under 19 in full-time education), diagnosed with diabetes or glaucoma, receiving qualifying means-tested benefits such as Universal Credit, Income Support, income-based Jobseeker's Allowance, income-related Employment and Support Allowance, or Pension Credit Guarantee Credit. You also qualify if you are aged 40 or over with a parent, sibling, or child diagnosed with glaucoma, if you have been advised by an ophthalmologist that you are at risk of glaucoma, if you are registered blind or partially sighted, if you need complex lenses, or if you are a prisoner or on probation.
-
-Booking an NHS eye test is straightforward. Simply contact any optician that provides NHS services (which is the vast majority of high-street and independent opticians in the UK) and ask to book an NHS sight test. The receptionist will confirm your eligibility when you arrive or may check it in advance. You will need to provide proof of eligibility such as a benefit award letter, HC2 or HC3 certificate, or simply your date of birth if you qualify by age.
-
-During the test, your optometrist will check your visual acuity (how clearly you see), carry out a refraction to determine whether you need glasses and your exact prescription, measure your eye pressure to screen for glaucoma, and examine the health of your eyes using specialised instruments. If any problems are found, you will be referred for further investigation or treatment.
-
-If you need glasses as a result of your NHS eye test, you may also receive an NHS optical voucher to help with the cost. Voucher values depend on your prescription and typically range from £39.10 to £215.50. This can be used towards any glasses at any optician.`,
-    faqs: [
-      {
-        question: "How often can I have a free NHS eye test?",
-        answer:
-          "Most eligible adults can have an NHS eye test every two years. If you have diabetes or are being monitored for glaucoma, your optometrist may recommend annual tests. Children should have annual eye tests.",
-      },
-      {
-        question: "Do I need a referral from my GP for an NHS eye test?",
-        answer:
-          "No. You do not need a GP referral for an NHS sight test. Simply contact your local optician directly and book an appointment. The optician will verify your eligibility.",
-      },
-      {
-        question: "Can I choose any optician for my NHS eye test?",
-        answer:
-          "Yes. Almost every optician in the UK provides NHS eye tests. You can go to Specsavers, Boots, Vision Express, or any independent optician that offers NHS services. You do not need to go to a hospital or specialist clinic.",
-      },
-      {
-        question: "What happens if I fail my NHS eye test?",
-        answer:
-          "You cannot fail an eye test. If the test reveals you need glasses, you will be given a prescription. If a health problem is detected (such as early signs of glaucoma or cataracts), you will be referred for further assessment or treatment. An eye test is a health check, not a pass-or-fail exam.",
-      },
-    ],
-    relatedQueries: [
-      "free-nhs-eye-test-eligibility",
-      "free-eye-test",
-      "nhs-optical-voucher",
-      "free-eye-test-over-60",
-      "free-eye-test-diabetes",
-    ],
-    ctaText: "Find NHS eye test appointments near you",
-  },
-  {
-    slug: "free-nhs-eye-test-eligibility",
-    keyword: "free NHS eye test eligibility",
-    title: "NHS Free Eye Test Eligibility — Full List of Who Qualifies (2026)",
-    category: "nhs",
-    shortDescription:
-      "The complete list of who is eligible for a free NHS-funded eye test in the UK, including benefits, age, and medical conditions.",
-    content: `The NHS provides free sight tests to a wide range of people across the UK. It is estimated that over 14 million people are eligible, yet many do not claim their free test because they are unaware they qualify. Here is the complete eligibility list.
-
-You are entitled to a free NHS eye test if you are: aged 60 or over, under 16, aged 16 to 18 and in full-time education, diagnosed with diabetes (Type 1 or Type 2), diagnosed with or being treated for glaucoma, aged 40 or over with a parent, brother, sister, or child who has been diagnosed with glaucoma (you qualify for annual tests), registered blind or partially sighted, advised by an ophthalmologist that you are at risk of developing glaucoma, prescribed complex lenses (these are lenses with very strong prescriptions or specific clinical requirements).
-
-You also qualify if you receive any of the following means-tested benefits: Universal Credit (with qualifying income thresholds), Income Support, income-based Jobseeker's Allowance, income-related Employment and Support Allowance, Pension Credit Guarantee Credit, or if you are named on a valid NHS tax credit exemption certificate (HC2) or hold a valid HC3 certificate. War pensioners who need an eye test because of their war pension condition are also eligible.
-
-Additionally, prisoners and people on probation qualify for free NHS eye tests. If you have a medical condition that means you cannot leave your home unaccompanied, you are entitled to a free domiciliary (home visit) eye test.
-
-If you are unsure whether you qualify, the simplest approach is to ask your optician when you book. They can check your eligibility and ensure you are not paying when you do not need to. Even if you do not qualify for a free test based on the criteria above, many opticians run promotional offers for free or discounted tests — always check before paying full price.`,
-    faqs: [
-      {
-        question: "Do I qualify for a free eye test on Universal Credit?",
-        answer:
-          "You may qualify if your Universal Credit award includes certain elements or if your income is below a specific threshold. The easiest way to check is to apply for an HC2 certificate (full help with health costs) or ask your optician to check your eligibility when you book.",
-      },
-      {
-        question: "Are eye tests free for over 60s?",
-        answer:
-          "Yes. Everyone aged 60 and over in the UK is entitled to a free NHS-funded eye test. Simply book at any optician and provide proof of your age. You may also qualify for an NHS optical voucher towards the cost of glasses.",
-      },
-      {
-        question: "Is my child entitled to a free eye test?",
-        answer:
-          "Yes. All children under 16 are entitled to free NHS eye tests. Children aged 16 to 18 also qualify if they are in full-time education. There is no minimum age — optometrists can test babies and toddlers using age-appropriate methods.",
-      },
-      {
-        question: "How do I apply for an HC2 certificate?",
-        answer:
-          "Apply using form HC1, available from Jobcentre Plus offices, NHS hospitals, or online. The HC2 certificate provides full help with NHS health costs, including free eye tests, dental treatment, and prescription charges. Processing typically takes two to four weeks.",
-      },
-    ],
-    relatedQueries: [
-      "nhs-eye-test",
-      "free-eye-test",
-      "free-eye-test-over-60",
-      "free-eye-test-universal-credit",
-      "nhs-optical-voucher",
-    ],
-    ctaText: "Check your eligibility and book a free eye test",
-  },
-  {
     slug: "free-eye-test-over-60",
+    dateModified: "2026-11-10",
     keyword: "free eye test over 60",
     title: "Free Eye Tests for Over 60s — How to Book Your NHS Test",
     category: "nhs",
     shortDescription:
       "If you are aged 60 or over, you are entitled to a free NHS eye test. Here is how to book and what to expect.",
-    content: `Everyone aged 60 and over in the UK is entitled to a free NHS-funded eye test, regardless of income or any other factor. This is one of the most important health benefits available to older adults, as the risk of developing sight-threatening conditions increases significantly with age.
+    content: `Everyone aged 60 or over is entitled to a free NHS-funded sight test in England, Wales and Northern Ireland, regardless of income, and in Scotland NHS eye examinations are free for all UK residents. This is one of the most important health benefits available to older adults, as the risk of developing sight-threatening conditions increases significantly with age.
 
 Conditions that become more common after 60 include cataracts (clouding of the lens), age-related macular degeneration (the leading cause of sight loss in the UK), glaucoma (damage to the optic nerve), and diabetic retinopathy (if you have diabetes). All of these can be detected through a routine eye test, often before you notice any symptoms. Early detection is critical because many of these conditions can be treated effectively if caught early, but may cause irreversible damage if left undiagnosed.
 
 Booking your free test is straightforward. Contact any optician — Specsavers, Boots, Vision Express, or your local independent — and tell them you are over 60 and would like to book an NHS eye test. No GP referral is needed. The only proof required is your date of birth, which the optician can verify from your identification. The test itself is identical to a private eye test and typically takes 20 to 30 minutes.
 
-The College of Optometrists recommends that adults over 60 have an eye test at least every two years, and annually if you are over 70, have diabetes, or have a family history of glaucoma. If you notice any sudden changes in your vision — such as flashes of light, a shower of new floaters, a shadow or curtain across your vision, or sudden loss of sight — seek urgent help from your optician or NHS 111 immediately, as these can indicate serious conditions requiring prompt treatment.
+The NHS recommends an eye test at least every two years, and your optometrist may advise more frequent tests if you have diabetes, glaucoma or a family history of glaucoma. In Scotland, people aged 60 or over can have a free routine eye examination every year. If you notice any sudden changes in your vision — such as flashes of light, a shower of new floaters, a shadow or curtain across your vision, or sudden loss of sight — seek urgent help from your optician or NHS 111 immediately, as these can indicate serious conditions requiring prompt treatment.
 
-As well as your free eye test, you may qualify for an NHS optical voucher to help with the cost of glasses. If you are on a low income or receive Pension Credit Guarantee Credit, you may also qualify for full help with the cost of glasses through the NHS Low Income Scheme.`,
+Being 60 or over gives you a free sight test but not, on its own, an NHS optical voucher for glasses. You get a voucher if you also receive a qualifying benefit such as Pension Credit Guarantee Credit, hold an HC2 certificate through the NHS Low Income Scheme, or need complex lenses. Some chains also offer over-60s discounts on glasses, which change from time to time.`,
     faqs: [
       {
         question: "How often should I have an eye test if I'm over 60?",
         answer:
-          "The College of Optometrists recommends an eye test at least every two years for adults aged 60 to 69, and annually from age 70 onwards. If you have diabetes, glaucoma, or other risk factors, annual tests are recommended from age 60.",
+          "The NHS recommends an eye test at least every two years, and your optometrist may recommend more frequent tests depending on your eye health. In Scotland, people aged 60 or over can have a free routine eye examination every year.",
       },
       {
         question: "Do I get help with the cost of glasses if I'm over 60?",
         answer:
-          "The free NHS eye test does not automatically include free glasses. However, if you are also on a low income or receive qualifying benefits (such as Pension Credit Guarantee Credit), you may receive an NHS optical voucher towards the cost of glasses.",
+          "Not automatically. Being 60 or over gives you a free sight test, but you only get an NHS optical voucher if you also receive a qualifying benefit such as Pension Credit Guarantee Credit, hold an HC2 certificate, or need complex lenses.",
       },
       {
         question: "Can I have a home visit eye test if I can't get to an optician?",
         answer:
-          "Yes. If you cannot leave your home unaccompanied due to physical or mental health conditions, you are entitled to a free NHS domiciliary (home visit) eye test. Contact a domiciliary optical practice or ask your GP for a recommendation.",
+          "If you cannot leave home unaccompanied because of a physical or mental illness or disability and you qualify for an NHS sight test, you can ask for an NHS-funded home visit. Several chains, including Specsavers, offer home eye tests, and in Scotland home examinations are free for those who need them.",
       },
     ],
     relatedQueries: [
-      "nhs-eye-test",
-      "free-nhs-eye-test-eligibility",
       "nhs-optical-voucher",
       "eye-test-at-home",
       "glaucoma-test",
@@ -407,12 +540,13 @@ As well as your free eye test, you may qualify for an NHS optical voucher to hel
   },
   {
     slug: "free-eye-test-children",
+    dateModified: "2026-11-10",
     keyword: "free eye test children",
     title: "Free Eye Tests for Children — NHS Entitlement & When to Book",
     category: "nhs",
     shortDescription:
       "All children under 16 qualify for free NHS eye tests. Learn when to book your child's first test and what to expect.",
-    content: `All children under 16 in the UK are entitled to free NHS-funded eye tests. Children aged 16 to 18 also qualify if they are in full-time education. This entitlement is universal — no means-testing, no qualifying conditions. Every child can have a free eye test at any optician.
+    content: `All children under 16 in the UK are entitled to free NHS-funded eye tests, and young people aged 16 to 18 also qualify if they are in full-time education. There is no means test, and children in both groups also get an NHS optical voucher if they need glasses.
 
 The NHS recommends that children have their first eye test before starting school, ideally around age three or four. Many parents assume their child's vision must be fine if they have not complained, but children often do not recognise that their vision is abnormal because they have nothing to compare it to. Conditions such as amblyopia (lazy eye) and squint are most effectively treated in early childhood, and delayed detection can lead to permanent visual impairment.
 
@@ -420,7 +554,7 @@ You do not need to wait until your child can read to book an eye test. Optometri
 
 After the initial test, children should have annual eye tests throughout their school years. If your child wears glasses, annual checks ensure their prescription stays up to date — children's eyes change rapidly. If a problem such as lazy eye is being treated, more frequent visits may be recommended.
 
-When a child needs glasses following their NHS eye test, they will receive an NHS optical voucher to help cover the cost. The voucher value depends on the prescription strength but is usually sufficient to cover a basic pair of children's glasses at most opticians. Many chains offer dedicated children's ranges with durable, flexible frames designed for active young wearers.`,
+When a child needs glasses following their NHS eye test, they receive an NHS optical voucher towards the cost. In England vouchers are worth between £42.40 and £233.56 depending on the prescription, and many opticians have a children's range that the voucher covers in full. NHS Wales also provides free glasses for children who need them.`,
     faqs: [
       {
         question: "At what age should a child have their first eye test?",
@@ -444,9 +578,7 @@ When a child needs glasses following their NHS eye test, they will receive an NH
       },
     ],
     relatedQueries: [
-      "nhs-eye-test",
       "childrens-eye-test-guide",
-      "free-nhs-eye-test-eligibility",
       "eye-test-what-to-expect",
       "nhs-optical-voucher",
     ],
@@ -454,16 +586,17 @@ When a child needs glasses following their NHS eye test, they will receive an NH
   },
   {
     slug: "free-eye-test-diabetes",
+    dateModified: "2026-11-10",
     keyword: "free eye test diabetes",
     title: "Free Eye Tests for People with Diabetes — NHS Entitlement",
     category: "nhs",
     shortDescription:
       "If you have Type 1 or Type 2 diabetes, you are entitled to free NHS eye tests. Learn about your entitlement and the separate diabetic eye screening programme.",
-    content: `Everyone diagnosed with diabetes (Type 1 or Type 2) in the UK is entitled to a free NHS-funded eye test at any optician. This is in addition to the separate NHS Diabetic Eye Screening Programme, which specifically checks for diabetic retinopathy using retinal photography. Both are essential, and you should attend both.
+    content: `Everyone diagnosed with diabetes (type 1 or type 2) is entitled to a free NHS-funded sight test in England, Wales and Northern Ireland, and in Scotland NHS eye examinations are free for all UK residents, with people with diabetes able to have one every year. This is in addition to the separate NHS Diabetic Eye Screening Programme, which specifically checks for diabetic retinopathy using retinal photography. Both are essential, and you should attend both.
 
 Diabetes can affect the eyes in several ways. The most well-known complication is diabetic retinopathy, where high blood sugar damages the tiny blood vessels in the retina. Left untreated, this can lead to sight loss. But diabetes also increases the risk of cataracts, glaucoma, and dry eye. A routine eye test at your optician checks your overall vision and eye health, while the separate diabetic eye screening specifically photographs the retina to look for signs of retinopathy.
 
-Your free NHS eye test at the optician should be carried out at least once a year. Your optometrist will check your vision, update your glasses prescription if needed, measure your eye pressure, and examine the health of your eyes. They may detect signs of diabetic eye disease during this examination, but the test covers far more than just diabetes-related changes.
+Your optometrist will advise how often you need a sight test, which for many people with diabetes is once a year. Your optometrist will check your vision, update your glasses prescription if needed, measure your eye pressure, and examine the health of your eyes. They may detect signs of diabetic eye disease during this examination, but the test covers far more than just diabetes-related changes.
 
 The NHS Diabetic Eye Screening Programme is a separate service. You should receive an automatic invitation once your GP has recorded your diabetes diagnosis. A trained screener takes detailed photographs of your retina after applying pupil-dilating drops. The images are graded by specialists, and you receive your results by post. If changes are found, you will be referred to a hospital eye clinic. You should attend both your annual optician's eye test and your annual diabetic eye screening — they are complementary, not interchangeable.
 
@@ -486,8 +619,6 @@ If you have not received a diabetic eye screening invitation, contact your GP pr
       },
     ],
     relatedQueries: [
-      "nhs-eye-test",
-      "free-nhs-eye-test-eligibility",
       "free-eye-test",
       "oct-scan-cost",
       "blurry-vision-causes",
@@ -497,91 +628,153 @@ If you have not received a diabetic eye screening invitation, contact your GP pr
   {
     slug: "free-eye-test-universal-credit",
     keyword: "free eye test universal credit",
-    title: "Free Eye Tests on Universal Credit — How to Claim",
+    title: "Free Eye Tests on Universal Credit: Who Qualifies",
+    seoTitle: "Free Eye Test on Universal Credit: Earnings Limits and Vouchers (2026)",
+    seoDescription:
+      "Universal Credit can give you a free NHS eye test and optical voucher if your take-home pay is £435 or less (£935 with a child element or LCW). Here is how it works.",
+    dateModified: "2026-11-10",
     category: "nhs",
     shortDescription:
-      "Find out if you can get a free NHS eye test while receiving Universal Credit, and how to claim your entitlement.",
-    content: `If you receive Universal Credit, you may be entitled to a free NHS eye test and help with the cost of glasses. Your eligibility depends on your income and circumstances, and the rules can be confusing — but checking is straightforward and well worth doing.
+      "When Universal Credit gives you a free NHS eye test and an optical voucher, the earnings limits, and what to do if you earn more.",
+    content: `If you get Universal Credit you can get a free NHS sight test and an NHS optical voucher towards glasses or contact lenses, as long as your earnings are under the limit. The NHSBSA guide for April 2026 says you qualify if you, or someone in your award, get Universal Credit and had no earnings, or take-home pay of £435 or less, in your last assessment period. The limit is £935 or less if your award includes a child element or you have limited capability for work.
 
-Universal Credit replaced several older benefits, and the rules for NHS help with health costs (including eye tests) differ from the previous system. You do not automatically get a free eye test simply because you receive Universal Credit. Instead, you may qualify through the NHS Low Income Scheme. To check your eligibility, you can apply for an HC2 certificate (full help) or HC3 certificate (partial help) using form HC1, which is available from Jobcentre Plus, NHS hospitals, or online.
-
-If you are awarded an HC2 certificate, you are entitled to free NHS eye tests, free NHS dental treatment, free prescriptions, and help with the cost of glasses (through an NHS optical voucher), travel costs to hospital for NHS treatment, and wigs and fabric supports. An HC3 certificate provides partial help with these costs.
-
-Some Universal Credit recipients automatically qualify for full help without needing to apply separately. This includes people receiving Universal Credit who are in the earnings threshold for free prescriptions, or those who also qualify through another route (for example, being pregnant, under 16, over 60, or having diabetes).
-
-The simplest approach is to ask your optician to check your eligibility when you book. They can often verify your entitlement through the NHS system. Alternatively, apply for an HC2/HC3 certificate in advance — processing typically takes two to four weeks. Do not avoid having an eye test because of cost concerns; there are routes to free or subsidised tests for most people on low incomes.`,
-    faqs: [
+You do not need to apply separately for this. Tell the optician you get Universal Credit when you book and they will ask you to confirm your entitlement. If you are under 20 and a dependant of someone who qualifies, you are covered too.`,
+    sections: [
       {
-        question: "Do I automatically get a free eye test on Universal Credit?",
-        answer:
-          "Not automatically. You may qualify through the NHS Low Income Scheme (HC2/HC3 certificates) depending on your income. Apply using form HC1, or ask your optician to check your eligibility. Some Universal Credit recipients qualify automatically if they meet specific income thresholds.",
+        heading: "Universal Credit earnings limits",
+        table: {
+          headers: ["Your Universal Credit award", "Take-home pay in your last assessment period"],
+          rows: [
+            ["Standard award", "No earnings, or £435 or less"],
+            ["Includes a child element, or you have limited capability for work", "£935 or less"],
+          ],
+        },
       },
       {
-        question: "What is an HC2 certificate?",
+        heading: "If you earn more than the limit",
+        body: `If your earnings are above the limit, you can still apply to the NHS Low Income Scheme. If you are awarded an HC2 certificate you get free NHS sight tests and help with glasses. An HC3 certificate gives partial help. You can apply online in some cases or by post using form HC1. You may also qualify for a free test for another reason, such as being 60 or over or having diabetes.`,
+        links: [
+          { label: "Who else gets a free eye test", href: "/find/free-eye-test" },
+          { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do I get a free eye test on Universal Credit?",
         answer:
-          "An HC2 certificate provides full help with NHS health costs, including free eye tests, dental treatment, prescriptions, and optical vouchers for glasses. You apply using form HC1, and eligibility is based on your income and circumstances.",
+          "Yes, if you had no earnings or take-home pay of £435 or less in your last assessment period, or £935 or less if your award includes a child element or you have limited capability for work. You also get an NHS optical voucher.",
+      },
+      {
+        question: "Do I need an HC2 certificate if I'm on Universal Credit?",
+        answer:
+          "Not if your earnings are under the Universal Credit limit, as you qualify through Universal Credit itself. If you earn more, you can apply for an HC2 or HC3 certificate through the NHS Low Income Scheme.",
       },
       {
         question: "Can I get free glasses on Universal Credit?",
         answer:
-          "If you qualify for an HC2 certificate, you will receive an NHS optical voucher towards the cost of glasses when you need them. The voucher value depends on your prescription and may cover the full cost of a basic pair.",
+          "If you qualify, you get an NHS optical voucher towards the cost of glasses or contact lenses. In England the voucher is worth between £42.40 and £233.56 depending on your prescription. If your glasses cost more, you pay the difference.",
       },
     ],
     relatedQueries: [
-      "free-nhs-eye-test-eligibility",
       "free-eye-test",
-      "nhs-eye-test",
       "nhs-optical-voucher",
       "cheap-eye-test",
+      "eye-test-cost",
     ],
     ctaText: "Find a free eye test near you",
+    sources: [
+      { label: "NHSBSA: HC12 quick guide to help with health costs (April 2026)", url: "https://www.nhsbsa.nhs.uk/sites/default/files/2026-04/HC12%20(V24)%2004.2026.pdf" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+      { label: "NHSBSA: NHS Low Income Scheme", url: "https://www.nhsbsa.nhs.uk/nhs-low-income-scheme" },
+    ],
   },
   {
     slug: "nhs-optical-voucher",
     keyword: "NHS optical voucher",
-    title: "NHS Optical Voucher — Values, Eligibility & How to Use It",
+    title: "NHS Optical Voucher Values 2026: Who Qualifies and How to Use It",
+    seoTitle: "NHS Optical Voucher Values 2026: Bands A to H and Who Qualifies",
+    seoDescription:
+      "NHS optical voucher values in England range from £42.40 to £233.56. See every band, the supplements, who qualifies and how to use your voucher.",
+    dateModified: "2026-11-10",
     category: "nhs",
     shortDescription:
-      "What NHS optical vouchers are worth in 2026, who qualifies, and how to use them towards glasses or contact lenses.",
-    content: `NHS optical vouchers help eligible people with the cost of glasses or contact lenses. If you qualify, you receive a voucher after your NHS eye test that can be put towards the cost of your eyewear at any optician in the UK.
+      "What NHS optical vouchers are worth, who qualifies and how to use one towards glasses or contact lenses.",
+    content: `An NHS optical voucher is a contribution towards the cost of glasses or contact lenses. The value depends on your prescription, not on the frame you choose, and you can take it to any supplier that accepts NHS vouchers. If your glasses cost more than the voucher, you pay the difference.
 
-Voucher values in 2026 are based on your prescription strength and lens type. The standard voucher bands range from Group A (£39.10 for simple prescriptions) up to Group H (£215.50 for the most complex prescriptions). There are also supplementary vouchers for prisms and tints where clinically necessary. Your optometrist will determine which voucher band applies to your prescription after your eye test.
-
-You are eligible for an NHS optical voucher if you are: under 16, aged 16 to 18 and in full-time education, receiving qualifying means-tested benefits or hold a valid HC2 certificate, named on an NHS tax credit exemption certificate, a prisoner, or prescribed complex lenses (regardless of your age or income). Some people with specific medical conditions may also qualify.
-
-To use your voucher, simply present it at any optician when purchasing glasses or contact lenses. The voucher value is deducted from the total cost. If your chosen glasses cost less than the voucher value, you pay nothing. If they cost more, you pay only the difference. Vouchers can be used at high-street chains, independent opticians, or even towards ordering glasses online in some cases.
-
-For children, the NHS optical voucher often covers the full cost of a basic pair of glasses, including frames. Most opticians offer a dedicated range of children's frames within the voucher value. You can always choose to pay the difference for a more expensive frame if you wish.`,
+The values below are for England and come from the NHSBSA guide for April 2026. Scotland, Wales and Northern Ireland set their own values; Northern Ireland's, for example, run from £46.42 to £255.81.`,
+    sections: [
+      {
+        heading: "NHS optical voucher values in England",
+        table: {
+          headers: ["Voucher", "Lens type", "Maximum value"],
+          rows: [
+            ["A", "Single vision, lower prescriptions", "£42.40"],
+            ["B", "Single vision, medium prescriptions", "£64.26"],
+            ["C", "Single vision, higher prescriptions", "£94.14"],
+            ["D", "Single vision, very high prescriptions", "£212.40"],
+            ["E", "Bifocal, lower prescriptions", "£73.10"],
+            ["F", "Bifocal, medium prescriptions", "£92.72"],
+            ["G", "Bifocal, higher prescriptions", "£120.48"],
+            ["H", "Bifocal, very high or prism-controlled", "£233.56"],
+          ],
+        },
+        body: `Supplements are added where clinically needed, for example for prisms (£13.67 per single vision lens) and tints or photochromic lenses (£4.77 per single vision lens).`,
+      },
+      {
+        heading: "Who gets an NHS optical voucher",
+        items: [
+          "Children under 16",
+          "Young people aged 16, 17 or 18 in full-time education",
+          "People who need complex lenses",
+          "People receiving, or included in an award of, income-based Jobseeker's Allowance, income-related Employment and Support Allowance or Pension Credit Guarantee Credit",
+          "People receiving Universal Credit with no earnings or take-home pay of £435 or less (£935 or less with a child element or limited capability for work)",
+          "People named on a valid HC2 certificate (HC3 holders may get partial help)",
+          "Prisoners on leave from prison",
+        ],
+        body: `Being 60 or over gives you a free sight test but not, on its own, a voucher.`,
+        links: [
+          { label: "Free eye test guide", href: "/find/free-eye-test" },
+          { label: "Universal Credit", href: "/find/free-eye-test-universal-credit" },
+          { label: "Children", href: "/find/free-eye-test-children" },
+        ],
+      },
+    ],
     faqs: [
       {
         question: "How much is an NHS optical voucher worth?",
         answer:
-          "NHS optical voucher values range from £39.10 (Group A, simple prescriptions) to £215.50 (Group H, complex prescriptions). The amount depends on your prescription strength and lens type. Your optometrist will tell you which band applies.",
+          "In England, the main voucher bands are worth between £42.40 (band A, single vision) and £233.56 (band H, complex bifocals), according to the NHSBSA guide for April 2026. Your optometrist tells you which band applies to your prescription.",
       },
       {
         question: "Can I use my NHS voucher at any optician?",
         answer:
-          "Yes. NHS optical vouchers can be used at any optician in the UK that provides NHS services, which includes virtually all high-street chains and most independent opticians.",
+          "You can take your voucher to any supplier that accepts NHS optical vouchers, which includes most high-street opticians. They will ask you to show proof of your entitlement.",
       },
       {
-        question: "Can I use my NHS optical voucher for contact lenses?",
+        question: "Can I use an NHS optical voucher for contact lenses?",
         answer:
-          "Yes. The voucher can be put towards contact lenses as an alternative to glasses. However, the voucher value may not cover the full cost of a year's supply of lenses. Your optician can advise on the best options within your voucher value.",
-      },
-      {
-        question: "How long is an NHS optical voucher valid for?",
-        answer:
-          "NHS optical vouchers do not have a fixed expiry date, but they should be used reasonably promptly after issue. If your prescription changes, a new voucher may be issued at your next test. Check with your optician if you have an older voucher.",
+          "Yes. The voucher can go towards contact lenses instead of glasses. If the lenses cost more than the voucher, you pay the difference.",
       },
     ],
     relatedQueries: [
-      "nhs-eye-test",
-      "free-nhs-eye-test-eligibility",
+      "free-eye-test",
       "free-eye-test-universal-credit",
       "free-eye-test-children",
       "cheap-eye-test",
     ],
     ctaText: "Find an optician that accepts NHS vouchers",
+    keyFacts: [
+      { label: "Lowest value (band A)", value: "£42.40" },
+      { label: "Highest value (band H)", value: "£233.56" },
+      { label: "Children under 16", value: "Always eligible" },
+      { label: "Over 60s", value: "Free test, voucher only if otherwise eligible" },
+    ],
+    sources: [
+      { label: "NHSBSA: HC12 quick guide to help with health costs (April 2026)", url: "https://www.nhsbsa.nhs.uk/sites/default/files/2026-04/HC12%20(V24)%2004.2026.pdf" },
+      { label: "NHS: NHS voucher values for glasses and lenses", url: "https://www.nhs.uk/nhs-services/opticians/nhs-voucher-values-for-glasses-and-lenses" },
+      { label: "HSC Business Services Organisation: Optical voucher values (Northern Ireland)", url: "https://bso.hscni.net/directorates/operations/family-practitioner-services/ophthalmic-services/general-public-information/current-optical-voucher-values-sight-test-prices/" },
+    ],
   },
 
   // ─── Availability ─────────────────────────────────────────────────────
@@ -621,8 +814,6 @@ Same-day appointments are subject to the same standards as any other eye test. Y
     relatedQueries: [
       "walk-in-eye-test",
       "emergency-eye-test-near-me",
-      "book-eye-test-online",
-      "eye-test-near-me",
       "weekend-eye-test",
     ],
     ctaText: "Find same-day eye test appointments",
@@ -662,10 +853,7 @@ If you want to guarantee being seen without a long wait, online booking is the m
     ],
     relatedQueries: [
       "same-day-eye-test",
-      "eye-test-near-me",
       "emergency-eye-test-near-me",
-      "book-eye-test-online",
-      "best-opticians-near-me",
     ],
     ctaText: "Find walk-in eye tests near you",
   },
@@ -704,9 +892,6 @@ To find weekend availability, the easiest approach is to search online. Most cha
     ],
     relatedQueries: [
       "same-day-eye-test",
-      "book-eye-test-online",
-      "eye-test-near-me",
-      "best-opticians-near-me",
       "walk-in-eye-test",
     ],
     ctaText: "Find weekend eye test appointments",
@@ -746,52 +931,9 @@ To find urgent eye care near you, call your regular optician first. If they cann
       "same-day-eye-test",
       "sudden-vision-changes",
       "floaters-in-vision",
-      "eye-test-near-me",
       "blurry-vision-causes",
     ],
     ctaText: "Find urgent eye care near you",
-  },
-  {
-    slug: "book-eye-test-online",
-    keyword: "book eye test online",
-    title: "Book an Eye Test Online — Quick & Easy Appointment Booking",
-    category: "availability",
-    shortDescription:
-      "Book your eye test online in minutes. Compare availability at opticians near you and choose a time that suits you.",
-    content: `Booking an eye test online is the quickest and easiest way to secure an appointment at a time that suits you. Most major UK opticians now offer full online booking with real-time availability, allowing you to see exactly which slots are open and confirm your appointment in just a few clicks.
-
-All the major chains — Specsavers, Boots Opticians, Vision Express, and ASDA Opticians — have online booking systems on their websites. You simply enter your postcode, choose your nearest store, select a date and time, and provide a few basic details. You will receive an instant confirmation by email or text. Most also allow you to specify whether you want an NHS-funded or private test, and whether you need any additional services such as a contact lens check-up.
-
-The main advantage of online booking is being able to see all available appointment times at a glance. You can compare availability across multiple locations, find the earliest available slot, or specifically look for evenings or weekends. This is especially useful for same-day appointments — if your preferred location is fully booked, you can quickly check neighbouring stores without making multiple phone calls.
-
-When booking online, you will usually be asked for your name, date of birth, contact details, and whether you have visited the practice before. Some systems also ask about your reason for the appointment and any specific concerns, which helps the optometrist prepare. If you qualify for an NHS-funded test, make sure to select this option during booking.
-
-You can also book eye tests through eyetest.co.uk, which allows you to compare availability across multiple opticians in your area from a single search. Enter your postcode and see appointments at Specsavers, Boots, Vision Express, independents, and more — all in one place. This saves time and ensures you find the best available option near you.`,
-    faqs: [
-      {
-        question: "Can I book an NHS eye test online?",
-        answer:
-          "Yes. Most opticians allow you to book NHS-funded eye tests through their online booking system. Select the NHS option during booking and bring your eligibility documents to the appointment.",
-      },
-      {
-        question: "How far in advance can I book an eye test?",
-        answer:
-          "Most opticians allow bookings several weeks in advance. For popular times such as Saturdays or after school, booking two to three weeks ahead is recommended. Same-day and next-day appointments are also often available, especially during quieter periods.",
-      },
-      {
-        question: "Can I cancel or reschedule an online booking?",
-        answer:
-          "Yes. Most opticians allow you to cancel or reschedule online or by phone. Check the terms when you book. It is courteous to give at least 24 hours' notice if you need to cancel, so the slot can be offered to someone else.",
-      },
-    ],
-    relatedQueries: [
-      "eye-test-near-me",
-      "same-day-eye-test",
-      "weekend-eye-test",
-      "best-opticians-near-me",
-      "walk-in-eye-test",
-    ],
-    ctaText: "Book an eye test online now",
   },
   {
     slug: "eye-test-at-home",
@@ -827,11 +969,7 @@ Private home visit eye tests are also available for anyone who simply prefers th
       },
     ],
     relatedQueries: [
-      "nhs-eye-test",
       "free-eye-test-over-60",
-      "free-nhs-eye-test-eligibility",
-      "eye-test-near-me",
-      "book-eye-test-online",
     ],
     ctaText: "Find home visit eye tests near you",
   },
@@ -869,8 +1007,6 @@ The best approach is to use online tools as a rough check and conversation start
       },
     ],
     relatedQueries: [
-      "book-eye-test-online",
-      "eye-test-near-me",
       "eye-test-cost",
       "do-i-need-an-eye-test",
       "eye-test-at-home",
@@ -915,7 +1051,6 @@ In addition to standard eye tests, Boots offers specialist services including co
     relatedQueries: [
       "boots-eye-test-cost",
       "specsavers-vs-boots",
-      "best-opticians-near-me",
       "oct-scan-cost",
     ],
     ctaText: "Find Boots Opticians appointments near you",
@@ -957,12 +1092,12 @@ Booking at Vision Express is available online, by phone, or in store. Their onli
       "eye-test-cost",
       "specsavers-vs-boots",
       "boots-eye-test",
-      "best-opticians-near-me",
     ],
     ctaText: "Find Vision Express appointments near you",
   },
   {
     slug: "specsavers-vs-boots",
+    dateModified: "2026-11-10",
     keyword: "Specsavers vs Boots eye test",
     title: "Specsavers vs Boots — Eye Test Comparison (2026)",
     category: "brand",
@@ -970,18 +1105,18 @@ Booking at Vision Express is available online, by phone, or in store. Their onli
       "An honest comparison of eye tests at Specsavers and Boots Opticians, covering price, what is included, and which is better value.",
     content: `Specsavers and Boots Opticians are the two largest optician chains in the UK, and choosing between them is one of the most common decisions for people booking an eye test. Here is a straightforward comparison to help you decide.
 
-On price, Specsavers is the more affordable option. A standard eye test costs approximately £25 at Specsavers versus £29.95 at Boots. However, Specsavers frequently offers free eye test promotions, making the effective cost often zero. Boots occasionally offers discounts through their Advantage Card but less frequently offers completely free tests. For the enhanced test with OCT scan, Specsavers charges approximately £35 (£25 test plus £10 OCT), while Boots charges around £39.95 for their Enhanced Eye Health Check including OCT.
+On price, Specsavers is the more affordable option. Specsavers says a routine eye test costs £20 to £25 depending on the store, while Boots says its eye test costs from £29.95. Both chains run time-limited offers from time to time, such as free or discounted eye tests, which are subject to availability and location. An OCT scan costs up to £10 extra at most Specsavers stores, and Boots offers OCT scans at extra cost.
 
 In terms of clinical quality, both chains employ qualified, GOC-registered optometrists and use high-quality examination equipment. There is no meaningful clinical difference between the tests — both cover the same essential checks (visual acuity, refraction, pressure, eye health examination) to the same professional standards. The optometrist carrying out your test matters more than the brand above the door.
 
 Where the chains differ is in the overall experience and extras. Boots is generally considered to offer a slightly more premium in-store environment, with well-appointed examination rooms and a focus on designer frames. Specsavers offers a broader range of budget-friendly options and is often perceived as more accessible and value-oriented. Boots' Advantage Card loyalty scheme is popular with existing Boots shoppers, while Specsavers' app and online booking system is widely praised for its ease of use.
 
-Both chains provide NHS-funded eye tests, contact lens services, children's eye tests, and specialist services. Both have extensive UK coverage, though Specsavers has more locations (over 900 versus approximately 500 for Boots). Ultimately, both offer a thoroughly professional eye test service, and the best choice often comes down to which is most conveniently located and which is offering the best current deal.`,
+Both chains provide NHS-funded eye tests, contact lens services, children's eye tests, and specialist services. Both have extensive UK coverage, and Specsavers has more locations, with over 900 stores. Ultimately, both offer a thoroughly professional eye test service, and the best choice often comes down to which is most conveniently located and which is offering the best current deal.`,
     faqs: [
       {
         question: "Is Specsavers or Boots cheaper for eye tests?",
         answer:
-          "Specsavers is slightly cheaper at approximately £25 versus £29.95 at Boots. However, Specsavers frequently offers free tests through promotions, making them often the cheapest option overall.",
+          "Specsavers has the lower published price, at £20 to £25 depending on the store, compared with from £29.95 at Boots. Both chains run time-limited offers, and both provide free NHS-funded eye tests if you qualify.",
       },
       {
         question: "Is one better than the other for eye test quality?",
@@ -997,177 +1132,158 @@ Both chains provide NHS-funded eye tests, contact lens services, children's eye 
     relatedQueries: [
       "boots-eye-test",
       "boots-eye-test-cost",
-      "best-opticians-near-me",
     ],
     ctaText: "Compare Specsavers and Boots near you",
-  },
-  {
-    slug: "best-opticians-near-me",
-    keyword: "best opticians near me",
-    title: "Best Opticians Near Me — How to Find the Right One (UK Guide)",
-    category: "brand",
-    shortDescription:
-      "How to find the best optician near you in the UK. Compare chains, independents, pricing, and reviews to make the right choice.",
-    content: `Finding the best optician near you depends on what matters most to you — whether that is price, convenience, clinical technology, frame selection, or personal service. The UK has thousands of opticians, from major chains to independent practices, and the right choice varies from person to person.
-
-The major chains offer reliability, extensive opening hours, and competitive pricing. Specsavers (over 900 UK stores) is typically the most affordable and frequently runs free eye test promotions. Boots Opticians (around 500 stores) offers a slightly more premium experience with advanced diagnostic options. Vision Express (approximately 400 stores) focuses on clinical excellence and designer frames. ASDA Opticians and Tesco Opticians offer good value in supermarket settings. All major chains provide NHS services.
-
-Independent opticians — of which there are thousands across the UK — often provide a more personalised service, with longer appointment times and a highly curated selection of frames. Many independents invest in the latest diagnostic technology and may include extras such as OCT scans and retinal photography in their standard fee. The personal, continuing relationship with your optometrist can be valuable, particularly if you have complex visual needs or ongoing eye health conditions.
-
-When choosing an optician, consider: proximity and convenience (is it easy to get to?), opening hours (do they offer evenings or weekends?), pricing (compare standard test costs and extras), technology (do they offer OCT scans and retinal photography?), reviews (check Google, Trustpilot, and local recommendations), NHS services (most opticians offer these, but check), specialist needs (contact lenses, children's tests, dry eye clinics), and frame selection (does their range suit your taste and budget?).
-
-The most efficient way to compare options is to search by postcode and see which opticians are nearby, their prices, current offers, and available appointment times. This allows you to make an informed choice based on real availability rather than assumptions.`,
-    faqs: [
-      {
-        question: "Are independent opticians better than chains?",
-        answer:
-          "Neither is inherently better. Both employ qualified optometrists to the same professional standards. Independents may offer more personalised service and longer appointments, while chains often have lower prices, more locations, and extended opening hours. The best choice depends on your priorities.",
-      },
-      {
-        question: "How do I find an optician near me?",
-        answer:
-          "Search by postcode on eyetest.co.uk to compare opticians in your area. You can also search on Google Maps, check the General Optical Council register, or ask for local recommendations.",
-      },
-      {
-        question: "Should I stay with the same optician?",
-        answer:
-          "There is value in continuity — your optician builds a record of your eye health over time, making it easier to spot changes. However, you are free to change at any time. Your prescription is portable and valid at any optician.",
-      },
-    ],
-    relatedQueries: [
-      "boots-eye-test",
-      "vision-express-eye-test",
-      "specsavers-vs-boots",
-      "eye-test-near-me",
-    ],
-    ctaText: "Find the best opticians near you",
   },
 
   // ─── General ──────────────────────────────────────────────────────────
   {
-    slug: "eye-test-near-me",
-    keyword: "eye test near me",
-    title: "Eye Test Near Me — Find & Book Appointments in Your Area",
-    category: "general",
-    shortDescription:
-      "Find eye test appointments near you. Compare opticians, prices, and availability in your local area and book online in seconds.",
-    content: `Finding an eye test near you is easy. The UK has thousands of opticians — from major chains to independent practices — and most offer online booking with real-time availability. Whether you need a routine sight test, an urgent appointment, or a specialist assessment, there is an optician nearby that can help.
-
-To find eye tests in your area, simply enter your postcode and you can see all available opticians, their prices, opening hours, and appointment availability. Major chains like Specsavers, Boots Opticians, and Vision Express have stores in virtually every town centre and retail park. Independent opticians are found on high streets and in local shopping areas throughout the UK. Between them, you are rarely more than a few minutes' drive from an optician.
-
-When choosing where to book, consider what matters most to you. If price is your priority, Specsavers and ASDA tend to be the most affordable. If you want the latest diagnostic technology included as standard, look for practices offering enhanced tests with OCT scans. If personal service and a boutique frame selection appeal, an independent optician may be the best fit. All UK opticians, whether chain or independent, must employ qualified, GOC-registered optometrists.
-
-Most eye tests take 20 to 30 minutes and can be booked for the same day or within a few days. Prices range from free (if you qualify for an NHS-funded test) to around £25 to £45 for a private test. Many opticians offer free test promotions, particularly online. Evening and weekend appointments are widely available at chain opticians.
-
-If you need an urgent appointment for a sudden eye problem — such as flashes, floaters, vision loss, or a painful red eye — many opticians provide same-day emergency eye care through the NHS MECS scheme. Call your nearest optician to arrange an urgent assessment.`,
-    faqs: [
-      {
-        question: "How do I find the nearest optician?",
-        answer:
-          "Enter your postcode on eyetest.co.uk to see all opticians near you with prices and availability. You can also search on Google Maps or check the websites of specific chains like Specsavers, Boots, or Vision Express.",
-      },
-      {
-        question: "Can I book an eye test for today?",
-        answer:
-          "Yes, many opticians have same-day availability. Search online or call your nearest optician to check. Weekday mornings and early afternoons tend to have the most availability for same-day appointments.",
-      },
-      {
-        question: "Do I need to register with an optician like I do with a GP?",
-        answer:
-          "No. Unlike GP practices, you do not need to register with an optician. You can visit any optician for an eye test, and you are free to switch between practices at any time.",
-      },
-    ],
-    relatedQueries: [
-      "book-eye-test-online",
-      "best-opticians-near-me",
-      "same-day-eye-test",
-      "eye-test-cost",
-      "free-eye-test",
-    ],
-    ctaText: "Find eye tests near you",
-  },
-  {
     slug: "book-eye-test",
     keyword: "book eye test",
-    title: "Book an Eye Test — How to Book & What You Need to Know",
-    category: "general",
+    title: "Book an Eye Test Online: How to Book with Any UK Optician",
+    seoTitle: "Book an Eye Test Online: Specsavers, Boots, Vision Express and More",
+    seoDescription:
+      "How to book an eye test online or by phone with Specsavers, Boots, Vision Express, Asda, M&S and independents, what to bring and how to book a free NHS test.",
+    h1: "Book an Eye Test",
+    dateModified: "2026-11-10",
+    category: "availability",
     shortDescription:
-      "How to book an eye test in the UK, including online booking, what to bring, and how to prepare for your appointment.",
-    content: `Booking an eye test in the UK is straightforward and takes just a few minutes. You can book online, by phone, or by walking into your local optician. Here is everything you need to know about the booking process.
+      "How to book an eye test online or by phone with the main UK opticians, what to bring and how to book a free NHS-funded test.",
+    content: `You can book an eye test online with all the main UK opticians, including Specsavers, Boots, Vision Express, Asda and M&S Opticians, or by phoning or visiting your local practice. Enter your postcode above to find opticians near you, then choose the one that suits you.
 
-The quickest way to book is online. Visit the website of your preferred optician (Specsavers, Boots, Vision Express, or search for independents) and use their online booking system. You will see real-time availability, choose a date and time, and receive instant confirmation. You can also book through eyetest.co.uk to compare availability across multiple opticians in your area from a single search.
-
-When booking, you will be asked to provide your name, date of birth, contact details, and whether you have visited the practice before. If you qualify for a free NHS-funded eye test, make sure to mention this — you may need to provide proof of eligibility (such as a benefit letter or proof of age) at your appointment. If you wear contact lenses, mention this when booking so the correct appointment type can be allocated.
-
-To prepare for your eye test, bring your current glasses and/or contact lenses, a list of any medications you take (as some affect your eyes), your most recent prescription if you have one, and any NHS exemption documentation if applicable. Wearing your contact lenses to the appointment is fine — your optometrist will advise if they need to be removed for any part of the test.
-
-There is no need to prepare your eyes in any special way. You do not need to fast, avoid caffeine, or stop using eye drops beforehand. If you think drops might be used during your test (for example, for a diabetic check or cataract assessment), arrange transport home as your vision may be temporarily blurry afterwards. Otherwise, you can drive to and from your appointment as normal.`,
+If you think you qualify for a free NHS-funded eye test, say so when you book. The optician will check your entitlement and may ask you to bring proof, such as a benefit award letter or HC2 certificate.`,
+    sections: [
+      {
+        heading: "How to book",
+        items: [
+          "Find an optician near you by postcode or town",
+          "Choose the type of appointment: a sight test, a contact lens check or both",
+          "Say whether you qualify for an NHS-funded test",
+          "Pick a time; many chains show same-week and weekend slots online",
+          "Bring your current glasses or contact lenses, a list of any medicines and any proof of NHS entitlement",
+        ],
+      },
+      {
+        heading: "Book with the main opticians",
+        links: [
+          { label: "Specsavers", href: "/opticians/specsavers" },
+          { label: "Boots Opticians", href: "/opticians/boots-opticians" },
+          { label: "Vision Express", href: "/opticians/vision-express" },
+          { label: "Asda Opticians", href: "/opticians/asda-opticians" },
+          { label: "M&S Opticians", href: "/opticians/mands-opticians" },
+          { label: "Opticians near me", href: "/find/opticians-near-me" },
+        ],
+      },
+      {
+        heading: "Urgent eye problems",
+        body: `Do not wait for a routine appointment if you have sudden changes in your vision, eye pain, a red eye, flashing lights or a shower of new floaters. Call an optician the same day or contact NHS 111. For a sudden loss of vision, go to A&E or call 999.`,
+        links: [
+          { label: "Emergency eye test", href: "/find/emergency-eye-test-near-me" },
+          { label: "Same-day eye test", href: "/find/same-day-eye-test" },
+        ],
+      },
+    ],
     faqs: [
       {
-        question: "How long does it take to book an eye test?",
+        question: "Can I book an eye test online?",
         answer:
-          "Online booking takes about two minutes. You choose your optician, select a date and time, enter your details, and receive confirmation immediately. Phone booking typically takes five to ten minutes.",
+          "Yes. Specsavers, Boots, Vision Express, Asda and M&S Opticians all let you book online, and many independent opticians do too. You can also phone or visit your local practice.",
       },
       {
-        question: "Can I book an eye test for someone else?",
+        question: "How do I book a free NHS eye test?",
         answer:
-          "Yes. You can book on behalf of a family member, child, or elderly relative. Provide their details when booking and ensure they bring their own identification and any relevant documents to the appointment.",
+          "Book with any optician that offers NHS sight tests and tell them you think you qualify. They will check your entitlement and may ask for proof such as your date of birth, a benefit award letter or an HC2 certificate.",
       },
       {
-        question: "What should I bring to my eye test?",
+        question: "How long does an eye test take?",
         answer:
-          "Bring your current glasses or contact lenses, a list of medications, your previous prescription if available, and proof of NHS eligibility if applicable. If you have a specific concern (such as difficulty reading or headaches), note it down so you remember to mention it.",
+          "Most eye tests take around 20 to 30 minutes. Vision Express, for example, says its tests usually take 25 minutes. Allow extra time if you are also choosing glasses or having a contact lens check.",
       },
     ],
     relatedQueries: [
-      "book-eye-test-online",
-      "eye-test-near-me",
-      "eye-test-what-to-expect",
+      "opticians-near-me",
       "eye-test-cost",
+      "free-eye-test",
       "same-day-eye-test",
+      "eye-test-what-to-expect",
     ],
     ctaText: "Book an eye test near you",
+    disclaimer:
+      "Appointment availability, opening hours and prices vary between stores and change from time to time. Check with the optician when you book.",
   },
   {
     slug: "opticians-near-me",
     keyword: "opticians near me",
-    title: "Opticians Near Me — Find & Compare Local Opticians",
-    category: "general",
+    title: "Opticians Near Me: Find and Compare Local Opticians",
+    seoTitle: "Opticians Near Me: Find an Eye Test Near You by Postcode or Town",
+    seoDescription:
+      "Find opticians and eye tests near you. Search by postcode or choose your town to compare Specsavers, Boots, Vision Express, Asda, M&S and independents, with NHS details.",
+    h1: "Opticians and Eye Tests Near You",
+    dateModified: "2026-11-10",
+    category: "availability",
     shortDescription:
-      "Find opticians near you in the UK. Compare chains and independents, check prices, and book appointments online.",
-    content: `The UK has an excellent network of opticians, with practices in virtually every town centre, shopping centre, and retail park. Whether you prefer a major chain or an independent practice, you will find a qualified optician nearby.
+      "Search by postcode or choose your town to find opticians near you, compare the main chains and independents, and check NHS eye test details.",
+    content: `Enter your postcode above to see opticians near you, or choose your town from the list below. Each town page lists the opticians in the area, from Specsavers, Boots, Vision Express, Asda and M&S Opticians to local independent practices, with details on NHS-funded eye tests and typical prices.
 
-Major chain opticians with extensive UK coverage include Specsavers (over 900 stores), Boots Opticians (around 500 stores), Vision Express (approximately 400 stores), ASDA Opticians, and Tesco Opticians. These chains offer consistent service standards, competitive pricing, and convenient opening hours including Saturdays and often Sundays. They all provide NHS eye care services.
-
-Independent opticians make up a significant proportion of the UK optical market. There are thousands of independent practices across the country, from single-practitioner businesses to small local chains. Independents often offer longer appointment times, a more personalised service, and carefully selected frame ranges that differ from the chains. Many invest in premium diagnostic equipment and may include extras like OCT scans in their standard eye test fee.
-
-To find opticians near you, enter your postcode and see all available options with their locations, prices, opening hours, and appointment availability. You can filter by distance, price, NHS availability, and appointment times to find the best match for your needs.
-
-All UK opticians — whether chain or independent — must be registered with the General Optical Council (GOC), and all optometrists must hold current GOC registration. This means you can be confident of professional standards wherever you choose to have your test. Your choice should come down to convenience, price, the services offered, and your personal preference for the experience.`,
+Almost every high-street optician offers NHS-funded eye tests for people who qualify, and in Scotland NHS eye examinations are free for all UK residents. If you cannot leave home unaccompanied, you may be able to have an eye test at home.`,
+    sections: [
+      {
+        heading: "Choosing an optician near you",
+        items: [
+          "Check the price and what it includes, such as an OCT scan",
+          "Check whether you qualify for a free NHS-funded eye test",
+          "Look at opening hours and weekend appointments",
+          "If you need an urgent appointment for a sudden eye problem, call the optician rather than booking online",
+          "If you wear contact lenses, book a contact lens check as well as a sight test",
+        ],
+        links: [
+          { label: "Eye test prices", href: "/find/eye-test-cost" },
+          { label: "Free eye test guide", href: "/find/free-eye-test" },
+          { label: "Book an eye test", href: "/find/book-eye-test" },
+          { label: "Home eye tests", href: "/find/eye-test-at-home" },
+          { label: "Emergency eye test", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+      {
+        heading: "Opticians by brand",
+        links: [
+          { label: "Specsavers", href: "/opticians/specsavers" },
+          { label: "Boots Opticians", href: "/opticians/boots-opticians" },
+          { label: "Vision Express", href: "/opticians/vision-express" },
+          { label: "Asda Opticians", href: "/opticians/asda-opticians" },
+          { label: "M&S Opticians", href: "/opticians/mands-opticians" },
+          { label: "All opticians", href: "/opticians" },
+        ],
+      },
+    ],
+    showTownIndex: true,
     faqs: [
       {
-        question: "How do I find the nearest optician to me?",
+        question: "How do I find an optician near me?",
         answer:
-          "Enter your postcode on eyetest.co.uk to find all opticians near you. You can also use Google Maps, or check the store locators on the websites of specific chains.",
+          "Enter your postcode at the top of this page, or choose your town from the list. Town pages list local opticians with NHS details and prices.",
       },
       {
-        question: "Do I need to go to a specific optician for an NHS eye test?",
+        question: "Do all opticians offer NHS eye tests?",
         answer:
-          "No. Almost every optician in the UK provides NHS eye tests. You can choose any optician — you are not restricted to a particular practice.",
+          "Most high-street opticians, including Specsavers, Boots, Vision Express, Asda and M&S Opticians, offer NHS-funded eye tests for people who qualify. Some independent practices are private only, so check when you book.",
       },
       {
-        question: "Can I switch opticians?",
+        question: "Can I get an eye test today?",
         answer:
-          "Yes, at any time. You are not tied to any optician. Your prescription is portable and valid at any practice. However, there is value in continuity as your optician builds a record of your eye health over time.",
+          "Many opticians show same-day or same-week appointments online. If you have a sudden eye problem such as pain, a red eye, flashes or new floaters, call an optician straight away or contact NHS 111.",
       },
     ],
     relatedQueries: [
-      "eye-test-near-me",
-      "best-opticians-near-me",
-      "book-eye-test-online",
+      "book-eye-test",
       "eye-test-cost",
+      "free-eye-test",
+      "same-day-eye-test",
+      "emergency-eye-test-near-me",
     ],
     ctaText: "Find opticians near you",
+    disclaimer:
+      "Opening hours, prices, services and appointment availability vary between stores and change from time to time. Check with the optician before you visit.",
   },
   {
     slug: "eye-test-what-to-expect",
@@ -1211,7 +1327,6 @@ Finally, the optometrist examines the health of your eyes. Using an ophthalmosco
     ],
     relatedQueries: [
       "book-eye-test",
-      "eye-test-near-me",
       "how-long-does-eye-test-take",
       "eye-test-cost",
       "do-i-need-an-eye-test",
@@ -1254,8 +1369,6 @@ If you are short on time, let the receptionist know when you book. They can advi
     relatedQueries: [
       "eye-test-what-to-expect",
       "book-eye-test",
-      "eye-test-near-me",
-      "book-eye-test-online",
       "eye-test-cost",
     ],
     ctaText: "Book your eye test appointment",
@@ -1299,7 +1412,6 @@ Your optometrist will advise you at the end of each test when to return. Follow 
       "do-i-need-an-eye-test",
       "eye-test-what-to-expect",
       "book-eye-test",
-      "nhs-eye-test",
       "free-eye-test-over-60",
     ],
     ctaText: "Book your eye test today",
@@ -1388,7 +1500,6 @@ It is worth noting that many people who fail the number plate test simply need g
     ],
     relatedQueries: [
       "eye-test-for-driving",
-      "eye-test-near-me",
       "eye-test-cost",
       "book-eye-test",
       "blurry-vision-causes",
@@ -1473,7 +1584,6 @@ If your vision does not meet the driving standard, you must stop driving and inf
     ],
     relatedQueries: [
       "eye-test-failed-driving",
-      "eye-test-near-me",
       "book-eye-test",
       "eye-test-cost",
       "blurry-vision-causes",
@@ -1515,9 +1625,7 @@ It is important to understand that a sight test and a contact lens appointment a
     ],
     relatedQueries: [
       "eye-test-cost",
-      "eye-test-near-me",
       "boots-eye-test",
-      "book-eye-test-online",
     ],
     ctaText: "Find contact lens appointments near you",
   },
@@ -1556,9 +1664,7 @@ Children should have annual eye tests throughout their school years. If glasses 
     ],
     relatedQueries: [
       "free-eye-test-children",
-      "nhs-eye-test",
       "eye-test-what-to-expect",
-      "eye-test-near-me",
       "nhs-optical-voucher",
     ],
     ctaText: "Book a free children's eye test",
@@ -1598,10 +1704,7 @@ A private glaucoma assessment, if needed, typically costs £30 to £60 and inclu
     ],
     relatedQueries: [
       "oct-scan-cost",
-      "nhs-eye-test",
-      "free-nhs-eye-test-eligibility",
       "eye-test-cost",
-      "eye-test-near-me",
     ],
     ctaText: "Find glaucoma testing near you",
   },
@@ -1642,7 +1745,6 @@ There is currently no cure for inherited colour vision deficiency. However, awar
       "childrens-eye-test-guide",
       "eye-test-for-driving",
       "eye-test-what-to-expect",
-      "eye-test-near-me",
       "book-eye-test",
     ],
     ctaText: "Book a colour vision test",
@@ -1684,7 +1786,6 @@ As a general rule: gradual blurriness that has developed over weeks or months is
     ],
     relatedQueries: [
       "do-i-need-an-eye-test",
-      "eye-test-near-me",
       "headaches-and-vision",
       "floaters-in-vision",
       "sudden-vision-changes",
@@ -1729,7 +1830,6 @@ An eye test is a quick, painless, and inexpensive first step in investigating he
     relatedQueries: [
       "do-i-need-an-eye-test",
       "blurry-vision-causes",
-      "eye-test-near-me",
       "book-eye-test",
       "eye-test-what-to-expect",
     ],
@@ -1772,7 +1872,6 @@ If your floaters are longstanding, have not changed, and are not accompanied by 
       "sudden-vision-changes",
       "emergency-eye-test-near-me",
       "do-i-need-an-eye-test",
-      "eye-test-near-me",
       "blurry-vision-causes",
     ],
     ctaText: "Find urgent eye care near you",
@@ -1814,7 +1913,6 @@ Time matters with many of these conditions. Retinal detachment is best treated w
       "emergency-eye-test-near-me",
       "floaters-in-vision",
       "blurry-vision-causes",
-      "eye-test-near-me",
       "same-day-eye-test",
     ],
     ctaText: "Find urgent eye care now",

@@ -26,7 +26,7 @@
 - [Bayfields Opticians & Audiologists](https://www.eyetest.co.uk/opticians/bayfields): Bayfields Opticians & Audiologists eye tests, services, and store locations
 - [Duncan & Todd Group](https://www.eyetest.co.uk/opticians/duncan-and-todd): Duncan & Todd Group eye tests, services, and store locations
 - [Optical Express](https://www.eyetest.co.uk/opticians/optical-express): Optical Express eye tests, services, and store locations
-- [M&S Opticians](https://www.eyetest.co.uk/opticians/mands-opticians): M&S Opticians eye tests, services, and store locations across 37 UK stores
+- [M&S Opticians](https://www.eyetest.co.uk/opticians/mands-opticians): M&S Opticians eye tests cost £40 with an OCT scan included, free NHS tests if eligible, free hearing checks, 37 stores (checked November 2026)
 - [Ace & Tate](https://www.eyetest.co.uk/opticians/ace-and-tate): Ace & Tate eye tests, designer frames, and store locations across 17 UK stores
 
 ## Eye Test Types
@@ -206,32 +206,27 @@
 - [Eye Tests in Lisburn](https://www.eyetest.co.uk/locations/lisburn)
 
 ## Search Guides (Find)
-- [Eye Test Cost UK](https://www.eyetest.co.uk/find/eye-test-cost): How much does an eye test cost in the UK
-- [Free Eye Test](https://www.eyetest.co.uk/find/free-eye-test): Free eye tests — who qualifies and where to book
+- [Eye Test Cost UK](https://www.eyetest.co.uk/find/eye-test-cost): Published eye test prices at Specsavers (£20 to £25), Asda (£24), Boots (from £29.95), Vision Express (£30 with OCT) and M&S (£40 with OCT), checked November 2026
+- [Free Eye Test](https://www.eyetest.co.uk/find/free-eye-test): Who gets a free NHS eye test in England, Scotland, Wales and Northern Ireland, proof to bring, vouchers and time-limited optician offers
 - [Cheap Eye Test](https://www.eyetest.co.uk/find/cheap-eye-test): Cheapest eye tests near you
 - [Private Eye Test Cost](https://www.eyetest.co.uk/find/private-eye-test-cost): Private eye test costs UK
 - [Boots Eye Test Cost](https://www.eyetest.co.uk/find/boots-eye-test-cost): Boots pricing, offers and what's included
-- [NHS Eye Test](https://www.eyetest.co.uk/find/nhs-eye-test): NHS eye test eligibility and how to book
-- [Free NHS Eye Test Eligibility](https://www.eyetest.co.uk/find/free-nhs-eye-test-eligibility): Full list of who qualifies
 - [Free Eye Test Over 60](https://www.eyetest.co.uk/find/free-eye-test-over-60): NHS free tests for over 60s
 - [Free Eye Test Children](https://www.eyetest.co.uk/find/free-eye-test-children): NHS entitlement for children
 - [Free Eye Test Diabetes](https://www.eyetest.co.uk/find/free-eye-test-diabetes): NHS entitlement for people with diabetes
-- [Free Eye Test Universal Credit](https://www.eyetest.co.uk/find/free-eye-test-universal-credit): How to claim on Universal Credit
-- [NHS Optical Voucher](https://www.eyetest.co.uk/find/nhs-optical-voucher): Values, eligibility and how to use
+- [Free Eye Test Universal Credit](https://www.eyetest.co.uk/find/free-eye-test-universal-credit): Free NHS eye test and voucher if take-home pay is £435 or less (£935 with a child element or LCW)
+- [NHS Optical Voucher](https://www.eyetest.co.uk/find/nhs-optical-voucher): England voucher values £42.40 to £233.56 (April 2026), who qualifies and how to use one
 - [Same-Day Eye Test](https://www.eyetest.co.uk/find/same-day-eye-test): Find last-minute appointments
 - [Walk-In Eye Test](https://www.eyetest.co.uk/find/walk-in-eye-test): No appointment needed opticians
 - [Weekend Eye Test](https://www.eyetest.co.uk/find/weekend-eye-test): Saturday and Sunday appointments
 - [Emergency Eye Test Near Me](https://www.eyetest.co.uk/find/emergency-eye-test-near-me): Urgent same-day eye care
-- [Book Eye Test Online](https://www.eyetest.co.uk/find/book-eye-test-online): Quick online appointment booking
 - [Eye Test at Home](https://www.eyetest.co.uk/find/eye-test-at-home): Domiciliary eye care in the UK
 - [Online Eye Test](https://www.eyetest.co.uk/find/online-eye-test): Can you test your eyes online?
 - [Boots Eye Test](https://www.eyetest.co.uk/find/boots-eye-test): Cost, enhanced checks and booking
 - [Vision Express Eye Test](https://www.eyetest.co.uk/find/vision-express-eye-test): Price, what's included and booking
 - [Specsavers vs Boots](https://www.eyetest.co.uk/find/specsavers-vs-boots): Eye test comparison
-- [Best Opticians Near Me](https://www.eyetest.co.uk/find/best-opticians-near-me): How to find the right optician
-- [Eye Test Near Me](https://www.eyetest.co.uk/find/eye-test-near-me): Find and book appointments in your area
-- [Book an Eye Test](https://www.eyetest.co.uk/find/book-eye-test): How to book and what you need to know
-- [Opticians Near Me](https://www.eyetest.co.uk/find/opticians-near-me): Find and compare local opticians
+- [Book an Eye Test](https://www.eyetest.co.uk/find/book-eye-test): How to book online or by phone with the main UK opticians and how to book a free NHS test
+- [Opticians Near Me](https://www.eyetest.co.uk/find/opticians-near-me): Find opticians near you by postcode or town, with links to every town page
 - [What to Expect During an Eye Test](https://www.eyetest.co.uk/find/eye-test-what-to-expect): Step-by-step UK guide
 - [How Long Does an Eye Test Take?](https://www.eyetest.co.uk/find/how-long-does-eye-test-take): UK appointment guide
 - [How Often Should You Have an Eye Test?](https://www.eyetest.co.uk/find/how-often-eye-test): UK guidelines
