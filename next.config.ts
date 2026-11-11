@@ -74,6 +74,11 @@ const nextConfig: NextConfig = {
         destination: "/at-home-eye-tests",
         permanent: true,
       },
+      {
+        source: "/eye-tests/colour-vision-test",
+        destination: "/find/colour-blind-test",
+        permanent: true,
+      },
     ];
   },
 };

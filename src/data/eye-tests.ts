@@ -752,3 +752,15 @@ export function getTestBySlug(slug: string): EyeTest | undefined {
 export function getAllSlugs(): string[] {
   return eyeTests.map((test) => test.slug);
 }
+
+/** Eye test slugs that now redirect elsewhere, with where their links should point */
+const EYE_TEST_REDIRECTS: Record<string, string> = {
+  "home-visit-eye-test": "/at-home-eye-tests",
+  "colour-vision-test": "/find/colour-blind-test",
+};
+
+export const REDIRECTED_EYE_TESTS = new Set(Object.keys(EYE_TEST_REDIRECTS));
+
+export function eyeTestHref(slug: string): string {
+  return EYE_TEST_REDIRECTS[slug] ?? `/eye-tests/${slug}`;
+}

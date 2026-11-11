@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero, HeroSearchForm } from "@/components/PageHero";
 import { AtHomeCallout } from "@/components/AtHomeCallout";
-import { eyeTests } from "@/data/eye-tests";
+import { eyeTests, REDIRECTED_EYE_TESTS } from "@/data/eye-tests";
 
 // ---------------------------------------------------------------------------
 // SEO metadata
@@ -77,7 +77,7 @@ const faqs = [
 
 export default function EyeTestsPage() {
   // Filter out home-visit-eye-test (redirects to /at-home-eye-tests)
-  const visibleTests = eyeTests.filter(t => t.slug !== "home-visit-eye-test");
+  const visibleTests = eyeTests.filter(t => !REDIRECTED_EYE_TESTS.has(t.slug));
 
   // Structured data
   const jsonLd = {

@@ -748,20 +748,20 @@ For advanced cases where contact lenses can no longer provide adequate vision an
       "Ageing — colour discrimination naturally declines slightly with age",
       "Optic nerve disease or damage",
     ],
-    treatment: `Inherited colour vision deficiency cannot be cured or treated with medication or surgery. However, awareness of the condition is the most important first step, as many practical strategies can make daily life easier. Colour vision testing — usually with Ishihara plates — is quick and simple and should be included in every child's first eye test.
+    treatment: `Inherited colour vision deficiency cannot be cured or treated with medication or surgery. However, awareness of the condition is the most important first step, as many practical strategies can make daily life easier. Colour vision testing, usually with Ishihara plates, is quick and simple. It is not part of the routine NHS eye test, but you can ask your optician for it.
 
 For those who find their colour deficiency affects daily tasks, tinted lenses and filters (such as EnChroma glasses or Colorlite lenses) may enhance colour contrast for some individuals, though they do not provide normal colour vision and results vary. Smartphone apps that identify colours from the camera can be helpful for matching clothes, interpreting colour-coded labels, or identifying wiring colours in practical tasks.
 
 In terms of career implications, certain professions in the UK require specific colour vision standards. These include the armed forces, police, fire and rescue services, aviation (pilots and air traffic controllers), maritime roles, electrical engineering, and some healthcare positions. Your optometrist can provide a detailed colour vision assessment and, if needed, a report for employers. For children, early identification allows parents and teachers to make simple adjustments — such as labelling coloured pencils and avoiding colour-only instructions — to support learning without disadvantage.`,
     prevention: [
       "Inherited colour vision deficiency cannot be prevented",
-      "Have children's colour vision tested as part of their first eye test to ensure early awareness",
+      "Ask your optician to check your child's colour vision, as it is not part of the routine NHS eye test",
       "If you have a family history of colour blindness, mention this to your optometrist",
       "Protect your eye health generally to reduce the risk of acquired colour vision changes",
       "Attend regular eye tests as you age, since some colour discrimination changes can be linked to treatable conditions",
     ],
     whenToSeeOptician:
-      "Book an eye test that includes colour vision assessment if you suspect you or your child has difficulty with colours, or if accurate colour vision is required for your career — early diagnosis helps with practical adaptation and career planning.",
+      "Book an eye test and ask for a colour vision check if you suspect you or your child has difficulty with colours, or if accurate colour vision is required for your career — early diagnosis helps with practical adaptation and career planning.",
     relatedConditions: [
       "cataracts",
       "glaucoma",

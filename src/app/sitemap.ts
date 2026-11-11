@@ -50,7 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   /* ------------------------------------------------------------------ */
 
   /* Exclude slugs that redirect to standalone pages */
-  const excludedEyeTestSlugs = new Set(["home-visit-eye-test"]);
+  const excludedEyeTestSlugs = new Set(["home-visit-eye-test", "colour-vision-test"]);
 
   const eyeTestPages: MetadataRoute.Sitemap = getAllEyeTestSlugs()
     .filter((slug) => !excludedEyeTestSlugs.has(slug))

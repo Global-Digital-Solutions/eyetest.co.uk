@@ -17,7 +17,7 @@ const eyeTestLinks = [
   { label: "Visual Field Test", href: "/eye-tests/visual-field-test" },
   { label: "Diabetic Eye Screening", href: "/eye-tests/diabetic-eye-screening" },
   { label: "Dry Eye Assessment", href: "/eye-tests/dry-eye-assessment" },
-  { label: "Colour Vision Test", href: "/eye-tests/colour-vision-test" },
+  { label: "Colour Blind Test", href: "/find/colour-blind-test" },
   { label: "DVLA / Driving Test", href: "/eye-tests/dvla-driving-vision-test" },
   { label: "Emergency Eye Care", href: "/eye-tests/emergency-eye-care" },
   { label: "Home Visit Eye Test", href: "/at-home-eye-tests" },

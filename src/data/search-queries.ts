@@ -1634,43 +1634,122 @@ A private glaucoma assessment, if needed, typically costs £30 to £60 and inclu
   {
     slug: "colour-blind-test",
     keyword: "colour blind test",
-    title: "Colour Blind Test — How to Get Tested for Colour Vision Deficiency",
+    title: "Colour Blind Test UK: How to Get Tested for Colour Vision Deficiency",
+    seoTitle: "Colour Blind Test UK 2026: How to Get Tested at an Optician",
+    seoDescription:
+      "How to get a colour blind test in the UK, what the Ishihara and colour arrangement tests involve, signs in children, and what colour blindness means for driving and work.",
+    h1: "Colour Blind Test: How to Get Your Colour Vision Checked in the UK",
+    dateModified: "2026-11-11",
     category: "specialist",
     shortDescription:
-      "How colour vision testing works in the UK, who should be tested, and how colour blindness might affect careers and daily life.",
-    content: `Colour vision deficiency — commonly known as colour blindness — affects approximately 1 in 12 men and 1 in 200 women in the UK. The most common type is red-green colour deficiency, where certain shades of red and green appear similar or are difficult to distinguish. Total colour blindness (seeing in greyscale) is extremely rare.
+      "How to get tested for colour blindness at a UK optician, what the tests involve, signs to look for in children, and what it means for driving and careers.",
+    content: `Colour blindness, or colour vision deficiency, means you see colours differently from most people and may find it hard to tell certain colours apart. Colour Blind Awareness estimates that it affects about 1 in 12 men and 1 in 200 women, around 3 million people in the UK.
 
-Colour vision testing is usually included as part of a standard eye test at no extra charge, particularly for children and for adults who have not been tested before. The most common screening tool is the Ishihara test, which uses plates covered in coloured dots with numbers or patterns hidden within them. People with normal colour vision see the numbers clearly, while those with a deficiency may see different numbers or none at all.
+The NHS says colour vision testing is not part of the routine NHS eye test, but you can ask your optician for it. So if you want your colour vision checked, mention it when you book. Most opticians can carry out a quick colour vision check during an appointment.
 
-If the Ishihara test suggests a colour vision deficiency, more detailed tests may be used to determine the exact type and severity. These include the Farnsworth D-15 test, the City University Test, and in specialist settings, the anomaloscope. Knowing the precise nature of your colour deficiency is important if you are pursuing a career that requires specific colour vision standards.
-
-Careers affected by colour vision requirements include the armed forces, police, fire service, aviation (pilots, air traffic controllers), maritime (deck officers), electrical engineering, train driving, and some healthcare roles. If your career requires a colour vision certificate, your optometrist can provide the appropriate assessment and documentation.
-
-There is currently no cure for inherited colour vision deficiency. However, awareness and practical strategies can make a significant difference. Some people find tinted filters or specific spectacle tints helpful in certain situations, though these do not restore normal colour vision. For children, early detection allows teachers to make adjustments — such as labelling colours on classroom materials and avoiding colour-coded information where possible.`,
+Online colour blind tests can give you an idea of whether you might have a colour vision deficiency, but they are not a diagnosis. Screens show colours differently, so if an online test or everyday life suggests a problem, the NHS advises getting checked at an optician.`,
+    keyFacts: [
+      { label: "Affects", value: "About 1 in 12 men, 1 in 200 women" },
+      { label: "UK total", value: "Around 3 million people" },
+      { label: "Routine NHS eye test", value: "Not included, ask for it" },
+      { label: "Driving (car)", value: "No need to tell the DVLA" },
+    ],
+    sections: [
+      {
+        heading: "How opticians test for colour blindness",
+        body: `The NHS describes two main types of colour vision test. Your optician may use one or both.`,
+        items: [
+          "Ishihara test: you look at a series of plates made of coloured dots and say what number or pattern you can see in each one. It mainly picks up red-green colour vision deficiency, the most common type.",
+          "Colour arrangement test: you put a set of coloured objects or caps in order of shade. This helps show the type and severity of a colour vision deficiency.",
+        ],
+        links: [
+          { label: "Find an optician near you", href: "/locations" },
+          { label: "Eye test prices", href: "/find/eye-test-cost" },
+        ],
+      },
+      {
+        heading: "Is a colour blind test free?",
+        body: `Colour vision testing is not part of the routine NHS sight test, according to the NHS, but you can ask your optician to check your colour vision. If you qualify for a free NHS eye test, ask the optician when you book whether they can include a colour vision check. If you pay for your eye test, ask whether a colour vision check is included or costs extra, as this can vary between opticians and stores.`,
+        links: [
+          { label: "Who gets a free NHS eye test", href: "/find/free-eye-test" },
+        ],
+      },
+      {
+        heading: "Signs of colour blindness in children",
+        body: `Colour Blind Awareness estimates that around 40% of colour blind pupils leave school without knowing they are colour blind. The NHS lists signs that a child may be colour blind, including:`,
+        items: [
+          "Using the wrong colours, for example drawing purple leaves on a tree",
+          "Finding it hard to sort or pick out coloured objects",
+          "Showing little interest in colouring activities",
+          "Smelling food before eating it",
+        ],
+      },
+      {
+        heading: "What causes colour blindness?",
+        body: `Most colour blindness is inherited and present from birth. The NHS says it can also be caused by eye conditions such as glaucoma, by diabetes, liver disease and multiple sclerosis, by an eye or head injury or a stroke, and by some medicines. If your colour vision changes later in life, see an optician.`,
+        links: [
+          { label: "Colour blindness explained", href: "/eye-health/conditions/colour-blindness" },
+          { label: "Glaucoma test", href: "/find/glaucoma-test" },
+        ],
+      },
+      {
+        heading: "Colour blindness, driving and work",
+        body: `GOV.UK says you do not need to tell the DVLA if you are colour blind when driving a car or motorcycle. The NHS notes that colour blindness may affect some careers, such as becoming a pilot or a train driver. If you are applying for a role with colour vision standards, check the employer's requirements and ask your optician about a colour vision check before you apply.`,
+        links: [
+          { label: "Eye test for driving", href: "/find/eye-test-for-driving" },
+        ],
+      },
+      {
+        heading: "Can colour blindness be treated?",
+        body: `The NHS says there is no treatment for inherited colour blindness, and most people adapt to it. If your child is colour blind, the NHS suggests telling their school so teachers can support them. Colour blindness caused by another condition may improve if that condition is treated.`,
+      },
+    ],
     faqs: [
       {
-        question: "Can you cure colour blindness?",
+        question: "Can I get a colour blind test at an optician?",
         answer:
-          "There is currently no cure for inherited colour vision deficiency. Some tinted lenses and filters can enhance colour perception in certain situations, but they do not restore normal colour vision. Gene therapy research is ongoing but not yet available as a treatment.",
+          "Yes. Colour vision testing is not part of the routine NHS eye test, but the NHS says you can ask your optician for it. Mention it when you book so they can include a colour vision check.",
       },
       {
-        question: "Should I get my child tested for colour blindness?",
+        question: "Is a colour blind test part of a normal eye test?",
         answer:
-          "Yes. Colour vision testing should be part of your child's routine eye test. Early detection helps teachers and parents support the child's learning. It is especially important for boys, as 1 in 12 males has some degree of colour deficiency.",
+          "Not routinely. The NHS says colour vision testing is not part of the routine NHS eye test, but you can ask your optician to check your colour vision.",
       },
       {
-        question: "Can colour blindness affect driving?",
+        question: "Are online colour blind tests accurate?",
         answer:
-          "Colour vision deficiency does not disqualify you from driving a car in the UK. The DVLA does not require a colour vision test for standard (Group 1) driving licences. However, some professional driving roles may have colour vision requirements.",
+          "Online tests can suggest whether you might be colour blind, but they are not a diagnosis because screens display colours differently. If you are concerned, get your colour vision checked at an optician.",
+      },
+      {
+        question: "Do I need to tell the DVLA if I am colour blind?",
+        answer:
+          "No. GOV.UK says you do not need to tell the DVLA if you are colour blind when driving a car or motorcycle.",
+      },
+      {
+        question: "How common is colour blindness?",
+        answer:
+          "Colour Blind Awareness estimates that about 1 in 12 men and 1 in 200 women are colour blind, around 3 million people in the UK.",
+      },
+      {
+        question: "Can colour blindness be cured?",
+        answer:
+          "There is no treatment for inherited colour blindness, according to the NHS, and most people adapt. If it is caused by another condition, treating that condition may help.",
       },
     ],
     relatedQueries: [
       "childrens-eye-test-guide",
       "eye-test-for-driving",
+      "free-eye-test",
       "eye-test-what-to-expect",
-      "book-eye-test",
     ],
-    ctaText: "Book a colour vision test",
+    ctaText: "Find an optician near you and ask for a colour vision check",
+    disclaimer:
+      "This page is general information, not medical advice. Services vary between opticians, so check with the optician when you book.",
+    sources: [
+      { label: "NHS: Colour vision deficiency (colour blindness)", url: "https://www.nhs.uk/conditions/colour-vision-deficiency/" },
+      { label: "GOV.UK: Driving eyesight rules", url: "https://www.gov.uk/driving-eyesight-rules" },
+      { label: "Colour Blind Awareness: Colour blindness", url: "https://www.colourblindawareness.org/colour-blindness/" },
+    ],
   },
 
   // ─── Concern ──────────────────────────────────────────────────────────

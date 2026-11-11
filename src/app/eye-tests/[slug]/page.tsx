@@ -9,6 +9,7 @@ import {
   getTestBySlug,
   getAllSlugs,
   type EyeTest,
+  eyeTestHref,
 } from "@/data/eye-tests";
 
 // ---------------------------------------------------------------------------
@@ -621,7 +622,7 @@ export default async function EyeTestPage({
                 {relatedTests.map((related) => (
                   <Link
                     key={related.slug}
-                    href={`/eye-tests/${related.slug}`}
+                    href={eyeTestHref(related.slug)}
                     className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
                   >
                     <h3 className="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-primary)] transition-colors mb-2">

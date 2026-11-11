@@ -41,7 +41,6 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Visual Field Test (Perimetry)](https://www.eyetest.co.uk/eye-tests/visual-field-test)
 - [Diabetic Eye Screening](https://www.eyetest.co.uk/eye-tests/diabetic-eye-screening)
 - [Dry Eye Assessment](https://www.eyetest.co.uk/eye-tests/dry-eye-assessment)
-- [Colour Vision Test](https://www.eyetest.co.uk/eye-tests/colour-vision-test)
 - [DVLA / Driving Vision Test](https://www.eyetest.co.uk/eye-tests/dvla-driving-vision-test)
 - [Emergency Eye Care](https://www.eyetest.co.uk/eye-tests/emergency-eye-care)
 - [Home Visit Eye Test](https://www.eyetest.co.uk/at-home-eye-tests)
@@ -237,7 +236,7 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Contact Lens Eye Test](https://www.eyetest.co.uk/find/contact-lens-eye-test): Fitting, check-ups and cost
 - [Children's Eye Tests](https://www.eyetest.co.uk/find/childrens-eye-test-guide): Complete parent's guide
 - [Glaucoma Test](https://www.eyetest.co.uk/find/glaucoma-test): What it involves, cost and where to get tested
-- [Colour Blind Test](https://www.eyetest.co.uk/find/colour-blind-test): How to get tested for colour vision deficiency
+- [Colour Blind Test](https://www.eyetest.co.uk/find/colour-blind-test): How to get a colour vision check at a UK optician (not part of the routine NHS eye test, but you can ask for it), the Ishihara and colour arrangement tests, signs in children, and DVLA rules
 - [Blurry Vision Causes](https://www.eyetest.co.uk/find/blurry-vision-causes): When to see an optician
 - [Headaches and Vision](https://www.eyetest.co.uk/find/headaches-and-vision): Could your eyes be the cause?
 - [Floaters in Vision](https://www.eyetest.co.uk/find/floaters-in-vision): Causes, when to worry and what to do

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { eyeTestHref } from "@/data/eye-tests";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -280,7 +281,7 @@ export default async function GuidePage({
                             />
                           </svg>
                           <Link
-                            href={`/eye-tests/${test}`}
+                            href={eyeTestHref(test)}
                             className="text-sm text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-medium transition-colors"
                           >
                             {test
