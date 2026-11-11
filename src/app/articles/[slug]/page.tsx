@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OpticianOptions } from "@/components/OpticianOptions";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
@@ -395,6 +396,13 @@ export default async function ArticlePage({
                 </div>
               </aside>
             </div>
+          </div>
+        </section>
+
+        {/* ── Optician options ───────────────────────────────────────── */}
+        <section className="bg-white border-t border-gray-100">
+          <div className="max-w-6xl mx-auto px-4">
+            <OpticianOptions />
           </div>
         </section>
 

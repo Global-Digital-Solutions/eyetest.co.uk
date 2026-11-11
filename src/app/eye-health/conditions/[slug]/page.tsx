@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OpticianOptions } from "@/components/OpticianOptions";
 import { eyeTestHref } from "@/data/eye-tests";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
@@ -557,6 +558,13 @@ export default async function ConditionPage({
         </section>
 
         {/* CTA */}
+        {/* ── Optician options ───────────────────────────────────────── */}
+        <section className="bg-white border-t border-gray-100">
+          <div className="max-w-6xl mx-auto px-4">
+            <OpticianOptions />
+          </div>
+        </section>
+
         <section className="py-16 sm:py-20 bg-[var(--color-navy)]">
           <div className="max-w-3xl mx-auto px-4 text-center">
             <h2
