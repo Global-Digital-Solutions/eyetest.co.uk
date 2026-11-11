@@ -92,6 +92,10 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Eye Twitching](https://www.eyetest.co.uk/eye-health/conditions/eye-twitching): Common triggers, self-help, and see a GP if it lasts more than 2 weeks
 - [Uveitis](https://www.eyetest.co.uk/eye-health/conditions/uveitis): Inflammation inside the eye that needs urgent advice
 - [Swollen Eyelid](https://www.eyetest.co.uk/eye-health/conditions/swollen-eyelid): Common causes and when swelling is urgent
+- [Lazy Eye](https://www.eyetest.co.uk/eye-health/conditions/lazy-eye): Signs in children, best treated before age 7, glasses, patches and drops
+- [Detached Retina](https://www.eyetest.co.uk/eye-health/conditions/retinal-detachment): Warning signs that need NHS 111 straight away, surgery and recovery
+- [Watery Eyes](https://www.eyetest.co.uk/eye-health/conditions/watery-eyes): Common causes and when to see a GP
+- [Double Vision](https://www.eyetest.co.uk/eye-health/conditions/double-vision): Always get it checked; urgent signs and the DVLA rule
 
 ## Eye Health Guides
 - [How to Read Your Glasses Prescription](https://www.eyetest.co.uk/eye-health/guides/how-to-read-your-prescription)

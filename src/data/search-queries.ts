@@ -4281,6 +4281,321 @@ The NHS advises not diagnosing it yourself. A pharmacist, GP or optician can hel
       { label: "NHS: Eyelid problems", url: "https://www.nhs.uk/symptoms/eyelid-problems/" },
     ],
   },
+  {
+    slug: "lazy-eye",
+    keyword: "lazy eye",
+    title: "Lazy Eye (Amblyopia): Signs, Eye Tests and Treatment",
+    seoTitle: "Lazy Eye in Children: Signs, Patches, Glasses and When to Treat (NHS)",
+    seoDescription:
+      "A lazy eye is where vision does not develop properly in one eye. Signs to look for in children, free NHS eye tests, and treatment with glasses, patches or drops.",
+    h1: "Lazy Eye (Amblyopia)",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/lazy-eye",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "A lazy eye is where vision does not develop properly in one eye. Signs, eye tests and treatment.",
+    content: `A lazy eye is where the vision in one eye does not develop properly. The NHS says it does not always cause symptoms and is often first found during an eye test. Many children do not notice anything wrong with their vision.
+
+Treatment aims to improve vision in the weaker eye and should ideally start before the age of 7, while vision is still developing. Eye tests are free on the NHS for children under 16.`,
+    keyFacts: [
+      { label: "Often found at", value: "An eye test" },
+      { label: "Best treated", value: "Before age 7" },
+      { label: "Treatment", value: "Glasses, patches or drops" },
+      { label: "Children's eye tests", value: "Free on the NHS" },
+    ],
+    sections: [
+      {
+        heading: "Signs of a lazy eye",
+        items: [
+          "Shutting one eye or squinting when looking at things",
+          "Eyes pointing in different directions (a squint)",
+          "Not being able to follow an object or person with the eyes",
+          "Tilting the head when looking at something",
+          "Tired eyes, rubbing the eyes a lot, or headaches",
+          "Difficulty catching or throwing, or tripping over a lot",
+          "Blinking a lot",
+        ],
+      },
+      {
+        heading: "A simple check at home",
+        body: `The NHS suggests checking a younger child's eyes by covering each eye with your hand, one at a time. They may complain if you cover their good eye. Older children may say they cannot see as well with one eye. Go to an optician if you are worried, or if you or your child have not had an eye test for 2 years.`,
+        links: [
+          { label: "Children's eye tests", href: "/eye-tests/childrens-eye-test" },
+        ],
+      },
+      {
+        heading: "Treatment",
+        body: `Treatment depends on the cause and may include:`,
+        items: [
+          "Glasses to correct vision",
+          "An eye patch over the stronger eye for a few hours a day for several months, usually with glasses",
+          "Eye drops that temporarily blur vision in the stronger eye",
+          "Surgery if the lazy eye is caused by cataracts or a drooping eyelid, or to straighten a squint",
+        ],
+        links: [
+          { label: "Squint", href: "/eye-health/conditions/strabismus" },
+          { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What age should a lazy eye be treated?",
+        answer: "Ideally before age 7, while vision is still developing.",
+      },
+      {
+        question: "How is a lazy eye treated?",
+        answer: "With glasses, a patch over the stronger eye, or eye drops that blur the stronger eye. Sometimes surgery is needed.",
+      },
+      {
+        question: "Can I check my child for a lazy eye?",
+        answer: "Cover each eye one at a time. If your child complains when you cover their good eye, book an eye test.",
+      },
+      {
+        question: "Are children's eye tests free?",
+        answer: "Yes, for children under 16, and 16 to 18 year olds in full-time education.",
+      },
+    ],
+    relatedQueries: ["squint", "childrens-eye-test-guide", "free-eye-test-children"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. If you are worried about your child's eyes, see an optician.",
+    sources: [
+      { label: "NHS: Lazy eye", url: "https://www.nhs.uk/conditions/lazy-eye/" },
+    ],
+  },
+  {
+    slug: "retinal-detachment",
+    keyword: "retinal detachment",
+    title: "Detached Retina: Symptoms, Urgent Help and Surgery",
+    seoTitle: "Detached Retina (Retinal Detachment): Symptoms and Urgent Treatment",
+    seoDescription:
+      "A detached retina needs treating quickly to protect your sight. Warning signs like sudden floaters, flashes or a shadow, surgery, recovery and who is more at risk.",
+    h1: "Detached Retina (Retinal Detachment)",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/retinal-detachment",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "A detached retina needs treating quickly. Warning signs, surgery, recovery and risk factors.",
+    content: `A detached retina is when the thin layer at the back of your eye, the retina, becomes loose. The NHS says it needs to be treated quickly to stop it permanently affecting your sight.
+
+If you notice sudden floaters, flashes of light, a dark curtain or shadow across your vision, or suddenly blurred vision, get help from NHS 111 straight away.`,
+    keyFacts: [
+      { label: "Urgency", value: "Needs treating quickly" },
+      { label: "Warning signs", value: "Floaters, flashes, a shadow" },
+      { label: "Get help", value: "NHS 111 straight away" },
+      { label: "Treatment", value: "Surgery in hospital" },
+    ],
+    sections: [
+      {
+        heading: "Get help from NHS 111 if",
+        items: [
+          "Floaters suddenly appear or suddenly increase in number",
+          "You get flashes of light in your vision",
+          "A dark curtain or shadow moves across your vision",
+          "Your vision suddenly gets blurred",
+        ],
+        links: [
+          { label: "Floaters and flashes", href: "/eye-health/conditions/floaters-and-flashes" },
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+      {
+        heading: "Treatment and recovery",
+        body: `If tests show your retina may be detached or torn, you will be referred to hospital for surgery, which usually stops your vision getting worse. For 2 to 6 weeks afterwards your vision may be blurry, your eye may be sore and red, and you may need time off work, not be able to drive, and need to avoid flying if a gas bubble was put in your eye. Most people return to normal activities. Call the hospital or go to A&E if pain, redness or blurriness gets worse after surgery.`,
+        links: [
+          { label: "Retinal detachment treatment providers", href: "/eye-surgery/retinal-detachment" },
+        ],
+      },
+      {
+        heading: "Causes and risk",
+        body: `A detached retina is usually caused by age-related changes to the jelly inside the eye, called posterior vitreous detachment. The NHS says it is more likely if you are short-sighted, have had an eye operation such as cataract surgery, have had an eye injury, or have a family history of retinal detachment. You can get it more than once, so get help quickly if symptoms come back.`,
+        links: [
+          { label: "Short-sightedness", href: "/eye-health/conditions/myopia" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What are the warning signs of a detached retina?",
+        answer: "Sudden floaters, flashes of light, a dark curtain or shadow across your vision, or suddenly blurred vision.",
+      },
+      {
+        question: "Is a detached retina an emergency?",
+        answer: "Yes. It needs treating quickly to protect your sight. Get help from NHS 111 straight away.",
+      },
+      {
+        question: "How is a detached retina treated?",
+        answer: "With surgery in hospital, which usually stops your vision getting worse.",
+      },
+      {
+        question: "How long is recovery after retinal detachment surgery?",
+        answer: "As a guide, 2 to 6 weeks, during which you may not be able to drive or fly. Most people return to normal activities.",
+      },
+    ],
+    relatedQueries: ["floaters-in-vision", "emergency-eye-test-near-me", "sudden-vision-changes"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. Warning signs of a detached retina need urgent help.",
+    sources: [
+      { label: "NHS: Detached retina", url: "https://www.nhs.uk/conditions/detached-retina-retinal-detachment/" },
+    ],
+  },
+  {
+    slug: "watery-eyes",
+    keyword: "watery eyes",
+    title: "Watery Eyes: Causes, Treatment and When to See a GP",
+    seoTitle: "Watery Eyes: Common Causes and How They Are Treated (NHS)",
+    seoDescription:
+      "Watering eyes are common and often get better on their own. Causes such as cold, wind, blocked tear ducts, allergies and dry eyes, and when to get help.",
+    h1: "Watery Eyes",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/watery-eyes",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Watering eyes are common and often get better on their own. Causes, treatment and when to get help.",
+    content: `Watering eyes are common and often get better on their own. The NHS says treatment may be needed if the watering affects your daily activities.
+
+It is normal for eyes to water in smoke, cold or wind, or if something like an eyelash or grit is in your eye. Babies sometimes have watering eyes because their tear ducts have not fully developed, which usually gets better within a few weeks.`,
+    keyFacts: [
+      { label: "Often", value: "Gets better on its own" },
+      { label: "First help", value: "A pharmacist" },
+      { label: "Babies", value: "Usually clears in weeks" },
+      { label: "Pain or sight changes", value: "Get urgent advice" },
+    ],
+    sections: [
+      {
+        heading: "Common causes",
+        items: [
+          "Smoke, cold or wind",
+          "Something in your eye, such as an eyelash or grit",
+          "Blocked tear ducts",
+          "An allergy or infection such as conjunctivitis",
+          "Eyelid problems, such as the eyelid drooping away from the eye",
+          "Dry eyes, which can make the eyes produce too many tears",
+          "Bell's palsy, and some medicines and cancer treatments",
+        ],
+        links: [
+          { label: "Dry eyes", href: "/eye-health/conditions/dry-eye-syndrome" },
+          { label: "Conjunctivitis", href: "/eye-health/conditions/conjunctivitis" },
+        ],
+      },
+      {
+        heading: "Treatment",
+        body: `Treatment may not be needed if the watering is not causing problems. Otherwise it depends on the cause: eye drops or gels for dry eyes, antibiotic drops for an infection, medicines for an allergy, removing anything in the eye, or a small operation for eyelid problems or blocked tear ducts.`,
+      },
+      {
+        heading: "When to get help",
+        body: `A pharmacist can suggest cleaning solutions, eye drops or allergy medicines. See a GP if your eyes keep watering and it stops you doing everyday activities, your eyelid is turning inwards or drooping away from your eye, or you have lumps or swelling around the eyes that have not improved. Ask for an urgent GP appointment or get help from NHS 111 if you have changes to your vision or severe eye pain.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "Why do my eyes keep watering?",
+        answer: "Common causes include cold, wind or smoke, blocked tear ducts, allergies, infections, eyelid problems and dry eyes.",
+      },
+      {
+        question: "Can dry eyes cause watery eyes?",
+        answer: "Yes. Dry eyes can make your eyes produce too many tears.",
+      },
+      {
+        question: "When should I see a GP about watery eyes?",
+        answer: "If the watering stops you doing everyday things, your eyelid turns in or droops, or lumps around the eye do not improve.",
+      },
+      {
+        question: "Why does my baby have watery eyes?",
+        answer: "Babies' tear ducts may not be fully developed. It usually gets better within a few weeks.",
+      },
+    ],
+    relatedQueries: ["dry-eyes", "conjunctivitis", "swollen-eyelid"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. Sight changes or severe eye pain need urgent advice.",
+    sources: [
+      { label: "NHS: Watering eyes", url: "https://www.nhs.uk/symptoms/watering-eyes/" },
+    ],
+  },
+  {
+    slug: "double-vision",
+    keyword: "double vision",
+    title: "Double Vision: Causes, Urgent Signs and Driving",
+    seoTitle: "Double Vision: Causes, When It Is Urgent and Telling the DVLA (NHS)",
+    seoDescription:
+      "Double vision is not usually serious but always needs checking. A simple test to tell which kind you have, when it is urgent, causes and the DVLA rule.",
+    h1: "Double Vision",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/double-vision",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Double vision always needs checking. Causes, urgent signs and the DVLA rule.",
+    content: `Double vision (diplopia) is when you look at one object but see two images. The NHS says it is not usually serious, but it is important to get it checked, even if it comes and goes. An optician or GP can do some simple, painless tests and refer you if needed.
+
+Children often cannot tell that they have double vision. Signs include squinting, closing or covering one eye, tilting the head, or looking at things sideways.`,
+    keyFacts: [
+      { label: "Usually", value: "Not serious, but get it checked" },
+      { label: "Sudden onset", value: "Get urgent advice" },
+      { label: "After a head injury", value: "Call 999 or go to A&E" },
+      { label: "Driving", value: "Stop and tell the DVLA" },
+    ],
+    sections: [
+      {
+        heading: "When it is urgent",
+        body: `Ask for an urgent GP appointment or get help from NHS 111 if you have eye pain with double vision, or double vision that started suddenly. Call 999 or go to A&E if you have a severe headache or an enlarged pupil with blurred or double vision, or double vision after a head injury.`,
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+      {
+        heading: "A simple check",
+        body: `The NHS suggests covering one eye at a time. If the double vision goes away with one eye covered, it is probably affecting both eyes (binocular), which is usually a symptom of a squint. If you still see double in the uncovered eye, it is probably affecting just that eye (monocular), which is usually caused by an eye problem such as dry eyes, astigmatism, cataracts or keratoconus.`,
+        links: [
+          { label: "Squint", href: "/eye-health/conditions/strabismus" },
+          { label: "Cataracts", href: "/eye-health/conditions/cataracts" },
+          { label: "Astigmatism", href: "/eye-health/conditions/astigmatism" },
+        ],
+      },
+      {
+        heading: "Treatment",
+        body: `Treatment depends on the cause. It may be simple, such as eye exercises, an eye patch, or glasses or contact lenses, or some causes may need eye surgery.`,
+      },
+      {
+        heading: "Driving",
+        body: `The NHS says you must stop driving and tell the DVLA if you are diagnosed with double vision. You can drive again if a doctor tells the DVLA it is safe.`,
+        links: [
+          { label: "DVLA eyesight rules", href: "/eye-tests/dvla-driving-vision-test" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is double vision serious?",
+        answer: "Not usually, but it always needs checking. Sudden double vision, or double vision with pain, needs urgent advice.",
+      },
+      {
+        question: "What causes double vision?",
+        answer: "In both eyes it is usually a squint. In one eye it is usually an eye problem such as dry eyes, astigmatism, cataracts or keratoconus.",
+      },
+      {
+        question: "Can I drive with double vision?",
+        answer: "No. You must stop driving and tell the DVLA if you are diagnosed with it, until a doctor confirms it is safe.",
+      },
+      {
+        question: "Who should I see about double vision?",
+        answer: "An optician or GP, who can do simple tests and refer you to a specialist if needed.",
+      },
+    ],
+    relatedQueries: ["squint", "eye-test-for-driving", "sudden-vision-changes"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. Sudden double vision needs urgent advice.",
+    sources: [
+      { label: "NHS: Double vision", url: "https://www.nhs.uk/symptoms/double-vision/" },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
