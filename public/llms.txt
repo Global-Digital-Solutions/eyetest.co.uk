@@ -41,9 +41,8 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Visual Field Test (Perimetry)](https://www.eyetest.co.uk/eye-tests/visual-field-test)
 - [Diabetic Eye Screening](https://www.eyetest.co.uk/eye-tests/diabetic-eye-screening)
 - [Dry Eye Assessment](https://www.eyetest.co.uk/eye-tests/dry-eye-assessment)
-- [DVLA / Driving Vision Test](https://www.eyetest.co.uk/eye-tests/dvla-driving-vision-test)
+- [Driving Eye Test: DVLA Eyesight Rules](https://www.eyetest.co.uk/eye-tests/dvla-driving-vision-test): GOV.UK standard of reading a number plate at 20 metres, 6/12 acuity and adequate field of vision; lorry and bus standards; when to tell the DVLA
 - [Emergency Eye Care](https://www.eyetest.co.uk/eye-tests/emergency-eye-care)
-- [Home Visit Eye Test](https://www.eyetest.co.uk/at-home-eye-tests)
 - [Glaucoma Assessment](https://www.eyetest.co.uk/eye-tests/glaucoma-assessment)
 - [Retinal Photography](https://www.eyetest.co.uk/eye-tests/retinal-photography)
 - [Blepharitis Assessment](https://www.eyetest.co.uk/eye-tests/blepharitis-assessment)
@@ -96,7 +95,6 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Understanding NHS Eye Test Eligibility](https://www.eyetest.co.uk/eye-health/guides/understanding-nhs-eye-test-eligibility)
 - [Choosing the Right Optician](https://www.eyetest.co.uk/eye-health/guides/choosing-the-right-optician)
 - [When to Get an Emergency Eye Test](https://www.eyetest.co.uk/eye-health/guides/when-to-get-an-emergency-eye-test)
-- [Eye Health and Driving](https://www.eyetest.co.uk/eye-health/guides/eye-health-and-driving)
 
 ## Articles
 - [10 Signs You Need an Eye Test](https://www.eyetest.co.uk/articles/signs-you-need-an-eye-test)
@@ -216,7 +214,6 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Walk-In Eye Test](https://www.eyetest.co.uk/find/walk-in-eye-test): No appointment needed opticians
 - [Weekend Eye Test](https://www.eyetest.co.uk/find/weekend-eye-test): Saturday and Sunday appointments
 - [Emergency Eye Test Near Me](https://www.eyetest.co.uk/find/emergency-eye-test-near-me): Urgent same-day eye care
-- [Eye Test at Home](https://www.eyetest.co.uk/find/eye-test-at-home): Domiciliary eye care in the UK
 - [Online Eye Test](https://www.eyetest.co.uk/find/online-eye-test): Can you test your eyes online?
 - [Specsavers vs Boots](https://www.eyetest.co.uk/find/specsavers-vs-boots): Eye test comparison
 - [Book an Eye Test](https://www.eyetest.co.uk/find/book-eye-test): How to book online or by phone with the main UK opticians and how to book a free NHS test
@@ -225,9 +222,8 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [How Long Does an Eye Test Take?](https://www.eyetest.co.uk/find/how-long-does-eye-test-take): UK appointment guide
 - [How Often Should You Have an Eye Test?](https://www.eyetest.co.uk/eye-health/guides/how-often-should-you-have-an-eye-test): NHS guidance is every 2 years or more often if your optometrist advises; diabetic eye screening every 1 or 2 years; who gets free NHS tests
 - [Do I Need an Eye Test?](https://www.eyetest.co.uk/find/do-i-need-an-eye-test): Signs you should book one
-- [Failed Eye Test Driving](https://www.eyetest.co.uk/find/eye-test-failed-driving): What to do next
+- [Failed the Driving Test Eyesight Check](https://www.eyetest.co.uk/find/eye-test-failed-driving): Per GOV.UK you fail, the DVLA is told and your licence is revoked; reapply and pass a DVSA eyesight test
 - [OCT Scan Cost UK](https://www.eyetest.co.uk/find/oct-scan-cost): How much is an OCT eye scan
-- [Eye Test for Driving](https://www.eyetest.co.uk/find/eye-test-for-driving): DVLA standards and where to get tested
 - [Contact Lens Eye Test](https://www.eyetest.co.uk/find/contact-lens-eye-test): Fitting, check-ups and cost
 - [Glaucoma Test](https://www.eyetest.co.uk/find/glaucoma-test): What it involves, cost and where to get tested
 - [Colour Blind Test](https://www.eyetest.co.uk/find/colour-blind-test): How to get a colour vision check at a UK optician (not part of the routine NHS eye test, but you can ask for it), the Ishihara and colour arrangement tests, signs in children, and DVLA rules

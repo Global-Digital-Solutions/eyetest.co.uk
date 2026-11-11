@@ -264,7 +264,7 @@ An NHS-funded test checks your vision and the health of your eyes and is carried
         links: [
           { label: "Eye test prices", href: "/find/eye-test-cost" },
           { label: "Cheapest eye tests", href: "/find/cheap-eye-test" },
-          { label: "Home eye tests", href: "/find/eye-test-at-home" },
+          { label: "Home eye tests", href: "/at-home-eye-tests" },
         ],
       },
     ],
@@ -898,6 +898,7 @@ To find urgent eye care near you, call your regular optician first. If they cann
   },
   {
     slug: "eye-test-at-home",
+    canonicalPath: "/at-home-eye-tests",
     keyword: "eye test at home",
     title: "Eye Tests at Home — Domiciliary Eye Care in the UK",
     category: "availability",
@@ -1117,7 +1118,7 @@ Almost every high-street optician offers NHS-funded eye tests for people who qua
           { label: "Eye test prices", href: "/find/eye-test-cost" },
           { label: "Free eye test guide", href: "/find/free-eye-test" },
           { label: "Book an eye test", href: "/find/book-eye-test" },
-          { label: "Home eye tests", href: "/find/eye-test-at-home" },
+          { label: "Home eye tests", href: "/at-home-eye-tests" },
           { label: "Emergency eye test", href: "/find/emergency-eye-test-near-me" },
         ],
       },
@@ -1492,49 +1493,80 @@ Do not put it off. Eye tests are quick, painless, widely available, and may be f
   },
   {
     slug: "eye-test-failed-driving",
-    keyword: "eye test failed driving",
-    title: "Failed the Eye Test Part of Your Driving Test? What to Do Next",
+    keyword: "failed driving test eyesight check",
+    title: "Failed the Eyesight Check on Your Driving Test? What Happens Next",
+    seoTitle: "Failed the Driving Test Eyesight Check? What Happens Next (UK)",
+    seoDescription:
+      "If you can't read the number plate at the start of your driving test, you fail, the DVLA is told and your licence is revoked. How to reapply and the DVSA eyesight test.",
+    h1: "Failed the Eyesight Check on Your Driving Test?",
+    dateModified: "2026-11-11",
     category: "general",
     shortDescription:
-      "What happens if you fail the number plate reading test during your driving test, and the steps to take to get back on the road safely.",
-    content: `If you failed the number plate reading test at the start of your driving practical test, your test was terminated immediately. This is disappointing, but the legal eyesight standard exists for a very important reason — safe driving requires clear vision. Here is what to do next.
+      "What happens if you can't read the number plate at the start of your practical driving test, and the steps to get back on the road.",
+    content: `At the start of your practical driving test you have to correctly read a number plate on a parked vehicle. GOV.UK says that if you cannot, you fail the driving test and it does not continue. The DVLA is told and your licence is revoked.
 
-Your first step should be to book an eye test with an optician as soon as possible. Tell them you failed the driving test eyesight check so they can specifically assess whether your vision meets the DVLA standard. The legal requirement is that you must be able to read a number plate from 20 metres. In clinical terms, this broadly equates to a visual acuity of 6/12 (or 0.5 on the decimal scale) with both eyes open, using glasses or contact lenses if you need them.
-
-If the optometrist finds you need glasses or contact lenses to meet the driving standard, they will prescribe them, and you must wear them every time you drive — this is a legal requirement, not optional. Once you have your new glasses or contacts, you can rebook your practical driving test. There is no special waiting period or additional requirement beyond having corrected vision that meets the standard.
-
-If the optometrist finds that your vision cannot be corrected to the driving standard even with glasses or contact lenses, you must inform the DVLA. Driving with vision below the legal standard is an offence that can result in a fine of up to £1,000, three penalty points, and potentially criminal charges if you cause an accident. Your optometrist will advise you on the next steps, which may include referral to a hospital eye specialist for further investigation.
-
-It is worth noting that many people who fail the number plate test simply need glasses they did not know they needed. A straightforward prescription for distance vision can often solve the problem completely, allowing you to rebook your test and pass with confidence. The cost of an eye test and basic glasses is minimal compared to the importance of safe driving.`,
+When you reapply for your driving licence, the DVLA will ask you to have an eyesight test with the DVSA at a driving test centre. If you pass that, you will still have to pass the standard eyesight check at the start of your next practical driving test.`,
+    keyFacts: [
+      { label: "Test", value: "Stops, counts as a fail" },
+      { label: "Licence", value: "Revoked, DVLA is told" },
+      { label: "Reapplying", value: "DVSA eyesight test at a test centre" },
+      { label: "First step", value: "Book an optician eye test" },
+    ],
+    sections: [
+      {
+        heading: "What to do next",
+        items: [
+          "Book an eye test at an optician and tell them you failed the driving test eyesight check",
+          "If you need glasses or contact lenses to meet the standard, get them and wear them every time you drive",
+          "Reapply for your driving licence. The DVLA will ask you to have an eyesight test with the DVSA at a driving test centre",
+          "Once you pass that, book your practical test again. You will read a number plate again at the start",
+        ],
+        links: [
+          { label: "Find an optician near you", href: "/locations" },
+          { label: "Eye test prices", href: "/find/eye-test-cost" },
+        ],
+      },
+      {
+        heading: "The eyesight standard you need to meet",
+        body: `GOV.UK says you must be able to read a number plate from 20 metres away, have visual acuity of at least 6/12 using both eyes together, and have an adequate field of vision. You can wear glasses or contact lenses to meet the standard.`,
+        links: [
+          { label: "DVLA eyesight rules for driving", href: "/eye-tests/dvla-driving-vision-test" },
+        ],
+      },
+    ],
     faqs: [
       {
-        question: "Can I retake my driving test after failing the eye test?",
+        question: "What happens if I fail the number plate test?",
         answer:
-          "Yes. Book an eye test with an optician, get glasses or contact lenses if needed, and then rebook your driving test. There is no special waiting period. You must wear your correction every time you drive.",
+          "You fail the driving test and it does not continue. GOV.UK says the DVLA is told and your licence is revoked.",
       },
       {
-        question: "Do I need to tell the DVLA I failed the eye test?",
+        question: "How do I get my licence back?",
         answer:
-          "If you simply need glasses and your corrected vision meets the standard, you do not need to inform the DVLA. If your vision cannot be corrected to the driving standard, you must inform them. Your optometrist will advise you.",
+          "Reapply for your driving licence. The DVLA will ask you to have an eyesight test with the DVSA at a driving test centre. If you pass, you can book your practical test again.",
       },
       {
-        question: "Can I practise driving if I failed the eye test?",
+        question: "Should I see an optician first?",
         answer:
-          "You should not drive or practise driving until you have had your vision corrected. Once you have the right glasses or contact lenses and your optometrist confirms your corrected vision meets the standard, you can resume practice.",
+          "Yes. An eye test will show whether glasses or contact lenses would help you meet the standard. If you need them for driving, you must wear them every time you drive.",
       },
       {
-        question: "What is the legal eyesight standard for driving?",
+        question: "Can I keep driving after failing the eyesight check?",
         answer:
-          "You must be able to read a number plate from 20 metres, which equates to approximately 6/12 visual acuity. You must also have an adequate field of vision of at least 120 degrees horizontally. Glasses or contact lenses can be worn to meet these standards.",
+          "No. Your licence is revoked, so you cannot drive until you have reapplied and been given a licence again.",
       },
     ],
     relatedQueries: [
       "eye-test-for-driving",
-      "eye-test-cost",
       "book-eye-test",
-      "blurry-vision-causes",
+      "eye-test-cost",
     ],
-    ctaText: "Book an urgent eye test",
+    ctaText: "Find an optician near you and get your eyes checked",
+    disclaimer:
+      "This page is general information based on GOV.UK guidance, not legal advice. Check GOV.UK or the DVLA for your own circumstances.",
+    sources: [
+      { label: "GOV.UK: Driving eyesight rules", url: "https://www.gov.uk/driving-eyesight-rules" },
+    ],
   },
 
   // ─── Specialist ────────────────────────────────────────────────────────
@@ -1633,43 +1665,112 @@ The scan is quick, painless and does not touch your eye. You rest your chin on a
   {
     slug: "eye-test-for-driving",
     keyword: "eye test for driving",
-    title: "Eye Test for Driving — DVLA Standards & Where to Get Tested",
+    title: "Eye Test for Driving: DVLA Eyesight Rules and Where to Get Tested",
+    seoTitle: "Driving Eye Test UK 2026: DVLA Eyesight Rules and Standards",
+    seoDescription:
+      "The DVLA eyesight standard for driving: read a number plate at 20 metres, 6/12 vision and an adequate field of vision. Lorry and bus rules, and when to tell the DVLA.",
+    h1: "Eye Test for Driving: The DVLA Eyesight Rules",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-tests/dvla-driving-vision-test",
+    parentCrumbs: [{ label: "Eye Tests", href: "/eye-tests" }],
     category: "specialist",
     shortDescription:
-      "What the DVLA eyesight standard is for driving in the UK, where to get tested, and what happens if your vision does not meet the requirements.",
-    content: `If you drive in the UK, you are legally required to meet minimum eyesight standards. Whether you are a learner preparing for your practical test, an experienced driver, or a professional HGV or PSV driver, understanding and meeting these requirements is essential for your safety and legal compliance.
+      "The legal eyesight standard for driving in the UK, the stricter rules for lorry and bus drivers, when to tell the DVLA and how an optician can check your vision.",
+    content: `To drive in the UK you must meet the standards of vision for driving set out by GOV.UK. You must be able to read a number plate from 20 metres away, have visual acuity of at least 6/12 using both eyes together, and have an adequate field of vision. You can wear glasses or contact lenses to meet the standard, but if you need them you must wear them every time you drive.
 
-The DVLA requires that you can read a modern number plate (with a font height of 79mm) from a distance of 20 metres. For older-style number plates, the distance is 20.5 metres. In clinical terms, this broadly equates to a visual acuity of 6/12 or better (measured on a Snellen chart) using both eyes together, with glasses or contact lenses if you normally wear them. You must also have a field of vision of at least 120 degrees horizontally with no significant defects within the central 20 degrees.
-
-Your optometrist can carry out a driving vision assessment to confirm whether you meet these standards. This typically involves a number plate reading test at 20 metres, a visual acuity test on a letter chart, and a visual field assessment. Many opticians include these checks as part of a standard eye test at no extra cost. If a standalone driving vision test is needed, it typically costs £15 to £30.
-
-For professional drivers — those holding HGV (Category C) or PSV (Category D) licences — the visual acuity standard is higher. You need at least 6/7.5 visual acuity in your best eye and at least 6/60 in the other eye, plus a wider field of vision requirement. If you hold a Group 2 licence, regular vision checks are part of your medical renewal process.
-
-If your vision does not meet the driving standard, you must stop driving and inform the DVLA. If glasses or contact lenses can correct your vision to the required level, you can drive wearing them — but you must wear them every time. Driving without adequate eyesight is a serious offence.`,
+GOV.UK says you could be prosecuted if you drive without meeting the standards of vision for driving. A regular eye test at an optician checks your vision and can tell you whether you meet the standard, including your field of vision.`,
+    keyFacts: [
+      { label: "Number plate", value: "Read it from 20 metres" },
+      { label: "Visual acuity", value: "At least 6/12 (decimal 0.5)" },
+      { label: "Field of vision", value: "Must be adequate" },
+      { label: "Lorry and bus", value: "6/7.5 best eye, 6/60 other" },
+    ],
+    sections: [
+      {
+        heading: "The DVLA eyesight standard for car and motorcycle drivers",
+        table: {
+          caption: "Standards of vision for driving, from GOV.UK, checked November 2026",
+          headers: ["Requirement", "Standard"],
+          rows: [
+            ["Number plate", "Read a number plate from 20 metres away (about the length of 5 parked cars), with glasses or contact lenses if you use them"],
+            ["Visual acuity", "At least decimal 0.5 (6/12) on the Snellen scale, using both eyes together, or the one eye if you have sight in one eye only"],
+            ["Field of vision", "Must be adequate. Your optician can test this and tell you"],
+          ],
+        },
+      },
+      {
+        heading: "Lorry and bus drivers",
+        body: `The standard is higher for lorry and bus drivers. GOV.UK says you need visual acuity of at least 0.8 (6/7.5) in your best eye and at least 0.1 (6/60) in the other eye. You can reach this with glasses of corrective power no more than (+) 8 dioptres, or with contact lenses. You also need an uninterrupted horizontal field of vision of at least 160 degrees, with at least 70 degrees left and right and 30 degrees up and down, and no defects within the central 30 degrees. Lorry and bus drivers must tell the DVLA about any eyesight problem that affects either eye.`,
+      },
+      {
+        heading: "When to tell the DVLA about your eyesight",
+        body: `Car and motorcycle drivers must tell the DVLA about any eyesight problem that affects both eyes, or the remaining eye if you only have one eye. GOV.UK says this does not include being short or long sighted or colour blind, and you do not need to tell the DVLA if you have had surgery to correct short sightedness and can meet the standard. If you report a condition, the DVLA may refer you for an eyesight test with its contracted optician, which you do not pay for. You can send results from another optician if they include an Esterman visual field test, but the DVLA does not guarantee to accept them and you pay for that test yourself.`,
+        links: [
+          { label: "Colour blind test", href: "/find/colour-blind-test" },
+        ],
+      },
+      {
+        heading: "The eyesight check at the start of your driving test",
+        body: `At the start of the practical driving test you have to read a number plate on a parked vehicle. If you cannot, you fail the test, it does not continue, and your licence is revoked.`,
+        links: [
+          { label: "Failed the driving test eyesight check?", href: "/find/eye-test-failed-driving" },
+        ],
+      },
+      {
+        heading: "Getting your eyes checked for driving",
+        body: `A routine eye test at an optician checks your vision with and without your glasses and can include a visual field test. If you are not sure you meet the driving standard, tell the optician when you book. The NHS recommends an eye test every 2 years, or more often if your optometrist advises.`,
+        links: [
+          { label: "How often to have an eye test", href: "/eye-health/guides/how-often-should-you-have-an-eye-test" },
+          { label: "Eye test prices", href: "/find/eye-test-cost" },
+          { label: "Find an optician near you", href: "/locations" },
+        ],
+      },
+    ],
     faqs: [
       {
-        question: "What is the DVLA eyesight standard for driving?",
+        question: "What is the eyesight standard for driving in the UK?",
         answer:
-          "You must be able to read a number plate from 20 metres with both eyes open (using glasses or contact lenses if needed). This equates to approximately 6/12 visual acuity. You also need an adequate visual field of at least 120 degrees horizontally.",
+          "You must be able to read a number plate from 20 metres, have visual acuity of at least 6/12 using both eyes together, and have an adequate field of vision. Glasses or contact lenses can be worn to meet the standard.",
       },
       {
-        question: "Do I need to tell the DVLA if I need glasses for driving?",
+        question: "Do I need to tell the DVLA if I wear glasses for driving?",
         answer:
-          "If you only need glasses for driving and your corrected vision meets the standard, you do not need to inform the DVLA. However, you must wear your glasses every time you drive. If you have an eye condition that could affect your driving, you must inform the DVLA.",
+          "No, not for being short or long sighted. GOV.UK says you must tell the DVLA about an eyesight problem affecting both eyes (or your remaining eye), but this does not include being short or long sighted or colour blind. You must wear your glasses every time you drive if you need them to meet the standard.",
       },
       {
-        question: "How often should I have my driving vision checked?",
+        question: "Can I drive if I am colour blind?",
         answer:
-          "There is no legal requirement for regular driving vision checks (except for professional drivers). However, having your vision checked every two years as part of a routine eye test ensures you continue to meet the standard.",
+          "Yes. GOV.UK says you do not need to tell the DVLA if you are colour blind.",
+      },
+      {
+        question: "What happens if I can't read the number plate in my driving test?",
+        answer:
+          "You fail the test, it does not continue, the DVLA is told and your licence is revoked. When you reapply, you will need to pass an eyesight test with the DVSA at a driving test centre.",
+      },
+      {
+        question: "What eyesight do lorry and bus drivers need?",
+        answer:
+          "At least 6/7.5 in the best eye and 6/60 in the other, with a horizontal field of vision of at least 160 degrees, according to GOV.UK.",
+      },
+      {
+        question: "Is a driving eye test free?",
+        answer:
+          "If the DVLA refers you to its contracted optician, you do not pay. A routine eye test at an optician is free if you qualify for a free NHS eye test, otherwise the optician's normal price applies.",
       },
     ],
     relatedQueries: [
       "eye-test-failed-driving",
-      "book-eye-test",
+      "how-often-eye-test",
       "eye-test-cost",
-      "blurry-vision-causes",
+      "book-eye-test",
     ],
-    ctaText: "Book a driving vision assessment",
+    ctaText: "Find an optician near you and check your vision for driving",
+    disclaimer:
+      "This page is general information based on GOV.UK guidance, not legal or medical advice. Check GOV.UK or the DVLA for your own circumstances.",
+    sources: [
+      { label: "GOV.UK: Driving eyesight rules", url: "https://www.gov.uk/driving-eyesight-rules" },
+      { label: "NHS: Visiting an optician", url: "https://www.nhs.uk/nhs-services/opticians/visiting-an-optician/" },
+    ],
   },
   {
     slug: "contact-lens-eye-test",
@@ -1953,7 +2054,7 @@ Online colour blind tests can give you an idea of whether you might have a colou
         heading: "Colour blindness, driving and work",
         body: `GOV.UK says you do not need to tell the DVLA if you are colour blind when driving a car or motorcycle. The NHS notes that colour blindness may affect some careers, such as becoming a pilot or a train driver. If you are applying for a role with colour vision standards, check the employer's requirements and ask your optician about a colour vision check before you apply.`,
         links: [
-          { label: "Eye test for driving", href: "/find/eye-test-for-driving" },
+          { label: "Eye test for driving", href: "/eye-tests/dvla-driving-vision-test" },
         ],
       },
       {

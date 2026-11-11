@@ -115,7 +115,7 @@ All children in the UK are entitled to free NHS-funded sight tests. The NHS reco
 
 You do not need to wait until your child can read to book an eye test. Optometrists use age-appropriate methods such as picture charts, shape-matching games, and objective measurement techniques that do not require any verbal response from your child. If your child is struggling at school, sitting too close to the television, or complaining of headaches, an eye test should be a first step.`,
     duration: "20–40 minutes depending on the child's age and cooperation",
-    cost: "Free — all children under 16 (and under 19 in full-time education) qualify for NHS-funded sight tests",
+    cost: "Free on the NHS for children under 16, and under 19 in full-time education",
     whoNeeds: [
       "All children, ideally from around age three",
       "Children starting school for the first time",
@@ -390,7 +390,7 @@ An optometrist can carry out a driving vision assessment to determine whether yo
 
 It is worth knowing that the penalty for driving with eyesight below the legal standard is severe: you can be prosecuted, fined up to £1,000, and receive three penalty points. In a worst-case scenario — for example, if you cause an accident because of poor vision — you could face criminal charges for dangerous driving. If in any doubt about your eyesight, book a driving vision assessment with your local optician. It is a quick, straightforward check that could prevent a life-changing situation.`,
     duration: "10–20 minutes",
-    cost: "£15–£30 as a standalone test. May be included as part of a standard eye test at no additional cost",
+    cost: "Checked in a routine eye test. Free if the DVLA refers you to its contracted optician, or if you qualify for a free NHS eye test",
     whoNeeds: [
       "Learner drivers preparing for their practical driving test",
       "Drivers who have received a notice from the DVLA to have their vision checked",
