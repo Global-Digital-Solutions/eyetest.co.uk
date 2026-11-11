@@ -269,9 +269,11 @@ body {
 /* ------------------------------------------------------------------ */
 
 .wtgh-step {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.wtgh.is-armed:not(.is-visible) .wtgh-step {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .wtgh.is-visible .wtgh-step { opacity: 1; transform: translateY(0); }
 .wtgh.is-visible .wtgh-step:nth-child(2) { transition-delay: 0.12s; }
@@ -281,17 +283,15 @@ body {
 .wtgh.is-visible .wtgh-step:nth-child(6) { transition-delay: 0.6s; }
 
 .wtgh-bar {
-  transform: scaleX(0);
   transform-origin: left center;
   transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.2s;
 }
 .wtgh-bar-v {
-  transform: scaleY(0);
   transform-origin: top center;
   transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.2s;
 }
-.wtgh.is-visible .wtgh-bar { transform: scaleX(1); }
-.wtgh.is-visible .wtgh-bar-v { transform: scaleY(1); }
+.wtgh.is-armed:not(.is-visible) .wtgh-bar { transform: scaleX(0); }
+.wtgh.is-armed:not(.is-visible) .wtgh-bar-v { transform: scaleY(0); }
 
 .wtgh-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
