@@ -252,6 +252,13 @@ export default async function OpticianPage({
             {optician.name}
           </h1>
 
+          {optician.lastReviewed && (
+            <p className="text-sm text-white/60 mb-4">
+              Information last checked against {optician.name}&apos;s own website:{" "}
+              {optician.lastReviewed}
+            </p>
+          )}
+
           <div className="flex items-center justify-center gap-6 text-white/70 text-sm sm:text-base flex-wrap">
             <span className="flex items-center gap-1.5">
               <svg
@@ -717,7 +724,7 @@ export default async function OpticianPage({
           </section>
         )}
 
-        {/* ── 6. Pros and Cons ───────────────────────────────────────────── */}
+        {/* ── 6. What we like and good to know ─────────────────────────── */}
         {optician.prosAndCons && (
           <section
             className={
@@ -730,11 +737,11 @@ export default async function OpticianPage({
             <div className="max-w-7xl mx-auto px-4 py-16 sm:py-20">
               <div className="text-center mb-10">
                 <h2 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3">
-                  {optician.shortName} Pros &amp; Cons
+                  {optician.shortName}: What We Like and Good to Know
                 </h2>
                 <p className="text-gray-500 max-w-2xl mx-auto">
-                  An honest look at the advantages and disadvantages of
-                  choosing {optician.name} for your eye care.
+                  What stands out about {optician.name}, plus a few practical
+                  points worth knowing before you book.
                 </p>
               </div>
 
@@ -754,7 +761,7 @@ export default async function OpticianPage({
                           clipRule="evenodd"
                         />
                       </svg>
-                      Advantages
+                      What we like
                     </h3>
                   </div>
                   <ul className="p-6 space-y-3">
@@ -796,7 +803,7 @@ export default async function OpticianPage({
                           clipRule="evenodd"
                         />
                       </svg>
-                      Considerations
+                      Good to know
                     </h3>
                   </div>
                   <ul className="p-6 space-y-3">
@@ -1258,6 +1265,9 @@ export default async function OpticianPage({
         <section className="max-w-7xl mx-auto px-4 pt-10">
           <div className="rounded-2xl border border-amber-100 bg-amber-50 p-5 text-sm text-amber-900 leading-relaxed">
             <strong className="font-semibold">Please note: </strong>
+            {optician.lastReviewed
+              ? `The information on this page was last checked against ${optician.name}'s own website in ${optician.lastReviewed}. `
+              : ""}
             {PRICE_DISCLAIMER}
           </div>
         </section>

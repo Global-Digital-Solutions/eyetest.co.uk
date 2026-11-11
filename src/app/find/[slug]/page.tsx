@@ -296,6 +296,16 @@ export default async function SearchQueryPage({
               <p className="text-base sm:text-lg text-white/70 mb-8 max-w-xl mx-auto">
                 {query.shortDescription}
               </p>
+              {query.dateModified && (
+                <p className="text-sm text-white/60 -mt-6 mb-8">
+                  Information last checked:{" "}
+                  {new Date(query.dateModified).toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </p>
+              )}
 
               {/* Postcode search form */}
               <HeroSearchForm />
@@ -432,6 +442,9 @@ export default async function SearchQueryPage({
                 {showDisclaimer && (
                   <div className="mt-10 bg-amber-50 border border-amber-100 rounded-2xl p-5 text-sm text-amber-900 leading-relaxed">
                     <strong className="font-semibold">Please note: </strong>
+                    {query.dateModified
+                      ? `This information was last checked on ${new Date(query.dateModified).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}. `
+                      : ""}
                     {disclaimerText}
                   </div>
                 )}

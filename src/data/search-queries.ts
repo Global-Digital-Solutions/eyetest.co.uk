@@ -974,36 +974,34 @@ The best approach is to use online tools as a rough check and conversation start
   // ─── Brand ─────────────────────────────────────────────────────────────
   {
     slug: "specsavers-vs-boots",
-    dateModified: "2026-11-10",
+    dateModified: "2026-11-11",
     keyword: "Specsavers vs Boots eye test",
-    title: "Specsavers vs Boots — Eye Test Comparison (2026)",
+    title: "Specsavers vs Boots Eye Test Comparison (2026)",
     category: "brand",
     shortDescription:
-      "An honest comparison of eye tests at Specsavers and Boots Opticians, covering price, what is included, and which is better value.",
-    content: `Specsavers and Boots Opticians are the two largest optician chains in the UK, and choosing between them is one of the most common decisions for people booking an eye test. Here is a straightforward comparison to help you decide.
+      "A side-by-side look at eye tests at Specsavers and Boots Opticians: prices, what is included and the extras each offers, checked against their own websites in November 2026.",
+    content: `Specsavers and Boots Opticians are two of the UK's best-known optician chains, and both provide a high standard of eye care from qualified, GOC-registered optometrists. Here is how their eye tests compare, using the information each publishes on its own website.
 
-On price, Specsavers is the more affordable option. Specsavers says a routine eye test costs £20 to £25 depending on the store, while Boots says its eye test costs from £29.95. Both chains run time-limited offers from time to time, such as free or discounted eye tests, which are subject to availability and location. An OCT scan costs up to £10 extra at most Specsavers stores, and Boots charges from £25 extra for its Advanced Eye Test with OCT.
+On price, Specsavers says a routine eye test costs £20 to £25 depending on the store. Boots says its Essential Eye Test costs from £29.95, and that price includes a Dry Eye Evaluation as part of the test. Both chains run time-limited offers from time to time, such as free or discounted eye tests, which are subject to availability and location.
 
-In terms of clinical quality, both chains employ qualified, GOC-registered optometrists and use high-quality examination equipment. There is no meaningful clinical difference between the tests — both cover the same essential checks (visual acuity, refraction, pressure, eye health examination) to the same professional standards. The optometrist carrying out your test matters more than the brand above the door.
+For a more detailed look at your eye health, Specsavers offers an OCT scan for up to £10 extra in most stores. Boots offers an Advanced Eye Test with OCT from £25 extra, and in selected stores an Ultimate Eye Test with both optomap and OCT imaging from £50 extra, one of the most comprehensive eye health checks on the high street.
 
-Where the chains differ is in the overall experience and extras. Boots is generally considered to offer a slightly more premium in-store environment, with well-appointed examination rooms and a focus on designer frames. Specsavers offers a broader range of budget-friendly options and is often perceived as more accessible and value-oriented. Boots' Advantage Card loyalty scheme is popular with existing Boots shoppers, while Specsavers' app and online booking system is widely praised for its ease of use.
-
-Both chains provide NHS-funded eye tests, contact lens services, children's eye tests, and specialist services. Both have extensive UK coverage, and Specsavers has more locations, with over 900 stores. Ultimately, both offer a thoroughly professional eye test service, and the best choice often comes down to which is most conveniently located and which is offering the best current deal.`,
+Both chains provide free NHS-funded eye tests if you qualify, along with children's eye tests, contact lens services and a wide choice of frames. Boots Opticians is known for its quality, its designer frame ranges and the convenience of practices across the country, while Specsavers has over 900 stores and a strong focus on value. Both are excellent choices, so the best one for you often comes down to the test you want, where is most convenient and any offer running at the time.`,
     faqs: [
       {
         question: "Is Specsavers or Boots cheaper for eye tests?",
         answer:
-          "Specsavers has the lower published price, at £20 to £25 depending on the store, compared with from £29.95 at Boots. Both chains run time-limited offers, and both provide free NHS-funded eye tests if you qualify.",
+          "Specsavers publishes a price of £20 to £25 depending on the store. Boots publishes a price from £29.95 for its Essential Eye Test, which includes a Dry Eye Evaluation. Both chains run time-limited offers, and both provide free NHS-funded eye tests if you qualify.",
       },
       {
         question: "Is one better than the other for eye test quality?",
         answer:
-          "Both employ qualified optometrists and use professional equipment. There is no meaningful clinical difference. The quality of your eye test depends more on the individual optometrist than the brand.",
+          "Both provide a high standard of care from qualified, GOC-registered optometrists using professional equipment, and both cover the essential checks of your vision and eye health.",
       },
       {
         question: "Which has better OCT scanning?",
         answer:
-          "Both offer OCT scanning as an extra. Specsavers charges up to £10 extra in most stores, while Boots charges from £25 extra for its Advanced Eye Test with OCT. Boots also offers an Ultimate Eye Test with optomap and OCT from £50 extra in selected stores.",
+          "Both offer OCT scanning. Specsavers charges up to £10 extra in most stores. Boots offers an Advanced Eye Test with OCT from £25 extra, and an Ultimate Eye Test with optomap and OCT from £50 extra in selected stores.",
       },
     ],
     relatedQueries: [
