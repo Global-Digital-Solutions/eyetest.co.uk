@@ -6,7 +6,6 @@ import { OffersTicker } from "@/components/OffersTicker";
 import { HowItWorks } from "@/components/HowItWorks";
 import { NHSBanner } from "@/components/NHSBanner";
 import { Benefits } from "@/components/Benefits";
-import { Testimonials } from "@/components/Testimonials";
 import { CTABanner } from "@/components/CTABanner";
 import { Footer } from "@/components/Footer";
 import { AtHomeCallout } from "@/components/AtHomeCallout";
@@ -99,7 +98,6 @@ export default function Home() {
         <NHSBanner />
         <AtHomeCallout />
         <Benefits />
-        <Testimonials />
         <ArticlesBlock />
         <CTABanner />
       </main>

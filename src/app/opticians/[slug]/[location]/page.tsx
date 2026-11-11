@@ -215,6 +215,16 @@ export default async function BrandLocationPage({
       ...(s.lat && s.lng
         ? { geo: { "@type": "GeoCoordinates", latitude: s.lat, longitude: s.lng } }
         : {}),
+      ...(s.hours?.length
+        ? {
+            openingHoursSpecification: s.hours.map((h) => ({
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: h.day,
+              opens: h.opens,
+              closes: h.closes,
+            })),
+          }
+        : {}),
       parentOrganization: { "@type": "Organization", name: optician.name, url: optician.website },
     })),
   ];
@@ -290,6 +300,22 @@ export default async function BrandLocationPage({
                       </p>
                     )}
                     {s.phone && <p className="text-sm text-gray-600 mt-1">{s.phone}</p>}
+                    {s.hours && s.hours.length > 0 && (
+                      <details className="mt-2 text-xs text-gray-600">
+                        <summary className="cursor-pointer text-gray-500">Opening hours</summary>
+                        <ul className="mt-1 space-y-0.5">
+                          {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => {
+                            const h = s.hours!.find((x) => x.day === day);
+                            return (
+                              <li key={day} className="flex justify-between gap-4">
+                                <span>{day}</span>
+                                <span>{h ? `${h.opens} to ${h.closes}` : "Closed"}</span>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </details>
+                    )}
                     <p className="text-xs text-gray-400 mt-1">
                       About {Math.max(0.1, Math.round((s.distanceM / 1609.34) * 10) / 10)} miles from {loc.name} centre
                     </p>

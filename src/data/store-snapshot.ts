@@ -7,6 +7,7 @@
 
 import snapshotJson from "./store-snapshot.json";
 import specsaversJson from "./specsavers-stores.json";
+import opticalExpressJson from "./optical-express-stores.json";
 import { opticians, type OpticianBrand } from "./opticians";
 import { locations, type UKLocation } from "./locations";
 
@@ -19,6 +20,8 @@ export type SnapshotStore = {
   lng?: number;
   bookingUrl: string;
   distanceM: number;
+  /** Opening hours as published by the optician, where we have them */
+  hours?: { day: string; opens: string; closes: string }[];
 };
 
 type StoreSnapshot = {
@@ -33,9 +36,14 @@ const snapshot = snapshotJson as StoreSnapshot;
 // town's page on specsavers.co.uk and kept in their own file.
 const specsavers = specsaversJson as { generated: string; stores: Record<string, SnapshotStore[]> };
 
+// Optical Express clinics offering eye examinations, read from its clinic
+// finder. Every town is listed, so an empty list means no clinic in range.
+const opticalExpress = opticalExpressJson as { generated: string; stores: Record<string, SnapshotStore[]> };
+
 /** Live result for a brand and town, or undefined if we have no lookup for it */
 function liveStores(brand: string, town: string): SnapshotStore[] | undefined {
   if (brand === "specsavers") return specsavers.stores[town];
+  if (brand === "optical-express") return opticalExpress.stores[town];
   return isLiveBrand(brand) ? snapshot.towns[town]?.[brand] : undefined;
 }
 
