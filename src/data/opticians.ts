@@ -35,6 +35,14 @@ export type OpticianBrand = {
   faqs: { q: string; a: string }[];
   rating?: number;
   reviewCount?: number;
+  /** Optional page heading; defaults to the brand name */
+  h1?: string;
+  /** Short price answer shown first on the page (the answer to "how much is an eye test at X") */
+  priceAnswer?: {
+    heading: string;
+    summary: string;
+    rows: { label: string; price: string }[];
+  };
   /** Optional page title / meta description overriding the generic template */
   seoTitle?: string;
   seoDescription?: string;
@@ -65,7 +73,19 @@ export const opticians: OpticianBrand[] = [
     name: "Boots Opticians",
     shortName: "Boots",
     brandColor: "#0064d2",
-    seoTitle: "Boots Eye Test Cost 2026: From £29.95, OCT Scans & Free NHS Tests",
+    seoTitle: "Boots Eye Test Price 2026: From £29.95, OCT & Free NHS Tests",
+    h1: "Boots Opticians Eye Test Price and Cost (2026)",
+    priceAnswer: {
+      heading: "How much is an eye test at Boots?",
+      summary: "Boots says its Essential Eye Test costs from £29.95, including a Dry Eye Evaluation, and is free if you qualify for an NHS-funded test.",
+      rows: [
+        { label: "Essential Eye Test", price: "From £29.95" },
+        { label: "NHS-funded eye test", price: "Free if you qualify" },
+        { label: "Advanced Eye Test with OCT", price: "From £25 extra" },
+        { label: "Ultimate Eye Test (optomap and OCT)", price: "From £50 extra, selected stores" },
+        { label: "Contact lens check", price: "£50" },
+      ],
+    },
     seoDescription:
       "Boots Opticians eye tests cost from £29.95 with a dry eye check included. OCT adds from £25, the Ultimate test from £50, and NHS tests are free if you qualify.",
     lastReviewed: "November 2026",
@@ -246,7 +266,19 @@ export const opticians: OpticianBrand[] = [
     name: "Specsavers",
     shortName: "Specsavers",
     brandColor: "#1b5e20",
-    seoTitle: "Specsavers Eye Test: Prices, Free NHS Tests & OCT Costs",
+    seoTitle: "Specsavers Eye Test Price 2026: £20 to £25, Free NHS Tests & OCT",
+    h1: "Specsavers Eye Test Price and Cost (2026)",
+    priceAnswer: {
+      heading: "How much is an eye test at Specsavers?",
+      summary: "Specsavers says a routine eye test costs £20 to £25 depending on the store, and is free if you qualify for an NHS-funded test.",
+      rows: [
+        { label: "Routine eye test", price: "£20 to £25" },
+        { label: "NHS-funded eye test", price: "Free if you qualify" },
+        { label: "OCT scan", price: "Up to £10 extra in most stores" },
+        { label: "Private home eye test", price: "£60" },
+        { label: "Hearing test", price: "Free" },
+      ],
+    },
     seoDescription:
       "Specsavers eye tests cost £20 to £25, OCT scans up to £10 extra, and NHS-funded tests are free if you qualify. Home visits, hearing tests and how to book.",
     lastReviewed: "November 2026",
@@ -498,7 +530,18 @@ export const opticians: OpticianBrand[] = [
     name: "Vision Express",
     shortName: "Vision Express",
     brandColor: "#e65100",
-    seoTitle: "Vision Express Eye Test: £30 with OCT, NHS Upgrade from £6",
+    seoTitle: "Vision Express Eye Test Price 2026: £30 with OCT, Free NHS Tests",
+    h1: "Vision Express Eye Test Price and Cost (2026)",
+    priceAnswer: {
+      heading: "How much is an eye test at Vision Express?",
+      summary: "Vision Express says its Advanced Eye Test costs £30 and includes an OCT 3D eye scan. NHS-funded eye tests are free if you qualify, with an upgrade to the Advanced Eye Test from £6.",
+      rows: [
+        { label: "Advanced Eye Test (OCT included)", price: "£30" },
+        { label: "NHS-funded eye test", price: "Free if you qualify" },
+        { label: "NHS upgrade to the Advanced Eye Test", price: "From £6" },
+        { label: "Children's eye test", price: "Free (NHS funded)" },
+      ],
+    },
     seoDescription:
       "The Vision Express Advanced Eye Test costs £30 with an OCT scan included. NHS-funded tests are free if you qualify, with an upgrade to Advanced from £6.",
     lastReviewed: "November 2026",
@@ -642,7 +685,18 @@ export const opticians: OpticianBrand[] = [
     name: "Asda Opticians",
     shortName: "Asda",
     brandColor: "#78b530",
-    seoTitle: "Asda Opticians Eye Test: £24, Free NHS Tests & Glasses from £15",
+    seoTitle: "Asda Eye Test Price 2026: £24, Free NHS Tests & Glasses from £15",
+    h1: "Asda Opticians Eye Test Price and Cost (2026)",
+    priceAnswer: {
+      heading: "How much is an eye test at Asda?",
+      summary: "Asda Opticians says an eye test costs £24 and takes about 30 minutes, and is free if you qualify for an NHS-funded test.",
+      rows: [
+        { label: "Private eye test", price: "£24" },
+        { label: "NHS-funded eye test", price: "Free if you qualify" },
+        { label: "Enhanced eye test with OCT", price: "Ask your store (selected stores)" },
+        { label: "Complete glasses", price: "From £15 single vision" },
+      ],
+    },
     seoDescription: "Asda Opticians eye tests cost £24 and take about 30 minutes, with free NHS tests, free kids' glasses with an NHS voucher and single vision glasses from £15.",
     lastReviewed: "November 2026",
     dateModified: "2026-11-11",

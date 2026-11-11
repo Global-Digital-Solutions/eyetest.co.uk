@@ -455,7 +455,7 @@ export default async function BrandLocationPage({
             <p className="text-xs text-gray-500 mt-3">
               Prices are the same as on {optician.shortName}&apos;s own website when we checked in {checked}, and may vary by store.{" "}
               <Link href={`/opticians/${optician.slug}`} className="text-[var(--color-primary)] hover:underline">
-                More about {optician.name}
+                {optician.shortName} eye test price and full details
               </Link>
             </p>
           </section>
@@ -565,7 +565,7 @@ export default async function BrandLocationPage({
                 </li>
                 <li>
                   <Link href={`/opticians/${optician.slug}`} className="text-[var(--color-primary)] hover:underline">
-                    All about {optician.name}
+                    {optician.shortName} eye test price
                   </Link>
                 </li>
                 <li>

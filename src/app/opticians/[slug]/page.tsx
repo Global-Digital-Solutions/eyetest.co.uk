@@ -253,7 +253,7 @@ export default async function OpticianPage({
           </div>
 
           <h1 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            {optician.name}
+            {optician.h1 ?? optician.name}
           </h1>
 
           {optician.lastReviewed && (
@@ -319,6 +319,43 @@ export default async function OpticianPage({
             )}
           </div>
         </PageHero>
+
+        {/* ── 1b. Price answer (answers "how much is an eye test at X") ─── */}
+        {optician.priceAnswer && (
+          <section className="max-w-4xl mx-auto px-4 pt-12 sm:pt-16">
+            <div className="rounded-2xl border border-[var(--color-primary)]/20 bg-[var(--color-primary)]/[0.04] p-6 sm:p-8">
+              <h2 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-navy)] mb-3">
+                {optician.priceAnswer.heading}
+              </h2>
+              <p className="text-gray-700 leading-relaxed mb-5">{optician.priceAnswer.summary}</p>
+              <table className="w-full text-sm bg-white rounded-xl overflow-hidden border border-gray-100">
+                <caption className="sr-only">{optician.shortName} eye test prices</caption>
+                <thead>
+                  <tr className="text-left text-[var(--color-navy)] border-b border-gray-100">
+                    <th scope="col" className="py-3 px-4 font-semibold">Test</th>
+                    <th scope="col" className="py-3 px-4 font-semibold">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {optician.priceAnswer.rows.map((r) => (
+                    <tr key={r.label} className="border-b border-gray-50 last:border-0">
+                      <td className="py-3 px-4 text-gray-700">{r.label}</td>
+                      <td className="py-3 px-4 font-semibold text-[var(--color-navy)]">{r.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="text-xs text-gray-500 mt-3">
+                Prices as published on {optician.name}&apos;s own website
+                {optician.lastReviewed ? ` when we checked in ${optician.lastReviewed}` : ""}. Prices can vary by store
+                and offers change, so check with {optician.shortName} before you book.{" "}
+                <Link href="/find/eye-test-cost" className="text-[var(--color-primary)] hover:underline">
+                  Compare eye test prices across UK opticians
+                </Link>
+              </p>
+            </div>
+          </section>
+        )}
 
         {/* ── 2. About + 3. Quick Facts ─────────────────────────────────── */}
         <section className="max-w-7xl mx-auto px-4 py-16 sm:py-20">
