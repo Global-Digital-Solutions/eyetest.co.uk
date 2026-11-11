@@ -483,6 +483,46 @@ To summarise, if you are eligible for a free NHS eye test, it provides a thoroug
 
 Whatever you decide, the most important thing is to have your eyes tested regularly. Whether NHS or private, a comprehensive eye test is one of the most valuable health checks available in the UK, providing vital information about both your vision and your general health. Use our search tool to find opticians near you, compare their services, and book an appointment today.`,
   },
+  {
+    slug: "contact-lenses",
+    title: "Contact Lenses: A UK Guide",
+    excerpt: "The main types of contact lens, how a fitting works, the safety rules that matter most, and what UK law says about buying lenses online.",
+    image: "/images/eye-test-phoropter-sm.jpg",
+    category: "Guides",
+    readTime: "6 min read",
+    publishDate: "2026-11-11",
+    content: "",
+  },
+  {
+    slug: "blue-light-glasses",
+    title: "Do Blue Light Glasses Work?",
+    excerpt: "What UK eye care bodies and a 2023 Cochrane review say about blue light glasses for eye strain, sleep and eye health, and what helps instead.",
+    image: "/images/optician-shop-sm.jpg",
+    category: "Guides",
+    readTime: "4 min read",
+    publishDate: "2026-11-11",
+    content: "",
+  },
+  {
+    slug: "varifocals",
+    title: "Varifocals: A UK Guide",
+    excerpt: "How varifocal lenses work, how they compare with bifocals and reading glasses, who they suit and how to get used to them.",
+    image: "/images/elderly-eye-test-sm.jpg",
+    category: "Guides",
+    readTime: "5 min read",
+    publishDate: "2026-11-11",
+    content: "",
+  },
+  {
+    slug: "optician-vs-optometrist",
+    title: "Optician vs Optometrist: What Is the Difference?",
+    excerpt: "Who does what in UK eye care: optometrists, dispensing opticians, contact lens opticians, ophthalmologists and orthoptists.",
+    image: "/images/optician-shop-sm.jpg",
+    category: "Guides",
+    readTime: "4 min read",
+    publishDate: "2026-11-11",
+    content: "",
+  },
 ];
 
 // ---------------------------------------------------------------------------

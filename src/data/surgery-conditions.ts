@@ -31,8 +31,8 @@ export const surgeryConditions: SurgeryCondition[] = [
     metaTitle: "Cataract Surgery in the UK | Types, Recovery & NHS Options",
     metaDescription:
       "Cataract surgery in the UK: NHS and private options, lens choices, recovery times and how to find a specialist near you.",
-    overview: `<p>A cataract is a clouding of the natural crystalline lens inside the eye, causing vision to become progressively blurred, misty, or faded. Cataracts are the most common cause of treatable sight loss in the UK, affecting an estimated <strong>30% of adults aged 65 and over</strong>. The condition develops gradually over months or years as proteins in the lens break down and clump together, scattering light instead of focusing it clearly on the retina.</p>
-<p>Cataract surgery is one of the most frequently performed and successful operations in the UK, with approximately <strong>450,000 procedures carried out each year on the NHS</strong>. The operation involves removing the cloudy natural lens and replacing it with a clear artificial intraocular lens (IOL). Modern cataract surgery has a success rate of over 99%, and most patients experience a significant improvement in their vision within days.</p>
+    overview: `<p>A cataract is a clouding of the natural crystalline lens inside the eye, causing vision to become progressively blurred, misty, or faded. Cataracts are very common and mostly affect older adults. The condition develops gradually over months or years as proteins in the lens break down and clump together, scattering light instead of focusing it clearly on the retina.</p>
+<p>Cataract surgery is one of the most common operations carried out in the UK. The operation involves removing the cloudy natural lens and replacing it with a clear artificial intraocular lens (IOL). Most people notice their vision improving within a few days.</p>
 <p>While cataracts are predominantly age-related, they can also develop as a result of eye injuries, prolonged use of corticosteroid medications, diabetes, smoking, excessive UV exposure, and occasionally as a congenital condition. If you notice any gradual changes to your vision, booking an eye test is the essential first step towards diagnosis and treatment.</p>`,
     symptoms: [
       "Blurred, cloudy, or misty vision that worsens gradually",
@@ -78,7 +78,7 @@ export const surgeryConditions: SurgeryCondition[] = [
     recovery: `<p>Cataract surgery recovery is generally straightforward. Most patients notice a significant improvement in their vision within <strong>24 to 48 hours</strong>, although complete healing typically takes <strong>4 to 6 weeks</strong>.</p>
 <p>After the procedure, you will be given a clear plastic eye shield to wear overnight for the first week, along with antibiotic and anti-inflammatory eye drops to use for several weeks. You should avoid rubbing your eye, swimming, and heavy lifting for at least two weeks. Most people can return to normal daily activities, including light work, within a few days.</p>
 <p>You will have a follow-up appointment, usually within 1 to 4 weeks of surgery, to check that your eye is healing properly. A new glasses prescription, if needed, is typically issued around 4 to 6 weeks after the operation once your vision has fully stabilised.</p>
-<p>Serious complications are rare, occurring in fewer than 2% of cases. The most common complication is posterior capsule opacification (PCO), where the lens capsule becomes cloudy months or years later. This is easily and permanently treated with a quick YAG laser procedure.</p>`,
+<p>Serious complications are uncommon, and your surgeon will explain the risks before you agree to the operation. The most common complication is posterior capsule opacification (PCO), where the lens capsule becomes cloudy months or years later. This is easily and permanently treated with a quick YAG laser procedure.</p>`,
     nhsOrPrivate: `<p>Cataract surgery is <strong>available free on the NHS</strong> when your cataracts are significantly affecting your daily life. Your GP or optometrist can refer you to an NHS ophthalmology service, and waiting times vary by region but are typically between <strong>6 and 18 weeks</strong>. NHS surgery uses a high-quality standard monofocal lens, which corrects vision at one distance (usually distance).</p>
 <p>Private cataract surgery offers several advantages, including <strong>shorter waiting times</strong> (often within 1-2 weeks), a wider <strong>choice of premium lens implants</strong> (multifocal, toric, extended depth of focus), choice of consultant surgeon, and more flexible appointment scheduling. Private costs typically range from <strong>&pound;2,295 to &pound;3,995 per eye</strong>, depending on the lens chosen and the provider.</p>
 <p>Many private providers also offer <strong>interest-free finance plans</strong>, making premium options more accessible. Some patients choose to have NHS surgery in one eye and private surgery with a premium lens in the other.</p>`,
@@ -101,7 +101,7 @@ export const surgeryConditions: SurgeryCondition[] = [
       {
         question: "Can cataracts come back after surgery?",
         answer:
-          "No. Once a cataract has been removed and replaced with an artificial lens, it cannot return. However, up to 10-20% of patients develop posterior capsule opacification (PCO), sometimes called a 'secondary cataract', where the membrane behind the lens becomes cloudy. This is quickly and permanently treated with a painless YAG laser procedure.",
+          "No. Once a cataract has been removed and replaced with an artificial lens, it cannot return. Some people later develop posterior capsule opacification (PCO), sometimes called a 'secondary cataract', where the membrane behind the lens becomes cloudy. This is quickly and permanently treated with a painless YAG laser procedure.",
       },
       {
         question: "What is the difference between NHS and private cataract surgery?",
@@ -340,7 +340,7 @@ export const surgeryConditions: SurgeryCondition[] = [
     metaDescription:
       "Laser eye surgery in the UK: LASIK, LASEK and SMILE compared, typical costs, who is suitable and how to find a clinic near you.",
     overview: `<p>Laser eye surgery, also known as laser vision correction, is a group of refractive procedures that use precisely controlled laser energy to reshape the cornea, the clear front surface of the eye, to correct common vision problems. The goal is to reduce or eliminate dependence on glasses or contact lenses for short-sightedness (myopia), long-sightedness (hyperopia), astigmatism, and age-related reading difficulty (presbyopia).</p>
-<p>Since its introduction in the 1990s, laser eye surgery has become one of the most commonly performed elective procedures worldwide, with over <strong>100,000 procedures carried out each year in the UK</strong>. Modern techniques are highly refined, with patient satisfaction rates consistently above <strong>95%</strong>. The vast majority of patients achieve driving-standard vision (6/12 or better) without glasses, and many achieve 6/6 (perfect) vision.</p>
+<p>Laser eye surgery has been carried out since the 1990s. Many people can see well enough to drive without glasses afterwards, though results vary and some people still need glasses for some tasks, especially reading as they get older.</p>
 <p>Laser eye surgery is a private procedure in the UK. It is not available on the NHS except in very rare circumstances. Choosing a reputable clinic with experienced surgeons, advanced technology, and comprehensive pre-operative screening is essential for the safest and best outcomes. A thorough suitability assessment, including detailed measurements of your corneal thickness, shape, and pupil size, will determine which type of laser surgery is most appropriate for your eyes.</p>`,
     symptoms: [
       "Dependence on glasses or contact lenses for distance vision (myopia)",
@@ -378,7 +378,7 @@ export const surgeryConditions: SurgeryCondition[] = [
       {
         name: "Presbyond Laser Blended Vision",
         description:
-          "A modified LASIK procedure designed for patients over 40 who need reading glasses (presbyopia). The dominant eye is corrected for distance vision while the non-dominant eye is adjusted for near vision, with an overlap zone that the brain blends seamlessly. This avoids the need for both distance and reading glasses. Approximately 97% of suitable patients adapt to blended vision successfully.",
+          "A modified LASIK procedure designed for patients over 40 who need reading glasses (presbyopia). The dominant eye is corrected for distance vision while the non-dominant eye is adjusted for near vision, with an overlap zone that the brain blends seamlessly. This avoids the need for both distance and reading glasses. Most suitable patients adapt to blended vision.",
       },
     ],
     recovery: `<p>Recovery from laser eye surgery depends on the technique used. With <strong>LASIK</strong>, most patients notice a dramatic improvement in vision within <strong>a few hours</strong> of the procedure. You may experience some dryness, mild discomfort, and light sensitivity for the first 24-48 hours, but most people return to work within 1-2 days. Vision continues to refine over the following weeks.</p>
@@ -409,7 +409,7 @@ export const surgeryConditions: SurgeryCondition[] = [
       {
         question: "What are the risks of laser eye surgery?",
         answer:
-          "Serious complications are very rare with modern techniques. The most common side effects include dry eyes (usually temporary), night-time haloes or glare around lights, and minor over- or under-correction. Fewer than 1% of patients experience a significant complication. The risk of serious vision-threatening complications, such as infection or ectasia, is approximately 1 in 5,000 to 1 in 10,000.",
+          "Serious complications are very rare with modern techniques. The most common side effects include dry eyes (usually temporary), night-time haloes or glare around lights, and minor over- or under-correction. Significant complications are uncommon. Serious problems that threaten sight, such as infection or weakening of the cornea (ectasia), are rare. Ask your surgeon about the risks for your eyes.",
       },
       {
         question: "How do I choose between LASIK and LASEK?",
@@ -419,7 +419,7 @@ export const surgeryConditions: SurgeryCondition[] = [
       {
         question: "Can laser eye surgery correct reading vision (presbyopia)?",
         answer:
-          "Yes, Presbyond Laser Blended Vision is specifically designed to reduce dependence on reading glasses for patients over 40. It adjusts each eye slightly differently so that together they cover both distance and near vision. Around 97% of patients adapt to blended vision. However. It is a compromise, some patients may still prefer glasses for prolonged close work or very fine detail.",
+          "Yes, Presbyond Laser Blended Vision is specifically designed to reduce dependence on reading glasses for patients over 40. It adjusts each eye slightly differently so that together they cover both distance and near vision. Most suitable patients adapt to blended vision. However. It is a compromise, some patients may still prefer glasses for prolonged close work or very fine detail.",
       },
     ],
     relatedConditions: [

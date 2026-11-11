@@ -4596,6 +4596,455 @@ Children often cannot tell that they have double vision. Signs include squinting
       { label: "NHS: Double vision", url: "https://www.nhs.uk/symptoms/double-vision/" },
     ],
   },
+  {
+    slug: "contact-lenses",
+    keyword: "contact lenses",
+    title: "Contact Lenses: Types, Fitting, Safe Wear and Buying Online (UK)",
+    seoTitle: "Contact Lenses UK: Types, Fitting, Safe Wear and Buying",
+    seoDescription:
+      "A UK guide to contact lenses: the main types, who can fit them, children and lenses, safe wear rules on water and sleep, check-ups and buying lenses online.",
+    h1: "Contact Lenses: A UK Guide",
+    dateModified: "2026-11-11",
+    canonicalPath: "/articles/contact-lenses",
+    parentCrumbs: [{ label: "Articles", href: "/articles" }],
+    category: "general",
+    shortDescription:
+      "The main types of contact lens, how a fitting works, the safety rules that matter most, and what UK law says about buying lenses online.",
+    content: `Most people who need glasses can wear contact lenses. The College of Optometrists and NHS Wales say the right type for you depends on your prescription, the health of your eyes and how you plan to wear them, which is why lenses are fitted rather than simply bought.
+
+In the UK, contact lenses can only be fitted by a registered optometrist, a contact lens optician or a doctor. After a fitting you get a contact lens specification with an expiry date. You can buy your lenses from any supplier you like, as long as the sale follows the rules set out by the General Optical Council.`,
+    keyFacts: [
+      { label: "Who fits them", value: "Optometrist, contact lens optician or doctor" },
+      { label: "Most common type", value: "Soft lenses" },
+      { label: "Water", value: "Keep lenses away from tap, shower and pool water" },
+      { label: "Sleeping in lenses", value: "Take them out unless told otherwise" },
+    ],
+    sections: [
+      {
+        heading: "Types of contact lens",
+        body: `The College of Optometrists and NHS Wales describe these main options:`,
+        items: [
+          "Soft lenses mould to the shape of your eye. Most lenses fitted in the UK are soft, and they come as single-use daily, fortnightly or monthly lenses",
+          "Rigid gas-permeable (RGP) lenses are firmer and sit close to the eye. They usually last one to two years but take longer to get used to",
+          "Toric lenses correct astigmatism, in both soft and rigid designs",
+          "Multifocal options help with close-up focusing from your forties: bifocal or varifocal lenses, monovision (one eye set for distance and one for near), or distance lenses with reading glasses over the top",
+          "Orthokeratology lenses are rigid lenses worn overnight that temporarily correct short sight",
+          "Coloured and novelty lenses still carry an infection risk, even with no prescription, so they should be fitted by a professional",
+        ],
+        links: [
+          { label: "Astigmatism", href: "/eye-health/conditions/astigmatism" },
+          { label: "Presbyopia", href: "/eye-health/conditions/presbyopia" },
+          { label: "Short-sightedness", href: "/eye-health/conditions/myopia" },
+        ],
+      },
+      {
+        heading: "Getting fitted",
+        body: `A contact lens fitting is separate from a standard eye test. The optometrist or contact lens optician checks that the lenses suit your eyes, shows you how to put them in and take them out, and explains how to clean and store them. You should be able to handle your lenses safely before you take them home. Many high street opticians, including Boots Opticians, Specsavers and Vision Express, offer fittings, as do independent practices.`,
+        links: [
+          { label: "Contact lens fitting", href: "/eye-tests/contact-lens-fitting" },
+          { label: "Contact lens eye test", href: "/find/contact-lens-eye-test" },
+        ],
+      },
+      {
+        heading: "Safe wear: the rules that matter most",
+        body: `Infections linked to contact lenses can be serious. The College of Optometrists and NHS Wales advise:`,
+        items: [
+          "Wash and dry your hands before touching your eyes or lenses",
+          "Never rinse or store lenses in tap water, and avoid showering in them",
+          "Do not swim in lenses. Prescription swimming goggles are a safer way to see clearly in the water",
+          "Take your lenses out before bed. Sleeping in them raises the risk of infection, unless your optometrist has fitted lenses for overnight wear",
+          "Throw daily lenses away after each use. Reusable lenses need the cleaning solution your practitioner recommends",
+          "Put lenses in before make-up, and keep eyeliner outside the lash line",
+          "Keep a pair of glasses as a backup",
+        ],
+      },
+      {
+        heading: "When to take your lenses out and get advice",
+        body: `If your eye becomes red, painful or uncomfortable, or your vision blurs, take your lenses out and contact your optometrist. The College of Optometrists says you should never go to bed with a painful red eye: get advice straight away. If you cannot reach an optician, contact NHS 111.`,
+        links: [
+          { label: "Red eye", href: "/eye-health/conditions/red-eye" },
+          { label: "Conjunctivitis", href: "/eye-health/conditions/conjunctivitis" },
+        ],
+      },
+      {
+        heading: "Check-ups and your specification",
+        body: `You need regular contact lens check-ups, often called aftercare, to make sure the lenses still suit you and are not harming your eyes. Your practitioner decides how often. Your contact lens specification has an expiry date, and suppliers cannot sell you prescription lenses once it runs out, so book a check before it expires. A contact lens check is not the same as a full eye test, so keep up your routine eye tests too.`,
+        links: [
+          { label: "How often to have an eye test", href: "/eye-health/guides/how-often-should-you-have-an-eye-test" },
+        ],
+      },
+      {
+        heading: "Buying contact lenses online",
+        body: `You can buy lenses from wherever you wish, as long as you have a valid specification. Under the Opticians Act, prescription lenses must be sold by or under the supervision of an optometrist, dispensing optician or doctor, or under their general direction once the seller has your original specification or has checked it with your practitioner. Lenses for children under 16 cannot be sold under general direction. The College of Optometrists recommends buying the same lenses you were fitted with, from a reputable supplier.`,
+      },
+      {
+        heading: "Help with the cost",
+        body: `If you qualify for an NHS optical voucher, for example because you are under 16 or have a full HC2 certificate, the NHS says you can use it towards the cost of glasses or contact lenses. Contact lens prices vary by lens type and how often you replace them, so ask your optician for a quote.`,
+        links: [
+          { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
+          { label: "Who gets a free NHS eye test", href: "/find/free-eye-test" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Can anyone wear contact lenses?",
+        answer:
+          "Most people who need glasses can. Some lens types suit dry eyes better than others, and your optometrist or contact lens optician will advise on what works for you.",
+      },
+      {
+        question: "What age can children wear contact lenses?",
+        answer:
+          "There is no set age. The College of Optometrists says it depends on whether the child can put in, take out and look after their lenses, with a parent or guardian involved throughout.",
+      },
+      {
+        question: "Can I sleep in my contact lenses?",
+        answer:
+          "Take them out before bed unless your optometrist has fitted lenses designed for overnight wear. Sleeping in lenses increases the risk of an eye infection.",
+      },
+      {
+        question: "Can I swim in contact lenses?",
+        answer:
+          "Swimming in lenses is not recommended because of the risk of a serious eye infection from water. Prescription swimming goggles are a safer option.",
+      },
+      {
+        question: "Can I buy contact lenses online?",
+        answer:
+          "Yes, if you have a valid contact lens specification and the seller follows UK law, which requires supervision or general direction from a registered optometrist, dispensing optician or doctor.",
+      },
+      {
+        question: "Is a contact lens check the same as an eye test?",
+        answer:
+          "No. A contact lens check makes sure your lenses still suit your eyes. You still need a full eye test, usually every two years, to check your vision and eye health.",
+      },
+    ],
+    relatedQueries: ["contact-lens-eye-test", "eye-test-cost", "free-eye-test", "varifocals"],
+    ctaText: "Find an optician near you for a contact lens fitting",
+    disclaimer:
+      "This page is general information, not medical advice. Your optometrist or contact lens optician will advise on the lenses and wearing schedule that suit your eyes.",
+    sources: [
+      { label: "NHS Wales and the College of Optometrists: Contact lenses", url: "https://www.nhs.wales/sa/eye-care-wales/wgos/eye-health-professional/practice-resources/patient-facing-leaflets-under-review-not-for-forward-sharing/contact-lenses/" },
+      { label: "College of Optometrists: Contact lens specification", url: "https://www.college-optometrists.org/clinical-guidance/guidance/knowledge,-skills-and-performance/contact-lens-specification" },
+      { label: "College of Optometrists: Advice for contact lens wearers", url: "https://college-optometrists.org/news/2020/september/2020-09-kategarrawayrevealsshehadasix-day-oldconta" },
+      { label: "General Optical Council: Verification of contact lens specifications", url: "https://optical.org/resource/statement-on-verification-of-contact-lens-specifications.html" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+    ],
+  },
+  {
+    slug: "blue-light-glasses",
+    keyword: "blue light glasses",
+    title: "Do Blue Light Glasses Work? What the UK Evidence Says",
+    seoTitle: "Do Blue Light Glasses Work? What the Evidence Says (UK)",
+    seoDescription:
+      "Do blue light glasses help with eye strain, sleep or eye health? What the College of Optometrists and a 2023 Cochrane review found, and what helps instead.",
+    h1: "Do Blue Light Glasses Work?",
+    dateModified: "2026-11-11",
+    canonicalPath: "/articles/blue-light-glasses",
+    parentCrumbs: [{ label: "Articles", href: "/articles" }],
+    category: "general",
+    shortDescription:
+      "What the evidence says about blue light filtering glasses for eye strain, sleep and eye health, and practical steps that help with screen use.",
+    content: `Blue light glasses, also called blue light filtering or blue-blocking lenses, are sold to reduce eye strain from screens, improve sleep and protect your eyes. The College of Optometrists says there is no strong evidence that they do any of these things for most people.
+
+That does not mean screen discomfort is imagined. Long spells of close work can leave your eyes tired, dry or achy. The evidence points to other causes and other fixes, and an eye test is a good place to start.`,
+    keyFacts: [
+      { label: "Eye strain", value: "No better than ordinary lenses in trials" },
+      { label: "Sleep", value: "Effect unclear" },
+      { label: "Eye disease", value: "No good evidence screens cause it" },
+      { label: "Best first step", value: "An up-to-date eye test" },
+    ],
+    sections: [
+      {
+        heading: "What the research found",
+        body: `In 2023 a Cochrane review of 17 randomised controlled trials compared blue light filtering glasses with ordinary lenses. The College of Optometrists reported its main findings:`,
+        items: [
+          "There may be no short-term benefit for eye strain from computer use compared with ordinary lenses",
+          "There was little or no effect on how clearly people could see",
+          "The effect on sleep was unclear",
+        ],
+      },
+      {
+        heading: "What UK eye care bodies advise",
+        body: `The College of Optometrists says opticians who sell blue-blocking lenses should tell patients there is no strong evidence that they improve vision, ease eye strain or improve sleep, and that it is unclear whether they protect the macula. The Association of Optometrists says there is no clear evidence that blue light from screens causes eye disease, and notes that the blue light from most devices is a small fraction of what your eyes receive outdoors on a sunny day.`,
+      },
+      {
+        heading: "What can help with screen discomfort",
+        body: `If screens leave your eyes tired or uncomfortable, these steps are more likely to help:`,
+        items: [
+          "Have an eye test. An uncorrected or out-of-date prescription is a common cause of strain, and some people benefit from glasses set for computer distance",
+          "Take regular breaks and look into the distance from time to time",
+          "Remember to blink. People blink less when concentrating on a screen, which can make eyes feel dry",
+          "Set your screen at a comfortable distance and reduce glare from windows and lights",
+          "Put screens away a while before bed, since evening screen use may affect sleep",
+        ],
+        links: [
+          { label: "Dry eye syndrome", href: "/eye-health/conditions/dry-eye-syndrome" },
+          { label: "Book an eye test", href: "/find/book-eye-test" },
+        ],
+      },
+      {
+        heading: "Should you buy them?",
+        body: `If you like how blue light filtering lenses feel, there is no evidence they do harm for most people, but you should not expect them to fix eye strain or sleep problems. If you use a screen for work, ask your optometrist whether a separate pair of glasses for screen distance would help. If you use display screen equipment as a significant part of your job, the Health and Safety Executive says your employer must provide an eye test on request, and pay for a basic pair of glasses if you need them specifically for screen work.`,
+        links: [
+          { label: "Eye test cost", href: "/find/eye-test-cost" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do blue light glasses stop eye strain?",
+        answer:
+          "Trials found they may be no better than ordinary lenses at reducing eye strain from computer use. Breaks, blinking and an up-to-date prescription are more likely to help.",
+      },
+      {
+        question: "Do blue light glasses help you sleep?",
+        answer:
+          "The evidence is unclear. Using screens late in the evening may affect sleep, so putting devices away before bed is a simpler step.",
+      },
+      {
+        question: "Can screens damage your eyes?",
+        answer:
+          "UK optometry bodies say there is no clear evidence that blue light from screens causes eye disease. Screens can leave your eyes tired or dry, which usually settles with rest.",
+      },
+      {
+        question: "Will my employer pay for glasses for screen work?",
+        answer:
+          "If you are a display screen user at work, your employer must provide an eye test on request and pay for a basic pair of glasses if you need them specifically for screen work. Glasses for everyday use are not covered, and the self-employed are not entitled.",
+      },
+    ],
+    relatedQueries: ["book-eye-test", "eye-test-cost", "contact-lenses", "varifocals"],
+    ctaText: "Find an optician near you and book an eye test",
+    disclaimer:
+      "This page is general information, not medical advice. If screen use regularly causes headaches or discomfort, see an optometrist.",
+    sources: [
+      { label: "College of Optometrists: Review of blue light filtering lenses (2023)", url: "https://www.college-optometrists.org/news/2023/september/review-of-blue-light-filtering-blocking-lenses" },
+      { label: "College of Optometrists: Blue blocking spectacle lenses", url: "https://college-optometrists.org/viewpoint/position-statements/blue-blocking-spectacle-lenses" },
+      { label: "Association of Optometrists: Visible blue light", url: "https://www.aop.org.uk/campaigns-and-policy/policy/position-statements/2023/01/03/visible-blue-light" },
+      { label: "Health and Safety Executive: Working with display screen equipment (INDG36)", url: "https://www.hse.gov.uk/pubns/indg36.pdf" },
+    ],
+  },
+  {
+    slug: "varifocals",
+    keyword: "varifocals",
+    title: "Varifocals: What They Are, Who Needs Them and How to Get Used to Them",
+    seoTitle: "Varifocals: What They Are and Who Needs Them (UK Guide)",
+    seoDescription:
+      "What varifocal lenses are, how they differ from bifocals and reading glasses, who they suit, tips for getting used to them, and help with the cost.",
+    h1: "Varifocals: A UK Guide",
+    dateModified: "2026-11-11",
+    canonicalPath: "/articles/varifocals",
+    parentCrumbs: [{ label: "Articles", href: "/articles" }],
+    category: "general",
+    shortDescription:
+      "How varifocal lenses work, how they compare with bifocals and reading glasses, who they suit and how to get used to them.",
+    content: `Varifocals, also called progressive lenses, correct your vision at different distances in one pair of glasses. The top of the lens is set for distance, the bottom for reading, and the strength changes gradually in between, with no visible line.
+
+Most people consider varifocals from their forties onwards, when the eye's natural lens stiffens and close-up focusing becomes harder. This is called presbyopia. The College of Optometrists says that if you already need glasses for distance, you may then need separate distance and reading glasses, or bifocals or varifocals so you do not have to keep swapping.`,
+    keyFacts: [
+      { label: "Also called", value: "Progressive lenses" },
+      { label: "Covers", value: "Distance, middle and near vision" },
+      { label: "Visible line", value: "No" },
+      { label: "Getting used to them", value: "Often takes a few days to weeks" },
+    ],
+    sections: [
+      {
+        heading: "Varifocals, bifocals and reading glasses compared",
+        table: {
+          headers: ["Option", "How it works", "Good to know"],
+          rows: [
+            ["Reading glasses", "One strength for close work", "Need taking off to see across a room. Ready-made pairs are for reading only and not suitable for driving"],
+            ["Single vision distance and reading pairs", "Two separate pairs of glasses", "Simple lenses, but you swap pairs through the day"],
+            ["Bifocals", "Two strengths, split by a visible line", "The NHS describes them as lenses with two distinct optical powers"],
+            ["Varifocals", "Strength changes gradually from top to bottom", "Covers middle distance too, such as a computer screen or car dashboard"],
+          ],
+        },
+        links: [
+          { label: "Presbyopia", href: "/eye-health/conditions/presbyopia" },
+        ],
+      },
+      {
+        heading: "Who varifocals suit",
+        body: `Your optometrist will advise after your eye test. Varifocals often suit people who:`,
+        items: [
+          "Need help with both distance and close-up vision",
+          "Find themselves swapping between distance and reading glasses through the day",
+          "Want one pair that also covers middle distances, such as a laptop or a shop shelf",
+        ],
+        links: [
+          { label: "Book an eye test", href: "/find/book-eye-test" },
+        ],
+      },
+      {
+        heading: "Getting used to varifocals",
+        body: `Your dispensing optician will take careful measurements so the lens zones line up with your eyes. Many people take a little time to adjust. These tips can help:`,
+        items: [
+          "Wear them as much as you can at first rather than switching back to old glasses",
+          "Point your nose at what you want to see and move your head, not just your eyes",
+          "Look down through the bottom of the lens to read, and lower your chin a little for stairs and kerbs",
+          "Take care on stairs until you are used to them",
+          "If things still feel wrong after a couple of weeks, go back to your optician. The fit or measurements may need adjusting",
+        ],
+      },
+      {
+        heading: "Varifocal contact lenses",
+        body: `Varifocal and bifocal contact lenses are available too. The College of Optometrists notes that correcting presbyopia with contact lenses is more complicated than with glasses. Other options include monovision, where one eye is set for distance and the other for near, or distance lenses with reading glasses over the top.`,
+        links: [
+          { label: "Contact lenses guide", href: "/articles/contact-lenses" },
+        ],
+      },
+      {
+        heading: "Cost and NHS help",
+        body: `Varifocals usually cost more than single vision lenses, and prices vary widely with the lens design and coatings you choose. Most opticians, including Boots Opticians, Specsavers and Vision Express, offer varifocals at several price points, so ask what is included before you buy. If you qualify for an NHS optical voucher, you can use it towards the cost of your glasses.`,
+        links: [
+          { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the difference between varifocals and bifocals?",
+        answer:
+          "Bifocals have two strengths separated by a visible line. Varifocals change strength gradually from top to bottom with no line, and also cover middle distances such as a computer screen.",
+      },
+      {
+        question: "How long does it take to get used to varifocals?",
+        answer:
+          "Many people adjust within a few days to a couple of weeks. If they still feel uncomfortable after that, go back to your optician to check the fit and measurements.",
+      },
+      {
+        question: "Can I drive in varifocals?",
+        answer:
+          "Yes, varifocals are designed for distance vision through the top of the lens. Get used to them before driving, and make sure your glasses meet the DVLA eyesight standard.",
+      },
+      {
+        question: "At what age do people need varifocals?",
+        answer:
+          "Close-up focusing usually gets harder from the late thirties or forties. Whether you need varifocals depends on your prescription and how you use your eyes.",
+      },
+      {
+        question: "Can I get varifocals on the NHS?",
+        answer:
+          "If you qualify for an NHS optical voucher, you can use it towards glasses, including varifocals. You pay any difference if the glasses cost more than the voucher.",
+      },
+    ],
+    relatedQueries: ["book-eye-test", "nhs-optical-voucher", "contact-lenses", "eye-test-cost"],
+    ctaText: "Find an optician near you and ask about varifocals",
+    disclaimer:
+      "This page is general information, not medical advice. Your optometrist and dispensing optician will advise on the lenses that suit your prescription.",
+    sources: [
+      { label: "NHS Wales and the College of Optometrists: Presbyopia", url: "https://www.nhs.wales/sa/eye-care-wales/wgos/eye-health-professional/practice-resources/patient-facing-leaflets-under-review-not-for-forward-sharing/presbyopia/" },
+      { label: "NHS Wales and the College of Optometrists: Contact lenses", url: "https://www.nhs.wales/sa/eye-care-wales/wgos/eye-health-professional/practice-resources/patient-facing-leaflets-under-review-not-for-forward-sharing/contact-lenses/" },
+      { label: "NHS: Visiting an optician", url: "https://www.nhs.uk/nhs-services/opticians/visiting-an-optician/" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+    ],
+  },
+  {
+    slug: "optician-vs-optometrist",
+    keyword: "optician vs optometrist",
+    title: "Optician vs Optometrist: What Is the Difference?",
+    seoTitle: "Optician vs Optometrist: What Is the Difference? (UK)",
+    seoDescription:
+      "Optometrist, dispensing optician, ophthalmologist or orthoptist? Who does what in UK eye care, who tests your eyes, and how to check someone is registered.",
+    h1: "Optician vs Optometrist: What Is the Difference?",
+    dateModified: "2026-11-11",
+    canonicalPath: "/articles/optician-vs-optometrist",
+    parentCrumbs: [{ label: "Articles", href: "/articles" }],
+    category: "general",
+    shortDescription:
+      "Who does what in UK eye care: optometrists, dispensing opticians, contact lens opticians, ophthalmologists and orthoptists.",
+    content: `"Optician" is the word most people use for the shop where they have an eye test. Inside, several different professionals may look after you. The person who tests your eyes is an optometrist. A dispensing optician helps you choose and fit your glasses.
+
+Optometrists and dispensing opticians are both regulated by the General Optical Council (GOC) and must be on its register to practise in the UK. Ophthalmologists are doctors regulated by the General Medical Council, and orthoptists are regulated by the Health and Care Professions Council.`,
+    keyFacts: [
+      { label: "Tests your eyes", value: "Optometrist" },
+      { label: "Fits your glasses", value: "Dispensing optician" },
+      { label: "Eye surgeon", value: "Ophthalmologist" },
+      { label: "Regulator", value: "General Optical Council" },
+    ],
+    sections: [
+      {
+        heading: "Who does what",
+        table: {
+          headers: ["Professional", "What they do", "Regulated by"],
+          rows: [
+            ["Optometrist", "Examines your eyes, tests your sight, prescribes and fits glasses and contact lenses, and refers you to your GP or hospital if needed. Some are trained to prescribe medicines for eye conditions", "General Optical Council"],
+            ["Dispensing optician", "Fits and supplies glasses from your prescription and advises on lenses and frames. Does not carry out eye tests", "General Optical Council"],
+            ["Contact lens optician", "A dispensing optician with extra training to fit contact lenses", "General Optical Council"],
+            ["Ophthalmologist", "A doctor who specialises in eyes, including surgery for conditions such as cataracts", "General Medical Council"],
+            ["Orthoptist", "Specialises in squints and eye movement problems, often seeing children", "Health and Care Professions Council"],
+          ],
+        },
+        links: [
+          { label: "Squint", href: "/eye-health/conditions/strabismus" },
+          { label: "Cataract surgery", href: "/eye-surgery/cataracts" },
+        ],
+      },
+      {
+        heading: "What an optometrist checks",
+        body: `The NHS says optometrists examine the inside and outside of your eye for conditions such as glaucoma, macular degeneration and cataracts, and test focusing, eye coordination, depth perception and colour vision. If they find something that needs a closer look, they refer you to your GP or a hospital eye clinic.`,
+        links: [
+          { label: "What happens during an eye test", href: "/articles/what-happens-during-an-eye-test" },
+          { label: "Glaucoma", href: "/eye-health/conditions/glaucoma" },
+        ],
+      },
+      {
+        heading: "Why the names get confused",
+        body: `Many people use "optician" for both roles. The GOC itself uses the word in its public perceptions research, because most people do not separate the two professions. Day to day, it rarely matters: when you book an eye test at any high street optician, such as Boots Opticians, Specsavers or Vision Express, or at an independent practice, it is carried out by a registered optometrist.`,
+        links: [
+          { label: "Compare opticians", href: "/opticians" },
+        ],
+      },
+      {
+        heading: "How to check someone is registered",
+        body: `The GOC publishes a register of optometrists, dispensing opticians, student opticians and optical businesses, which you can search on its website. Membership of the College of Optometrists is shown by the letters MCOptom or FCOptom after an optometrist's name.`,
+      },
+      {
+        heading: "Which one should you see?",
+        body: `For an eye test, new glasses or contact lenses, or a non-urgent eye problem, start with an optometrist at your local optician. Many can see you quickly for problems such as a red or sore eye. They will refer you on to an ophthalmologist or other specialist if you need one. If you have sudden loss of vision or a serious eye injury, go to A&E or call 999.`,
+        links: [
+          { label: "Emergency eye test near me", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is an optician the same as an optometrist?",
+        answer:
+          "Not quite. An optometrist tests your eyes and prescribes glasses or contact lenses. A dispensing optician fits and supplies glasses but does not test eyes. Both are often called opticians.",
+      },
+      {
+        question: "Is an optometrist a doctor?",
+        answer:
+          "No. Optometrists are degree-trained eye health professionals regulated by the General Optical Council. Ophthalmologists are medical doctors who specialise in eyes.",
+      },
+      {
+        question: "Can an optometrist prescribe eye drops?",
+        answer:
+          "Some can. The NHS says optometrists with extra training can prescribe medicines for eye conditions.",
+      },
+      {
+        question: "Who can fit contact lenses?",
+        answer:
+          "Only a registered optometrist, a contact lens optician or a doctor can fit contact lenses in the UK.",
+      },
+      {
+        question: "How do I know my optometrist is qualified?",
+        answer:
+          "Search the General Optical Council register on its website. Every optometrist and dispensing optician practising in the UK must be on it.",
+      },
+    ],
+    relatedQueries: ["book-eye-test", "contact-lenses", "opticians-near-me", "eye-test-cost"],
+    ctaText: "Find a registered optician near you and book an eye test",
+    disclaimer:
+      "This page is general information about UK eye care roles. If you have a sudden change in your vision, get advice straight away from an optician, NHS 111 or A&E.",
+    sources: [
+      { label: "NHS: Visiting an optician", url: "https://www.nhs.uk/nhs-services/opticians/visiting-an-optician/" },
+      { label: "General Optical Council: A career in vision care", url: "https://cy.optical.org/media/p22ouykw/career-in-vision-care.pdf" },
+      { label: "General Optical Council: Contact lens FAQs", url: "https://cy.optical.org/asset/E253643F%2DF426%2D4022%2DAF20C7FE0CF4AF56" },
+      { label: "College of Optometrists: What is an optometrist?", url: "https://www.college-optometrists.org/careers" },
+      { label: "Association of Optometrists: The optical professions and how they are regulated", url: "https://www.aop.org.uk/campaigns-and-policy/news-and-media/media-centre/resources-for-journalists/optical-professions-and-regulation" },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
