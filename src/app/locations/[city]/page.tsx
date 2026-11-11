@@ -15,8 +15,8 @@ import {
 import {
   getAvailableOpticians,
   getUnavailableOpticians,
-  getOpticiansByLocation,
 } from "@/data/opticians";
+import { brandsInTown } from "@/data/store-snapshot";
 import { eyeTests } from "@/data/eye-tests";
 import { eyeConditions } from "@/data/eye-health";
 import { notFound } from "next/navigation";
@@ -99,7 +99,8 @@ export default async function CityPage({
 
   const availableOpticians = getAvailableOpticians();
   const unavailableOpticians = getUnavailableOpticians();
-  const localOpticians = getOpticiansByLocation(location.slug);
+  // Brands with a practice listed in and around the town (real practice data)
+  const localOpticians = brandsInTown(location.slug);
   const localAvailable = localOpticians.filter((o) => o.available);
   const localUnavailable = localOpticians.filter((o) => !o.available);
   const nearbyLocations = location.nearbyAreas
@@ -216,11 +217,15 @@ export default async function CityPage({
     ],
   };
 
+  // eyetest.co.uk is not a practice in this town, so describe the comparison
+  // service it offers for the town rather than a local business.
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
+    "@type": "Service",
+    serviceType: "Optician comparison",
+    provider: { "@type": "Organization", name: "eyetest.co.uk", url: "https://www.eyetest.co.uk" },
     name: `Eye Test Services in ${location.name}`,
-    description: `Compare and book eye tests from opticians in ${nameWithCounty(location)}. NHS and private eye tests available.`,
+    description: `Compare opticians in ${nameWithCounty(location)} and book direct. NHS and private eye tests available.`,
     url: `https://www.eyetest.co.uk/locations/${location.slug}`,
     areaServed: {
       "@type": "City",
@@ -230,12 +235,6 @@ export default async function CityPage({
         name: location.county,
       },
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: location.lat,
-      longitude: location.lng,
-    },
-    medicalSpecialty: "Optometry",
   };
 
   return (
@@ -468,7 +467,7 @@ export default async function CityPage({
               {localAvailable.map((optician) => (
                 <Link
                   key={optician.slug}
-                  href={`/opticians/${optician.slug}`}
+                  href={`/opticians/${optician.slug}/${location.slug}`}
                   className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
                   style={{ borderLeft: `4px solid ${optician.brandColor}` }}
                 >
@@ -496,7 +495,7 @@ export default async function CityPage({
                   <div className="flex flex-wrap gap-2 mb-4">
                     <span className="inline-flex items-center gap-1 text-xs bg-[var(--color-success)]/10 text-[var(--color-success)] px-2.5 py-1 rounded-full font-medium">
                       <span className="w-1.5 h-1.5 bg-[var(--color-success)] rounded-full" />
-                      Book online
+                      Book direct
                     </span>
                     {optician.nhsAvailable && (
                       <span className="inline-flex items-center text-xs bg-[var(--color-nhs-blue)]/10 text-[var(--color-nhs-blue)] px-2.5 py-1 rounded-full font-medium">
@@ -524,7 +523,7 @@ export default async function CityPage({
 
                   <div className="pt-4 border-t border-gray-100">
                     <span className="text-sm font-medium text-[var(--color-primary)] group-hover:text-[var(--color-primary-dark)] transition-colors flex items-center gap-1">
-                      View details &amp; book
+                      {optician.shortName} in {location.name}
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
@@ -538,13 +537,14 @@ export default async function CityPage({
             {localUnavailable.length > 0 && (
               <div>
                 <h3 className="text-lg font-semibold text-[var(--color-navy)] mb-4">
-                  Coming soon to eyetest.co.uk
+                  Also in {location.name}
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {localUnavailable.map((optician) => (
-                    <div
+                    <Link
                       key={optician.slug}
-                      className="bg-gray-50 border border-gray-100 rounded-xl p-4 flex items-center gap-4"
+                      href={`/opticians/${optician.slug}/${location.slug}`}
+                      className="bg-gray-50 border border-gray-100 rounded-xl p-4 flex items-center gap-4 hover:border-[var(--color-primary)]/30"
                     >
                       <div
                         className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-sm shrink-0 opacity-60"
@@ -557,10 +557,10 @@ export default async function CityPage({
                           {optician.name}
                         </p>
                         <p className="text-xs text-gray-400">
-                          {optician.storeCount}+ stores &middot; Coming soon
+                          {optician.shortName} in {location.name} &middot; {optician.priceRange}
                         </p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>

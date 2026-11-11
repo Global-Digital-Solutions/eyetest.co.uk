@@ -1,23 +1,22 @@
 # eyetest.co.uk
 
-> eyetest.co.uk is the UK's dedicated eye test comparison and booking platform, helping patients find and book eye tests from leading opticians across 97 UK cities since 2019.
+> eyetest.co.uk is a UK eye test comparison site. It helps people find opticians near them, compare prices and services, and book direct with the optician, showing appointment availability where it can. It covers 97 UK cities and towns. Prices and practice details are checked against each optician's own website; information on each page shows when it was last checked.
 
 ## Main Pages
-- [Homepage](https://www.eyetest.co.uk/): Find and book eye tests near you
-- [Search](https://www.eyetest.co.uk/search): Search for opticians by postcode
+- [Homepage](https://www.eyetest.co.uk/): Find opticians near you and book direct
 - [Find Opticians](https://www.eyetest.co.uk/find): Find opticians near your location
 - [Eye Tests](https://www.eyetest.co.uk/eye-tests): Browse all types of eye tests available in the UK
 - [Eye Health](https://www.eyetest.co.uk/eye-health): Eye health conditions, guides, and advice
 - [Opticians](https://www.eyetest.co.uk/opticians): Compare UK optician brands and chains
 - [UK Locations](https://www.eyetest.co.uk/locations): Find eye tests in 97 UK cities and towns
-- [At-Home Eye Tests](https://www.eyetest.co.uk/at-home-eye-tests): Home visit eye test services
-- [Offers](https://www.eyetest.co.uk/offers): Current eye test offers and deals
+- [At-Home Eye Tests](https://www.eyetest.co.uk/at-home-eye-tests): Who qualifies for an NHS eye test at home, and the main home visit providers listed alphabetically (checked November 2026)
+- [Offers](https://www.eyetest.co.uk/offers): Current offers from 9 UK opticians, each checked against the optician's own offers page on 11 November 2026
 - [Get Listed](https://www.eyetest.co.uk/get-listed): Optician sign-up for the platform
 - [About Us](https://www.eyetest.co.uk/about): About eyetest.co.uk
 
 ## Optician Brands
 - [Boots Opticians](https://www.eyetest.co.uk/opticians/boots-opticians): Boots eye test cost from £29.95 (Essential, with dry eye check), OCT from £25 extra, Ultimate from £50 extra, £50 contact lens check, free NHS tests, around 637 practices (checked November 2026)
-- [Specsavers](https://www.eyetest.co.uk/opticians/specsavers): Specsavers eye test prices (£20 to £25, OCT scan up to £10 extra, private home eye test £60, free if NHS-eligible), free hearing tests, home visits, glasses, contact lens and hearing aid offers, and how to book. Facts checked against specsavers.co.uk and NHS guidance, November 2026. Specsavers is not bookable through eyetest.co.uk; book at specsavers.co.uk.
+- [Specsavers](https://www.eyetest.co.uk/opticians/specsavers): Specsavers eye test prices (£20 to £25, OCT scan up to £10 extra, private home eye test £60, free if NHS-eligible), free hearing tests, home visits, glasses, contact lens and hearing aid offers, and how to book. Facts checked against specsavers.co.uk and NHS guidance, November 2026. Book direct at specsavers.co.uk.
 - [Vision Express](https://www.eyetest.co.uk/opticians/vision-express): Vision Express Advanced Eye Test £30 with OCT included, NHS upgrade from £6, over 550 stores including Tesco (checked November 2026)
 - [Asda Opticians](https://www.eyetest.co.uk/opticians/asda-opticians): Asda Opticians eye test £24 (about 30 minutes), free NHS tests, OCT at selected stores, free kids' glasses with an NHS voucher, glasses from £15, over 157 stores (checked November 2026)
 - [Leightons Opticians & Hearing Care](https://www.eyetest.co.uk/opticians/leightons): Leightons eye test £39, Enhanced £69, Ultimate with optomap and OCT £99, free NHS tests, hearing care, 37 branches in the South (checked November 2026)
@@ -25,10 +24,13 @@
 - [Scrivens Opticians & Hearing Care](https://www.eyetest.co.uk/opticians/scrivens): Scrivens eye test £30, OCT £10 extra, free NHS tests, hearing care, around 160 branches (checked November 2026)
 - [Bayfields Opticians & Audiologists](https://www.eyetest.co.uk/opticians/bayfields): Bayfields 45-minute eye tests, Advanced with OCT £64, Ultimate with optomap £77, NHS OCT upgrade £39, hearing care, 55 practices (checked November 2026)
 - [Duncan and Todd](https://www.eyetest.co.uk/opticians/duncan-and-todd): Duncan and Todd Sight and Hearing Care, free NHS eye examinations in Scotland, OCT, hearing care, stores across north-east and central Scotland since 1972 (checked November 2026)
-- [Optical Express](https://www.eyetest.co.uk/opticians/optical-express): Optical Express Essential Eye Test £25, Advanced £50, NHS upgrade £25, over 120 clinics, laser eye surgery (checked November 2026)
+- [Optical Express](https://www.eyetest.co.uk/opticians/optical-express): Optical Express Essential Eye Test £25, Advanced £50, NHS upgrade £25, 79 clinics offering eye examinations, laser eye surgery (checked November 2026)
 - [M&S Opticians](https://www.eyetest.co.uk/opticians/mands-opticians): M&S Opticians eye tests cost £40 with an OCT scan included, free NHS tests if eligible, free hearing checks, 37 stores (checked November 2026)
 - [Ace & Tate](https://www.eyetest.co.uk/opticians/ace-and-tate): Ace & Tate eye tests free with glasses or £25 returned as a gift code, about 20 minutes, 17 UK stores (checked November 2026)
-- [Jimmy Fairly](https://www.eyetest.co.uk/opticians/jimmy-fairly): Jimmy Fairly 30-minute eye tests, free when you buy a frame on the day or £25 redeemable, stores in London, Kingston and Brighton (checked November 2026)
+- [Jimmy Fairly](https://www.eyetest.co.uk/opticians/jimmy-fairly): Jimmy Fairly 30-minute eye tests, free when you buy a frame on the day or £25 redeemable, stores in London, Bath, Brighton, Bristol, Cambridge, Edinburgh, Kingston and Leeds (checked November 2026)
+
+## Optician Brands by Town
+Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opticians/{brand}/{town} (for example [Boots Opticians Manchester](https://www.eyetest.co.uk/opticians/boots-opticians/manchester) or [Specsavers Salisbury](https://www.eyetest.co.uk/opticians/specsavers/salisbury)). Where the brand has a practice in and around the town, the page lists the real practices with address, phone and a link to book direct, taken from the optician's own website or booking system (checked 11 November 2026). Where it does not, the page says so and lists the nearest towns with that brand and the other opticians in the town.
 
 ## Eye Test Types
 - [Standard Eye Test](https://www.eyetest.co.uk/eye-tests/standard-eye-test)
@@ -51,7 +53,7 @@
 - [Macular Degeneration Screening](https://www.eyetest.co.uk/eye-tests/macular-degeneration-screening)
 
 ## Eye Surgery
-- [Eye Surgery Hub](https://www.eyetest.co.uk/eye-surgery): Find and compare specialist ophthalmic surgeons across the UK
+- [Eye Surgery Hub](https://www.eyetest.co.uk/eye-surgery): NHS and private eye surgery providers listed alphabetically; no provider is ranked or recommended
 - [Cataract Surgery](https://www.eyetest.co.uk/eye-surgery/cataracts): Cataract surgery information, NHS and private options, costs, and recovery
 - [Glaucoma Surgery](https://www.eyetest.co.uk/eye-surgery/glaucoma-surgery): Glaucoma surgery options including SLT laser and trabeculectomy
 - [Laser Eye Surgery](https://www.eyetest.co.uk/eye-surgery/laser-eye-surgery): LASIK, LASEK, PRK, and ReLEx SMILE laser vision correction

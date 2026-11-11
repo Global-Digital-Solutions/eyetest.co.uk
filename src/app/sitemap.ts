@@ -17,6 +17,8 @@ import { getAllConditionSlugs as getAllSurgeryConditionSlugs } from "@/data/surg
 
 const BASE = "https://www.eyetest.co.uk";
 const NOW = "2026-06-23T00:00:00.000Z";
+/** Pages whose content changed in the November 2026 accuracy review */
+const REVIEWED = "2026-11-11";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   /* ------------------------------------------------------------------ */
@@ -24,17 +26,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   /* ------------------------------------------------------------------ */
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: `${BASE}/`, lastModified: NOW, changeFrequency: "daily", priority: 1.0 },
+    { url: `${BASE}/`, lastModified: REVIEWED, changeFrequency: "daily", priority: 1.0 },
     { url: `${BASE}/find`, lastModified: NOW, changeFrequency: "weekly", priority: 0.7 },
-    { url: `${BASE}/at-home-eye-tests`, lastModified: NOW, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/at-home-eye-tests`, lastModified: REVIEWED, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/eye-tests`, lastModified: NOW, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/eye-health`, lastModified: NOW, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE}/opticians`, lastModified: NOW, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE}/locations`, lastModified: NOW, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE}/offers`, lastModified: NOW, changeFrequency: "weekly", priority: 0.6 },
+    { url: `${BASE}/opticians`, lastModified: REVIEWED, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/locations`, lastModified: REVIEWED, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/offers`, lastModified: REVIEWED, changeFrequency: "weekly", priority: 0.6 },
     { url: `${BASE}/articles`, lastModified: NOW, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/eye-health/conditions`, lastModified: NOW, changeFrequency: "weekly", priority: 0.7 },
-    { url: `${BASE}/eye-surgery`, lastModified: NOW, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/eye-surgery`, lastModified: REVIEWED, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/eye-surgery/enquiry`, lastModified: NOW, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/get-listed`, lastModified: NOW, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE}/about`, lastModified: NOW, changeFrequency: "monthly", priority: 0.4 },
@@ -118,7 +120,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const locationPages: MetadataRoute.Sitemap = getAllLocationSlugs().map(
     (slug) => ({
       url: `${BASE}/locations/${slug}`,
-      lastModified: NOW,
+      lastModified: REVIEWED,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })
@@ -172,7 +174,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const surgeryProviderPages: MetadataRoute.Sitemap =
     getAllProviderSlugs().map((slug) => ({
       url: `${BASE}/eye-surgery/providers/${slug}`,
-      lastModified: NOW,
+      lastModified: REVIEWED,
       changeFrequency: "monthly" as const,
       priority: 0.6,
     }));

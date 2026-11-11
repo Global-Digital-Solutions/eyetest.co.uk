@@ -11,10 +11,12 @@ import {
   type OpticianBrand,
 } from "@/data/opticians";
 import {
+  locations,
   getLocationBySlug,
   regions,
   type Region,
 } from "@/data/locations";
+import { brandInTown } from "@/data/store-snapshot";
 import { notFound } from "next/navigation";
 import { PRICE_DISCLAIMER } from "@/data/search-queries";
 
@@ -99,10 +101,12 @@ export default async function OpticianPage({
 
   // Group store locations by region
   const locationsByRegion: Record<string, { slug: string; name: string }[]> = {};
-  if (optician.storeLocations && optician.storeLocations.length > 0) {
-    for (const locSlug of optician.storeLocations) {
-      const loc = getLocationBySlug(locSlug);
-      if (loc) {
+  // Towns with a practice listed, from real practice data (falls back to the
+  // hand-checked list for any town without a live result)
+  const brandTowns = locations.filter((l) => brandInTown(optician, l.slug));
+  if (brandTowns.length > 0) {
+    for (const loc of brandTowns) {
+      {
         if (!locationsByRegion[loc.region]) {
           locationsByRegion[loc.region] = [];
         }
@@ -375,12 +379,11 @@ export default async function OpticianPage({
                     {optician.services.length}
                   </dd>
                 </div>
-                {optician.storeLocations &&
-                  optician.storeLocations.length > 0 && (
+                {brandTowns.length > 0 && (
                     <div className="flex justify-between">
                       <dt className="text-gray-500">Locations Listed</dt>
                       <dd className="font-medium text-[var(--color-navy)]">
-                        {optician.storeLocations.length}
+                        {brandTowns.length}
                       </dd>
                     </div>
                   )}
