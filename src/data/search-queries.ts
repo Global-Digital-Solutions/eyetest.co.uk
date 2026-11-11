@@ -742,159 +742,285 @@ The values below are for England and come from the NHSBSA guide for April 2026. 
   {
     slug: "same-day-eye-test",
     keyword: "same day eye test",
-    title: "Same-Day Eye Tests — Find Last-Minute Appointments Near You",
+    title: "Same-Day Eye Test: How to Find an Appointment Today",
+    seoTitle: "Same-Day Eye Test Near Me: Find an Appointment Today (UK)",
+    seoDescription:
+      "How to find a same-day eye test near you. See the next available appointment at opticians near you and book direct. Free if you qualify for an NHS eye test.",
+    h1: "Same-Day Eye Test: Find an Appointment Today",
+    dateModified: "2026-11-11",
     category: "availability",
     shortDescription:
-      "Need an eye test today? Many opticians offer same-day appointments. Find available slots near you and book online.",
-    content: `If you need an eye test urgently, many opticians across the UK offer same-day appointments. Whether you have noticed a change in your vision, need an updated prescription quickly, or simply want to get your test done without waiting, same-day booking is widely available.
+      "Find an eye test today. See the next available appointment at opticians near you and book direct.",
+    content: `Enter your postcode at the top of this page to see opticians near you. Where an optician publishes its appointment times, we show the next available slot, so you can spot a same-day or weekend appointment and book direct with the optician.
 
-Major chains like Specsavers, Boots Opticians, and Vision Express typically have same-day slots available, particularly during quieter periods such as weekday mornings and early afternoons. Independent opticians may also be able to fit you in at short notice. The easiest way to find same-day availability is to search online — many opticians allow you to see available appointment times on their website and book instantly.
+Availability changes through the day as people book and cancel, so if nothing suits, check again later or call the practice. A same-day eye test is the same test as any other appointment, and it is free if you qualify for a free NHS eye test.
 
-If your need is genuinely urgent — for example, sudden vision loss, flashes of light, a shower of new floaters, a painful red eye, or an eye injury — you should seek emergency eye care rather than a routine eye test. Many opticians are accredited to provide urgent eye care through the NHS Minor Eye Conditions Service (MECS), and can see you the same day for these urgent symptoms, often at no cost. This is typically faster and more appropriate than going to A&E.
-
-For routine same-day appointments, it is worth calling your preferred optician first thing in the morning to ask about availability. Cancellations and no-shows mean that slots often open up throughout the day. If one practice cannot see you today, try another nearby — with multiple opticians in most town centres, there is usually someone who can help at short notice.
-
-Same-day appointments are subject to the same standards as any other eye test. You will receive a full sight test covering your vision, prescription, and eye health. If you need glasses, you can order them the same day, with some opticians offering same-day collection on selected frames and lenses.`,
+If you have a sudden eye problem, such as a red or painful eye, new flashes or floaters, or a sudden change in your sight, this is not a routine eye test. See the emergency eye care page for where to go.`,
+    keyFacts: [
+      { label: "Find a slot", value: "Search by postcode" },
+      { label: "Book", value: "Direct with the optician" },
+      { label: "Free", value: "If you qualify for the NHS" },
+      { label: "Urgent problem?", value: "See emergency eye care" },
+    ],
+    sections: [
+      {
+        heading: "Tips for getting seen today",
+        items: [
+          "Search by postcode and look at the next available appointment for each optician",
+          "Call the practice if you can't see a slot online, as cancellations come up during the day",
+          "Bring your glasses, contact lenses and proof of entitlement if you qualify for a free NHS test",
+        ],
+        links: [
+          { label: "Walk-in eye tests", href: "/find/walk-in-eye-test" },
+          { label: "Weekend eye tests", href: "/find/weekend-eye-test" },
+          { label: "Who gets a free NHS eye test", href: "/find/free-eye-test" },
+        ],
+      },
+      {
+        heading: "Urgent eye problems",
+        body: `In many parts of England, accredited opticians provide free NHS urgent eye care through the Community Urgent Eyecare Service (CUES). It is not an eye test, and you need to phone first. For a serious eye injury, such as a chemical in the eye or something that has pierced the eye, the NHS says go to A&E or call 999.`,
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+    ],
     faqs: [
       {
         question: "Can I get an eye test today?",
         answer:
-          "Yes, many opticians offer same-day appointments. Search online for available slots or call your local optician to ask about today's availability. Weekday mornings and early afternoons are usually the easiest times to get a same-day appointment.",
+          "Often, yes. Search by postcode to see the next available appointment at opticians near you, or call a practice to ask about cancellations.",
       },
       {
-        question: "Do I need to book or can I walk in?",
+        question: "Does a same-day eye test cost more?",
         answer:
-          "Most opticians prefer bookings but many accept walk-ins when slots are available. Walk-in availability varies by location and how busy the practice is. Calling ahead is recommended to avoid a wasted journey.",
+          "You pay the optician's normal price for the test you book. If you qualify for a free NHS eye test, it is free whenever you book it.",
       },
       {
-        question: "Is a same-day eye test more expensive?",
+        question: "Is a same-day eye test the right choice for a sudden eye problem?",
         answer:
-          "No. A same-day eye test costs the same as any other appointment. There is no premium for short-notice booking. If you qualify for a free NHS test, it is still free regardless of when you book.",
+          "No. A red or painful eye, new flashes or floaters, or a sudden change in sight needs urgent eye care, not a routine test. Phone an optician that provides urgent care, or call NHS 111.",
       },
     ],
     relatedQueries: [
       "walk-in-eye-test",
-      "emergency-eye-test-near-me",
       "weekend-eye-test",
+      "emergency-eye-test-near-me",
     ],
-    ctaText: "Find same-day eye test appointments",
+    ctaText: "See today's appointments near you",
+    disclaimer:
+      "Appointment availability changes quickly and is shown only where the optician publishes it. Always check with the optician.",
+    sources: [
+      { label: "Primary Eyecare Services: Community Urgent Eyecare Service", url: "https://primaryeyecare.co.uk/services/community-urgent-eyecare-service/" },
+      { label: "NHS: Eye injuries", url: "https://www.nhs.uk/conditions/eye-injuries/" },
+    ],
   },
   {
     slug: "walk-in-eye-test",
     keyword: "walk in eye test",
-    title: "Walk-In Eye Tests — No Appointment Needed at These Opticians",
+    title: "Walk-In Eye Test: Can You Get Seen Without an Appointment?",
+    seoTitle: "Walk-In Eye Test Near Me: Get Seen Without Booking (UK)",
+    seoDescription:
+      "Can you walk in for an eye test? Most opticians work by appointment, so check the next available slot near you and book direct, even for today.",
+    h1: "Walk-In Eye Tests",
+    dateModified: "2026-11-11",
     category: "availability",
     shortDescription:
-      "Find opticians near you that accept walk-in eye test appointments without the need to book in advance.",
-    content: `While most UK opticians prefer advance bookings, many will accept walk-in patients when appointment slots are available. If you need an eye test but have not booked, it is often possible to be seen the same day by simply walking into your local optician.
+      "Most opticians work by appointment. Here is the quickest way to get seen without a long wait.",
+    content: `Most opticians run eye tests by appointment, and whether they can see someone who walks in depends on how busy they are that day. Rather than turning up and hoping, it is usually quicker to check availability first.
 
-Walk-in availability depends heavily on how busy the practice is. You are most likely to be seen without an appointment during quieter periods — typically weekday mornings, early afternoons, and outside school holiday periods. Major chains like Specsavers, Boots, and Vision Express tend to have more optometrists on duty and therefore more flexibility to accommodate walk-ins. Smaller independent practices with a single optometrist may have less walk-in capacity.
+Enter your postcode at the top of this page to see opticians near you. Where an optician publishes its appointment times, we show the next available slot, so you can spot a same-day or weekend appointment and book direct with the optician.
 
-For genuine emergencies — sudden vision loss, flashes, floaters, red or painful eyes, or eye injuries — many opticians offer urgent walk-in services through the NHS Minor Eye Conditions Service (MECS). These emergency appointments do not need to be pre-booked and are usually free. Call your optician before walking in so they can triage your symptoms and ensure the right clinician is available.
-
-For routine walk-in requests, it is sensible to call ahead if possible. The receptionist can tell you whether there are any available slots and the likely wait time, saving you a potentially wasted trip. Even a five-minute phone call can make the difference between being seen promptly and being told the diary is full.
-
-If you want to guarantee being seen without a long wait, online booking is the most reliable option. Most major chains allow you to see real-time availability and book a specific time slot online in just a few clicks. This gives you the convenience of choosing when to attend while ensuring a slot is reserved for you.`,
+If you have a sudden eye problem, such as a red or painful eye, new flashes or floaters, or a sudden change in your sight, this is not a routine eye test. See the emergency eye care page for where to go.`,
+    keyFacts: [
+      { label: "Most opticians", value: "Work by appointment" },
+      { label: "Quickest route", value: "Check the next slot, book direct" },
+      { label: "Urgent NHS eye care", value: "Phone first, not walk-in" },
+      { label: "Free", value: "If you qualify for the NHS" },
+    ],
+    sections: [
+      {
+        heading: "Urgent eye care is not a walk-in service",
+        body: `In many parts of England, accredited opticians provide free NHS urgent eye care through the Community Urgent Eyecare Service (CUES). Primary Eyecare Services, which runs it, says you must phone first because it is not a walk-in service, and it is not an eye test. For a serious eye injury, the NHS says go to A&E or call 999.`,
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+    ],
     faqs: [
       {
-        question: "Which opticians accept walk-ins?",
+        question: "Can I walk into an optician for an eye test?",
         answer:
-          "Most opticians will try to accommodate walk-ins when slots are available, but none guarantee it. Specsavers, Boots, and Vision Express are more likely to have walk-in capacity due to having multiple optometrists. Always call ahead to check.",
+          "Sometimes, if a practice has a free slot, but most work by appointment. Check the next available appointment near you, or call ahead, to avoid a wasted trip.",
       },
       {
-        question: "Is there an extra charge for a walk-in eye test?",
+        question: "Is a walk-in eye test more expensive?",
         answer:
-          "No. Walk-in eye tests are priced the same as pre-booked appointments. There is no walk-in surcharge. NHS-funded tests remain free regardless of how you book.",
+          "You pay the optician's normal price for the test. If you qualify for a free NHS eye test, it is free however you book.",
       },
       {
-        question: "Can I walk in for an emergency eye problem?",
+        question: "Can I walk in for an urgent eye problem?",
         answer:
-          "Yes. Many opticians provide urgent eye care through the NHS MECS scheme and can see you on the same day for emergency symptoms such as sudden vision changes, eye pain, or injuries. Call first so they can prepare for your visit.",
+          "Phone first. NHS urgent eye care at opticians in England (CUES) is not a walk-in service. For a serious eye injury, go to A&E or call 999.",
       },
     ],
     relatedQueries: [
       "same-day-eye-test",
+      "weekend-eye-test",
       "emergency-eye-test-near-me",
     ],
-    ctaText: "Find walk-in eye tests near you",
+    ctaText: "See the next available appointment near you",
+    disclaimer:
+      "Appointment availability changes quickly and is shown only where the optician publishes it. Always check with the optician.",
+    sources: [
+      { label: "Primary Eyecare Services: CUES service summary", url: "https://primaryeyecare.co.uk/for-professionals/commissioners/service-summaries/community-urgent-eyecare-service-cues" },
+      { label: "NHS: Eye injuries", url: "https://www.nhs.uk/conditions/eye-injuries/" },
+    ],
   },
   {
     slug: "weekend-eye-test",
     keyword: "weekend eye test",
-    title: "Weekend Eye Tests — Saturday & Sunday Appointments Near You",
+    title: "Weekend Eye Test: Saturday and Sunday Appointments",
+    seoTitle: "Saturday and Sunday Eye Test Near Me: Weekend Appointments (UK)",
+    seoDescription:
+      "Find a Saturday or Sunday eye test near you. Opening hours vary by store, so check the next available weekend appointment and book direct with the optician.",
+    h1: "Weekend Eye Tests: Saturday and Sunday",
+    dateModified: "2026-11-11",
     category: "availability",
     shortDescription:
-      "Many UK opticians offer Saturday and some Sunday eye test appointments. Find weekend availability near you.",
-    content: `If you struggle to attend an eye test during the working week, weekend appointments are widely available across the UK. Most high-street opticians are open on Saturdays, and an increasing number also offer Sunday appointments.
+      "Find a Saturday or Sunday eye test near you. Weekend hours vary by store, so check before you go.",
+    content: `Many opticians open on Saturdays, and some open on Sundays, but hours vary from store to store, even within the same chain. Weekend slots also tend to book up, so it helps to look ahead.
 
-Saturday eye tests are available at virtually all Specsavers, Boots Opticians, and Vision Express stores. Most open from around 9am and close between 5pm and 6pm, though hours vary by location. Saturday is typically one of the busiest days for opticians, so booking in advance is strongly recommended. Many practices fill their Saturday appointments a week or more ahead, so the earlier you book, the more choice of times you will have.
+Enter your postcode at the top of this page to see opticians near you. Where an optician publishes its appointment times, we show the next available slot, so you can spot a same-day or weekend appointment and book direct with the optician.
 
-Sunday appointments are less universally available but are offered at many larger stores, particularly those in shopping centres or retail parks. Specsavers and Boots stores in major retail locations commonly offer Sunday testing, typically from 10am or 11am to 4pm or 5pm. Vision Express also opens many stores on Sundays. Independent opticians are less likely to open on Sundays, though some in busy urban areas do.
-
-Weekend appointments cost the same as weekday ones — there is no premium for out-of-hours testing. NHS-funded tests are also available at weekends for those who qualify. The test itself is identical to a weekday appointment, covering all the same clinical checks.
-
-To find weekend availability, the easiest approach is to search online. Most chain opticians show real-time appointment availability on their websites, allowing you to filter by date and see exactly which Saturday and Sunday slots are open near you. Alternatively, call your preferred optician and ask for the next available weekend appointment.`,
+Store pages on eyetest.co.uk show opening hours where the optician publishes them. A weekend eye test is the same test as a weekday one, and it is free if you qualify for a free NHS eye test.`,
+    keyFacts: [
+      { label: "Saturday", value: "Many opticians open" },
+      { label: "Sunday", value: "Some stores open, check hours" },
+      { label: "Book", value: "Ahead, weekend slots go fast" },
+      { label: "Free", value: "If you qualify for the NHS" },
+    ],
+    sections: [
+      {
+        heading: "Urgent problems at the weekend",
+        body: `NHS urgent eye care at opticians varies by area and some services do not run on Sundays. If you have a sudden eye problem outside opening hours, call NHS 111. For a serious eye injury, such as a chemical in the eye, the NHS says go to A&E or call 999.`,
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+    ],
     faqs: [
       {
         question: "Are opticians open on Sundays?",
         answer:
-          "Many larger Specsavers, Boots, and Vision Express stores open on Sundays, particularly those in shopping centres and retail parks. Typical Sunday hours are 10am to 4pm or 11am to 5pm. Independent opticians rarely open on Sundays.",
+          "Some are, mainly larger stores, but hours vary by store. Check the store's opening hours or the next available appointment before you go.",
       },
       {
         question: "Do weekend eye tests cost more?",
         answer:
-          "No. Weekend eye test appointments are priced the same as weekday ones. There is no extra charge for Saturday or Sunday appointments. NHS-funded tests remain free at weekends.",
+          "You pay the optician's normal price for the test you book. If you qualify for a free NHS eye test, it is free at the weekend too.",
       },
       {
-        question: "How far in advance should I book a Saturday eye test?",
+        question: "How far ahead should I book a Saturday eye test?",
         answer:
-          "Saturday is the busiest day for most opticians. Booking at least one to two weeks in advance gives you the best choice of times. For peak periods like school holidays, book even earlier.",
+          "As early as you can, as weekend appointments are popular. Checking the next available slot near you shows what is free.",
       },
     ],
     relatedQueries: [
       "same-day-eye-test",
       "walk-in-eye-test",
+      "book-eye-test",
     ],
-    ctaText: "Find weekend eye test appointments",
+    ctaText: "See weekend appointments near you",
+    disclaimer:
+      "Opening hours and appointment availability change and are shown only where the optician publishes them. Always check with the optician.",
+    sources: [
+      { label: "NHS: Eye injuries", url: "https://www.nhs.uk/conditions/eye-injuries/" },
+    ],
   },
   {
     slug: "emergency-eye-test-near-me",
     keyword: "emergency eye test near me",
-    title: "Emergency Eye Test Near Me — Urgent Same-Day Eye Care in the UK",
+    title: "Emergency Eye Care Near Me: Where to Go for an Urgent Eye Problem",
+    seoTitle: "Emergency Eye Care Near Me: Urgent Optician, NHS 111 or A&E?",
+    seoDescription:
+      "Where to go for an urgent eye problem in the UK: free NHS urgent eye care at opticians (CUES), NHS 111, or A&E for serious eye injuries. What the NHS advises.",
+    h1: "Emergency Eye Care: Where to Go",
+    dateModified: "2026-11-11",
     category: "availability",
     shortDescription:
-      "Find urgent eye care near you for sudden vision changes, eye pain, injuries, and other emergency eye symptoms.",
-    content: `If you are experiencing a sudden eye problem, getting seen quickly is essential. Many opticians across the UK are accredited to provide emergency and urgent eye care, often through the NHS Minor Eye Conditions Service (MECS) or similar local schemes. This is usually faster and more appropriate than going to A&E.
-
-Symptoms that require urgent eye care include: sudden loss of vision in one or both eyes, a sudden increase in floaters (especially with flashes of light), a shadow or dark curtain spreading across your vision, sudden severe eye pain, a red and painful eye with sensitivity to light, something stuck in your eye, a chemical splash in your eye, sudden double vision, or a recent eye injury. If you experience any of these, call your local optician immediately — many can see you the same day.
-
-The NHS MECS scheme allows accredited opticians to assess and manage a wide range of urgent eye conditions without you needing a GP referral or A&E visit. The service is free where available (it is commissioned locally, so coverage varies). Common conditions managed through MECS include conjunctivitis, foreign bodies, corneal abrasions, dry eye flare-ups, subconjunctival haemorrhages, and suspected acute glaucoma. If the optician identifies something that needs hospital treatment, they can refer you directly to the hospital eye service as an urgent case.
-
-To find urgent eye care near you, call your regular optician first. If they cannot see you or are not accredited for urgent care, they can usually direct you to the nearest practice that is. You can also call NHS 111 for advice on where to go. Only attend A&E for eye problems if your optician is unavailable and you are experiencing sight-threatening symptoms such as sudden vision loss, chemical burns, or a penetrating eye injury.`,
+      "Where to go for a sudden eye problem: an urgent eye care optician, NHS 111, or A&E for serious injuries, based on NHS advice.",
+    content: `Where you should go depends on how serious the problem is. For a serious eye injury, go to A&E or call 999. For other sudden eye problems, many opticians in England provide free NHS urgent eye care, and NHS 111 can tell you where to go.`,
+    keyFacts: [
+      { label: "Serious injury", value: "A&E or call 999" },
+      { label: "Sudden eye problem", value: "Urgent care optician (phone first)" },
+      { label: "Not sure", value: "Call NHS 111" },
+      { label: "Cost", value: "NHS urgent eye care is free" },
+    ],
+    sections: [
+      {
+        heading: "Go to A&E or call 999 if",
+        body: `The NHS says go to A&E or call 999 if:`,
+        items: [
+          "A strong chemical, such as oven cleaner or bleach, is in your eye. Keep rinsing with water while you wait",
+          "A sharp object has pierced your eye",
+          "Something has hit your eye at high speed, for example from power tools or a lawnmower",
+          "Your sight has changed after an eye injury",
+          "You have severe eye pain, a headache or sensitivity to light, or you feel or are sick after an eye injury",
+          "You cannot move your eye or keep it open, or blood or pus is coming from it",
+        ],
+      },
+      {
+        heading: "Urgent eye care at opticians (CUES)",
+        body: `In many parts of England, accredited opticians provide the Community Urgent Eyecare Service (CUES), a free NHS service for sudden eye problems such as a red or painful eye, something in your eye, a sudden change in vision, or new flashes and floaters. It is not an eye test, and you need to phone first rather than walk in. Your own optician may provide it, or can tell you who does. Availability varies by area.`,
+        links: [
+          { label: "Floaters in vision", href: "/find/floaters-in-vision" },
+          { label: "Sudden vision changes", href: "/find/sudden-vision-changes" },
+        ],
+      },
+      {
+        heading: "Call NHS 111 if",
+        body: `The NHS says ask for an urgent GP appointment or get help from NHS 111 if an eye injury is not getting better after 24 hours, if it is very painful, or if you are worried about it, particularly if a child is injured. You could also visit an optician for advice. Always call 111 if you need help for a child under 5.`,
+      },
+      {
+        heading: "What to do while you get help",
+        body: `If something is in your eye, the NHS advises washing it with clean, cool water, holding the eye open and running water over it for at least 20 minutes. Do not try to remove anything that has pierced the eye, do not rub it, and do not wear contact lenses or eye make-up until it is better. Do not drive yourself to A&E.`,
+      },
+    ],
     faqs: [
       {
-        question: "Should I go to A&E for an eye emergency?",
+        question: "Should I go to A&E or an optician for an eye problem?",
         answer:
-          "For most eye emergencies, your local optician or an NHS urgent eye care service (MECS) is faster and better equipped than A&E. Only go to A&E if your optician is unavailable and you have severe symptoms such as sudden vision loss, chemical burns, or a penetrating eye injury. Call NHS 111 for advice.",
+          "Go to A&E or call 999 for serious injuries, such as a chemical in the eye, something piercing the eye, or changes to your sight after an injury. For other sudden problems, phone an optician that provides NHS urgent eye care, or call NHS 111.",
       },
       {
         question: "Is emergency eye care free?",
         answer:
-          "Emergency eye care through the NHS MECS scheme is free where available. Even private emergency appointments are typically affordable at £30 to £60. Do not delay seeking help because of cost — most emergency eye care will not cost you anything.",
+          "NHS urgent eye care at accredited opticians in England (CUES) is free where it is available. A&E and NHS 111 are free.",
       },
       {
-        question: "What is the MECS scheme?",
+        question: "Can I walk in to an optician for urgent eye care?",
         answer:
-          "The Minor Eye Conditions Service (MECS) is an NHS-funded scheme that allows accredited opticians to assess and manage urgent eye conditions. It provides same-day or next-day care for conditions that might otherwise end up in A&E. Coverage varies by area.",
+          "Phone first. CUES is not a walk-in service, and the optician will check whether you need to be seen and how soon.",
+      },
+      {
+        question: "What counts as an urgent eye problem?",
+        answer:
+          "Examples include a red or painful eye, something in your eye that won't come out, a sudden change in vision, and new flashes or floaters.",
       },
     ],
     relatedQueries: [
-      "same-day-eye-test",
       "sudden-vision-changes",
       "floaters-in-vision",
-      "blurry-vision-causes",
+      "same-day-eye-test",
     ],
-    ctaText: "Find urgent eye care near you",
+    ctaText: "Find opticians near you",
+    disclaimer:
+      "This page is general information based on NHS advice, not medical advice. If in doubt, call NHS 111, or 999 in an emergency.",
+    sources: [
+      { label: "NHS: Eye injuries", url: "https://www.nhs.uk/conditions/eye-injuries/" },
+      { label: "Primary Eyecare Services: Community Urgent Eyecare Service", url: "https://primaryeyecare.co.uk/services/community-urgent-eyecare-service/" },
+      { label: "Primary Eyecare Services: CUES service summary", url: "https://primaryeyecare.co.uk/for-professionals/commissioners/service-summaries/community-urgent-eyecare-service-cues" },
+    ],
   },
   {
     slug: "eye-test-at-home",
@@ -938,42 +1064,86 @@ Private home visit eye tests are also available for anyone who simply prefers th
   {
     slug: "online-eye-test",
     keyword: "online eye test",
-    title: "Online Eye Tests — Can You Test Your Eyes Online? (UK Guide)",
+    title: "Online Eye Test: What It Can and Can't Tell You",
+    seoTitle: "Online Eye Test UK: Can It Replace a Proper Eye Test?",
+    seoDescription:
+      "Online eye tests can give a rough idea of how well you see, but in the UK only a registered optometrist or doctor can carry out a sight test. What online checks miss.",
+    h1: "Online Eye Tests: What They Can and Can't Do",
+    dateModified: "2026-11-11",
     category: "availability",
     shortDescription:
-      "Can you do a reliable eye test online? Understand the limitations and when you still need to visit an optician in person.",
-    content: `Online eye tests have grown in popularity, but it is important to understand their limitations. While digital tools can provide a rough indication of your visual acuity, they cannot replace a comprehensive in-person eye examination carried out by a qualified optometrist.
+      "What an online eye test can tell you, what it can't, and why you still need a sight test with an optometrist.",
+    content: `Online eye tests can give you a rough idea of how clearly you see, for example by reading letters on your screen. They cannot check the health of your eyes.
 
-Online vision screening tools typically test how well you can read letters or shapes on your screen from a set distance. Some more advanced services use your smartphone camera and algorithms to estimate your glasses prescription. These can be useful as a quick check — for example, if you are wondering whether your vision has changed since your last test — but they have significant limitations. They cannot measure eye pressure (critical for glaucoma screening), examine the health of the retina and optic nerve, detect conditions like cataracts or macular degeneration, or assess your binocular vision (how your eyes work together).
-
-In the UK, a valid glasses prescription can only be issued by a registered optometrist or ophthalmic medical practitioner following an in-person sight test. Online tools cannot legally provide a prescription, and no reputable UK optician will dispense glasses based solely on an online test result. The General Optical Council (GOC), which regulates the optical profession in the UK, has been clear that online tests do not meet the clinical standards required for a sight test.
-
-That said, some legitimate services offer remote consultations where an optometrist reviews your results and provides guidance via video call. These are more credible than fully automated tools but still cannot replace the physical examination of your eyes. They may be useful for follow-up consultations or advice between in-person tests.
-
-The best approach is to use online tools as a rough check and conversation starter, but always book a proper in-person eye test for your definitive assessment. With eye tests costing as little as £20 to £25 (or free if you qualify for an NHS test), the cost of an in-person test is minimal compared to the value of a thorough examination.`,
+In the UK, the Opticians Act 1989 says a sight test can only be carried out by a registered optometrist or a registered medical practitioner. A full eye examination also checks the inside and outside of your eyes, your eye movements and, if you are at risk, tests for glaucoma, according to the College of Optometrists. An online check cannot do these things.`,
+    keyFacts: [
+      { label: "Online check", value: "A rough idea of your vision" },
+      { label: "Eye health", value: "Not checked online" },
+      { label: "Sight test", value: "Registered optometrist or doctor" },
+      { label: "Free", value: "If you qualify for the NHS" },
+    ],
+    sections: [
+      {
+        heading: "What an online check misses",
+        body: `The College of Optometrists says an eye examination includes:`,
+        items: [
+          "Questions about your health, eyes, family history, work and hobbies",
+          "Distance and near vision checks",
+          "Eye movement and coordination checks",
+          "A detailed look at the outside and inside of your eyes",
+          "Glaucoma tests if you are in a group at risk",
+        ],
+        links: [
+          { label: "What happens during an eye test", href: "/articles/what-happens-during-an-eye-test" },
+        ],
+      },
+      {
+        heading: "Colour vision and online tests",
+        body: `Online colour blind tests can suggest whether you might have a colour vision deficiency, but screens show colours differently, so the NHS advises getting checked at an optician.`,
+        links: [
+          { label: "Colour blind test", href: "/find/colour-blind-test" },
+        ],
+      },
+      {
+        heading: "Getting a proper eye test",
+        body: `You can get a free NHS eye test if you qualify, for example if you are under 16, 60 or over, or have diabetes. Otherwise, see what the main opticians charge before you book.`,
+        links: [
+          { label: "Who gets a free NHS eye test", href: "/find/free-eye-test" },
+          { label: "Eye test prices", href: "/find/eye-test-cost" },
+          { label: "Eye tests at home", href: "/at-home-eye-tests" },
+        ],
+      },
+    ],
     faqs: [
       {
-        question: "Can I get a glasses prescription online?",
+        question: "Can I get a glasses prescription from an online eye test?",
         answer:
-          "No. In the UK, a valid glasses prescription can only be issued by a registered optometrist or ophthalmic medical practitioner after an in-person sight test. Online tools cannot legally provide a prescription.",
+          "No. In the UK a sight test can only be carried out by a registered optometrist or a registered medical practitioner, and a prescription comes from that sight test.",
       },
       {
         question: "Are online eye tests accurate?",
         answer:
-          "Online eye tests can give a rough indication of your visual acuity, but they cannot assess eye health, measure eye pressure, or detect conditions like glaucoma or cataracts. They should not be used as a substitute for an in-person eye test.",
+          "They can give a rough idea of how clearly you see, but they cannot check your eye health or test for conditions such as glaucoma.",
       },
       {
-        question: "When should I use an online eye test?",
+        question: "What if I can't get to an optician?",
         answer:
-          "Online vision screening tools can be useful as a quick check between regular eye tests, for example if you suspect your vision has changed. However, they should always be followed up with an in-person test for a proper assessment.",
+          "If you can't leave home unaccompanied because of illness or disability and you qualify for a free NHS eye test, an optometrist may be able to visit you at home.",
       },
     ],
     relatedQueries: [
       "eye-test-cost",
+      "free-eye-test",
       "do-i-need-an-eye-test",
-      "eye-test-at-home",
     ],
-    ctaText: "Book a proper eye test near you",
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information, not medical advice. If you notice a change in your sight, see an optician.",
+    sources: [
+      { label: "legislation.gov.uk: Opticians Act 1989, section 24", url: "https://www.legislation.gov.uk/ukpga/1989/44/section/24" },
+      { label: "College of Optometrists: The eye examination", url: "https://lookafteryoureyes.org/eye-examinations/the-eye-examination/" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+    ],
   },
 
   // ─── Brand ─────────────────────────────────────────────────────────────
@@ -1775,40 +1945,87 @@ GOV.UK says you could be prosecuted if you drive without meeting the standards o
   {
     slug: "contact-lens-eye-test",
     keyword: "contact lens eye test",
-    title: "Contact Lens Eye Test — Fitting, Check-ups & Cost (UK Guide)",
+    title: "Contact Lens Eye Test: Fittings, Check-Ups and Your Specification",
+    seoTitle: "Contact Lens Eye Test UK: Fittings, Check-Ups and Specifications",
+    seoDescription:
+      "How contact lens fittings and check-ups work in the UK, why you need an in-date contact lens specification, and how it differs from a glasses eye test.",
+    h1: "Contact Lens Eye Tests and Fittings",
+    dateModified: "2026-11-11",
     category: "specialist",
     shortDescription:
-      "Everything about contact lens fittings and check-ups in the UK, including costs, what to expect, and how often you need them.",
-    content: `If you want to wear contact lenses, you need a contact lens fitting in addition to your regular sight test. This is a specialist appointment that ensures your lenses fit correctly, provide clear vision, and are safe for your eyes. Contact lens check-ups are also legally required at least once a year.
+      "How contact lens fittings and check-ups work, and why you need an in-date contact lens specification to buy lenses.",
+    content: `A contact lens fitting is separate from a sight test. Your sight test checks your vision and eye health and gives you a glasses prescription. A contact lens fitting checks how lenses sit on your eyes and gives you a contact lens specification.
 
-A contact lens fitting typically costs £30 to £60 at most UK opticians. This covers detailed measurements of your eye surface, assessment of your tear film, selection of the appropriate lens type and material, trial lenses to check fit and vision, and a teach session for new wearers (how to insert, remove, and care for lenses). Many opticians include the fitting fee as part of a monthly contact lens plan, so you may not need to pay it separately.
-
-Annual contact lens check-ups are essential and legally required. Your contact lens prescription (specification) is only valid while your check-ups are up to date. During a check-up, your optician will assess the fit of your current lenses, check the health of the surface of your eyes, update your prescription if needed, and ensure you are not experiencing any complications. Check-ups typically take 15 to 30 minutes and are often included in monthly lens plans.
-
-Monthly contact lens plans at the major chains start from around £8 to £12 per month for daily disposable lenses, and typically include the lenses themselves, solutions (for reusable lenses), annual check-ups, and sometimes a sight test. These plans offer convenience and often work out cheaper than buying lenses and appointments separately.
-
-It is important to understand that a sight test and a contact lens appointment are separate services. Your sight test checks your overall vision and eye health and provides a glasses prescription. The contact lens appointment determines your contact lens prescription, which includes additional measurements specific to lenses. You need both — a glasses prescription cannot be used to order contact lenses.`,
-    faqs: [
+The General Optical Council says that to be supplied with prescription contact lenses, you must have an in-date contact lens specification issued after a contact lens fitting. The specification includes an expiry date, set by the practitioner who fits your lenses, and you need a check-up before it runs out to keep buying lenses.`,
+    keyFacts: [
+      { label: "Fitting", value: "Separate from a sight test" },
+      { label: "To buy lenses", value: "In-date specification needed" },
+      { label: "Specification", value: "Has an expiry date" },
+      { label: "Who fits lenses", value: "Optometrist, contact lens optician or doctor" },
+    ],
+    sections: [
       {
-        question: "Can I get contact lenses without a fitting?",
-        answer:
-          "No. In the UK, you need a contact lens fitting and a valid, in-date contact lens specification (prescription) to obtain contact lenses. Reputable suppliers will verify your specification before dispensing lenses.",
+        heading: "Sight test vs contact lens fitting",
+        table: {
+          headers: ["", "Sight test", "Contact lens fitting or check-up"],
+          rows: [
+            ["What it checks", "Your vision and eye health", "How lenses fit and how your eyes cope with them"],
+            ["What you get", "A glasses prescription, or a statement", "A contact lens specification with an expiry date"],
+            ["Free on the NHS", "If you qualify", "Not usually"],
+          ],
+        },
       },
       {
-        question: "How much do contact lenses cost per month?",
+        heading: "Who can fit contact lenses",
+        body: `The General Optical Council says contact lenses can only be fitted by an optometrist, a contact lens optician or a registered medical practitioner. Ask the optician what is included in their fitting and check-up fees, and whether they offer a monthly lens plan.`,
+        links: [
+          { label: "Eye test prices", href: "/find/eye-test-cost" },
+          { label: "Find an optician near you", href: "/locations" },
+        ],
+      },
+      {
+        heading: "Problems with your contact lenses",
+        body: `If you have a problem with your contact lenses, contact the optician that supplies them first. If you have a painful red eye, take your lenses out. The NHS advises not wearing contact lenses after an eye injury until your eye is better.`,
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Can I buy contact lenses without a fitting?",
         answer:
-          "Monthly plans at major chains start from around £8 to £12 per month for daily disposable lenses. Premium lenses (such as multifocal or toric lenses for astigmatism) cost more. Plans typically include lenses, check-ups, and solutions.",
+          "Not prescription lenses. The General Optical Council says you need an in-date contact lens specification issued after a contact lens fitting.",
       },
       {
         question: "How often do I need a contact lens check-up?",
         answer:
-          "At least once a year. Some lens types or individual circumstances may require six-monthly checks. Your contact lens practitioner will advise on the right frequency for you. Your specification is only valid while check-ups are current.",
+          "Before your specification expires. The practitioner who fits your lenses sets the expiry date, and you need a check-up to get a new specification.",
+      },
+      {
+        question: "Is a contact lens check-up the same as an eye test?",
+        answer:
+          "No. A sight test checks your vision and eye health. A contact lens check-up looks at how your lenses fit and how your eyes are coping with them. You may need both.",
+      },
+      {
+        question: "Are contact lens fittings free on the NHS?",
+        answer:
+          "A sight test is free if you qualify for the NHS. Contact lens fittings and check-ups are usually charged by the optician, so ask what is included.",
       },
     ],
     relatedQueries: [
       "eye-test-cost",
+      "free-eye-test",
+      "nhs-optical-voucher",
     ],
     ctaText: "Find contact lens appointments near you",
+    disclaimer:
+      "This page is general information, not medical advice. Fees and plans vary by optician, so check with the optician before you book.",
+    sources: [
+      { label: "General Optical Council: Verification of contact lens specifications", url: "https://optical.org/resource/goc-publishes-new-statement-on-verification-of-contact-lens-specifications.html" },
+      { label: "General Optical Council: Contact lens legislation FAQ", url: "https://optical.org/en/publications/contact-lens-legislation-frequently-asked-questions-faq/" },
+      { label: "NHS: Eye injuries", url: "https://www.nhs.uk/conditions/eye-injuries/" },
+    ],
   },
   {
     slug: "childrens-eye-test-guide",
