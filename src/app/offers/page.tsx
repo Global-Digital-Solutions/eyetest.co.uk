@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero, HeroSearchForm } from "@/components/PageHero";
 import { providerOffers, OFFER_CATEGORIES } from "@/data/offers";
+import { PRICE_DISCLAIMER } from "@/data/search-queries";
 import { OffersGrid } from "./OffersGrid";
 
 // ---------------------------------------------------------------------------
@@ -12,9 +13,9 @@ import { OffersGrid } from "./OffersGrid";
 
 export const metadata: Metadata = {
   title:
-    "Eye Test Offers & Optician Deals | eyetest.co.uk",
+    "Optician Offers & Eye Test Deals (November 2026) | eyetest.co.uk",
   description:
-    "Compare the latest offers and deals from Specsavers, Boots Opticians, Vision Express, ASDA and independent opticians. Find 2-for-1 glasses, free eye tests, student discounts, and contact lens deals — updated fortnightly.",
+    "Current offers from Specsavers, Boots Opticians, Vision Express, Asda and independent opticians, checked against each optician's own website on 11 November 2026: 2 for 1 glasses, second pair half price, student and over 60s discounts.",
   keywords: [
     "optician offers",
     "eye test deals",
@@ -31,9 +32,9 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title:
-      "Eye Test Offers & Deals — Compare UK Optician Promotions | eyetest.co.uk",
+      "Optician Offers & Eye Test Deals | eyetest.co.uk",
     description:
-      "Compare the latest offers from 9 major UK opticians. 2-for-1 glasses, free eye tests, student discounts, and more — all in one place.",
+      "Current offers from 9 UK opticians, checked against each optician's own website on 11 November 2026.",
     url: "https://www.eyetest.co.uk/offers",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -72,7 +73,8 @@ export default function OffersPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Eye Test Offers & Deals — UK Optician Promotions",
+    name: "Optician Offers and Eye Test Deals",
+    dateModified: "2026-11-11",
     description:
       "Compare the latest offers and deals from major UK optician chains including Specsavers, Boots Opticians, Vision Express, and ASDA.",
     url: "https://www.eyetest.co.uk/offers",
@@ -123,7 +125,7 @@ export default function OffersPage() {
         >
           <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm px-4 py-1.5 text-sm text-white/90 mb-6">
             <span className="inline-block w-2 h-2 rounded-full bg-[var(--color-success)] animate-pulse" />
-            Updated June 2026
+            Information last checked: 11 November 2026
           </div>
 
           <h1
@@ -135,7 +137,7 @@ export default function OffersPage() {
           <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto mb-8">
             Compare <strong className="text-white">{totalOffers}+ offers</strong>{" "}
             from {providerOffers.length} major UK opticians. From 2-for-1 glasses to
-            free eye tests and student discounts — find the best deal near you.
+            student discounts, all checked against each optician&apos;s own website.
           </p>
           <HeroSearchForm placeholder="Enter your postcode to find offers near you" />
         </PageHero>
@@ -207,7 +209,7 @@ export default function OffersPage() {
                             Eligible
                           </span>
                         ) : (
-                          <span className="text-gray-400 text-xs">—</span>
+                          <span className="text-gray-400 text-xs">No</span>
                         )}
                       </td>
                       <td className="text-right py-3 px-4">
@@ -224,8 +226,9 @@ export default function OffersPage() {
               </table>
             </div>
             <p className="text-xs text-gray-400 text-center mt-3">
-              Prices verified June 2026. NHS eye tests are free for eligible
-              groups including over 60s, under 16s, and benefit recipients.
+              Prices checked against each optician&apos;s own website on 11
+              November 2026. NHS eye tests are free for eligible groups
+              including over 60s, under 16s and people on certain benefits.
             </p>
           </div>
         </section>
@@ -282,13 +285,13 @@ export default function OffersPage() {
         {/* Last updated note */}
         <section className="py-8 bg-white border-t border-gray-100">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <p className="text-xs text-gray-400">
-              Offers are sourced directly from each optician&apos;s website and
-              verified fortnightly. Last updated:{" "}
-              <strong>June 2026</strong>. Prices and promotions may vary by
-              branch. Always confirm details with your local optician before
-              booking.
-            </p>
+            <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-left">
+              <p className="text-sm text-amber-900 leading-relaxed">
+                <strong>Please note:</strong> the offers on this page were last
+                checked against each optician&apos;s own website on 11 November
+                2026. {PRICE_DISCLAIMER}
+              </p>
+            </div>
           </div>
         </section>
       </main>
