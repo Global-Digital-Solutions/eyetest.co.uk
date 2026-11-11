@@ -16,9 +16,9 @@
 - [About Us](https://www.eyetest.co.uk/about): About eyetest.co.uk
 
 ## Optician Brands
-- [Boots Opticians](https://www.eyetest.co.uk/opticians/boots-opticians): Boots Opticians eye tests, services, and store locations
+- [Boots Opticians](https://www.eyetest.co.uk/opticians/boots-opticians): Boots eye test cost from £29.95 (Essential, with dry eye check), OCT from £25 extra, Ultimate from £50 extra, £50 contact lens check, free NHS tests, around 637 practices (checked November 2026)
 - [Specsavers](https://www.eyetest.co.uk/opticians/specsavers): Specsavers eye test prices (£20 to £25, OCT scan up to £10 extra, private home eye test £60, free if NHS-eligible), free hearing tests, home visits, glasses, contact lens and hearing aid offers, and how to book. Facts checked against specsavers.co.uk and NHS guidance, November 2026. Specsavers is not bookable through eyetest.co.uk; book at specsavers.co.uk.
-- [Vision Express](https://www.eyetest.co.uk/opticians/vision-express): Vision Express eye tests, services, and store locations
+- [Vision Express](https://www.eyetest.co.uk/opticians/vision-express): Vision Express Advanced Eye Test £30 with OCT included, NHS upgrade from £6, over 550 stores including Tesco (checked November 2026)
 - [ASDA Opticians](https://www.eyetest.co.uk/opticians/asda-opticians): ASDA Opticians eye tests, services, and store locations
 - [Leightons Opticians & Hearing Care](https://www.eyetest.co.uk/opticians/leightons): Leightons Opticians & Hearing Care eye tests, services, and store locations
 - [Rawlings Opticians](https://www.eyetest.co.uk/opticians/rawlings): Rawlings Opticians eye tests, services, and store locations
@@ -210,7 +210,6 @@
 - [Free Eye Test](https://www.eyetest.co.uk/find/free-eye-test): Who gets a free NHS eye test in England, Scotland, Wales and Northern Ireland, proof to bring, vouchers and time-limited optician offers
 - [Cheap Eye Test](https://www.eyetest.co.uk/find/cheap-eye-test): Cheapest eye tests near you
 - [Private Eye Test Cost](https://www.eyetest.co.uk/find/private-eye-test-cost): Private eye test costs UK
-- [Boots Eye Test Cost](https://www.eyetest.co.uk/find/boots-eye-test-cost): Boots pricing, offers and what's included
 - [Free Eye Test Over 60](https://www.eyetest.co.uk/find/free-eye-test-over-60): NHS free tests for over 60s
 - [Free Eye Test Children](https://www.eyetest.co.uk/find/free-eye-test-children): NHS entitlement for children
 - [Free Eye Test Diabetes](https://www.eyetest.co.uk/find/free-eye-test-diabetes): NHS entitlement for people with diabetes
@@ -222,8 +221,6 @@
 - [Emergency Eye Test Near Me](https://www.eyetest.co.uk/find/emergency-eye-test-near-me): Urgent same-day eye care
 - [Eye Test at Home](https://www.eyetest.co.uk/find/eye-test-at-home): Domiciliary eye care in the UK
 - [Online Eye Test](https://www.eyetest.co.uk/find/online-eye-test): Can you test your eyes online?
-- [Boots Eye Test](https://www.eyetest.co.uk/find/boots-eye-test): Cost, enhanced checks and booking
-- [Vision Express Eye Test](https://www.eyetest.co.uk/find/vision-express-eye-test): Price, what's included and booking
 - [Specsavers vs Boots](https://www.eyetest.co.uk/find/specsavers-vs-boots): Eye test comparison
 - [Book an Eye Test](https://www.eyetest.co.uk/find/book-eye-test): How to book online or by phone with the main UK opticians and how to book a free NHS test
 - [Opticians Near Me](https://www.eyetest.co.uk/find/opticians-near-me): Find opticians near you by postcode or town, with links to every town page

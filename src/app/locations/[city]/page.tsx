@@ -123,7 +123,7 @@ export default async function CityPage({
     },
     {
       q: `How much does an eye test cost in ${location.name}?`,
-      a: `Eye test prices in ${location.name} typically range from free (NHS-funded) to around £39 for a private examination. Many people qualify for free NHS eye tests, including those over 60, under 16, those on certain benefits, and people with specific medical conditions. Budget opticians such as ASDA offer private tests from £20, while premium independent opticians may charge up to £79 for enhanced examinations with OCT scanning.`,
+      a: `Eye tests in ${location.name} are free if you qualify for an NHS-funded test, for example if you are under 16, aged 60 or over, have diabetes or glaucoma or get certain benefits. Private eye tests at the main chains cost about £20 to £40: Specsavers says £20 to £25 depending on the store, Asda Opticians £24, Boots from £29.95, Vision Express £30 including an OCT scan and M&S Opticians £40 including an OCT scan. Independent opticians set their own prices, and prices and offers change from time to time.`,
     },
     {
       q: `Can I get a free eye test in ${location.name}?`,
@@ -418,8 +418,8 @@ export default async function CityPage({
                   </svg>
                 </div>
                 <h3 className="font-semibold text-white mb-2">Private eye test</h3>
-                <p className="text-2xl font-bold text-white mb-2">£20 &ndash; £39</p>
-                <p className="text-sm text-white/60">Standard private examinations at high-street opticians. ASDA offers from £20, Boots from £25, and independents typically from £30&ndash;£39.</p>
+                <p className="text-2xl font-bold text-white mb-2">About £20 &ndash; £40</p>
+                <p className="text-sm text-white/60">Published prices at the main chains: Specsavers £20 to £25, Asda £24, Boots from £29.95, Vision Express £30 and M&amp;S £40. Independent opticians set their own prices.</p>
               </div>
 
               <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
@@ -430,8 +430,8 @@ export default async function CityPage({
                   </svg>
                 </div>
                 <h3 className="font-semibold text-white mb-2">Enhanced with OCT scan</h3>
-                <p className="text-2xl font-bold text-white mb-2">£35 &ndash; £79</p>
-                <p className="text-sm text-white/60">Advanced examinations including Optical Coherence Tomography for early detection of glaucoma, macular degeneration, and diabetic eye disease.</p>
+                <p className="text-2xl font-bold text-white mb-2">About £30 &ndash; £80</p>
+                <p className="text-sm text-white/60">An OCT scan is included at Vision Express (£30) and M&amp;S (£40), costs up to £10 extra at most Specsavers stores and from £25 extra at Boots. Prices change from time to time, so check with the optician.</p>
               </div>
             </div>
 

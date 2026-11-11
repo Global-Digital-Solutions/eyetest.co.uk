@@ -97,7 +97,7 @@ The biggest difference between opticians is what the price includes. Some includ
           rows: [
             ["Specsavers", "£20 to £25, depending on the store", "Up to £10 extra in most stores", "specsavers.co.uk"],
             ["Asda Opticians", "£24", "Ask in store", "opticians.asda.com"],
-            ["Boots Opticians", "From £29.95", "Available at extra cost", "boots.com"],
+            ["Boots Opticians", "From £29.95 (Essential Eye Test)", "From £25 extra (Advanced Eye Test)", "bootsopticians.com"],
             ["Vision Express", "£30 (Advanced Eye Test)", "Included in the Advanced Eye Test", "visionexpress.com"],
             ["M&S Opticians", "£40", "Included at no extra cost", "mandsopticians.com"],
           ],
@@ -126,7 +126,7 @@ The biggest difference between opticians is what the price includes. Some includ
       },
       {
         heading: "Extra tests and what they cost",
-        body: `An OCT scan is the most common optional extra. Specsavers says it costs up to £10 extra in most stores, Vision Express includes it in its £30 Advanced Eye Test, and M&S Opticians includes it at no extra cost. A contact lens check is a separate appointment from a sight test; Boots, for example, lists its contact lens check at £50 on top of the eye test.`,
+        body: `An OCT scan is the most common optional extra. Specsavers says it costs up to £10 extra in most stores, Boots charges from £25 extra for its Advanced Eye Test, Vision Express includes it in its £30 Advanced Eye Test, and M&S Opticians includes it at no extra cost. A contact lens check is a separate appointment from a sight test; Boots, for example, lists its contact lens check at £50 on top of the eye test.`,
         links: [
           { label: "OCT scan cost", href: "/find/oct-scan-cost" },
           { label: "Contact lens eye test", href: "/find/contact-lens-eye-test" },
@@ -143,7 +143,7 @@ The biggest difference between opticians is what the price includes. Some includ
       {
         question: "How much is an eye test at Boots?",
         answer:
-          "Boots Opticians says the cost of an eye test is from £29.95. OCT and other scans cost extra, and a contact lens check is £50. NHS-funded eye tests are free at Boots if you qualify.",
+          "Boots says its Essential Eye Test costs from £29.95 and includes a Dry Eye Evaluation. The Advanced Eye Test with an OCT scan costs from £25 extra, the Ultimate Eye Test from £50 extra in selected stores, and a contact lens check is £50. NHS-funded eye tests are free if you qualify.",
       },
       {
         question: "How much is an eye test at Vision Express?",
@@ -169,15 +169,14 @@ The biggest difference between opticians is what the price includes. Some includ
     relatedQueries: [
       "free-eye-test",
       "cheap-eye-test",
-      "boots-eye-test-cost",
       "private-eye-test-cost",
       "oct-scan-cost",
     ],
     ctaText: "Compare eye test prices near you",
     sources: [
       { label: "Specsavers: How much is an eye test?", url: "https://www.specsavers.co.uk/help-and-faqs/how-much-is-an-eye-test" },
-      { label: "Boots Opticians: Your eye test explained", url: "https://www.boots.com/opticians-your-eye-check-explained" },
-      { label: "Boots Opticians: Book an eye test", url: "https://www.boots.com/eyetest" },
+      { label: "Boots Opticians: Your eye test explained", url: "https://www.bootsopticians.com/eye-health/advice/your-eye-test-explained/" },
+      { label: "Boots: Book an eye test (appointment types and contact lens check)", url: "https://boots.com/opticians/opticians-offers/eye-health-test" },
       { label: "Vision Express: Book an eye test", url: "https://www.visionexpress.com/eye-test" },
       { label: "Asda Opticians: Having an eye test", url: "https://opticians.asda.com/having-an-eye-test" },
       { label: "M&S Opticians: Eye test FAQs", url: "https://mandsopticians.com/eye-care/help/" },
@@ -351,7 +350,7 @@ A lower price does not mean a less thorough sight test, since every test is carr
           rows: [
             ["Specsavers", "£20 to £25, depending on the store", "Up to £10 extra in most stores"],
             ["Asda Opticians", "£24", "Ask in store"],
-            ["Boots Opticians", "From £29.95", "Available at extra cost"],
+            ["Boots Opticians", "From £29.95 (Essential Eye Test)", "From £25 extra (Advanced Eye Test)"],
             ["Vision Express", "£30 (Advanced Eye Test)", "Included"],
             ["M&S Opticians", "£40", "Included"],
           ],
@@ -394,7 +393,6 @@ A lower price does not mean a less thorough sight test, since every test is carr
     relatedQueries: [
       "eye-test-cost",
       "free-eye-test",
-      "boots-eye-test-cost",
       "opticians-near-me",
     ],
     ctaText: "Find the cheapest eye test near you",
@@ -407,7 +405,7 @@ A lower price does not mean a less thorough sight test, since every test is carr
     sources: [
       { label: "Specsavers: How much is an eye test?", url: "https://www.specsavers.co.uk/help-and-faqs/how-much-is-an-eye-test" },
       { label: "Asda Opticians: Having an eye test", url: "https://opticians.asda.com/having-an-eye-test" },
-      { label: "Boots Opticians: Your eye test explained", url: "https://www.boots.com/opticians-your-eye-check-explained" },
+      { label: "Boots Opticians: Your eye test explained", url: "https://www.bootsopticians.com/eye-health/advice/your-eye-test-explained/" },
       { label: "Vision Express: Book an eye test", url: "https://www.visionexpress.com/eye-test" },
       { label: "M&S Opticians: Eye test FAQs", url: "https://mandsopticians.com/eye-care/help/" },
       { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
@@ -415,6 +413,7 @@ A lower price does not mean a less thorough sight test, since every test is carr
   },
   {
     slug: "private-eye-test-cost",
+    dateModified: "2026-11-11",
     keyword: "private eye test cost",
     title: "Private Eye Test Cost UK — What to Expect to Pay (2026)",
     category: "cost",
@@ -422,9 +421,9 @@ A lower price does not mean a less thorough sight test, since every test is carr
       "How much a private eye test costs across the UK in 2026, from basic sight tests to enhanced examinations with OCT scans.",
     content: `A private eye test in the UK is any sight test that is not funded by the NHS. If you do not qualify for a free NHS test, you will need to pay privately — but the good news is that private eye tests are generally very affordable, with most costing between £20 and £45.
 
-Standard private eye test prices at the major chains in 2026 are approximately: Specsavers £25, Boots Opticians £29.95, Vision Express £30, and ASDA Opticians from around £20. Independent opticians typically charge between £25 and £45, though prices vary by location. London and the South East tend to be at the higher end, while practices in other regions may be more affordable.
+Published private eye test prices at the main chains, checked in November 2026, are: Specsavers £20 to £25 depending on the store, Asda Opticians £24, Boots Opticians from £29.95, Vision Express £30 (including an OCT scan) and M&S Opticians £40 (including an OCT scan). Independent opticians set their own prices, so check with the practice.
 
-Many opticians now offer enhanced or premium eye test packages that include additional diagnostic technology. These typically cost between £35 and £69 and may include an OCT scan (which creates a detailed 3D image of the retina), ultra-wide-field retinal photography, and a more extended consultation. Specsavers offers an OCT scan upgrade for around £10 extra, while Boots charges approximately £39 for their Enhanced Eye Health Check which includes OCT. Independent opticians may include these extras as standard in their base price.
+Many opticians also offer enhanced tests with extra scans. Specsavers charges up to £10 extra for an OCT scan in most stores, Boots charges from £25 extra for its Advanced Eye Test with OCT and from £50 extra for its Ultimate Eye Test with optomap and OCT, while Vision Express and M&S Opticians include OCT in their private test price. Some independent opticians also include these extras as standard.
 
 Specialist private tests carry their own pricing. A private contact lens fitting typically costs £30 to £60. A dry eye assessment at a dedicated clinic may cost £50 to £100. A private glaucoma assessment can range from £30 to £60. These specialist services are rarely covered by the NHS unless you are referred by your GP or optometrist for a clinical reason.
 
@@ -449,51 +448,9 @@ Keep in mind that even if you are paying privately, many opticians run regular p
     relatedQueries: [
       "eye-test-cost",
       "oct-scan-cost",
-      "boots-eye-test-cost",
       "free-eye-test",
     ],
     ctaText: "Compare private eye test prices near you",
-  },
-  {
-    slug: "boots-eye-test-cost",
-    keyword: "Boots eye test cost",
-    title: "Boots Eye Test Cost — Prices, Offers & What's Included (2026)",
-    category: "cost",
-    shortDescription:
-      "How much an eye test costs at Boots Opticians in 2026, including their Enhanced Eye Health Check with OCT scan.",
-    content: `A standard eye test at Boots Opticians costs approximately £29.95 in 2026. Boots also offers an Enhanced Eye Health Check for around £39.95, which includes an OCT scan and a more detailed examination of your eye health.
-
-The standard Boots eye test includes all the checks you would expect from a comprehensive sight test: a visual acuity assessment, a refraction to measure your glasses prescription, an eye pressure check, and an examination of the front and back of your eyes. The appointment typically lasts 25 to 30 minutes and is carried out by a qualified optometrist.
-
-The Enhanced Eye Health Check is Boots' premium offering and includes everything in the standard test plus an OCT (Optical Coherence Tomography) scan. This creates a detailed 3D image of the layers of your retina, helping to detect conditions such as glaucoma, macular degeneration, and diabetic eye disease at their earliest stages. Many Boots stores also include ultra-wide-field retinal photography in the enhanced check. At around £39.95, this enhanced check offers good value compared to having an OCT scan added separately at other opticians.
-
-If you qualify for a free NHS-funded eye test, Boots provides this at no cost. Boots also occasionally offers promotional discounts through their Advantage Card loyalty scheme and seasonal campaigns. It is worth checking the Boots website or asking in store about current offers before booking.
-
-Boots Opticians is generally considered to offer a slightly more premium experience compared to some budget chains, with well-equipped examination rooms and a wide range of designer frames. Their optometrists have access to the latest diagnostic equipment, and many stores offer specialist services including contact lens fitting, dry eye assessment, and children's eye tests.`,
-    faqs: [
-      {
-        question: "Is the Boots Enhanced Eye Health Check worth it?",
-        answer:
-          "The Enhanced Eye Health Check at Boots includes an OCT scan that can detect eye conditions years before symptoms appear. At around £39.95, it offers good value if you want a more thorough examination. It is particularly recommended for people over 40 or with a family history of eye conditions.",
-      },
-      {
-        question: "Can I use my Boots Advantage Card for an eye test?",
-        answer:
-          "You can collect Boots Advantage Card points on eye tests and glasses purchases at Boots Opticians. Boots occasionally runs promotions offering bonus points or discounts for Advantage Card holders.",
-      },
-      {
-        question: "Does Boots do free eye tests for over 60s?",
-        answer:
-          "Yes. If you are 60 or over, you qualify for a free NHS-funded eye test at Boots Opticians (and at any other optician). Simply let them know when you book and bring proof of your age.",
-      },
-    ],
-    relatedQueries: [
-      "eye-test-cost",
-      "boots-eye-test",
-      "specsavers-vs-boots",
-      "oct-scan-cost",
-    ],
-    ctaText: "Find Boots Opticians appointments near you",
   },
 
   // ─── NHS ──────────────────────────────────────────────────────────────
@@ -1016,86 +973,6 @@ The best approach is to use online tools as a rough check and conversation start
 
   // ─── Brand ─────────────────────────────────────────────────────────────
   {
-    slug: "boots-eye-test",
-    keyword: "Boots eye test",
-    title: "Boots Eye Test — Cost, Enhanced Checks & How to Book",
-    category: "brand",
-    shortDescription:
-      "A guide to eye tests at Boots Opticians, including their standard and enhanced eye test options, pricing, and booking.",
-    content: `Boots Opticians is one of the UK's most trusted optician chains, with over 500 stores across the country. They offer both standard and enhanced eye test options, with a focus on using advanced diagnostic technology.
-
-A standard eye test at Boots Opticians costs approximately £29.95 in 2026. This includes a full assessment of your vision, a prescription check, eye pressure measurement, and examination of your eye health. The appointment takes around 25 to 30 minutes.
-
-Boots' Enhanced Eye Health Check costs approximately £39.95 and includes everything in the standard test plus an OCT (Optical Coherence Tomography) scan. This advanced scan provides a detailed 3D view of the layers of your retina and optic nerve, enabling your optometrist to detect conditions years before they would be visible with standard examination techniques. Many Boots stores also include ultra-wide-field retinal photography in the enhanced check. This premium package represents good value compared to having an OCT scan added separately.
-
-Boots Opticians provides NHS-funded eye tests for all eligible patients at no charge. They accept Boots Advantage Card points on eye tests and glasses purchases, and occasionally run promotional offers. Boots stores in larger shopping centres and retail parks often offer extended opening hours including Sundays.
-
-In addition to standard eye tests, Boots offers specialist services including contact lens fitting, children's eye tests, and eye health screenings. Many stores have been refurbished with the latest examination equipment and offer a comfortable, modern environment. Booking is available online through the Boots Opticians website, by phone, or in store.`,
-    faqs: [
-      {
-        question: "What is the difference between Boots standard and enhanced eye tests?",
-        answer:
-          "The standard test (approximately £29.95) covers all the essential vision and eye health checks. The Enhanced Eye Health Check (approximately £39.95) adds an OCT scan and may include ultra-wide-field retinal photography for a more thorough examination.",
-      },
-      {
-        question: "Can I use Boots Advantage Card points on eye tests?",
-        answer:
-          "Yes, you can earn and sometimes spend Boots Advantage Card points on eye tests and optical purchases at Boots Opticians. Check current promotions for bonus points offers.",
-      },
-      {
-        question: "How do I book at Boots Opticians?",
-        answer:
-          "Book online at boots.com/opticians, by phone, or visit your local store. Online booking shows real-time availability and is the quickest way to secure an appointment.",
-      },
-    ],
-    relatedQueries: [
-      "boots-eye-test-cost",
-      "specsavers-vs-boots",
-      "oct-scan-cost",
-    ],
-    ctaText: "Find Boots Opticians appointments near you",
-  },
-  {
-    slug: "vision-express-eye-test",
-    keyword: "Vision Express eye test",
-    title: "Vision Express Eye Test — Price, What's Included & Booking",
-    category: "brand",
-    shortDescription:
-      "A guide to eye tests at Vision Express, including pricing, what the test involves, and how to book your appointment.",
-    content: `Vision Express is one of the UK's leading optician chains with approximately 400 stores. They are known for their clinical focus, advanced equipment, and a wide range of designer eyewear. Their eye tests are competitively priced and include comprehensive clinical checks.
-
-A standard eye test at Vision Express costs approximately £30 in 2026. The test includes a thorough assessment of your visual acuity, a refraction to measure your glasses or contact lens prescription, tonometry (eye pressure measurement) to screen for glaucoma, and a detailed examination of the front and back of your eyes using specialist instruments.
-
-Vision Express offers an enhanced test option that includes OCT scanning for an additional charge, typically around £20 to £30 on top of the standard test. Some stores also offer retinal photography as part of their standard or enhanced packages. Vision Express has invested significantly in advanced diagnostic technology, and many stores have recently been refurbished with the latest examination equipment.
-
-For patients who qualify, Vision Express provides free NHS-funded eye tests. They are a major provider of NHS eye care services across the UK. The chain also offers specialist services including contact lens fitting, children's eye tests, and emergency eye care at many locations.
-
-Booking at Vision Express is available online, by phone, or in store. Their online booking system shows real-time availability and allows you to select your preferred store, date, and time. Vision Express stores are typically open Monday to Saturday, with many also opening on Sundays. They accept most health insurance schemes and workplace eye care vouchers.`,
-    faqs: [
-      {
-        question: "How much is an eye test at Vision Express?",
-        answer:
-          "A standard eye test at Vision Express costs approximately £30. Enhanced tests with OCT scanning cost more. NHS-funded tests are free for eligible patients.",
-      },
-      {
-        question: "Does Vision Express offer free eye tests?",
-        answer:
-          "Vision Express provides free NHS-funded eye tests for all eligible patients. They also occasionally run promotional offers — check their website for current deals.",
-      },
-      {
-        question: "Can I get same-day glasses at Vision Express?",
-        answer:
-          "Vision Express offers an express service at some locations where certain lenses and frames can be ready the same day or within one hour. Check with your local store for availability.",
-      },
-    ],
-    relatedQueries: [
-      "eye-test-cost",
-      "specsavers-vs-boots",
-      "boots-eye-test",
-    ],
-    ctaText: "Find Vision Express appointments near you",
-  },
-  {
     slug: "specsavers-vs-boots",
     dateModified: "2026-11-10",
     keyword: "Specsavers vs Boots eye test",
@@ -1105,7 +982,7 @@ Booking at Vision Express is available online, by phone, or in store. Their onli
       "An honest comparison of eye tests at Specsavers and Boots Opticians, covering price, what is included, and which is better value.",
     content: `Specsavers and Boots Opticians are the two largest optician chains in the UK, and choosing between them is one of the most common decisions for people booking an eye test. Here is a straightforward comparison to help you decide.
 
-On price, Specsavers is the more affordable option. Specsavers says a routine eye test costs £20 to £25 depending on the store, while Boots says its eye test costs from £29.95. Both chains run time-limited offers from time to time, such as free or discounted eye tests, which are subject to availability and location. An OCT scan costs up to £10 extra at most Specsavers stores, and Boots offers OCT scans at extra cost.
+On price, Specsavers is the more affordable option. Specsavers says a routine eye test costs £20 to £25 depending on the store, while Boots says its eye test costs from £29.95. Both chains run time-limited offers from time to time, such as free or discounted eye tests, which are subject to availability and location. An OCT scan costs up to £10 extra at most Specsavers stores, and Boots charges from £25 extra for its Advanced Eye Test with OCT.
 
 In terms of clinical quality, both chains employ qualified, GOC-registered optometrists and use high-quality examination equipment. There is no meaningful clinical difference between the tests — both cover the same essential checks (visual acuity, refraction, pressure, eye health examination) to the same professional standards. The optometrist carrying out your test matters more than the brand above the door.
 
@@ -1126,12 +1003,10 @@ Both chains provide NHS-funded eye tests, contact lens services, children's eye 
       {
         question: "Which has better OCT scanning?",
         answer:
-          "Both offer OCT scanning as an upgrade. Specsavers charges approximately £10 extra (total ~£35), while Boots charges approximately £39.95 for their Enhanced Eye Health Check including OCT. The technology is comparable at both.",
+          "Both offer OCT scanning as an extra. Specsavers charges up to £10 extra in most stores, while Boots charges from £25 extra for its Advanced Eye Test with OCT. Boots also offers an Ultimate Eye Test with optomap and OCT from £50 extra in selected stores.",
       },
     ],
     relatedQueries: [
-      "boots-eye-test",
-      "boots-eye-test-cost",
     ],
     ctaText: "Compare Specsavers and Boots near you",
   },
@@ -1511,43 +1386,94 @@ It is worth noting that many people who fail the number plate test simply need g
   {
     slug: "oct-scan-cost",
     keyword: "OCT scan cost",
-    title: "OCT Scan Cost UK — How Much Is an OCT Eye Scan? (2026 Prices)",
+    title: "OCT Scan Cost UK: How Much Is an OCT Eye Scan? (2026 Prices)",
+    seoTitle: "OCT Scan Cost UK 2026: Specsavers, Boots, Vision Express and M&S",
+    seoDescription:
+      "How much an OCT eye scan costs at Specsavers, Boots, Vision Express and M&S Opticians, checked November 2026, what it shows and whether you need one.",
+    dateModified: "2026-11-11",
     category: "specialist",
     shortDescription:
-      "How much an OCT scan costs at UK opticians in 2026, what it detects, and whether you should add one to your eye test.",
-    content: `An OCT (Optical Coherence Tomography) scan is an advanced imaging test that creates a detailed 3D cross-section of the back of your eye. In the UK in 2026, an OCT scan typically costs between £10 and £39 as an add-on to a standard eye test. Prices vary by optician and by whether the scan is offered as a standalone upgrade or as part of an enhanced test package.
+      "What an OCT eye scan costs at the main UK opticians, what it shows and whether to add one to your eye test.",
+    content: `An OCT (optical coherence tomography) scan takes a detailed 3D image of the layers at the back of your eye. At UK high-street opticians it is either included in the eye test price or added for a fee, depending on the optician. Prices below come from each optician's own website and were checked in November 2026.
 
-At the major chains, Specsavers offers OCT scanning for approximately £10 as an add-on to their standard eye test. Boots Opticians includes OCT in their Enhanced Eye Health Check at approximately £39.95 (which also includes the standard eye test). Vision Express offers OCT as an upgrade for approximately £20 to £30. Independent opticians may charge £15 to £39, though some include it in their standard examination fee at no extra charge.
-
-An OCT scan can detect the earliest signs of serious eye conditions including glaucoma, age-related macular degeneration (AMD), diabetic retinopathy, macular holes, epiretinal membranes, and vitreous detachment. Many of these conditions cause damage that is irreversible if not caught early. OCT can detect changes years before symptoms become noticeable, which is why a growing number of eye care professionals recommend it as a routine part of eye examinations.
-
-The scan itself is quick, painless, and non-invasive. You sit in front of the OCT machine, rest your chin on a support, and look at a fixation target. The scan takes just a few seconds per eye — there is no flash, no puff of air, and no contact with your eye. Results are available immediately and are stored digitally so future scans can be compared side by side.
-
-Whether an OCT scan is worth the extra cost depends on your individual risk factors. It is particularly recommended for anyone over 25 (as a baseline), people with a family history of glaucoma or macular degeneration, diabetic patients, contact lens wearers, and anyone with unexplained vision changes. At £10 to £39, it is one of the most affordable and valuable additions to a routine eye test.`,
+The scan is quick, painless and does not touch your eye. You rest your chin on a support and look at a target for a few seconds. Opticians use OCT alongside the standard eye test to look more closely at the retina and optic nerve, which can help with spotting conditions such as glaucoma, macular degeneration and diabetic eye disease.`,
+    sections: [
+      {
+        heading: "OCT scan prices at the main opticians",
+        table: {
+          caption: "Published prices, checked November 2026",
+          headers: ["Optician", "OCT scan", "Eye test price"],
+          rows: [
+            ["Specsavers", "Up to £10 extra in most stores", "£20 to £25, depending on the store"],
+            ["Boots Opticians", "From £25 extra (Advanced Eye Test); Ultimate with optomap from £50 extra", "From £29.95"],
+            ["Vision Express", "Included in the Advanced Eye Test", "£30 (NHS upgrade from £6)"],
+            ["M&S Opticians", "Included at no extra cost", "£40"],
+          ],
+        },
+        links: [
+          { label: "Specsavers", href: "/opticians/specsavers" },
+          { label: "Boots Opticians", href: "/opticians/boots-opticians" },
+          { label: "Vision Express", href: "/opticians/vision-express" },
+          { label: "M&S Opticians", href: "/opticians/mands-opticians" },
+          { label: "All eye test prices", href: "/find/eye-test-cost" },
+        ],
+      },
+      {
+        heading: "Is OCT part of an NHS eye test?",
+        body: `OCT is not part of a standard NHS-funded sight test at the high-street chains, so it is usually offered as a paid extra. Some opticians let NHS patients upgrade: Vision Express, for example, offers an upgrade to its Advanced Eye Test with OCT from £6. Hospital eye services use OCT to monitor people with certain eye conditions.`,
+      },
+      {
+        heading: "Do you need an OCT scan?",
+        body: `OCT is optional for most people. Your optometrist can advise whether it is useful for you, for example if you have a family history of glaucoma, have diabetes, or have changes that need a closer look. If you have one, keeping the images lets your optician compare them at future tests.`,
+      },
+    ],
     faqs: [
       {
-        question: "Is an OCT scan worth the extra money?",
+        question: "How much is an OCT scan at Specsavers?",
         answer:
-          "For most people over 25, yes. At £10 to £39, an OCT scan can detect sight-threatening conditions years before symptoms appear. It is particularly valuable for anyone with risk factors such as a family history of glaucoma or macular degeneration, or diabetes.",
+          "Specsavers says an OCT scan costs up to £10 extra in most stores, on top of its £20 to £25 eye test.",
+      },
+      {
+        question: "How much is an OCT scan at Boots?",
+        answer:
+          "Boots charges from £25 extra for its Advanced Eye Test, which adds an OCT scan to the Essential Eye Test (from £29.95). Its Ultimate Eye Test, with optomap and OCT, costs from £50 extra in selected stores.",
+      },
+      {
+        question: "Which opticians include OCT in the eye test price?",
+        answer:
+          "Vision Express includes an OCT scan in its £30 Advanced Eye Test, and M&S Opticians includes OCT at no extra cost in its £40 eye test.",
       },
       {
         question: "Is an OCT scan available on the NHS?",
         answer:
-          "OCT scanning is not routinely available as part of an NHS sight test. It may be used in hospital eye clinics for patients being monitored for specific conditions. At high-street opticians, it is available as a private add-on.",
+          "OCT is not part of a standard NHS-funded sight test at high-street opticians, but some offer an upgrade, such as Vision Express from £6. Hospital eye services use OCT for people being monitored for specific conditions.",
       },
       {
-        question: "How often should I have an OCT scan?",
+        question: "Is an OCT scan worth it?",
         answer:
-          "Annually is recommended for most people. Having a baseline scan and then comparing against it at each subsequent test allows your optometrist to detect even subtle changes over time.",
+          "It depends on your eye health and risk factors. Your optometrist can advise whether an OCT scan is useful for you.",
       },
     ],
     relatedQueries: [
       "eye-test-cost",
-      "boots-eye-test-cost",
       "glaucoma-test",
       "private-eye-test-cost",
     ],
     ctaText: "Find opticians offering OCT scans near you",
+    disclaimer:
+      "Prices, offers and services change from time to time and can vary by store. Check with the optician before you book.",
+    keyFacts: [
+      { label: "Specsavers", value: "Up to £10 extra" },
+      { label: "Boots", value: "From £25 extra" },
+      { label: "Vision Express", value: "Included (£30 test)" },
+      { label: "M&S Opticians", value: "Included (£40 test)" },
+    ],
+    sources: [
+      { label: "Specsavers: How much is an eye test?", url: "https://www.specsavers.co.uk/help-and-faqs/how-much-is-an-eye-test" },
+      { label: "Boots Opticians: Your eye test explained", url: "https://www.bootsopticians.com/eye-health/advice/your-eye-test-explained/" },
+      { label: "Vision Express: Book an eye test", url: "https://www.visionexpress.com/eye-test" },
+      { label: "M&S Opticians: Eye test FAQs", url: "https://mandsopticians.com/eye-care/help/" },
+    ],
   },
   {
     slug: "eye-test-for-driving",
@@ -1625,7 +1551,6 @@ It is important to understand that a sight test and a contact lens appointment a
     ],
     relatedQueries: [
       "eye-test-cost",
-      "boots-eye-test",
     ],
     ctaText: "Find contact lens appointments near you",
   },

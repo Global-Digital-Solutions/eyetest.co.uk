@@ -55,6 +55,21 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/find/boots-eye-test",
+        destination: "/opticians/boots-opticians",
+        permanent: true,
+      },
+      {
+        source: "/find/boots-eye-test-cost",
+        destination: "/opticians/boots-opticians",
+        permanent: true,
+      },
+      {
+        source: "/find/vision-express-eye-test",
+        destination: "/opticians/vision-express",
+        permanent: true,
+      },
+      {
         source: "/eye-tests/home-visit-eye-test",
         destination: "/at-home-eye-tests",
         permanent: true,
