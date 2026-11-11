@@ -86,6 +86,12 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Keratoconus](https://www.eyetest.co.uk/eye-health/conditions/keratoconus)
 - [Colour Blindness (Colour Vision Deficiency)](https://www.eyetest.co.uk/eye-health/conditions/colour-blindness)
 - [Strabismus (Squint)](https://www.eyetest.co.uk/eye-health/conditions/strabismus)
+- [Red Eye](https://www.eyetest.co.uk/eye-health/conditions/red-eye): Common causes from the NHS, self-care, and when a red eye needs urgent help or A&E
+- [Stye](https://www.eyetest.co.uk/eye-health/conditions/stye): Warm compress treatment, do not burst it, when to see a GP
+- [Chalazion](https://www.eyetest.co.uk/eye-health/conditions/chalazion): Harmless eyelid cyst from a blocked oil gland, treatment, and stye vs chalazion
+- [Eye Twitching](https://www.eyetest.co.uk/eye-health/conditions/eye-twitching): Common triggers, self-help, and see a GP if it lasts more than 2 weeks
+- [Uveitis](https://www.eyetest.co.uk/eye-health/conditions/uveitis): Inflammation inside the eye that needs urgent advice
+- [Swollen Eyelid](https://www.eyetest.co.uk/eye-health/conditions/swollen-eyelid): Common causes and when swelling is urgent
 
 ## Eye Health Guides
 - [How to Read Your Glasses Prescription](https://www.eyetest.co.uk/eye-health/guides/how-to-read-your-prescription)

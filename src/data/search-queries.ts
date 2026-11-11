@@ -3783,6 +3783,504 @@ It usually becomes noticeable in your late 30s or early 40s. An eye test will sh
       { label: "College of Optometrists: Presbyopia", url: "https://lookafteryoureyes.org/eye-conditions/presbyopia/" },
     ],
   },
+  {
+    slug: "red-eye",
+    keyword: "red eye",
+    title: "Red Eye: Common Causes and When to Get Help",
+    seoTitle: "Red Eye: Common Causes, What to Do and When It Is Urgent (NHS)",
+    seoDescription:
+      "A red eye is often caused by an infection or dry eyes. Common causes, what to do at home, when to see a pharmacist, optician or GP, and when to go to A&E.",
+    h1: "Red Eye",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/red-eye",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "A red eye is often caused by an infection or dry eyes. Causes, self-care and when it is urgent.",
+    content: `A red eye is often caused by an infection or dry eyes, but there are lots of possible causes, and the NHS advises not trying to diagnose it yourself.
+
+If your eye does not hurt, your sight is not affected and you do not feel sick or unwell, it is probably nothing serious and may get better on its own in a few days. Until then, try not to touch or rub your eye, and do not wear contact lenses.`,
+    keyFacts: [
+      { label: "Common causes", value: "Infection or dry eyes" },
+      { label: "No pain, sight fine", value: "Probably not serious" },
+      { label: "First help", value: "A pharmacist" },
+      { label: "Contact lens wearer", value: "Get an urgent appointment" },
+    ],
+    sections: [
+      {
+        heading: "Common causes of a red eye",
+        table: {
+          caption: "Common causes of red eyes, from the NHS, checked November 2026",
+          headers: ["Symptoms", "Possible cause"],
+          rows: [
+            ["Bright red area in the white of the eye", "Burst blood vessel"],
+            ["Gritty or burning feeling, sticky eyes", "Conjunctivitis"],
+            ["Sore, blurry or watery eyes", "Dry eyes"],
+            ["Itchy, sore or red crusted eyelids", "Blepharitis"],
+            ["Feels like something is in your eye, or an eyelash problem", "Ingrowing eyelash"],
+            ["Swollen, drooping or twitching eyelid, or a lump on the eyelid", "Eyelid problems"],
+          ],
+        },
+        links: [
+          { label: "Conjunctivitis", href: "/eye-health/conditions/conjunctivitis" },
+          { label: "Dry eyes", href: "/eye-health/conditions/dry-eye-syndrome" },
+          { label: "Blepharitis", href: "/eye-health/conditions/blepharitis" },
+        ],
+      },
+      {
+        heading: "When to see a GP or optician",
+        items: [
+          "Your child is under 2 and has a red eye",
+          "You have red eyes with a sticky discharge",
+          "You have red patches in your eye or a problem with your eyelids or lashes for more than a few days",
+          "You are worried about your eyes",
+        ],
+      },
+      {
+        heading: "When it is urgent",
+        body: `Ask for an urgent GP or optician appointment, or get help from NHS 111, if your baby is less than 28 days old and has red eyes, your eye is very painful and red, or you have a red eye and wear contact lenses. Call 999 or go to A&E if you have a red eye and any change to your sight, it hurts to look at light, you have a severe headache and feel sick, your eye is very dark red, you have injured your eye or something is stuck in it, a chemical caused it, or one pupil is bigger than the other.`,
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is a red eye serious?",
+        answer:
+          "Usually not if it does not hurt, your sight is fine and you feel well. It may get better in a few days. Pain, sight changes or a red eye with contact lenses need urgent help.",
+      },
+      {
+        question: "What causes a red eye?",
+        answer:
+          "Common causes include a burst blood vessel, conjunctivitis, dry eyes, blepharitis, an ingrowing eyelash and eyelid problems.",
+      },
+      {
+        question: "Can a pharmacist help with a red eye?",
+        answer:
+          "Yes. A pharmacist can suggest cleaning solutions, eye drops or medicines and tell you if you need to see a GP or optician.",
+      },
+      {
+        question: "Should I wear contact lenses with a red eye?",
+        answer: "No. If you wear contact lenses and have a red eye, get an urgent GP or optician appointment as it could be an infection.",
+      },
+    ],
+    relatedQueries: ["conjunctivitis", "dry-eyes", "emergency-eye-test-near-me"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. A painful red eye or changes to your sight need urgent help.",
+    sources: [
+      { label: "NHS: Red eye", url: "https://www.nhs.uk/symptoms/red-eye/" },
+    ],
+  },
+  {
+    slug: "stye",
+    keyword: "stye",
+    title: "Stye: Symptoms, Home Treatment and When to See a GP",
+    seoTitle: "Stye on the Eye: Symptoms, How to Treat It and When to Get Help (NHS)",
+    seoDescription:
+      "A stye is a small, painful lump on the eyelid. How to treat a stye at home with a warm compress, why not to burst it, when to see a GP and how to prevent styes.",
+    h1: "Stye",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/stye",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "A stye is a small, painful lump on the eyelid. Home treatment, when to see a GP and how to prevent them.",
+    content: `A stye is a small, painful lump on or inside the eyelid or around the eye. The NHS says the skin around it may be swollen and red, the stye may be filled with yellow pus, and your eye may be red and watery, but your vision should not be affected. A stye usually only affects one eye.
+
+Most styes can be treated at home. If there is no lump, it is more likely to be conjunctivitis or blepharitis, and a hard lump that is not very painful is more likely to be a chalazion.`,
+    keyFacts: [
+      { label: "What it is", value: "A small, painful eyelid lump" },
+      { label: "Treatment", value: "Warm compress 2 to 4 times a day" },
+      { label: "Do not", value: "Burst it yourself" },
+      { label: "Not better in a few weeks", value: "See a GP" },
+    ],
+    sections: [
+      {
+        heading: "How to treat a stye yourself",
+        items: [
+          "Soak a clean flannel in warm water and hold it against your eye for 5 to 10 minutes",
+          "Repeat 2 to 4 times a day",
+          "Take paracetamol or ibuprofen for pain (do not give aspirin to children under 16)",
+          "Avoid contact lenses and eye make-up until the stye has burst and healed",
+          "Do not try to burst a stye or remove an eyelash yourself, as this can spread the infection",
+        ],
+      },
+      {
+        heading: "When to get help",
+        body: `See a GP if a stye does not get better within a few weeks. Ask for an urgent GP appointment or get help from NHS 111 if it is very painful or swollen, affects your vision, your eye is producing pus, or the infection has spread to your eye or eyelid. A GP may burst the stye with a sterile needle, remove the nearest eyelash, or refer you to an eye specialist.`,
+        links: [
+          { label: "Chalazion", href: "/eye-health/conditions/chalazion" },
+          { label: "Swollen eyelid", href: "/eye-health/conditions/swollen-eyelid" },
+        ],
+      },
+      {
+        heading: "Preventing styes",
+        body: `Styes are often caused by bacteria infecting an eyelash follicle or eyelid gland, and are more likely if you have long-term blepharitis or rosacea.`,
+        items: [
+          "Wash your face and remove eye make-up before bed",
+          "Keep your eyelids and lashes clean, especially if you have blepharitis",
+          "Wash your hands before touching contact lenses",
+          "Do not share towels or flannels with someone who has a stye",
+        ],
+        links: [
+          { label: "Blepharitis", href: "/eye-health/conditions/blepharitis" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How do you get rid of a stye?",
+        answer:
+          "Hold a warm, clean flannel against your eye for 5 to 10 minutes, 2 to 4 times a day. Do not try to burst it.",
+      },
+      {
+        question: "Should I pop a stye?",
+        answer: "No. Bursting a stye or pulling out an eyelash yourself can spread the infection.",
+      },
+      {
+        question: "What is the difference between a stye and a chalazion?",
+        answer:
+          "A stye is usually painful. A hard lump that is not very painful is more likely to be a chalazion.",
+      },
+      {
+        question: "When should I see a GP about a stye?",
+        answer:
+          "If it does not get better within a few weeks. Get urgent help if it is very painful or swollen, affects your vision or the infection spreads.",
+      },
+    ],
+    relatedQueries: ["chalazion", "blepharitis", "swollen-eyelid"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. If a stye affects your vision, get urgent help.",
+    sources: [
+      { label: "NHS: Stye", url: "https://www.nhs.uk/conditions/stye/" },
+    ],
+  },
+  {
+    slug: "chalazion",
+    keyword: "chalazion",
+    title: "Chalazion (Eyelid Cyst): Symptoms, Treatment and Stye vs Chalazion",
+    seoTitle: "Chalazion: Eyelid Cyst Symptoms, Treatment and How It Differs From a Stye",
+    seoDescription:
+      "A chalazion is a harmless lump in the eyelid caused by a blocked oil gland. Symptoms, home treatment, when surgery is used, and how it differs from a stye.",
+    h1: "Chalazion (Meibomian Cyst)",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/chalazion",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "A chalazion is a harmless eyelid lump from a blocked oil gland. Symptoms, treatment and how it differs from a stye.",
+    content: `A chalazion is a harmless cyst in the eyelid caused by a blocked meibomian gland, one of the glands that make oil to keep the eye moist. Moorfields Eye Hospital says the oil builds up into a small lump, which can become irritated and red and occasionally infected.
+
+Chalazions tend to last a few weeks, are typically not painful, do not affect your sight, and can often be treated at home.`,
+    keyFacts: [
+      { label: "What it is", value: "A blocked eyelid oil gland" },
+      { label: "Painful", value: "Usually not" },
+      { label: "Lasts", value: "Usually a few weeks" },
+      { label: "Sight", value: "Not affected" },
+    ],
+    sections: [
+      {
+        heading: "Chalazion vs stye",
+        table: {
+          headers: ["", "Stye", "Chalazion"],
+          rows: [
+            ["Pain", "Usually painful and sore", "Typically painless"],
+            ["Cause", "Infection in a hair follicle or oil gland", "A blocked oil gland"],
+          ],
+        },
+        links: [
+          { label: "Stye", href: "/eye-health/conditions/stye" },
+        ],
+      },
+      {
+        heading: "Treatment",
+        body: `Many chalazions can be treated at home with warm compresses and eyelid cleaning. A doctor may occasionally prescribe antibiotic ointment or drops for irritation, or antibiotics by mouth if infection spreads, though Moorfields notes medicine does not make the cyst disappear. If a large cyst does not respond, it can be drained under local anaesthetic through a small cut on the inside of the eyelid, usually as a day case.`,
+        links: [
+          { label: "Blepharitis", href: "/eye-health/conditions/blepharitis" },
+          { label: "Eyelid surgery", href: "/eye-surgery/eyelid-surgery" },
+        ],
+      },
+      {
+        heading: "Causes",
+        body: `A chalazion commonly happens because of inflammation around the openings of the oil glands at the base of the lashes, called blepharitis. Rosacea is another risk factor.`,
+      },
+      {
+        heading: "Chalazion in children",
+        body: `Most cysts in children go away with time, which can take weeks or months, and are usually safe to leave. Moorfields says surgery in children is usually not medically necessary. Seek advice if your child has increasing redness and soreness of the eye, very blurred vision, or spreading redness with a lot of eyelid swelling.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "Is a chalazion serious?",
+        answer: "No. A chalazion is a harmless cyst caused by a blocked oil gland, and usually goes within a few weeks.",
+      },
+      {
+        question: "How do I get rid of a chalazion?",
+        answer:
+          "Warm compresses and eyelid cleaning help many chalazions at home. Large ones that do not settle can be drained under local anaesthetic.",
+      },
+      {
+        question: "Is a chalazion the same as a stye?",
+        answer: "No. A stye is usually painful and caused by infection; a chalazion is usually painless and caused by a blocked gland.",
+      },
+      {
+        question: "Does a chalazion affect your sight?",
+        answer: "No. Sight is not usually affected.",
+      },
+    ],
+    relatedQueries: ["stye", "blepharitis", "swollen-eyelid"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information from Moorfields Eye Hospital NHS Foundation Trust, not medical advice. See a pharmacist, optician or GP if you are worried.",
+    sources: [
+      { label: "Moorfields Eye Hospital: Chalazion", url: "https://www.moorfields.nhs.uk/eye-conditions/chalazion" },
+      { label: "NHS: Eyelid problems", url: "https://www.nhs.uk/symptoms/eyelid-problems/" },
+    ],
+  },
+  {
+    slug: "eye-twitching",
+    keyword: "eye twitching",
+    title: "Eye Twitching: Causes and When to See a GP",
+    seoTitle: "Eye Twitching: Why It Happens, How to Stop It and When to See a GP",
+    seoDescription:
+      "Eye twitches are common and very rarely serious. Common triggers like stress, tiredness and caffeine, how to help stop a twitch, and when to see a GP.",
+    h1: "Eye Twitching",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/eye-twitching",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Eye twitches are common and very rarely serious. Triggers, self-help and when to see a GP.",
+    content: `Twitches are common and very rarely a sign of anything serious. The NHS says twitches in the eyes are particularly common, often go away on their own, and normally stop within a few days or weeks.
+
+There is not usually any treatment, but a few changes can help. See a GP if a twitch lasts more than 2 weeks.`,
+    keyFacts: [
+      { label: "Serious", value: "Very rarely" },
+      { label: "Usually stops", value: "In days or weeks" },
+      { label: "Common triggers", value: "Stress, tiredness, caffeine" },
+      { label: "More than 2 weeks", value: "See a GP" },
+    ],
+    sections: [
+      {
+        heading: "Common causes",
+        items: [
+          "Stress and anxiety",
+          "Tiredness and exhaustion",
+          "Caffeine or alcohol",
+          "Some medicines (check the leaflet for side effects)",
+        ],
+      },
+      {
+        heading: "How to help stop a twitch",
+        items: [
+          "Get plenty of rest",
+          "Find ways to relax",
+          "Cut down on tea, coffee and alcohol",
+          "Try not to worry, as worrying can make it worse",
+          "Do not stop a prescribed medicine without medical advice",
+        ],
+      },
+      {
+        heading: "When to see a GP",
+        body: `See a GP if a twitch lasts more than 2 weeks, you have twitches in more than one place, the area feels weak or stiff, or you think a prescribed medicine might be causing it. A GP may look for causes such as stress or medicines and, if it does not stop, refer you to a neurologist.`,
+        links: [
+          { label: "Eye strain and screens", href: "/eye-health/guides/screen-time-and-eye-health" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Why is my eye twitching?",
+        answer: "Eye twitches are often linked to stress, tiredness, caffeine, alcohol or some medicines.",
+      },
+      {
+        question: "Is eye twitching serious?",
+        answer: "Very rarely. Most twitches stop on their own within days or weeks.",
+      },
+      {
+        question: "How do I stop my eye twitching?",
+        answer: "Rest, relax, and cut down on caffeine and alcohol. There is not usually any treatment.",
+      },
+      {
+        question: "When should I see a doctor about eye twitching?",
+        answer:
+          "If it lasts more than 2 weeks, happens in more than one place, or the area feels weak or stiff.",
+      },
+    ],
+    relatedQueries: ["headaches-and-vision", "dry-eyes", "eye-test-what-to-expect"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. See a GP if a twitch lasts more than 2 weeks.",
+    sources: [
+      { label: "NHS: Twitching eyes and muscles", url: "https://www.nhs.uk/symptoms/twitching-eyes-and-muscles/" },
+    ],
+  },
+  {
+    slug: "uveitis",
+    keyword: "uveitis",
+    title: "Uveitis: Symptoms, Causes and Urgent Treatment",
+    seoTitle: "Uveitis: Symptoms, Causes and Why It Needs Urgent Treatment (NHS)",
+    seoDescription:
+      "Uveitis is inflammation inside the eye causing pain, redness, blurred vision and light sensitivity. Why it needs urgent treatment, causes and how it is treated.",
+    h1: "Uveitis",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/uveitis",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Uveitis is inflammation inside the eye. Symptoms, why it needs urgent treatment, causes and treatment.",
+    content: `Uveitis is inflammation inside the eye. The NHS says it is important to get it treated early to avoid long-term complications such as vision loss. It usually gets better quickly with treatment but can come back.
+
+It usually affects one eye but can affect both. Symptoms can come on over hours or days, or more gradually, and sometimes there are none.`,
+    keyFacts: [
+      { label: "What it is", value: "Inflammation inside the eye" },
+      { label: "Symptoms", value: "Get urgent advice" },
+      { label: "Loss of vision", value: "Go to A&E or call 999" },
+      { label: "Specialist", value: "Usually seen within 24 hours" },
+    ],
+    sections: [
+      {
+        heading: "Symptoms of uveitis",
+        items: [
+          "Eye pain, which may feel worse when reading",
+          "Red or watery eyes",
+          "Reduced or blurred vision",
+          "Sensitivity to light",
+          "Flashes and floaters",
+        ],
+        links: [
+          { label: "Red eye", href: "/eye-health/conditions/red-eye" },
+          { label: "Floaters and flashes", href: "/eye-health/conditions/floaters-and-flashes" },
+        ],
+      },
+      {
+        heading: "When to get help",
+        body: `Ask for an urgent GP appointment or get help from NHS 111 if you have eye pain, sensitivity to light, changes in your vision such as flashing or blurring, or very red eyes. Go to A&E or call 999 if you cannot see. If a GP thinks you have uveitis, they will refer you to an eye specialist, and you will usually be seen within 24 hours.`,
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+      {
+        heading: "Causes",
+        body: `In most cases the cause is unknown. The NHS says it can be caused by autoimmune conditions such as multiple sclerosis and ankylosing spondylitis, some infections including herpes viruses and toxoplasmosis, an eye injury, or rarely a growth in the eye.`,
+      },
+      {
+        heading: "Treatment",
+        body: `You will usually be prescribed medicines to clear any infection, reduce inflammation, and relax the eye to ease pain. If uveitis is severe or keeps coming back, other treatments include medicines that calm the immune system, laser light treatment, cryotherapy or surgery. An ophthalmologist will check how treatment is working.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "Is uveitis serious?",
+        answer:
+          "It needs treating early to avoid complications such as vision loss. It usually gets better quickly with treatment.",
+      },
+      {
+        question: "What are the symptoms of uveitis?",
+        answer:
+          "Eye pain, red or watery eyes, blurred vision, sensitivity to light, and flashes or floaters.",
+      },
+      {
+        question: "What causes uveitis?",
+        answer:
+          "Often the cause is unknown. It can be linked to autoimmune conditions, some infections or an eye injury.",
+      },
+      {
+        question: "Where should I go with uveitis symptoms?",
+        answer:
+          "Ask for an urgent GP appointment or call NHS 111. If you cannot see, go to A&E or call 999.",
+      },
+    ],
+    relatedQueries: ["red-eye", "emergency-eye-test-near-me", "floaters-in-vision"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. Uveitis symptoms need urgent advice.",
+    sources: [
+      { label: "NHS: Uveitis", url: "https://www.nhs.uk/conditions/uveitis/" },
+    ],
+  },
+  {
+    slug: "swollen-eyelid",
+    keyword: "swollen eyelid",
+    title: "Swollen Eyelid: Common Causes and When It Is Urgent",
+    seoTitle: "Swollen Eyelid: Causes, What to Do and When to Get Urgent Help (NHS)",
+    seoDescription:
+      "A swollen eyelid is often caused by a stye, chalazion, allergy or blepharitis. Common causes, when a pharmacist can help and when swelling needs urgent advice.",
+    h1: "Swollen Eyelid",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/swollen-eyelid",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "A swollen eyelid is often caused by a stye, allergy or blepharitis. Causes and when it is urgent.",
+    content: `Many eyelid problems are not serious. The NHS says it is fairly common to have a lump that goes away by itself, mildly itchy or sticky eyelids that clear up, or swelling from an insect bite, injury or operation that goes within a week or so.
+
+The NHS advises not diagnosing it yourself. A pharmacist, GP or optician can help, and some symptoms need urgent advice.`,
+    keyFacts: [
+      { label: "Often", value: "Not serious" },
+      { label: "First help", value: "A pharmacist" },
+      { label: "Red, hot and painful", value: "Get urgent advice" },
+      { label: "Sudden droop", value: "Get urgent advice" },
+    ],
+    sections: [
+      {
+        heading: "Common causes",
+        table: {
+          caption: "Common eyelid problems, from the NHS, checked November 2026",
+          headers: ["Eyelid problem", "Possible cause"],
+          rows: [
+            ["Lump or swelling on the eyelid", "Stye or chalazion"],
+            ["Itchy, flaky, sticky or swollen eyelid", "Allergy, blepharitis or conjunctivitis"],
+            ["Yellow lump or patch", "Xanthelasma (sometimes linked to high cholesterol)"],
+            ["Eyelid turning outwards or inwards", "Ectropion or entropion"],
+            ["Hot, painful and swollen eyelid", "Cellulitis"],
+          ],
+        },
+        links: [
+          { label: "Stye", href: "/eye-health/conditions/stye" },
+          { label: "Chalazion", href: "/eye-health/conditions/chalazion" },
+          { label: "Blepharitis", href: "/eye-health/conditions/blepharitis" },
+        ],
+      },
+      {
+        heading: "When to see a GP",
+        body: `See a GP if you are worried, your symptoms are not improving or are lasting a long time, or you have yellow lumps or patches around your eyes. A pharmacist can advise on treating common problems like a stye or conjunctivitis yourself.`,
+      },
+      {
+        heading: "When it is urgent",
+        body: `Ask for an urgent GP or optician appointment, or get help from NHS 111, if your swollen eyelid is red, hot, painful, tender or blistered, your eyelid droops suddenly, you cannot open your eye, the pain is in your eye rather than the eyelid, the white of your eye is very red, you have a headache or feel sick, your sight changes, you have a high temperature or feel unwell, or you think it is an allergic reaction.`,
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Why is my eyelid swollen?",
+        answer:
+          "Common causes include a stye or chalazion, an allergy, blepharitis, conjunctivitis, or an insect bite or injury.",
+      },
+      {
+        question: "Is a swollen eyelid serious?",
+        answer:
+          "Often not. Get urgent advice if it is red, hot and painful, droops suddenly, affects your sight or you feel unwell.",
+      },
+      {
+        question: "Can a pharmacist help with a swollen eyelid?",
+        answer: "Yes, for common problems like a stye or conjunctivitis, and they can tell you if you need a GP or optician.",
+      },
+    ],
+    relatedQueries: ["stye", "chalazion", "blepharitis"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. A red, hot, painful eyelid needs urgent advice.",
+    sources: [
+      { label: "NHS: Eyelid problems", url: "https://www.nhs.uk/symptoms/eyelid-problems/" },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
