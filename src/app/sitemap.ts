@@ -69,7 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const conditionPages: MetadataRoute.Sitemap = getAllConditionSlugs().map(
     (slug) => ({
       url: `${BASE}/eye-health/conditions/${slug}`,
-      lastModified: NOW,
+      lastModified: getQueryByCanonicalPath(`/eye-health/conditions/${slug}`)?.dateModified ?? NOW,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })

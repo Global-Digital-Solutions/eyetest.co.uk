@@ -2494,6 +2494,398 @@ Time matters with many of these conditions. Retinal detachment is best treated w
     ],
     ctaText: "Find urgent eye care now",
   },
+  // ─── Condition pages (rendered at /eye-health/conditions/{slug}) ──────
+  {
+    slug: "conjunctivitis",
+    keyword: "conjunctivitis",
+    title: "Conjunctivitis (Pink Eye): Symptoms, Treatment and When to Get Help",
+    seoTitle: "Conjunctivitis (Pink Eye): Symptoms, Treatment and Is It Contagious?",
+    seoDescription:
+      "Conjunctivitis, or pink eye, makes eyes red, gritty, itchy and sticky. How to treat it at home, when a pharmacist can help, if it is contagious and when to see a GP.",
+    h1: "Conjunctivitis (Pink Eye)",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/conjunctivitis",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Conjunctivitis, also called pink eye, makes eyes red, gritty and sticky. How to treat it, when it is contagious and when to get help.",
+    content: `Conjunctivitis, also known as red eye or pink eye, usually affects both eyes. The NHS says it makes eyes red, burn or feel gritty, itch, water and produce pus that sticks to the lashes.
+
+Conjunctivitis that produces sticky pus is contagious, and if eyes are red and feel gritty it is also usually contagious. Conjunctivitis caused by an allergy, such as hay fever, makes eyes red and watery but is not contagious.
+
+Most conjunctivitis can be eased at home, and a pharmacist can help. See the section below on when to see a GP or get urgent help, as some symptoms can be a sign of a more serious eye problem.`,
+    keyFacts: [
+      { label: "Also called", value: "Pink eye or red eye" },
+      { label: "Contagious", value: "If sticky or gritty, usually yes" },
+      { label: "First help", value: "A pharmacist" },
+      { label: "Work or school", value: "No need to stay off unless very unwell" },
+    ],
+    sections: [
+      {
+        heading: "Symptoms of conjunctivitis",
+        body: `According to the NHS, conjunctivitis usually affects both eyes and makes them:`,
+        items: ["Red", "Burn or feel gritty", "Produce pus that sticks to the lashes", "Itch", "Water"],
+      },
+      {
+        heading: "How to treat conjunctivitis yourself",
+        items: [
+          "Wash your eyelids with clean water. Boil it and let it cool, then gently wipe your lashes with a clean cotton wool pad, one for each eye",
+          "Hold a cold flannel on your eyes for a few minutes to cool them",
+          "Do not wear contact lenses until your eyes are better",
+        ],
+      },
+      {
+        heading: "A pharmacist can help",
+        body: `The NHS says a pharmacist can give advice and suggest eye drops or antihistamines to help with symptoms. Children under 2 need a prescription from a GP for treatment.`,
+      },
+      {
+        heading: "Stop conjunctivitis spreading",
+        items: [
+          "Wash your hands regularly with warm soapy water",
+          "Wash pillowcases and face cloths in hot water and detergent",
+          "Do not share towels or pillows",
+          "Do not rub your eyes",
+        ],
+      },
+      {
+        heading: "When to see a GP or get urgent help",
+        body: `See a GP if your baby has red, sticky eyes (get an urgent appointment if your baby is less than 30 days old), if you wear contact lenses and have conjunctivitis symptoms with spots on your eyelids, or if your symptoms have not cleared within 7 days. Ask for an urgent GP appointment or get help from NHS 111 if you have pain in your eyes, sensitivity to light, changes in your vision such as wavy lines or flashing, or very red eyes. The NHS says these can be signs of a more serious eye problem.`,
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+          { label: "Blepharitis", href: "/eye-health/conditions/blepharitis" },
+        ],
+      },
+      {
+        heading: "Treatment",
+        body: `Treatment depends on the cause. If it is a bacterial infection, you might be prescribed antibiotics, but these do not work for conjunctivitis caused by a virus or an allergy.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "Is conjunctivitis contagious?",
+        answer:
+          "Conjunctivitis that produces sticky pus is contagious, and red, gritty eyes are usually contagious too. Conjunctivitis caused by an allergy such as hay fever is not contagious.",
+      },
+      {
+        question: "Do I need to stay off work or school with conjunctivitis?",
+        answer:
+          "No. The NHS says you do not need to stay away from work or school unless you or your child are feeling very unwell.",
+      },
+      {
+        question: "Can a pharmacist treat conjunctivitis?",
+        answer:
+          "A pharmacist can give advice and suggest eye drops or antihistamines. Children under 2 need a prescription from a GP.",
+      },
+      {
+        question: "How long does conjunctivitis last?",
+        answer:
+          "If your symptoms have not cleared up within 7 days, the NHS advises seeing a GP.",
+      },
+      {
+        question: "Can I wear contact lenses with conjunctivitis?",
+        answer: "No. Do not wear contact lenses until your eyes are better.",
+      },
+    ],
+    relatedQueries: ["blepharitis", "emergency-eye-test-near-me", "eye-test-what-to-expect"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. If you are worried about your eyes, speak to a pharmacist, optician, GP or NHS 111.",
+    sources: [
+      { label: "NHS: Conjunctivitis", url: "https://www.nhs.uk/conditions/conjunctivitis/" },
+    ],
+  },
+  {
+    slug: "blepharitis",
+    keyword: "blepharitis",
+    title: "Blepharitis: Symptoms, Eyelid Cleaning and Treatment",
+    seoTitle: "Blepharitis: Symptoms, How to Clean Your Eyelids and Treatment (NHS)",
+    seoDescription:
+      "Blepharitis causes sore, itchy eyelids with flakes or crusts on the lashes. How to clean your eyelids, when a pharmacist or GP can help, and what causes it.",
+    h1: "Blepharitis",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/blepharitis",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Blepharitis makes eyelids sore and itchy with crusts on the lashes. How to clean your eyelids and when to get help.",
+    content: `Blepharitis is inflammation of the eyelids. The NHS says its symptoms often come and go, and include sore eyelids, itchy eyes, a gritty feeling, flakes or crusts around the roots of the eyelashes, and eyelids sticking together in the morning.
+
+Cleaning your eyelids every day is the main way to treat and prevent it. Blepharitis cannot be spread to other people.`,
+    keyFacts: [
+      { label: "Main treatment", value: "Clean your eyelids twice a day" },
+      { label: "Contagious", value: "No" },
+      { label: "First help", value: "A pharmacist" },
+      { label: "Symptoms", value: "Often come and go" },
+    ],
+    sections: [
+      {
+        heading: "Symptoms of blepharitis",
+        items: [
+          "Sore eyelids",
+          "Itchy eyes",
+          "A gritty feeling in the eyes",
+          "Flakes or crusts around the roots of the eyelashes",
+          "Eyelids sticking together when you wake up",
+        ],
+      },
+      {
+        heading: "How to clean your eyelids",
+        body: `The NHS advises cleaning your eyelids twice a day, and carrying on even when symptoms clear:`,
+        items: [
+          "Soak a clean flannel or cotton wool in warm water and hold it on your closed eyelid for 5 to 10 minutes",
+          "Gently massage your eyelids for around 30 seconds",
+          "Clean along the edge of your eyelids with cotton wool or a cotton bud to remove flakes or crusts. A little baby shampoo in water may help",
+        ],
+      },
+      {
+        heading: "While you have symptoms",
+        items: [
+          "Do not wear contact lenses",
+          "Do not use eye make-up, especially eyeliner and mascara",
+        ],
+      },
+      {
+        heading: "Pharmacist and GP treatment",
+        body: `A pharmacist may suggest eye pads, wipes or eye drops to help keep your eyelids clean. See a GP if your symptoms do not improve or get worse. A GP might suggest an antibiotic cream or ointment, antibiotic eye drops or tablets if blepharitis has caused other problems such as a cyst, or refer you to an eye specialist if it is severe. Ask for an urgent GP appointment or get help from NHS 111 if you have eye pain, changes to your vision or very red eyes.`,
+        links: [
+          { label: "Dry eye assessment", href: "/eye-tests/dry-eye-assessment" },
+          { label: "Conjunctivitis", href: "/eye-health/conditions/conjunctivitis" },
+        ],
+      },
+      {
+        heading: "Causes of blepharitis",
+        body: `The NHS says blepharitis can be caused by a type of bacteria that lives on the skin, a skin condition such as seborrhoeic dermatitis, or the glands inside the eyelids not producing enough oil.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "Is blepharitis contagious?",
+        answer: "No. The NHS says blepharitis cannot be spread to other people.",
+      },
+      {
+        question: "How do you get rid of blepharitis?",
+        answer:
+          "Clean your eyelids twice a day with a warm compress, a gentle massage and cleaning along the lid edges, and keep doing it even when symptoms clear. See a GP if it does not improve.",
+      },
+      {
+        question: "Can a pharmacist help with blepharitis?",
+        answer: "Yes. A pharmacist might suggest eye pads, wipes or eye drops to help keep your eyelids clean.",
+      },
+      {
+        question: "Can I wear make-up with blepharitis?",
+        answer: "Avoid eye make-up, especially eyeliner and mascara, while you have symptoms.",
+      },
+    ],
+    relatedQueries: ["conjunctivitis", "emergency-eye-test-near-me", "eye-test-what-to-expect"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. If you are worried about your eyes, speak to a pharmacist, optician, GP or NHS 111.",
+    sources: [
+      { label: "NHS: Blepharitis", url: "https://www.nhs.uk/conditions/blepharitis/" },
+    ],
+  },
+  {
+    slug: "astigmatism",
+    keyword: "astigmatism",
+    title: "Astigmatism: Symptoms, Eye Tests and Treatment Options",
+    seoTitle: "Astigmatism: What It Is, Symptoms and Treatment (Glasses, Lenses, Surgery)",
+    seoDescription:
+      "Astigmatism means your eye is shaped more like a rugby ball than a football. Symptoms, why eye tests matter, and the pros and cons of glasses, contact lenses and surgery.",
+    h1: "Astigmatism",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/astigmatism",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Astigmatism means light focuses at more than one place in the eye. Symptoms, eye tests and the pros and cons of each treatment.",
+    content: `The NHS describes astigmatism as your eye being shaped more like a rugby ball than a football, so light is focused at more than one place in the eye. It normally happens alongside short-sightedness or long-sightedness.
+
+The main symptoms are blurred vision, headaches and eye strain, which you may notice after concentrating for a long time, for example on a computer. An optician can check for astigmatism during a routine eye test.`,
+    keyFacts: [
+      { label: "Main symptoms", value: "Blurred vision, headaches, eye strain" },
+      { label: "Found by", value: "A routine eye test" },
+      { label: "Treatment", value: "Not always needed" },
+      { label: "Options", value: "Glasses, contact lenses, surgery" },
+    ],
+    sections: [
+      {
+        heading: "Why astigmatism matters for children",
+        body: `Astigmatism in one eye may cause lazy eye, where vision does not develop properly, so it is important it is spotted early. The NHS says astigmatism may also affect a child's reading or concentration.`,
+        links: [
+          { label: "Children's eye tests", href: "/eye-tests/childrens-eye-test" },
+        ],
+      },
+      {
+        heading: "When to go to an optician",
+        body: `The NHS advises going to an optician if you or your child have symptoms of astigmatism, or have not had an eye test for 2 years. Astigmatism can be linked to an eye condition called keratoconus, so regular eye tests are important.`,
+        links: [
+          { label: "How often to have an eye test", href: "/eye-health/guides/how-often-should-you-have-an-eye-test" },
+          { label: "Keratoconus", href: "/eye-health/conditions/keratoconus" },
+          { label: "Who gets a free NHS eye test", href: "/find/free-eye-test" },
+        ],
+      },
+      {
+        heading: "Treatment options",
+        body: `Astigmatism does not always need treatment. The NHS compares the options:`,
+        table: {
+          caption: "Pros and cons of astigmatism treatments, from the NHS, checked November 2026",
+          headers: ["Treatment", "Pros", "Cons"],
+          rows: [
+            ["Glasses", "Cheapest option. May be free or discounted on the NHS", "Can get lost or broken"],
+            ["Contact lenses", "Soft or hard lenses. Can suit active people. May be free or discounted on the NHS", "Not suitable for everyone. Risk of eye infection with poor lens hygiene"],
+            ["Laser eye or lens surgery", "May be permanent. May suit more severe vision problems", "Risk of complications and side effects. Not available on the NHS. Can be expensive"],
+          ],
+        },
+        links: [
+          { label: "Contact lens fittings", href: "/find/contact-lens-eye-test" },
+          { label: "Laser eye surgery", href: "/eye-surgery" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is astigmatism?",
+        answer:
+          "Astigmatism means your eye is shaped more like a rugby ball than a football, so light is focused at more than one place in the eye. It usually happens alongside short- or long-sightedness.",
+      },
+      {
+        question: "What are the symptoms of astigmatism?",
+        answer: "The main symptoms are blurred vision, headaches and eye strain.",
+      },
+      {
+        question: "Does astigmatism need treatment?",
+        answer:
+          "Not always. When it does, the options include glasses, contact lenses and laser eye or lens surgery.",
+      },
+      {
+        question: "Is laser surgery for astigmatism available on the NHS?",
+        answer: "No. The NHS says laser eye or lens surgery is not available on the NHS and can be expensive.",
+      },
+      {
+        question: "Can astigmatism cause a lazy eye?",
+        answer:
+          "Astigmatism in one eye may cause lazy eye, so it is important it is spotted early with an eye test.",
+      },
+    ],
+    relatedQueries: ["how-often-eye-test", "contact-lens-eye-test", "free-eye-test"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. Your optometrist can tell you whether you need treatment.",
+    sources: [
+      { label: "NHS: Astigmatism", url: "https://www.nhs.uk/conditions/astigmatism/" },
+    ],
+  },
+  {
+    slug: "glaucoma",
+    keyword: "glaucoma",
+    title: "Glaucoma: Symptoms, Risk Factors, Eye Tests and Treatment",
+    seoTitle: "Glaucoma: Symptoms, Who Is at Risk, Tests and Treatment (NHS Guide)",
+    seoDescription:
+      "Glaucoma usually has no symptoms and is picked up at routine eye tests. Who is at higher risk, free NHS eye tests, treatment, and when sudden symptoms mean A&E.",
+    h1: "Glaucoma",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/glaucoma",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Glaucoma usually has no symptoms and is found at routine eye tests. Who is at risk, free NHS tests, treatment and when it is an emergency.",
+    content: `Glaucoma damages the nerve that connects the eye to the brain (the optic nerve), usually because of a build-up of pressure in the eye. The NHS says it does not usually have symptoms and most people do not realise they have it. It develops slowly over many years and is usually picked up during routine eye tests.
+
+There is currently no cure, but treatment can slow the damage and help stop your vision getting worse, which is why regular eye tests matter.`,
+    keyFacts: [
+      { label: "Symptoms", value: "Usually none at first" },
+      { label: "Found by", value: "Routine eye tests" },
+      { label: "Eye tests", value: "At least every 2 years" },
+      { label: "Sudden symptoms", value: "Call 999 or go to A&E" },
+    ],
+    sections: [
+      {
+        heading: "Who is at higher risk",
+        body: `The NHS says your risk may be higher if:`,
+        items: [
+          "You are over 50",
+          "You have a brother, sister or parent with glaucoma",
+          "You are from a Black African, Caribbean or Asian background",
+          "You have other conditions such as short-sightedness, long-sightedness or diabetes",
+        ],
+      },
+      {
+        heading: "Eye tests and free NHS tests",
+        body: `Everyone should have regular eye tests, at least every 2 years, and people at higher risk may be advised to go more often. You are entitled to a free NHS sight test if you have glaucoma, if you are 40 or over and your mother, father, brother, sister or child has glaucoma, or if an ophthalmologist has advised you are at risk of it.`,
+        links: [
+          { label: "Glaucoma test", href: "/find/glaucoma-test" },
+          { label: "Who gets a free NHS eye test", href: "/find/free-eye-test" },
+          { label: "How often to have an eye test", href: "/eye-health/guides/how-often-should-you-have-an-eye-test" },
+        ],
+      },
+      {
+        heading: "Sudden glaucoma is an emergency",
+        body: `Sometimes glaucoma develops suddenly. The NHS lists symptoms including intense eye pain, a red eye, tenderness around the eyes, rainbow-coloured circles around bright lights, blurred vision, feeling or being sick, and a headache. Call 999 or go to A&E if these develop suddenly, and do not drive yourself.`,
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+      {
+        heading: "Treatment for glaucoma",
+        body: `If you are told you have glaucoma, you should be referred to an ophthalmologist. Treatment depends on the type and how your sight is affected, and may include:`,
+        items: [
+          "Eye drops to decrease the fluid in the eye and help it drain",
+          "Laser treatment to decrease the fluid in the eye",
+          "Surgery, with several types of operation",
+        ],
+        links: [
+          { label: "Glaucoma surgery", href: "/eye-surgery" },
+        ],
+      },
+      {
+        heading: "Types of glaucoma",
+        items: [
+          "Primary glaucoma, the most common type, usually develops slowly over many years",
+          "Secondary glaucoma is usually caused by another condition or an eye injury",
+          "Childhood glaucoma is a rare type that affects young children",
+        ],
+      },
+      {
+        heading: "Support",
+        body: `Glaucoma UK and the RNIB offer information and support for people with glaucoma and sight loss.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "What are the first signs of glaucoma?",
+        answer:
+          "Usually there are none. Glaucoma develops slowly and is usually picked up at a routine eye test before you notice anything.",
+      },
+      {
+        question: "Is a glaucoma test free?",
+        answer:
+          "It is part of a routine NHS eye test, which is free if you qualify, including if you are 40 or over with a parent, sibling or child who has glaucoma.",
+      },
+      {
+        question: "Can glaucoma be cured?",
+        answer:
+          "There is currently no cure, but eye drops, laser treatment and surgery can slow the damage and help stop your vision getting worse.",
+      },
+      {
+        question: "When is glaucoma an emergency?",
+        answer:
+          "If symptoms such as intense eye pain, a red eye, blurred vision, rainbow circles around lights, sickness or a headache come on suddenly, call 999 or go to A&E.",
+      },
+      {
+        question: "Who is most at risk of glaucoma?",
+        answer:
+          "People over 50, those with a close family member with glaucoma, people from Black African, Caribbean or Asian backgrounds, and people with conditions such as diabetes or short- or long-sightedness.",
+      },
+    ],
+    relatedQueries: ["glaucoma-test", "free-eye-test", "how-often-eye-test", "oct-scan-cost"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. If symptoms come on suddenly, call 999 or go to A&E.",
+    sources: [
+      { label: "NHS: Glaucoma", url: "https://www.nhs.uk/conditions/glaucoma/" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------

@@ -42,7 +42,7 @@ export const eyeConditions: EyeCondition[] = [
     name: "Glaucoma",
     category: "age-related",
     overview:
-      "Glaucoma is a group of eye conditions in which the optic nerve is progressively damaged, usually due to raised pressure inside the eye. It is the leading cause of irreversible blindness worldwide, affecting around 700,000 people in the UK. Because it typically develops slowly and without noticeable early symptoms, regular eye tests are the most reliable way to catch it before significant vision is lost.",
+      "Glaucoma damages the nerve that connects the eye to the brain, usually because of a build-up of pressure in the eye. It does not usually have symptoms at first and is usually picked up during routine eye tests.",
     symptoms: [
       "Gradual loss of peripheral (side) vision, often unnoticed until advanced",
       "Tunnel vision in later stages",
@@ -320,7 +320,7 @@ For more severe or resistant dry eye, your optometrist or ophthalmologist may pr
     name: "Conjunctivitis",
     category: "common",
     overview:
-      "Conjunctivitis is an inflammation or infection of the conjunctiva — the thin, transparent membrane that covers the white of the eye and lines the inside of the eyelids. It is extremely common in the UK, affecting adults and children alike. Conjunctivitis can be caused by a viral or bacterial infection, an allergic reaction, or an irritant, and while it is usually not serious, it can be uncomfortable and highly contagious in its infective forms.",
+      "Conjunctivitis, also known as red or pink eye, usually affects both eyes and makes them red, gritty, itchy, watery or sticky. Sticky or gritty conjunctivitis is usually contagious; allergic conjunctivitis is not.",
     symptoms: [
       "Red or pink appearance to the white of one or both eyes",
       "Watery or mucous discharge from the eye",
@@ -373,7 +373,7 @@ If conjunctivitis is recurrent, persistent, painful, or associated with vision c
     name: "Blepharitis",
     category: "common",
     overview:
-      "Blepharitis is a chronic inflammation of the eyelid margins that causes sore, red, itchy, and crusty eyelids. It is one of the most common eye conditions managed by UK optometrists and GPs. While it is rarely sight-threatening, blepharitis is frequently uncomfortable and persistent, and it is a major contributing factor to dry eye syndrome. It tends to be a long-term condition that requires ongoing management rather than a one-off cure.",
+      "Blepharitis makes your eyelids sore and itchy, with flakes or crusts around the roots of the eyelashes. Symptoms often come and go, and cleaning your eyelids twice a day is the main treatment. It is not contagious.",
     symptoms: [
       "Sore, red, or swollen eyelid margins",
       "Itchy or irritated eyelids",
@@ -428,7 +428,7 @@ Because blepharitis is a chronic condition that tends to flare up if lid hygiene
     name: "Astigmatism",
     category: "refractive",
     overview:
-      "Astigmatism is a very common refractive error caused by an irregularly shaped cornea or lens, which prevents light from focusing evenly on the retina. Instead of being round like a football, the eye is shaped more like a rugby ball, causing vision to be blurred or distorted at all distances. Most people have some degree of astigmatism, and it is easily corrected with glasses, contact lenses, or laser eye surgery.",
+      "Astigmatism means your eye is shaped more like a rugby ball than a football, so light is focused at more than one place in the eye. It can cause blurred vision, headaches and eye strain, and is found during an eye test.",
     symptoms: [
       "Blurred or distorted vision at both distance and near",
       "Difficulty seeing fine detail, such as small print or distant signs",

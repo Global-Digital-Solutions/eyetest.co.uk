@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OpticianOptions, NO_OPTICIAN_BLOCK } from "@/components/OpticianOptions";
+import { WhereToGetHelp } from "@/components/WhereToGetHelp";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero, HeroSearchForm } from "@/components/PageHero";
@@ -585,6 +586,10 @@ export function QueryPageView({ query }: { query: SearchQuery }) {
         </section>
 
         {/* ── Optician options ───────────────────────────────────────── */}
+        {query.category === "concern" && (
+          <WhereToGetHelp />
+        )}
+
         {!NO_OPTICIAN_BLOCK.has(query.slug) && (
           <section className="bg-white border-t border-gray-100">
             <div className="max-w-6xl mx-auto px-4">

@@ -6,6 +6,8 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import { getQueryByCanonicalPath } from "@/data/search-queries";
+import { QueryPageView, queryMetadata } from "@/components/QueryPageView";
 import {
   eyeConditions,
   getConditionBySlug,
@@ -31,6 +33,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const rebuilt = getQueryByCanonicalPath(`/eye-health/conditions/${slug}`);
+  if (rebuilt) return queryMetadata(rebuilt);
   const condition = getConditionBySlug(slug);
 
   if (!condition) {
@@ -93,6 +97,8 @@ export default async function ConditionPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const rebuilt = getQueryByCanonicalPath(`/eye-health/conditions/${slug}`);
+  if (rebuilt) return <QueryPageView query={rebuilt} />;
   const condition = getConditionBySlug(slug);
 
   if (!condition) {
