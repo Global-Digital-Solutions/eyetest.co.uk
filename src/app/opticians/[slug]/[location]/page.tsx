@@ -1,3 +1,5 @@
+import { OG_IMAGES } from "@/lib/og";
+import { clampDescription } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -41,7 +43,7 @@ export function generateStaticParams(): { slug: string; location: string }[] {
 
 /** Tidy store names from booking systems: single spaces, commas not dashes */
 function cleanName(name: string): string {
-  return name.replace(/\s+[\u2014\u2013-]\s+/g, ", ").replace(/\s{2,}/g, " ").trim();
+  return name.replace(/\s+[\u2014\u2013:-]\s+/g, ", ").replace(/\s{2,}/g, " ").trim();
 }
 
 function longDate(iso: string): string {
@@ -73,18 +75,24 @@ export async function generateMetadata({
   if (!optician || !loc) return { title: "Not Found | eyetest.co.uk" };
 
   const hasStore = brandInTown(optician, loc.slug);
-  const title = hasStore
+  const full = hasStore
     ? `${optician.name} ${loc.name}: Eye Test Prices & Booking`
     : `${optician.name} ${loc.name}: Nearest Stores & Local Opticians`;
-  const description = hasStore
+  const title =
+    full.length <= 62
+      ? full
+      : hasStore
+        ? `${optician.shortName} ${loc.name}: Eye Test Prices & Booking`
+        : `${optician.shortName} near ${loc.name}: Nearest Stores`;
+  const description = clampDescription(hasStore
     ? `${optician.shortName} eye tests in ${loc.name}: ${optician.priceRange}, free NHS tests if you qualify. Find your nearest ${optician.shortName} and book direct. Information last checked ${checkedLabel(optician)}.`
-    : `We don't have a ${optician.shortName} practice listed in ${loc.name}. See the nearest ${optician.shortName} locations and other opticians in ${loc.name} you can book direct.`;
+    : `No ${optician.shortName} practice is listed in ${loc.name} yet. See the nearest ${optician.shortName} stores and other local opticians you can book direct.`);
   const url = `${BASE}/opticians/${optician.slug}/${loc.slug}`;
 
   return {
     title,
     description,
-    openGraph: { title, description, url, siteName: "eyetest.co.uk", type: "website" },
+    openGraph: { images: OG_IMAGES, title, description, url, siteName: "eyetest.co.uk", type: "website" },
     alternates: { canonical: url },
   };
 }

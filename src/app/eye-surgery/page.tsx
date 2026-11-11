@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -28,9 +30,9 @@ const providerImages: Record<string, string> = {
 
 export const metadata: Metadata = {
   title:
-    "UK Eye Surgery — Compare Specialist Surgeons | eyetest.co.uk",
+    "UK Eye Surgery: Compare Specialist Surgeons | eyetest.co.uk",
   description:
-    "Find and compare eye surgery providers across the UK. Compare NHS and private ophthalmic surgeons, read patient reviews, and book consultations for cataract surgery, laser eye surgery, glaucoma treatment, and more.",
+    clampDescription("Compare NHS and private eye surgery providers across the UK, from cataract and laser eye surgery to glaucoma treatment, and find a clinic near you."),
   keywords: [
     "eye surgery UK",
     "ophthalmic surgeon",
@@ -44,10 +46,11 @@ export const metadata: Metadata = {
     "eye surgeon UK",
   ],
   openGraph: {
+    images: OG_IMAGES,
     title:
-      "Eye Surgery in the UK — Find Specialist Ophthalmic Surgeons | eyetest.co.uk",
+      "Eye Surgery in the UK: Find Specialist Ophthalmic Surgeons | eyetest.co.uk",
     description:
-      "Find and compare eye surgery providers across the UK. Compare NHS and private ophthalmic surgeons, read patient reviews, and book consultations.",
+      clampDescription("Find and compare eye surgery providers across the UK. Compare NHS and private ophthalmic surgeons, read patient reviews, and book consultations."),
     url: "https://www.eyetest.co.uk/eye-surgery",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -121,7 +124,7 @@ export default function EyeSurgeryPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Eye Surgery in the UK — Find Specialist Ophthalmic Surgeons",
+    name: "Eye Surgery in the UK: Find Specialist Ophthalmic Surgeons",
     description:
       "Find and compare eye surgery providers across the UK. Compare NHS and private ophthalmic surgeons, read patient reviews, and book consultations.",
     url: "https://www.eyetest.co.uk/eye-surgery",

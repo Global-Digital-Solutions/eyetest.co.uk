@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -15,7 +17,7 @@ export const metadata: Metadata = {
   title:
     "Optician Offers & Eye Test Deals (November 2026) | eyetest.co.uk",
   description:
-    "Current offers from Specsavers, Boots Opticians, Vision Express, Asda and independent opticians, checked against each optician's own website on 11 November 2026: 2 for 1 glasses, second pair half price, student and over 60s discounts.",
+    clampDescription("Current glasses and eye test offers from Boots Opticians, Specsavers, Vision Express, Asda and independents, checked on each optician's own website."),
   keywords: [
     "optician offers",
     "eye test deals",
@@ -31,10 +33,11 @@ export const metadata: Metadata = {
     "prescription sunglasses deals",
   ],
   openGraph: {
+    images: OG_IMAGES,
     title:
       "Optician Offers & Eye Test Deals | eyetest.co.uk",
     description:
-      "Current offers from 9 UK opticians, checked against each optician's own website on 11 November 2026.",
+      clampDescription("Current offers from 9 UK opticians, checked against each optician's own website on 11 November 2026."),
     url: "https://www.eyetest.co.uk/offers",
     siteName: "eyetest.co.uk",
     type: "website",

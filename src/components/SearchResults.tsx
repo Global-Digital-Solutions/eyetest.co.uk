@@ -323,7 +323,7 @@ function DepartureOverlay({
               complete your eye test booking.
             </p>
             <p className="text-xs text-gray-400 mb-6">
-              This is a completely free service — no fees, no sign-up.
+              This is a completely free service, with no fees and no sign-up.
             </p>
 
             {/* Trust signals */}
@@ -354,7 +354,7 @@ function DepartureOverlay({
         {/* Footer */}
         <div className="bg-gray-50 border-t border-gray-100 px-6 py-3 text-center">
           <p className="text-[10px] text-gray-400">
-            Found by <strong className="text-[var(--color-primary)]">eyetest.co.uk</strong> — the UK&apos;s free eye test comparison service
+            Found by <strong className="text-[var(--color-primary)]">eyetest.co.uk</strong>, the UK&apos;s free eye test comparison service
           </p>
         </div>
       </div>
@@ -674,7 +674,7 @@ function StoreCard({ store, highlighted, onBook }: { store: StoreResult; highlig
                       ? slot.count
                       : slot.count === -1
                         ? "✓"
-                        : "—"}
+                        : "-"}
                   </div>
                   <div
                     className={`text-[8px] mt-0.5 ${
@@ -920,7 +920,7 @@ function PlatinumStoreCard({ store, highlighted, onBook }: { store: StoreResult;
                       <DayLabel date={slot.date} />
                     </div>
                     <div className={`text-base font-bold leading-tight mt-0.5 ${avail ? "text-green-700" : "text-gray-300"}`}>
-                      {slot.count > 0 ? slot.count : slot.count === -1 ? "✓" : "—"}
+                      {slot.count > 0 ? slot.count : slot.count === -1 ? "✓" : "-"}
                     </div>
                     <div className={`text-[8px] mt-0.5 ${avail ? "text-green-500" : "text-gray-300"}`}>
                       {slot.count > 0 ? `slot${slot.count !== 1 ? "s" : ""}` : slot.count === -1 ? "available" : "none"}
@@ -1079,7 +1079,7 @@ function MobilePlatinumStoreCard({ store, highlighted, onBook }: { store: StoreR
                       <DayLabel date={slot.date} />
                     </div>
                     <div className={`text-sm font-bold leading-tight mt-0.5 ${avail ? "text-green-700" : "text-gray-300"}`}>
-                      {slot.count > 0 ? slot.count : slot.count === -1 ? "✓" : "—"}
+                      {slot.count > 0 ? slot.count : slot.count === -1 ? "✓" : "-"}
                     </div>
                     <div className={`text-[8px] mt-0.5 ${avail ? "text-green-500" : "text-gray-300"}`}>
                       {slot.count > 0 ? `slot${slot.count !== 1 ? "s" : ""}` : slot.count === -1 ? "available" : "none"}
@@ -1217,7 +1217,7 @@ function SearchProgressPanel({
                 {postcode}
               </span>
               {resultsCount > 0 && (
-                <span className="text-[var(--color-success)]"> &mdash; {resultsCount} found so far</span>
+                <span className="text-[var(--color-success)]">: {resultsCount} found so far</span>
               )}
             </p>
           </div>
@@ -1788,7 +1788,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
                         We just saved you ~{minutesSaved} minutes
                       </p>
                       <p className="text-[11px] sm:text-xs text-gray-500">
-                        by searching {results.length} optician{results.length !== 1 ? "s" : ""} across {brandsChecked} brands near <strong className="text-[var(--color-primary)]">{stream.postcode}</strong> — all in seconds
+                        by searching {results.length} optician{results.length !== 1 ? "s" : ""} across {brandsChecked} brands near <strong className="text-[var(--color-primary)]">{stream.postcode}</strong>, all in seconds
                       </p>
                     </div>
                   </div>
@@ -2085,7 +2085,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     />
                   </svg>
-                  Still searching &mdash; {stream.loadingProviders.length} more optician{stream.loadingProviders.length !== 1 ? "s" : ""} to check
+                  Still searching: {stream.loadingProviders.length} more optician{stream.loadingProviders.length !== 1 ? "s" : ""} to check
                 </div>
               )}
 
@@ -2272,7 +2272,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
             Finding opticians near you&hellip;
           </p>
           <p className="text-sm text-gray-400">
-            Hang tight &mdash; we&apos;re about to save you hours of searching
+            Hang tight, we&apos;re about to save you hours of searching
           </p>
         </div>
       )}

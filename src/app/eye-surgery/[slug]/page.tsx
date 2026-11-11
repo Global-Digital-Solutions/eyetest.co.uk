@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -36,7 +38,7 @@ export async function generateMetadata({
   }
 
   const title = condition.metaTitle;
-  const description = condition.metaDescription;
+  const description = clampDescription(condition.metaDescription);
 
   return {
     title,
@@ -52,6 +54,7 @@ export async function generateMetadata({
       "eye surgery UK",
     ],
     openGraph: {
+      images: OG_IMAGES,
       title,
       description,
       url: `https://www.eyetest.co.uk/eye-surgery/${condition.slug}`,

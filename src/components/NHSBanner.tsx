@@ -62,7 +62,7 @@ export function NHSBanner() {
               </div>
 
               <p className="text-gray-600 mb-5 max-w-2xl leading-relaxed">
-                Many people qualify for free NHS-funded eye tests — including
+                Many people qualify for free NHS-funded eye tests, including
                 under-16s, over-60s, people receiving certain benefits, and
                 those with specific medical conditions. Check if you&apos;re
                 eligible and save on your next eye test.

@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -77,9 +79,9 @@ const popularSlugs = [
 
 export const metadata: Metadata = {
   title:
-    "Find Eye Tests — Guides on Cost, NHS Eligibility, Booking & More | eyetest.co.uk",
+    "Eye Test Guides: Costs, NHS Eligibility & Booking | eyetest.co.uk",
   description:
-    "Browse our comprehensive guides covering eye test costs, NHS eligibility, same-day availability, optician comparisons, specialist tests, and common vision concerns. Find answers to the most searched eye test questions in the UK.",
+    clampDescription("Guides to UK eye tests: costs, NHS eligibility, same-day appointments, optician comparisons, specialist tests and common vision concerns."),
   keywords: [
     "eye test cost",
     "free eye test",
@@ -92,9 +94,10 @@ export const metadata: Metadata = {
     "eye test guide UK",
   ],
   openGraph: {
+    images: OG_IMAGES,
     title: "Eye Test Guides & Costs | eyetest.co.uk",
     description:
-      "Guides covering eye test costs, NHS eligibility, booking, optician comparisons, and vision concerns.",
+      clampDescription("Guides covering eye test costs, NHS eligibility, booking, optician comparisons, and vision concerns."),
     url: "https://www.eyetest.co.uk/find",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -115,7 +118,7 @@ export default function FindPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Find Eye Tests — Comprehensive UK Guides",
+    name: "Find Eye Tests: Comprehensive UK Guides",
     description:
       "Browse guides covering eye test costs, NHS eligibility, booking, optician comparisons, specialist tests, and vision concerns.",
     url: "https://www.eyetest.co.uk/find",

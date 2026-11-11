@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -11,14 +13,15 @@ import { SurgeryCallout } from "@/components/SurgeryCallout";
 
 export const metadata: Metadata = {
   title:
-    "Eye Surgery Enquiry — Get Matched With a Specialist | eyetest.co.uk",
+    "Eye Surgery Enquiry: Find a Specialist | eyetest.co.uk",
   description:
-    "Submit an eye surgery enquiry and our team will help connect you with the right specialist ophthalmic surgeon. NHS and private options available for cataracts, glaucoma, laser eye surgery, and more.",
+    clampDescription("Submit an eye surgery enquiry and our team will help connect you with the right specialist ophthalmic surgeon. NHS and private options available for cataracts, glaucoma, laser eye surgery, and more."),
   openGraph: {
+    images: OG_IMAGES,
     title:
-      "Eye Surgery Enquiry — Get Matched With a Specialist | eyetest.co.uk",
+      "Eye Surgery Enquiry: Find a Specialist | eyetest.co.uk",
     description:
-      "Submit an eye surgery enquiry and our team will help connect you with the right specialist ophthalmic surgeon.",
+      clampDescription("Submit an eye surgery enquiry and our team will help connect you with the right specialist ophthalmic surgeon."),
     url: "https://www.eyetest.co.uk/eye-surgery/enquiry",
     siteName: "eyetest.co.uk",
     type: "website",

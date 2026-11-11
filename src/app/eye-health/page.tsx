@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -18,9 +20,9 @@ const eyeHealthGuides = allEyeHealthGuides.filter((g) => !(g.slug in MOVED_GUIDE
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Eye Health — Conditions, Guides & Expert Advice | eyetest.co.uk",
+  title: "Eye Health: Conditions, Guides & Expert Advice | eyetest.co.uk",
   description:
-    "Learn about common eye conditions, their symptoms and treatments, plus expert guides on eye health, NHS eye tests, and when to see an optician. Evidence-based advice from UK eye care professionals.",
+    clampDescription("Learn about common eye conditions, their symptoms and treatments, plus expert guides on eye health, NHS eye tests, and when to see an optician. Evidence-based advice from UK eye care professionals."),
   keywords: [
     "eye health",
     "eye conditions",
@@ -34,9 +36,10 @@ export const metadata: Metadata = {
     "eye test advice",
   ],
   openGraph: {
-    title: "Eye Health — Conditions, Guides & Expert Advice | eyetest.co.uk",
+    images: OG_IMAGES,
+    title: "Eye Health: Conditions, Guides & Expert Advice | eyetest.co.uk",
     description:
-      "Learn about common eye conditions, their symptoms and treatments, plus expert guides on eye health, NHS eye tests, and when to see an optician.",
+      clampDescription("Learn about common eye conditions, their symptoms and treatments, plus expert guides on eye health, NHS eye tests, and when to see an optician."),
     url: "https://www.eyetest.co.uk/eye-health",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -86,7 +89,7 @@ export default function EyeHealthPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Eye Health — Conditions, Guides & Expert Advice",
+    name: "Eye Health: Conditions, Guides & Expert Advice",
     description:
       "Learn about common eye conditions, their symptoms and treatments, plus expert guides on eye health, NHS eye tests, and when to see an optician.",
     url: "https://www.eyetest.co.uk/eye-health",

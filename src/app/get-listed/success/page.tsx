@@ -9,7 +9,7 @@ import { createClient } from "@supabase/supabase-js";
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Listing Activated — eyetest.co.uk",
+  title: "Listing Activated | eyetest.co.uk",
   robots: { index: false, follow: false },
 };
 
@@ -241,7 +241,7 @@ export default async function SuccessPage({
                         <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--color-success)]" />
                       </span>
                       <span className="text-sm font-medium text-[var(--color-success)]">
-                        Listing activating &mdash; live within 24 hours
+                        Listing activating, live within 24 hours
                       </span>
                     </div>
                   </div>

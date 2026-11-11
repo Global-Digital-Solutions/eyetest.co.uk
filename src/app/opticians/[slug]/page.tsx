@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -45,10 +47,9 @@ export async function generateMetadata({
   }
 
   const title =
-    optician.seoTitle ?? `${optician.name} — Eye Tests, Prices & Booking`;
-  const description =
-    optician.seoDescription ??
-    `${optician.name}: ${optician.storeCount} UK stores. ${optician.priceRange}. Full service breakdown, pros & cons, NHS availability, booking guide, FAQs, and store locations. Compare and book your eye test online.`;
+    optician.seoTitle ?? `${optician.name}: Eye Tests, Prices & Booking`;
+  const description = clampDescription(optician.seoDescription ??
+    `${optician.name}: ${optician.storeCount} UK stores. ${optician.priceRange}. Full service breakdown, pros & cons, NHS availability, booking guide, FAQs, and store locations. Compare and book your eye test online.`);
 
   return {
     title,
@@ -66,6 +67,7 @@ export async function generateMetadata({
       `${optician.shortName} near me`,
     ],
     openGraph: {
+      images: OG_IMAGES,
       title,
       description,
       url: `https://www.eyetest.co.uk/opticians/${optician.slug}`,
@@ -134,7 +136,7 @@ export default async function OpticianPage({
     "@type": "WebPage",
     "@id": `${pageUrl}#webpage`,
     url: pageUrl,
-    name: optician.seoTitle ?? `${optician.name} — Eye Tests, Prices & Booking`,
+    name: optician.seoTitle ?? `${optician.name}: Eye Tests, Prices & Booking`,
     description: optician.seoDescription ?? optician.description,
     inLanguage: "en-GB",
     ...(optician.dateModified ? { dateModified: optician.dateModified } : {}),
@@ -1282,7 +1284,7 @@ export default async function OpticianPage({
                   </svg>
                 </div>
                 <h2 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl font-bold text-gray-700 mb-4">
-                  {optician.shortName}{" "}&mdash; Coming Soon
+                  {optician.shortName}{" "}: Coming Soon
                 </h2>
                 <p className="text-gray-500 max-w-xl mx-auto mb-8">
                   We&apos;re working on adding {optician.name}{" "}to

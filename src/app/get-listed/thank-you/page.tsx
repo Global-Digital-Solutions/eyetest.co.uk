@@ -9,7 +9,7 @@ import { createClient } from "@supabase/supabase-js";
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Listing Received — eyetest.co.uk",
+  title: "Listing Received | eyetest.co.uk",
   robots: { index: false, follow: false },
 };
 
@@ -104,8 +104,7 @@ export default async function ThankYouPage({
                 </h2>
                 <p className="text-gray-600 max-w-xl mx-auto text-base sm:text-lg">
                   After years of helping patients find eye tests, many practices asked
-                  how they could stand out more in their area. So we built premium listings &mdash;
-                  increased visibility exclusive to your postcode area, from as little as 40p
+                  how they could stand out more in their area. So we built premium listings, increased visibility exclusive to your postcode area, from as little as 40p
                   per day, locked in for a whole year.
                 </p>
               </div>
@@ -198,7 +197,7 @@ export default async function ThankYouPage({
                 <p className="text-white/60 text-sm leading-relaxed mb-4">
                   Most optician practices also provide hearing tests. Get listed on our sister site
                   <strong className="text-white"> hearingtest.co.uk</strong> and reach patients looking for
-                  hearing tests in your area &mdash; from just &pound;99/year.
+                  hearing tests in your area, from just &pound;99/year.
                 </p>
                 <a
                   href="https://www.hearingtest.co.uk/get-listed"

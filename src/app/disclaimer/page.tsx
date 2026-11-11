@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -10,7 +12,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Medical Disclaimer | eyetest.co.uk",
   description:
-    "Important medical disclaimer for eyetest.co.uk. The information on this site is for general educational purposes only and does not constitute medical advice. Always consult a qualified optometrist or ophthalmologist.",
+    clampDescription("Important medical disclaimer for eyetest.co.uk. The information on this site is for general educational purposes only and does not constitute medical advice. Always consult a qualified optometrist or ophthalmologist."),
   keywords: [
     "medical disclaimer",
     "eye health disclaimer",
@@ -20,9 +22,10 @@ export const metadata: Metadata = {
     "GOC regulated",
   ],
   openGraph: {
+    images: OG_IMAGES,
     title: "Medical Disclaimer | eyetest.co.uk",
     description:
-      "Important medical disclaimer. eyetest.co.uk does not provide medical advice. Always consult a qualified eye care professional.",
+      clampDescription("Important medical disclaimer. eyetest.co.uk does not provide medical advice. Always consult a qualified eye care professional."),
     url: "https://www.eyetest.co.uk/disclaimer",
     siteName: "eyetest.co.uk",
     type: "website",

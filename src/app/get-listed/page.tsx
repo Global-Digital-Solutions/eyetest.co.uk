@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -9,9 +11,9 @@ import { GetListedForm } from "@/components/GetListedForm";
 
 export const metadata: Metadata = {
   title:
-    "For Opticians — Get Your Practice Listed on eyetest.co.uk",
+    "For Opticians: Get Your Practice Listed on eyetest.co.uk",
   description:
-    "Partner with the UK's dedicated eye test comparison platform. Get your optician practice listed on eyetest.co.uk and reach thousands of patients searching for eye tests every month. Free to apply.",
+    clampDescription("Get your optician practice listed on eyetest.co.uk and reach people across the UK searching for an eye test every month. Free to apply."),
   keywords: [
     "list optician practice",
     "optician listing UK",
@@ -23,10 +25,11 @@ export const metadata: Metadata = {
     "for opticians",
   ],
   openGraph: {
+    images: OG_IMAGES,
     title:
-      "For Opticians — Get Your Practice Listed on eyetest.co.uk",
+      "For Opticians: Get Your Practice Listed on eyetest.co.uk",
     description:
-      "Partner with the UK's dedicated eye test comparison platform. Reach thousands of patients searching for eye tests every month.",
+      clampDescription("Partner with the UK's dedicated eye test comparison platform. Reach thousands of patients searching for eye tests every month."),
     url: "https://www.eyetest.co.uk/get-listed",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -293,7 +296,7 @@ export default function GetListedPage() {
                   d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
                 />
               </svg>
-              <span>Since 2019 — The UK&rsquo;s Eye Test Authority</span>
+              <span>Since 2019: The UK&rsquo;s Eye Test Authority</span>
             </div>
 
             <h1
@@ -634,7 +637,7 @@ export default function GetListedPage() {
                 Frequently asked questions
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Everything you need to know about getting listed on
+                Common questions about getting listed on
                 eyetest.co.uk. Can&rsquo;t find your answer? Get in touch with
                 our team.
               </p>

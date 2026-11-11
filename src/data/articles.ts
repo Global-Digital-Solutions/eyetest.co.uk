@@ -19,7 +19,7 @@ export const articles: Article[] = [
   /* ------------------------------------------------------------------ */
   {
     slug: "how-often-should-you-have-an-eye-test",
-    title: "How Often Should You Have an Eye Test? — Age-by-Age Advice",
+    title: "How Often Should You Have an Eye Test?: Age-by-Age Advice",
     excerpt:
       "From toddlers to over-70s, the recommended frequency of eye tests varies by age, health, and risk factors. Learn exactly when to book your next appointment.",
     image: "/images/optician-shop-sm.jpg",
@@ -119,7 +119,7 @@ Your optometrist will record your visual acuity using a standardised notation. I
 
 If your visual acuity is not 6/6, it does not necessarily mean there is a problem. Many people have mild refractive errors that can be easily corrected with glasses or contact lenses. The visual acuity test simply establishes a baseline and helps your optometrist determine whether further investigation or correction is needed.
 
-## Step 3: Refraction — finding your prescription
+## Step 3: Refraction: finding your prescription
 
 Refraction is the process of determining the exact lens power needed to correct your vision. Your optometrist will use a combination of techniques, starting with an autorefractor, a machine that shines a beam of light into your eye and measures how it bounces back from the retina. This gives an objective starting point for your prescription.
 
@@ -348,7 +348,7 @@ A UK optical prescription is typically presented in a table format with separate
 
 The main columns you will encounter are SPH (sphere), CYL (cylinder), AXIS, and ADD (addition). Some prescriptions also include a PRISM value and a BASE direction, though these are less common. Each of these measurements is expressed in dioptres (abbreviated "D" or "DS"), which is the unit used to describe the optical power of a lens. Let us look at each one in detail.
 
-## SPH — the sphere value
+## SPH, the sphere value
 
 The sphere value indicates the main focusing power of the lens needed to correct your distance vision. It tells you whether you are short-sighted (myopic) or long-sighted (hypermetropic), and by how much.
 
@@ -358,7 +358,7 @@ A positive sphere value (for example, +1.50) means you are long-sighted. Long-si
 
 If the sphere value is zero or labelled "plano" (abbreviated "Pl"), your eyes do not need spherical correction for distance, though you may still need correction for astigmatism or reading.
 
-## CYL and AXIS — astigmatism correction
+## CYL and AXIS: astigmatism correction
 
 The cylinder and axis values work together to correct astigmatism, a common condition where the cornea or lens is shaped more like a rugby ball than a football. This uneven curvature causes light to focus at two different points rather than one, resulting in blurred or distorted vision at all distances.
 
@@ -368,13 +368,13 @@ The AXIS value is a number between 1 and 180 that specifies the angle at which t
 
 If both CYL and AXIS are blank or zero on your prescription, congratulations: you do not have astigmatism, or at least not enough to require correction.
 
-## ADD — the reading addition
+## ADD, the reading addition
 
 The ADD value appears on prescriptions for people who need different lens powers for distance and near vision, which is virtually everyone over the age of about 45. It represents the additional focusing power, on top of the distance prescription, required for comfortable reading and close work. The ADD is always a positive number and is the same for both eyes.
 
 Typical ADD values range from +0.75 for someone in their early 40s who is just beginning to notice reading difficulties, up to +2.50 or +3.00 for someone in their 60s or older. The ADD value gradually increases over the years as the crystalline lens inside the eye continues to stiffen, eventually reaching a plateau in the late 60s.
 
-If you have an ADD value on your prescription, you will need either separate reading glasses, bifocals (with a visible line separating the distance and near sections), or varifocals (also called progressive lenses, which provide a seamless transition from distance to near). Your optician can help you choose the best option for your lifestyle and visual needs.
+If you have an ADD value on your prescription, you will need either separate reading glasses, bifocals (with a visible line separating the distance and near sections), or varifocals (also called progressive lenses, which give a smooth transition from distance to near). Your optician can help you choose the best option for your lifestyle and visual needs.
 
 ## PRISM and BASE
 

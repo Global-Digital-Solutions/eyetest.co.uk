@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OpticianOptions } from "@/components/OpticianOptions";
@@ -41,8 +43,8 @@ export async function generateMetadata({
     return { title: "Eye Test Not Found | eyetest.co.uk" };
   }
 
-  const title = `${test.name} — Cost, Expect & Book`;
-  const description = `${test.shortDescription} Learn what a ${test.name.toLowerCase()} involves, who needs one, how much it costs (${test.cost.split(".")[0]}), and where to book in the UK.`;
+  const title = `${test.name}: Cost, Expect & Book`;
+  const description = clampDescription(`${test.shortDescription} Learn what a ${test.name.toLowerCase()} involves, who needs one, how much it costs (${test.cost.split(".")[0]}), and where to book in the UK.`);
 
   return {
     title,
@@ -58,6 +60,7 @@ export async function generateMetadata({
       ...(test.nhsCovered ? [`NHS ${test.name.toLowerCase()}`] : []),
     ],
     openGraph: {
+      images: OG_IMAGES,
       title,
       description,
       url: `https://www.eyetest.co.uk/eye-tests/${test.slug}`,
@@ -580,7 +583,7 @@ export default async function EyeTestPage({
                 className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                {test.name} — frequently asked questions
+                {test.name}: frequently asked questions
               </h2>
             </div>
 

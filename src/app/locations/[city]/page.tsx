@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -45,7 +46,7 @@ export async function generateMetadata({
     return { title: "Location Not Found | eyetest.co.uk" };
   }
 
-  const title = `Eye Tests in ${location.name} — Compare & Book | eyetest.co.uk`;
+  const title = `Eye Tests in ${location.name}: Compare & Book | eyetest.co.uk`;
   const description = `Compare eye test appointments in ${nameWithCounty(location)}. Find NHS and private opticians, check same-day availability, and book online for free.`;
 
   return {
@@ -69,6 +70,7 @@ export async function generateMetadata({
       `eye health ${location.name}`,
     ],
     openGraph: {
+      images: OG_IMAGES,
       title,
       description,
       url: `https://www.eyetest.co.uk/locations/${location.slug}`,

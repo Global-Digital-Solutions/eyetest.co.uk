@@ -520,7 +520,7 @@ export function GetListedForm() {
                     Also list my practice on hearingtest.co.uk
                   </span>
                   <span className="block text-xs text-gray-500 mt-0.5">
-                    Our sister site for hearing tests &mdash; reach patients searching for audiologists too
+                    Our sister site for hearing tests, reach patients searching for audiologists too
                   </span>
                 </div>
               </label>

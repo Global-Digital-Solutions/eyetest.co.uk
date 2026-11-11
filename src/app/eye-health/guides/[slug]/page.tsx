@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OpticianOptions, NO_OPTICIAN_BLOCK } from "@/components/OpticianOptions";
@@ -55,6 +56,7 @@ export async function generateMetadata({
       "optician advice",
     ],
     openGraph: {
+      images: OG_IMAGES,
       title,
       description,
       url: `https://www.eyetest.co.uk/eye-health/guides/${guide.slug}`,

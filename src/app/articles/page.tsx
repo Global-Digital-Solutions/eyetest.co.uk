@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -10,7 +11,7 @@ import { liveArticles as articles } from "@/data/articles";
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Articles — Eye Care Guides & Advice | eyetest.co.uk",
+  title: "Articles: Eye Care Guides & Advice | eyetest.co.uk",
   description:
     "Browse expert articles on eye tests, eye health, prescriptions, and NHS entitlements. Practical, evidence-based guides written for UK patients.",
   keywords: [
@@ -24,7 +25,8 @@ export const metadata: Metadata = {
     "optician advice",
   ],
   openGraph: {
-    title: "Articles — Eye Care Guides & Advice | eyetest.co.uk",
+    images: OG_IMAGES,
+    title: "Articles: Eye Care Guides & Advice | eyetest.co.uk",
     description:
       "Browse expert articles on eye tests, eye health, prescriptions, and NHS entitlements. Practical, evidence-based guides written for UK patients.",
     url: "https://www.eyetest.co.uk/articles",
@@ -58,7 +60,7 @@ export default function ArticlesPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Articles — Eye Care Guides & Advice",
+    name: "Articles: Eye Care Guides & Advice",
     description:
       "Browse expert articles on eye tests, eye health, prescriptions, and NHS entitlements.",
     url: "https://www.eyetest.co.uk/articles",

@@ -70,8 +70,7 @@ export function AtHomeCallout({
                     {resolvedHeading}
                   </h2>
                   <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-xl">
-                    At-home eye tests bring professional eye care to your door
-                    &mdash; free on the NHS for those who need it.
+                    At-home eye tests bring professional eye care to your door, free on the NHS for those who need it.
                   </p>
                 </div>
               </div>

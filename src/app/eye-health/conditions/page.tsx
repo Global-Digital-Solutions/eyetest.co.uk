@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -13,9 +15,9 @@ import {
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Eye Conditions — Symptoms, Causes & Treatments | eyetest.co.uk",
+  title: "Eye Conditions: Symptoms, Causes & Treatments | eyetest.co.uk",
   description:
-    "Browse all 15 eye conditions with symptoms, causes, and treatment options. From common conditions like dry eye and conjunctivitis to age-related conditions such as cataracts and glaucoma. Evidence-based advice from UK eye care professionals.",
+    clampDescription("Browse all 15 eye conditions with symptoms, causes, and treatment options. From common conditions like dry eye and conjunctivitis to age-related conditions such as cataracts and glaucoma. Evidence-based advice from UK eye care professionals."),
   keywords: [
     "eye conditions",
     "eye conditions list",
@@ -31,9 +33,10 @@ export const metadata: Metadata = {
     "astigmatism",
   ],
   openGraph: {
-    title: "Eye Conditions — Symptoms, Causes & Treatments | eyetest.co.uk",
+    images: OG_IMAGES,
+    title: "Eye Conditions: Symptoms, Causes & Treatments | eyetest.co.uk",
     description:
-      "Browse all 15 eye conditions with symptoms, causes, and treatment options. Evidence-based information from UK eye care professionals.",
+      clampDescription("Browse all 15 eye conditions with symptoms, causes, and treatment options. Evidence-based information from UK eye care professionals."),
     url: "https://www.eyetest.co.uk/eye-health/conditions",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -69,7 +72,7 @@ export default function ConditionsListingPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Eye Conditions — Symptoms, Causes & Treatments",
+    name: "Eye Conditions: Symptoms, Causes & Treatments",
     description:
       "Browse all eye conditions with symptoms, causes, and treatment options. Evidence-based information from UK eye care professionals.",
     url: "https://www.eyetest.co.uk/eye-health/conditions",

@@ -67,7 +67,7 @@ export const categoryDescriptions: Record<SearchQuery["category"], string> = {
   availability: "Same-day, walk-in, weekend, and home visit eye test options.",
   brand: "Compare eye tests from Specsavers, Boots, Vision Express, and independent opticians.",
   specialist: "Specialist eye tests for driving, contact lenses, children, and specific conditions.",
-  general: "Everything you need to know about booking and preparing for an eye test.",
+  general: "How to book and prepare for an eye test.",
   concern: "Common vision symptoms and when to seek professional help.",
 };
 
@@ -419,11 +419,11 @@ A lower price does not mean a less thorough sight test, since every test is carr
     slug: "private-eye-test-cost",
     dateModified: "2026-11-11",
     keyword: "private eye test cost",
-    title: "Private Eye Test Cost UK — What to Expect to Pay (2026)",
+    title: "Private Eye Test Cost UK: What to Expect to Pay (2026)",
     category: "cost",
     shortDescription:
       "How much a private eye test costs across the UK in 2026, from basic sight tests to enhanced examinations with OCT scans.",
-    content: `A private eye test in the UK is any sight test that is not funded by the NHS. If you do not qualify for a free NHS test, you will need to pay privately — but the good news is that private eye tests are generally very affordable, with most costing between £20 and £45.
+    content: `A private eye test in the UK is any sight test that is not funded by the NHS. If you do not qualify for a free NHS test. You will need to pay privately, but the good news is that private eye tests are generally very affordable, with most costing between £20 and £45.
 
 Published private eye test prices at the main chains, checked in November 2026, are: Specsavers £20 to £25 depending on the store, Asda Opticians £24, Boots Opticians from £29.95, Vision Express £30 (including an OCT scan) and M&S Opticians £40 (including an OCT scan). Independent opticians set their own prices, so check with the practice.
 
@@ -441,7 +441,7 @@ Keep in mind that even if you are paying privately, many opticians run regular p
       {
         question: "Is a private eye test better than an NHS one?",
         answer:
-          "The standard clinical examination is the same. The difference is in extras — private enhanced packages may include OCT scans and retinal photography that are not routinely part of an NHS sight test. The core assessment of your vision and eye health is identical.",
+          "The standard clinical examination is the same. The difference is in extras: private enhanced packages may include OCT scans and retinal photography that are not routinely part of an NHS sight test. The core assessment of your vision and eye health is identical.",
       },
       {
         question: "Can I claim back the cost of a private eye test?",
@@ -462,7 +462,7 @@ Keep in mind that even if you are paying privately, many opticians run regular p
     slug: "free-eye-test-over-60",
     dateModified: "2026-11-10",
     keyword: "free eye test over 60",
-    title: "Free Eye Tests for Over 60s — How to Book Your NHS Test",
+    title: "Free Eye Tests for Over 60s: How to Book Your NHS Test",
     category: "nhs",
     shortDescription:
       "If you are aged 60 or over, you are entitled to a free NHS eye test. Here is how to book and what to expect.",
@@ -470,9 +470,9 @@ Keep in mind that even if you are paying privately, many opticians run regular p
 
 Conditions that become more common after 60 include cataracts (clouding of the lens), age-related macular degeneration (the leading cause of sight loss in the UK), glaucoma (damage to the optic nerve), and diabetic retinopathy (if you have diabetes). All of these can be detected through a routine eye test, often before you notice any symptoms. Early detection is critical because many of these conditions can be treated effectively if caught early, but may cause irreversible damage if left undiagnosed.
 
-Booking your free test is straightforward. Contact any optician — Specsavers, Boots, Vision Express, or your local independent — and tell them you are over 60 and would like to book an NHS eye test. No GP referral is needed. The only proof required is your date of birth, which the optician can verify from your identification. The test itself is identical to a private eye test and typically takes 20 to 30 minutes.
+Booking your free test is straightforward. Contact any optician, Specsavers, Boots, Vision Express, or your local independent, and tell them you are over 60 and would like to book an NHS eye test. No GP referral is needed. The only proof required is your date of birth, which the optician can verify from your identification. The test itself is identical to a private eye test and typically takes 20 to 30 minutes.
 
-The NHS recommends an eye test at least every two years, and your optometrist may advise more frequent tests if you have diabetes, glaucoma or a family history of glaucoma. In Scotland, people aged 60 or over can have a free routine eye examination every year. If you notice any sudden changes in your vision — such as flashes of light, a shower of new floaters, a shadow or curtain across your vision, or sudden loss of sight — seek urgent help from your optician or NHS 111 immediately, as these can indicate serious conditions requiring prompt treatment.
+The NHS recommends an eye test at least every two years, and your optometrist may advise more frequent tests if you have diabetes, glaucoma or a family history of glaucoma. In Scotland, people aged 60 or over can have a free routine eye examination every year. If you notice any sudden changes in your vision, such as flashes of light, a shower of new floaters, a shadow or curtain across your vision, or sudden loss of sight: seek urgent help from your optician or NHS 111 immediately, as these can indicate serious conditions requiring prompt treatment.
 
 Being 60 or over gives you a free sight test but not, on its own, an NHS optical voucher for glasses. You get a voucher if you also receive a qualifying benefit such as Pension Credit Guarantee Credit, hold an HC2 certificate through the NHS Low Income Scheme, or need complex lenses. Some chains also offer over-60s discounts on glasses, which change from time to time.`,
     faqs: [
@@ -503,7 +503,7 @@ Being 60 or over gives you a free sight test but not, on its own, an NHS optical
     slug: "free-eye-test-children",
     dateModified: "2026-11-10",
     keyword: "free eye test children",
-    title: "Free Eye Tests for Children — NHS Entitlement & When to Book",
+    title: "Free Eye Tests for Children: NHS Entitlement & When to Book",
     category: "nhs",
     shortDescription:
       "All children under 16 qualify for free NHS eye tests. Learn when to book your child's first test and what to expect.",
@@ -513,14 +513,14 @@ The NHS recommends that children have their first eye test before starting schoo
 
 You do not need to wait until your child can read to book an eye test. Optometrists use age-appropriate methods including picture matching tests, shape recognition, and objective measurement techniques that do not require any verbal response from your child. The appointment typically takes 20 to 40 minutes depending on the child's age and cooperation.
 
-After the initial test, children should have annual eye tests throughout their school years. If your child wears glasses, annual checks ensure their prescription stays up to date — children's eyes change rapidly. If a problem such as lazy eye is being treated, more frequent visits may be recommended.
+After the initial test, children should have annual eye tests throughout their school years. If your child wears glasses, annual checks ensure their prescription stays up to date: children's eyes change rapidly. If a problem such as lazy eye is being treated, more frequent visits may be recommended.
 
 When a child needs glasses following their NHS eye test, they receive an NHS optical voucher towards the cost. In England vouchers are worth between £42.40 and £233.56 depending on the prescription, and many opticians have a children's range that the voucher covers in full. NHS Wales also provides free glasses for children who need them.`,
     faqs: [
       {
         question: "At what age should a child have their first eye test?",
         answer:
-          "The NHS recommends a first eye test before starting school, ideally at age three or four. However, if you have any concerns about your baby's or toddler's vision — such as a squint or a white reflection in the pupil — seek advice from your GP or optician immediately, regardless of age.",
+          "The NHS recommends a first eye test before starting school, ideally at age three or four. However, if you have any concerns about your baby's or toddler's vision, such as a squint or a white reflection in the pupil, seek advice from your GP or optician immediately, regardless of age.",
       },
       {
         question: "How often should children have eye tests?",
@@ -533,7 +533,7 @@ When a child needs glasses following their NHS eye test, they receive an NHS opt
           "If your child needs glasses, they will receive an NHS optical voucher towards the cost. The voucher value depends on the prescription. Most opticians offer a range of children's frames that are fully covered by the voucher.",
       },
       {
-        question: "My child's school did a vision screening — do they still need an eye test?",
+        question: "My child's school did a vision screening: do they still need an eye test?",
         answer:
           "Yes. School vision screenings are basic checks that can miss many conditions. They are not a substitute for a full eye examination with a qualified optometrist. Even if your child passed a school screening, regular eye tests are still recommended.",
       },
@@ -549,7 +549,7 @@ When a child needs glasses following their NHS eye test, they receive an NHS opt
     slug: "free-eye-test-diabetes",
     dateModified: "2026-11-10",
     keyword: "free eye test diabetes",
-    title: "Free Eye Tests for People with Diabetes — NHS Entitlement",
+    title: "Free Eye Tests for People with Diabetes: NHS Entitlement",
     category: "nhs",
     shortDescription:
       "If you have Type 1 or Type 2 diabetes, you are entitled to free NHS eye tests. Learn about your entitlement and the separate diabetic eye screening programme.",
@@ -559,7 +559,7 @@ Diabetes can affect the eyes in several ways. The most well-known complication i
 
 Your optometrist will advise how often you need a sight test, which for many people with diabetes is once a year. Your optometrist will check your vision, update your glasses prescription if needed, measure your eye pressure, and examine the health of your eyes. They may detect signs of diabetic eye disease during this examination, but the test covers far more than just diabetes-related changes.
 
-The NHS Diabetic Eye Screening Programme is a separate service. You should receive an automatic invitation once your GP has recorded your diabetes diagnosis. A trained screener takes detailed photographs of your retina after applying pupil-dilating drops. The images are graded by specialists, and you receive your results by post. If changes are found, you will be referred to a hospital eye clinic. You should attend both your annual optician's eye test and your annual diabetic eye screening — they are complementary, not interchangeable.
+The NHS Diabetic Eye Screening Programme is a separate service. You should receive an automatic invitation once your GP has recorded your diabetes diagnosis. A trained screener takes detailed photographs of your retina after applying pupil-dilating drops. The images are graded by specialists, and you receive your results by post. If changes are found. You will be referred to a hospital eye clinic. You should attend both your annual optician's eye test and your annual diabetic eye screening. They are complementary, not interchangeable.
 
 If you have not received a diabetic eye screening invitation, contact your GP practice to ensure your diabetes is recorded in their system and that you are registered with the local screening programme.`,
     faqs: [
@@ -590,7 +590,7 @@ If you have not received a diabetic eye screening invitation, contact your GP pr
     slug: "free-eye-test-universal-credit",
     keyword: "free eye test universal credit",
     title: "Free Eye Tests on Universal Credit: Who Qualifies",
-    seoTitle: "Free Eye Test on Universal Credit: Earnings Limits and Vouchers (2026)",
+    seoTitle: "Free Eye Test on Universal Credit: Limits and Vouchers",
     seoDescription:
       "Universal Credit can give you a free NHS eye test and optical voucher if your take-home pay is £435 or less (£935 with a child element or LCW). Here is how it works.",
     dateModified: "2026-11-10",
@@ -1026,13 +1026,13 @@ Store pages on eyetest.co.uk show opening hours where the optician publishes the
     slug: "eye-test-at-home",
     canonicalPath: "/at-home-eye-tests",
     keyword: "eye test at home",
-    title: "Eye Tests at Home — Domiciliary Eye Care in the UK",
+    title: "Eye Tests at Home: Domiciliary Eye Care in the UK",
     category: "availability",
     shortDescription:
       "If you cannot visit an optician, a qualified optometrist can carry out a full eye test in your own home. Learn about domiciliary eye care.",
-    content: `Domiciliary eye tests — also known as home visit eye tests — are available for people who cannot easily travel to an optician's practice. A qualified optometrist visits your home with portable equipment and carries out a full clinical eye test to the same standard you would receive in a high-street practice.
+    content: `Domiciliary eye tests, also known as home visit eye tests, are available for people who cannot easily travel to an optician's practice. A qualified optometrist visits your home with portable equipment and carries out a full clinical eye test to the same standard you would receive in a high-street practice.
 
-You are eligible for a free NHS-funded home visit eye test if you cannot leave your home unaccompanied due to a physical or mental health condition or disability. This includes many elderly or housebound individuals, people in care homes or nursing homes, those with severe mobility issues, and people with conditions such as advanced dementia, agoraphobia, or severe disability. If you can get to an optician with help (for example, if a family member drives you), you may not qualify for a home visit — but the eligibility criteria are interpreted generously, and your optician can advise.
+You are eligible for a free NHS-funded home visit eye test if you cannot leave your home unaccompanied due to a physical or mental health condition or disability. This includes many elderly or housebound individuals, people in care homes or nursing homes, those with severe mobility issues, and people with conditions such as advanced dementia, agoraphobia, or severe disability. If you can get to an optician with help (for example, if a family member drives you). You may not qualify for a home visit, but the eligibility criteria are interpreted generously, and your optician can advise.
 
 To arrange a home visit, you can contact a domiciliary optical practice directly (search online for domiciliary opticians in your area), ask your GP for a recommendation, or call NHS 111 for guidance. Many standard high-street opticians also offer home visit services for qualifying patients. The appointment typically takes 30 to 45 minutes, and the optometrist will bring all necessary equipment including portable vision charts, a trial lens set, slit lamp, and often a portable fundus camera.
 
@@ -1154,7 +1154,7 @@ In the UK, the Opticians Act 1989 says a sight test can only be carried out by a
     title: "Specsavers vs Boots Eye Test Comparison (2026)",
     category: "brand",
     shortDescription:
-      "A side-by-side look at eye tests at Specsavers and Boots Opticians: prices, what is included and the extras each offers, checked against their own websites in November 2026.",
+      "Specsavers and Boots Opticians eye tests side by side: prices, what is included and the extras each offers, checked on their own websites.",
     content: `Specsavers and Boots Opticians are two of the UK's best-known optician chains, and both provide a high standard of eye care from qualified, GOC-registered optometrists. Here is how their eye tests compare, using the information each publishes on its own website.
 
 On price, Specsavers says a routine eye test costs £20 to £25 depending on the store. Boots says its Essential Eye Test costs from £29.95, and that price includes a Dry Eye Evaluation as part of the test. Both chains run time-limited offers from time to time, such as free or discounted eye tests, which are subject to availability and location.
@@ -1189,7 +1189,7 @@ Both chains provide free NHS-funded eye tests if you qualify, along with childre
     slug: "book-eye-test",
     keyword: "book eye test",
     title: "Book an Eye Test Online: How to Book with Any UK Optician",
-    seoTitle: "Book an Eye Test Online: Specsavers, Boots, Vision Express and More",
+    seoTitle: "Book an Eye Test Online: Boots, Specsavers and More",
     seoDescription:
       "How to book an eye test online or by phone with Specsavers, Boots, Vision Express, Asda, M&S and independents, what to bring and how to book a free NHS test.",
     h1: "Book an Eye Test",
@@ -1265,7 +1265,7 @@ If you think you qualify for a free NHS-funded eye test, say so when you book. T
     title: "Opticians Near Me: Find and Compare Local Opticians",
     seoTitle: "Opticians Near Me: Find an Eye Test Near You by Postcode or Town",
     seoDescription:
-      "Find opticians and eye tests near you. Search by postcode or choose your town to compare Specsavers, Boots, Vision Express, Asda, M&S and independents, with NHS details.",
+      "Find opticians near you by postcode or town. Compare Boots, Specsavers, Vision Express, Asda, M&S and independents, with NHS details.",
     h1: "Opticians and Eye Tests Near You",
     dateModified: "2026-11-10",
     category: "availability",
@@ -1480,7 +1480,7 @@ If you are short on time, let the receptionist know when you book. They can advi
       {
         question: "Do I need to allow time for choosing glasses after the test?",
         answer:
-          "If you plan to look at glasses on the same visit, allow an additional 15 to 30 minutes. You are not obliged to choose glasses immediately — you can take your prescription away and return later or visit a different optician.",
+          "If you plan to look at glasses on the same visit, allow an additional 15 to 30 minutes. You are not obliged to choose glasses immediately. You can take your prescription away and return later or visit a different optician.",
       },
     ],
     relatedQueries: [
@@ -1637,7 +1637,7 @@ Certain life events should also trigger an eye test: starting a new job that inv
 Do not put it off. Eye tests are quick, painless, widely available, and may be free. Regular testing is one of the simplest and most effective things you can do to protect your long-term health.`,
     faqs: [
       {
-        question: "I can see fine — do I still need an eye test?",
+        question: "I can see fine: do I still need an eye test?",
         answer:
           "Yes. Many eye conditions develop silently without affecting your vision in the early stages. An eye test checks not only your visual acuity but also the health of your eyes, including screening for glaucoma, cataracts, and retinal problems.",
       },
@@ -1647,7 +1647,7 @@ Do not put it off. Eye tests are quick, painless, widely available, and may be f
           "Yes. Eye tests can reveal early signs of diabetes, high blood pressure, high cholesterol, and some neurological conditions. The blood vessels and nerves in the eye provide a unique window into your overall health.",
       },
       {
-        question: "I'm young and healthy — do I need regular eye tests?",
+        question: "I'm young and healthy: do I need regular eye tests?",
         answer:
           "Yes. Eye conditions can affect people of all ages, and establishing a baseline record of your eye health when young makes it easier to detect changes over time. Testing every two years is the recommended minimum for all adults.",
       },
@@ -2031,9 +2031,9 @@ The General Optical Council says that to be supplied with prescription contact l
     slug: "childrens-eye-test-guide",
     keyword: "children's eye test",
     title: "Children's Eye Test UK: Free NHS Tests, When to Book and What Happens",
-    seoTitle: "Children's Eye Test UK 2026: Free on the NHS, Ages and What to Expect",
+    seoTitle: "Children's Eye Test UK: Free on the NHS and What to Expect",
     seoDescription:
-      "Children's eye tests are free on the NHS for under 16s. When your child's eyes are checked, school vision screening, what happens at the optician and signs to look for.",
+      "Children's eye tests are free on the NHS for under 16s. When to book, school vision screening, what happens at the optician and signs to look for.",
     h1: "Children's Eye Tests: A Parent's Guide",
     dateModified: "2026-11-11",
     canonicalPath: "/eye-tests/childrens-eye-test",
@@ -2170,7 +2170,7 @@ Children can have an eye test at any age. The NHS says they do not need to be ab
   {
     slug: "glaucoma-test",
     keyword: "glaucoma test",
-    title: "Glaucoma Test — What It Involves, Cost & Where to Get Tested",
+    title: "Glaucoma Test: What It Involves, Cost & Where to Get Tested",
     category: "specialist",
     shortDescription:
       "How to get tested for glaucoma in the UK, what the tests involve, who should be tested, and whether it is covered by the NHS.",
@@ -2182,12 +2182,12 @@ You are at higher risk of glaucoma if you are aged 40 or over with a first-degre
 
 If you are aged 40 or over and have a close relative with glaucoma, you are entitled to a free NHS eye test every year. This is one of the most important NHS entitlements to take advantage of, as early detection can preserve your sight. The NHS test includes all the necessary glaucoma screening checks.
 
-A private glaucoma assessment, if needed, typically costs £30 to £60 and includes tonometry, visual field testing, and often an OCT scan of the optic nerve. Many opticians offer this as part of an enhanced or premium eye test package. If your optometrist identifies signs of possible glaucoma, you will be referred to a hospital eye clinic for further investigation and, if confirmed, treatment — usually daily eye drops that lower eye pressure.`,
+A private glaucoma assessment, if needed, typically costs £30 to £60 and includes tonometry, visual field testing, and often an OCT scan of the optic nerve. Many opticians offer this as part of an enhanced or premium eye test package. If your optometrist identifies signs of possible glaucoma. You will be referred to a hospital eye clinic for further investigation and, if confirmed, treatment, usually daily eye drops that lower eye pressure.`,
     faqs: [
       {
         question: "How do I know if I have glaucoma?",
         answer:
-          "You may not know — glaucoma often has no symptoms until significant vision loss has occurred. This is why regular eye tests with pressure checks and optic nerve examination are essential. Your optometrist can detect glaucoma at a very early stage during a routine eye test.",
+          "You may not know: glaucoma often has no symptoms until significant vision loss has occurred. This is why regular eye tests with pressure checks and optic nerve examination are essential. Your optometrist can detect glaucoma at a very early stage during a routine eye test.",
       },
       {
         question: "Is the glaucoma puff test accurate?",
@@ -2212,7 +2212,7 @@ A private glaucoma assessment, if needed, typically costs £30 to £60 and inclu
     title: "Colour Blind Test UK: How to Get Tested for Colour Vision Deficiency",
     seoTitle: "Colour Blind Test UK 2026: How to Get Tested at an Optician",
     seoDescription:
-      "How to get a colour blind test in the UK, what the Ishihara and colour arrangement tests involve, signs in children, and what colour blindness means for driving and work.",
+      "How to get a colour blind test in the UK, what the Ishihara test involves, signs in children, and what colour blindness means for driving and work.",
     h1: "Colour Blind Test: How to Get Your Colour Vision Checked in the UK",
     dateModified: "2026-11-11",
     category: "specialist",
@@ -2331,19 +2331,19 @@ Online colour blind tests can give you an idea of whether you might have a colou
   {
     slug: "blurry-vision-causes",
     keyword: "blurry vision causes",
-    title: "Blurry Vision Causes — When to See an Optician (UK Guide)",
+    title: "Blurry Vision Causes: When to See an Optician (UK Guide)",
     category: "concern",
     shortDescription:
       "The most common causes of blurry vision and when you should book an urgent eye test to get it checked.",
     content: `Blurry vision is one of the most common reasons people visit an optician. While it is often caused by a straightforward need for glasses, blurry vision can sometimes indicate more serious conditions that require prompt attention.
 
-The most common cause of blurry vision is refractive error — meaning your eyes do not focus light correctly. This includes short-sightedness (myopia, where distance vision is blurry), long-sightedness (hypermetropia, where close-up vision is blurry), astigmatism (where vision is blurry at all distances due to irregular corneal shape), and presbyopia (age-related difficulty with close-up focus, typically starting around age 40). All of these are easily corrected with glasses or contact lenses.
+The most common cause of blurry vision is refractive error, meaning your eyes do not focus light correctly. This includes short-sightedness (myopia, where distance vision is blurry), long-sightedness (hypermetropia, where close-up vision is blurry), astigmatism (where vision is blurry at all distances due to irregular corneal shape), and presbyopia (age-related difficulty with close-up focus, typically starting around age 40). All of these are easily corrected with glasses or contact lenses.
 
 Other common causes of blurry vision include dry eye disease (the tear film breaks up and causes intermittent blurriness), prolonged screen use and digital eye strain, cataracts (gradual clouding of the lens, common over age 60), and medication side effects (some drugs list blurred vision as a side effect).
 
 More serious causes that require urgent attention include retinal detachment (blurriness or a shadow spreading across your vision, often preceded by flashes and floaters), acute glaucoma (sudden severe blurring with eye pain, headache, and sometimes nausea), stroke or TIA (sudden blurring or loss of vision, especially in one eye), optic neuritis (blurring with eye pain, sometimes associated with multiple sclerosis), and wet macular degeneration (central vision becomes distorted or blurry).
 
-As a general rule: gradual blurriness that has developed over weeks or months is likely a prescription change and should be checked at a routine eye test. Sudden blurriness that develops over hours or days, particularly in one eye, with pain, or with other symptoms such as flashes, floaters, or headache, should be assessed urgently — call your optician, NHS 111, or attend A&E if you cannot be seen the same day.`,
+As a general rule: gradual blurriness that has developed over weeks or months is likely a prescription change and should be checked at a routine eye test. Sudden blurriness that develops over hours or days, particularly in one eye, with pain, or with other symptoms such as flashes, floaters, or headache, should be assessed urgently: call your optician, NHS 111, or attend A&E if you cannot be seen the same day.`,
     faqs: [
       {
         question: "When should I worry about blurry vision?",
@@ -2372,11 +2372,11 @@ As a general rule: gradual blurriness that has developed over weeks or months is
   {
     slug: "headaches-and-vision",
     keyword: "headaches and vision",
-    title: "Headaches and Vision — Could Your Eyes Be the Cause?",
+    title: "Headaches and Vision: Could Your Eyes Be the Cause?",
     category: "concern",
     shortDescription:
       "Understanding the link between headaches and vision problems, and why an eye test should be one of your first steps.",
-    content: `Headaches are extremely common, and in many cases, an undetected vision problem is the underlying cause. If you are experiencing frequent headaches — particularly after reading, using a screen, or concentrating on close work — an eye test should be one of your first investigations.
+    content: `Headaches are extremely common, and in many cases, an undetected vision problem is the underlying cause. If you are experiencing frequent headaches, particularly after reading, using a screen, or concentrating on close work, an eye test should be one of your first investigations.
 
 The most common vision-related cause of headaches is uncorrected refractive error. If you are slightly long-sighted (hypermetropic), your eyes work harder to focus, especially on close-up tasks. This effort can cause eye strain headaches that tend to build during the day and are worst after sustained concentration. Similarly, astigmatism (where the cornea has an irregular shape) causes your eyes to struggle to form a sharp image, leading to strain and headaches. Even a mild prescription that you did not know you needed can be enough to cause persistent headaches.
 
@@ -2384,7 +2384,7 @@ An outdated or incorrect glasses prescription can also cause headaches. If your 
 
 Digital eye strain (also known as computer vision syndrome) is another major cause of headaches related to vision. Prolonged screen use reduces your blink rate, leading to dry eyes and strain, while the constant focusing effort on a screen causes muscular fatigue around the eyes. Symptoms typically include headaches at the front of the head or around the eyes, dry or watery eyes, blurry vision, and neck or shoulder tension.
 
-Less commonly, headaches can be associated with more serious eye conditions. Acute angle-closure glaucoma causes sudden severe headache with eye pain and blurred vision — this is a medical emergency. Raised intracranial pressure can cause headaches with visual disturbances such as temporary blackouts or double vision. If your headaches are severe, sudden, or accompanied by visual symptoms, seek immediate medical advice.
+Less commonly, headaches can be associated with more serious eye conditions. Acute angle-closure glaucoma causes sudden severe headache with eye pain and blurred vision. This is a medical emergency. Raised intracranial pressure can cause headaches with visual disturbances such as temporary blackouts or double vision. If your headaches are severe, sudden, or accompanied by visual symptoms, seek immediate medical advice.
 
 An eye test is a quick, painless, and inexpensive first step in investigating headaches. Many people find that a simple pair of glasses resolves headaches they have been experiencing for months or even years.`,
     faqs: [
@@ -2494,7 +2494,7 @@ Floaters can look like small dark dots, squiggly lines, rings or cobwebs. Flashe
   {
     slug: "sudden-vision-changes",
     keyword: "sudden vision changes",
-    title: "Sudden Vision Changes — When to Seek Urgent Help (UK Guide)",
+    title: "Sudden Vision Changes: When to Seek Urgent Help (UK Guide)",
     category: "concern",
     shortDescription:
       "What to do if you experience sudden changes in your vision, including which symptoms are medical emergencies.",
@@ -2506,7 +2506,7 @@ Symptoms that require emergency assessment (A&E or 999) include: sudden complete
 
 For urgent but non-emergency symptoms, your first call should be to your local optician. Many opticians provide same-day emergency eye care through the NHS MECS scheme and have the specialist equipment needed to examine your eyes thoroughly. This is usually faster and more appropriate than A&E for eye-specific problems. If your optician cannot see you, call NHS 111 for advice on where to go.
 
-Time matters with many of these conditions. Retinal detachment is best treated within 24 hours. Acute glaucoma can cause permanent damage within hours. Retinal artery occlusion (an eye stroke) has a very narrow treatment window. Do not wait and see if symptoms improve — seek help immediately. It is always better to be assessed and reassured than to delay and risk permanent damage.`,
+Time matters with many of these conditions. Retinal detachment is best treated within 24 hours. Acute glaucoma can cause permanent damage within hours. Retinal artery occlusion (an eye stroke) has a very narrow treatment window. Do not wait and see if symptoms improve: seek help immediately. It is always better to be assessed and reassured than to delay and risk permanent damage.`,
     faqs: [
       {
         question: "Should I go to A&E for sudden vision loss?",
@@ -2537,7 +2537,7 @@ Time matters with many of these conditions. Retinal detachment is best treated w
     slug: "conjunctivitis",
     keyword: "conjunctivitis",
     title: "Conjunctivitis (Pink Eye): Symptoms, Treatment and When to Get Help",
-    seoTitle: "Conjunctivitis (Pink Eye): Symptoms, Treatment and Is It Contagious?",
+    seoTitle: "Conjunctivitis (Pink Eye): Symptoms, Treatment, Contagion",
     seoDescription:
       "Conjunctivitis, or pink eye, makes eyes red, gritty, itchy and sticky. How to treat it at home, when a pharmacist can help, if it is contagious and when to see a GP.",
     h1: "Conjunctivitis (Pink Eye)",
@@ -2636,7 +2636,7 @@ Most conjunctivitis can be eased at home, and a pharmacist can help. See the sec
     slug: "blepharitis",
     keyword: "blepharitis",
     title: "Blepharitis: Symptoms, Eyelid Cleaning and Treatment",
-    seoTitle: "Blepharitis: Symptoms, How to Clean Your Eyelids and Treatment (NHS)",
+    seoTitle: "Blepharitis: Symptoms, Eyelid Cleaning and Treatment",
     seoDescription:
       "Blepharitis causes sore, itchy eyelids with flakes or crusts on the lashes. How to clean your eyelids, when a pharmacist or GP can help, and what causes it.",
     h1: "Blepharitis",
@@ -2726,7 +2726,7 @@ Cleaning your eyelids every day is the main way to treat and prevent it. Blephar
     slug: "astigmatism",
     keyword: "astigmatism",
     title: "Astigmatism: Symptoms, Eye Tests and Treatment Options",
-    seoTitle: "Astigmatism: What It Is, Symptoms and Treatment (Glasses, Lenses, Surgery)",
+    seoTitle: "Astigmatism: What It Is, Symptoms and Treatment",
     seoDescription:
       "Astigmatism means your eye is shaped more like a rugby ball than a football. Symptoms, why eye tests matter, and the pros and cons of glasses, contact lenses and surgery.",
     h1: "Astigmatism",
@@ -2817,7 +2817,7 @@ The main symptoms are blurred vision, headaches and eye strain, which you may no
     slug: "glaucoma",
     keyword: "glaucoma",
     title: "Glaucoma: Symptoms, Risk Factors, Eye Tests and Treatment",
-    seoTitle: "Glaucoma: Symptoms, Who Is at Risk, Tests and Treatment (NHS Guide)",
+    seoTitle: "Glaucoma: Symptoms, Risk Factors, Tests and Treatment",
     seoDescription:
       "Glaucoma usually has no symptoms and is picked up at routine eye tests. Who is at higher risk, free NHS eye tests, treatment, and when sudden symptoms mean A&E.",
     h1: "Glaucoma",
@@ -2928,7 +2928,7 @@ There is currently no cure, but treatment can slow the damage and help stop your
     slug: "cataracts",
     keyword: "cataracts",
     title: "Cataracts: Symptoms, Causes, Surgery and Driving",
-    seoTitle: "Cataracts: Symptoms, Who Gets Them, Cataract Surgery and Driving (NHS)",
+    seoTitle: "Cataracts: Symptoms, Surgery and Driving (NHS Guide)",
     seoDescription:
       "Cataracts cause blurred vision, glare and faded colours, and usually develop slowly. Symptoms, who is more likely to get them, cataract surgery and driving rules.",
     h1: "Cataracts",
@@ -3017,7 +3017,7 @@ Cataracts do not usually need treatment straight away. Over time they get worse,
     slug: "macular-degeneration",
     keyword: "macular degeneration",
     title: "Macular Degeneration (AMD): Symptoms, Wet and Dry AMD, Treatment",
-    seoTitle: "Macular Degeneration (AMD): Symptoms, Wet vs Dry and Treatment (NHS)",
+    seoTitle: "Macular Degeneration (AMD): Symptoms, Wet vs Dry, Treatment",
     seoDescription:
       "Age-related macular degeneration affects the middle of your vision, usually from your 50s. Symptoms, when to get urgent help, and treatment for wet and dry AMD.",
     h1: "Age-Related Macular Degeneration (AMD)",
@@ -3283,7 +3283,7 @@ Most people can ease dry eyes with simple changes, and a pharmacist can help. If
     slug: "diabetic-retinopathy",
     keyword: "diabetic retinopathy",
     title: "Diabetic Retinopathy: Symptoms, Screening, Stages and Treatment",
-    seoTitle: "Diabetic Retinopathy: Symptoms, Eye Screening, Stages and Treatment",
+    seoTitle: "Diabetic Retinopathy: Symptoms, Screening and Treatment",
     seoDescription:
       "Diabetic retinopathy usually has no symptoms at first and is found at diabetic eye screening. The 3 stages, treatment, and how to reduce your risk.",
     h1: "Diabetic Retinopathy",
@@ -3383,7 +3383,7 @@ If you have diabetes and are 12 or over, you are invited for diabetic eye screen
     slug: "myopia",
     keyword: "short sighted",
     title: "Short-Sightedness (Myopia): Signs, Eye Tests and Treatment",
-    seoTitle: "Short-Sightedness (Myopia): Signs in Children, Treatment and Myopia Control",
+    seoTitle: "Short-Sightedness (Myopia): Signs, Treatment and Control",
     seoDescription:
       "Short-sightedness (myopia) usually starts between ages 6 and 13. Signs to look for, free NHS eye tests, glasses and contact lenses, and myopia management.",
     h1: "Short-Sightedness (Myopia)",
@@ -3546,7 +3546,7 @@ Most colour blindness is inherited and present from birth. The NHS says there is
     slug: "squint",
     keyword: "squint",
     title: "Squint (Strabismus): Signs, When to Get Advice and Treatment",
-    seoTitle: "Squint (Strabismus) in Children and Adults: Signs and Treatment (NHS)",
+    seoTitle: "Squint (Strabismus): Signs and Treatment in Children and Adults",
     seoDescription:
       "A squint is where the eyes point in different directions. When to get advice for a baby or child, why early treatment matters, and glasses, patches and surgery.",
     h1: "Squint (Strabismus)",
@@ -3633,7 +3633,7 @@ Treatment is usually recommended, as a squint is unlikely to get better on its o
     slug: "long-sighted",
     keyword: "long sighted",
     title: "Long-Sightedness (Hyperopia): Symptoms and Treatment",
-    seoTitle: "Long-Sightedness (Hyperopia): Symptoms, Eye Tests and Treatment (NHS)",
+    seoTitle: "Long-Sightedness (Hyperopia): Symptoms and Treatment",
     seoDescription:
       "Long-sightedness makes nearby things blurry while distant things look clear. Symptoms, free NHS eye tests, glasses, contact lenses and surgery options.",
     h1: "Long-Sightedness (Hyperopia)",
@@ -3712,7 +3712,7 @@ It is often passed on from parents and cannot be prevented. An optometrist can c
     slug: "presbyopia",
     keyword: "presbyopia",
     title: "Presbyopia: Why Reading Gets Harder With Age",
-    seoTitle: "Presbyopia: Why Close-Up Vision Changes With Age and How to Correct It",
+    seoTitle: "Presbyopia: Why Close-Up Vision Changes and How to Correct It",
     seoDescription:
       "Presbyopia makes it harder to focus on close things like phones and menus, usually from your late 30s or 40s. How reading glasses, varifocals and contact lenses help.",
     h1: "Presbyopia",
@@ -3877,7 +3877,7 @@ If your eye does not hurt, your sight is not affected and you do not feel sick o
     slug: "stye",
     keyword: "stye",
     title: "Stye: Symptoms, Home Treatment and When to See a GP",
-    seoTitle: "Stye on the Eye: Symptoms, How to Treat It and When to Get Help (NHS)",
+    seoTitle: "Stye on the Eye: Symptoms, Treatment and When to Get Help",
     seoDescription:
       "A stye is a small, painful lump on the eyelid. How to treat a stye at home with a warm compress, why not to burst it, when to see a GP and how to prevent styes.",
     h1: "Stye",
@@ -3962,7 +3962,7 @@ Most styes can be treated at home. If there is no lump, it is more likely to be 
     slug: "chalazion",
     keyword: "chalazion",
     title: "Chalazion (Eyelid Cyst): Symptoms, Treatment and Stye vs Chalazion",
-    seoTitle: "Chalazion: Eyelid Cyst Symptoms, Treatment and How It Differs From a Stye",
+    seoTitle: "Chalazion (Eyelid Cyst): Symptoms, Treatment, Stye or Not",
     seoDescription:
       "A chalazion is a harmless lump in the eyelid caused by a blocked oil gland. Symptoms, home treatment, when surgery is used, and how it differs from a stye.",
     h1: "Chalazion (Meibomian Cyst)",
@@ -4044,7 +4044,7 @@ Chalazions tend to last a few weeks, are typically not painful, do not affect yo
     slug: "eye-twitching",
     keyword: "eye twitching",
     title: "Eye Twitching: Causes and When to See a GP",
-    seoTitle: "Eye Twitching: Why It Happens, How to Stop It and When to See a GP",
+    seoTitle: "Eye Twitching: Causes, How to Stop It, When to See a GP",
     seoDescription:
       "Eye twitches are common and very rarely serious. Common triggers like stress, tiredness and caffeine, how to help stop a twitch, and when to see a GP.",
     h1: "Eye Twitching",
@@ -4206,7 +4206,7 @@ It usually affects one eye but can affect both. Symptoms can come on over hours 
     slug: "swollen-eyelid",
     keyword: "swollen eyelid",
     title: "Swollen Eyelid: Common Causes and When It Is Urgent",
-    seoTitle: "Swollen Eyelid: Causes, What to Do and When to Get Urgent Help (NHS)",
+    seoTitle: "Swollen Eyelid: Causes, What to Do and When It Is Urgent",
     seoDescription:
       "A swollen eyelid is often caused by a stye, chalazion, allergy or blepharitis. Common causes, when a pharmacist can help and when swelling needs urgent advice.",
     h1: "Swollen Eyelid",
@@ -4285,7 +4285,7 @@ The NHS advises not diagnosing it yourself. A pharmacist, GP or optician can hel
     slug: "lazy-eye",
     keyword: "lazy eye",
     title: "Lazy Eye (Amblyopia): Signs, Eye Tests and Treatment",
-    seoTitle: "Lazy Eye in Children: Signs, Patches, Glasses and When to Treat (NHS)",
+    seoTitle: "Lazy Eye in Children: Signs, Patches, Glasses and Treatment",
     seoDescription:
       "A lazy eye is where vision does not develop properly in one eye. Signs to look for in children, free NHS eye tests, and treatment with glasses, patches or drops.",
     h1: "Lazy Eye (Amblyopia)",
@@ -4369,7 +4369,7 @@ Treatment aims to improve vision in the weaker eye and should ideally start befo
     slug: "retinal-detachment",
     keyword: "retinal detachment",
     title: "Detached Retina: Symptoms, Urgent Help and Surgery",
-    seoTitle: "Detached Retina (Retinal Detachment): Symptoms and Urgent Treatment",
+    seoTitle: "Detached Retina: Symptoms and Urgent Treatment (NHS Guide)",
     seoDescription:
       "A detached retina needs treating quickly to protect your sight. Warning signs like sudden floaters, flashes or a shadow, surgery, recovery and who is more at risk.",
     h1: "Detached Retina (Retinal Detachment)",
@@ -4522,7 +4522,7 @@ It is normal for eyes to water in smoke, cold or wind, or if something like an e
     slug: "double-vision",
     keyword: "double vision",
     title: "Double Vision: Causes, Urgent Signs and Driving",
-    seoTitle: "Double Vision: Causes, When It Is Urgent and Telling the DVLA (NHS)",
+    seoTitle: "Double Vision: Causes, When It Is Urgent and the DVLA",
     seoDescription:
       "Double vision is not usually serious but always needs checking. A simple test to tell which kind you have, when it is urgent, causes and the DVLA rule.",
     h1: "Double Vision",

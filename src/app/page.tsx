@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
@@ -16,7 +17,7 @@ import { ArticlesBlock } from "@/components/ArticlesBlock";
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "eyetest.co.uk — Find & Book Eye Tests Near You",
+  title: "eyetest.co.uk: Find & Book Eye Tests Near You",
   description:
     "Compare 2,400+ opticians across the UK. Find eye test appointments near you from Boots, Specsavers, Vision Express, ASDA and independents. Book online free.",
   keywords: [
@@ -31,7 +32,8 @@ export const metadata: Metadata = {
     "eye test UK",
   ],
   openGraph: {
-    title: "eyetest.co.uk — Find & Book Eye Tests Near You",
+    images: OG_IMAGES,
+    title: "eyetest.co.uk: Find & Book Eye Tests Near You",
     description:
       "Compare 2,400+ opticians across the UK. See availability where we can show it and book direct with the optician.",
     url: "https://www.eyetest.co.uk",

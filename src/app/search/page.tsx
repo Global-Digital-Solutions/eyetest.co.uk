@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -14,8 +15,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
   return {
     title: pc
-      ? `Eye Tests near ${pc} — eyetest.co.uk`
-      : "Search Eye Tests — eyetest.co.uk",
+      ? `Eye Tests near ${pc} | eyetest.co.uk`
+      : "Search Eye Tests | eyetest.co.uk",
     description: pc
       ? `Compare opticians and book eye test appointments near ${pc}. Find NHS and private eye tests with same-day availability.`
       : "Search for eye test appointments near you. Compare opticians across the UK.",
@@ -28,9 +29,10 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       "eye test appointment",
     ],
     openGraph: {
+      images: OG_IMAGES,
       title: pc
-        ? `Eye Tests near ${pc} — eyetest.co.uk`
-        : "Search Eye Tests — eyetest.co.uk",
+        ? `Eye Tests near ${pc} | eyetest.co.uk`
+        : "Search Eye Tests | eyetest.co.uk",
       description: pc
         ? `Compare opticians and book eye test appointments near ${pc}.`
         : "Search for eye test appointments near you. Compare opticians across the UK.",

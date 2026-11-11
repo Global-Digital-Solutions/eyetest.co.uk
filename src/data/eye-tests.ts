@@ -28,11 +28,11 @@ export const eyeTests: EyeTest[] = [
     name: "Standard Eye Test",
     shortDescription:
       "A comprehensive routine sight test to check your vision and the health of your eyes.",
-    fullDescription: `A standard eye test — formally known as a sight test — is the foundation of good eye health care in the UK. During this appointment, a qualified optometrist will assess your visual acuity, check your prescription for glasses or contact lenses, and examine the internal and external health of your eyes. The test can detect early signs of conditions such as glaucoma, cataracts, macular degeneration, and even general health issues like diabetes and high blood pressure.
+    fullDescription: `A standard eye test, formally known as a sight test, is the foundation of good eye health care in the UK. During this appointment, a qualified optometrist will assess your visual acuity, check your prescription for glasses or contact lenses, and examine the internal and external health of your eyes. The test can detect early signs of conditions such as glaucoma, cataracts, macular degeneration, and even general health issues like diabetes and high blood pressure.
 
 The College of Optometrists recommends that most adults have a routine eye test at least every two years, though your optometrist may advise more frequent visits depending on your age, health, and family history. Even if you feel your eyesight is perfect, regular testing is essential because many eye conditions develop gradually without noticeable symptoms.
 
-In the UK, a standard private eye test typically costs between £20 and £35, though many high-street opticians offer free tests as part of promotional deals. If you qualify for an NHS-funded sight test, you will pay nothing at all. Either way, it is one of the most important health checks you can have — protecting your sight starts with a simple appointment.`,
+In the UK, a standard private eye test typically costs between £20 and £35, though many high-street opticians offer free tests as part of promotional deals. If you qualify for an NHS-funded sight test. You will pay nothing at all. Either way. It is one of the most important health checks you can have: protecting your sight starts with a simple appointment.`,
     duration: "20–30 minutes",
     cost: "£20–£35 privately, or free if you qualify for an NHS-funded sight test",
     whoNeeds: [
@@ -69,11 +69,11 @@ In the UK, a standard private eye test typically costs between £20 and £35, th
     name: "NHS Eye Test",
     shortDescription:
       "A free NHS-funded sight test for those who qualify, covering the same checks as a standard eye test.",
-    fullDescription: `An NHS eye test is clinically identical to a standard private sight test — you receive the same thorough examination of your vision and eye health. The difference is that the cost is covered by the NHS, so you pay nothing. The NHS also provides an optical voucher to help with the cost of glasses or contact lenses if you need them.
+    fullDescription: `An NHS eye test is clinically identical to a standard private sight test, you receive the same thorough examination of your vision and eye health. The difference is that the cost is covered by the NHS, so you pay nothing. The NHS also provides an optical voucher to help with the cost of glasses or contact lenses if you need them.
 
 You are entitled to a free NHS sight test if you fall into certain groups. These include children under 16 (or under 19 and in full-time education), adults aged 60 and over, people diagnosed with diabetes or glaucoma, those on certain means-tested benefits (such as Universal Credit, Income Support, or Pension Credit), and people who are registered blind or partially sighted. If you are aged 40 or over and have a close relative (parent, sibling, or child) diagnosed with glaucoma, you also qualify for free testing.
 
-If you are unsure whether you qualify, your local optician can check your eligibility when you book. It is worth noting that the NHS sight test is available at almost every optician in the UK — you do not need to go to a hospital or specialist clinic. Simply ask for an NHS sight test when booking your appointment.`,
+If you are unsure whether you qualify, your local optician can check your eligibility when you book. It is worth noting that the NHS sight test is available at almost every optician in the UK. You do not need to go to a hospital or specialist clinic. Simply ask for an NHS sight test when booking your appointment.`,
     duration: "20–30 minutes",
     cost: "Free for eligible patients; an NHS optical voucher may also help towards the cost of glasses",
     whoNeeds: [
@@ -111,7 +111,7 @@ If you are unsure whether you qualify, your local optician can check your eligib
       "A sight test tailored for babies, toddlers, and school-age children to catch vision problems early.",
     fullDescription: `Children's eye tests are specially adapted to suit the age and development stage of your child. Good vision is essential for learning, social development, and overall wellbeing, yet many children do not realise they have a sight problem because they have never known anything different. Detecting and treating conditions such as amblyopia (lazy eye), squint (strabismus), and refractive errors early gives the best chance of successful correction.
 
-All children in the UK are entitled to free NHS-funded sight tests. The NHS recommends that children have their first eye test before they start school — ideally around age three or four — and then regularly throughout their school years. Many areas also have vision screening programmes in Reception year (age 4–5), but this is not a substitute for a full eye test with an optometrist.
+All children in the UK are entitled to free NHS-funded sight tests. The NHS recommends that children have their first eye test before they start school, ideally around age three or four, and then regularly throughout their school years. Many areas also have vision screening programmes in Reception year (age 4–5), but this is not a substitute for a full eye test with an optometrist.
 
 You do not need to wait until your child can read to book an eye test. Optometrists use age-appropriate methods such as picture charts, shape-matching games, and objective measurement techniques that do not require any verbal response from your child. If your child is struggling at school, sitting too close to the television, or complaining of headaches, an eye test should be a first step.`,
     duration: "20–40 minutes depending on the child's age and cooperation",
@@ -152,7 +152,7 @@ You do not need to wait until your child can read to book an eye test. Optometri
 
 If you are a new wearer, the appointment will include a teach session where you learn how to insert, remove, and care for your lenses safely. Your practitioner will check the fit of the lenses on your eyes and ensure they provide clear, comfortable vision. A follow-up appointment is usually booked to confirm everything is working well before your prescription is finalised.
 
-Contact lens check-ups are legally required at least once a year in the UK. Your contact lens prescription (known as a specification) is only valid while your check-ups are up to date. These appointments verify that your lenses remain the right fit, your eyes are healthy, and your prescription has not changed. Skipping check-ups can lead to undetected problems such as corneal infections, dry eye, or oxygen deprivation to the cornea — all of which can affect your long-term eye health.`,
+Contact lens check-ups are legally required at least once a year in the UK. Your contact lens prescription (known as a specification) is only valid while your check-ups are up to date. These appointments verify that your lenses remain the right fit, your eyes are healthy, and your prescription has not changed. Skipping check-ups can lead to undetected problems such as corneal infections, dry eye, or oxygen deprivation to the cornea, all of which can affect your long-term eye health.`,
     duration: "30–60 minutes for a first fitting; 15–30 minutes for a routine check-up",
     cost: "£30–£60 for a fitting; check-ups often included in monthly lens plans (typically £15–£40 per month). Not covered by the NHS unless clinically necessary",
     whoNeeds: [
@@ -188,9 +188,9 @@ Contact lens check-ups are legally required at least once a year in the UK. Your
     name: "OCT Scan (Optical Coherence Tomography)",
     shortDescription:
       "An advanced 3D scan of the back of your eye that detects conditions years before symptoms appear.",
-    fullDescription: `An OCT (Optical Coherence Tomography) scan is one of the most significant advances in eye care technology. It uses light waves to take highly detailed, cross-sectional images of your retina, optic nerve, and the layers beneath the surface of the eye — areas that cannot be fully examined with a traditional eye test alone. Think of it as the eye equivalent of an MRI scan: it reveals what is happening beneath the surface.
+    fullDescription: `An OCT (Optical Coherence Tomography) scan is one of the most significant advances in eye care technology. It uses light waves to take highly detailed, cross-sectional images of your retina, optic nerve, and the layers beneath the surface of the eye: areas that cannot be fully examined with a traditional eye test alone. Think of it as the eye equivalent of an MRI scan, it reveals what is happening beneath the surface.
 
-An OCT scan can detect the earliest signs of serious conditions including glaucoma, age-related macular degeneration (AMD), diabetic retinopathy, macular holes, and vitreous detachment — often years before you notice any change in your vision. Because many of these conditions cause irreversible damage if left untreated, early detection through OCT scanning can genuinely save your sight.
+An OCT scan can detect the earliest signs of serious conditions including glaucoma, age-related macular degeneration (AMD), diabetic retinopathy, macular holes, and vitreous detachment, often years before you notice any change in your vision. Because many of these conditions cause irreversible damage if left untreated, early detection through OCT scanning can genuinely save your sight.
 
 Most high-street opticians now offer OCT scanning as an optional add-on to your standard eye test. While not yet routinely funded by the NHS, the scan is quick, painless, and non-invasive. A growing number of eye care professionals recommend it as a baseline scan for all patients over 25, creating a reference image that future scans can be compared against to spot even the smallest changes over time.`,
     duration: "5–10 minutes (usually performed alongside a standard eye test)",
@@ -207,7 +207,7 @@ Most high-street opticians now offer OCT scanning as an optional add-on to your 
     whatToExpect: [
       "You sit in front of the OCT machine and rest your chin on a support",
       "You look at a fixation target inside the instrument",
-      "The scan takes just a few seconds per eye — there is no flash, no puff of air, and no contact with your eye",
+      "The scan takes just a few seconds per eye: there is no flash, no puff of air, and no contact with your eye",
       "The machine produces a detailed 3D image of your retina and optic nerve",
       "Your optometrist reviews the images and discusses any findings with you",
       "Results are stored digitally so future scans can be compared side by side",
@@ -229,7 +229,7 @@ Most high-street opticians now offer OCT scanning as an optional add-on to your 
     name: "Visual Field Test (Perimetry)",
     shortDescription:
       "A test that maps your peripheral (side) vision to detect blind spots and conditions like glaucoma.",
-    fullDescription: `A visual field test — also known as perimetry — measures the full extent of your peripheral (side) vision and identifies any blind spots or areas of reduced sensitivity. It is one of the most important diagnostic tools in ophthalmology and optometry, particularly for detecting and monitoring glaucoma, which often attacks peripheral vision first without any noticeable symptoms.
+    fullDescription: `A visual field test, also known as perimetry, measures the full extent of your peripheral (side) vision and identifies any blind spots or areas of reduced sensitivity. It is one of the most important diagnostic tools in ophthalmology and optometry, particularly for detecting and monitoring glaucoma, which often attacks peripheral vision first without any noticeable symptoms.
 
 During the test, you look straight ahead into a bowl-shaped instrument and press a button each time you see a small light flash in your side vision. The test is performed one eye at a time and typically takes a few minutes per eye. It is completely painless and non-invasive. The results are plotted as a map of your visual field, showing any areas where your sensitivity is reduced compared to what is normal for your age.
 
@@ -268,13 +268,13 @@ Visual field testing is a routine part of glaucoma monitoring and is often inclu
     name: "Diabetic Eye Screening",
     shortDescription:
       "A specialist screening programme for people with diabetes to detect diabetic retinopathy before it affects your sight.",
-    fullDescription: `Diabetic eye screening is a vital NHS programme offered to everyone aged 12 and over who has been diagnosed with diabetes (Type 1 or Type 2). The screening specifically looks for diabetic retinopathy — a complication where high blood sugar levels damage the tiny blood vessels in the retina at the back of the eye. Left undetected and untreated, diabetic retinopathy is one of the leading causes of preventable blindness in working-age adults in the UK.
+    fullDescription: `Diabetic eye screening is a vital NHS programme offered to everyone aged 12 and over who has been diagnosed with diabetes (Type 1 or Type 2). The screening specifically looks for diabetic retinopathy, a complication where high blood sugar levels damage the tiny blood vessels in the retina at the back of the eye. Left undetected and untreated, diabetic retinopathy is one of the leading causes of preventable blindness in working-age adults in the UK.
 
-The screening is different from a standard eye test. A trained screener takes high-resolution photographs of the retina after applying drops to dilate your pupils. These images are then graded by specialists who look for signs of damage to the blood vessels — from the earliest, symptomless stages through to more advanced changes that require treatment. If problems are found, you will be referred to a hospital eye clinic for further assessment and, if necessary, treatment such as laser therapy or injections.
+The screening is different from a standard eye test. A trained screener takes high-resolution photographs of the retina after applying drops to dilate your pupils. These images are then graded by specialists who look for signs of damage to the blood vessels, from the earliest, symptomless stages through to more advanced changes that require treatment. If problems are found. You will be referred to a hospital eye clinic for further assessment and, if necessary, treatment such as laser therapy or injections.
 
-You should receive an invitation for diabetic eye screening automatically once your GP has recorded your diabetes diagnosis. Screening is offered annually, though you may be invited more frequently if previous results have shown changes. It is absolutely essential that you attend every screening appointment — diabetic retinopathy often has no symptoms in its early stages, and early treatment is far more effective than late intervention. This screening is separate from your routine optician's eye test, and you should continue to have both.`,
+You should receive an invitation for diabetic eye screening automatically once your GP has recorded your diabetes diagnosis. Screening is offered annually, though you may be invited more frequently if previous results have shown changes. It is absolutely essential that you attend every screening appointment: diabetic retinopathy often has no symptoms in its early stages, and early treatment is far more effective than late intervention. This screening is separate from your routine optician's eye test, and you should continue to have both.`,
     duration: "15–30 minutes (including time for pupil dilation drops to take effect)",
-    cost: "Free — fully funded by the NHS for all eligible patients with diabetes",
+    cost: "Free: fully funded by the NHS for all eligible patients with diabetes",
     whoNeeds: [
       "Everyone aged 12 and over diagnosed with Type 1 or Type 2 diabetes",
       "Pregnant women with pre-existing diabetes (screened more frequently during pregnancy)",
@@ -282,11 +282,11 @@ You should receive an invitation for diabetic eye screening automatically once y
     ],
     whatToExpect: [
       "You receive an invitation letter from the local diabetic eye screening programme",
-      "Eye drops are applied to dilate your pupils — these take about 20 minutes to work",
+      "Eye drops are applied to dilate your pupils: these take about 20 minutes to work",
       "A screener takes digital photographs of the back of each eye using a specialist camera",
       "The photographs are graded by trained specialists and you receive your results by post",
       "If any changes are detected, you may be invited back sooner or referred to a hospital eye clinic",
-      "Your vision will be blurry for a few hours after the drops — do not drive until it clears",
+      "Your vision will be blurry for a few hours after the drops: do not drive until it clears",
     ],
     frequency: "Annually for most people with diabetes; more frequently if changes are detected or during pregnancy",
     icon: "camera",
@@ -307,7 +307,7 @@ You should receive an invitation for diabetic eye screening automatically once y
       "A specialist assessment to diagnose the cause and severity of dry, irritated, or watery eyes.",
     fullDescription: `Dry eye disease is one of the most common eye conditions in the UK, affecting millions of people of all ages. Despite its name, dry eye can cause symptoms ranging from gritty, burning, or stinging sensations to excessive watering, redness, blurred vision, and tired eyes. A specialist dry eye assessment goes far beyond what a standard eye test covers, investigating the root cause of your symptoms so that treatment can be properly targeted.
 
-During a dry eye assessment, your optometrist will evaluate your tear film in detail. This includes measuring tear production (often using the Schirmer test), assessing the quality and stability of your tear film (tear break-up time), and examining the meibomian glands in your eyelids — these glands produce the oily layer that prevents your tears from evaporating too quickly. Many cases of dry eye are caused by meibomian gland dysfunction (MGD) rather than simply not producing enough tears.
+During a dry eye assessment, your optometrist will evaluate your tear film in detail. This includes measuring tear production (often using the Schirmer test), assessing the quality and stability of your tear film (tear break-up time), and examining the meibomian glands in your eyelids: these glands produce the oily layer that prevents your tears from evaporating too quickly. Many cases of dry eye are caused by meibomian gland dysfunction (MGD) rather than simply not producing enough tears.
 
 Based on the findings, your optometrist will recommend a personalised treatment plan. This may include lubricating eye drops, warm compresses, lid hygiene routines, omega-3 supplements, or more advanced in-practice treatments such as meibomian gland expression, intense pulsed light (IPL) therapy, or punctal plugs. Modern dry eye management has advanced significantly, and most patients can achieve meaningful relief with the right combination of treatments tailored to their specific type of dry eye.`,
     duration: "20–40 minutes",
@@ -346,7 +346,7 @@ Based on the findings, your optometrist will recommend a personalised treatment 
     name: "Colour Vision Test",
     shortDescription:
       "A test to detect colour vision deficiency (colour blindness) using Ishihara plates or more detailed methods.",
-    fullDescription: `A colour vision test identifies whether you have any difficulty distinguishing between certain colours — commonly known as colour blindness, although total colour blindness is extremely rare. The most common form is red-green colour vision deficiency, which affects approximately 1 in 12 men and 1 in 200 women in the UK. Many people live with colour vision deficiency without realising it, particularly if they have had it from birth.
+    fullDescription: `A colour vision test identifies whether you have any difficulty distinguishing between certain colours: commonly known as colour blindness, although total colour blindness is extremely rare. The most common form is red-green colour vision deficiency, which affects approximately 1 in 12 men and 1 in 200 women in the UK. Many people live with colour vision deficiency without realising it, particularly if they have had it from birth.
 
 The most widely used screening tool is the Ishihara test, which consists of a series of plates covered in coloured dots with numbers or patterns hidden within them. People with normal colour vision will see the numbers clearly, while those with a colour vision deficiency may see different numbers or none at all. For more detailed assessment, tests such as the Farnsworth D-15, the City University Test, or the anomaloscope can determine the exact type and severity of the deficiency.
 
@@ -354,14 +354,14 @@ Knowing your colour vision status is important for certain careers. Roles in the
     duration: "5–15 minutes",
     cost: "Usually included as part of a standard eye test at no extra cost. If a standalone assessment is needed, expect to pay £15–£30",
     whoNeeds: [
-      "Children having their first eye test — early detection helps with learning support",
+      "Children having their first eye test: early detection helps with learning support",
       "Anyone applying for a career that requires specific colour vision standards (e.g. armed forces, police, fire service, aviation, electrical work)",
       "Adults who suspect they may have difficulty distinguishing certain colours",
       "People with a family history of colour vision deficiency",
       "Workers in industries where accurate colour recognition is safety-critical",
     ],
     whatToExpect: [
-      "You are shown a series of Ishihara plates — circular patterns of coloured dots with numbers embedded in them",
+      "You are shown a series of Ishihara plates: circular patterns of coloured dots with numbers embedded in them",
       "You are asked to identify the numbers or trace a path through each plate",
       "The test is performed in good lighting conditions",
       "If a deficiency is suspected, further tests may be used to determine the type and severity",
@@ -384,11 +384,11 @@ Knowing your colour vision status is important for certain careers. Roles in the
     name: "DVLA / Driving Vision Test",
     shortDescription:
       "A vision assessment to confirm you meet the legal eyesight standards required for driving in the UK.",
-    fullDescription: `In the UK, every driver is legally responsible for ensuring their eyesight meets the minimum standard for driving. The DVLA requires that you must be able to read a number plate from 20 metres away (20.5 metres for older-style plates). In clinical terms, this broadly equates to a visual acuity of 6/12 (or 0.5 on the decimal scale) on the Snellen chart, measured with both eyes open and with glasses or contact lenses if you normally wear them. You must also have an adequate field of vision — at least 120 degrees horizontally with no significant defects within the central 20 degrees.
+    fullDescription: `In the UK, every driver is legally responsible for ensuring their eyesight meets the minimum standard for driving. The DVLA requires that you must be able to read a number plate from 20 metres away (20.5 metres for older-style plates). In clinical terms, this broadly equates to a visual acuity of 6/12 (or 0.5 on the decimal scale) on the Snellen chart, measured with both eyes open and with glasses or contact lenses if you normally wear them. You must also have an adequate field of vision, at least 120 degrees horizontally with no significant defects within the central 20 degrees.
 
-An optometrist can carry out a driving vision assessment to determine whether you meet these standards. This is particularly important if you are a new driver preparing for your practical test, if you have been advised by the DVLA to have your vision checked, or if you have had any change in your eyesight or a medical condition that might affect your ability to drive safely. During your practical driving test, the examiner will ask you to read a number plate at the start — if you fail this, the test is terminated immediately.
+An optometrist can carry out a driving vision assessment to determine whether you meet these standards. This is particularly important if you are a new driver preparing for your practical test, if you have been advised by the DVLA to have your vision checked, or if you have had any change in your eyesight or a medical condition that might affect your ability to drive safely. During your practical driving test, the examiner will ask you to read a number plate at the start: if you fail this, the test is terminated immediately.
 
-It is worth knowing that the penalty for driving with eyesight below the legal standard is severe: you can be prosecuted, fined up to £1,000, and receive three penalty points. In a worst-case scenario — for example, if you cause an accident because of poor vision — you could face criminal charges for dangerous driving. If in any doubt about your eyesight, book a driving vision assessment with your local optician. It is a quick, straightforward check that could prevent a life-changing situation.`,
+It is worth knowing that the penalty for driving with eyesight below the legal standard is severe. You can be prosecuted, fined up to £1,000, and receive three penalty points. In a worst-case scenario, for example, if you cause an accident because of poor vision, you could face criminal charges for dangerous driving. If in any doubt about your eyesight, book a driving vision assessment with your local optician. It is a quick, straightforward check that could prevent a life-changing situation.`,
     duration: "10–20 minutes",
     cost: "Checked in a routine eye test. Free if the DVLA refers you to its contracted optician, or if you qualify for a free NHS eye test",
     whoNeeds: [
@@ -423,11 +423,11 @@ It is worth knowing that the penalty for driving with eyesight below the legal s
     name: "Emergency Eye Care",
     shortDescription:
       "Urgent same-day assessment for sudden eye problems such as pain, flashes, floaters, vision loss, or injuries.",
-    fullDescription: `Emergency eye care — sometimes called urgent eye care or MECS (Minor Eye Conditions Service) — provides same-day or next-day assessment for sudden or worrying eye symptoms that need prompt attention but may not require a trip to A&E. Many optician practices across the UK are now accredited to provide emergency and urgent eye care, often funded by the NHS through local commissioning arrangements.
+    fullDescription: `Emergency eye care, sometimes called urgent eye care or MECS (Minor Eye Conditions Service), provides same-day or next-day assessment for sudden or worrying eye symptoms that need prompt attention but may not require a trip to A&E. Many optician practices across the UK are now accredited to provide emergency and urgent eye care, often funded by the NHS through local commissioning arrangements.
 
-Common reasons to seek emergency eye care include sudden loss of vision, flashes of light or a sudden increase in floaters, a red or painful eye, something stuck in your eye, a chemical splash, sudden double vision, or a recent eye injury. These symptoms can indicate serious conditions such as retinal detachment, acute glaucoma, uveitis, or corneal ulcers — all of which require prompt diagnosis and treatment to prevent permanent damage to your sight.
+Common reasons to seek emergency eye care include sudden loss of vision, flashes of light or a sudden increase in floaters, a red or painful eye, something stuck in your eye, a chemical splash, sudden double vision, or a recent eye injury. These symptoms can indicate serious conditions such as retinal detachment, acute glaucoma, uveitis, or corneal ulcers, all of which require prompt diagnosis and treatment to prevent permanent damage to your sight.
 
-If you experience a sudden eye problem, calling your local optician should be your first step — many can see you the same day and have the specialist equipment needed to examine your eyes thoroughly. This is often faster and more appropriate than attending A&E, where you may face long waits and staff may not have access to optometric equipment. If your optician identifies a condition that needs hospital treatment, they can refer you directly to the hospital eye service as an urgent case, often bypassing the usual waiting times.`,
+If you experience a sudden eye problem, calling your local optician should be your first step, many can see you the same day and have the specialist equipment needed to examine your eyes thoroughly. This is often faster and more appropriate than attending A&E, where you may face long waits and staff may not have access to optometric equipment. If your optician identifies a condition that needs hospital treatment. They can refer you directly to the hospital eye service as an urgent case, often bypassing the usual waiting times.`,
     duration: "15–45 minutes depending on the nature of the problem",
     cost: "Free through NHS-funded MECS/urgent eye care schemes in many areas. Private emergency appointments typically £30–£60",
     whoNeeds: [
@@ -447,7 +447,7 @@ If you experience a sudden eye problem, calling your local optician should be yo
       "Diagnosis and treatment on the spot where possible (e.g. removal of a foreign body, prescription of eye drops)",
       "Urgent referral to a hospital eye clinic if specialist treatment is required",
     ],
-    frequency: "As needed — seek help immediately when urgent eye symptoms arise",
+    frequency: "As needed: seek help immediately when urgent eye symptoms arise",
     icon: "alert",
     relatedTests: [
       "standard-eye-test",
@@ -463,11 +463,11 @@ If you experience a sudden eye problem, calling your local optician should be yo
     name: "Home Visit Eye Test",
     shortDescription:
       "A full NHS-funded sight test carried out in your own home if you cannot visit an optician's practice.",
-    fullDescription: `A home visit eye test — also known as a domiciliary eye test — is a full sight test carried out in your own home by a qualified optometrist or ophthalmic medical practitioner. This service is available on the NHS for people who cannot get to an optician's practice unaccompanied due to a physical or mental illness or disability. The clinical standard of the test is the same as you would receive in a high-street practice — portable equipment allows the optometrist to carry out all the necessary checks.
+    fullDescription: `A home visit eye test, also known as a domiciliary eye test, is a full sight test carried out in your own home by a qualified optometrist or ophthalmic medical practitioner. This service is available on the NHS for people who cannot get to an optician's practice unaccompanied due to a physical or mental illness or disability. The clinical standard of the test is the same as you would receive in a high-street practice: portable equipment allows the optometrist to carry out all the necessary checks.
 
 You are eligible for a free NHS home visit if leaving your home to attend an optician is not possible without help. This includes many elderly or housebound patients, people in care homes or nursing homes, those with severe mobility issues, and individuals with conditions such as advanced dementia or agoraphobia. The optometrist will bring all the equipment needed, including portable letter charts, a trial lens set, a slit lamp, and often a portable fundus camera.
 
-To arrange a home visit, you can contact a domiciliary optical practice directly, ask your GP surgery for a recommendation, or call NHS 111 for guidance. Many local opticians also offer this service — it is worth asking when you call to book. The optometrist can dispense glasses during the visit or arrange for them to be delivered, making the entire process as convenient as possible for those who cannot easily leave their home.`,
+To arrange a home visit. You can contact a domiciliary optical practice directly, ask your GP surgery for a recommendation, or call NHS 111 for guidance. Many local opticians also offer this service. It is worth asking when you call to book. The optometrist can dispense glasses during the visit or arrange for them to be delivered, making the entire process as convenient as possible for those who cannot easily leave their home.`,
     duration: "30–45 minutes",
     cost: "Free on the NHS for eligible patients. Private home visits typically £40–£80",
     whoNeeds: [
@@ -502,11 +502,11 @@ To arrange a home visit, you can contact a domiciliary optical practice directly
     name: "Glaucoma Assessment",
     shortDescription:
       "A focused assessment combining pressure checks, visual field testing, and optic nerve examination to detect or monitor glaucoma.",
-    fullDescription: `Glaucoma is a group of eye conditions where damage to the optic nerve — usually caused by elevated pressure inside the eye — leads to gradual, irreversible loss of vision. It is the leading cause of irreversible blindness worldwide and affects around 700,000 people in the UK, with many more undiagnosed. A glaucoma assessment is a targeted evaluation that goes beyond a routine eye test to thoroughly investigate your risk and detect the condition at the earliest possible stage.
+    fullDescription: `Glaucoma is a group of eye conditions where damage to the optic nerve, usually caused by elevated pressure inside the eye, leads to gradual, irreversible loss of vision. It is the leading cause of irreversible blindness worldwide and affects around 700,000 people in the UK, with many more undiagnosed. A glaucoma assessment is a targeted evaluation that goes beyond a routine eye test to thoroughly investigate your risk and detect the condition at the earliest possible stage.
 
-A comprehensive glaucoma assessment typically involves three key tests: tonometry (measuring the pressure inside your eyes), visual field testing (checking your peripheral vision for blind spots), and examination of the optic nerve head — either by direct observation through a dilated pupil or, increasingly, by OCT scan. Your optometrist will also consider risk factors such as your age, ethnicity (glaucoma is more common in people of African-Caribbean descent), family history, and the thickness of your corneas.
+A comprehensive glaucoma assessment typically involves three key tests: tonometry (measuring the pressure inside your eyes), visual field testing (checking your peripheral vision for blind spots), and examination of the optic nerve head: either by direct observation through a dilated pupil or, increasingly, by OCT scan. Your optometrist will also consider risk factors such as your age, ethnicity (glaucoma is more common in people of African-Caribbean descent), family history, and the thickness of your corneas.
 
-If you are aged 40 or over and have a parent, brother, sister, or child who has been diagnosed with glaucoma, you are entitled to a free NHS-funded eye test every year — and you should take up this offer. Early detection is critical because glaucoma damage cannot be reversed, only slowed or halted with treatment (usually daily eye drops or, in some cases, laser treatment or surgery). Many people with glaucoma have no symptoms until significant damage has already occurred, which is why regular screening is so important.`,
+If you are aged 40 or over and have a parent, brother, sister, or child who has been diagnosed with glaucoma. You are entitled to a free NHS-funded eye test every year, and you should take up this offer. Early detection is critical because glaucoma damage cannot be reversed, only slowed or halted with treatment (usually daily eye drops or, in some cases, laser treatment or surgery). Many people with glaucoma have no symptoms until significant damage has already occurred, which is why regular screening is so important.`,
     duration: "20–40 minutes",
     cost: "Free as part of an NHS-funded eye test for those at risk. Privately, £30–£60 depending on the tests included",
     whoNeeds: [
@@ -519,8 +519,8 @@ If you are aged 40 or over and have a parent, brother, sister, or child who has 
       "Anyone using long-term steroid medications (oral or eye drops)",
     ],
     whatToExpect: [
-      "Tonometry — measuring the pressure inside your eyes using a small instrument or puff of air",
-      "Visual field test — pressing a button when you see lights flash in your peripheral vision",
+      "Tonometry: measuring the pressure inside your eyes using a small instrument or puff of air",
+      "Visual field test: pressing a button when you see lights flash in your peripheral vision",
       "Examination of your optic nerve using an ophthalmoscope or slit lamp with a special lens",
       "An OCT scan of the optic nerve and retinal nerve fibre layer may be performed",
       "Your corneal thickness may be measured (pachymetry) as this affects pressure readings",
@@ -543,9 +543,9 @@ If you are aged 40 or over and have a parent, brother, sister, or child who has 
     name: "Retinal Photography",
     shortDescription:
       "A high-resolution photograph of the back of your eye to create a permanent record of your retinal health.",
-    fullDescription: `Retinal photography — also known as fundus photography — captures a detailed, high-resolution image of the retina, optic nerve, and blood vessels at the back of your eye. These photographs create a permanent visual record that your optometrist can use to monitor changes in your eye health over time. While an optometrist can examine the retina directly during a standard eye test, photographs provide an objective, shareable, and comparable record that is invaluable for long-term monitoring.
+    fullDescription: `Retinal photography, also known as fundus photography, captures a detailed, high-resolution image of the retina, optic nerve, and blood vessels at the back of your eye. These photographs create a permanent visual record that your optometrist can use to monitor changes in your eye health over time. While an optometrist can examine the retina directly during a standard eye test, photographs provide an objective, shareable, and comparable record that is invaluable for long-term monitoring.
 
-Most modern retinal cameras are non-mydriatic, meaning they can take photographs without the need to dilate your pupils with drops — the camera uses a brief flash of light, and the process is over in seconds. Some opticians use ultra-wide-field cameras that can capture up to 200 degrees of the retina in a single image, compared to the 45 degrees visible through a traditional ophthalmoscope. This wider view can reveal peripheral retinal problems that might otherwise be missed.
+Most modern retinal cameras are non-mydriatic, meaning they can take photographs without the need to dilate your pupils with drops, the camera uses a brief flash of light, and the process is over in seconds. Some opticians use ultra-wide-field cameras that can capture up to 200 degrees of the retina in a single image, compared to the 45 degrees visible through a traditional ophthalmoscope. This wider view can reveal peripheral retinal problems that might otherwise be missed.
 
 Retinal photography is widely available as an add-on to a standard eye test at most high-street opticians. While it is not a replacement for a full OCT scan (which shows the layers beneath the retinal surface), it is an excellent complementary tool and is particularly useful for tracking conditions such as diabetic retinopathy, macular changes, and hypertensive retinopathy. Many opticians include it as standard in their enhanced eye test packages.`,
     duration: "2–5 minutes",
@@ -555,11 +555,11 @@ Retinal photography is widely available as an add-on to a standard eye test at m
       "People with diabetes, high blood pressure, or other conditions that affect the eyes",
       "Those with a family history of retinal conditions",
       "Patients being monitored for macular degeneration or other retinal changes",
-      "Anyone who finds pupil dilation drops inconvenient — non-mydriatic photography is a practical alternative",
+      "Anyone who finds pupil dilation drops inconvenient: non-mydriatic photography is a practical alternative",
     ],
     whatToExpect: [
       "You rest your chin on a support and look into the camera",
-      "There is a brief flash of light as each eye is photographed — this may cause temporary dazzle",
+      "There is a brief flash of light as each eye is photographed. This may cause temporary dazzle",
       "No drops are usually needed, though some cameras work better with dilated pupils",
       "The photographs are instantly available for your optometrist to review",
       "Images are stored in your patient record for comparison at future visits",
@@ -579,7 +579,7 @@ Retinal photography is widely available as an add-on to a standard eye test at m
     slug: "blepharitis-assessment",
     name: "Blepharitis Assessment",
     shortDescription:
-      "A specialist examination of the eyelids to diagnose and manage blepharitis — a common cause of sore, red, and crusty eyelids.",
+      "A specialist examination of the eyelids to diagnose and manage blepharitis, a common cause of sore, red, and crusty eyelids.",
     fullDescription: `Blepharitis is a chronic inflammatory condition affecting the eyelids that is extremely common in the UK. It causes symptoms including red, swollen, or itchy eyelids, crusty or flaky debris at the base of the eyelashes, a gritty or burning sensation, and in many cases contributes to or worsens dry eye disease. Although blepharitis is rarely sight-threatening, it is often uncomfortable and persistent, requiring ongoing management rather than a one-off cure.
 
 A blepharitis assessment involves a detailed examination of the eyelid margins, eyelashes, and meibomian glands under magnification using a slit lamp. Your optometrist will look for signs of bacterial overgrowth, Demodex mite infestation (a surprisingly common contributor), meibomian gland dysfunction, and any associated skin conditions such as rosacea or seborrheic dermatitis. Understanding the specific type of blepharitis you have is essential for choosing the right treatment approach.
@@ -619,7 +619,7 @@ Treatment is tailored to the cause and severity and may include a daily lid hygi
     name: "Myopia Management Consultation",
     shortDescription:
       "A specialist consultation for children and young people with progressing short-sightedness, using evidence-based treatments to slow myopia progression.",
-    fullDescription: `Myopia (short-sightedness) is increasing rapidly worldwide, and the UK is no exception. Research suggests that around 30% of the UK population is now myopic, and the prevalence is rising in children. While glasses and contact lenses correct the blurred distance vision caused by myopia, they do not address the underlying problem — the eyeball growing too long. Higher levels of myopia significantly increase the lifetime risk of serious eye conditions including retinal detachment, myopic macular degeneration, glaucoma, and cataracts.
+    fullDescription: `Myopia (short-sightedness) is increasing rapidly worldwide, and the UK is no exception. Research suggests that around 30% of the UK population is now myopic, and the prevalence is rising in children. While glasses and contact lenses correct the blurred distance vision caused by myopia. They do not address the underlying problem, the eyeball growing too long. Higher levels of myopia significantly increase the lifetime risk of serious eye conditions including retinal detachment, myopic macular degeneration, glaucoma, and cataracts.
 
 Myopia management is a proactive, evidence-based approach that aims to slow the rate at which a child's myopia progresses. This reduces their final prescription and, crucially, lowers their risk of sight-threatening complications in adulthood. The main treatments currently available in the UK include specially designed spectacle lenses (such as MiYOSMART or Stellest), soft multifocal contact lenses designed for myopia control, orthokeratology (ortho-k) lenses worn overnight to reshape the cornea, and low-dose atropine eye drops.
 
@@ -629,7 +629,7 @@ A myopia management consultation typically begins with a thorough assessment of 
     whoNeeds: [
       "Children and teenagers whose myopia is progressing (prescription getting stronger each year)",
       "Children with one or both parents who are myopic",
-      "Young children (under 10) who have already developed myopia — earlier onset tends to lead to higher final prescriptions",
+      "Young children (under 10) who have already developed myopia: earlier onset tends to lead to higher final prescriptions",
       "Parents concerned about their child's increasing screen time and its effect on their eyesight",
       "Any child or young person with myopia above -1.00 dioptres",
     ],
@@ -658,9 +658,9 @@ A myopia management consultation typically begins with a thorough assessment of 
     name: "Cataract Assessment",
     shortDescription:
       "An examination to detect, monitor, or assess the impact of cataracts on your vision and determine whether referral for surgery is appropriate.",
-    fullDescription: `A cataract is a clouding of the natural lens inside your eye. It is an extremely common age-related change — most people will develop some degree of cataract by the time they reach their 70s. In the early stages, cataracts may cause no noticeable symptoms, but as they develop, you may experience blurred or misty vision, increased glare from headlights or bright lights, colours appearing faded or washed out, and difficulty seeing in low light. A cataract assessment determines the extent of your cataract, how much it is affecting your vision, and whether the time is right for a referral for surgery.
+    fullDescription: `A cataract is a clouding of the natural lens inside your eye. It is an extremely common age-related change, most people will develop some degree of cataract by the time they reach their 70s. In the early stages, cataracts may cause no noticeable symptoms, but as they develop. You may experience blurred or misty vision, increased glare from headlights or bright lights, colours appearing faded or washed out, and difficulty seeing in low light. A cataract assessment determines the extent of your cataract, how much it is affecting your vision, and whether the time is right for a referral for surgery.
 
-During the assessment, your optometrist will examine the lens of your eye using a slit lamp microscope, often after dilating your pupils with drops to get a clearer view. They will also measure your visual acuity to establish how much your vision is being affected and discuss the impact on your daily life — your ability to read, drive, watch television, and carry out your normal activities. The NHS guidelines for cataract surgery referral are based on the impact on your quality of life, not simply on the clinical appearance of the cataract.
+During the assessment, your optometrist will examine the lens of your eye using a slit lamp microscope, often after dilating your pupils with drops to get a clearer view. They will also measure your visual acuity to establish how much your vision is being affected and discuss the impact on your daily life, your ability to read, drive, watch television, and carry out your normal activities. The NHS guidelines for cataract surgery referral are based on the impact on your quality of life, not simply on the clinical appearance of the cataract.
 
 Cataract surgery is one of the most commonly performed operations in the UK, with around 450,000 procedures carried out each year on the NHS. It is a highly successful day-case procedure that typically takes 15–30 minutes under local anaesthetic. Your optometrist will refer you to a hospital eye department or an accredited independent sector treatment centre when your cataracts are significantly affecting your daily life. In the meantime, updating your glasses prescription can often improve your vision while you are waiting.`,
     duration: "20–30 minutes",
@@ -698,11 +698,11 @@ Cataract surgery is one of the most commonly performed operations in the UK, wit
     name: "Macular Degeneration Screening",
     shortDescription:
       "An examination focused on detecting age-related macular degeneration (AMD), the leading cause of sight loss in the UK.",
-    fullDescription: `Age-related macular degeneration (AMD) is the most common cause of sight loss in the UK, affecting more than 600,000 people. It damages the macula — the tiny area at the centre of the retina responsible for sharp, detailed central vision. AMD does not cause total blindness, but it can make everyday tasks such as reading, recognising faces, and driving extremely difficult. There are two forms: dry AMD (the more common, slower-progressing type) and wet AMD (less common but more rapidly damaging, requiring urgent treatment).
+    fullDescription: `Age-related macular degeneration (AMD) is the most common cause of sight loss in the UK, affecting more than 600,000 people. It damages the macula, the tiny area at the centre of the retina responsible for sharp, detailed central vision. AMD does not cause total blindness, but it can make everyday tasks such as reading, recognising faces, and driving extremely difficult. There are two forms: dry AMD (the more common, slower-progressing type) and wet AMD (less common but more rapidly damaging, requiring urgent treatment).
 
 A macular degeneration screening goes beyond a routine eye test to focus specifically on the health of the macula. Your optometrist will use a combination of techniques including an Amsler grid test (to check for distortion in your central vision), a thorough retinal examination (ideally with dilated pupils), OCT scanning to visualise the layers of the macula in cross-section, and retinal photography to create a baseline record. OCT scanning is particularly valuable as it can detect fluid or structural changes in the macula before symptoms become noticeable.
 
-If you are over 50, smoke or have smoked, have a family history of AMD, or have noticed any distortion or missing patches in your central vision, screening is strongly recommended. While there is currently no treatment for dry AMD (other than nutritional supplements that may slow progression), wet AMD can be treated very effectively with anti-VEGF injections — but only if it is caught early. The Amsler grid is a simple home monitoring tool that your optometrist can provide, allowing you to check for changes between appointments.`,
+If you are over 50, smoke or have smoked, have a family history of AMD, or have noticed any distortion or missing patches in your central vision, screening is strongly recommended. While there is currently no treatment for dry AMD (other than nutritional supplements that may slow progression), wet AMD can be treated very effectively with anti-VEGF injections, but only if it is caught early. The Amsler grid is a simple home monitoring tool that your optometrist can provide, allowing you to check for changes between appointments.`,
     duration: "15–30 minutes (or included as part of a comprehensive eye test with OCT)",
     cost: "£10–£39 if OCT scanning is included. May be part of a standard eye test at no extra cost. NHS-funded when clinically indicated",
     whoNeeds: [
@@ -714,7 +714,7 @@ If you are over 50, smoke or have smoked, have a family history of AMD, or have 
       "Those wanting proactive monitoring of their macular health",
     ],
     whatToExpect: [
-      "An Amsler grid test — you look at a grid of lines and report any areas that appear wavy, distorted, or missing",
+      "An Amsler grid test, you look at a grid of lines and report any areas that appear wavy, distorted, or missing",
       "A detailed examination of the macula using a slit lamp with a special lens",
       "OCT scan to image the layers of the macula and detect early fluid or structural changes",
       "Retinal photography to create a baseline image for future comparison",

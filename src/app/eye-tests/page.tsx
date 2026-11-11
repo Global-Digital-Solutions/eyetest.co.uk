@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -11,9 +13,9 @@ import { eyeTests, REDIRECTED_EYE_TESTS } from "@/data/eye-tests";
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Types of Eye Tests — Complete UK Guide | eyetest.co.uk",
+  title: "Types of Eye Tests: Complete UK Guide | eyetest.co.uk",
   description:
-    "Explore all 18 types of eye tests available in the UK, including NHS eye tests, OCT scans, visual field tests, and specialist screenings. Learn what each test involves, who needs it, costs, and how to book.",
+    clampDescription("Explore all 18 types of eye tests available in the UK, including NHS eye tests, OCT scans, visual field tests, and specialist screenings. Learn what each test involves, who needs it, costs, and how to book."),
   keywords: [
     "types of eye tests",
     "eye test types UK",
@@ -28,9 +30,10 @@ export const metadata: Metadata = {
     "eye test guide",
   ],
   openGraph: {
-    title: "Types of Eye Tests — Complete UK Guide | eyetest.co.uk",
+    images: OG_IMAGES,
+    title: "Types of Eye Tests: Complete UK Guide | eyetest.co.uk",
     description:
-      "Explore all types of eye tests available in the UK. Learn what each test involves, who needs it, and how much it costs.",
+      clampDescription("Explore all types of eye tests available in the UK. Learn what each test involves, who needs it, and how much it costs."),
     url: "https://www.eyetest.co.uk/eye-tests",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -47,7 +50,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "How often should I have an eye test?",
-    a: "The NHS recommends that most adults have a routine eye test at least every two years. If you are over 70, have diabetes, a family history of glaucoma, or wear contact lenses, you may need more frequent tests — typically once a year. Children should have annual eye tests throughout their school years.",
+    a: "The NHS recommends that most adults have a routine eye test at least every two years. If you are over 70, have diabetes, a family history of glaucoma, or wear contact lenses. You may need more frequent tests, typically once a year. Children should have annual eye tests throughout their school years.",
   },
   {
     q: "Are eye tests free on the NHS?",
@@ -59,7 +62,7 @@ const faqs = [
   },
   {
     q: "How long does an eye test take?",
-    a: "A standard eye test typically takes 20 to 30 minutes. Specialist tests such as contact lens fittings, dry eye assessments, or myopia management consultations may take longer — usually 30 to 60 minutes. Quick add-on tests like retinal photography or OCT scans only add a few extra minutes.",
+    a: "A standard eye test typically takes 20 to 30 minutes. Specialist tests such as contact lens fittings, dry eye assessments, or myopia management consultations may take longer, usually 30 to 60 minutes. Quick add-on tests like retinal photography or OCT scans only add a few extra minutes.",
   },
   {
     q: "What should I bring to my eye test?",
@@ -83,9 +86,9 @@ export default function EyeTestsPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Types of Eye Tests — Complete UK Guide",
+    name: "Types of Eye Tests: Complete UK Guide",
     description:
-      "A comprehensive guide to all types of eye tests available in the UK, including NHS eye tests, OCT scans, visual field tests, and specialist screenings.",
+      "A guide to the types of eye test available in the UK, including NHS eye tests, OCT scans, visual field tests, and specialist screenings.",
     url: "https://www.eyetest.co.uk/eye-tests",
     publisher: {
       "@type": "Organization",

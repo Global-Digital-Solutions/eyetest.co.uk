@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
     "personal data",
   ],
   openGraph: {
+    images: OG_IMAGES,
     title: "Privacy Policy | eyetest.co.uk",
     description:
       "How eyetest.co.uk collects, uses, and protects your personal data. UK GDPR compliant.",

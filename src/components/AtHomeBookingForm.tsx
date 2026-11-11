@@ -162,7 +162,7 @@ export function AtHomeBookingForm() {
                 Request an at-home eye test
               </h3>
               <p className="text-sm text-gray-500">
-                Step 1 of 3 — Test type &amp; eligibility
+                Step 1 of 3: Test type &amp; eligibility
               </p>
             </div>
 
@@ -272,7 +272,7 @@ export function AtHomeBookingForm() {
                 Who will be taking the test?
               </h3>
               <p className="text-sm text-gray-500">
-                Step 2 of 3 — Patient details
+                Step 2 of 3: Patient details
               </p>
             </div>
 
@@ -482,7 +482,7 @@ export function AtHomeBookingForm() {
                 Address &amp; final details
               </h3>
               <p className="text-sm text-gray-500">
-                Step 3 of 3 — Where the test will take place
+                Step 3 of 3: Where the test will take place
               </p>
             </div>
 

@@ -330,7 +330,7 @@ export function Footer() {
                   Eye Tests Across the UK
                 </h3>
                 <span className="text-xs text-white/30 hidden sm:inline">
-                  — 97 cities &amp; towns
+                 : 97 cities &amp; towns
                 </span>
               </div>
               <svg
@@ -421,7 +421,7 @@ export function Footer() {
                   Find Opticians by Location
                 </h3>
                 <span className="text-xs text-white/30 hidden sm:inline">
-                  — 7 brands, major UK cities
+                 : 7 brands, major UK cities
                 </span>
               </div>
               <svg
@@ -469,7 +469,7 @@ export function Footer() {
       <div className="border-t border-white/10 bg-[#091530]">
         <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[11px] text-white/25">
-            &copy; {new Date().getFullYear()} eyetest.co.uk &mdash; A Global
+            &copy; {new Date().getFullYear()} eyetest.co.uk. A Global
             Digital Solutions project. All rights reserved.
           </p>
           <div className="flex items-center gap-4">

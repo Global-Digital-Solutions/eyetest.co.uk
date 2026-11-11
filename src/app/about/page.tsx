@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -8,9 +10,9 @@ import { Footer } from "@/components/Footer";
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "About Us — The UK's Eye Test Comparison Platform | eyetest.co.uk",
+  title: "About Us: The UK's Eye Test Comparison Platform | eyetest.co.uk",
   description:
-    "Learn about eyetest.co.uk, the UK's dedicated eye test comparison platform. Founded in 2019, we help you compare 2,400+ opticians across 97 UK cities. 100% free to use.",
+    clampDescription("Learn about eyetest.co.uk, the UK's dedicated eye test comparison platform. Founded in 2019, we help you compare 2,400+ opticians across 97 UK cities. 100% free to use."),
   keywords: [
     "about eyetest.co.uk",
     "eye test comparison",
@@ -20,9 +22,10 @@ export const metadata: Metadata = {
     "Global Digital Solutions Limited",
   ],
   openGraph: {
-    title: "About Us — The UK's Eye Test Comparison Platform | eyetest.co.uk",
+    images: OG_IMAGES,
+    title: "About Us: The UK's Eye Test Comparison Platform | eyetest.co.uk",
     description:
-      "Founded in 2019, eyetest.co.uk helps you compare 2,400+ opticians across the UK. Free, transparent, and independent.",
+      clampDescription("Founded in 2019, eyetest.co.uk helps you compare 2,400+ opticians across the UK. Free, transparent, and independent."),
     url: "https://www.eyetest.co.uk/about",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -301,7 +304,7 @@ export default function AboutPage() {
                   Understand Eye Tests
                 </h3>
                 <p className="text-sm text-gray-600">
-                  Browse our comprehensive guides covering 18 types of eye tests, from routine NHS sight tests to specialist OCT scans and diabetic eye screenings.
+                  Browse our guides to 18 types of eye tests, from routine NHS sight tests to specialist OCT scans and diabetic eye screenings.
                 </p>
               </div>
 

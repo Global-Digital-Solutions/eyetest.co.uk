@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     "website terms",
   ],
   openGraph: {
+    images: OG_IMAGES,
     title: "Terms of Service | eyetest.co.uk",
     description:
       "Terms and conditions for using the eyetest.co.uk eye test comparison and booking platform.",

@@ -5,7 +5,7 @@ const benefits = [
   {
     title: "Discover local independents",
     description:
-      "We list hundreds of independent opticians you won't find on the high street — often with shorter wait times and more personal service.",
+      "We list hundreds of independent opticians you won't find on the high street, often with shorter wait times and more personal service.",
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -15,7 +15,7 @@ const benefits = [
   {
     title: "Real-time availability",
     description:
-      "No more ringing around. See exactly which opticians have appointments today, tomorrow, or this week — live and accurate.",
+      "No more ringing around. See exactly which opticians have appointments today, tomorrow, or this week, live and accurate.",
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -87,7 +87,7 @@ export function Benefits() {
           <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             From high-resolution OCT scanners to digital retinal imaging, today's
             independent opticians invest in the same cutting-edge equipment found in
-            hospital eye departments — giving you a thorough, modern eye examination
+            hospital eye departments, giving you a thorough, modern eye examination
             close to home.
           </p>
         </div>

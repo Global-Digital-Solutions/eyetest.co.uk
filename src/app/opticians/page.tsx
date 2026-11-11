@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -15,7 +17,7 @@ import {
 export const metadata: Metadata = {
   title: "Compare UK Opticians & Eye Test Prices | eyetest.co.uk",
   description:
-    "Compare leading UK optician chains side by side. See services, prices, NHS availability, and store locations for Boots, ASDA, Leightons, Scrivens, and more. Book your eye test online.",
+    clampDescription("Compare leading UK optician chains side by side. See services, prices, NHS availability, and store locations for Boots, ASDA, Leightons, Scrivens, and more. Book your eye test online."),
   keywords: [
     "UK opticians",
     "compare opticians",
@@ -29,9 +31,10 @@ export const metadata: Metadata = {
     "Bayfields Opticians",
   ],
   openGraph: {
-    title: "Compare UK Opticians — Find the Best Eye Test Near You",
+    images: OG_IMAGES,
+    title: "Compare UK Opticians: Find the Best Eye Test Near You",
     description:
-      "Compare leading UK optician chains side by side. See services, prices, NHS availability, and book your eye test online.",
+      clampDescription("Compare leading UK optician chains side by side. See services, prices, NHS availability, and book your eye test online."),
     url: "https://www.eyetest.co.uk/opticians",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -52,7 +55,7 @@ export default function OpticiansPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Compare UK Opticians — Find the Best Eye Test Near You",
+    name: "Compare UK Opticians: Find the Best Eye Test Near You",
     description:
       "Compare leading UK optician chains side by side. See services, prices, NHS availability, and book your eye test online.",
     url: "https://www.eyetest.co.uk/opticians",
@@ -292,7 +295,7 @@ export default function OpticiansPage() {
                     </div>
 
                     <p className="text-sm text-gray-400">
-                      No availability &mdash; check back soon
+                      No availability, check back soon
                     </p>
                   </div>
                 </Link>

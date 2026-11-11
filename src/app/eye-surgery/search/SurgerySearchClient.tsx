@@ -287,8 +287,8 @@ export default function SurgerySearchClient() {
   // Set page title
   useEffect(() => {
     document.title = results
-      ? `Eye Surgery Clinics near ${results.postcode} — eyetest.co.uk`
-      : "Find Eye Surgery Clinics — eyetest.co.uk";
+      ? `Eye Surgery Clinics near ${results.postcode} | eyetest.co.uk`
+      : "Find Eye Surgery Clinics | eyetest.co.uk";
   }, [results]);
 
   // ---- Form submit handler ----

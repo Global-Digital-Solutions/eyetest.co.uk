@@ -18,7 +18,7 @@ const steps = [
     number: "2",
     title: "Compare opticians",
     description:
-      "See prices, ratings, next available slots and distance — all in one place. Including independents you never knew existed.",
+      "See prices, ratings, next available slots and distance, all in one place. Including independents you never knew existed.",
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
@@ -29,7 +29,7 @@ const steps = [
     number: "3",
     title: "Book instantly",
     description:
-      "Choose your preferred time and book directly — no phone calls needed. Same-day appointments often available.",
+      "Choose your preferred time and book directly, with no phone calls needed. Same-day appointments often available.",
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />

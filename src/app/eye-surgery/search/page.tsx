@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
@@ -5,14 +6,15 @@ import { Footer } from "@/components/Footer";
 import SurgerySearchClient from "./SurgerySearchClient";
 
 export const metadata: Metadata = {
-  title: "Find Eye Surgery Clinics Near You — eyetest.co.uk",
+  title: "Find Eye Surgery Clinics Near You | eyetest.co.uk",
   description:
     "Search 156+ eye surgery clinics across the UK. Compare providers including Newmedica, SpaMedica, Optegra and more. Find clinics near you by postcode.",
   alternates: {
     canonical: "https://www.eyetest.co.uk/eye-surgery/search",
   },
   openGraph: {
-    title: "Find Eye Surgery Clinics Near You — eyetest.co.uk",
+    images: OG_IMAGES,
+    title: "Find Eye Surgery Clinics Near You | eyetest.co.uk",
     description:
       "Search 156+ eye surgery clinics across the UK. Compare providers including Newmedica, SpaMedica, Optegra and more.",
     url: "https://www.eyetest.co.uk/eye-surgery/search",
@@ -20,8 +22,9 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary",
-    title: "Find Eye Surgery Clinics Near You — eyetest.co.uk",
+    card: "summary_large_image",
+    images: ["https://www.eyetest.co.uk/og-image.png"],
+    title: "Find Eye Surgery Clinics Near You | eyetest.co.uk",
     description:
       "Search 156+ eye surgery clinics across the UK. Compare providers including Newmedica, SpaMedica, Optegra and more.",
   },

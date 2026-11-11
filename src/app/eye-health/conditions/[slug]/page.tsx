@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OpticianOptions } from "@/components/OpticianOptions";
@@ -41,7 +42,7 @@ export async function generateMetadata({
     return { title: "Condition Not Found | eyetest.co.uk" };
   }
 
-  const title = `${condition.name} — Symptoms, Causes & Treatment`;
+  const title = `${condition.name}: Symptoms, Causes & Treatment`;
   const description = `Learn about ${condition.name.toLowerCase()}: symptoms, causes, treatment options, and prevention. Evidence-based information from UK eye care professionals.`;
 
   return {
@@ -57,6 +58,7 @@ export async function generateMetadata({
       "eye health",
     ],
     openGraph: {
+      images: OG_IMAGES,
       title,
       description,
       url: `https://www.eyetest.co.uk/eye-health/conditions/${condition.slug}`,

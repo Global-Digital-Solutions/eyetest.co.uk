@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OpticianOptions, NO_OPTICIAN_BLOCK } from "@/components/OpticianOptions";
@@ -102,7 +104,7 @@ export function queryMetadata(query: SearchQuery): Metadata {
   const url = `https://www.eyetest.co.uk${queryHref(query)}`;
   return {
     title: query.seoTitle ?? query.title,
-    description: query.seoDescription ?? query.shortDescription,
+    description: clampDescription(query.seoDescription ?? query.shortDescription),
     keywords: [
       query.keyword,
       `${query.keyword} UK`,
@@ -113,8 +115,9 @@ export function queryMetadata(query: SearchQuery): Metadata {
       "book eye test",
     ],
     openGraph: {
+      images: OG_IMAGES,
       title: query.seoTitle ?? query.title,
-      description: query.seoDescription ?? query.shortDescription,
+      description: clampDescription(query.seoDescription ?? query.shortDescription),
       url,
       siteName: "eyetest.co.uk",
       type: "article",

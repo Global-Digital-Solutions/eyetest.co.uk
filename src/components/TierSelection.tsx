@@ -132,11 +132,11 @@ export function TierSelection({
     },
     {
       q: "Can I update my listing details after going live?",
-      a: "Absolutely. Email us at hello@eyetest.co.uk any time and we’ll update your details — opening hours, booking link, services, anything you need.",
+      a: "Absolutely. Email us at hello@eyetest.co.uk any time and we’ll update your details: opening hours, booking link, services, anything you need.",
     },
     {
       q: "What happens when my listing expires?",
-      a: "We’ll send you a renewal reminder before your listing expires. If you choose not to renew, your listing is simply removed from search results — no extra charges.",
+      a: "We’ll send you a renewal reminder before your listing expires. If you choose not to renew, your listing is simply removed from search results, with no extra charges.",
     },
     {
       q: "Can I cancel my listing?",
@@ -305,7 +305,7 @@ export function TierSelection({
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
-            Join the waitlist — hello@eyetest.co.uk
+            Join the waitlist: hello@eyetest.co.uk
           </a>
         </div>
       )}
@@ -317,7 +317,7 @@ export function TierSelection({
             <span className="font-semibold">
               {goldTaken ? "Gold" : "Platinum"} is taken
             </span>{" "}
-            for your area &mdash;{" "}
+            for your area: {" "}
             <span className="font-semibold text-[var(--color-primary)]">
               {goldTaken ? "Platinum" : "Gold"} is available!
             </span>{" "}
@@ -437,7 +437,7 @@ export function TierSelection({
                     Redirecting to payment...
                   </>
                 ) : (
-                  <>Choose Gold &mdash; &pound;{goldAudiology ? "218" : "149"}/yr</>
+                  <>Choose Gold: &pound;{goldAudiology ? "218" : "149"}/yr</>
                 )}
               </button>
             )}
@@ -566,7 +566,7 @@ export function TierSelection({
                     Redirecting to payment...
                   </>
                 ) : (
-                  <>Choose Platinum &mdash; &pound;{platinumAudiology ? "268" : "199"}/yr</>
+                  <>Choose Platinum: &pound;{platinumAudiology ? "268" : "199"}/yr</>
                 )}
               </button>
             )}
@@ -793,7 +793,7 @@ export function TierSelection({
             </h3>
             <p className="text-sm text-gray-600 leading-relaxed">
               Your listing typically pays for itself in the first few
-              appointments &mdash; every appointment after that is pure profit.
+              appointments, every appointment after that is pure profit.
             </p>
           </div>
         </div>

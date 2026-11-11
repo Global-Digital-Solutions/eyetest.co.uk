@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -10,9 +12,9 @@ import { AtHomeBookingForm } from "@/components/AtHomeBookingForm";
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "At-Home Eye Tests UK — Free NHS Home Visits & How to Book",
+  title: "At-Home Eye Tests UK: Free NHS Home Visits & How to Book",
   description:
-    "Everything you need to know about at-home eye tests in the UK. Find out who qualifies for free NHS domiciliary eye tests, what happens during a home visit, how to book a mobile optician, and compare providers near you.",
+    clampDescription("At-home eye tests in the UK: who qualifies for a free NHS home visit, what happens on the day, and how to book a mobile optician near you."),
   keywords: [
     "at home eye test",
     "home eye test",
@@ -31,9 +33,10 @@ export const metadata: Metadata = {
     "home eye examination",
   ],
   openGraph: {
-    title: "At-Home Eye Tests UK — Free NHS Home Visits & How to Book",
+    images: OG_IMAGES,
+    title: "At-Home Eye Tests UK: Free NHS Home Visits & How to Book",
     description:
-      "Complete guide to at-home eye tests in the UK. Learn who qualifies for free NHS home visits, what to expect, and how to book a mobile optician near you.",
+      clampDescription("Complete guide to at-home eye tests in the UK. Learn who qualifies for free NHS home visits, what to expect, and how to book a mobile optician near you."),
     url: "https://www.eyetest.co.uk/at-home-eye-tests",
     siteName: "eyetest.co.uk",
     type: "website",
@@ -58,15 +61,15 @@ const faqs = [
   },
   {
     q: "Is a home eye test as good as going to an optician?",
-    a: "Yes. A domiciliary eye test is a full NHS sight test carried out by a GOC-registered optometrist using professional, portable equipment. It includes all the same checks as an in-practice examination — visual acuity, refraction, eye health assessment, and intraocular pressure measurement. The standard of care is identical, and the optometrist can detect conditions such as glaucoma, cataracts, macular degeneration, and diabetic eye disease just as effectively.",
+    a: "Yes. A domiciliary eye test is a full NHS sight test carried out by a GOC-registered optometrist using professional, portable equipment. It includes all the same checks as an in-practice examination: visual acuity, refraction, eye health assessment, and intraocular pressure measurement. The standard of care is identical, and the optometrist can detect conditions such as glaucoma, cataracts, macular degeneration, and diabetic eye disease just as effectively.",
   },
   {
     q: "Can someone else arrange a home eye test for me?",
-    a: "Absolutely. A family member, friend, carer, social worker, GP, or care home manager can arrange a home eye test on your behalf. This is very common — many home visits are booked by relatives who are concerned about a loved one's eyesight. The person booking simply needs to provide basic details such as name, address, and any relevant health information.",
+    a: "Absolutely. A family member, friend, carer, social worker, GP, or care home manager can arrange a home eye test on your behalf. This is very common, many home visits are booked by relatives who are concerned about a loved one's eyesight. The person booking simply needs to provide basic details such as name, address, and any relevant health information.",
   },
   {
     q: "What if I need new glasses after my home eye test?",
-    a: "If your prescription has changed or you need glasses for the first time, the optometrist will help you choose frames from a portable selection during your visit. You can try on different styles at home in your own time. Once you have chosen, the lenses are made up in a UK laboratory and the finished glasses are posted directly to your door — usually within two to three weeks. If you are eligible for an NHS optical voucher, this will be applied to reduce the cost.",
+    a: "If your prescription has changed or you need glasses for the first time, the optometrist will help you choose frames from a portable selection during your visit. You can try on different styles at home in your own time. Once you have chosen, the lenses are made up in a UK laboratory and the finished glasses are posted directly to your door, usually within two to three weeks. If you are eligible for an NHS optical voucher. This will be applied to reduce the cost.",
   },
   {
     q: "How often can I have a free NHS home eye test?",
@@ -86,7 +89,7 @@ const faqs = [
   },
   {
     q: "What happens if the optometrist finds a problem?",
-    a: "If the optometrist detects any signs of an eye condition that needs further investigation — such as cataracts, glaucoma, macular degeneration, or diabetic eye changes — they will write a referral letter to your GP or directly to the hospital eye service. They will explain their findings clearly and discuss next steps with you and anyone else present, such as a family member or carer. Urgent conditions can be referred as an emergency on the same day.",
+    a: "If the optometrist detects any signs of an eye condition that needs further investigation, such as cataracts, glaucoma, macular degeneration, or diabetic eye changes. They will write a referral letter to your GP or directly to the hospital eye service. They will explain their findings clearly and discuss next steps with you and anyone else present, such as a family member or carer. Urgent conditions can be referred as an emergency on the same day.",
   },
   {
     q: "Can I have a contact lens fitting at home?",
@@ -134,14 +137,14 @@ const providers = [
     glassesPrices: "Standard Specsavers pricing",
     phone: "0800 198 1132",
     website: "specsavers.co.uk/home-visits",
-    trustpilot: "—",
+    trustpilot: "Not listed",
     recommended: false,
     notes: "Specsavers home visits, with a private home eye test at £60 or free if you qualify for an NHS-funded test.",
   },
   {
     name: "Boots Opticians",
     type: "High-street chain",
-    established: "—",
+    established: "Not listed",
     nhsFunded: true,
     privateFee: "Varies",
     coverage: "Selected stores only",
@@ -151,14 +154,14 @@ const providers = [
     glassesPrices: "Standard Boots pricing",
     phone: "0345 125 3752",
     website: "boots-opticians.com",
-    trustpilot: "—",
+    trustpilot: "Not listed",
     recommended: false,
-    notes: "Some Boots stores offer or can arrange domiciliary eye tests. Not available at all locations — check with your local store.",
+    notes: "Some Boots stores offer or can arrange domiciliary eye tests. Not available at all locations, so check with your local store.",
   },
   {
     name: "Vision Express",
     type: "High-street chain",
-    established: "—",
+    established: "Not listed",
     nhsFunded: true,
     privateFee: "Varies",
     coverage: "Limited areas",
@@ -168,7 +171,7 @@ const providers = [
     glassesPrices: "Standard VE pricing",
     phone: "0800 050 2633",
     website: "visionexpress.com",
-    trustpilot: "—",
+    trustpilot: "Not listed",
     recommended: false,
     notes: "Home visit service available in selected regions only. Availability is limited and not widely advertised.",
   },
@@ -184,7 +187,7 @@ const providers = [
     weekendAppts: false,
     glassesPrices: "Varies",
     phone: "Ask locally",
-    website: "—",
+    website: "Not listed",
     trustpilot: "Varies",
     recommended: false,
     notes: "Many independent high-street opticians offer domiciliary visits in their local area. Ask your nearest optician if they provide home visits.",
@@ -269,7 +272,7 @@ const benefits = [
     ),
     title: "Glasses delivered to your door",
     description:
-      "After choosing frames during your visit, your custom-made glasses are manufactured in a UK laboratory and posted directly to your home — no second trip needed.",
+      "After choosing frames during your visit, your custom-made glasses are manufactured in a UK laboratory and posted directly to your home, so there is no second trip.",
   },
 ];
 
@@ -326,9 +329,9 @@ export default function AtHomeEyeTestsPage() {
   const webPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    name: "At-Home Eye Tests UK — Free NHS Home Visits & How to Book",
+    name: "At-Home Eye Tests UK: Free NHS Home Visits & How to Book",
     description:
-      "A comprehensive guide to at-home eye tests in the UK, covering NHS eligibility, what happens during a domiciliary eye test, how to book, provider comparisons, costs, and frequently asked questions.",
+      "A guide to at-home eye tests in the UK, covering NHS eligibility, what happens during a domiciliary eye test, how to book, provider comparisons, costs, and frequently asked questions.",
     url: "https://www.eyetest.co.uk/at-home-eye-tests",
     about: {
       "@type": "MedicalCondition",
@@ -565,7 +568,7 @@ export default function AtHomeEyeTestsPage() {
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                           </svg>
                         ) : (
-                          <span className="text-xs text-gray-400">—</span>
+                          <span className="text-xs text-gray-400">-</span>
                         )}
                       </td>
                       <td className="px-5 py-4 hidden sm:table-cell">
@@ -574,7 +577,7 @@ export default function AtHomeEyeTestsPage() {
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                           </svg>
                         ) : (
-                          <span className="text-xs text-gray-400">—</span>
+                          <span className="text-xs text-gray-400">-</span>
                         )}
                       </td>
                       <td className="px-5 py-4 text-gray-600 text-xs font-medium">{p.privateFee}</td>
@@ -614,7 +617,7 @@ export default function AtHomeEyeTestsPage() {
               <p className="text-gray-600 max-w-xl mx-auto">
                 Complete the form below and our team will match you with the
                 most suitable at-home eye care provider in your area. No GP
-                referral needed &mdash; we handle everything for you.
+                referral needed, we handle everything for you.
               </p>
             </div>
 
@@ -641,9 +644,9 @@ export default function AtHomeEyeTestsPage() {
 
             <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
               <p>
-                An at-home eye test &mdash; also known as a{" "}
+                An at-home eye test, also known as a{" "}
                 <strong>domiciliary eye test</strong> or{" "}
-                <strong>home visit eye test</strong> &mdash; is a full NHS sight
+                <strong>home visit eye test</strong>, is a full NHS sight
                 test carried out in your own home by a qualified, GOC-registered
                 (General Optical Council) optometrist. It is exactly the same
                 standard of examination you would receive at a high-street
@@ -667,30 +670,29 @@ export default function AtHomeEyeTestsPage() {
 
               <ul className="list-disc pl-6 space-y-2 text-gray-700">
                 <li>
-                  <strong>Trial lens set or portable phoropter</strong> &mdash;
-                  for measuring your prescription accurately
+                  <strong>Trial lens set or portable phoropter</strong>, for measuring your prescription accurately
                 </li>
                 <li>
-                  <strong>Retinoscope</strong> &mdash; a handheld instrument that
+                  <strong>Retinoscope</strong>, a handheld instrument that
                   shines a light into the eye to objectively measure refractive
                   error
                 </li>
                 <li>
-                  <strong>Direct ophthalmoscope</strong> &mdash; used to examine
+                  <strong>Direct ophthalmoscope</strong>, used to examine
                   the retina, optic nerve, and blood vessels at the back of your
                   eye
                 </li>
                 <li>
-                  <strong>Handheld slit lamp</strong> &mdash; provides a
+                  <strong>Handheld slit lamp</strong>, provides a
                   magnified, detailed view of the front of your eye, including
                   the cornea, iris, and lens
                 </li>
                 <li>
-                  <strong>Tonometer</strong> &mdash; measures the pressure
+                  <strong>Tonometer</strong>, measures the pressure
                   inside your eye, an important screening test for glaucoma
                 </li>
                 <li>
-                  <strong>Visual acuity chart</strong> &mdash; the familiar
+                  <strong>Visual acuity chart</strong>, the familiar
                   letter chart used to measure how clearly you can see at
                   different distances
                 </li>
@@ -729,7 +731,7 @@ export default function AtHomeEyeTestsPage() {
                   cannot leave your home unaccompanied due to a physical or
                   mental health condition
                 </strong>
-                . This is the key criterion &mdash; it is about your ability to
+                . This is the key criterion. It is about your ability to
                 get to an optician&rsquo;s practice, not your age alone.
               </p>
             </div>
@@ -778,8 +780,7 @@ export default function AtHomeEyeTestsPage() {
 
               <p>
                 A family member, carer, social worker, or care home manager can
-                arrange a home eye test on someone else&rsquo;s behalf &mdash;
-                you do not need the patient themselves to make the call. No GP
+                arrange a home eye test on someone else&rsquo;s behalf. You do not need the patient themselves to make the call. No GP
                 referral is required.
               </p>
             </div>
@@ -907,9 +908,8 @@ export default function AtHomeEyeTestsPage() {
                   </p>
                   <p className="text-sm text-amber-700">
                     If the optometrist finds any signs of an eye condition
-                    that needs further investigation &mdash; such as cataracts,
-                    glaucoma, macular degeneration, or diabetic eye changes
-                    &mdash; they will write a referral to your GP or directly to
+                    that needs further investigation, such as cataracts,
+                    glaucoma, macular degeneration, or diabetic eye changes, they will write a referral to your GP or directly to
                     the hospital eye service. Urgent conditions can be referred
                     the same day.
                   </p>

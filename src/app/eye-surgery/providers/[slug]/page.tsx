@@ -1,3 +1,5 @@
+import { clampDescription } from "@/lib/seo";
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -40,8 +42,8 @@ export async function generateMetadata({
     return { title: "Provider Not Found | eyetest.co.uk" };
   }
 
-  const title = `${provider.name} — Eye Surgery, Prices & Clinic Locations`;
-  const description = `${provider.name}: ${provider.storeCount} UK clinics. ${provider.nhsFunded ? "NHS-funded and private" : "Private"} eye surgery including ${provider.services.map((s) => s.name).slice(0, 3).join(", ")}. Compare services and clinics near you.`;
+  const title = `${provider.name}: Eye Surgery, Prices & Clinic Locations`;
+  const description = clampDescription(`${provider.name}: ${provider.storeCount} UK clinics. ${provider.nhsFunded ? "NHS-funded and private" : "Private"} eye surgery including ${provider.services.map((s) => s.name).slice(0, 2).join(", ")}. Compare clinics near you.`);
 
   return {
     title,
@@ -57,6 +59,7 @@ export async function generateMetadata({
       "eye surgery near me",
     ],
     openGraph: {
+      images: OG_IMAGES,
       title,
       description,
       url: `https://www.eyetest.co.uk/eye-surgery/providers/${provider.slug}`,
@@ -451,7 +454,7 @@ export default async function SurgeryProviderPage({
                             {service.name}
                           </h3>
                           {/* Provider service slugs are the provider's own
-                              naming, not our condition slugs — some are even
+                              naming, not our condition slugs, some are even
                               multi-segment ("laser-eye-surgery/lasik"), so they
                               can never resolve at /eye-surgery/[slug]. Link
                               only when the slug maps to a page we actually

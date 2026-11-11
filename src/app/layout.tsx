@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata, Viewport } from "next";
 import { Inter, Outfit } from "next/font/google";
 import Script from "next/script";
@@ -22,7 +23,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "eyetest.co.uk — Find & Book Eye Tests Near You",
+  title: "eyetest.co.uk: Find & Book Eye Tests Near You",
   description:
     "Compare thousands of opticians across the UK. Find available eye test appointments near you from Boots, Specsavers, Vision Express, ASDA and independent opticians. Book direct with the optician.",
   keywords: [
@@ -45,18 +46,24 @@ export const metadata: Metadata = {
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
+  metadataBase: new URL("https://www.eyetest.co.uk"),
   manifest: "/site.webmanifest",
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: "eyetest.co.uk — Find & Book Eye Tests Near You",
+    images: OG_IMAGES,
+    title: "eyetest.co.uk: Find & Book Eye Tests Near You",
     description:
       "Compare thousands of opticians across the UK. See availability where we can show it and book direct with the optician.",
     url: "https://www.eyetest.co.uk",
     siteName: "eyetest.co.uk",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["https://www.eyetest.co.uk/og-image.png"],
   },
 };
 

@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
     "NHS eye test",
   ],
   openGraph: {
+    images: OG_IMAGES,
     title: "Eye Test Locations Across the UK | eyetest.co.uk",
     description:
       "Find and compare eye test appointments in every major UK city and town. Browse opticians by region and book online.",
