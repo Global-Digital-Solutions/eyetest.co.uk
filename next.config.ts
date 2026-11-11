@@ -1,3 +1,6 @@
+import { movedQueryRedirects } from "./src/data/search-queries";
+import { MOVED_ARTICLES } from "./src/data/articles";
+import { MOVED_GUIDES } from "./src/data/eye-health";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -74,6 +77,17 @@ const nextConfig: NextConfig = {
         destination: "/at-home-eye-tests",
         permanent: true,
       },
+      ...movedQueryRedirects().map((r) => ({ ...r, permanent: true })),
+      ...Object.entries(MOVED_ARTICLES).map(([slug, destination]) => ({
+        source: `/articles/${slug}`,
+        destination,
+        permanent: true,
+      })),
+      ...Object.entries(MOVED_GUIDES).map(([slug, destination]) => ({
+        source: `/eye-health/guides/${slug}`,
+        destination,
+        permanent: true,
+      })),
       {
         source: "/eye-tests/colour-vision-test",
         destination: "/find/colour-blind-test",

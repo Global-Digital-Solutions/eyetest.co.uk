@@ -65,7 +65,7 @@ const eyeHealthLinks = {
   guides: [
     { label: "How Often to Have an Eye Test", href: "/eye-health/guides/how-often-should-you-have-an-eye-test" },
     { label: "Read Your Prescription", href: "/eye-health/guides/how-to-read-your-prescription" },
-    { label: "What Happens in an Eye Test", href: "/eye-health/guides/what-happens-during-an-eye-test" },
+    { label: "What Happens in an Eye Test", href: "/articles/what-happens-during-an-eye-test" },
     { label: "Healthy Eyes Tips", href: "/eye-health/guides/tips-for-healthy-eyes" },
     { label: "Screen Time & Eyes", href: "/eye-health/guides/screen-time-and-eye-health" },
     { label: "NHS Eligibility", href: "/eye-health/guides/understanding-nhs-eye-test-eligibility" },

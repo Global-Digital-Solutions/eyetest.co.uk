@@ -29,6 +29,10 @@ export type SearchQuery = {
   showTownIndex?: boolean;
   disclaimer?: string;
   sources?: { label: string; url: string }[];
+  /** When set, the page lives at this path instead of /find/{slug} (which redirects there) */
+  canonicalPath?: string;
+  /** Breadcrumb parents shown before the page title when canonicalPath is used */
+  parentCrumbs?: { label: string; href: string }[];
 };
 
 export type QuerySection = {
@@ -1160,51 +1164,120 @@ Almost every high-street optician offers NHS-funded eye tests for people who qua
   },
   {
     slug: "eye-test-what-to-expect",
-    keyword: "eye test what to expect",
-    title: "What to Expect During an Eye Test — Step-by-Step UK Guide",
+    keyword: "what happens during an eye test",
+    title: "What Happens During an Eye Test? Step-by-Step UK Guide",
+    seoTitle: "What Happens During an Eye Test? Step by Step (UK, 2026)",
+    seoDescription:
+      "What happens at a UK eye test, step by step: the questions you are asked, vision and eye health checks, glaucoma tests, how long it takes and what to bring.",
+    h1: "What Happens During an Eye Test?",
+    dateModified: "2026-11-11",
+    canonicalPath: "/articles/what-happens-during-an-eye-test",
+    parentCrumbs: [{ label: "Articles", href: "/articles" }],
     category: "general",
     shortDescription:
-      "A clear, step-by-step guide to what happens during an eye test in the UK, so you know exactly what to expect before your appointment.",
-    content: `If you have never had an eye test before, or it has been a while, knowing what to expect can help you feel more at ease. A standard eye test in the UK is straightforward, painless, and takes around 20 to 30 minutes. Here is what happens step by step.
+      "A step-by-step guide to a UK eye test: what the optometrist checks, how long it takes, what to bring and what you get at the end.",
+    content: `An eye test, also called an eye examination or sight test, checks whether you need glasses or contact lenses and looks at the health of your eyes. The College of Optometrists says it usually takes around 20 to 30 minutes, and it is painless.
 
-Your appointment begins with a conversation. Your optometrist will ask about your general health, any medications you take, your family's eye health history, and any specific vision concerns you have. Be honest and thorough — this information helps the optometrist tailor the examination. Mention any headaches, eye strain, difficulty with screens, or changes you have noticed in your vision.
-
-Next comes the vision test. You will be asked to read letters on a chart (usually on a screen) from a set distance. This measures your visual acuity — how clearly you can see. You will read with each eye individually and then with both eyes together. Do not worry about getting every letter right; the optometrist is mapping the limits of your vision.
-
-The refraction is the part where the optometrist determines whether you need glasses (or a change to your existing prescription). You look through a series of lenses and are asked which is clearer — "lens one or lens two?" This is repeated multiple times to fine-tune the prescription. There are no wrong answers, and the optometrist can cross-check your responses with objective measurements.
-
-Your eye pressure is then measured using tonometry. This can involve a small puff of air aimed at your eye (non-contact tonometry) or a gentle touch of a probe to the surface of your eye (contact tonometry, usually after numbing drops). This is a key screening test for glaucoma.
-
-Finally, the optometrist examines the health of your eyes. Using an ophthalmoscope and/or slit lamp microscope, they look at the front surface of your eyes, your lens, and the retina at the back. Some opticians also take a photograph of your retina or perform an OCT scan for a more detailed view. At the end, your optometrist discusses the results and any recommendations with you.`,
+Your optometrist will explain each part as they go. Some opticians also offer extra scans, such as retinal photographs or an OCT scan, which may cost extra. You can choose whether to have them.`,
+    keyFacts: [
+      { label: "Usual length", value: "Around 20 to 30 minutes" },
+      { label: "Painless", value: "Nothing touches your eye in most checks" },
+      { label: "At the end", value: "A prescription or a statement" },
+      { label: "Glasses", value: "Buy them anywhere you like" },
+    ],
+    sections: [
+      {
+        heading: "What happens, step by step",
+        body: `According to the College of Optometrists, during an eye examination the optometrist will:`,
+        items: [
+          "Ask about your general health, any problems with your eyes or vision, close relatives with eye problems, and your work and hobbies",
+          "Check your distance vision (for TV and driving) and near vision (for reading and close work), usually by reading letters on a chart",
+          "Check your eye movements and coordination, to make sure both eyes are working together",
+          "Examine the outside and inside of your eyes in detail. They may take a photograph or scan to help, which may carry a charge that you can choose not to pay",
+          "Carry out tests for glaucoma if you are in a group at risk of it, such as an eye pressure check (often a puff of air) or a visual field test",
+        ],
+        links: [
+          { label: "OCT scan cost", href: "/find/oct-scan-cost" },
+          { label: "Glaucoma test", href: "/find/glaucoma-test" },
+        ],
+      },
+      {
+        heading: "What to bring to your eye test",
+        body: `The College of Optometrists suggests taking:`,
+        items: [
+          "Your current glasses and contact lenses",
+          "Any previous prescriptions, if you have them",
+          "Letters about previous visits to a hospital eye department",
+          "A list of any medicines you take, even if they are not for your eyes",
+          "Your GP's contact details and your NHS number",
+          "Proof of entitlement, if you think you qualify for a free NHS eye test",
+        ],
+        links: [
+          { label: "Who gets a free NHS eye test", href: "/find/free-eye-test" },
+        ],
+      },
+      {
+        heading: "What happens after the eye test",
+        body: `The NHS says your optometrist is legally required to give you your prescription, or a statement saying you have been referred for further tests. If you need glasses you will get a prescription, otherwise a statement that you do not need them. If you are entitled to an NHS optical voucher, it is issued straight away. You do not have to buy glasses where you had your test: the NHS says you should never feel obliged to, so you can shop around. If your optometrist finds something that needs a closer look, they may refer you to your GP or a hospital eye clinic.`,
+        links: [
+          { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
+        ],
+      },
+      {
+        heading: "Eye tests for children",
+        body: `Children's eye tests follow the same steps but are adapted to the child's age. The RNIB notes that instead of reading letters you may be asked to match symbols, which helps with children who cannot read yet. Children under 16 are entitled to a free NHS sight test.`,
+        links: [
+          { label: "Children's eye tests", href: "/find/childrens-eye-test-guide" },
+        ],
+      },
+    ],
     faqs: [
-      {
-        question: "Is an eye test painful?",
-        answer:
-          "No. An eye test is completely painless. The air-puff test (tonometry) can feel slightly surprising but is not painful. If drops are used to dilate your pupils, they may sting briefly but the sensation passes quickly.",
-      },
-      {
-        question: "Can I wear my contact lenses to an eye test?",
-        answer:
-          "Yes. You can wear your contact lenses to the appointment. Your optometrist may ask you to remove them for certain tests, but will advise you at the time. Bring your glasses case and contact lens case just in case.",
-      },
-      {
-        question: "Will I be able to drive after my eye test?",
-        answer:
-          "After a standard eye test, yes — you can drive home immediately. If your optometrist uses dilating drops (not routine), your vision will be blurry for several hours and you should not drive. Ask in advance if drops are likely to be used.",
-      },
       {
         question: "How long does an eye test take?",
         answer:
-          "A standard eye test takes 20 to 30 minutes. If additional tests are included (OCT scan, visual field test, contact lens check), allow 30 to 45 minutes. Children's eye tests may take slightly longer.",
+          "The College of Optometrists says an eye examination usually takes around 20 to 30 minutes. Extra scans can add a little time.",
+      },
+      {
+        question: "Does an eye test hurt?",
+        answer:
+          "No. An eye test is painless. The eye pressure check, often a short puff of air, can make you blink but does not hurt.",
+      },
+      {
+        question: "Will I get eye drops during an eye test?",
+        answer:
+          "Not always. Some tests use drops to widen your pupils. If you are given them, your sight may be blurry for a few hours, so ask the optician whether you should avoid driving afterwards.",
+      },
+      {
+        question: "Can I drive after an eye test?",
+        answer:
+          "Usually yes, unless you have been given drops to widen your pupils. Check with the optician when you book if you are unsure.",
+      },
+      {
+        question: "Do I have to buy glasses where I had my eye test?",
+        answer:
+          "No. The NHS says you should never feel obliged to buy glasses or use an optical voucher where you had your eye test. Your prescription is yours to take anywhere.",
+      },
+      {
+        question: "What should I bring to an eye test?",
+        answer:
+          "Your glasses or contact lenses, any old prescriptions, a list of your medicines, your GP details and NHS number, and proof of entitlement if you qualify for a free NHS test.",
       },
     ],
     relatedQueries: [
-      "book-eye-test",
       "how-long-does-eye-test-take",
+      "how-often-eye-test",
       "eye-test-cost",
-      "do-i-need-an-eye-test",
+      "book-eye-test",
     ],
-    ctaText: "Book your eye test now",
+    ctaText: "Find an optician near you and book an eye test",
+    disclaimer:
+      "This page is general information, not medical advice. The checks you have can vary by optician and by your own eyes.",
+    sources: [
+      { label: "College of Optometrists: The eye examination", url: "https://lookafteryoureyes.org/eye-examinations/the-eye-examination/" },
+      { label: "NHS: Visiting an optician", url: "https://www.nhs.uk/nhs-services/opticians/visiting-an-optician/" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+      { label: "RNIB: During your eye examination", url: "https://www.rnib.org.uk/your-eyes/eye-tests-explained/during-your-eye-examination/" },
+    ],
   },
   {
     slug: "how-long-does-eye-test-take",
@@ -1248,46 +1321,130 @@ If you are short on time, let the receptionist know when you book. They can advi
   },
   {
     slug: "how-often-eye-test",
-    keyword: "how often should I have an eye test",
-    title: "How Often Should You Have an Eye Test? (UK Guidelines)",
+    keyword: "how often should you have an eye test",
+    title: "How Often Should You Have an Eye Test? UK Guidance",
+    seoTitle: "How Often Should You Have an Eye Test? UK Guidance (2026)",
+    seoDescription:
+      "The NHS recommends an eye test every 2 years, or more often if your optometrist advises. Who gets free NHS eye tests, diabetic eye screening and when to go sooner.",
+    h1: "How Often Should You Have an Eye Test?",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/guides/how-often-should-you-have-an-eye-test",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
     category: "general",
     shortDescription:
-      "NHS and professional guidelines on how often you should have an eye test in the UK, based on your age and health.",
-    content: `The general recommendation in the UK is that most adults should have an eye test at least every two years. However, some people need more frequent testing depending on their age, health, and risk factors.
+      "The NHS recommends an eye test every 2 years, or more often if your optometrist advises. Here is who should go more often, who gets free tests and when not to wait.",
+    content: `The NHS recommends that you have your eyes tested every 2 years, or more often if your optometrist advises it. The College of Optometrists gives the same guidance: most people should have an eye examination at least every two years, depending on their clinical circumstances.
 
-For children, the recommendation is annual eye tests throughout their school years. Children's eyes change rapidly, and conditions like lazy eye and squint are most effectively treated when caught early. All children under 16 qualify for free NHS eye tests. The first test should ideally happen before the child starts school, around age three or four.
+Your optometrist will tell you when to come back. They may suggest a shorter gap if you have an eye condition that needs monitoring, a family history of eye disease, diabetes, or a prescription that is changing. Follow their advice, because it is based on your own eyes rather than a general rule.
 
-For adults aged 16 to 69 with no particular risk factors, every two years is the standard recommendation from the College of Optometrists. However, if you notice any changes in your vision between tests — blurriness, difficulty reading, headaches, or eye strain — you should book a test sooner rather than waiting for your two-year appointment.
-
-From age 70 onwards, annual eye tests are recommended. The risk of age-related eye conditions such as cataracts, glaucoma, and macular degeneration increases significantly with age, and regular testing helps catch these early when treatment is most effective. All over-60s qualify for free NHS eye tests, so there is no cost barrier.
-
-Other groups who should have annual eye tests include: people with diabetes (Type 1 or Type 2), those with a family history of glaucoma (particularly if a parent or sibling is affected), people of African-Caribbean descent (who have a higher risk of glaucoma), contact lens wearers (annual tests are required to maintain a valid lens prescription), and anyone with existing eye conditions being monitored by their optometrist.
-
-Your optometrist will advise you at the end of each test when to return. Follow their recommendation — they may suggest more frequent tests if they spot early signs of change that need monitoring, even if you are otherwise in a low-risk group.`,
+Your eyes rarely hurt when something is wrong with them, which is why the NHS says regular eye tests are important. An eye test checks the health of your eyes as well as whether you need glasses, and can pick up conditions such as glaucoma before you notice any change in your sight.`,
+    keyFacts: [
+      { label: "Most people", value: "Every 2 years" },
+      { label: "More often", value: "If your optometrist advises" },
+      { label: "Diabetes (12+)", value: "Screening every 1 or 2 years" },
+      { label: "Sight changes", value: "Don't wait, book now" },
+    ],
+    sections: [
+      {
+        heading: "How often to have an eye test",
+        table: {
+          caption: "General guidance from the NHS and the College of Optometrists, checked November 2026",
+          headers: ["Who", "How often", "Notes"],
+          rows: [
+            ["Most adults and children", "Every 2 years", "Or more often if your optometrist advises"],
+            ["People with an eye condition being monitored", "As your optometrist advises", "Often more frequent than every 2 years"],
+            ["People with diabetes aged 12 or over", "Diabetic eye screening every 1 or 2 years, plus regular eye tests", "Screening is not the same as an eye test"],
+            ["Anyone with new eye problems or changes in sight", "Straight away", "Do not wait for your next scheduled test"],
+          ],
+        },
+      },
+      {
+        heading: "When to book an eye test sooner",
+        body: `The College of Optometrists advises contacting your optometrist if you notice any changes in your sight or are having problems with your eyes, rather than waiting for your next scheduled examination. That includes blurred vision, trouble reading or seeing at a distance, or new symptoms such as floaters.`,
+        items: [
+          "Your vision has changed or become blurry",
+          "You are struggling to read, drive or use a screen comfortably",
+          "You have noticed new floaters or flashes",
+          "Your optometrist asked you to come back earlier",
+        ],
+        links: [
+          { label: "Blurry vision causes", href: "/find/blurry-vision-causes" },
+          { label: "Floaters in vision", href: "/find/floaters-in-vision" },
+          { label: "Sudden vision changes", href: "/find/sudden-vision-changes" },
+        ],
+      },
+      {
+        heading: "Diabetes: eye tests and diabetic eye screening",
+        body: `If you have diabetes and are aged 12 or over, the NHS invites you for diabetic eye screening every 1 or 2 years to check for diabetic retinopathy. You are usually invited every year, or every 2 years if your last 2 screenings found no changes. The NHS is clear that screening is not the same as a regular eye test with an optician, so keep having eye tests as well. People diagnosed with diabetes are entitled to a free NHS sight test.`,
+        links: [
+          { label: "Free eye test with diabetes", href: "/find/free-eye-test-diabetes" },
+        ],
+      },
+      {
+        heading: "Who gets a free NHS eye test",
+        body: `In England you are entitled to a free NHS sight test if, for example, you are under 16, are 16 to 18 and in full-time education, are 60 or over, have diabetes or glaucoma, or are 40 or over with a parent, brother, sister or child who has glaucoma. Certain benefits also qualify. The NHS says the test is free if you are eligible and it is clinically necessary. Eye examinations are free for everyone in Scotland, and Wales and Northern Ireland have their own rules.`,
+        links: [
+          { label: "Who gets a free NHS eye test", href: "/find/free-eye-test" },
+          { label: "Free eye test over 60", href: "/find/free-eye-test-over-60" },
+          { label: "Children's eye tests", href: "/find/childrens-eye-test-guide" },
+        ],
+      },
+      {
+        heading: "What an eye test costs if you pay",
+        body: `The College of Optometrists says an eye examination in England, Wales and Northern Ireland usually costs between £25 and £40, but prices vary between practices. Check with the optician before you book.`,
+        links: [
+          { label: "Eye test prices at the main opticians", href: "/find/eye-test-cost" },
+          { label: "Find an optician near you", href: "/locations" },
+        ],
+      },
+    ],
     faqs: [
       {
-        question: "Is it bad to not have an eye test for 5 years?",
+        question: "How often should you have an eye test in the UK?",
         answer:
-          "While not immediately dangerous, going five years without an eye test means potential problems could go undetected. Many eye conditions develop slowly without symptoms. Book a test as soon as you can — it is never too late to start regular testing.",
+          "The NHS recommends an eye test every 2 years, or more often if your optometrist advises. If you notice any change in your sight, book sooner.",
       },
       {
-        question: "Can I have an eye test before two years?",
+        question: "Can I have an eye test before 2 years are up?",
         answer:
-          "Yes. You can book an eye test at any time. The two-year recommendation is a minimum interval, not a maximum. If you have concerns about your vision, do not wait — book a test straight away.",
+          "Yes. You can book an eye test at any time. If you are eligible for a free NHS test, it is free when it is clinically necessary, so ask the optician whether an earlier test qualifies.",
       },
       {
-        question: "How often should contact lens wearers have eye tests?",
+        question: "How often should over-60s have an eye test?",
         answer:
-          "Contact lens wearers need at least annual eye tests (a standard sight test plus a contact lens check-up). Some lens types require six-monthly reviews. Your contact lens practitioner will advise on the right frequency for you.",
+          "The general NHS guidance is every 2 years, or more often if your optometrist advises. People aged 60 or over are entitled to a free NHS sight test.",
+      },
+      {
+        question: "How often should children have an eye test?",
+        answer:
+          "Follow your optometrist's advice, which is often more frequent for children whose eyes are still changing. Children under 16 are entitled to a free NHS sight test.",
+      },
+      {
+        question: "Is diabetic eye screening the same as an eye test?",
+        answer:
+          "No. The NHS says diabetic eye screening is not the same as a regular eye test with an optician, so people with diabetes should have both.",
+      },
+      {
+        question: "What happens if I have not had an eye test for years?",
+        answer:
+          "Book one. Many eye conditions cause no symptoms at first, so a test can pick up problems you have not noticed. Your optometrist will then advise when to come back.",
       },
     ],
     relatedQueries: [
-      "do-i-need-an-eye-test",
       "eye-test-what-to-expect",
-      "book-eye-test",
-      "free-eye-test-over-60",
+      "free-eye-test",
+      "eye-test-cost",
+      "do-i-need-an-eye-test",
     ],
-    ctaText: "Book your eye test today",
+    ctaText: "Find an optician near you and book your next eye test",
+    disclaimer:
+      "This page is general information, not medical advice. Always follow your optometrist's advice on when to have your next eye test.",
+    sources: [
+      { label: "NHS: Visiting an optician", url: "https://www.nhs.uk/nhs-services/opticians/visiting-an-optician/" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+      { label: "NHS: Diabetic eye screening", url: "https://www.nhs.uk/tests-and-treatments/diabetic-eye-screening/" },
+      { label: "College of Optometrists: The eye examination", url: "https://lookafteryoureyes.org/eye-examinations/the-eye-examination/" },
+    ],
   },
   {
     slug: "do-i-need-an-eye-test",
@@ -1938,7 +2095,23 @@ export function getQueryBySlug(slug: string): SearchQuery | undefined {
  * Useful for generating static paths and sitemap entries.
  */
 export function getAllSlugs(): string[] {
-  return searchQueries.map((q) => q.slug);
+  return searchQueries.filter((q) => !q.canonicalPath).map((q) => q.slug);
+}
+
+/** The live URL path of a query page */
+export function queryHref(q: Pick<SearchQuery, "slug" | "canonicalPath">): string {
+  return q.canonicalPath ?? `/find/${q.slug}`;
+}
+
+export function getQueryByCanonicalPath(path: string): SearchQuery | undefined {
+  return searchQueries.find((q) => q.canonicalPath === path);
+}
+
+/** /find/{slug} URLs that now live elsewhere, for next.config redirects */
+export function movedQueryRedirects(): { source: string; destination: string }[] {
+  return searchQueries
+    .filter((q) => q.canonicalPath)
+    .map((q) => ({ source: `/find/${q.slug}`, destination: q.canonicalPath as string }));
 }
 
 /**

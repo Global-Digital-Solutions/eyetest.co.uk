@@ -5,10 +5,13 @@ import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 import {
   eyeConditions,
-  eyeHealthGuides,
+  eyeHealthGuides as allEyeHealthGuides,
+  MOVED_GUIDES,
   type EyeConditionCategory,
   type EyeHealthGuideCategory,
 } from "@/data/eye-health";
+
+const eyeHealthGuides = allEyeHealthGuides.filter((g) => !(g.slug in MOVED_GUIDES));
 
 // ---------------------------------------------------------------------------
 // SEO metadata

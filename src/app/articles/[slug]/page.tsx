@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import { getQueryByCanonicalPath } from "@/data/search-queries";
+import { QueryPageView, queryMetadata } from "@/components/QueryPageView";
 import {
   getArticleBySlug,
   getAllArticleSlugs,
@@ -29,6 +31,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const rebuilt = getQueryByCanonicalPath(`/articles/${slug}`);
+  if (rebuilt) return queryMetadata(rebuilt);
   const article = getArticleBySlug(slug);
 
   if (!article) {
@@ -120,6 +124,8 @@ export default async function ArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const rebuilt = getQueryByCanonicalPath(`/articles/${slug}`);
+  if (rebuilt) return <QueryPageView query={rebuilt} />;
   const article = getArticleBySlug(slug);
 
   if (!article) {

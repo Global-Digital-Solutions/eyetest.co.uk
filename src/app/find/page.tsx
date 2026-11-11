@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { PageHero, HeroSearchForm } from "@/components/PageHero";
 import {
   searchQueries,
+  queryHref,
   getQueriesByCategory,
   categoryLabels,
   categoryDescriptions,
@@ -130,7 +131,7 @@ export default function FindPage() {
         "@type": "ListItem",
         position: index + 1,
         name: q.title,
-        url: `https://www.eyetest.co.uk/find/${q.slug}`,
+        url: `https://www.eyetest.co.uk${queryHref(q)}`,
       })),
     },
   };
@@ -229,7 +230,7 @@ export default function FindPage() {
                 return (
                   <Link
                     key={q.slug}
-                    href={`/find/${q.slug}`}
+                    href={queryHref(q)}
                     className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
                   >
                     <span
@@ -312,7 +313,7 @@ export default function FindPage() {
                       {queries.map((q) => (
                         <Link
                           key={q.slug}
-                          href={`/find/${q.slug}`}
+                          href={queryHref(q)}
                           className="group flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/20 transition-all"
                         >
                           <svg

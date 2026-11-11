@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
-import { articles } from "@/data/articles";
+import { liveArticles as articles } from "@/data/articles";
 
 // ---------------------------------------------------------------------------
 // SEO metadata

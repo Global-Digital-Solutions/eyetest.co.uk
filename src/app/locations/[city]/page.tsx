@@ -1194,7 +1194,7 @@ export default async function CityPage({
                 <ul className="space-y-2">
                   <li>
                     <Link
-                      href="/articles/how-often-should-you-have-an-eye-test"
+                      href="/eye-health/guides/how-often-should-you-have-an-eye-test"
                       className="text-sm text-gray-600 hover:text-[var(--color-primary)] transition-colors"
                     >
                       How often should you have an eye test?

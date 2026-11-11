@@ -70,7 +70,7 @@ const footerLinks = {
   ],
   Company: [
     { label: "About Us", href: "/about" },
-    { label: "Guides & Advice", href: "/articles/how-often-should-you-have-an-eye-test" },
+    { label: "Guides & Advice", href: "/articles" },
     { label: "Blog", href: "/articles" },
     { label: "Contact", href: "/about" },
     { label: "For Opticians", href: "/get-listed" },

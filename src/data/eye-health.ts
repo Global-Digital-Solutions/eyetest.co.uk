@@ -1162,8 +1162,13 @@ export function getAllConditionSlugs(): string[] {
  * Return an array of all available eye health guide slugs.
  * Useful for generating static paths and sitemap entries.
  */
+/** Guides merged into another page, and where they now live */
+export const MOVED_GUIDES: Record<string, string> = {
+  "what-happens-during-an-eye-test": "/articles/what-happens-during-an-eye-test",
+};
+
 export function getAllGuideSlugs(): string[] {
-  return eyeHealthGuides.map((guide) => guide.slug);
+  return eyeHealthGuides.filter((g) => !(g.slug in MOVED_GUIDES)).map((guide) => guide.slug);
 }
 
 /**

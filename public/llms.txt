@@ -89,9 +89,7 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Strabismus (Squint)](https://www.eyetest.co.uk/eye-health/conditions/strabismus)
 
 ## Eye Health Guides
-- [How Often Should You Have an Eye Test?](https://www.eyetest.co.uk/eye-health/guides/how-often-should-you-have-an-eye-test)
 - [How to Read Your Glasses Prescription](https://www.eyetest.co.uk/eye-health/guides/how-to-read-your-prescription)
-- [What Happens During an Eye Test?](https://www.eyetest.co.uk/eye-health/guides/what-happens-during-an-eye-test)
 - [Tips for Healthy Eyes](https://www.eyetest.co.uk/eye-health/guides/tips-for-healthy-eyes)
 - [Screen Time and Eye Health](https://www.eyetest.co.uk/eye-health/guides/screen-time-and-eye-health)
 - [Eye Health for Children](https://www.eyetest.co.uk/eye-health/guides/eye-health-for-children)
@@ -101,8 +99,6 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Eye Health and Driving](https://www.eyetest.co.uk/eye-health/guides/eye-health-and-driving)
 
 ## Articles
-- [How Often Should You Have an Eye Test?](https://www.eyetest.co.uk/articles/how-often-should-you-have-an-eye-test)
-- [What Happens During an Eye Test? A Step-by-Step Guide](https://www.eyetest.co.uk/articles/what-happens-during-an-eye-test)
 - [10 Signs You Need an Eye Test](https://www.eyetest.co.uk/articles/signs-you-need-an-eye-test)
 - [Children’s Eye Tests: The Complete Parent’s Guide](https://www.eyetest.co.uk/articles/childrens-eye-tests-parents-guide)
 - [Understanding Your Eye Test Results & Prescription](https://www.eyetest.co.uk/articles/understanding-your-eye-test-results)
@@ -226,9 +222,9 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Specsavers vs Boots](https://www.eyetest.co.uk/find/specsavers-vs-boots): Eye test comparison
 - [Book an Eye Test](https://www.eyetest.co.uk/find/book-eye-test): How to book online or by phone with the main UK opticians and how to book a free NHS test
 - [Opticians Near Me](https://www.eyetest.co.uk/find/opticians-near-me): Find opticians near you by postcode or town, with links to every town page
-- [What to Expect During an Eye Test](https://www.eyetest.co.uk/find/eye-test-what-to-expect): Step-by-step UK guide
+- [What Happens During an Eye Test?](https://www.eyetest.co.uk/articles/what-happens-during-an-eye-test): Step-by-step UK guide from College of Optometrists and NHS sources: what is checked, around 20 to 30 minutes, what to bring, and your right to your prescription
 - [How Long Does an Eye Test Take?](https://www.eyetest.co.uk/find/how-long-does-eye-test-take): UK appointment guide
-- [How Often Should You Have an Eye Test?](https://www.eyetest.co.uk/find/how-often-eye-test): UK guidelines
+- [How Often Should You Have an Eye Test?](https://www.eyetest.co.uk/eye-health/guides/how-often-should-you-have-an-eye-test): NHS guidance is every 2 years or more often if your optometrist advises; diabetic eye screening every 1 or 2 years; who gets free NHS tests
 - [Do I Need an Eye Test?](https://www.eyetest.co.uk/find/do-i-need-an-eye-test): Signs you should book one
 - [Failed Eye Test Driving](https://www.eyetest.co.uk/find/eye-test-failed-driving): What to do next
 - [OCT Scan Cost UK](https://www.eyetest.co.uk/find/oct-scan-cost): How much is an OCT eye scan

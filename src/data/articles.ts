@@ -489,8 +489,16 @@ Whatever you decide, the most important thing is to have your eyes tested regula
 // Helper functions
 // ---------------------------------------------------------------------------
 
+/** Articles merged into another page, and where they now live */
+export const MOVED_ARTICLES: Record<string, string> = {
+  "how-often-should-you-have-an-eye-test": "/eye-health/guides/how-often-should-you-have-an-eye-test",
+};
+
+/** Articles still published at /articles/{slug} */
+export const liveArticles: Article[] = articles.filter((a) => !(a.slug in MOVED_ARTICLES));
+
 export function getAllArticles(): Article[] {
-  return articles;
+  return liveArticles;
 }
 
 export function getArticleBySlug(slug: string): Article | undefined {
@@ -498,5 +506,5 @@ export function getArticleBySlug(slug: string): Article | undefined {
 }
 
 export function getAllArticleSlugs(): string[] {
-  return articles.map((a) => a.slug);
+  return liveArticles.map((a) => a.slug);
 }

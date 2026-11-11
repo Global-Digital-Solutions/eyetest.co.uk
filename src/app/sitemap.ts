@@ -10,6 +10,7 @@ import {
 } from "@/data/opticians";
 import {
   getAllSlugs as getAllSearchQuerySlugs,
+  getQueryByCanonicalPath,
   getQueryBySlug,
 } from "@/data/search-queries";
 import { getAllProviderSlugs } from "@/data/surgery-providers";
@@ -81,7 +82,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const guidePages: MetadataRoute.Sitemap = getAllGuideSlugs().map(
     (slug) => ({
       url: `${BASE}/eye-health/guides/${slug}`,
-      lastModified: NOW,
+      lastModified:
+        getQueryByCanonicalPath(`/eye-health/guides/${slug}`)?.dateModified ?? NOW,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })
@@ -94,7 +96,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const articlePages: MetadataRoute.Sitemap = getAllArticleSlugs().map(
     (slug) => ({
       url: `${BASE}/articles/${slug}`,
-      lastModified: NOW,
+      lastModified: getQueryByCanonicalPath(`/articles/${slug}`)?.dateModified ?? NOW,
       changeFrequency: "weekly" as const,
       priority: 0.6,
     })
