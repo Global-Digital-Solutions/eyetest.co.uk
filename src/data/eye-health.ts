@@ -95,7 +95,7 @@ In more advanced or difficult-to-control cases, surgical options include trabecu
     name: "Cataracts",
     category: "age-related",
     overview:
-      "A cataract is a clouding of the natural crystalline lens inside the eye, causing vision to become progressively blurred, misty, or faded. Cataracts are the most common cause of treatable sight loss in the UK, and most people will develop some degree of lens clouding by their 70s. Cataract surgery is one of the most frequently performed and successful operations on the NHS, with around 450,000 procedures carried out each year.",
+      "Cataracts are cloudy patches in the lens of the eye that usually develop slowly, causing blurred vision, glare and faded colours. Cataract surgery replaces the cloudy lens when you want to improve your sight.",
     symptoms: [
       "Blurred, cloudy, or misty vision that worsens gradually",
       "Colours appearing faded, washed out, or yellowish",
@@ -151,7 +151,7 @@ Modern cataract surgery is one of the safest and most effective operations avail
     name: "Age-Related Macular Degeneration (AMD)",
     category: "age-related",
     overview:
-      "Age-related macular degeneration (AMD) is the leading cause of sight loss in the UK, affecting over 600,000 people. It damages the macula — the small central area of the retina responsible for sharp, detailed vision used for reading, recognising faces, and driving. AMD does not cause total blindness, but it can severely affect central vision and independence, particularly in its wet (neovascular) form.",
+      "Age-related macular degeneration (AMD) is a common condition that affects the middle part of your vision. It usually first affects people in their 50s and can make reading and recognising faces difficult.",
     symptoms: [
       "Distortion of straight lines — for example, door frames or text may appear wavy or bent",
       "A blurred or missing patch in the centre of your vision",
@@ -206,7 +206,7 @@ Low-vision rehabilitation services are available through the NHS and charities s
     name: "Diabetic Retinopathy",
     category: "urgent",
     overview:
-      "Diabetic retinopathy is a complication of diabetes (Type 1 and Type 2) in which high blood sugar levels damage the tiny blood vessels in the retina. It is one of the leading causes of preventable blindness in working-age adults in the UK. The condition often develops without any noticeable symptoms in its early stages, making the NHS Diabetic Eye Screening Programme — which invites everyone with diabetes for annual retinal photography — an essential safeguard.",
+      "Diabetic retinopathy is damage to the blood vessels at the back of the eye caused by diabetes. It usually has no symptoms at first and is found at diabetic eye screening.",
     symptoms: [
       "Often no symptoms in the early stages — damage can be occurring without your knowledge",
       "Gradually worsening vision",
@@ -262,7 +262,7 @@ For proliferative diabetic retinopathy — the most advanced stage, where fragil
     name: "Dry Eye Syndrome",
     category: "common",
     overview:
-      "Dry eye syndrome is one of the most common eye conditions in the UK, affecting millions of people. It occurs when your eyes do not produce enough tears, or when the tears evaporate too quickly due to a poor-quality tear film. Despite its name, dry eye can cause watering as well as dryness, along with irritation, grittiness, and tired eyes. It is particularly prevalent among screen users, contact lens wearers, and post-menopausal women.",
+      "Dry eyes happen when you do not make enough tears or your tears dry up quickly, making eyes itchy, sore, gritty or watery. Self-care and a pharmacist can usually help.",
     symptoms: [
       "Gritty, sandy, or scratchy sensation in the eyes",
       "Burning or stinging",
@@ -478,7 +478,7 @@ In most cases, astigmatism remains stable throughout adulthood, though your over
     name: "Myopia (Short-sightedness)",
     category: "refractive",
     overview:
-      "Myopia, commonly known as short-sightedness, is a refractive error in which distant objects appear blurred while near objects remain clear. It is the most common refractive condition worldwide and its prevalence is rising rapidly in the UK, now affecting approximately 30% of the population. Myopia typically develops during childhood and tends to worsen through the teenage years before stabilising in early adulthood.",
+      "Short-sightedness (myopia) makes distant things blurry. It usually starts in children aged 6 to 13 and can be corrected with glasses or contact lenses.",
     symptoms: [
       "Distant objects appear blurred while near vision is clear",
       "Squinting or partially closing the eyes to see distant objects more clearly",
@@ -628,7 +628,7 @@ Surgical options for presbyopia are evolving. Refractive lens exchange (RLE) rep
     name: "Floaters and Flashes",
     category: "urgent",
     overview:
-      "Floaters are small shapes — dots, threads, cobwebs, or rings — that drift across your field of vision. Flashes are brief sparks or streaks of light, usually in the edge of your vision. Both are usually caused by age-related changes in the vitreous gel that fills the inside of the eye. While they are common and often harmless, a sudden increase in floaters or new flashes of light can be a warning sign of a retinal tear or detachment, which requires urgent attention.",
+      "Floaters and flashes in your vision are common and usually harmless. New or sudden floaters or flashes, or a shadow across your vision, need an urgent optician appointment.",
     symptoms: [
       "Small dark shapes drifting across your vision — spots, threads, squiggly lines, or cobwebs",
       "Floaters that are most noticeable against bright, plain backgrounds such as a white wall or blue sky",
@@ -681,7 +681,7 @@ In rare cases where persistent floaters are severely debilitating and affecting 
     name: "Keratoconus",
     category: "common",
     overview:
-      "Keratoconus is a progressive condition in which the cornea — the clear, dome-shaped front surface of the eye — gradually thins and bulges outward into a cone shape. This distortion causes increasingly blurred and distorted vision that cannot be fully corrected with standard glasses. It typically begins during the teenage years or early twenties and may progress for 10 to 20 years before stabilising. Keratoconus affects approximately 1 in 450 people in the UK.",
+      "Keratoconus makes the cornea thinner and weaker so it bulges into a cone shape, usually starting in the teens or twenties. Corneal cross-linking can stop it getting worse.",
     symptoms: [
       "Progressively worsening blurred and distorted vision",
       "Frequent changes in glasses or contact lens prescription",

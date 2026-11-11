@@ -973,7 +973,7 @@ Store pages on eyetest.co.uk show opening hours where the optician publishes the
         heading: "Urgent eye care at opticians (CUES)",
         body: `In many parts of England, accredited opticians provide the Community Urgent Eyecare Service (CUES), a free NHS service for sudden eye problems such as a red or painful eye, something in your eye, a sudden change in vision, or new flashes and floaters. It is not an eye test, and you need to phone first rather than walk in. Your own optician may provide it, or can tell you who does. Availability varies by area.`,
         links: [
-          { label: "Floaters in vision", href: "/find/floaters-in-vision" },
+          { label: "Floaters in vision", href: "/eye-health/conditions/floaters-and-flashes" },
           { label: "Sudden vision changes", href: "/find/sudden-vision-changes" },
         ],
       },
@@ -1540,7 +1540,7 @@ Your eyes rarely hurt when something is wrong with them, which is why the NHS sa
         ],
         links: [
           { label: "Blurry vision causes", href: "/find/blurry-vision-causes" },
-          { label: "Floaters in vision", href: "/find/floaters-in-vision" },
+          { label: "Floaters in vision", href: "/eye-health/conditions/floaters-and-flashes" },
           { label: "Sudden vision changes", href: "/find/sudden-vision-changes" },
         ],
       },
@@ -2414,44 +2414,82 @@ An eye test is a quick, painless, and inexpensive first step in investigating he
   },
   {
     slug: "floaters-in-vision",
-    keyword: "floaters in vision",
-    title: "Floaters in Vision — Causes, When to Worry & What to Do",
+    keyword: "eye floaters",
+    title: "Floaters and Flashes in the Eyes: Causes and When to Get Help",
+    seoTitle: "Eye Floaters and Flashes: Causes and When They Are Urgent (NHS)",
+    seoDescription:
+      "Floaters and flashes are common and usually harmless. When new or sudden floaters, flashes or a shadow in your vision need an urgent optician appointment.",
+    h1: "Floaters and Flashes in the Eyes",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/floaters-and-flashes",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
     category: "concern",
     shortDescription:
-      "What eye floaters are, when they are harmless, and when a sudden increase in floaters means you need urgent attention.",
-    content: `Eye floaters are small shapes that drift across your vision — they may appear as dots, threads, cobwebs, or squiggly lines. Most people notice them when looking at a plain bright background such as a white wall or blue sky. They move as you move your eyes and tend to drift away when you try to look directly at them.
+      "Floaters and flashes are common and usually harmless. When they need an urgent optician appointment.",
+    content: `Dots and lines (floaters) or flashes of light in your vision are common. The NHS says they are not usually serious, especially if you have had them a long time, they are not getting worse and your vision is not affected.
 
-Most floaters are harmless and are caused by natural age-related changes in the vitreous — the clear, gel-like substance that fills the inside of your eye. As you age, the vitreous becomes more liquid and small fibres within it clump together, casting tiny shadows on your retina. These are what you see as floaters. They are extremely common, particularly in people over 50, those who are short-sighted, or after eye surgery.
-
-However, a sudden increase in floaters — particularly if accompanied by flashes of light or a shadow or curtain spreading across your vision — can indicate a serious condition that requires urgent attention. The most concerning possibility is a retinal detachment or retinal tear, where the vitreous pulls away from the retina and damages it. Retinal detachment is a sight-threatening emergency that requires prompt treatment (usually surgery) to prevent permanent vision loss.
-
-If you experience a sudden shower of new floaters, new or increasing flashes of light (especially in your peripheral vision), a dark shadow or curtain spreading across your vision, or a sudden loss of vision, you should contact your optician urgently for a same-day appointment, or call NHS 111 if your optician is unavailable. Many opticians provide emergency eye care through the NHS MECS scheme and can see you the same day.
-
-If your floaters are longstanding, have not changed, and are not accompanied by flashes or shadows, they are almost certainly harmless. Mention them at your next routine eye test so your optometrist can confirm. Most people learn to live with mild floaters, and the brain often learns to ignore them over time.`,
+Floaters can look like small dark dots, squiggly lines, rings or cobwebs. Flashes may eventually stop, and floaters often become less noticeable as you get used to them. But some changes need checking quickly, because they can be a sign of a problem at the back of the eye.`,
+    keyFacts: [
+      { label: "Usually", value: "Harmless" },
+      { label: "New or sudden", value: "Urgent optician or NHS 111" },
+      { label: "Common cause", value: "Posterior vitreous detachment" },
+      { label: "Shadow or curtain", value: "Get help urgently" },
+    ],
+    sections: [
+      {
+        heading: "Get an urgent optician appointment or call NHS 111 if",
+        items: [
+          "You have floaters or flashes for the first time",
+          "You suddenly get floaters or flashes",
+          "The number of floaters or flashes suddenly increases",
+          "A dark curtain or shadow moves across your vision",
+          "You also have blurred vision or eye pain",
+          "Floaters start after eye surgery or an eye injury",
+        ],
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+      {
+        heading: "What happens at the optician",
+        body: `The NHS says your eyes will be checked at an optician to see whether you need to see an eye doctor (ophthalmologist) for more tests or treatment. You usually only need treatment if there is a problem that could affect your vision.`,
+      },
+      {
+        heading: "Causes",
+        body: `Lots of people, particularly older people, get floaters and flashes. They are usually caused by a harmless process called posterior vitreous detachment, where the gel inside the eye changes. Sometimes they are caused by retinal detachment, which is serious and can lead to permanent vision loss if not treated. They can also happen for no obvious reason.`,
+        links: [
+          { label: "Retinal detachment treatment", href: "/eye-surgery/retinal-detachment" },
+        ],
+      },
+    ],
     faqs: [
       {
-        question: "Are floaters serious?",
+        question: "Are eye floaters serious?",
         answer:
-          "Longstanding, unchanging floaters are usually harmless. However, a sudden increase in floaters, new flashes of light, or a shadow across your vision can indicate a retinal tear or detachment and requires urgent assessment within 24 hours.",
+          "Usually not, especially if you have had them a long time and they are not getting worse. New or sudden floaters need an urgent optician appointment.",
       },
       {
-        question: "Can floaters go away on their own?",
+        question: "What causes floaters?",
         answer:
-          "Some floaters settle or become less noticeable over time as the brain adapts. They do not usually disappear entirely. Treatment (vitrectomy) is available for severe cases that significantly affect quality of life, but this is rarely needed.",
+          "Usually a harmless change in the gel inside the eye called posterior vitreous detachment. Sometimes a retinal detachment, which is serious.",
       },
       {
-        question: "When should I go to A&E for floaters?",
+        question: "When are flashes in the eye an emergency?",
         answer:
-          "Seek immediate help if you have a sudden shower of new floaters with flashes of light and/or a shadow or curtain across your vision. Try your optician first (many offer same-day emergency care), or go to A&E if you cannot be seen urgently elsewhere.",
+          "If they are new or sudden, increase suddenly, or come with a shadow across your vision, blurred vision or pain, get an urgent optician appointment or call NHS 111.",
+      },
+      {
+        question: "Do floaters go away?",
+        answer: "Flashes may eventually stop, and floaters often become less noticeable as you get used to them.",
       },
     ],
-    relatedQueries: [
-      "sudden-vision-changes",
-      "emergency-eye-test-near-me",
-      "do-i-need-an-eye-test",
-      "blurry-vision-causes",
+    relatedQueries: ["sudden-vision-changes", "emergency-eye-test-near-me", "blurry-vision-causes"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. New or sudden floaters or flashes need urgent help.",
+    sources: [
+      { label: "NHS: Floaters and flashes in the eyes", url: "https://www.nhs.uk/symptoms/floaters-and-flashes-in-the-eyes/" },
     ],
-    ctaText: "Find urgent eye care near you",
   },
   {
     slug: "sudden-vision-changes",
@@ -2884,6 +2922,546 @@ There is currently no cure, but treatment can slow the damage and help stop your
     sources: [
       { label: "NHS: Glaucoma", url: "https://www.nhs.uk/conditions/glaucoma/" },
       { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+    ],
+  },
+  {
+    slug: "cataracts",
+    keyword: "cataracts",
+    title: "Cataracts: Symptoms, Causes, Surgery and Driving",
+    seoTitle: "Cataracts: Symptoms, Who Gets Them, Cataract Surgery and Driving (NHS)",
+    seoDescription:
+      "Cataracts cause blurred vision, glare and faded colours, and usually develop slowly. Symptoms, who is more likely to get them, cataract surgery and driving rules.",
+    h1: "Cataracts",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/cataracts",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Cataracts make vision blurry and colours faded, and usually develop slowly. Symptoms, risk factors, surgery and driving.",
+    content: `Cataracts are cloudy patches in the lens of the eye. The NHS says symptoms usually develop slowly, you will often have cataracts in both eyes, and the symptoms may differ between eyes.
+
+Cataracts do not usually need treatment straight away. Over time they get worse, and you will need cataract surgery if you want to improve your sight. If you think you have symptoms, the NHS advises seeing an optician, who can refer you to an eye specialist.`,
+    keyFacts: [
+      { label: "Develop", value: "Usually slowly" },
+      { label: "First step", value: "See an optician" },
+      { label: "Treatment", value: "Cataract surgery" },
+      { label: "Surgery", value: "Usually same-day, local anaesthetic" },
+    ],
+    sections: [
+      {
+        heading: "Symptoms of cataracts",
+        items: [
+          "Blurred vision",
+          "Difficulty seeing at night",
+          "Difficulty reading and watching television",
+          "Eyes uncomfortable in, or sensitive to, light and glare",
+          "Double vision, seeing two of one object",
+          "Glowing rings (halos) around lights",
+          "Colours looking faded, especially blue",
+          "Needing to change your glasses prescription more often than usual",
+        ],
+      },
+      {
+        heading: "Who is more likely to get cataracts",
+        body: `The NHS says you may be more likely to get cataracts if you are 60 or over, have had an eye injury or eye surgery, have another eye condition such as uveitis or being very short-sighted, have taken steroid medicines for a long time, smoke, have a parent, brother or sister who has had cataracts, are a woman, or your eyes have had a lot of sun without protection. Type 2 diabetes, severe dermatitis and high blood pressure can also increase the risk.`,
+        links: [
+          { label: "Who gets a free NHS eye test", href: "/find/free-eye-test" },
+        ],
+      },
+      {
+        heading: "Cataract surgery",
+        body: `A GP or eye specialist will talk to you about whether you want surgery, depending on how cataracts affect your daily life and whether they are in one or both eyes. The NHS says surgery is done under local anaesthetic, so you are awake but do not feel pain. The cloudy lens is replaced with an artificial one and you should be able to go home the same day. If both eyes need treatment, they are done on separate days. There may be a wait, so ask your eye specialist how long.`,
+        links: [
+          { label: "Cataract surgery providers", href: "/eye-surgery/cataracts" },
+        ],
+      },
+      {
+        heading: "Driving with cataracts",
+        body: `You may still be able to drive if your vision is good enough. You must tell the DVLA if your eyesight does not meet the minimum standard for driving. Ask an optician if you are not sure.`,
+        links: [
+          { label: "DVLA eyesight rules", href: "/eye-tests/dvla-driving-vision-test" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What are the first signs of cataracts?",
+        answer:
+          "Blurred vision, difficulty seeing at night, glare from lights, faded colours and needing to change your glasses more often are common early signs.",
+      },
+      {
+        question: "Do cataracts need treating straight away?",
+        answer:
+          "Not usually. They get worse over time, and surgery is the treatment if you want to improve your sight.",
+      },
+      {
+        question: "Is cataract surgery painful?",
+        answer:
+          "It is done under local anaesthetic, so you are awake but should not feel pain. Most people go home the same day.",
+      },
+      {
+        question: "Can I drive with cataracts?",
+        answer:
+          "You may be able to if your vision meets the driving standard. You must tell the DVLA if it does not. Ask an optician if you are unsure.",
+      },
+    ],
+    relatedQueries: ["how-often-eye-test", "free-eye-test", "eye-test-for-driving"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. Speak to an optician or GP about your own eyes.",
+    sources: [
+      { label: "NHS: Cataracts in adults", url: "https://www.nhs.uk/conditions/cataracts/" },
+    ],
+  },
+  {
+    slug: "macular-degeneration",
+    keyword: "macular degeneration",
+    title: "Macular Degeneration (AMD): Symptoms, Wet and Dry AMD, Treatment",
+    seoTitle: "Macular Degeneration (AMD): Symptoms, Wet vs Dry and Treatment (NHS)",
+    seoDescription:
+      "Age-related macular degeneration affects the middle of your vision, usually from your 50s. Symptoms, when to get urgent help, and treatment for wet and dry AMD.",
+    h1: "Age-Related Macular Degeneration (AMD)",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/age-related-macular-degeneration",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "AMD affects the middle part of your vision and usually first affects people in their 50s. Symptoms, urgent signs and treatment.",
+    content: `Age-related macular degeneration (AMD) is a common condition that affects the middle part of your vision. The NHS says it usually first affects people in their 50s. It does not cause total blindness, but it can make reading and recognising faces difficult.
+
+Without treatment, vision may get worse, gradually over several years and then sometimes quickly over weeks or months. Sometimes AMD is found at a routine eye test before you have any symptoms.`,
+    keyFacts: [
+      { label: "Affects", value: "The middle of your vision" },
+      { label: "Usually starts", value: "In your 50s or later" },
+      { label: "Pain", value: "AMD is not painful" },
+      { label: "Wet AMD", value: "Treatable with injections" },
+    ],
+    sections: [
+      {
+        heading: "Symptoms of AMD",
+        body: `The first symptom is often a blurred or distorted area in the centre of your vision. You can get it in one eye or both. Other symptoms the NHS lists include:`,
+        items: [
+          "Straight lines looking wavy or crooked",
+          "Being sensitive to bright light",
+          "Seeing flickering or flashing lights",
+          "Seeing things that are not there (hallucinations)",
+          "Difficulty reading, watching TV, driving or recognising faces",
+        ],
+      },
+      {
+        heading: "When to get help",
+        body: `See an optician if you are worried about your vision, as early diagnosis and treatment may help stop it getting worse. Get an urgent optician appointment or help from NHS 111 if your vision suddenly gets worse, you have a dark curtain or shadow moving across your vision, or your eye is red and painful.`,
+        links: [
+          { label: "Who gets a free NHS eye test", href: "/find/free-eye-test" },
+          { label: "OCT scan cost", href: "/find/oct-scan-cost" },
+        ],
+      },
+      {
+        heading: "Wet and dry AMD treatment",
+        body: `There is no cure, but the NHS says treatment and support can help slow changes in your vision. Treatment depends on whether you have wet or dry AMD:`,
+        table: {
+          headers: ["Type", "Treatment"],
+          rows: [
+            ["Wet AMD", "Anti-VEGF medicine injected into the eye, or light treatment to destroy the blood vessels causing it"],
+            ["Dry AMD", "No treatment currently, but support with low vision and lifestyle changes"],
+          ],
+        },
+        links: [
+          { label: "Macular degeneration treatment providers", href: "/eye-surgery/macular-degeneration" },
+        ],
+      },
+      {
+        heading: "Causes",
+        body: `The exact cause is unknown. The NHS says it has been linked to ageing, smoking, high blood pressure, being overweight and a family history of AMD.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "What is macular degeneration?",
+        answer:
+          "Age-related macular degeneration is a common condition that affects the middle part of your vision. It usually first affects people in their 50s.",
+      },
+      {
+        question: "Does AMD cause blindness?",
+        answer:
+          "It does not cause total blindness, but it can make things like reading and recognising faces difficult.",
+      },
+      {
+        question: "What is the difference between wet and dry AMD?",
+        answer:
+          "Wet AMD can be treated with injections into the eye or light treatment. There is currently no treatment for dry AMD, but support is available.",
+      },
+      {
+        question: "When is AMD urgent?",
+        answer:
+          "Get an urgent optician appointment or help from NHS 111 if your vision suddenly gets worse, a shadow moves across your vision, or your eye is red and painful.",
+      },
+    ],
+    relatedQueries: ["oct-scan-cost", "how-often-eye-test", "free-eye-test-over-60"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. If your vision suddenly gets worse, get urgent help.",
+    sources: [
+      { label: "NHS: Age-related macular degeneration", url: "https://www.nhs.uk/conditions/age-related-macular-degeneration-amd/" },
+      { label: "NHS: AMD symptoms", url: "https://www.nhs.uk/conditions/age-related-macular-degeneration-amd/symptoms/" },
+      { label: "NHS: AMD treatments", url: "https://www.nhs.uk/conditions/age-related-macular-degeneration-amd/treatment/" },
+    ],
+  },
+  {
+    slug: "keratoconus",
+    keyword: "keratoconus",
+    title: "Keratoconus: Symptoms, Causes and Treatment",
+    seoTitle: "Keratoconus: Symptoms, Causes and Cross-Linking Treatment",
+    seoDescription:
+      "Keratoconus thins the cornea into a cone shape, usually starting in the teens or twenties. Symptoms, causes, and corneal cross-linking to stop it getting worse.",
+    h1: "Keratoconus",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/keratoconus",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Keratoconus thins the cornea into a cone shape. Symptoms, causes and treatment, from Moorfields Eye Hospital.",
+    content: `Keratoconus is an eye condition in which the cornea, the clear dome-shaped window at the front of the eye, gets thinner and weaker and develops a cone-shaped bulge. Moorfields Eye Hospital says it normally develops in teenagers or people in their twenties and often gradually gets worse.
+
+Early keratoconus can be detected by your local optometrist, and vision is often unaffected in the very early stages. Moorfields says keratoconus does not cause blindness, and even in advanced cases vision can usually be corrected with contact lenses.`,
+    keyFacts: [
+      { label: "Usually starts", value: "Teens or twenties" },
+      { label: "Detected by", value: "Your optometrist" },
+      { label: "Blindness", value: "Does not cause it" },
+      { label: "Treatment", value: "Cross-linking can stop it worsening" },
+    ],
+    sections: [
+      {
+        heading: "Symptoms of keratoconus",
+        items: [
+          "Worsening vision and frequent changes to your prescription",
+          "Blurring or clouding of vision",
+          "Sensitivity and glare from bright lights",
+        ],
+        links: [
+          { label: "Astigmatism", href: "/eye-health/conditions/astigmatism" },
+        ],
+      },
+      {
+        heading: "How it affects vision",
+        body: `Because the front of the eye is no longer smooth and round, keratoconus causes short sight and astigmatism. In advanced stages some people develop scarring of the cornea. A small number get a sudden, painful loss of vision called hydrops, which Moorfields says settles with time. Sudden painful vision loss always needs urgent help.`,
+      },
+      {
+        heading: "Treatment",
+        body: `Glasses or contact lenses correct vision. Corneal cross-linking is a treatment that can stop keratoconus getting worse, and is offered at specialist NHS eye hospitals such as Moorfields.`,
+        links: [
+          { label: "Contact lens fittings", href: "/find/contact-lens-eye-test" },
+          { label: "Corneal treatment providers", href: "/eye-surgery/corneal-conditions" },
+        ],
+      },
+      {
+        heading: "Causes",
+        body: `The exact cause is unknown, but genetic and environmental factors are thought to play a part. Moorfields estimates around 1 in 10 people with keratoconus have a parent, brother, sister or child with it. It is more common in people with allergic conditions such as asthma and eczema.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "What is keratoconus?",
+        answer:
+          "A condition where the cornea thins and weakens and develops a cone-shaped bulge, which affects how the eye focuses.",
+      },
+      {
+        question: "Can keratoconus cause blindness?",
+        answer:
+          "No. Moorfields Eye Hospital says keratoconus does not cause blindness, and vision can usually be corrected with contact lenses even in advanced cases.",
+      },
+      {
+        question: "How is keratoconus treated?",
+        answer:
+          "Glasses or contact lenses correct vision, and corneal cross-linking can stop the condition getting worse.",
+      },
+      {
+        question: "Who gets keratoconus?",
+        answer:
+          "It usually develops in teenagers or people in their twenties, and is more common in people with allergic conditions such as asthma and eczema.",
+      },
+    ],
+    relatedQueries: ["astigmatism", "contact-lens-eye-test", "how-often-eye-test"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information from Moorfields Eye Hospital NHS Foundation Trust, not medical advice. Speak to your optometrist about your own eyes.",
+    sources: [
+      { label: "Moorfields Eye Hospital: Keratoconus", url: "https://www.moorfields.nhs.uk/eye-conditions/keratoconus" },
+      { label: "Moorfields Eye Hospital: Corneal cross-linking", url: "https://moorfields.nhs.uk/eye-conditions/keratoconus/corneal-cross-linking" },
+    ],
+  },
+  {
+    slug: "dry-eyes",
+    keyword: "dry eyes",
+    title: "Dry Eyes: Symptoms, Causes and Treatment",
+    seoTitle: "Dry Eyes: Symptoms, Causes and How to Treat Them (NHS Guide)",
+    seoDescription:
+      "Dry eyes can be itchy, sore, gritty, red or watery. What causes them, how to treat dry eyes yourself, when a pharmacist can help and when to see an optician.",
+    h1: "Dry Eyes",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/dry-eye-syndrome",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Dry eyes can be itchy, sore, gritty or watery. Causes, self-care and when to see a pharmacist, optician or GP.",
+    content: `You can get dry eyes if you do not make enough tears or your tears dry up quickly. The NHS says dry eyes may be itchy, sore, gritty, red, blurry, sensitive to light, or more watery than normal.
+
+Most people can ease dry eyes with simple changes, and a pharmacist can help. If dry eyes continue after a few weeks of home treatment, see an optician or GP.`,
+    keyFacts: [
+      { label: "Feels", value: "Itchy, sore, gritty or watery" },
+      { label: "First help", value: "A pharmacist" },
+      { label: "After a few weeks", value: "See an optician or GP" },
+      { label: "Screens", value: "Take regular breaks" },
+    ],
+    sections: [
+      {
+        heading: "What makes dry eyes more likely",
+        items: [
+          "Being over 50",
+          "Wearing contact lenses",
+          "Looking at screens for a long time without a break",
+          "Air-conditioned or heated rooms, or windy, dry or dusty weather",
+          "Smoking, smoky places or drinking alcohol",
+          "Some medicines, such as some antidepressants or blood pressure medicines",
+          "Conditions such as blepharitis, Sjögren's syndrome or lupus",
+        ],
+        links: [
+          { label: "Blepharitis", href: "/eye-health/conditions/blepharitis" },
+        ],
+      },
+      {
+        heading: "How to treat dry eyes yourself",
+        items: [
+          "Clean your eyelids every day",
+          "Take breaks when watching TV or using a screen",
+          "Keep your computer screen just below eye level",
+          "Use a humidifier to stop the air getting dry",
+          "If you wear contact lenses, swap to glasses to rest your eyes",
+          "Do not stop a prescribed medicine without medical advice, even if you think it is causing symptoms",
+        ],
+      },
+      {
+        heading: "When to get help",
+        body: `A pharmacist can suggest eye drops, gels or ointments and tell you if you need to see an optician or GP. See an optician or GP if you still have dry eyes after a few weeks of home treatment, or the shape of your eyelids changes. Ask for an urgent GP appointment or help from NHS 111 if your eye is painful and red, or you have a red eye and wear contact lenses. Call 999 or go to A&E if you have changes to your sight, it hurts to look at light, or you have a red eye with a severe headache and feel sick.`,
+        links: [
+          { label: "Dry eye assessment", href: "/eye-tests/dry-eye-assessment" },
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What causes dry eyes?",
+        answer:
+          "Not making enough tears, or tears drying up quickly. Screens, heating, air conditioning, contact lenses, age, some medicines and conditions such as blepharitis can all play a part.",
+      },
+      {
+        question: "Can a pharmacist help with dry eyes?",
+        answer:
+          "Yes. A pharmacist can suggest eye drops, gels or ointments and tell you whether you need to see an optician or GP.",
+      },
+      {
+        question: "When should I see an optician about dry eyes?",
+        answer:
+          "If you still have dry eyes after a few weeks of home treatment, or the shape of your eyelids changes.",
+      },
+      {
+        question: "Can screens cause dry eyes?",
+        answer:
+          "Looking at screens for a long time without a break makes dry eyes more likely. Take regular breaks and keep the screen just below eye level.",
+      },
+    ],
+    relatedQueries: ["blepharitis", "contact-lens-eye-test", "eye-test-what-to-expect"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. If your eye is painful and red, get help from NHS 111.",
+    sources: [
+      { label: "NHS: Dry eyes", url: "https://www.nhs.uk/symptoms/dry-eyes/" },
+    ],
+  },
+  {
+    slug: "diabetic-retinopathy",
+    keyword: "diabetic retinopathy",
+    title: "Diabetic Retinopathy: Symptoms, Screening, Stages and Treatment",
+    seoTitle: "Diabetic Retinopathy: Symptoms, Eye Screening, Stages and Treatment",
+    seoDescription:
+      "Diabetic retinopathy usually has no symptoms at first and is found at diabetic eye screening. The 3 stages, treatment, and how to reduce your risk.",
+    h1: "Diabetic Retinopathy",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/diabetic-retinopathy",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Diabetic retinopathy usually has no symptoms at first. Screening, the 3 stages, treatment and how to lower your risk.",
+    content: `Diabetic retinopathy happens when high blood glucose damages the blood vessels in the retina at the back of the eye. The NHS says it does not usually have symptoms at first and is usually found at diabetic eye screening.
+
+If you have diabetes and are 12 or over, you are invited for diabetic eye screening every 1 or 2 years. You also need regular eye tests at an optician to check for other problems linked to diabetes, such as glaucoma. People with diabetes are entitled to a free NHS sight test.`,
+    keyFacts: [
+      { label: "Early symptoms", value: "Usually none" },
+      { label: "Screening", value: "Every 1 or 2 years, age 12+" },
+      { label: "Eye tests", value: "Free on the NHS with diabetes" },
+      { label: "Stages", value: "3" },
+    ],
+    sections: [
+      {
+        heading: "Symptoms in later stages",
+        items: [
+          "Eyesight getting worse",
+          "Blurred vision",
+          "Dots and lines (floaters) in your vision",
+          "Finding it harder to see in the dark or low light",
+        ],
+      },
+      {
+        heading: "When to get help",
+        body: `Contact a GP, your diabetes care team or an optician if you have diabetes and your eyesight is getting worse, you notice floaters, or you find it hard to see in low light. Ask for an urgent GP appointment or help from NHS 111 if your eyesight suddenly gets worse or you get blurred vision.`,
+        links: [
+          { label: "Free eye test with diabetes", href: "/find/free-eye-test-diabetes" },
+        ],
+      },
+      {
+        heading: "The 3 stages",
+        table: {
+          caption: "Stages of diabetic retinopathy, from the NHS, checked November 2026",
+          headers: ["Stage", "What it means"],
+          rows: [
+            ["Background", "Some signs of damage to blood vessels, but vision is not affected"],
+            ["Pre-proliferative", "More signs of damage and a risk to vision in future. No treatment yet, but more frequent screening"],
+            ["Proliferative", "More serious changes that could affect vision. You will need specialist treatment"],
+          ],
+        },
+      },
+      {
+        heading: "Treatment",
+        body: `Treatment aims to stop vision getting worse. Background and pre-proliferative retinopathy are monitored at screening. For proliferative retinopathy, the main treatments are laser treatment, anti-VEGF eye injections, a steroid implant in the eye, or eye surgery.`,
+        links: [
+          { label: "Diabetic eye disease treatment", href: "/eye-surgery/diabetic-eye-disease" },
+        ],
+      },
+      {
+        heading: "Reducing your risk",
+        items: [
+          "Manage your blood glucose as well as possible",
+          "Lower high blood pressure and high cholesterol",
+          "Do not smoke",
+          "Go to every diabetic eye screening appointment",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What are the first signs of diabetic retinopathy?",
+        answer:
+          "Usually there are none at first. It is usually found at diabetic eye screening, which is why going to every appointment matters.",
+      },
+      {
+        question: "How often is diabetic eye screening?",
+        answer:
+          "If you have diabetes and are 12 or over, you are invited every 1 or 2 years.",
+      },
+      {
+        question: "Is diabetic eye screening the same as an eye test?",
+        answer:
+          "No. You also need regular eye tests at an optician, which are free on the NHS if you have diabetes.",
+      },
+      {
+        question: "Can diabetic retinopathy be cured?",
+        answer:
+          "Sight loss from it cannot be cured, but treatment can help stop your vision getting worse.",
+      },
+    ],
+    relatedQueries: ["free-eye-test-diabetes", "how-often-eye-test", "oct-scan-cost"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. If your eyesight suddenly gets worse, get urgent help.",
+    sources: [
+      { label: "NHS: Diabetic retinopathy", url: "https://www.nhs.uk/conditions/diabetic-retinopathy/" },
+      { label: "NHS: Diabetic eye screening", url: "https://www.nhs.uk/tests-and-treatments/diabetic-eye-screening/" },
+    ],
+  },
+  {
+    slug: "myopia",
+    keyword: "short sighted",
+    title: "Short-Sightedness (Myopia): Signs, Eye Tests and Treatment",
+    seoTitle: "Short-Sightedness (Myopia): Signs in Children, Treatment and Myopia Control",
+    seoDescription:
+      "Short-sightedness (myopia) usually starts between ages 6 and 13. Signs to look for, free NHS eye tests, glasses and contact lenses, and myopia management.",
+    h1: "Short-Sightedness (Myopia)",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/myopia",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Short-sightedness usually starts in childhood. Signs, free NHS eye tests, treatment and ways to slow it down.",
+    content: `Short-sightedness (myopia) means distant things look blurred. The NHS says it usually starts in children aged 6 to 13, can also happen in adults, often runs in families, and can get worse until the eye stops growing at around age 20.
+
+An optician can check for it with an eye test, and it can usually be corrected with glasses or contact lenses. Eye tests are free on the NHS for children under 16.`,
+    keyFacts: [
+      { label: "Usually starts", value: "Age 6 to 13" },
+      { label: "Found by", value: "An eye test" },
+      { label: "Treatment", value: "Glasses or contact lenses" },
+      { label: "Children", value: "Free NHS eye tests" },
+    ],
+    sections: [
+      {
+        heading: "Signs of short-sightedness",
+        items: [
+          "Difficulty reading words from a distance, such as the whiteboard at school",
+          "Sitting close to the TV or holding a phone or tablet close to the face",
+          "Headaches",
+          "Rubbing the eyes a lot",
+        ],
+        links: [
+          { label: "Children's eye tests", href: "/eye-tests/childrens-eye-test" },
+        ],
+      },
+      {
+        heading: "Treatment",
+        body: `Glasses suit children and adults, and contact lenses suit adults and some children. If you need glasses you will get a prescription you can take to any optician. Laser or lens surgery can improve sight in some adults, but the NHS says it is not available on the NHS and can be expensive.`,
+        links: [
+          { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
+          { label: "Laser eye surgery", href: "/eye-surgery/laser-eye-surgery" },
+        ],
+      },
+      {
+        heading: "Slowing it down in children",
+        body: `Spending more time outdoors can help stop short-sightedness getting worse, especially for children. An optometrist may talk to you about specially designed glasses or contact lenses for your child, known as myopia management or myopia control. The NHS says this is not available on the NHS as more research is needed.`,
+      },
+      {
+        heading: "Why correcting it matters",
+        body: `Young children with uncorrected short-sightedness may be more likely to get a squint or lazy eye. Some adults with severe short-sightedness are more likely to develop glaucoma, a detached retina, cataracts or macular degeneration, so regular eye tests are important.`,
+        links: [
+          { label: "Glaucoma", href: "/eye-health/conditions/glaucoma" },
+          { label: "How often to have an eye test", href: "/eye-health/guides/how-often-should-you-have-an-eye-test" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What age does short-sightedness start?",
+        answer: "It usually starts in children aged 6 to 13, but can also happen in adults.",
+      },
+      {
+        question: "Can short-sightedness be cured?",
+        answer:
+          "It can usually be corrected with glasses or contact lenses. Laser or lens surgery can improve sight in some adults but is not available on the NHS.",
+      },
+      {
+        question: "Can you stop a child's myopia getting worse?",
+        answer:
+          "Spending more time outdoors can help. Myopia management glasses or contact lenses are available from some opticians but not on the NHS.",
+      },
+      {
+        question: "Are children's eye tests free?",
+        answer: "Yes. NHS eye tests are free for children under 16 and for 16 to 18 year olds in full-time education.",
+      },
+    ],
+    relatedQueries: ["childrens-eye-test-guide", "how-often-eye-test", "contact-lens-eye-test"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. Your optometrist can advise on the best option for you or your child.",
+    sources: [
+      { label: "NHS: Short-sightedness (myopia)", url: "https://www.nhs.uk/conditions/short-sightedness/" },
     ],
   },
 ];

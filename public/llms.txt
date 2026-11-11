@@ -229,7 +229,6 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Colour Blind Test](https://www.eyetest.co.uk/find/colour-blind-test): How to get a colour vision check at a UK optician (not part of the routine NHS eye test, but you can ask for it), the Ishihara and colour arrangement tests, signs in children, and DVLA rules
 - [Blurry Vision Causes](https://www.eyetest.co.uk/find/blurry-vision-causes): When to see an optician
 - [Headaches and Vision](https://www.eyetest.co.uk/find/headaches-and-vision): Could your eyes be the cause?
-- [Floaters in Vision](https://www.eyetest.co.uk/find/floaters-in-vision): Causes, when to worry and what to do
 - [Sudden Vision Changes](https://www.eyetest.co.uk/find/sudden-vision-changes): When to seek urgent help
 
 ## Legal
