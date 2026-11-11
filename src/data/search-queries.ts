@@ -3464,6 +3464,325 @@ An optician can check for it with an eye test, and it can usually be corrected w
       { label: "NHS: Short-sightedness (myopia)", url: "https://www.nhs.uk/conditions/short-sightedness/" },
     ],
   },
+  {
+    slug: "colour-blindness",
+    keyword: "colour blindness",
+    title: "Colour Blindness (Colour Vision Deficiency): Signs, Causes and Living With It",
+    seoTitle: "Colour Blindness: Signs, Causes, Tests and Living With It (UK)",
+    seoDescription:
+      "Colour blindness affects about 1 in 12 men and 1 in 200 women in the UK. Signs in children, causes, how it is tested, and what it means for school, work and driving.",
+    h1: "Colour Blindness (Colour Vision Deficiency)",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/colour-blindness",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Colour blindness means seeing colours differently. Signs in children, causes, testing and what it means for daily life.",
+    content: `Colour vision deficiency, often called colour blindness, means you see colours differently from most people and may find it hard to tell some colours apart. Colour Blind Awareness estimates it affects about 1 in 12 men and 1 in 200 women, around 3 million people in the UK.
+
+Most colour blindness is inherited and present from birth. The NHS says there is no treatment for inherited colour blindness, but most people adapt. If you want your colour vision checked, ask your optician, as it is not part of the routine NHS eye test.`,
+    keyFacts: [
+      { label: "Affects", value: "About 1 in 12 men, 1 in 200 women" },
+      { label: "Usually", value: "Inherited, from birth" },
+      { label: "Testing", value: "Ask your optician" },
+      { label: "Driving a car", value: "No need to tell the DVLA" },
+    ],
+    sections: [
+      {
+        heading: "Signs in children",
+        body: `Colour Blind Awareness estimates around 40% of colour blind pupils leave school without knowing. The NHS lists signs including using the wrong colours (such as purple leaves on a tree), finding it hard to sort coloured objects, little interest in colouring, and smelling food before eating it. If your child is colour blind, the NHS suggests telling their school.`,
+        links: [
+          { label: "Colour blind test", href: "/find/colour-blind-test" },
+          { label: "Children's eye tests", href: "/eye-tests/childrens-eye-test" },
+        ],
+      },
+      {
+        heading: "Causes",
+        body: `As well as being inherited, the NHS says colour vision problems can be caused by eye conditions such as glaucoma, by diabetes, liver disease or multiple sclerosis, by an eye or head injury or a stroke, and by some medicines. If your colour vision changes later in life, see an optician.`,
+        links: [
+          { label: "Glaucoma", href: "/eye-health/conditions/glaucoma" },
+        ],
+      },
+      {
+        heading: "Work and driving",
+        body: `GOV.UK says you do not need to tell the DVLA if you are colour blind when driving a car or motorcycle. The NHS notes colour blindness may affect some careers, such as pilot or train driver, so check any colour vision standards before you apply.`,
+        links: [
+          { label: "DVLA eyesight rules", href: "/eye-tests/dvla-driving-vision-test" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How common is colour blindness?",
+        answer:
+          "Colour Blind Awareness estimates about 1 in 12 men and 1 in 200 women are colour blind, around 3 million people in the UK.",
+      },
+      {
+        question: "Can colour blindness be cured?",
+        answer:
+          "There is no treatment for inherited colour blindness, according to the NHS, and most people adapt. If it is caused by another condition, treating that may help.",
+      },
+      {
+        question: "How do I get tested for colour blindness?",
+        answer:
+          "Ask your optician. Colour vision testing is not part of the routine NHS eye test, but you can ask for it.",
+      },
+      {
+        question: "Can you drive if you are colour blind?",
+        answer: "Yes. You do not need to tell the DVLA if you are colour blind.",
+      },
+    ],
+    relatedQueries: ["colour-blind-test", "childrens-eye-test-guide", "eye-test-for-driving"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information, not medical advice. If your colour vision changes, see an optician.",
+    sources: [
+      { label: "NHS: Colour vision deficiency", url: "https://www.nhs.uk/conditions/colour-vision-deficiency/" },
+      { label: "Colour Blind Awareness: Colour blindness", url: "https://www.colourblindawareness.org/colour-blindness/" },
+      { label: "GOV.UK: Driving eyesight rules", url: "https://www.gov.uk/driving-eyesight-rules" },
+    ],
+  },
+  {
+    slug: "squint",
+    keyword: "squint",
+    title: "Squint (Strabismus): Signs, When to Get Advice and Treatment",
+    seoTitle: "Squint (Strabismus) in Children and Adults: Signs and Treatment (NHS)",
+    seoDescription:
+      "A squint is where the eyes point in different directions. When to get advice for a baby or child, why early treatment matters, and glasses, patches and surgery.",
+    h1: "Squint (Strabismus)",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/strabismus",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "A squint is where the eyes point in different directions. When to get advice and how it is treated.",
+    content: `A squint, also called strabismus, is where the eyes point in different directions. One eye may turn in, out, up or down while the other looks ahead, all the time or on and off. The NHS says it is particularly common in young children but can happen at any age.
+
+Treatment is usually recommended, as a squint is unlikely to get better on its own and could cause further problems if not treated early. A GP, health visitor or optician can refer you to an eye specialist.`,
+    keyFacts: [
+      { label: "Common in", value: "Young children" },
+      { label: "Babies", value: "On-and-off squints common under 3 months" },
+      { label: "Referral", value: "GP, health visitor or optician" },
+      { label: "Treatment", value: "Glasses, patches, exercises, surgery" },
+    ],
+    sections: [
+      {
+        heading: "When to get advice",
+        items: [
+          "Your child has a squint all the time",
+          "Your child is older than 3 months and has a squint that comes and goes",
+          "You are worried about your child's vision, for example they often turn their head to one side or close one eye to look at things",
+          "You develop a squint or double vision later in life",
+        ],
+        links: [
+          { label: "Children's eye tests", href: "/eye-tests/childrens-eye-test" },
+        ],
+      },
+      {
+        heading: "Treatment",
+        body: `The NHS describes the main treatments:`,
+        items: [
+          "Glasses, if the squint is caused by a sight problem such as long-sightedness",
+          "Eye exercises, which may sometimes help the eyes work together",
+          "Surgery to move the eye muscles so the eyes line up, if glasses are not enough on their own",
+          "Injections into the eye muscles, though the effect usually lasts less than 3 months",
+        ],
+      },
+      {
+        heading: "Why early treatment matters",
+        body: `Left untreated, a squint can lead to blurred or double vision, a lazy eye where the brain ignores the affected eye, and embarrassment or low self-esteem. If a child has a lazy eye, it may be treated first, usually with a patch over the stronger eye. A squint can rarely be a sign of a childhood eye cancer called retinoblastoma, so the NHS advises taking a child with a squint to a GP.`,
+      },
+      {
+        heading: "Causes",
+        body: `The exact cause is not always known. In children, a squint is often the eye trying to overcome a sight problem such as short-sightedness, long-sightedness or astigmatism. Squints can run in families.`,
+        links: [
+          { label: "Long-sightedness", href: "/eye-health/conditions/hyperopia" },
+          { label: "Short-sightedness", href: "/eye-health/conditions/myopia" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is a squint normal in babies?",
+        answer:
+          "A squint that comes and goes is common in babies younger than 3 months. Get advice if it is there all the time or continues after 3 months.",
+      },
+      {
+        question: "Will a squint go away on its own?",
+        answer: "It is unlikely to. Treatment is usually recommended so it does not cause further problems.",
+      },
+      {
+        question: "How is a squint treated?",
+        answer:
+          "With glasses, eye exercises, surgery on the eye muscles, or injections into the eye muscles. A lazy eye may be treated first with a patch.",
+      },
+      {
+        question: "Can adults get a squint?",
+        answer: "Yes. If you develop a squint or double vision later in life, get medical advice.",
+      },
+    ],
+    relatedQueries: ["childrens-eye-test-guide", "free-eye-test-children", "eye-test-what-to-expect"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. If you are worried about your child's eyes, see a GP, health visitor or optician.",
+    sources: [
+      { label: "NHS: Squint", url: "https://www.nhs.uk/conditions/squint/" },
+    ],
+  },
+  {
+    slug: "long-sighted",
+    keyword: "long sighted",
+    title: "Long-Sightedness (Hyperopia): Symptoms and Treatment",
+    seoTitle: "Long-Sightedness (Hyperopia): Symptoms, Eye Tests and Treatment (NHS)",
+    seoDescription:
+      "Long-sightedness makes nearby things blurry while distant things look clear. Symptoms, free NHS eye tests, glasses, contact lenses and surgery options.",
+    h1: "Long-Sightedness (Hyperopia)",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/hyperopia",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Long-sightedness makes nearby things blurry. Symptoms, eye tests and treatment options.",
+    content: `Long-sightedness, also called hypermetropia or hyperopia, is where you find it hard to see things nearby but can see things far away clearly. The NHS says it is common, can happen at any age but often affects people over 40, and glasses or contact lenses can usually correct it.
+
+It is often passed on from parents and cannot be prevented. An optometrist can check for it with a routine eye test.`,
+    keyFacts: [
+      { label: "Hard to see", value: "Nearby things" },
+      { label: "Often affects", value: "People over 40" },
+      { label: "Treatment", value: "Glasses or contact lenses" },
+      { label: "Surgery", value: "Not usually on the NHS" },
+    ],
+    sections: [
+      {
+        heading: "Symptoms",
+        items: [
+          "Nearby things, such as words on a page or screen, look fuzzy",
+          "Seeing things more clearly when you move them further away",
+          "Tired eyes after reading or computer work",
+          "Headaches",
+        ],
+      },
+      {
+        heading: "Treatment",
+        body: `Glasses or contact lenses usually correct long-sightedness. Contact lenses are usually only suitable for adults. Some people may be able to have laser eye surgery or lens replacement surgery, both done under local anaesthetic, but the NHS says these are not usually available on the NHS.`,
+        links: [
+          { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
+          { label: "Laser eye surgery", href: "/eye-surgery/laser-eye-surgery" },
+        ],
+      },
+      {
+        heading: "Causes and complications",
+        body: `Long-sightedness happens when the eyes cannot focus properly, because of the shape of the eye or cornea, or the lens becoming stiffer with age (presbyopia). Young children with severe long-sightedness are more likely to develop a lazy eye or squint, so children's eye tests matter.`,
+        links: [
+          { label: "Presbyopia", href: "/eye-health/conditions/presbyopia" },
+          { label: "Squint", href: "/eye-health/conditions/strabismus" },
+          { label: "Children's eye tests", href: "/eye-tests/childrens-eye-test" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is long-sightedness?",
+        answer: "Finding it hard to see things nearby while things far away look clear.",
+      },
+      {
+        question: "Can long-sightedness be corrected?",
+        answer: "Yes. Glasses or contact lenses usually correct it. Laser or lens surgery may suit some adults but is not usually available on the NHS.",
+      },
+      {
+        question: "Is long-sightedness the same as presbyopia?",
+        answer:
+          "Not quite. Presbyopia is the lens becoming stiffer with age, which is one cause of finding close things hard to see.",
+      },
+      {
+        question: "Who gets a free NHS eye test?",
+        answer:
+          "Including children under 16, 16 to 18 year olds in full-time education, people aged 60 or over, and people with diabetes or glaucoma.",
+      },
+    ],
+    relatedQueries: ["presbyopia", "free-eye-test", "how-often-eye-test"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. Your optometrist can advise on the best option for you.",
+    sources: [
+      { label: "NHS: Long-sightedness", url: "https://www.nhs.uk/conditions/long-sightedness/" },
+    ],
+  },
+  {
+    slug: "presbyopia",
+    keyword: "presbyopia",
+    title: "Presbyopia: Why Reading Gets Harder With Age",
+    seoTitle: "Presbyopia: Why Close-Up Vision Changes With Age and How to Correct It",
+    seoDescription:
+      "Presbyopia makes it harder to focus on close things like phones and menus, usually from your late 30s or 40s. How reading glasses, varifocals and contact lenses help.",
+    h1: "Presbyopia",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-health/conditions/presbyopia",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Presbyopia makes close-up focusing harder with age. Signs and how glasses and contact lenses correct it.",
+    content: `Presbyopia is when you can no longer focus on things at normal reading distance, such as your phone or the print on packaging. The College of Optometrists says it is a natural part of ageing as the lens in your eye loses its elasticity, and it happens to everyone, even people who have never had a problem with their eyesight.
+
+It usually becomes noticeable in your late 30s or early 40s. An eye test will show whether you need reading glasses or a different prescription.`,
+    keyFacts: [
+      { label: "Usually noticed", value: "Late 30s or early 40s" },
+      { label: "Affects", value: "Everyone eventually" },
+      { label: "Correction", value: "Reading glasses, bifocals or varifocals" },
+      { label: "Free NHS eye test", value: "From age 60" },
+    ],
+    sections: [
+      {
+        heading: "Signs of presbyopia",
+        items: [
+          "Difficulty focusing on close things like menus, phone screens and books, especially in dim light",
+          "Over time, things further away such as computer screens becoming blurry too",
+          "Taking longer to change focus between near and far",
+        ],
+      },
+      {
+        heading: "How it is corrected",
+        body: `The College of Optometrists says presbyopia is usually managed with glasses or contact lenses:`,
+        items: [
+          "Single vision reading glasses",
+          "Bifocal or varifocal glasses, if you also need glasses for distance and do not want to swap",
+          "Bifocal or varifocal contact lenses, which work well for some people",
+          "Monovision, with one eye corrected for distance and the other for reading",
+        ],
+        links: [
+          { label: "Contact lens fittings", href: "/find/contact-lens-eye-test" },
+          { label: "Eye test prices", href: "/find/eye-test-cost" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What age does presbyopia start?",
+        answer: "It usually becomes noticeable in your late 30s or early 40s.",
+      },
+      {
+        question: "Can presbyopia be prevented?",
+        answer: "No. It is a natural part of ageing and happens to everyone.",
+      },
+      {
+        question: "Do I need reading glasses or varifocals?",
+        answer:
+          "Reading glasses help with close work. If you also need glasses for distance, bifocals or varifocals save swapping. An optician can advise after an eye test.",
+      },
+      {
+        question: "Can contact lenses correct presbyopia?",
+        answer:
+          "Yes for some people, with bifocal or varifocal contact lenses or monovision, where one eye is corrected for distance and the other for reading.",
+      },
+    ],
+    relatedQueries: ["long-sighted", "contact-lens-eye-test", "free-eye-test-over-60"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information from the College of Optometrists, not medical advice. Your optometrist can advise on the best option for you.",
+    sources: [
+      { label: "College of Optometrists: Presbyopia", url: "https://lookafteryoureyes.org/eye-conditions/presbyopia/" },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------

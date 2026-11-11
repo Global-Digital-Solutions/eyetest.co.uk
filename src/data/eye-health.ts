@@ -533,7 +533,7 @@ For children with progressing myopia, myopia management is a rapidly growing are
     name: "Hyperopia (Long-sightedness)",
     category: "refractive",
     overview:
-      "Hyperopia, commonly known as long-sightedness or far-sightedness, is a refractive error in which nearby objects appear blurred while distant objects may initially remain clearer. It occurs when the eyeball is slightly shorter than normal, or when the cornea or lens has insufficient focusing power. Many young people with mild hyperopia can compensate through the eye's natural focusing ability (accommodation), but this becomes more difficult with age, and symptoms may gradually become apparent.",
+      "Long-sightedness (hyperopia) makes nearby things blurry while distant things look clear. It often affects people over 40 and is usually corrected with glasses or contact lenses.",
     symptoms: [
       "Difficulty focusing on close-up objects such as books, phones, or computer screens",
       "Eye strain and fatigue, particularly after prolonged near work",
@@ -583,7 +583,7 @@ Laser eye surgery (LASIK or LASEK) can correct hyperopia in suitable adults, tho
     name: "Presbyopia",
     category: "age-related",
     overview:
-      "Presbyopia is the natural, age-related loss of the eye's ability to focus on close objects. It is not a disease but a universal part of ageing that affects virtually everyone, typically becoming noticeable in the early to mid-forties. Presbyopia occurs because the crystalline lens inside the eye gradually loses its flexibility, making it harder to change shape and focus at near distances. It is the reason many people need reading glasses or varifocals for the first time in middle age.",
+      "Presbyopia is the natural loss of close-up focus as the lens in the eye stiffens with age. It usually becomes noticeable in your late 30s or early 40s and is corrected with glasses or contact lenses.",
     symptoms: [
       "Difficulty reading small print, especially in dim lighting",
       "Needing to hold reading material at arm's length to focus",
@@ -731,7 +731,7 @@ For advanced cases where contact lenses can no longer provide adequate vision an
     name: "Colour Blindness (Colour Vision Deficiency)",
     category: "common",
     overview:
-      "Colour blindness — more accurately called colour vision deficiency (CVD) — is a condition in which a person has difficulty distinguishing between certain colours. The most common form is red-green colour deficiency, which affects approximately 1 in 12 men and 1 in 200 women in the UK. Total colour blindness (achromatopsia) is extremely rare. Colour vision deficiency is usually inherited and present from birth, though it can occasionally be acquired due to eye disease, medication, or ageing.",
+      "Colour blindness, or colour vision deficiency, means seeing colours differently and finding some hard to tell apart. It affects about 1 in 12 men and 1 in 200 women, and is usually inherited.",
     symptoms: [
       "Difficulty distinguishing between red and green shades — they may appear similar or muted",
       "Confusion between colours such as brown and green, or blue and purple",
@@ -781,7 +781,7 @@ In terms of career implications, certain professions in the UK require specific 
     name: "Strabismus (Squint)",
     category: "common",
     overview:
-      "Strabismus, commonly known as a squint or crossed eyes, is a condition in which the eyes do not align properly — one eye may turn inward, outward, upward, or downward while the other looks straight ahead. Squint is relatively common in children, affecting approximately 2-3% of the UK population. If left untreated in childhood, it can lead to amblyopia (lazy eye) and permanent loss of binocular vision. However, squint can also develop in adults, sometimes as a sign of an underlying condition requiring investigation.",
+      "A squint (strabismus) is where the eyes point in different directions. It is common in young children, and treatment is usually recommended as it rarely gets better on its own.",
     symptoms: [
       "One eye turning inward (convergent or esotropia), outward (divergent or exotropia), upward, or downward",
       "The turn may be constant or intermittent — appearing only when the child is tired, unwell, or focusing at near distances",
