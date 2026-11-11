@@ -119,7 +119,7 @@ export default async function CityPage({
   const faqItems = [
     {
       q: `Where can I get an eye test in ${location.name}?`,
-      a: `You can compare and book eye tests from multiple opticians in ${location.name} through eyetest.co.uk. We list both NHS and private providers, including high-street chains like Boots Opticians and ASDA Opticians, as well as independent practices in ${countyArea(location)} area. Simply enter the postcode ${location.postcode} to see all available options near you, compare prices, and book an appointment online in seconds.`,
+      a: `You can find and compare opticians in ${location.name} on eyetest.co.uk and book direct with the one you choose. We list both NHS and private providers, including high-street chains like Boots Opticians and ASDA Opticians, as well as independent practices in ${countyArea(location)} area. Enter the postcode ${location.postcode} to see opticians near you, compare prices and book direct. Where we can show appointment availability, we do.`,
     },
     {
       q: `How much does an eye test cost in ${location.name}?`,
@@ -143,7 +143,7 @@ export default async function CityPage({
     },
     {
       q: `Do I need a referral for an eye test?`,
-      a: `No, you do not need a GP referral to have an eye test in the UK. You can book directly with any optician in ${location.name} through eyetest.co.uk or by contacting the practice. Eye tests are provided by qualified optometrists who are registered with the General Optical Council. If your optometrist finds anything that needs further investigation, they can refer you directly to a hospital eye specialist.`,
+      a: `No, you do not need a GP referral to have an eye test in the UK. You can book directly with any optician in ${location.name}: find one near you on eyetest.co.uk, or contact the practice. Eye tests are provided by qualified optometrists who are registered with the General Optical Council. If your optometrist finds anything that needs further investigation, they can refer you directly to a hospital eye specialist.`,
     },
     {
       q: `What should I bring to my eye test?`,
@@ -371,7 +371,7 @@ export default async function CityPage({
 
             <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
               <p>
-                Regular eye tests are one of the most important health checks available, yet millions of people across the UK skip them or leave it too long between appointments. For residents of {location.name} and the surrounding area, booking an eye test has never been easier. You can search by the postcode {location.postcode} on eyetest.co.uk to see every available optician near you, compare prices and services side by side, check real-time appointment availability, and book online in seconds.
+                Regular eye tests are one of the most important health checks available, yet millions of people across the UK skip them or leave it too long between appointments. For residents of {location.name} and the surrounding area, booking an eye test has never been easier. You can search by the postcode {location.postcode} on eyetest.co.uk to see every available optician near you, compare prices and services side by side, see appointment availability where we can show it, and book direct with the optician.
               </p>
             </div>
           </div>
@@ -459,7 +459,7 @@ export default async function CityPage({
                 Opticians in {location.name}
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Compare {localOpticians.length} optician brands available in the {location.name} area. View services, pricing, and NHS availability, then book directly through eyetest.co.uk.
+                Compare {localOpticians.length} optician brands available in the {location.name} area. View services, pricing, and NHS availability, then book direct with the optician.
               </p>
             </div>
 
@@ -812,7 +812,7 @@ export default async function CityPage({
         </section>
 
         {/* ================================================================= */}
-        {/* Why book through eyetest.co.uk */}
+        {/* Why search with eyetest.co.uk */}
         {/* ================================================================= */}
         <section className="py-16 sm:py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4">
@@ -821,12 +821,12 @@ export default async function CityPage({
                 className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Why book through eyetest.co.uk?
+                Why search with eyetest.co.uk?
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 We help people in {location.name} find great local opticians
-                they didn&apos;t know existed. Save hours searching and book
-                instantly.
+                they didn&apos;t know existed, and show appointment availability
+                where we can, so you can book direct.
               </p>
             </div>
 
@@ -839,7 +839,7 @@ export default async function CityPage({
                     </svg>
                   ),
                   title: "Instant comparison",
-                  desc: `See every optician near ${location.postcode} on one page. Compare prices, services, and real-time availability without visiting multiple websites.`,
+                  desc: `See every optician near ${location.postcode} on one page. Compare prices and services, and see availability where we can show it, without visiting multiple websites.`,
                 },
                 {
                   icon: (
@@ -848,7 +848,7 @@ export default async function CityPage({
                     </svg>
                   ),
                   title: "Trusted & independent",
-                  desc: `We're not owned by any optician chain. Our ${location.name} results show genuine availability from both independent and high-street opticians.`,
+                  desc: `We're not owned by any optician chain. Our ${location.name} results include both independent and high-street opticians.`,
                 },
                 {
                   icon: (
@@ -857,7 +857,7 @@ export default async function CityPage({
                     </svg>
                   ),
                   title: "Completely free",
-                  desc: "Our service costs nothing to use. No registration, no hidden fees. Just search, compare, and book.",
+                  desc: "Our service costs nothing to use. No registration, no hidden fees. Just search, compare and book direct.",
                 },
                 {
                   icon: (
@@ -960,8 +960,8 @@ export default async function CityPage({
               Ready to book an eye test in {location.name}?
             </h2>
             <p className="text-white/70 mb-8 max-w-lg mx-auto">
-              Compare opticians, check real-time availability, and book your
-              appointment online in seconds. It&apos;s free.
+              Compare opticians, see availability where we can show it, and
+              book direct. It&apos;s free.
             </p>
             <Link
               href={`/search?postcode=${encodeURIComponent(location.postcode)}`}

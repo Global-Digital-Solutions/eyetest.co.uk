@@ -67,7 +67,7 @@ export function getClinicUrl(
 
 export const surgeryProviders: SurgeryProvider[] = [
   // =========================================================================
-  // NEW MEDICA (PREFERRED PARTNER)
+  // NEWMEDICA
   // =========================================================================
   {
     name: "Newmedica",
@@ -75,14 +75,14 @@ export const surgeryProviders: SurgeryProvider[] = [
     website: "https://www.newmedica.co.uk",
     about: "Newmedica is one of the UK's largest providers of specialist NHS and private ophthalmology services. Founded in 2007 by a former eye patient and a leading consultant ophthalmologist, Newmedica operates over 30 eye clinics and surgical centres across England. They care for more than 306,000 NHS and private patients per year, treating advanced eye conditions including cataracts, glaucoma, macular degeneration, and oculoplastics. 99% of patients would recommend them. All clinics are CQC-regulated, and Newmedica offers both NHS-funded and private self-pay/insurance treatment options. Headquartered at Forum 6, the Forum Parkway, Fareham, PO15 7PA.",
     brandColor: "#1a5276",
-    isPreferredPartner: true,
+    isPreferredPartner: false,
     storeCount: 39,
     nhsFunded: true,
     privateSelfPay: true,
     googleReview: { rating: 4.8, reviewCount: 1032, source: "Google" },
     keyFacts: [
-      "99% patient recommendation rate",
-      "Over 306,000 patients treated per year",
+      "99% of patients would recommend Newmedica, from its own patient surveys",
+      "Cares for more than 340,000 NHS and private patients a year",
       "All clinics CQC-regulated",
       "Both NHS and private treatment options",
       "Founded by eye patient and consultant ophthalmologist",
@@ -681,9 +681,9 @@ export function getProviderBySlug(slug: string): SurgeryProvider | undefined {
   return surgeryProviders.find((p) => p.slug === slug);
 }
 
-/** Returns the preferred partner provider */
-export function getPreferredPartner(): SurgeryProvider {
-  return surgeryProviders.find((p) => p.isPreferredPartner)!;
+/** Returns the preferred partner provider, if one is set (none at present) */
+export function getPreferredPartner(): SurgeryProvider | undefined {
+  return surgeryProviders.find((p) => p.isPreferredPartner);
 }
 
 /** Returns all clinics across all providers, with provider metadata attached */

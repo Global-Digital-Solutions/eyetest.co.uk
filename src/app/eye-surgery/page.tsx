@@ -328,7 +328,7 @@ export default function EyeSurgeryPage() {
 
             {/* Provider comparison cards */}
             <div className="space-y-5">
-              {surgeryProviders.map((provider) => (
+              {[...surgeryProviders].sort((a, b) => a.name.localeCompare(b.name)).map((provider) => (
                 <Link
                   key={provider.slug}
                   href={`/eye-surgery/providers/${provider.slug}`}

@@ -130,9 +130,9 @@ export default function OpticiansPage() {
             Compare UK Opticians
           </h1>
           <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto">
-            Find the best eye test near you. Compare services, prices, and
-            NHS availability across leading optician chains, then book
-            online in seconds.
+            Find an eye test near you. Compare services, prices and NHS
+            availability across leading optician chains, then book direct
+            with the optician.
           </p>
         </PageHero>
 
@@ -143,8 +143,8 @@ export default function OpticiansPage() {
               Featured Opticians
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Book appointments with these opticians directly through
-              eyetest.co.uk. Compare prices and availability in your area.
+              Find these opticians near you and book direct. Where we can show
+              appointment availability, we do.
             </p>
           </div>
 
@@ -363,7 +363,7 @@ export default function OpticiansPage() {
                 ),
                 title: "Book Online Instantly",
                 description:
-                  "Choose your preferred date and time, and book your eye test appointment in seconds.",
+                  "Choose a date and time and book direct with the optician. Where we can show availability, we do.",
               },
               {
                 icon: (

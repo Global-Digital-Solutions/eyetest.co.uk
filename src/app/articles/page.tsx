@@ -222,8 +222,8 @@ export default function ArticlesPage() {
               Ready to book your eye test?
             </h2>
             <p className="text-white/70 mb-8 max-w-lg mx-auto">
-              Find trusted opticians near you, compare prices, and book an
-              appointment online in seconds.
+              Find opticians near you, compare prices and book direct with
+              the optician.
             </p>
             <Link
               href="/search"

@@ -307,8 +307,8 @@ export default async function ArticlePage({
                     Find an optician near you
                   </h3>
                   <p className="text-sm text-gray-600 mb-4">
-                    Compare prices, check availability, and book an eye test
-                    online in seconds.
+                    Compare prices, see availability where we can show it, and
+                    book direct with the optician.
                   </p>
                   <Link
                     href="/search"

@@ -85,11 +85,11 @@ const eyeSurgeryLinks = {
     { label: "Diabetic Eye Disease", href: "/eye-surgery/diabetic-eye-disease" },
   ],
   providers: [
-    { label: "Newmedica", href: "/eye-surgery/providers/new-medica", preferred: true },
-    { label: "Spa Medica", href: "/eye-surgery/providers/spa-medica", preferred: false },
-    { label: "Optegra", href: "/eye-surgery/providers/optegra", preferred: false },
     { label: "CHEC", href: "/eye-surgery/providers/chec", preferred: false },
     { label: "Moorfields Private", href: "/eye-surgery/providers/moorfields-private", preferred: false },
+    { label: "Newmedica", href: "/eye-surgery/providers/new-medica", preferred: false },
+    { label: "Optegra", href: "/eye-surgery/providers/optegra", preferred: false },
+    { label: "Spa Medica", href: "/eye-surgery/providers/spa-medica", preferred: false },
   ],
 };
 

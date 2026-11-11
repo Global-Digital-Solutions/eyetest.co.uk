@@ -8,7 +8,7 @@ import { regions, getLocationsByRegion } from "@/data/locations";
 export const metadata: Metadata = {
   title: "Eye Test Locations Across the UK | eyetest.co.uk",
   description:
-    "Find and compare eye test appointments in every major UK city and town. Browse opticians by region, check availability, and book online in seconds.",
+    "Find and compare eye test appointments in every major UK city and town. Browse opticians by region, see availability where we can show it, and book direct.",
   keywords: [
     "eye test near me",
     "opticians near me",
@@ -199,7 +199,7 @@ export default function LocationsPage() {
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 We help you find great local opticians you didn&apos;t know
-                existed. Save hours searching and book instantly.
+                existed, and show availability where we can, so you can book direct.
               </p>
             </div>
 

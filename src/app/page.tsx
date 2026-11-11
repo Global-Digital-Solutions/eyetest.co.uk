@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "eyetest.co.uk — Find & Book Eye Tests Near You",
     description:
-      "Compare 2,400+ opticians across the UK. Find available appointments and book online in seconds.",
+      "Compare 2,400+ opticians across the UK. See availability where we can show it and book direct with the optician.",
     url: "https://www.eyetest.co.uk",
     siteName: "eyetest.co.uk",
     type: "website",

@@ -74,7 +74,7 @@ const faqs = [
   },
   {
     q: "Can I have an at-home eye test if I live in a care home?",
-    a: "Yes. Domiciliary opticians regularly visit residential care homes, nursing homes, and supported living facilities across the UK. Care home managers can arrange visits for multiple residents at once. Each resident receives an individual eye test, and results can be shared with the care home staff and GP with the patient's consent. Providers such as OutsideClinic and Specsavers Home Visits offer dedicated care home visiting programmes.",
+    a: "Yes. Domiciliary opticians regularly visit residential care homes, nursing homes, and supported living facilities across the UK. Care home managers can arrange visits for multiple residents at once. Each resident receives an individual eye test, and results can be shared with the care home staff and GP with the patient's consent. Ask the provider whether it visits care homes in your area.",
   },
   {
     q: "What equipment does the optometrist bring?",
@@ -94,12 +94,13 @@ const faqs = [
   },
   {
     q: "Are at-home eye tests available at weekends?",
-    a: "Availability varies by provider and region. Some domiciliary opticians offer Saturday appointments, and a smaller number offer Sunday visits. OutsideClinic and several independent providers offer weekend slots in many areas. It is best to ask about weekend availability when you book, as these appointments tend to fill up quickly. Weekday appointments are generally easier to arrange at short notice.",
+    a: "Availability varies by provider and region. Some domiciliary opticians offer Saturday appointments, and a smaller number offer Sunday visits. It is best to ask about weekend availability when you book, as these appointments tend to fill up quickly. Weekday appointments are generally easier to arrange at short notice.",
   },
 ];
 
 // ---------------------------------------------------------------------------
-// Provider comparison data (researched via Apify — June 2026)
+// Provider comparison data, checked against providers' own websites November 2026.
+// Listed alphabetically, with independent opticians last. No provider is ranked or recommended.
 // ---------------------------------------------------------------------------
 
 const providers = [
@@ -108,8 +109,8 @@ const providers = [
     type: "Specialist home visits",
     established: "1987",
     nhsFunded: true,
-    privateFee: "£60",
-    coverage: "England, Scotland & Wales",
+    privateFee: "Ask when booking",
+    coverage: "Ask when booking",
     hearingTests: true,
     careHomes: true,
     weekendAppts: true,
@@ -117,16 +118,16 @@ const providers = [
     phone: "0800 60 50 40",
     website: "outsideclinic.co.uk",
     trustpilot: "4.8",
-    recommended: true,
-    notes: "UK's largest home eye test provider. Over 1 million home visits since 1987. Also offers hearing tests. GOC-registered optometrists with advanced portable equipment.",
+    recommended: false,
+    notes: "At-home eye and hearing tests since 1987. OutsideClinic says it visits more than 100,000 people each year and that its at-home hearing tests are free.",
   },
   {
     name: "Specsavers Home Visits",
     type: "High-street chain",
     established: "2016",
     nhsFunded: true,
-    privateFee: "Varies",
-    coverage: "Wide UK coverage",
+    privateFee: "£60",
+    coverage: "Ask when booking",
     hearingTests: true,
     careHomes: true,
     weekendAppts: true,
@@ -135,7 +136,7 @@ const providers = [
     website: "specsavers.co.uk/home-visits",
     trustpilot: "—",
     recommended: false,
-    notes: "Backed by the UK's largest optician chain. Optometrist visits with an optical assistant. Growing network of domiciliary teams across the UK.",
+    notes: "Specsavers home visits, with a private home eye test at £60 or free if you qualify for an NHS-funded test.",
   },
   {
     name: "Boots Opticians",
@@ -195,11 +196,15 @@ const providers = [
 // ---------------------------------------------------------------------------
 
 const voucherValues = [
-  { band: "A", value: "£39.10", description: "Single-vision, low prescription" },
-  { band: "B", value: "£67.40", description: "Single-vision, higher prescription" },
-  { band: "C", value: "£89.00", description: "Bifocal lenses" },
-  { band: "D", value: "£215.50", description: "Complex or high-powered lenses" },
-];
+  { band: "A", value: "£42.40", description: "Single vision, low prescription" },
+  { band: "B", value: "£64.26", description: "Single vision, medium prescription" },
+  { band: "C", value: "£94.14", description: "Single vision, higher prescription" },
+  { band: "D", value: "£212.40", description: "Single vision, very high prescription" },
+  { band: "E", value: "£73.10", description: "Bifocal, low prescription" },
+  { band: "F", value: "£92.72", description: "Bifocal, medium prescription" },
+  { band: "G", value: "£120.48", description: "Bifocal, higher prescription" },
+  { band: "H", value: "£233.56", description: "Bifocal, very high or prism-controlled" },
+]
 
 // ---------------------------------------------------------------------------
 // Benefits data
@@ -501,143 +506,10 @@ export default function AtHomeEyeTestsPage() {
                 Compare at-home eye test providers
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Several organisations offer domiciliary eye care across the UK.
-                We&rsquo;ve researched the main providers to help you choose the
-                right one for your needs.
+                Several organisations offer NHS-funded and private eye tests at
+                home across the UK. Here are the main providers, listed in
+                alphabetical order.
               </p>
-            </div>
-
-            {/* ---- OutsideClinic — 2026 Recommended Provider ---- */}
-            <div className="relative mb-8">
-              {/* Recommended badge */}
-              <div className="absolute -top-4 left-6 sm:left-8 z-10">
-                <span className="inline-flex items-center gap-1.5 bg-[var(--color-primary)] text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg shadow-[var(--color-primary)]/25 uppercase tracking-wider">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
-                  </svg>
-                  2026 Recommended Provider
-                </span>
-              </div>
-
-              <div className="bg-white rounded-2xl border-2 border-[var(--color-primary)] shadow-lg shadow-[var(--color-primary)]/5 overflow-hidden">
-                <div className="p-6 sm:p-8 lg:p-10">
-                  <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-10">
-                    {/* Left: Provider info */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-3 mb-4 mt-2">
-                        <h3
-                          className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)]"
-                          style={{ fontFamily: "var(--font-display)" }}
-                        >
-                          OutsideClinic
-                        </h3>
-                        <span className="text-xs bg-[var(--color-nhs-blue)]/10 text-[var(--color-nhs-blue)] px-3 py-1 rounded-full font-semibold">
-                          NHS-funded
-                        </span>
-                      </div>
-
-                      <p className="text-gray-600 mb-6 leading-relaxed">
-                        The UK&rsquo;s largest and longest-established home eye
-                        test provider, OutsideClinic has been bringing
-                        professional eye care to people&rsquo;s homes since
-                        1987. With a team of GOC-registered optometrists
-                        covering England, Scotland and Wales, they&rsquo;ve
-                        carried out over a million home visits and maintain a
-                        4.8-star Trustpilot rating.
-                      </p>
-
-                      {/* Stats row */}
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-                        {[
-                          { value: "4.8★", label: "Trustpilot" },
-                          { value: "Since 1987", label: "Established" },
-                          { value: "1M+", label: "Home visits" },
-                          { value: "GB-wide", label: "Coverage" },
-                        ].map((stat) => (
-                          <div
-                            key={stat.label}
-                            className="bg-[var(--color-primary)]/5 rounded-xl px-4 py-3 text-center"
-                          >
-                            <div className="text-lg font-bold text-[var(--color-primary)]">
-                              {stat.value}
-                            </div>
-                            <div className="text-xs text-gray-500 mt-0.5">
-                              {stat.label}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Key features */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                        {[
-                          "Free NHS-funded home eye tests",
-                          "Also offers home hearing tests",
-                          "Care home visiting programmes",
-                          "Glasses delivered to your door",
-                          "Weekend appointments available",
-                          "No GP referral needed",
-                        ].map((feat) => (
-                          <div key={feat} className="flex items-center gap-2">
-                            <svg className="w-4 h-4 text-[var(--color-success)] shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                            <span className="text-sm text-gray-700">{feat}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Right: CTA card */}
-                    <div className="lg:w-72 xl:w-80 shrink-0">
-                      <div className="bg-gradient-to-br from-[var(--color-primary)]/5 to-[var(--color-primary)]/10 rounded-xl p-6 text-center">
-                        <div className="text-3xl font-bold text-[var(--color-primary)] mb-1">
-                          FREE
-                        </div>
-                        <div className="text-sm text-gray-600 mb-1">
-                          for NHS-eligible patients
-                        </div>
-                        <div className="text-xs text-gray-400 mb-5">
-                          or &pound;60 private call-out fee
-                        </div>
-
-                        <a
-                          href="#request-home-test"
-                          className="block w-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-semibold text-sm px-6 py-3.5 rounded-full transition-all hover:shadow-lg mb-3"
-                        >
-                          Request a home eye test
-                        </a>
-                        <a
-                          href="https://www.outsideclinic.co.uk"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs text-[var(--color-primary)] hover:underline"
-                        >
-                          Visit outsideclinic.co.uk &rarr;
-                        </a>
-
-                        {/* Trustpilot mini review */}
-                        <div className="mt-5 pt-5 border-t border-[var(--color-primary)]/10">
-                          <div className="flex justify-center gap-0.5 mb-2">
-                            {[1, 2, 3, 4, 5].map((star) => (
-                              <svg key={star} className={`w-4 h-4 ${star <= 4 ? "text-yellow-400" : "text-yellow-300"}`} fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                              </svg>
-                            ))}
-                          </div>
-                          <p className="text-xs text-gray-500 italic">
-                            &ldquo;Outstanding service. The optometrist was
-                            wonderful with Dad.&rdquo;
-                          </p>
-                          <p className="text-xs text-gray-400 mt-1">
-                            — Trustpilot review
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* ---- Full comparison table ---- */}
@@ -661,19 +533,16 @@ export default function AtHomeEyeTestsPage() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-100">
-                  {providers.map((p) => (
+                  {[...providers]
+                    .sort((x, y) => (x.name.startsWith("Independent") ? 1 : y.name.startsWith("Independent") ? -1 : x.name.localeCompare(y.name)))
+                    .map((p) => (
                     <tr
                       key={p.name}
-                      className={`hover:bg-gray-50 transition-colors ${p.recommended ? "bg-[var(--color-primary)]/[0.02]" : ""}`}
+                      className="hover:bg-gray-50 transition-colors"
                     >
                       <td className="px-5 py-4 whitespace-nowrap">
                         <div className="flex items-center gap-2">
                           <span className="font-medium text-[var(--color-navy)]">{p.name}</span>
-                          {p.recommended && (
-                            <svg className="w-4 h-4 text-[var(--color-primary)]" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
-                            </svg>
-                          )}
                         </div>
                         <div className="text-xs text-gray-400 mt-0.5">{p.type}</div>
                       </td>
@@ -716,9 +585,10 @@ export default function AtHomeEyeTestsPage() {
             </div>
 
             <p className="mt-6 text-sm text-gray-500 text-center">
-              eyetest.co.uk is an independent comparison site. Provider rankings
-              reflect editorial assessment of service quality, coverage, and
-              patient reviews. Last researched June 2026.
+              Providers are listed in alphabetical order and none is ranked or
+              recommended. Details were checked against each provider&apos;s own
+              website in November 2026 and can change, so please confirm with the
+              provider when you book.
             </p>
           </div>
         </section>
@@ -1201,8 +1071,10 @@ export default function AtHomeEyeTestsPage() {
               </h3>
               <p className="text-sm text-gray-600 mb-4">
                 If you are eligible for an NHS optical voucher, its value depends
-                on the complexity of your prescription. The voucher is applied
-                towards the cost of your glasses.
+                on your prescription. The voucher is applied towards the cost of
+                your glasses. These are the NHS England values shown on nhs.uk
+                when we checked in November 2026; Scotland, Wales and Northern
+                Ireland set their own.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {voucherValues.map((v) => (
@@ -1229,7 +1101,7 @@ export default function AtHomeEyeTestsPage() {
                 Reputable home visit providers do not charge hidden fees or
                 call-out charges for NHS-eligible patients. If you are unsure
                 whether you qualify for free NHS eye care, speak to the provider
-                when you book &mdash; they will be able to confirm your
+                when you book. They will be able to confirm your
                 eligibility over the phone.
               </p>
             </div>

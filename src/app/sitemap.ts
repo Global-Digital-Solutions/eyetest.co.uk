@@ -1,3 +1,4 @@
+import { SNAPSHOT_DATE } from "@/data/store-snapshot";
 import type { MetadataRoute } from "next";
 import { getAllSlugs as getAllEyeTestSlugs } from "@/data/eye-tests";
 import { getAllConditionSlugs, getAllGuideSlugs } from "@/data/eye-health";
@@ -145,8 +146,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     getAllOpticianSlugs().flatMap((brand) =>
       getAllLocationSlugs().map((location) => ({
         url: `${BASE}/opticians/${brand}/${location}`,
-        // Town pages pull prices from the brand data, so share its date
-        lastModified: getOpticianBySlug(brand)?.dateModified ?? NOW,
+        // Town pages use the brand data and the store snapshot: take the later date
+        lastModified: [getOpticianBySlug(brand)?.dateModified ?? SNAPSHOT_DATE, SNAPSHOT_DATE].sort().pop()!,
         changeFrequency: "weekly" as const,
         priority: 0.5,
       }))

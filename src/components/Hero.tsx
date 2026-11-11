@@ -64,8 +64,8 @@ export function Hero() {
             <span className="text-[var(--color-primary-light)]">near you</span>
           </h1>
           <p className="text-base sm:text-lg text-white/70 mb-8 max-w-lg mx-auto">
-            Compare thousands of opticians across the UK. Check availability and
-            book your appointment online in seconds.
+            Compare thousands of opticians across the UK. See availability where
+            we can show it and book direct with the optician.
           </p>
 
           {/* Search form */}
