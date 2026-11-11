@@ -1226,7 +1226,7 @@ export default async function CityPage({
                   </li>
                   <li>
                     <Link
-                      href="/articles/childrens-eye-tests-parents-guide"
+                      href="/eye-tests/childrens-eye-test"
                       className="text-sm text-gray-600 hover:text-[var(--color-primary)] transition-colors"
                     >
                       Children&apos;s eye tests: parent&apos;s guide

@@ -57,7 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((slug) => !excludedEyeTestSlugs.has(slug))
     .map((slug) => ({
       url: `${BASE}/eye-tests/${slug}`,
-      lastModified: NOW,
+      lastModified: getQueryByCanonicalPath(`/eye-tests/${slug}`)?.dateModified ?? NOW,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     }));

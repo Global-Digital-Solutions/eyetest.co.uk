@@ -1227,7 +1227,7 @@ Your optometrist will explain each part as they go. Some opticians also offer ex
         heading: "Eye tests for children",
         body: `Children's eye tests follow the same steps but are adapted to the child's age. The RNIB notes that instead of reading letters you may be asked to match symbols, which helps with children who cannot read yet. Children under 16 are entitled to a free NHS sight test.`,
         links: [
-          { label: "Children's eye tests", href: "/find/childrens-eye-test-guide" },
+          { label: "Children's eye tests", href: "/eye-tests/childrens-eye-test" },
         ],
       },
     ],
@@ -1386,7 +1386,7 @@ Your eyes rarely hurt when something is wrong with them, which is why the NHS sa
         links: [
           { label: "Who gets a free NHS eye test", href: "/find/free-eye-test" },
           { label: "Free eye test over 60", href: "/find/free-eye-test-over-60" },
-          { label: "Children's eye tests", href: "/find/childrens-eye-test-guide" },
+          { label: "Children's eye tests", href: "/eye-tests/childrens-eye-test" },
         ],
       },
       {
@@ -1712,42 +1712,142 @@ It is important to understand that a sight test and a contact lens appointment a
   {
     slug: "childrens-eye-test-guide",
     keyword: "children's eye test",
-    title: "Children's Eye Tests — Complete Parent's Guide (UK)",
+    title: "Children's Eye Test UK: Free NHS Tests, When to Book and What Happens",
+    seoTitle: "Children's Eye Test UK 2026: Free on the NHS, Ages and What to Expect",
+    seoDescription:
+      "Children's eye tests are free on the NHS for under 16s. When your child's eyes are checked, school vision screening, what happens at the optician and signs to look for.",
+    h1: "Children's Eye Tests: A Parent's Guide",
+    dateModified: "2026-11-11",
+    canonicalPath: "/eye-tests/childrens-eye-test",
+    parentCrumbs: [{ label: "Eye Tests", href: "/eye-tests" }],
     category: "specialist",
     shortDescription:
-      "A comprehensive guide for parents on children's eye tests in the UK, including when to book, what to expect, and signs of vision problems.",
-    content: `Regular eye tests are essential for children's development, learning, and wellbeing. All children in the UK are entitled to free NHS eye tests, and the first test should happen before your child starts school, ideally around age three or four.
+      "Free NHS eye tests for children, when your child's eyes are checked, what happens at the optician and the signs that mean you should book.",
+    content: `Free NHS sight tests are available at opticians for children under 16 and for young people under 19 in full-time education. If you qualify, the NHS pays for the test, so there is nothing to pay at the optician.
 
-Good vision is critical for learning. Around 80% of what children learn comes through their eyes, and undetected vision problems can significantly affect their progress at school. Common childhood eye conditions include amblyopia (lazy eye), which affects around 1 in 50 children and is most effectively treated before age seven; squint (strabismus), where the eyes do not look in the same direction; long-sightedness, short-sightedness, and astigmatism; and colour vision deficiency.
+Children may not realise they have a vision problem, so the NHS says routine checks matter: without them a problem may not be spotted, which can affect a child's development and education. The sooner a problem is found, the sooner your child can get treatment.
 
-Signs that your child may have a vision problem include sitting too close to the television or holding books very close, squinting or tilting their head to see, rubbing their eyes frequently, one eye turning inward or outward, difficulty concentrating or completing tasks, avoiding reading or close work, complaining of headaches, and poor performance at school. However, many children with vision problems show no obvious signs — which is why regular testing is so important.
-
-During a children's eye test, the optometrist uses age-appropriate techniques. For younger children, this includes picture matching games, shape recognition, and objective measurement techniques that do not require verbal responses. For older children, standard letter charts are used. The optometrist will also check how well the eyes work together (binocular vision), look for squint or lazy eye, and examine the general health of the eyes. The appointment typically takes 20 to 40 minutes.
-
-Children should have annual eye tests throughout their school years. If glasses are prescribed, an NHS optical voucher is provided to help with the cost. Most opticians offer a dedicated range of children's frames that are durable, flexible, and designed for active young wearers — many are fully covered by the voucher value.`,
+Children can have an eye test at any age. The NHS says they do not need to be able to read, or even speak. A test is particularly important if there is a family history of childhood eye problems such as a squint or lazy eye.`,
+    keyFacts: [
+      { label: "Cost", value: "Free on the NHS for under 16s" },
+      { label: "16 to 18", value: "Free in full-time education" },
+      { label: "Age to start", value: "Any age, no reading needed" },
+      { label: "Glasses", value: "NHS optical voucher for under 16s" },
+    ],
+    sections: [
+      {
+        heading: "When your child's eyes are checked",
+        body: `The NHS checks children's eyes at several points as they grow:`,
+        table: {
+          caption: "NHS eye checks for babies and children, checked November 2026",
+          headers: ["Age", "Check"],
+          rows: [
+            ["Within 72 hours of birth", "Eyes checked for obvious problems in the newborn physical examination"],
+            ["6 to 8 weeks", "Follow-up physical examination"],
+            ["Around 1 year, or 2 to 2½ years", "You may be asked about your child's eyesight at health and development reviews"],
+            ["Around 4 or 5 years", "Vision screening, usually at school, though not in every area"],
+          ],
+        },
+      },
+      {
+        heading: "School vision screening is not a full eye test",
+        body: `Vision screening around age 4 or 5 checks for reduced vision in one or both eyes. The NHS says it does not happen in all areas, and if your child's vision is not checked at school you should take them to an optician for an eye examination. You can book a free NHS eye test at an optician at any time if you have concerns.`,
+        links: [
+          { label: "Find an optician near you", href: "/locations" },
+        ],
+      },
+      {
+        heading: "What happens at a children's eye test",
+        body: `The tests depend on your child's age. The NHS describes:`,
+        items: [
+          "Following an object with their eyes, for babies and children who cannot speak yet",
+          "Pictures or symbols instead of letters, for children who cannot recognise letters",
+          "A letter chart (Snellen or LogMAR) once your child can read or match letters",
+          "Range of movement tests, to check how well the eye muscles work",
+          "A refraction test by an optometrist to see if your child needs glasses. Your child may be given eye drops first to widen their pupils",
+          "A colour vision test, usually in older children if a problem is suspected",
+        ],
+        links: [
+          { label: "What happens during an eye test", href: "/articles/what-happens-during-an-eye-test" },
+          { label: "Colour blind test", href: "/find/colour-blind-test" },
+        ],
+      },
+      {
+        heading: "Signs your child may need an eye test",
+        body: `The NHS lists signs of a possible eye problem in older children:`,
+        items: [
+          "Eyes not pointing in the same direction",
+          "Complaining of headaches or eye strain",
+          "Problems reading, such as holding books close or losing their place",
+          "Problems with hand-eye coordination, such as ball games",
+          "Being unusually clumsy",
+          "Rubbing their eyes regularly",
+          "Sitting too close to the TV",
+        ],
+      },
+      {
+        heading: "Eye problems a test can find",
+        body: `Eye tests can pick up short-sightedness, long-sightedness and astigmatism, as well as lazy eye (amblyopia), squint (strabismus), childhood cataracts and colour vision deficiency, according to the NHS.`,
+        links: [
+          { label: "Squint (strabismus)", href: "/eye-health/conditions/strabismus" },
+          { label: "Colour blindness", href: "/eye-health/conditions/colour-blindness" },
+        ],
+      },
+      {
+        heading: "Free glasses help: NHS optical vouchers",
+        body: `Children under 16, and young people aged 16 to 18 in full-time education, are also entitled to an NHS optical voucher towards the cost of glasses or contact lenses. Many opticians have ranges of children's glasses that the voucher covers in full. Ask the optician what is included.`,
+        links: [
+          { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
+          { label: "Free eye tests for children", href: "/find/free-eye-test-children" },
+        ],
+      },
+    ],
     faqs: [
       {
-        question: "At what age should my child have their first eye test?",
+        question: "Are children's eye tests free?",
         answer:
-          "Before starting school, ideally at age three or four. However, if you have any concerns about your baby's or toddler's vision — such as a squint, unusual eye movements, or a white reflection in the pupil — seek advice immediately, regardless of age.",
+          "Yes. Free NHS sight tests are available at opticians for children under 16 and for young people under 19 in full-time education.",
       },
       {
-        question: "My child passed their school vision screening — do they still need an eye test?",
+        question: "What age can a child have an eye test?",
         answer:
-          "Yes. School screenings are basic checks that can miss many conditions. They are not a substitute for a full eye examination. Regular optician eye tests are recommended even if a school screening result was normal.",
+          "Any age. The NHS says children do not need to be able to read, or even speak, to have an eye test.",
       },
       {
-        question: "How do I prepare my child for an eye test?",
+        question: "Does my child need an eye test if they had school vision screening?",
         answer:
-          "Explain that it is a fun visit where someone will look at their eyes and ask them about shapes and pictures. Reassure them it will not hurt. Bring their current glasses if they have any. The optometrist is experienced with children and will put them at ease.",
+          "Screening checks for reduced vision but is not a full eye examination, and it does not happen in every area. If you have any concerns, book an eye test at an optician.",
+      },
+      {
+        question: "How often should my child have an eye test?",
+        answer:
+          "Follow your optometrist's advice. The NHS recommends eye tests every 2 years for most people, and children's eyes may need checking more often while they are still developing.",
+      },
+      {
+        question: "Will my child have eye drops?",
+        answer:
+          "Sometimes. The NHS says a child may be given drops to widen their pupils before a refraction test, so the back of the eye can be seen more clearly.",
+      },
+      {
+        question: "Can I get free glasses for my child?",
+        answer:
+          "Children under 16 are entitled to an NHS optical voucher towards glasses or contact lenses. Many opticians offer children's frames fully covered by the voucher.",
       },
     ],
     relatedQueries: [
       "free-eye-test-children",
-      "eye-test-what-to-expect",
       "nhs-optical-voucher",
+      "colour-blind-test",
+      "eye-test-what-to-expect",
     ],
-    ctaText: "Book a free children's eye test",
+    ctaText: "Find an optician near you for a free children's eye test",
+    disclaimer:
+      "This page is general information, not medical advice. If you are worried about your child's eyes, see a GP or an optician.",
+    sources: [
+      { label: "NHS: Eye tests for children", url: "https://www.nhs.uk/tests-and-treatments/eye-tests-in-children/" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+      { label: "NHS: Visiting an optician", url: "https://www.nhs.uk/nhs-services/opticians/visiting-an-optician/" },
+    ],
   },
   {
     slug: "glaucoma-test",

@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import { getQueryByCanonicalPath } from "@/data/search-queries";
+import { QueryPageView, queryMetadata } from "@/components/QueryPageView";
 import {
   eyeTests,
   getTestBySlug,
@@ -30,6 +32,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const rebuilt = getQueryByCanonicalPath(`/eye-tests/${slug}`);
+  if (rebuilt) return queryMetadata(rebuilt);
   const test = getTestBySlug(slug);
 
   if (!test) {
@@ -75,6 +79,8 @@ export default async function EyeTestPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const rebuilt = getQueryByCanonicalPath(`/eye-tests/${slug}`);
+  if (rebuilt) return <QueryPageView query={rebuilt} />;
   const test = getTestBySlug(slug);
 
   if (!test) {

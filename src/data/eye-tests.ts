@@ -132,7 +132,7 @@ You do not need to wait until your child can read to book an eye test. Optometri
       "The optometrist may use drops to dilate the pupils for a more thorough examination if needed",
       "Results and any referral recommendations are discussed with the parent or guardian",
     ],
-    frequency: "Annually for school-age children; more often if a problem is detected or being monitored",
+    frequency: "As your optometrist advises. The NHS recommends eye tests every 2 years for most people, and children may need them more often",
     icon: "child",
     relatedTests: [
       "nhs-eye-test",

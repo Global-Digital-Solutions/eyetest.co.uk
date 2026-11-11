@@ -35,7 +35,7 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 ## Eye Test Types
 - [Standard Eye Test](https://www.eyetest.co.uk/eye-tests/standard-eye-test)
 - [NHS Eye Test](https://www.eyetest.co.uk/eye-tests/nhs-eye-test)
-- [Children's Eye Test](https://www.eyetest.co.uk/eye-tests/childrens-eye-test)
+- [Children's Eye Test](https://www.eyetest.co.uk/eye-tests/childrens-eye-test): Free on the NHS for under 16s (and 16 to 18 in full-time education), NHS check ages from birth to school screening, what happens at the optician and signs to look for
 - [Contact Lens Fitting & Check-up](https://www.eyetest.co.uk/eye-tests/contact-lens-fitting)
 - [OCT Scan (Optical Coherence Tomography)](https://www.eyetest.co.uk/eye-tests/oct-scan)
 - [Visual Field Test (Perimetry)](https://www.eyetest.co.uk/eye-tests/visual-field-test)
@@ -100,7 +100,6 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 
 ## Articles
 - [10 Signs You Need an Eye Test](https://www.eyetest.co.uk/articles/signs-you-need-an-eye-test)
-- [Children’s Eye Tests: The Complete Parent’s Guide](https://www.eyetest.co.uk/articles/childrens-eye-tests-parents-guide)
 - [Understanding Your Eye Test Results & Prescription](https://www.eyetest.co.uk/articles/understanding-your-eye-test-results)
 - [NHS vs Private Eye Tests: What’s the Difference?](https://www.eyetest.co.uk/articles/nhs-vs-private-eye-tests)
 
@@ -230,7 +229,6 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [OCT Scan Cost UK](https://www.eyetest.co.uk/find/oct-scan-cost): How much is an OCT eye scan
 - [Eye Test for Driving](https://www.eyetest.co.uk/find/eye-test-for-driving): DVLA standards and where to get tested
 - [Contact Lens Eye Test](https://www.eyetest.co.uk/find/contact-lens-eye-test): Fitting, check-ups and cost
-- [Children's Eye Tests](https://www.eyetest.co.uk/find/childrens-eye-test-guide): Complete parent's guide
 - [Glaucoma Test](https://www.eyetest.co.uk/find/glaucoma-test): What it involves, cost and where to get tested
 - [Colour Blind Test](https://www.eyetest.co.uk/find/colour-blind-test): How to get a colour vision check at a UK optician (not part of the routine NHS eye test, but you can ask for it), the Ishihara and colour arrangement tests, signs in children, and DVLA rules
 - [Blurry Vision Causes](https://www.eyetest.co.uk/find/blurry-vision-causes): When to see an optician

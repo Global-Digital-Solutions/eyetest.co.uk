@@ -492,6 +492,7 @@ Whatever you decide, the most important thing is to have your eyes tested regula
 /** Articles merged into another page, and where they now live */
 export const MOVED_ARTICLES: Record<string, string> = {
   "how-often-should-you-have-an-eye-test": "/eye-health/guides/how-often-should-you-have-an-eye-test",
+  "childrens-eye-tests-parents-guide": "/eye-tests/childrens-eye-test",
 };
 
 /** Articles still published at /articles/{slug} */
