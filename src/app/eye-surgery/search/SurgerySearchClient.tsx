@@ -44,8 +44,10 @@ function getProviderBrandColor(slug: string): string {
   return providerMap.get(slug)?.brandColor ?? "#0ea5a0";
 }
 
-function getProviderGoogleReview(slug: string) {
-  return providerMap.get(slug)?.googleReview ?? null;
+function getProviderGoogleReview(slug: string): { rating: number; reviewCount: number } | null {
+  // Brand-wide ratings hidden until per-clinic, attributed ratings are available
+  void slug;
+  return null;
 }
 
 function isPreferredPartner(slug: string): boolean {

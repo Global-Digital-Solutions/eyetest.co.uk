@@ -10,6 +10,12 @@ import {
 } from "@/data/surgery-providers";
 import { getConditionBySlug } from "@/data/surgery-conditions";
 
+// Brand-wide "Google" ratings are hidden: Google rates each clinic separately,
+// so a single figure per provider cannot be traced to a source. Re-enable only
+// with per-clinic ratings from the Google Places API, shown with attribution
+// and never as review markup.
+const SHOW_GOOGLE_RATINGS = false;
+
 // ---------------------------------------------------------------------------
 // Static generation
 // ---------------------------------------------------------------------------
@@ -35,7 +41,7 @@ export async function generateMetadata({
   }
 
   const title = `${provider.name} — Eye Surgery, Prices & Clinic Locations`;
-  const description = `${provider.name}: ${provider.storeCount} UK clinics. ${provider.nhsFunded ? "NHS-funded and private" : "Private"} eye surgery including ${provider.services.map((s) => s.name).slice(0, 3).join(", ")}. ${provider.googleReview.rating}★ Google rating from ${provider.googleReview.reviewCount.toLocaleString()}+ reviews. Compare services and book online.`;
+  const description = `${provider.name}: ${provider.storeCount} UK clinics. ${provider.nhsFunded ? "NHS-funded and private" : "Private"} eye surgery including ${provider.services.map((s) => s.name).slice(0, 3).join(", ")}. Compare services and clinics near you.`;
 
   return {
     title,
@@ -169,13 +175,6 @@ export default async function SurgeryProviderPage({
       name: "United Kingdom",
     },
     numberOfLocations: provider.storeCount,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: provider.googleReview.rating,
-      reviewCount: provider.googleReview.reviewCount,
-      bestRating: 5,
-      worstRating: 1,
-    },
     medicalSpecialty: "Ophthalmology",
     availableService: provider.services.map((service) => ({
       "@type": "MedicalProcedure",
@@ -342,6 +341,7 @@ export default async function SurgeryProviderPage({
               {/* Right: Floating stat cards */}
               <div className="flex flex-wrap gap-3 lg:gap-4">
                 {/* Rating card */}
+                {SHOW_GOOGLE_RATINGS && (
                 <div className="bg-white/[0.1] backdrop-blur-md border border-white/[0.12] rounded-2xl px-5 py-4 text-center min-w-[100px]">
                   <div className="flex items-center justify-center gap-1.5 mb-1">
                     <svg className="w-5 h-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
@@ -351,6 +351,7 @@ export default async function SurgeryProviderPage({
                   </div>
                   <p className="text-xs text-white/50 font-medium">{provider.googleReview.reviewCount.toLocaleString()} reviews</p>
                 </div>
+                )}
 
                 {/* Clinics card */}
                 <div className="bg-white/[0.1] backdrop-blur-md border border-white/[0.12] rounded-2xl px-5 py-4 text-center min-w-[100px]">
@@ -507,6 +508,7 @@ export default async function SurgeryProviderPage({
               {/* Sidebar */}
               <div className="space-y-6">
                 {/* Google Review Badge */}
+                {SHOW_GOOGLE_RATINGS && (
                 <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <svg
@@ -546,6 +548,7 @@ export default async function SurgeryProviderPage({
                     {provider.googleReview.reviewCount.toLocaleString()} reviews
                   </p>
                 </div>
+                )}
 
                 {/* NHS / Private badges */}
                 <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">

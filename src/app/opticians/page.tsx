@@ -75,17 +75,7 @@ export default function OpticiansPage() {
             name: "UK stores",
             value: o.storeCount,
           },
-          ...(o.rating && o.reviewCount
-            ? {
-                aggregateRating: {
-                  "@type": "AggregateRating",
-                  ratingValue: o.rating,
-                  reviewCount: o.reviewCount,
-                  bestRating: 5,
-                  worstRating: 1,
-                },
-              }
-            : {}),
+          // Third-party ratings are not marked up as reviews of this page
         },
       })),
     },

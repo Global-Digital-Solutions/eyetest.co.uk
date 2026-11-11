@@ -7,6 +7,12 @@ import { SurgeryCallout } from "@/components/SurgeryCallout";
 import { surgeryProviders } from "@/data/surgery-providers";
 import { surgeryConditions } from "@/data/surgery-conditions";
 
+// Brand-wide "Google" ratings are hidden: Google rates each clinic separately,
+// so a single figure per provider cannot be traced to a source. Re-enable only
+// with per-clinic ratings from the Google Places API, shown with attribution
+// and never as review markup.
+const SHOW_GOOGLE_RATINGS = false;
+
 // Provider card images keyed by slug
 const providerImages: Record<string, string> = {
   "new-medica": "/images/surgery/new-medica.jpg",
@@ -454,6 +460,7 @@ export default function EyeSurgeryPage() {
                         </div>
 
                         {/* Google review score */}
+                        {SHOW_GOOGLE_RATINGS && (
                         <div className="flex items-center gap-2 shrink-0 bg-gray-50 rounded-xl px-3 py-2">
                           <div className="flex flex-col items-center">
                             <div className="flex items-center gap-1">
@@ -500,6 +507,7 @@ export default function EyeSurgeryPage() {
                             ))}
                           </div>
                         </div>
+                        )}
                       </div>
 
                       {/* Key facts */}
@@ -530,6 +538,7 @@ export default function EyeSurgeryPage() {
 
                       {/* CTA row */}
                       <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                        {SHOW_GOOGLE_RATINGS && (
                         <div className="flex items-center gap-1">
                           {[1, 2, 3, 4, 5].map((star) => (
                             <svg
@@ -550,6 +559,7 @@ export default function EyeSurgeryPage() {
                             Google Reviews
                           </span>
                         </div>
+                        )}
                         <span
                           className="inline-flex items-center gap-1.5 text-sm font-semibold px-5 py-2 rounded-full transition-all group-hover:gap-2.5"
                           style={{
