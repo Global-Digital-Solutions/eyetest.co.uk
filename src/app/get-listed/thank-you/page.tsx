@@ -44,7 +44,9 @@ export default async function ThankYouPage({
 
     if (data) {
       practiceName = data.practice_name;
-      postcode = data.postcode;
+      // Show postcodes the standard way ("SL39AU" -> "SL3 9AU")
+      const pc = String(data.postcode || "").replace(/\s+/g, "").toUpperCase();
+      postcode = pc.length > 3 ? `${pc.slice(0, -3)} ${pc.slice(-3)}` : pc;
       audiologyAddon = data.audiology_addon ?? false;
       isFeatured = data.active === true;
     }
