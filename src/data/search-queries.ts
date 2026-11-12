@@ -5045,6 +5045,122 @@ Optometrists and dispensing opticians are both regulated by the General Optical 
       { label: "Association of Optometrists: The optical professions and how they are regulated", url: "https://www.aop.org.uk/campaigns-and-policy/news-and-media/media-centre/resources-for-journalists/optical-professions-and-regulation" },
     ],
   },
+  {
+    slug: "laser-eye-surgery-cost",
+    keyword: "laser eye surgery cost",
+    title: "Laser Eye Surgery Cost UK: Prices From Each Clinic",
+    seoTitle: "Laser Eye Surgery Cost UK: Clinic Prices Compared",
+    seoDescription:
+      "How much laser eye surgery costs in the UK, with prices from Optical Express, Optimax, Optegra and Moorfields Private checked on each clinic's own website.",
+    h1: "Laser Eye Surgery Cost in the UK",
+    dateModified: "2026-11-12",
+    canonicalPath: "/articles/laser-eye-surgery-cost",
+    parentCrumbs: [{ label: "Articles", href: "/articles" }],
+    category: "cost",
+    shortDescription:
+      "Laser eye surgery prices from four UK providers, checked on their own websites, plus what affects the price and what to check before you book.",
+    content: `Laser eye surgery is usually only available privately in the UK, so you pay the clinic directly. The NHS says you may be able to have it on the NHS only if you have an eye condition that could lead to loss of vision, or sight problems that glasses or contact lenses cannot correct.
+
+Prices vary between clinics and between types of treatment. Some clinics charge one fixed price, while others start from a lower price that depends on your prescription. The prices below are taken from each clinic's own website.`,
+    keyFacts: [
+      { label: "Price range", value: "From £549 per eye to £5,682 for both eyes" },
+      { label: "On the NHS", value: "Not usually" },
+      { label: "Price depends on", value: "Treatment type and, at some clinics, your prescription" },
+      { label: "Prices checked", value: "12 November 2026" },
+    ],
+    sections: [
+      {
+        heading: "Laser eye surgery prices by clinic",
+        body: `These are the prices each provider showed on its own website when we checked. Always confirm the price at your consultation, as it may change.`,
+        table: {
+          headers: ["Clinic", "Treatment", "Price"],
+          rows: [
+            ["Optical Express", "LASEK", "From £549 per eye, depending on prescription"],
+            ["Optical Express", "LASIK", "From £1,295 per eye, depending on prescription"],
+            ["Optical Express", "LASEK or LASIK Advanced", "From £1,495 per eye"],
+            ["Optimax", "LASIK or LASEK", "£1,295 per eye, fixed regardless of prescription"],
+            ["Optegra", "LASEK", "£1,495 per eye"],
+            ["Optegra", "LASIK", "£2,095 per eye"],
+            ["Optegra", "ReLEx SMILE", "£2,695 per eye"],
+            ["Optegra", "Presbyond", "£2,995 per eye"],
+            ["Moorfields Private", "Laser eye surgery package", "£5,682 for both eyes"],
+          ],
+        },
+      },
+      {
+        heading: "Why prices vary",
+        items: [
+          "The type of treatment, such as LASEK, LASIK or SMILE",
+          "Your prescription. Some clinics' lowest prices only apply to some prescriptions, while others charge one fixed price",
+          "Whether the price is per eye or for both eyes",
+          "What is included, such as consultations, aftercare visits, eye drops and any further treatment",
+        ],
+      },
+      {
+        heading: "Types of laser eye surgery",
+        body: `With laser eye surgery, a surgeon uses a laser to change the shape of the clear front surface of your eye (the cornea). LASIK creates a thin flap in the cornea, LASEK treats the surface layer without a flap, and SMILE removes a small piece of tissue through a tiny opening. Your surgeon will advise which, if any, suits your eyes. Some people are better suited to lens surgery instead.`,
+        links: [
+          { label: "Laser eye surgery guide", href: "/eye-surgery/laser-eye-surgery" },
+        ],
+      },
+      {
+        heading: "What to check before you book",
+        body: `The Royal College of Ophthalmologists publishes a checklist for people considering laser eye surgery. It suggests checking that:`,
+        items: [
+          "Your surgeon is on the GMC specialist register for ophthalmology",
+          "Your surgeon holds the Royal College of Ophthalmologists' Certificate in Laser Refractive Surgery (CertLRS)",
+          "The clinic is registered with the Care Quality Commission (CQC) in England",
+          "You meet the surgeon before the day of surgery and know who to contact if there are problems afterwards",
+        ],
+      },
+      {
+        heading: "Side effects and risks",
+        body: `The NHS says most people have some side effects, such as glare, halos, blurred vision or dry, sore eyes, which normally improve within a few months. Less often there can be complications, including under or over-correction, needing a second operation, or, rarely, serious loss of vision. Your surgeon should explain the risks for your eyes before you agree to treatment.`,
+      },
+      {
+        heading: "Before laser eye surgery: have an eye test",
+        body: `An up-to-date eye test shows your current prescription and checks the health of your eyes. Many high street opticians, including Boots Opticians, Specsavers and Vision Express, can do this, and some people find a new pair of glasses or contact lenses suits them better than surgery.`,
+        links: [
+          { label: "Book an eye test", href: "/find/book-eye-test" },
+          { label: "Contact lenses guide", href: "/articles/contact-lenses" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How much does laser eye surgery cost in the UK?",
+        answer:
+          "When we checked in November 2026, prices ranged from £549 per eye at Optical Express, depending on prescription, to £5,682 for both eyes at Moorfields Private. Optimax charged £1,295 per eye and Optegra from £1,495 per eye.",
+      },
+      {
+        question: "Can I get laser eye surgery on the NHS?",
+        answer:
+          "Not usually. The NHS says it may be possible if you have an eye condition that could lead to loss of vision, or sight problems that cannot be corrected with glasses or contact lenses.",
+      },
+      {
+        question: "Is the price per eye or for both eyes?",
+        answer:
+          "It depends on the clinic. Optical Express, Optimax and Optegra show prices per eye, while Moorfields Private shows a package price for both eyes. Check before you compare.",
+      },
+      {
+        question: "Why is the lowest price not always what I pay?",
+        answer:
+          "Some clinics' starting prices only apply to certain prescriptions. Your exact price is confirmed after your consultation, once the clinic has checked your eyes.",
+      },
+    ],
+    relatedQueries: ["book-eye-test", "contact-lenses", "eye-test-cost"],
+    ctaText: "Find an optician near you for an up-to-date eye test",
+    disclaimer:
+      "Prices are set by each clinic and can change at any time. We are not paid by any of the clinics listed. This page is general information, not medical advice.",
+    sources: [
+      { label: "NHS: Laser eye surgery and lens surgery", url: "https://www.nhs.uk/tests-and-treatments/laser-eye-surgery-and-lens-surgery/" },
+      { label: "The Royal College of Ophthalmologists: Refractive surgery patient checklist", url: "https://www.rcophth.ac.uk/wp-content/uploads/2020/05/Refractive-Surgery-Patient-Checklist_April2017.pdf" },
+      { label: "Optical Express: Laser eye surgery pricing", url: "https://www.opticalexpress.co.uk/laser-eye-surgery/pricing" },
+      { label: "Optimax: Treatment prices", url: "https://www.optimax.co.uk/treatment-cost/" },
+      { label: "Optegra: Laser eye surgery costs", url: "https://www.optegra.com/laser-eye-surgery/costs/" },
+      { label: "Moorfields Private: Laser eye surgery cost", url: "https://www.moorfields.nhs.uk/private/eye-conditions-and-treatments/laser-eye-surgery/laser-eye-surgery-cost" },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------

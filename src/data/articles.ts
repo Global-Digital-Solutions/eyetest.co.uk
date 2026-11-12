@@ -523,6 +523,16 @@ Whatever you decide, the most important thing is to have your eyes tested regula
     publishDate: "2026-11-11",
     content: "",
   },
+  {
+    slug: "laser-eye-surgery-cost",
+    title: "Laser Eye Surgery Cost in the UK",
+    excerpt: "Laser eye surgery prices from Optical Express, Optimax, Optegra and Moorfields Private, checked on each clinic's own website, plus what to check before you book.",
+    image: "/images/eye-test-phoropter-sm.jpg",
+    category: "Guides",
+    readTime: "4 min read",
+    publishDate: "2026-11-12",
+    content: "",
+  },
 ];
 
 // ---------------------------------------------------------------------------

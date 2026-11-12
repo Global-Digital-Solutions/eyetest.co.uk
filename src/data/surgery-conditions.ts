@@ -17,6 +17,9 @@ export type SurgeryCondition = {
   faqs: { question: string; answer: string }[];
   relatedConditions: string[];
   providers: string[];
+  /** ISO date the page was last checked against its sources. */
+  dateModified?: string;
+  sources?: { label: string; url: string }[];
 };
 
 // ---------------------------------------------------------------------------
@@ -75,23 +78,23 @@ export const surgeryConditions: SurgeryCondition[] = [
           "The same surgical procedure as cataract surgery, but performed on a clear lens that has not yet developed a cataract. It is typically a private procedure chosen by patients over 50 who wish to reduce their dependence on glasses or contact lenses and prevent future cataract development.",
       },
     ],
-    recovery: `<p>Cataract surgery recovery is generally straightforward. Most patients notice a significant improvement in their vision within <strong>24 to 48 hours</strong>, although complete healing typically takes <strong>4 to 6 weeks</strong>.</p>
-<p>After the procedure, you will be given a clear plastic eye shield to wear overnight for the first week, along with antibiotic and anti-inflammatory eye drops to use for several weeks. You should avoid rubbing your eye, swimming, and heavy lifting for at least two weeks. Most people can return to normal daily activities, including light work, within a few days.</p>
-<p>You will have a follow-up appointment, usually within 1 to 4 weeks of surgery, to check that your eye is healing properly. A new glasses prescription, if needed, is typically issued around 4 to 6 weeks after the operation once your vision has fully stabilised.</p>
-<p>Serious complications are uncommon, and your surgeon will explain the risks before you agree to the operation. The most common complication is posterior capsule opacification (PCO), where the lens capsule becomes cloudy months or years later. This is easily and permanently treated with a quick YAG laser procedure.</p>`,
-    nhsOrPrivate: `<p>Cataract surgery is <strong>available free on the NHS</strong> when your cataracts are significantly affecting your daily life. Your GP or optometrist can refer you to an NHS ophthalmology service, and waiting times vary by region but are typically between <strong>6 and 18 weeks</strong>. NHS surgery uses a high-quality standard monofocal lens, which corrects vision at one distance (usually distance).</p>
-<p>Private cataract surgery offers several advantages, including <strong>shorter waiting times</strong> (often within 1-2 weeks), a wider <strong>choice of premium lens implants</strong> (multifocal, toric, extended depth of focus), choice of consultant surgeon, and more flexible appointment scheduling. Private costs typically range from <strong>&pound;2,295 to &pound;3,995 per eye</strong>, depending on the lens chosen and the provider.</p>
-<p>Many private providers also offer <strong>interest-free finance plans</strong>, making premium options more accessible. Some patients choose to have NHS surgery in one eye and private surgery with a premium lens in the other.</p>`,
+    recovery: `<p>The NHS says most people recover quickly after cataract surgery. You should be able to go home on the same day, but do not drive yourself home.</p>
+<p>After the operation your vision may be blurry for a few hours, your eye may hurt for a few days, and it may take several days for your vision to improve. You will usually use eye drops for about 4 weeks to help the eye heal and prevent infection, and you may be asked to wear a plastic shield at night while it heals. You may still need glasses for reading or distance, and your prescription may be different to before.</p>
+<p>Until your doctor says otherwise, the NHS advises: do not rub your eye, do not drive until your vision is back to normal, avoid heavy lifting and sport, do not wear eye make-up, keep water out of your eye and do not go swimming, even with goggles.</p>
+<p>Serious complications are rare. Sometimes vision becomes cloudy months or years later because of posterior capsule opacification (PCO), which can be treated with a quick laser procedure. Get help from NHS 111 straight away if you notice new floaters, flashes of light, a shadow moving across your vision or sudden blurring, as these can be signs of a detached retina.</p>`,
+    nhsOrPrivate: `<p>Cataract surgery is <strong>available on the NHS</strong> if cataracts are affecting your daily life. The NHS says surgery in adults is not always needed straight away, and your optometrist or GP can refer you to a hospital eye clinic when it is. Waiting times vary by area, so ask your referring optician or the hospital what to expect.</p>
+<p>You can also pay for cataract surgery privately. Private clinics publish their own prices. When we checked in November 2026, <strong>Optimax</strong> listed standard monofocal cataract surgery at £2,995 per eye, and <strong>Optegra</strong> listed cataract surgery from £2,995 per eye, with higher prices for premium lens packages. Many NHS cataract operations are also carried out by independent providers on behalf of the NHS, at no cost to you.</p>
+<p>Whichever route you choose, ask what the price includes, such as the consultation, lens type, follow-up visits and eye drops.</p>`,
     faqs: [
       {
         question: "Is cataract surgery painful?",
         answer:
-          "No. Cataract surgery is performed under local anaesthetic eye drops that numb the eye completely. You may feel a slight pressure or awareness of movement, but the procedure itself is painless. Most patients report only mild discomfort, such as a gritty sensation, in the hours following surgery.",
+          "It is usually done under local anaesthetic, given as eye drops, an injection or both, so you are awake but should not feel pain. You may see movement and changes of light during the operation. Your eye may hurt for a few days afterwards, and you can take painkillers such as paracetamol if you need them.",
       },
       {
         question: "How long does cataract surgery take?",
         answer:
-          "The surgical procedure itself typically takes between 15 and 30 minutes. However, you should allow approximately 2 to 3 hours for your entire visit, including pre-operative preparation, the surgery, and a short period of post-operative observation before you are discharged.",
+          "The NHS says the operation usually takes between 20 and 45 minutes. Allow longer for your whole visit, as you will have eye drops and checks before and after surgery.",
       },
       {
         question: "Will I need glasses after cataract surgery?",
@@ -106,12 +109,12 @@ export const surgeryConditions: SurgeryCondition[] = [
       {
         question: "What is the difference between NHS and private cataract surgery?",
         answer:
-          "The surgical technique is essentially the same. The main differences are waiting times (private is typically much faster), lens choice (private offers premium multifocal and toric lenses), and flexibility in choosing your surgeon and appointment times. NHS surgery uses a high-quality monofocal lens and is completely free of charge.",
+          "The operation itself is the same. Paying privately can mean a shorter wait, more choice of lens types and choosing your surgeon, but you pay for it. NHS surgery is free, and is often carried out by independent providers on behalf of the NHS.",
       },
       {
         question: "Can both eyes be done at the same time?",
         answer:
-          "In the UK, each eye is usually operated on separately, with a gap of 1 to 4 weeks between procedures. This allows the first eye to heal and your vision to stabilise before treating the second. Simultaneous bilateral cataract surgery (SBCS) is occasionally offered by some private clinics but remains uncommon.",
+          "The NHS says that if you have cataracts in both eyes, they will be treated on separate days. This lets the first eye heal before the second is done.",
       },
     ],
     relatedConditions: [
@@ -126,6 +129,13 @@ export const surgeryConditions: SurgeryCondition[] = [
       "chec",
       "moorfields-private",
     ],
+    dateModified: "2026-11-12",
+    sources: [
+      { label: "NHS: Cataract surgery", url: "https://www.nhs.uk/tests-and-treatments/cataract-surgery/" },
+      { label: "NHS: Cataracts", url: "https://www.nhs.uk/conditions/cataracts/" },
+      { label: "Optimax: Treatment prices", url: "https://www.optimax.co.uk/treatment-cost/" },
+      { label: "Optegra: Cataract surgery costs", url: "https://www.optegra.com/cataract-surgery/costs/" },
+    ],
   },
 
   // ─── Glaucoma Surgery ────────────────────────────────────────────────
@@ -136,7 +146,7 @@ export const surgeryConditions: SurgeryCondition[] = [
       "Glaucoma Surgery UK: Treatments, Costs and Clinics",
     metaDescription:
       "Learn about glaucoma surgery options in the UK including SLT laser, trabeculectomy, and MIGS. Compare NHS and private treatment pathways and find specialist providers.",
-    overview: `<p>Glaucoma is a group of eye conditions in which the optic nerve is progressively damaged, usually due to raised pressure inside the eye (intraocular pressure, or IOP). It is the <strong>leading cause of irreversible blindness worldwide</strong> and affects approximately 700,000 people in the UK, though it is estimated that up to half of those with glaucoma are undiagnosed because the condition often develops without noticeable early symptoms.</p>
+    overview: `<p>Glaucoma is a group of eye conditions in which the optic nerve is progressively damaged, usually due to raised pressure inside the eye (intraocular pressure, or IOP).</p>
 <p>The most common form, <strong>primary open-angle glaucoma</strong>, develops slowly over many years and typically causes a gradual loss of peripheral vision. Less common but more acute forms, such as angle-closure glaucoma, can cause sudden symptoms including severe eye pain, headache, and rapid vision loss requiring emergency treatment. Once vision is lost to glaucoma, it cannot be restored, which makes early detection through regular eye tests critically important.</p>
 <p>Treatment for glaucoma aims to lower the pressure inside the eye to prevent further damage to the optic nerve. While eye drops are usually the first-line treatment, surgery may be recommended when drops are insufficient, poorly tolerated, or when the disease is progressing despite medical therapy. Advances in surgical techniques, including minimally invasive glaucoma surgery (MIGS), have significantly expanded the options available to patients in recent years.</p>`,
     symptoms: [
@@ -161,7 +171,7 @@ export const surgeryConditions: SurgeryCondition[] = [
       {
         name: "Selective Laser Trabeculoplasty (SLT)",
         description:
-          "A quick outpatient laser procedure that improves the drainage of fluid from the eye by targeting the trabecular meshwork. SLT takes about 5 minutes, is performed under local anaesthetic drops, and can reduce eye pressure by 20-30%. It can be repeated if the effect diminishes over time. Now supported by NICE as a first-line treatment.",
+          "A quick outpatient laser procedure that improves the drainage of fluid from the eye by targeting the trabecular meshwork. It can be repeated if the effect diminishes over time. Now supported by NICE as a first-line treatment.",
       },
       {
         name: "Trabeculectomy",
@@ -188,9 +198,9 @@ export const surgeryConditions: SurgeryCondition[] = [
 <p>For <strong>trabeculectomy</strong>, recovery is more involved. You will need to use anti-inflammatory and antibiotic eye drops for several weeks, and your surgeon will see you frequently in the first month to monitor healing and adjust the drainage as needed. You should avoid heavy lifting, bending, and strenuous exercise for 2-4 weeks. Full recovery typically takes <strong>6 to 8 weeks</strong>.</p>
 <p><strong>MIGS procedures</strong> generally have a faster recovery, particularly when performed alongside cataract surgery. Most patients return to normal activities within a few days to a week.</p>
 <p>Regardless of the procedure, you will require <strong>lifelong monitoring</strong>. Glaucoma is a chronic condition that cannot be cured, only managed. Regular follow-up appointments and, in many cases, continued use of eye drops alongside surgery are essential to protect your remaining vision.</p>`,
-    nhsOrPrivate: `<p>Glaucoma treatment, including surgery, is <strong>widely available on the NHS</strong>. SLT laser treatment, trabeculectomy, tube shunts, and some MIGS procedures are all funded by the NHS when clinically indicated. NHS waiting times for glaucoma surgery vary by region but are typically <strong>6 to 12 weeks</strong> from referral.</p>
-<p>Private glaucoma treatment offers <strong>faster access</strong> to consultant ophthalmologists, shorter waiting times for surgery, and potentially greater choice in the type of MIGS device used. Private SLT laser treatment typically costs <strong>&pound;795 to &pound;995</strong>, while surgical procedures such as trabeculectomy start from around <strong>&pound;2,995</strong>.</p>
-<p>If you are aged 40 or over and have a first-degree relative (parent, sibling, or child) with glaucoma, you are entitled to <strong>free NHS eye tests</strong>, regardless of your age. This is one of the most important steps you can take for early detection.</p>`,
+    nhsOrPrivate: `<p>Glaucoma treatment, including eye drops, laser treatment and surgery, is <strong>available on the NHS</strong>. You will be referred to a specialist eye doctor (ophthalmologist) if an optometrist finds signs of glaucoma, and you will have regular follow-up appointments to check the treatment is working.</p>
+<p>Some private eye hospitals also offer glaucoma laser treatment and surgery. Prices vary by procedure and provider, so ask for a written quote that covers the consultation, the procedure and follow-up care.</p>
+<p>If you are aged 40 or over and your parent, brother, sister or child has glaucoma, you can get <strong>free NHS eye tests</strong>. Regular eye tests are the best way to find glaucoma early, because it usually has no symptoms at first.</p>`,
     faqs: [
       {
         question: "Can glaucoma be cured with surgery?",
@@ -210,7 +220,7 @@ export const surgeryConditions: SurgeryCondition[] = [
       {
         question: "How successful is glaucoma surgery?",
         answer:
-          "Success rates vary by procedure. SLT achieves adequate pressure reduction in around 70-80% of patients. Trabeculectomy is effective in approximately 80-90% of cases at one year, though the success rate can decrease over time. MIGS procedures have lower complication rates but may achieve more modest pressure reductions. Your surgeon will discuss the expected outcomes for your specific situation.",
+          "Success rates vary by procedure. MIGS procedures have lower complication rates but may achieve more modest pressure reductions. Your surgeon will discuss the expected outcomes for your specific situation.",
       },
       {
         question: "Will I still need eye drops after glaucoma surgery?",
@@ -229,6 +239,11 @@ export const surgeryConditions: SurgeryCondition[] = [
       "chec",
       "moorfields-private",
     ],
+    dateModified: "2026-11-12",
+    sources: [
+      { label: "NHS: Glaucoma", url: "https://www.nhs.uk/conditions/glaucoma/" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+    ],
   },
 
   // ─── Macular Degeneration ────────────────────────────────────────────
@@ -239,8 +254,8 @@ export const surgeryConditions: SurgeryCondition[] = [
       "Macular Degeneration Treatment UK: AMD Injections",
     metaDescription:
       "Macular degeneration (AMD) treatment in the UK: anti-VEGF injections for wet AMD, options for dry AMD, NHS care and specialist providers.",
-    overview: `<p>Age-related macular degeneration (AMD) is a progressive eye condition that affects the <strong>macula</strong>, the small central area of the retina responsible for sharp, detailed vision used for reading, driving, and recognising faces. AMD is the <strong>leading cause of severe sight loss in the UK</strong>, affecting over 600,000 people, with the number expected to rise significantly as the population ages.</p>
-<p>There are two main forms of AMD. <strong>Dry AMD</strong> (also called atrophic AMD) accounts for approximately 90% of cases and involves a gradual thinning and deterioration of the macular cells. It progresses slowly over years and currently has limited treatment options, though new therapies are emerging. <strong>Wet AMD</strong> (neovascular AMD) accounts for around 10% of cases but is responsible for the majority of severe vision loss from the condition. It occurs when abnormal blood vessels grow beneath the retina, leaking fluid and blood that damage the macula.</p>
+    overview: `<p>Age-related macular degeneration (AMD) is a progressive eye condition that affects the <strong>macula</strong>, the small central area of the retina responsible for sharp, detailed vision used for reading, driving, and recognising faces.</p>
+<p>There are two main forms of AMD. <strong>Dry AMD</strong> (also called atrophic AMD) is the most common type and involves a gradual thinning and deterioration of the macular cells. It progresses slowly over years and currently has limited treatment options, though new therapies are emerging. <strong>Wet AMD</strong> (neovascular AMD) is less common but is responsible for the majority of severe vision loss from the condition. It occurs when abnormal blood vessels grow beneath the retina, leaking fluid and blood that damage the macula.</p>
 <p>While AMD does not cause total blindness, peripheral vision is preserved, the loss of central vision can have a profound impact on independence and quality of life. Early detection through regular eye tests, prompt treatment of wet AMD with anti-VEGF injections, and lifestyle modifications can all help to preserve vision for longer.</p>`,
     symptoms: [
       "Blurred or distorted central vision (straight lines may appear wavy or bent)",
@@ -253,7 +268,7 @@ export const surgeryConditions: SurgeryCondition[] = [
       "In wet AMD: rapid onset of visual distortion or sudden worsening of central vision",
     ],
     whenSurgeryNeeded: `<p>Treatment for macular degeneration depends on the type and stage of the disease. Strictly speaking, AMD is treated with <strong>injections rather than conventional surgery</strong>, though the procedure is performed in a clinical or operating theatre setting.</p>
-<p><strong>Wet AMD</strong> requires urgent treatment with anti-VEGF (anti-vascular endothelial growth factor) injections. Treatment should ideally begin within <strong>two weeks of diagnosis</strong> to prevent irreversible damage. You should seek treatment urgently if you notice:</p>
+<p><strong>Wet AMD</strong> requires urgent treatment with anti-VEGF (anti-vascular endothelial growth factor) injections. Treatment should start <strong>as soon as possible</strong> after diagnosis to prevent irreversible damage. You should seek treatment urgently if you notice:</p>
 <ul>
 <li>Sudden distortion of your vision (straight lines appearing wavy)</li>
 <li>A rapid deterioration in your central vision</li>
@@ -283,18 +298,17 @@ export const surgeryConditions: SurgeryCondition[] = [
       },
     ],
     recovery: `<p>Recovery from <strong>anti-VEGF injections</strong> is minimal. The procedure itself takes only a few minutes, and most patients can return home shortly afterwards. You may experience mild discomfort, redness, or a gritty sensation in the eye for a day or two. Your vision may be slightly blurry immediately after the injection due to the anaesthetic drops and the injection itself, but this typically clears within a few hours.</p>
-<p>You will be advised to <strong>avoid rubbing your eye</strong> and to use antibiotic eye drops for a few days after each injection. Serious complications, such as infection (endophthalmitis), are very rare, occurring in fewer than 1 in 1,000 injections.</p>
+<p>You will be advised to <strong>avoid rubbing your eye</strong> and to use antibiotic eye drops for a few days after each injection. </p>
 <p>It is important to understand that anti-VEGF treatment is <strong>ongoing</strong>. Most patients require injections at regular intervals, initially monthly, then potentially less frequently, for months or years. The goal is to stabilise or improve your vision, and regular monitoring with OCT scans is essential to determine when further injections are needed.</p>
 <p>For <strong>PBM therapy</strong>, there is no recovery time. Sessions last approximately 35 minutes, and you can resume normal activities immediately afterwards.</p>`,
-    nhsOrPrivate: `<p><strong>Wet AMD treatment with anti-VEGF injections is available free on the NHS</strong> and is provided as an urgent service. Once diagnosed, treatment should begin within two weeks. The NHS uses NICE-approved anti-VEGF medications, and treatment is typically delivered in hospital eye services or specialist community clinics.</p>
-<p>For <strong>dry AMD</strong>, the NHS currently offers monitoring, lifestyle advice, and referral to low-vision services, but there is no NICE-approved medical treatment. Private providers may offer photobiomodulation therapy (from approximately <strong>&pound;1,495 to &pound;1,645</strong> per treatment cycle) and access to emerging therapies.</p>
-<p>Private treatment for wet AMD is also available and may offer <strong>shorter waiting times for initial assessment</strong>, choice of anti-VEGF medication, and more flexible appointment scheduling. Private injection costs typically range from <strong>&pound;800 to &pound;1,200 per injection</strong>.</p>
-<p>Regardless of which pathway you choose, early detection through <strong>regular eye tests</strong> and self-monitoring with an Amsler grid are essential for the best possible visual outcome.</p>`,
+    nhsOrPrivate: `<p><strong>Treatment for wet AMD is available on the NHS</strong>. It is usually given as injections into the eye at a hospital eye clinic, and needs to start as soon as possible after diagnosis. If you notice sudden changes in your central vision, such as straight lines looking wavy, see an optician or get advice from NHS 111 straight away.</p>
+<p>There is currently no NHS treatment that reverses <strong>dry AMD</strong>. The NHS can help with support, low vision aids and monitoring for any change to wet AMD.</p>
+<p>Some private eye hospitals offer assessments and treatment for AMD. Prices vary, so ask for a written quote and check whether ongoing injections are included, as treatment often continues for a long time.</p>`,
     faqs: [
       {
         question: "What is the difference between dry and wet AMD?",
         answer:
-          "Dry AMD is the more common form (90% of cases) and involves a gradual deterioration of the macular cells over years. Wet AMD (10% of cases) is more serious and occurs when abnormal blood vessels grow beneath the retina, leaking fluid and blood. Wet AMD can cause rapid vision loss but is treatable with anti-VEGF injections. Dry AMD can sometimes progress to wet AMD.",
+          "Dry AMD is the more common form and involves a gradual deterioration of the macular cells over years. Wet AMD is less common but more serious and occurs when abnormal blood vessels grow beneath the retina, leaking fluid and blood. Wet AMD can cause rapid vision loss but is treatable with anti-VEGF injections. Dry AMD can sometimes progress to wet AMD.",
       },
       {
         question: "Are anti-VEGF injections painful?",
@@ -328,6 +342,11 @@ export const surgeryConditions: SurgeryCondition[] = [
       "optegra",
       "chec",
       "moorfields-private",
+    ],
+    dateModified: "2026-11-12",
+    sources: [
+      { label: "NHS: Age-related macular degeneration (AMD)", url: "https://www.nhs.uk/conditions/age-related-macular-degeneration-amd/" },
+      { label: "NHS: Treatment for AMD", url: "https://www.nhs.uk/conditions/age-related-macular-degeneration-amd/treatment/" },
     ],
   },
 
@@ -385,16 +404,16 @@ export const surgeryConditions: SurgeryCondition[] = [
 <p>With <strong>LASEK/PRK</strong>, recovery is slower. You will wear a bandage contact lens for 4-5 days while the surface epithelium heals. There may be more discomfort, watering, and light sensitivity during this period. Vision typically takes <strong>1 to 3 weeks</strong> to stabilise, and you may need 3-5 days off work. The final visual outcome is comparable to LASIK.</p>
 <p>With <strong>SMILE</strong>, recovery is similar to LASIK, with most patients seeing well within <strong>24-48 hours</strong> and returning to normal activities within a day or two.</p>
 <p>All patients should use lubricating eye drops for several weeks after surgery and avoid swimming, contact sports, and eye make-up for at least 2-4 weeks. You will have follow-up appointments at 1 day, 1 week, 1 month, and 3 months post-operatively. Most patients achieve their final stable prescription within 3 to 6 months.</p>`,
-    nhsOrPrivate: `<p>Laser eye surgery is <strong>almost exclusively a private procedure</strong> in the UK. The NHS does not fund refractive laser surgery except in very rare circumstances where there is a significant medical indication and glasses or contact lenses cannot be used.</p>
-<p>Costs vary depending on the type of procedure, the technology used, and the clinic. Typical UK pricing is:</p>
+    nhsOrPrivate: `<p>Laser eye surgery is <strong>usually only available privately</strong>. The NHS says you may be able to get it on the NHS if you have an eye condition that could lead to loss of vision, or sight problems that cannot be corrected with glasses or contact lenses.</p>
+<p>Private clinics publish their own prices, and the price you pay can depend on your prescription and the type of treatment. When we checked each clinic's own website in November 2026:</p>
 <ul>
-<li><strong>LASEK/PRK:</strong> from &pound;1,495 per eye</li>
-<li><strong>LASIK:</strong> from &pound;1,995 per eye</li>
-<li><strong>SMILE:</strong> from &pound;2,595 per eye</li>
-<li><strong>Presbyond:</strong> from &pound;2,895 per eye</li>
+<li><strong>Optical Express:</strong> LASEK from £549 per eye and LASIK from £1,295 per eye, depending on prescription</li>
+<li><strong>Optimax:</strong> LASIK or LASEK £1,295 per eye</li>
+<li><strong>Optegra:</strong> LASEK £1,495, LASIK £2,095 and SMILE £2,695 per eye</li>
+<li><strong>Moorfields Private:</strong> £5,682 for both eyes as a package</li>
 </ul>
-<p>Most reputable clinics offer <strong>interest-free finance plans</strong> over 12-24 months and free initial consultations or suitability assessments. When comparing clinics, consider the experience of the surgeon, the laser technology used, the comprehensiveness of pre-operative screening, and the aftercare programme, not just the headline price.</p>
-<p>Private medical insurance <strong>rarely covers</strong> laser eye surgery as it is considered a cosmetic or elective procedure, though some insurers may cover it in specific occupational circumstances.</p>`,
+<p>The Royal College of Ophthalmologists suggests checking that your surgeon is on the GMC specialist register for ophthalmology and holds its Certificate in Laser Refractive Surgery. Look at what the price includes, such as consultations, aftercare and any further treatment, not just the headline figure.</p>
+<p>See our <a href="/articles/laser-eye-surgery-cost">laser eye surgery cost guide</a> for the full price list from each clinic.</p>`,
     faqs: [
       {
         question: "Am I too old for laser eye surgery?",
@@ -431,6 +450,15 @@ export const surgeryConditions: SurgeryCondition[] = [
       "optegra",
       "moorfields-private",
     ],
+    dateModified: "2026-11-12",
+    sources: [
+      { label: "NHS: Laser eye surgery and lens surgery", url: "https://www.nhs.uk/tests-and-treatments/laser-eye-surgery-and-lens-surgery/" },
+      { label: "The Royal College of Ophthalmologists: Refractive surgery patient checklist", url: "https://www.rcophth.ac.uk/wp-content/uploads/2020/05/Refractive-Surgery-Patient-Checklist_April2017.pdf" },
+      { label: "Optical Express: Laser eye surgery pricing", url: "https://www.opticalexpress.co.uk/laser-eye-surgery/pricing" },
+      { label: "Optimax: Treatment prices", url: "https://www.optimax.co.uk/treatment-cost/" },
+      { label: "Optegra: Laser eye surgery costs", url: "https://www.optegra.com/laser-eye-surgery/costs/" },
+      { label: "Moorfields Private: Laser eye surgery cost", url: "https://www.moorfields.nhs.uk/private/eye-conditions-and-treatments/laser-eye-surgery/laser-eye-surgery-cost" },
+    ],
   },
 
   // ─── Retinal Detachment ──────────────────────────────────────────────
@@ -442,7 +470,7 @@ export const surgeryConditions: SurgeryCondition[] = [
     metaDescription:
       "Retinal detachment surgery in the UK: the warning signs, emergency treatment, what recovery involves and where to find specialist care.",
     overview: `<p>Retinal detachment is a <strong>sight-threatening emergency</strong> in which the retina, the thin layer of light-sensitive tissue that lines the back of the eye, separates from its underlying supportive tissue. When the retina detaches. It is cut off from its blood supply and oxygen, causing the affected photoreceptor cells to begin dying. Without prompt surgical treatment, retinal detachment can lead to <strong>permanent vision loss</strong> in the affected eye.</p>
-<p>Retinal detachment affects approximately <strong>1 in 10,000 people per year</strong> in the UK. The most common type, <strong>rhegmatogenous retinal detachment</strong>, occurs when a tear or hole develops in the retina, allowing fluid from the vitreous cavity to seep underneath and lift the retina away. This is often preceded by a posterior vitreous detachment (PVD), a common age-related change in which the vitreous gel separates from the retina.</p>
+<p>The most common type, <strong>rhegmatogenous retinal detachment</strong>, occurs when a tear or hole develops in the retina, allowing fluid from the vitreous cavity to seep underneath and lift the retina away. This is often preceded by a posterior vitreous detachment (PVD), a common age-related change in which the vitreous gel separates from the retina.</p>
 <p>Risk factors include <strong>high myopia</strong> (short-sightedness), previous eye surgery (including cataract surgery), a family history of retinal detachment, eye injuries, and certain retinal conditions such as lattice degeneration. Retinal detachment is more common in people over 50, but it can occur at any age. Recognising the warning signs, sudden onset of floaters, flashes of light, or a shadow across your vision, and seeking immediate medical attention is critical for the best outcome.</p>`,
     symptoms: [
       "Sudden increase in floaters (dark spots, strings, or cobwebs drifting across vision)",
@@ -490,10 +518,10 @@ export const surgeryConditions: SurgeryCondition[] = [
 <p>After <strong>vitrectomy with a gas bubble</strong>, you will need to maintain specific <strong>head positioning</strong> (often face-down) for a period of days to weeks, depending on the location of the detachment. This positioning is essential for the gas bubble to support the retina while it heals. You <strong>must not fly</strong> or travel to high altitudes until the gas has fully absorbed (2-8 weeks), as changes in air pressure can cause the bubble to expand dangerously. Nitrous oxide anaesthesia must also be avoided during this period.</p>
 <p>Vision recovery is gradual. If the macula was attached before surgery, most patients regain <strong>good central vision</strong> within weeks to months. If the macula was detached, some degree of central vision loss may be permanent, though peripheral vision is usually preserved and may continue to improve for up to a year.</p>
 <p>You will need to use antibiotic and anti-inflammatory eye drops for several weeks and avoid strenuous activity, heavy lifting, and swimming for <strong>4 to 6 weeks</strong>. Follow-up appointments will be frequent in the first few weeks to monitor healing and check that the retina remains attached.</p>
-<p>The success rate for retinal reattachment is approximately <strong>85-90% with a single operation</strong> and over 95% with further surgery if needed.</p>`,
-    nhsOrPrivate: `<p>Retinal detachment surgery is <strong>available as an emergency NHS procedure</strong>. Because it is a sight-threatening emergency. There is no waiting list: surgery is performed urgently, typically within 24 hours for macula-on detachments and within a few days for macula-off detachments. Emergency retinal surgery is provided by specialist vitreoretinal surgeons at NHS hospital eye departments.</p>
-<p>Private retinal detachment surgery is available and may offer <strong>faster access to a specific consultant surgeon</strong>, more flexible scheduling, and a private room for recovery. Private vitrectomy surgery typically costs from <strong>&pound;4,000 to &pound;7,000</strong>, depending on the complexity of the case. However, for genuine emergencies, the NHS pathway is well-established and highly effective.</p>
-<p>Preventive <strong>laser treatment for retinal tears</strong> is also available on the NHS and is typically performed within days of diagnosis. Some private clinics offer same-day or next-day retinal tear treatment.</p>`,
+<p></p>`,
+    nhsOrPrivate: `<p>A detached retina is <strong>treated as an emergency on the NHS</strong>. If you notice new floaters, flashes of light or a shadow moving across your vision, the NHS advises getting help straight away from NHS 111 or A&E. Surgery is carried out by specialist retinal surgeons in hospital eye departments.</p>
+<p>Laser or freezing treatment for a retinal tear, which can stop it becoming a detachment, is also available on the NHS.</p>
+<p>Private retinal surgery exists, but because a detached retina needs urgent treatment, the NHS emergency pathway is usually the quickest route. Do not delay treatment to arrange private care.</p>`,
     faqs: [
       {
         question: "What should I do if I think I have a retinal detachment?",
@@ -503,7 +531,7 @@ export const surgeryConditions: SurgeryCondition[] = [
       {
         question: "How successful is retinal detachment surgery?",
         answer:
-          "Retinal detachment surgery successfully reattaches the retina in approximately 85-90% of cases with a single operation. If the first surgery is unsuccessful, further surgery can achieve reattachment in over 95% of cases. Visual recovery depends on whether the macula was detached before surgery: macula-on detachments have a much better visual prognosis.",
+          "Visual recovery depends on whether the macula was detached before surgery: macula-on detachments have a much better visual prognosis.",
       },
       {
         question: "Will my vision return to normal after retinal detachment surgery?",
@@ -530,6 +558,10 @@ export const surgeryConditions: SurgeryCondition[] = [
       "new-medica",
       "chec",
       "moorfields-private",
+    ],
+    dateModified: "2026-11-12",
+    sources: [
+      { label: "NHS: Detached retina (retinal detachment)", url: "https://www.nhs.uk/conditions/detached-retina-retinal-detachment/" },
     ],
   },
 
@@ -595,16 +627,8 @@ export const surgeryConditions: SurgeryCondition[] = [
 <p>For <strong>ptosis repair</strong>, the recovery timeline is similar to blepharoplasty. There may be some difficulty closing the eye fully in the first few weeks, requiring lubricating drops and ointment to keep the eye moist.</p>
 <p>For <strong>entropion and ectropion repair</strong>, recovery is usually <strong>1 to 2 weeks</strong>. A pad may be placed over the eye overnight after surgery, and you will use antibiotic ointment for about a week. Swelling and bruising settle within 2 weeks.</p>
 <p>Scarring from eyelid surgery is generally <strong>minimal and well-hidden</strong> in the natural creases of the eyelid. Final results, including any improvement in the visual field, are typically evident within 4 to 6 weeks.</p>`,
-    nhsOrPrivate: `<p>Eyelid surgery is <strong>available on the NHS when there is a documented functional impairment</strong>. This means the eyelid condition must be demonstrably affecting your vision or eye health, for example, ptosis or dermatochalasis that obstructs the visual field (confirmed by a visual field test), entropion causing corneal damage, or ectropion causing significant symptoms. Your GP or optometrist can refer you to an NHS ophthalmology or oculoplastic service.</p>
-<p>NHS waiting times for eyelid surgery vary by region but are typically <strong>8 to 18 weeks</strong>. Some NHS trusts have specific criteria for funding blepharoplasty, often requiring evidence that the upper eyelid margin is within a certain distance of the pupil centre.</p>
-<p><strong>Cosmetic eyelid surgery</strong> is not available on the NHS and must be funded privately. Private costs vary by procedure:</p>
-<ul>
-<li><strong>Upper blepharoplasty:</strong> from &pound;2,495 per lid (from &pound;3,495 for both)</li>
-<li><strong>Lower blepharoplasty:</strong> from &pound;2,500 to &pound;4,000</li>
-<li><strong>Ptosis repair:</strong> from &pound;2,795</li>
-<li><strong>Entropion/ectropion repair:</strong> from &pound;1,995</li>
-<li><strong>Eyelid lesion excision:</strong> from &pound;795</li>
-</ul>`,
+    nhsOrPrivate: `<p>Eyelid surgery is <strong>available on the NHS when there is a medical need</strong>, for example when a drooping eyelid blocks your vision, or when an eyelid turning inwards or outwards (entropion or ectropion) is causing problems. Your optometrist or GP can refer you to a hospital eye clinic. Local NHS rules decide who is eligible, so ask your GP what applies in your area.</p>
+<p><strong>Cosmetic eyelid surgery</strong> (blepharoplasty to change how your eyes look) is not usually available on the NHS. If you pay privately, the NHS advises checking that the clinic is registered with the Care Quality Commission (CQC) and looking up the surgeon on the General Medical Council (GMC) register. Prices vary, so ask for a written quote that includes follow-up care.</p>`,
     faqs: [
       {
         question: "Will eyelid surgery leave visible scars?",
@@ -642,6 +666,11 @@ export const surgeryConditions: SurgeryCondition[] = [
       "new-medica",
       "moorfields-private",
     ],
+    dateModified: "2026-11-12",
+    sources: [
+      { label: "NHS: Eyelid surgery", url: "https://www.nhs.uk/conditions/cosmetic-procedures/eyelid-surgery/" },
+      { label: "NHS: Ectropion", url: "https://www.nhs.uk/conditions/ectropion/" },
+    ],
   },
 
   // ─── Corneal Conditions ──────────────────────────────────────────────
@@ -653,8 +682,8 @@ export const surgeryConditions: SurgeryCondition[] = [
     metaDescription:
       "Corneal conditions and surgery in the UK: keratoconus, cross-linking and corneal transplants, and how to find a specialist provider.",
     overview: `<p>The cornea is the <strong>clear, dome-shaped front surface of the eye</strong> that plays a critical role in focusing light onto the retina. It accounts for approximately two-thirds of the eye's total focusing power. Corneal conditions encompass a wide range of diseases, injuries, and degenerative changes that affect the clarity, shape, or integrity of the cornea, potentially causing significant visual impairment.</p>
-<p><strong>Keratoconus</strong> is one of the most common corneal conditions requiring specialist treatment. It causes the cornea to thin progressively and bulge into a cone-like shape, distorting vision. Keratoconus typically begins in the teenage years or early twenties and affects approximately <strong>1 in 2,000 people</strong> in the UK, though recent studies suggest it may be more common than previously thought. Other important corneal conditions include <strong>Fuchs' endothelial dystrophy</strong>, <strong>corneal scarring</strong> from infection or injury, <strong>corneal ulcers</strong>, and <strong>corneal ectasia</strong>.</p>
-<p>Treatment for corneal conditions ranges from corneal cross-linking (a procedure to strengthen the cornea and halt the progression of keratoconus) to partial or full-thickness corneal transplantation for conditions where the cornea is irreparably damaged. The UK has a well-established corneal transplant service, with over <strong>4,000 corneal transplants performed each year</strong> through NHS Eye Banks and specialist corneal units.</p>`,
+<p><strong>Keratoconus</strong> is one of the most common corneal conditions requiring specialist treatment. It causes the cornea to thin progressively and bulge into a cone-like shape, distorting vision.Other important corneal conditions include <strong>Fuchs' endothelial dystrophy</strong>, <strong>corneal scarring</strong> from infection or injury, <strong>corneal ulcers</strong>, and <strong>corneal ectasia</strong>.</p>
+<p>Treatment for corneal conditions ranges from corneal cross-linking (a procedure to strengthen the cornea and halt the progression of keratoconus) to partial or full-thickness corneal transplantation for conditions where the cornea is irreparably damaged.</p>`,
     symptoms: [
       "Progressively blurred or distorted vision that cannot be fully corrected with glasses",
       "Frequent changes in spectacle or contact lens prescription",
@@ -704,16 +733,9 @@ export const surgeryConditions: SurgeryCondition[] = [
 <p>After <strong>corneal transplant surgery</strong>, recovery is significantly longer. Steroid eye drops are required for <strong>many months</strong> (often 12 months or longer) to prevent graft rejection. Sutures may remain in place for <strong>12 to 18 months</strong> and are removed gradually as the graft heals. Full visual recovery from a penetrating keratoplasty can take <strong>up to 12-18 months</strong>, and many patients require glasses or contact lenses after the transplant for optimal vision.</p>
 <p>With <strong>endothelial transplants</strong> (DMEK/DSAEK), recovery is faster, many patients notice significant visual improvement within <strong>4 to 8 weeks</strong>. However, an air bubble is placed in the eye during surgery, and you will need to lie on your back for the first 24-48 hours to keep the graft in position.</p>
 <p>All corneal transplant patients require <strong>long-term follow-up</strong> to monitor for signs of graft rejection, which can occur months or even years after surgery. Prompt treatment with steroid drops can usually reverse early rejection episodes.</p>`,
-    nhsOrPrivate: `<p>Most corneal surgery is <strong>available on the NHS</strong> when there is a clinical need. Corneal cross-linking for progressive keratoconus is now funded by the NHS following NICE approval. Corneal transplant surgery is performed through NHS hospital eye departments and specialist corneal units, with donor corneas supplied by NHS Blood and Transplant Eye Banks at no cost to the patient.</p>
-<p>NHS waiting times for corneal transplants vary by region and urgency but are typically <strong>3 to 6 months</strong>. Urgent cases, such as corneal perforation or severe infection threatening the eye, are treated on an emergency basis.</p>
-<p>Private corneal surgery may offer <strong>shorter waiting times</strong> and access to specific consultant surgeons. Private costs include:</p>
-<ul>
-<li><strong>Corneal cross-linking (unilateral):</strong> from &pound;1,995</li>
-<li><strong>Corneal cross-linking (bilateral):</strong> from &pound;2,495</li>
-<li><strong>Corneal transplant surgery:</strong> from &pound;3,000 to &pound;6,000 depending on the type</li>
-<li><strong>Pterygium excision:</strong> from &pound;1,500</li>
-</ul>
-<p>Specialist contact lens fitting for keratoconus is available both through NHS hospital optometry departments and private contact lens practitioners experienced in fitting rigid and scleral lenses.</p>`,
+    nhsOrPrivate: `<p>Treatment for corneal conditions, including <strong>corneal cross-linking for keratoconus</strong> and corneal transplants, is available on the NHS when there is a clinical need. You will usually be referred to a specialist corneal service at a hospital eye department, and donor corneas for transplants come from NHS Blood and Transplant.</p>
+<p>Some private eye hospitals also offer cross-linking and corneal surgery. Prices vary, so ask for a written quote that covers the consultation, the procedure and follow-up visits.</p>
+<p>Specialist contact lenses for keratoconus can be fitted at hospital eye departments and by some private optometrists who specialise in rigid and scleral lenses.</p>`,
     faqs: [
       {
         question: "What is keratoconus and how is it diagnosed?",
@@ -723,7 +745,7 @@ export const surgeryConditions: SurgeryCondition[] = [
       {
         question: "How long does a corneal transplant last?",
         answer:
-          "A corneal transplant can last many years, but it is not necessarily permanent. Penetrating keratoplasty (full-thickness transplants) have a 5-year survival rate of approximately 70-90%, depending on the underlying condition. Grafts for keratoconus tend to have the best long-term outcomes, with many lasting 15-20 years or longer. Endothelial transplants may have a shorter lifespan but can be repeated if needed.",
+          "A corneal transplant can last many years, but it is not necessarily permanent. Grafts for keratoconus tend to have the best long-term outcomes, with many lasting 15-20 years or longer. Endothelial transplants may have a shorter lifespan but can be repeated if needed.",
       },
       {
         question: "Can keratoconus be cured?",
@@ -733,7 +755,7 @@ export const surgeryConditions: SurgeryCondition[] = [
       {
         question: "What are the risks of corneal transplant rejection?",
         answer:
-          "Graft rejection occurs when the body's immune system attacks the donor cornea. It can happen at any time but is most common in the first two years. Warning signs include increasing redness, sensitivity to light, deteriorating vision, and eye pain. Prompt treatment with steroid drops can usually reverse early rejection. The rejection rate is approximately 10-15% for penetrating keratoplasty and lower for endothelial and lamellar techniques.",
+          "Graft rejection occurs when the body's immune system attacks the donor cornea. It can happen at any time but is most common in the first two years. Warning signs include increasing redness, sensitivity to light, deteriorating vision, and eye pain. Prompt treatment with steroid drops can usually reverse early rejection. ",
       },
       {
         question: "Will I need glasses after a corneal transplant?",
@@ -749,6 +771,11 @@ export const surgeryConditions: SurgeryCondition[] = [
     providers: [
       "new-medica",
       "moorfields-private",
+    ],
+    dateModified: "2026-11-12",
+    sources: [
+      { label: "Moorfields Eye Hospital: Keratoconus", url: "https://www.moorfields.nhs.uk/eye-conditions/keratoconus" },
+      { label: "Moorfields Eye Hospital: Corneal cross-linking", url: "https://moorfields.nhs.uk/eye-conditions/keratoconus/corneal-cross-linking" },
     ],
   },
 
@@ -812,10 +839,9 @@ export const surgeryConditions: SurgeryCondition[] = [
 <p><strong>Laser treatment (PRP and macular laser)</strong> is performed as an outpatient. Your vision may be blurred for several hours afterwards, and there may be some aching around the eye. After PRP, you may notice a reduction in peripheral vision and night vision, and some patients experience temporary worsening of macular oedema. These effects typically stabilise over <strong>weeks to months</strong>.</p>
 <p><strong>Vitrectomy</strong> requires a longer recovery. If a gas bubble is used, you may need to maintain a specific head position for several days to weeks, and you must not fly until the gas has absorbed (typically 2-8 weeks). Vision recovery is gradual over <strong>weeks to months</strong>. You will need to use eye drops for several weeks and avoid strenuous activity for 4-6 weeks.</p>
 <p>Regardless of treatment, <strong>good blood sugar control, blood pressure management, and regular screening</strong> remain essential to prevent further deterioration and protect your remaining vision.</p>`,
-    nhsOrPrivate: `<p>Treatment for diabetic eye disease is <strong>comprehensively available on the NHS</strong>. The NHS Diabetic Eye Screening Programme provides <strong>free annual retinal screening</strong> for all people with diabetes aged 12 and over, which is your most important line of defence against sight loss.</p>
-<p>When treatment is needed, anti-VEGF injections, laser treatment, and vitrectomy surgery are all <strong>funded by the NHS</strong> and delivered through hospital ophthalmology departments and specialist diabetic eye clinics. NHS treatment for diabetic eye disease is delivered urgently when sight is threatened.</p>
-<p>Private treatment may offer <strong>faster initial assessment</strong>, shorter waiting times for procedures, and more flexible appointment scheduling. However, the ongoing nature of diabetic eye disease treatment (with regular injections and monitoring over months to years) means that most patients in the UK are treated through the NHS pathway. Private injection costs are typically <strong>&pound;800 to &pound;1,200 per injection</strong>, and private vitrectomy costs from <strong>&pound;5,000 to &pound;7,000</strong>.</p>
-<p>If you have diabetes and are not receiving annual eye screening invitations, contact your GP or local screening programme to ensure you are registered. <strong>Never miss a screening appointment</strong>. It is the most effective way to catch diabetic eye disease before it threatens your vision.</p>`,
+    nhsOrPrivate: `<p>Treatment for diabetic eye disease is <strong>available on the NHS</strong>. Everyone with diabetes aged 12 or over is invited to NHS diabetic eye screening every 1 or 2 years, which checks for signs of retinopathy before you notice any change in your sight.</p>
+<p>If you need treatment, injections, laser treatment and surgery are given at NHS hospital eye clinics. Treatment often continues over a long period with regular check-ups, which is why most people are treated through the NHS.</p>
+<p>If you have diabetes and have not been invited for eye screening, contact your GP practice. Keep going to every screening appointment, even if your sight seems fine.</p>`,
     faqs: [
       {
         question: "Does everyone with diabetes get diabetic retinopathy?",
@@ -846,7 +872,7 @@ export const surgeryConditions: SurgeryCondition[] = [
       {
         question: "How can I reduce my risk of diabetic eye disease?",
         answer:
-          "The most important steps are maintaining good blood sugar control (HbA1c below 53 mmol/mol or 7%), keeping blood pressure below 140/80 mmHg, managing cholesterol levels, not smoking, attending all diabetic eye screening appointments, and having regular diabetes check-ups with your GP or diabetologist. These measures can significantly reduce your risk of developing sight-threatening diabetic eye disease.",
+          "The most important steps are keeping your blood sugar, blood pressure and cholesterol within the targets agreed with your diabetes team, not smoking, attending all diabetic eye screening appointments, and having regular diabetes check-ups with your GP or diabetologist. These measures can significantly reduce your risk of developing sight-threatening diabetic eye disease.",
       },
     ],
     relatedConditions: [
@@ -859,6 +885,11 @@ export const surgeryConditions: SurgeryCondition[] = [
       "spa-medica",
       "chec",
       "moorfields-private",
+    ],
+    dateModified: "2026-11-12",
+    sources: [
+      { label: "NHS: Diabetic retinopathy", url: "https://www.nhs.uk/conditions/diabetic-retinopathy/" },
+      { label: "NHS: Diabetic retinopathy treatment", url: "https://www.nhs.uk/conditions/diabetic-retinopathy/treatment/" },
     ],
   },
 ];

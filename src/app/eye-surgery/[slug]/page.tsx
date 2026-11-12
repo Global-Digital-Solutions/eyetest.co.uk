@@ -97,6 +97,14 @@ export default async function SurgeryConditionPage({
   // JSON-LD schemas
   // ---------------------------------------------------------------------------
 
+  const checkedDate = condition.dateModified
+    ? new Date(condition.dateModified).toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })
+    : null;
+
   const medicalWebPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
@@ -121,8 +129,8 @@ export default async function SurgeryConditionPage({
       name: "eyetest.co.uk",
       url: "https://www.eyetest.co.uk",
     },
-    dateModified: "2026-06-27",
-    lastReviewed: "2026-06-27",
+    dateModified: condition.dateModified ?? "2026-06-27",
+    lastReviewed: condition.dateModified ?? "2026-06-27",
   };
 
   const breadcrumbJsonLd = {
@@ -210,6 +218,11 @@ export default async function SurgeryConditionPage({
           <p className="text-base sm:text-lg text-white/70 max-w-xl mx-auto">
             Surgery types, recovery, NHS vs private options, and FAQs
           </p>
+          {condition.dateModified && (
+            <p className="text-sm text-white/60 mt-3">
+              Information last checked: {checkedDate}
+            </p>
+          )}
         </PageHero>
 
         {/* Content */}
@@ -411,6 +424,38 @@ export default async function SurgeryConditionPage({
                         </details>
                       ))}
                     </div>
+                  </div>
+                )}
+
+                {/* Disclaimer and sources */}
+                <div className="bg-amber-50 border border-amber-100 rounded-2xl p-5 text-sm text-amber-900 leading-relaxed">
+                  <strong className="font-semibold">Please note: </strong>
+                  {checkedDate ? `This information was last checked on ${checkedDate}. ` : ""}
+                  It is general information, not medical advice. Your eye
+                  specialist will advise on the right treatment for you.
+                  Private prices are set by each clinic, can change at any
+                  time and may depend on your prescription, so always confirm
+                  the price with the clinic before you book.
+                </div>
+                {condition.sources && condition.sources.length > 0 && (
+                  <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+                    <h2 className="text-base font-semibold text-[var(--color-navy)] mb-2">
+                      Sources
+                    </h2>
+                    <ul className="list-disc pl-5 space-y-1 text-sm">
+                      {condition.sources.map((src) => (
+                        <li key={src.url}>
+                          <a
+                            href={src.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[var(--color-primary)] hover:underline"
+                          >
+                            {src.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
               </div>
