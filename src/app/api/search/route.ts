@@ -38,6 +38,13 @@ function line(data: object): Uint8Array {
 
 const MILES_TO_METRES = 1609.34;
 
+/** Practices sometimes enter "www.example.co.uk" without https://, which would open as a broken relative link */
+function absUrl(u: string): string {
+  const t = u.trim();
+  if (!t) return "";
+  return /^https?:\/\//i.test(t) ? t : `https://${t.replace(/^\/+/, "")}`;
+}
+
 interface CityZone {
   lat: number;
   lng: number;
@@ -188,7 +195,7 @@ export async function GET(req: NextRequest) {
       distanceM: distM,
       slotsAvailable: null,
       nextAvailable: null,
-      bookingUrl: listing.booking_url || listing.website || "",
+      bookingUrl: absUrl(listing.booking_url || listing.website || ""),
       lat: listing.lat!,
       lng: listing.lng!,
       featured: true, // all active listings are featured (sorted above free)
@@ -237,7 +244,7 @@ export async function GET(req: NextRequest) {
       distanceM: distM,
       slotsAvailable: null,
       nextAvailable: null,
-      bookingUrl: listing.booking_url || listing.website || "",
+      bookingUrl: absUrl(listing.booking_url || listing.website || ""),
       lat: listing.lat!,
       lng: listing.lng!,
       featured: false,
