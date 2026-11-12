@@ -108,6 +108,10 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Screen Time and Eye Health](https://www.eyetest.co.uk/eye-health/guides/screen-time-and-eye-health)
 - [Eye Health for Children](https://www.eyetest.co.uk/eye-health/guides/eye-health-for-children)
 - [Free NHS Eye Test Checker](https://www.eyetest.co.uk/tools/free-nhs-eye-test-checker): Interactive checker for free NHS sight tests and optical vouchers in England, Scotland, Wales and Northern Ireland
+- [Which Eye Test Do I Need?](https://www.eyetest.co.uk/tools/which-eye-test-do-i-need): Interactive guide to the right type of eye test, with urgent care advice based on the NHS
+- [NHS Optical Voucher Calculator](https://www.eyetest.co.uk/tools/nhs-optical-voucher-calculator): Enter SPH and CYL to see the likely NHS England voucher band and value
+- [Driving Eyesight Check](https://www.eyetest.co.uk/tools/driving-eyesight-check): Check the GOV.UK eyesight rules for driving and when to tell DVLA
+- [Eye Test Reminder](https://www.eyetest.co.uk/tools/eye-test-reminder): Work out when your next eye test is due and add a calendar reminder
 - [Choosing the Right Optician](https://www.eyetest.co.uk/eye-health/guides/choosing-the-right-optician)
 - [When to Get an Emergency Eye Test](https://www.eyetest.co.uk/eye-health/guides/when-to-get-an-emergency-eye-test)
 

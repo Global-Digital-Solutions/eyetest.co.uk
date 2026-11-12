@@ -6,6 +6,10 @@ import { OpticianOptions, NO_OPTICIAN_BLOCK } from "@/components/OpticianOptions
 import { WhereToGetHelp } from "@/components/WhereToGetHelp";
 import { FreeEyeTestChecker } from "@/components/tools/FreeEyeTestChecker";
 import { PrescriptionDecoder } from "@/components/tools/PrescriptionDecoder";
+import { WhichEyeTest } from "@/components/tools/WhichEyeTest";
+import { VoucherCalculator } from "@/components/tools/VoucherCalculator";
+import { DrivingEyesightCheck } from "@/components/tools/DrivingEyesightCheck";
+import { EyeTestReminder } from "@/components/tools/EyeTestReminder";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero, HeroSearchForm } from "@/components/PageHero";
@@ -326,6 +330,10 @@ export function QueryPageView({ query }: { query: SearchQuery }) {
 
                 {query.tool === "free-eye-test-checker" && <FreeEyeTestChecker />}
                 {query.tool === "prescription-decoder" && <PrescriptionDecoder />}
+                {query.tool === "which-eye-test" && <WhichEyeTest />}
+                {query.tool === "voucher-calculator" && <VoucherCalculator />}
+                {query.tool === "driving-check" && <DrivingEyesightCheck />}
+                {query.tool === "eye-test-reminder" && <EyeTestReminder />}
 
                 {sections.map((section) => (
                   <section key={section.heading} className="mt-10">

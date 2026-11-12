@@ -34,7 +34,7 @@ export type SearchQuery = {
   /** Breadcrumb parents shown before the page title when canonicalPath is used */
   parentCrumbs?: { label: string; href: string }[];
   /** Interactive tool shown after the introduction */
-  tool?: "free-eye-test-checker" | "prescription-decoder";
+  tool?: "free-eye-test-checker" | "prescription-decoder" | "which-eye-test" | "voucher-calculator" | "driving-check" | "eye-test-reminder";
 };
 
 export type QuerySection = {
@@ -698,6 +698,7 @@ The values below are for England and come from the NHSBSA guide for April 2026. 
         ],
         body: `Being 60 or over gives you a free sight test but not, on its own, a voucher.`,
         links: [
+          { label: "NHS optical voucher calculator", href: "/tools/nhs-optical-voucher-calculator" },
           { label: "Free eye test guide", href: "/find/free-eye-test" },
           { label: "Universal Credit", href: "/find/free-eye-test-universal-credit" },
           { label: "Children", href: "/find/free-eye-test-children" },
@@ -1217,6 +1218,7 @@ If you think you qualify for a free NHS-funded eye test, say so when you book. T
       {
         heading: "Book with the main opticians",
         links: [
+          { label: "Which eye test do I need?", href: "/tools/which-eye-test-do-i-need" },
           { label: "Specsavers eye test price", href: "/opticians/specsavers" },
           { label: "Boots eye test price", href: "/opticians/boots-opticians" },
           { label: "Vision Express eye test price", href: "/opticians/vision-express" },
@@ -1542,6 +1544,7 @@ Your eyes rarely hurt when something is wrong with them, which is why the NHS sa
           "Your optometrist asked you to come back earlier",
         ],
         links: [
+          { label: "Eye test reminder", href: "/tools/eye-test-reminder" },
           { label: "Blurry vision causes", href: "/find/blurry-vision-causes" },
           { label: "Floaters in vision", href: "/eye-health/conditions/floaters-and-flashes" },
           { label: "Sudden vision changes", href: "/find/sudden-vision-changes" },
@@ -5723,6 +5726,7 @@ Use the checker below to see whether you are likely to qualify, and whether you 
           "Named on a valid HC2 certificate",
         ],
         links: [
+          { label: "Which eye test do I need?", href: "/tools/which-eye-test-do-i-need" },
           { label: "Full free eye test guide", href: "/find/free-eye-test" },
           { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
         ],
@@ -5775,6 +5779,269 @@ Use the checker below to see whether you are likely to qualify, and whether you 
     ],
   },
   {
+    slug: "which-eye-test-do-i-need",
+    keyword: "which eye test do i need",
+    title: "Which Eye Test Do I Need?",
+    seoTitle: "Which Eye Test Do I Need? Free Eye Test Finder",
+    seoDescription:
+      "Answer one question and find the right eye test for you: a standard sight test, children's test, contact lens check, OCT scan, diabetic screening or urgent care.",
+    h1: "Which Eye Test Do I Need?",
+    dateModified: "2026-11-12",
+    canonicalPath: "/tools/which-eye-test-do-i-need",
+    parentCrumbs: [{ label: "Tools", href: "/tools" }],
+    category: "general",
+    tool: "which-eye-test",
+    shortDescription:
+      "Pick what you need and we point you to the right type of eye test, or to urgent help if something is wrong.",
+    content: `There are several types of eye test, from a routine sight test to an OCT scan or a contact lens check. Choose the option that fits you best below and we will point you to the right one.
+
+If you have a serious eye injury, a chemical in your eye, or sudden severe pain or loss of vision, go to A&E or call 999.`,
+    keyFacts: [
+      { label: "Routine test", value: "Every 2 years for most people" },
+      { label: "Children", value: "Free on the NHS under 16" },
+      { label: "Contact lenses", value: "Separate fitting needed" },
+      { label: "Emergency", value: "A&E or 999" },
+    ],
+    sections: [
+      {
+        heading: "The main types of eye test",
+        table: {
+          headers: ["Test", "Who it is for"],
+          rows: [
+            ["Standard sight test", "Most people, usually every 2 years. Checks your vision and the health of your eyes"],
+            ["Children's eye test", "Children of any age. Free on the NHS for under 16s"],
+            ["Contact lens fitting or check", "Anyone who wears or wants contact lenses. Not covered by the NHS"],
+            ["OCT scan", "A detailed 3D scan of the back of the eye, usually an extra on top of a sight test"],
+            ["Diabetic eye screening", "People with diabetes aged 12 and over, alongside regular sight tests"],
+            ["Urgent eye care", "Sudden changes, a red painful eye, or new flashes and floaters"],
+          ],
+        },
+        links: [
+          { label: "All eye test types", href: "/eye-tests" },
+          { label: "Do I get a free test?", href: "/tools/free-nhs-eye-test-checker" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How often should I have an eye test?",
+        answer: "The NHS says most people should have an eye test every 2 years, or more often if your optometrist recommends it.",
+      },
+      {
+        question: "Is a contact lens check the same as an eye test?",
+        answer: "No. A contact lens fitting or check is a separate appointment. You still need regular sight tests as well.",
+      },
+      {
+        question: "What should I do if my vision changes suddenly?",
+        answer: "Contact an optician today or call NHS 111. For a serious eye injury, a chemical in the eye, or sudden severe pain or loss of vision, go to A&E or call 999.",
+      },
+    ],
+    relatedQueries: ["book-eye-test", "free-eye-test", "how-often-eye-test"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "A guide only, based on NHS advice. It does not replace advice from an optometrist, pharmacist or doctor. Nothing you enter is stored.",
+    sources: [
+      { label: "NHS: How often can I have a free NHS eye test?", url: "https://www.nhs.uk/nhs-services/opticians/how-often-can-i-have-a-free-nhs-eye-test/" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+      { label: "NHS: Diabetic eye screening", url: "https://www.nhs.uk/conditions/diabetic-eye-screening/" },
+    ],
+  },
+  {
+    slug: "nhs-optical-voucher-calculator",
+    keyword: "nhs optical voucher value",
+    title: "NHS Optical Voucher Calculator",
+    seoTitle: "NHS Optical Voucher Calculator: Find Your Band and Value",
+    seoDescription:
+      "Enter your prescription to see which NHS optical voucher band you are likely to get in England and what it is worth, from £42.40 to £233.56.",
+    h1: "NHS Optical Voucher Calculator",
+    dateModified: "2026-11-12",
+    canonicalPath: "/tools/nhs-optical-voucher-calculator",
+    parentCrumbs: [{ label: "Tools", href: "/tools" }],
+    category: "general",
+    tool: "voucher-calculator",
+    shortDescription:
+      "Enter the SPH and CYL from your prescription to see your likely NHS voucher band and value in England.",
+    content: `If you qualify for help with the cost of glasses, the NHS gives you an optical voucher. Its value depends on how strong your prescription is and whether you need single vision lenses or bifocals.
+
+Enter the SPH and CYL numbers from your prescription below to see your likely band. You only get a voucher if you qualify, so check that first if you are not sure.`,
+    keyFacts: [
+      { label: "Single vision", value: "£42.40 to £212.40" },
+      { label: "Bifocals", value: "£73.10 to £233.56" },
+      { label: "Covers", value: "Glasses or contact lenses" },
+      { label: "Area", value: "England values" },
+    ],
+    sections: [
+      {
+        heading: "NHS optical voucher values in England",
+        table: {
+          headers: ["Band", "Lenses", "Value"],
+          rows: [
+            ["A", "Single vision, sphere up to 6, cylinder up to 2", "£42.40"],
+            ["B", "Single vision, sphere over 6 and under 10, or cylinder over 2 up to 6", "£64.26"],
+            ["C", "Single vision, sphere 10 to 14, cylinder up to 6", "£94.14"],
+            ["D", "Single vision, sphere over 14 or cylinder over 6", "£212.40"],
+            ["E", "Bifocal, sphere up to 6, cylinder up to 2", "£73.10"],
+            ["F", "Bifocal, sphere over 6 and under 10, or cylinder over 2 up to 6", "£92.72"],
+            ["G", "Bifocal, sphere 10 to 14, cylinder up to 6", "£120.48"],
+            ["H", "Bifocal, sphere over 14 or cylinder over 6, or prism-controlled bifocals", "£233.56"],
+          ],
+        },
+        links: [
+          { label: "Do I qualify for a voucher?", href: "/tools/free-nhs-eye-test-checker" },
+          { label: "NHS optical vouchers explained", href: "/find/nhs-optical-voucher" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Who gets an NHS optical voucher?",
+        answer: "Vouchers are for people who qualify, for example children under 16, young people in full-time education, people on certain benefits, and people who need complex lenses.",
+      },
+      {
+        question: "Can I use my voucher for contact lenses?",
+        answer: "Yes. You can put your voucher towards glasses or contact lenses, and pay the difference if they cost more.",
+      },
+      {
+        question: "Are voucher values the same across the UK?",
+        answer: "No. These are the values for England. Scotland, Wales and Northern Ireland set their own.",
+      },
+    ],
+    relatedQueries: ["nhs-optical-voucher", "free-eye-test", "glasses-prescription-explained"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "A guide only, using NHS England voucher values. Your optician confirms your band and any supplements. Nothing you enter is stored.",
+    sources: [
+      { label: "NHS: NHS voucher values for glasses and lenses", url: "https://www.nhs.uk/nhs-services/opticians/nhs-voucher-values-for-glasses-and-lenses/" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+    ],
+  },
+  {
+    slug: "driving-eyesight-check",
+    keyword: "eyesight rules for driving",
+    title: "Driving Eyesight Check",
+    seoTitle: "Driving Eyesight Check: Do You Meet the DVLA Standard?",
+    seoDescription:
+      "Check whether you meet the eyesight standard for driving: the 20 metre number plate test, 6/12 vision, and when you must tell DVLA about an eye condition.",
+    h1: "Driving Eyesight Check",
+    dateModified: "2026-11-12",
+    canonicalPath: "/tools/driving-eyesight-check",
+    parentCrumbs: [{ label: "Tools", href: "/tools" }],
+    category: "general",
+    tool: "driving-check",
+    shortDescription:
+      "Four quick questions to check you meet the eyesight rules for driving, and whether you need to tell DVLA.",
+    content: `By law you must meet the eyesight standard every time you drive. For cars and motorcycles that means reading a number plate from 20 metres, having eyesight of at least 6/12 (decimal 0.5) with glasses if you need them, and an adequate field of vision.
+
+Answer the questions below to check where you stand. Only an eye test can confirm it.`,
+    keyFacts: [
+      { label: "Number plate", value: "Readable at 20 metres" },
+      { label: "Vision", value: "At least 6/12" },
+      { label: "Not telling DVLA", value: "Fine up to £1,000" },
+      { label: "Eye tests", value: "At least every 2 years" },
+    ],
+    sections: [
+      {
+        heading: "The eyesight rules for car and motorcycle drivers",
+        table: {
+          headers: ["Rule", "What it means"],
+          rows: [
+            ["Number plate test", "Read a car number plate made after September 2001 from 20 metres, about 5 car lengths, in good light"],
+            ["Visual acuity", "At least 6/12 (decimal 0.5) on the letter chart, with glasses or contact lenses if needed"],
+            ["Field of vision", "An adequate field of vision, which an optician can test"],
+            ["Glasses", "If you need glasses or contact lenses to meet the standard, you must wear them every time you drive"],
+          ],
+        },
+        links: [
+          { label: "DVLA driving vision test", href: "/eye-tests/dvla-driving-vision-test" },
+          { label: "Visual field test", href: "/eye-tests/visual-field-test" },
+        ],
+      },
+      {
+        heading: "When you must tell DVLA",
+        body: `You must tell DVLA if an eye condition affects both eyes, or your only eye with sight, if a GP, optician or eye specialist has told you not to drive, or if you do not meet the visual standards. Lorry and bus drivers have higher standards and more conditions to report.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "How far away do I need to read a number plate?",
+        answer: "20 metres for a number plate made after September 2001. That is about the length of 5 parked cars.",
+      },
+      {
+        question: "What eyesight do I need to drive a car?",
+        answer: "At least 6/12 (decimal 0.5) on the Snellen letter chart, with glasses or contact lenses if you need them, plus an adequate field of vision.",
+      },
+      {
+        question: "What happens if I do not tell DVLA about an eye condition?",
+        answer: "You can be fined up to £1,000, and you may be prosecuted if you are involved in an accident as a result.",
+      },
+      {
+        question: "How often should drivers have an eye test?",
+        answer: "DVLA advises drivers to have an eye test at least every 2 years.",
+      },
+    ],
+    relatedQueries: ["book-eye-test", "how-often-eye-test", "eye-test-cost"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "A guide only, based on GOV.UK and DVLA guidance for Great Britain. It cannot test your eyesight. Nothing you enter is stored.",
+    sources: [
+      { label: "GOV.UK: Driving eyesight rules", url: "https://www.gov.uk/driving-eyesight-rules" },
+      { label: "GOV.UK: Eye conditions and driving", url: "https://www.gov.uk/eye-conditions-and-driving" },
+      { label: "DVLA: INS57P Information on driving licences", url: "https://assets.publishing.service.gov.uk/media/688c6e8f6c7eb66caea94e04/ins57p-information-on-driving-licences.pdf" },
+    ],
+  },
+  {
+    slug: "eye-test-reminder",
+    keyword: "when is my eye test due",
+    title: "Eye Test Reminder",
+    seoTitle: "Eye Test Reminder: When Is My Next Eye Test Due?",
+    seoDescription:
+      "Work out when your next eye test is due and add a free reminder to Apple, Outlook or Google Calendar. Most people need an eye test every 2 years.",
+    h1: "When Is My Next Eye Test Due?",
+    dateModified: "2026-11-12",
+    canonicalPath: "/tools/eye-test-reminder",
+    parentCrumbs: [{ label: "Tools", href: "/tools" }],
+    category: "general",
+    tool: "eye-test-reminder",
+    shortDescription:
+      "Enter the month of your last eye test and add a reminder for your next one to your calendar.",
+    content: `Regular eye tests check your vision and the health of your eyes, and can pick up conditions such as glaucoma before you notice any symptoms. The NHS says most people should have one every 2 years, or more often if your optometrist recommends it.
+
+Enter when you last had your eyes tested and we will work out when your next test is due. You can add a reminder straight to your calendar.`,
+    keyFacts: [
+      { label: "Most adults", value: "Every 2 years" },
+      { label: "More often", value: "If your optometrist advises" },
+      { label: "Reminder", value: "2 weeks before" },
+      { label: "Cost", value: "Free tool" },
+    ],
+    sections: [
+      {
+        heading: "Why regular eye tests matter",
+        body: `An eye test is a health check as well as a vision check. Some conditions, such as glaucoma, often have no early symptoms, so a regular test is the best way to find them early. Book sooner if you notice any change in your vision.`,
+        links: [
+          { label: "How often to have an eye test", href: "/eye-health/guides/how-often-should-you-have-an-eye-test" },
+          { label: "Do I get a free test?", href: "/tools/free-nhs-eye-test-checker" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How often should I have an eye test?",
+        answer: "The NHS says most people should have an eye test every 2 years, or more often if your optometrist recommends it.",
+      },
+      {
+        question: "Does the reminder save my details?",
+        answer: "No. The date is worked out in your browser and the calendar file is created on your device. Nothing is sent to us.",
+      },
+    ],
+    relatedQueries: ["how-often-eye-test", "free-eye-test", "book-eye-test"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "A guide only, based on NHS advice. Your optometrist may recommend a different interval. Nothing you enter is stored.",
+    sources: [
+      { label: "NHS: How often can I have a free NHS eye test?", url: "https://www.nhs.uk/nhs-services/opticians/how-often-can-i-have-a-free-nhs-eye-test/" },
+    ],
+  },
+  {
     slug: "glasses-prescription-explained",
     keyword: "how to read glasses prescription",
     title: "Glasses Prescription Explained: SPH, CYL, Axis and ADD",
@@ -5813,6 +6080,7 @@ By law, the optician must give you a copy of your prescription after your sight 
           ],
         },
         links: [
+          { label: "NHS optical voucher calculator", href: "/tools/nhs-optical-voucher-calculator" },
           { label: "Short-sightedness", href: "/eye-health/conditions/myopia" },
           { label: "Long-sightedness", href: "/eye-health/conditions/hyperopia" },
           { label: "Astigmatism", href: "/eye-health/conditions/astigmatism" },
