@@ -541,12 +541,12 @@ function MobileStoreCard({ store, highlighted, onBook }: { store: StoreResult; h
               rel="noopener noreferrer"
               onClick={onBook ? (e) => onBook(e, store) : undefined}
               className={`flex-shrink-0 inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-md transition-colors ${
-                hasSlots
+                hasSlots || store.unclaimed
                   ? "bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white"
                   : "bg-gray-100 text-gray-400"
               }`}
             >
-              Book&nbsp;&rarr;
+              {store.unclaimed ? <>Website&nbsp;&rarr;</> : <>Book&nbsp;&rarr;</>}
             </a>
           )}
         </div>
@@ -717,6 +717,10 @@ function StoreCard({ store, highlighted, onBook }: { store: StoreResult; highlig
                   {store.slotsAvailable}
                 </span>
               </>
+            ) : store.unclaimed ? (
+              <span className="inline-flex items-center gap-1 text-[10px] font-medium text-[var(--color-navy)] bg-gray-100 px-2 py-0.5 rounded-full">
+                Book direct with the practice
+              </span>
             ) : (
               <span className="inline-flex items-center gap-1 text-[10px] font-medium text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
                 <span className="w-1.5 h-1.5 bg-gray-300 rounded-full" />
@@ -735,7 +739,7 @@ function StoreCard({ store, highlighted, onBook }: { store: StoreResult; highlig
               rel="noopener noreferrer"
               onClick={onBook ? (e) => onBook(e, store) : undefined}
               className={`flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2 rounded-lg transition-colors ${
-                hasSlots
+                hasSlots || store.unclaimed
                   ? "bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white"
                   : "bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-500"
               }`}
@@ -753,7 +757,7 @@ function StoreCard({ store, highlighted, onBook }: { store: StoreResult; highlig
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
-              Book Now
+              {store.unclaimed ? "Visit website" : "Book Now"}
             </a>
             {store.phone && (
               <a
@@ -2004,7 +2008,7 @@ export function SearchResults({ postcode, demoProvider }: { postcode: string; de
                 (featured.length > 0 || primaryAvailable.length > 0) &&
                 stream.done && (
                   <p className="pt-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
-                    No slots found
+                    More opticians nearby
                   </p>
                 )}
 
