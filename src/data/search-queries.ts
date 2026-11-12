@@ -33,6 +33,8 @@ export type SearchQuery = {
   canonicalPath?: string;
   /** Breadcrumb parents shown before the page title when canonicalPath is used */
   parentCrumbs?: { label: string; href: string }[];
+  /** Interactive tool shown after the introduction */
+  tool?: "free-eye-test-checker" | "prescription-decoder";
 };
 
 export type QuerySection = {
@@ -119,6 +121,7 @@ The biggest difference between opticians is what the price includes. Some includ
         body: `In England you get a free NHS sight test if you are under 16, aged 16 to 18 and in full-time education, aged 60 or over, registered as sight impaired or blind, have diabetes or glaucoma, are 40 or over with a parent, sibling or child who has glaucoma, have been told by an ophthalmologist you are at risk of glaucoma, or receive certain benefits or hold an HC2 certificate. Rules in Wales and Northern Ireland are similar, and in Scotland NHS eye examinations are free for everyone who is ordinarily resident in the UK.`,
         links: [
           { label: "Full free eye test guide", href: "/find/free-eye-test" },
+          { label: "Free NHS eye test checker", href: "/tools/free-nhs-eye-test-checker" },
           { label: "Over 60s", href: "/find/free-eye-test-over-60" },
           { label: "Universal Credit", href: "/find/free-eye-test-universal-credit" },
           { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
@@ -324,7 +327,7 @@ An NHS-funded test checks your vision and the health of your eyes and is carried
       { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
       { label: "NHSBSA: HC12 quick guide to help with health costs (April 2026)", url: "https://www.nhsbsa.nhs.uk/sites/default/files/2026-04/HC12%20(V24)%2004.2026.pdf" },
       { label: "NHSBSA: NHS Low Income Scheme", url: "https://www.nhsbsa.nhs.uk/nhs-low-income-scheme" },
-      { label: "NHS Inform: Eye examinations in Scotland", url: "https://www.nhsinform.scot/care-support-and-rights/nhs-services/ophthalmics/your-entitlements-to-nhs-ophthalmic-services" },
+      { label: "NHS Inform: Eye examinations in Scotland", url: "https://www.nhsinform.scot/care-support-and-rights/nhs-services/eyecare/nhs-community-eyecare" },
       { label: "NHS Wales: Wales General Ophthalmic Services", url: "https://www.nhs.wales/sa/eye-care-wales/wgos/member-of-the-public" },
       { label: "GOV.WALES: Get help with NHS eye care costs", url: "https://www.gov.wales/get-help-nhs-eye-care-costs" },
       { label: "HSC Business Services Organisation: Optical voucher values (Northern Ireland)", url: "https://bso.hscni.net/directorates/operations/family-practitioner-services/ophthalmic-services/general-public-information/current-optical-voucher-values-sight-test-prices/" },
@@ -4860,6 +4863,7 @@ Most people consider varifocals from their forties onwards, when the eye's natur
         },
         links: [
           { label: "Presbyopia", href: "/eye-health/conditions/presbyopia" },
+          { label: "Prescription decoder", href: "/tools/glasses-prescription-decoder" },
         ],
       },
       {
@@ -5679,6 +5683,202 @@ Eye cancer does not always cause obvious symptoms and may only be picked up duri
       { label: "Cancer Research UK: Eye cancer", url: "https://www.cancerresearchuk.org/about-cancer/eye-cancer" },
     ],
   },
+  {
+    slug: "free-nhs-eye-test-checker",
+    keyword: "free NHS eye test checker",
+    title: "Free NHS Eye Test Checker: Do You Qualify?",
+    seoTitle: "Free NHS Eye Test Checker: Do You Qualify? (UK)",
+    seoDescription:
+      "Answer a few quick questions to see if you get a free NHS eye test and help with glasses in England, Scotland, Wales or Northern Ireland.",
+    h1: "Free NHS Eye Test Checker",
+    dateModified: "2026-11-12",
+    canonicalPath: "/tools/free-nhs-eye-test-checker",
+    parentCrumbs: [{ label: "Tools", href: "/tools" }],
+    category: "nhs",
+    tool: "free-eye-test-checker",
+    shortDescription:
+      "Answer a few quick questions to see if you get a free NHS sight test and an optical voucher towards glasses.",
+    content: `Millions of people in the UK can have an NHS sight test without paying. In Scotland everyone gets free NHS eye examinations. In England, Wales and Northern Ireland they are free for specific groups, such as children, people aged 60 or over, people with diabetes or glaucoma, and people on certain benefits.
+
+Use the checker below to see whether you are likely to qualify, and whether you could also get an NHS optical voucher towards glasses or contact lenses.`,
+    keyFacts: [
+      { label: "Scotland", value: "Free for everyone" },
+      { label: "Under 16 or 60 and over", value: "Free in all UK nations" },
+      { label: "Diabetes or glaucoma", value: "Free" },
+      { label: "Optical voucher (England)", value: "£42.40 to £233.56" },
+    ],
+    sections: [
+      {
+        heading: "Who gets a free NHS sight test in England",
+        items: [
+          "Under 16, or 16 to 18 and in full-time education",
+          "Aged 60 or over",
+          "Registered as sight impaired or severely sight impaired",
+          "Diagnosed with diabetes or glaucoma",
+          "Aged 40 or over with a parent, brother, sister or child with glaucoma",
+          "Told by an ophthalmologist that you are at risk of glaucoma",
+          "Eligible for an NHS complex lens voucher",
+          "You or your partner get income-based Jobseeker's Allowance, income-related ESA or Pension Credit Guarantee Credit",
+          "You or your partner get Universal Credit and meet the earnings rules",
+          "Named on a valid HC2 certificate",
+        ],
+        links: [
+          { label: "Full free eye test guide", href: "/find/free-eye-test" },
+          { label: "NHS optical vouchers", href: "/find/nhs-optical-voucher" },
+        ],
+      },
+      {
+        heading: "Free tests and help with glasses are different",
+        body: `A free sight test does not always come with help towards glasses. For example, if you get a free test only because you are 60 or over, or because you have diabetes, you do not automatically get a voucher. You usually get an NHS optical voucher if you are under 16, 16 to 18 in full-time education, on a qualifying benefit, named on an HC2 certificate, or need complex lenses.`,
+      },
+      {
+        heading: "If you do not qualify",
+        body: `If your income is low, you can apply to the NHS Low Income Scheme. An HC2 certificate gives free sight tests and help with glasses, and an HC3 certificate gives partial help. If you use a screen as a big part of your job, your employer must pay for an eye test if you ask. Many opticians, including Boots Opticians, Specsavers and Vision Express, also run eye test offers.`,
+        links: [
+          { label: "Eye test prices compared", href: "/find/eye-test-cost" },
+        ],
+      },
+      {
+        heading: "What to take to your appointment",
+        body: `Tell the optician when you book that you think you qualify for an NHS sight test. You may be asked for proof, such as your date of birth, a benefit award letter or your HC2 certificate.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "Is the NHS eye test checker accurate?",
+        answer:
+          "It follows the NHS rules for each UK nation, but it is a guide only. Your optician makes the final check and may ask for proof.",
+      },
+      {
+        question: "Are eye tests free for everyone in Scotland?",
+        answer: "Yes. NHS eye examinations are free for everyone in Scotland who is ordinarily resident in the UK.",
+      },
+      {
+        question: "Do over 60s get free glasses?",
+        answer:
+          "Not because of age alone. Over 60s get a free NHS sight test, but help with glasses depends on other things such as benefits or an HC2 certificate.",
+      },
+      {
+        question: "Do people with diabetes get free eye tests?",
+        answer:
+          "Yes. If you have diabetes you get a free NHS sight test. This is separate from diabetic eye screening, which you are invited to every 1 or 2 years.",
+      },
+    ],
+    relatedQueries: ["free-eye-test", "nhs-optical-voucher", "free-eye-test-over-60", "free-eye-test-universal-credit"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This checker is a guide only, based on NHS rules. Your optician confirms whether you qualify. Nothing you enter is stored.",
+    sources: [
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+      { label: "NHS Inform: NHS community eyecare in Scotland", url: "https://www.nhsinform.scot/care-support-and-rights/nhs-services/eyecare/nhs-community-eyecare" },
+      { label: "NHS Business Services Authority: NHS Low Income Scheme", url: "https://www.nhsbsa.nhs.uk/nhs-low-income-scheme" },
+    ],
+  },
+  {
+    slug: "glasses-prescription-explained",
+    keyword: "how to read glasses prescription",
+    title: "Glasses Prescription Explained: SPH, CYL, Axis and ADD",
+    seoTitle: "Glasses Prescription Explained: SPH, CYL, Axis, ADD Decoder",
+    seoDescription:
+      "Type in your glasses prescription and see what SPH, CYL, axis, ADD and prism mean in plain English, with a guide to reading your prescription.",
+    h1: "Glasses Prescription Decoder",
+    dateModified: "2026-11-12",
+    canonicalPath: "/tools/glasses-prescription-decoder",
+    parentCrumbs: [{ label: "Tools", href: "/tools" }],
+    category: "general",
+    tool: "prescription-decoder",
+    shortDescription:
+      "Type in the numbers from your glasses prescription and see what each one means in plain English.",
+    content: `After an eye test, if you need glasses, the optometrist writes you a prescription. It is usually a small table with a row for your right eye (R) and your left eye (L), and columns such as SPH, CYL, Axis and ADD.
+
+By law, the optician must give you a copy of your prescription after your sight test, and you can use it to buy glasses anywhere you like. Type your numbers into the decoder below to see what they mean.`,
+    keyFacts: [
+      { label: "Minus SPH", value: "Short-sighted" },
+      { label: "Plus SPH", value: "Long-sighted" },
+      { label: "CYL and Axis", value: "Astigmatism" },
+      { label: "ADD", value: "Extra power for reading" },
+    ],
+    sections: [
+      {
+        heading: "What each part of your prescription means",
+        table: {
+          headers: ["Term", "What it means"],
+          rows: [
+            ["R and L", "Right eye and left eye. Older prescriptions may say OD (right) and OS (left)"],
+            ["SPH (sphere)", "The main lens power, in dioptres. Minus means short-sighted, plus means long-sighted"],
+            ["CYL (cylinder)", "Extra power to correct astigmatism. Blank if you do not have astigmatism"],
+            ["Axis", "The direction of the astigmatism correction, from 1 to 180 degrees. Only used with a CYL value"],
+            ["ADD", "Extra magnifying power for reading and close work, used in reading glasses, bifocals and varifocals"],
+            ["Prism", "Helps your eyes work together, written with a direction such as up, down, in or out"],
+          ],
+        },
+        links: [
+          { label: "Short-sightedness", href: "/eye-health/conditions/myopia" },
+          { label: "Long-sightedness", href: "/eye-health/conditions/hyperopia" },
+          { label: "Astigmatism", href: "/eye-health/conditions/astigmatism" },
+          { label: "Presbyopia", href: "/eye-health/conditions/presbyopia" },
+        ],
+      },
+      {
+        heading: "Your right to your prescription",
+        body: `Under the Opticians Act, the optometrist must give you a signed prescription after your sight test, or a statement that you do not need glasses. You do not have to buy your glasses from the same optician.`,
+      },
+      {
+        heading: "Glasses and contact lens prescriptions are different",
+        body: `A glasses prescription cannot be used to buy contact lenses. Contact lenses need a separate fitting and a contact lens specification from a registered optometrist, contact lens optician or doctor.`,
+        links: [
+          { label: "Contact lenses guide", href: "/articles/contact-lenses" },
+        ],
+      },
+      {
+        heading: "How long a prescription lasts",
+        body: `Your prescription shows what you needed on the day of your test. Most adults are advised to have an eye test every 2 years, or more often if your optometrist recommends it, because your eyes and prescription can change.`,
+        links: [
+          { label: "How often to have an eye test", href: "/eye-health/guides/how-often-should-you-have-an-eye-test" },
+          { label: "Book an eye test", href: "/find/book-eye-test" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What does a minus number on my prescription mean?",
+        answer: "A minus sphere (SPH) means you are short-sighted, so things in the distance look blurred.",
+      },
+      {
+        question: "What does a plus number mean?",
+        answer: "A plus sphere means you are long-sighted, so your eyes have to work harder to focus, especially up close.",
+      },
+      {
+        question: "What do CYL and Axis mean?",
+        answer:
+          "They correct astigmatism. CYL is the amount of correction and Axis is its direction, from 1 to 180 degrees. If these boxes are blank, you do not have astigmatism.",
+      },
+      {
+        question: "What is ADD on a prescription?",
+        answer:
+          "ADD is extra power for reading and close work. It is added to your distance prescription for reading glasses, bifocals or varifocals.",
+      },
+      {
+        question: "Can I use my glasses prescription to buy contact lenses?",
+        answer:
+          "No. Contact lenses need a separate fitting and a contact lens specification.",
+      },
+      {
+        question: "Can I get a copy of my prescription?",
+        answer:
+          "Yes. The optometrist must give you your prescription after a sight test, and you can buy glasses wherever you choose.",
+      },
+    ],
+    relatedQueries: ["varifocals", "contact-lenses", "book-eye-test"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This decoder explains what the numbers mean. It cannot check whether a prescription is right for you. Ask your optometrist if you have questions. Nothing you enter is stored.",
+    sources: [
+      { label: "College of Optometrists: What does my optical prescription mean?", url: "https://lookafteryoureyes.org/eye-examinations/what-does-my-optical-prescription-mean/" },
+      { label: "Association of Optometrists: Your prescription explained", url: "https://www.aop.org.uk/advice-and-support/for-patients/sight-tests/your-prescription-explained" },
+      { label: "Opticians Act 1989, section 26", url: "https://www.legislation.gov.uk/ukpga/1989/44/section/26" },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -5702,6 +5902,11 @@ export function getAllSlugs(): string[] {
 }
 
 /** The live URL path of a query page */
+/** Pages that live under /tools/ */
+export function getToolQueries(): SearchQuery[] {
+  return searchQueries.filter((q) => q.canonicalPath?.startsWith("/tools/"));
+}
+
 export function queryHref(q: Pick<SearchQuery, "slug" | "canonicalPath">): string {
   return q.canonicalPath ?? `/find/${q.slug}`;
 }

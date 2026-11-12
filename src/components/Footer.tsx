@@ -39,7 +39,7 @@ const footerLinks = {
     { label: "Myopia", href: "/eye-health/conditions/myopia" },
     { label: "Astigmatism", href: "/eye-health/conditions/astigmatism" },
     { label: "How Often to Test", href: "/eye-health/guides/how-often-should-you-have-an-eye-test" },
-    { label: "NHS Eligibility", href: "/eye-health/guides/understanding-nhs-eye-test-eligibility" },
+    { label: "Free NHS Eye Test Checker", href: "/tools/free-nhs-eye-test-checker" },
     { label: "Eye Health Hub", href: "/eye-health" },
   ],
   "Eye Surgery": [
@@ -71,6 +71,7 @@ const footerLinks = {
   Company: [
     { label: "About Us", href: "/about" },
     { label: "Guides & Advice", href: "/articles" },
+    { label: "Free Eye Care Tools", href: "/tools" },
     { label: "Blog", href: "/articles" },
     { label: "Contact", href: "/about" },
     { label: "For Opticians", href: "/get-listed" },

@@ -12,6 +12,7 @@ import {
   getAllSlugs as getAllSearchQuerySlugs,
   getQueryByCanonicalPath,
   getQueryBySlug,
+  getToolQueries,
 } from "@/data/search-queries";
 import { getAllProviderSlugs } from "@/data/surgery-providers";
 import { getAllConditionSlugs as getAllSurgeryConditionSlugs } from "@/data/surgery-conditions";
@@ -36,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/locations`, lastModified: REVIEWED, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/offers`, lastModified: REVIEWED, changeFrequency: "weekly", priority: 0.6 },
     { url: `${BASE}/articles`, lastModified: NOW, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE}/tools`, lastModified: "2026-11-12", changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/eye-health/conditions`, lastModified: NOW, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/eye-surgery`, lastModified: REVIEWED, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/eye-surgery/enquiry`, lastModified: NOW, changeFrequency: "monthly", priority: 0.6 },
@@ -115,6 +117,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
+  const toolPages: MetadataRoute.Sitemap = getToolQueries().map((q) => ({
+    url: `${BASE}${q.canonicalPath}`,
+    lastModified: q.dateModified ?? NOW,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   /* ------------------------------------------------------------------ */
   /* Locations — /locations/[city]                                       */
   /* ------------------------------------------------------------------ */
@@ -192,6 +201,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...guidePages,
     ...articlePages,
     ...findPages,
+    ...toolPages,
     ...locationPages,
     ...opticianBrandPages,
     ...opticianLocationPages,

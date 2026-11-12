@@ -98,7 +98,7 @@ export function NHSBanner() {
               </div>
 
               <Link
-                href="/eye-health/guides/understanding-nhs-eye-test-eligibility"
+                href="/tools/free-nhs-eye-test-checker"
                 className="inline-flex items-center gap-2 bg-[var(--color-nhs-blue)] hover:bg-[#004a93] text-white font-semibold text-sm px-6 py-3 rounded-full transition-all hover:shadow-lg"
               >
                 Check NHS eligibility

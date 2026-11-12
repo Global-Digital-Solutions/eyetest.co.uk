@@ -261,7 +261,7 @@ export default function OffersPage() {
                     of glaucoma. In Scotland, eye tests are free for everyone.
                   </p>
                   <Link
-                    href="/eye-health/guides/understanding-nhs-eye-test-eligibility"
+                    href="/tools/free-nhs-eye-test-checker"
                     className="inline-flex items-center gap-2 text-sm font-semibold text-[#005eb8] hover:underline"
                   >
                     Check your eligibility

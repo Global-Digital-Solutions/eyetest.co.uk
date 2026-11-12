@@ -1391,6 +1391,8 @@ export function getAllConditionSlugs(): string[] {
 export const MOVED_GUIDES: Record<string, string> = {
   "what-happens-during-an-eye-test": "/articles/what-happens-during-an-eye-test",
   "eye-health-and-driving": "/eye-tests/dvla-driving-vision-test",
+  "how-to-read-your-prescription": "/tools/glasses-prescription-decoder",
+  "understanding-nhs-eye-test-eligibility": "/tools/free-nhs-eye-test-checker",
 };
 
 export function getAllGuideSlugs(): string[] {

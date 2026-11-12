@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { OpticianOptions, NO_OPTICIAN_BLOCK } from "@/components/OpticianOptions";
 import { WhereToGetHelp } from "@/components/WhereToGetHelp";
+import { FreeEyeTestChecker } from "@/components/tools/FreeEyeTestChecker";
+import { PrescriptionDecoder } from "@/components/tools/PrescriptionDecoder";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero, HeroSearchForm } from "@/components/PageHero";
@@ -174,6 +176,18 @@ export function QueryPageView({ query }: { query: SearchQuery }) {
   const webPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    ...(query.tool
+      ? {
+          mainEntity: {
+            "@type": "WebApplication",
+            name: query.h1 ?? query.title,
+            applicationCategory: "HealthApplication",
+            operatingSystem: "Any",
+            isAccessibleForFree: true,
+            offers: { "@type": "Offer", price: "0", priceCurrency: "GBP" },
+          },
+        }
+      : {}),
     name: query.title,
     description: query.shortDescription,
     url,
@@ -309,6 +323,9 @@ export function QueryPageView({ query }: { query: SearchQuery }) {
                     </p>
                   ))}
                 </div>
+
+                {query.tool === "free-eye-test-checker" && <FreeEyeTestChecker />}
+                {query.tool === "prescription-decoder" && <PrescriptionDecoder />}
 
                 {sections.map((section) => (
                   <section key={section.heading} className="mt-10">

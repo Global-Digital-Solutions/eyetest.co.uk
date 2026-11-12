@@ -957,7 +957,7 @@ export const opticians: OpticianBrand[] = [
     sources: [
       { label: "Duncan and Todd: Home page", url: "https://www.duncanandtoddgroup.com/duncan-and-todd" },
       { label: "Duncan and Todd: Find a store", url: "https://www.duncanandtoddgroup.com/duncan-and-todd/find-a-store" },
-      { label: "NHS Inform: Eye examinations in Scotland", url: "https://www.nhsinform.scot/care-support-and-rights/nhs-services/ophthalmics/your-entitlements-to-nhs-ophthalmic-services" },
+      { label: "NHS Inform: Eye examinations in Scotland", url: "https://www.nhsinform.scot/care-support-and-rights/nhs-services/eyecare/nhs-community-eyecare" },
     ],
   },
 

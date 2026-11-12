@@ -103,11 +103,11 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Eye Cancer](https://www.eyetest.co.uk/eye-health/conditions/eye-cancer): Symptoms to get checked, diagnosis at UK specialist centres and treatment (NHS)
 
 ## Eye Health Guides
-- [How to Read Your Glasses Prescription](https://www.eyetest.co.uk/eye-health/guides/how-to-read-your-prescription)
+- [Glasses Prescription Decoder](https://www.eyetest.co.uk/tools/glasses-prescription-decoder): Interactive tool that explains SPH, CYL, axis, ADD and prism in plain English, with your right to a copy of your prescription (College of Optometrists, AOP, Opticians Act)
 - [Tips for Healthy Eyes](https://www.eyetest.co.uk/eye-health/guides/tips-for-healthy-eyes)
 - [Screen Time and Eye Health](https://www.eyetest.co.uk/eye-health/guides/screen-time-and-eye-health)
 - [Eye Health for Children](https://www.eyetest.co.uk/eye-health/guides/eye-health-for-children)
-- [Understanding NHS Eye Test Eligibility](https://www.eyetest.co.uk/eye-health/guides/understanding-nhs-eye-test-eligibility)
+- [Free NHS Eye Test Checker](https://www.eyetest.co.uk/tools/free-nhs-eye-test-checker): Interactive checker for free NHS sight tests and optical vouchers in England, Scotland, Wales and Northern Ireland
 - [Choosing the Right Optician](https://www.eyetest.co.uk/eye-health/guides/choosing-the-right-optician)
 - [When to Get an Emergency Eye Test](https://www.eyetest.co.uk/eye-health/guides/when-to-get-an-emergency-eye-test)
 
