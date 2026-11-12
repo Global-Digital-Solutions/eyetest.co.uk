@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero, HeroSearchForm } from "@/components/PageHero";
 import { AtHomeCallout } from "@/components/AtHomeCallout";
+import { PartnerSpotlight } from "@/components/PartnerSpotlight";
 import {
   locations,
   getLocationBySlug,
@@ -321,6 +322,9 @@ export default async function CityPage({
                 </span>
               </div>
         </PageHero>
+
+        {/* Paid partner near this town (location pages only, not search) */}
+        <PartnerSpotlight lat={location.lat} lng={location.lng} townName={location.name} />
 
         {/* ================================================================= */}
         {/* SECTION 1: Rich Introduction */}

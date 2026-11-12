@@ -1033,6 +1033,21 @@
     "bookingUrl": "https://www.specsavers.co.uk/book/newry/appointment-type",
     "distanceM": 350
    }
+  ],
+  "fulham": [],
+  "hammersmith": [],
+  "chelsea": [],
+  "putney": [
+   {
+    "name": "Specsavers London - Richmond",
+    "address": "18 The Quadrant, The Quadrant",
+    "postcode": "TW9 1BP",
+    "phone": "020 8439 9330",
+    "lat": 51.46231,
+    "lng": -0.30314,
+    "bookingUrl": "https://www.specsavers.co.uk/book/richmond/appointment-type",
+    "distanceM": 5984
+   }
   ]
  }
 }
