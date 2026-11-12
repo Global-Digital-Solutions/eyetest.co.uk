@@ -478,12 +478,24 @@ function getAvailabilitySummary(store: StoreResult): { text: string; available: 
   return { text: `Available ${dateLabel}`, available: true };
 }
 
+/** Shown on registered practices without a paid plan */
+function UpgradePrompt({ compact }: { compact?: boolean }) {
+  return (
+    <div className={`border-t border-dashed border-gray-200 ${compact ? "px-3 py-2" : "mt-3 pt-3"} flex items-center justify-between gap-2`}>
+      <span className="text-[11px] text-gray-500">Is this your practice?</span>
+      <a href="/get-listed" className="text-[11px] font-semibold text-[var(--color-primary)] hover:underline whitespace-nowrap">
+        Get a featured listing &rarr;
+      </a>
+    </div>
+  );
+}
+
 function MobileStoreCard({ store, highlighted, onBook }: { store: StoreResult; highlighted?: boolean; onBook?: (e: React.MouseEvent, store: StoreResult) => void }) {
   const hasSlots = store.dailySlots
     ? store.dailySlots.some((s) => s.count !== 0)
     : Boolean(store.slotsAvailable);
   const style = getProviderStyle(store.provider);
-  const hideActions = !hasSlots && HIDE_ACTIONS_PROVIDERS.test(store.provider);
+  const hideActions = (!hasSlots && HIDE_ACTIONS_PROVIDERS.test(store.provider)) || (store.unclaimed && !store.bookingUrl);
 
   const borderColor = store.featured ? "#f59e0b" : isIndependent(store.provider) ? "#6366f1" : hasSlots ? "#22c55e" : "#d1d5db";
 
@@ -539,6 +551,7 @@ function MobileStoreCard({ store, highlighted, onBook }: { store: StoreResult; h
           )}
         </div>
       </div>
+      {store.unclaimed && <UpgradePrompt compact />}
     </div>
   );
 }
@@ -548,7 +561,7 @@ function StoreCard({ store, highlighted, onBook }: { store: StoreResult; highlig
     ? store.dailySlots.some((s) => s.count !== 0)
     : Boolean(store.slotsAvailable);
   const style = getProviderStyle(store.provider);
-  const hideActions = !hasSlots && HIDE_ACTIONS_PROVIDERS.test(store.provider);
+  const hideActions = (!hasSlots && HIDE_ACTIONS_PROVIDERS.test(store.provider)) || (store.unclaimed && !store.bookingUrl);
 
   return (
     <div
@@ -765,6 +778,7 @@ function StoreCard({ store, highlighted, onBook }: { store: StoreResult; highlig
             )}
           </div>
         )}
+        {store.unclaimed && <UpgradePrompt />}
       </div>
     </div>
   );

@@ -162,12 +162,12 @@ export async function GET(req: NextRequest) {
   });
 
   // Load subscribed/manual optician listings
-  const { data: listingRows } = await supabase
+  const { data: allListingRows } = await supabase
     .from("optician_listings")
-    .select("*")
-    .eq("active", true);
+    .select("*");
+  const listingRows = (allListingRows ?? []).filter((l: OpticianListing) => l.active);
 
-  const listingResults: StoreResult[] = (listingRows ?? [])
+  const listingResults: StoreResult[] = listingRows
     .filter((l: OpticianListing) => l.lat != null && l.lng != null)
     .map((l: OpticianListing) => {
       const distM = haversine(lat, lng, l.lat!, l.lng!);
@@ -197,6 +197,51 @@ export async function GET(req: NextRequest) {
       logoUrl: listing.logo_url || undefined,
       services: listing.services_tagline || undefined,
       dailySlots: [{ date: new Date().toISOString().split("T")[0], count: -1 }],
+    }));
+
+  // Registered but unpaid practices: shown as a standard (not featured) listing,
+  // with a prompt to upgrade. Cancelled subscriptions are left out.
+  // Repeat sign-ups for the same practice are shown once (newest record).
+  const paidKeys = new Set(
+    listingRows.map((l: OpticianListing) => l.postcode.replace(/\s/g, "").toUpperCase())
+  );
+  const seenStandard = new Set<string>();
+  const standardListings: StoreResult[] = (allListingRows ?? [])
+    .filter(
+      (l: OpticianListing) =>
+        !l.active &&
+        (l.stripe_status ?? "none") === "none" &&
+        l.lat != null &&
+        l.lng != null
+    )
+    .sort((a: OpticianListing, b: OpticianListing) => b.created_at.localeCompare(a.created_at))
+    .filter((l: OpticianListing) => {
+      const pc = l.postcode.replace(/\s/g, "").toUpperCase();
+      const key = `${pc}|${(l.phone || "").replace(/\D/g, "") || l.practice_name.toLowerCase()}`;
+      if (paidKeys.has(pc) || seenStandard.has(key)) return false;
+      seenStandard.add(key);
+      return true;
+    })
+    .map((l: OpticianListing) => ({ listing: l, distM: haversine(lat, lng, l.lat!, l.lng!) }))
+    .filter(({ listing, distM }) => {
+      const r = Math.min(listing.radius_km / 1.60934, densityCapMiles);
+      return distM <= r * MILES_TO_METRES;
+    })
+    .map(({ listing, distM }) => ({
+      provider: listing.practice_name,
+      storeName: listing.practice_name,
+      address: listing.address || "",
+      postcode: listing.postcode,
+      town: listing.town || "",
+      phone: listing.phone || "",
+      distanceM: distM,
+      slotsAvailable: null,
+      nextAvailable: null,
+      bookingUrl: listing.booking_url || listing.website || "",
+      lat: listing.lat!,
+      lng: listing.lng!,
+      featured: false,
+      unclaimed: true,
     }));
 
   const norm = (s: string) => s.replace(/\s/g, "").toUpperCase();
@@ -283,6 +328,11 @@ export async function GET(req: NextRequest) {
       if (listingResults.length > 0) {
         controller.enqueue(
           line({ type: "results", provider: "Optician Listings", results: listingResults })
+        );
+      }
+      if (standardListings.length > 0) {
+        controller.enqueue(
+          line({ type: "results", provider: "Registered Opticians", results: standardListings })
         );
       }
 

@@ -24,6 +24,8 @@ export interface StoreResult {
   dailySlots?: DailySlot[];
   googleRating?: number; // 1.0–5.0
   googleReviewCount?: number;
+  /** Registered practice without a paid plan: standard listing with an upgrade prompt */
+  unclaimed?: boolean;
 }
 
 export interface FeaturedProvider {
