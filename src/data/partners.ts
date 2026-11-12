@@ -41,7 +41,7 @@ export const PARTNERS: Partner[] = [
     phone: "020 7385 9772",
     website: "https://www.aristoneopticians.com/",
     bookingUrl: "https://www.aristoneopticians.com/contact",
-    radiusKm: 4,
+    radiusKm: 1.5,
     summary:
       "An independent, family-run optician that has served Fulham for 70 years, offering NHS and private eye tests for all ages.",
     highlights: [
