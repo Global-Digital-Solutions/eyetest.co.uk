@@ -7,7 +7,7 @@ import { PageHero, HeroSearchForm } from "@/components/PageHero";
 import { regions, getLocationsByRegion } from "@/data/locations";
 
 export const metadata: Metadata = {
-  title: "Eye Test Locations Across the UK | eyetest.co.uk",
+  title: "Eye Test Locations Near You | eyetest.co.uk",
   description:
     "Find and compare eye test appointments in every major UK city and town. Browse opticians by region, see availability where we can show it, and book direct.",
   keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: OG_IMAGES,
-    title: "Eye Test Locations Across the UK | eyetest.co.uk",
+    title: "Eye Test Locations Near You | eyetest.co.uk",
     description:
       "Find and compare eye test appointments in every major UK city and town. Browse opticians by region and book online.",
     url: "https://www.eyetest.co.uk/locations",

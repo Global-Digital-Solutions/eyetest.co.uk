@@ -13,7 +13,7 @@ import { eyeTests, REDIRECTED_EYE_TESTS } from "@/data/eye-tests";
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Types of Eye Tests: Complete UK Guide | eyetest.co.uk",
+  title: "Types of Eye Tests: A Complete Guide | eyetest.co.uk",
   description:
     clampDescription("Explore all 18 types of eye tests available in the UK, including NHS eye tests, OCT scans, visual field tests, and specialist screenings. Learn what each test involves, who needs it, costs, and how to book."),
   keywords: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: OG_IMAGES,
-    title: "Types of Eye Tests: Complete UK Guide | eyetest.co.uk",
+    title: "Types of Eye Tests: A Complete Guide | eyetest.co.uk",
     description:
       clampDescription("Explore all types of eye tests available in the UK. Learn what each test involves, who needs it, and how much it costs."),
     url: "https://www.eyetest.co.uk/eye-tests",

@@ -10,7 +10,7 @@ import { Footer } from "@/components/Footer";
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "About Us: The UK's Eye Test Comparison Platform | eyetest.co.uk",
+  title: "About Us: The Eye Test Comparison Platform | eyetest.co.uk",
   description:
     clampDescription("Learn about eyetest.co.uk, the UK's dedicated eye test comparison platform. Founded in 2019, we help you compare 2,400+ opticians across 97 UK cities. 100% free to use."),
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: OG_IMAGES,
-    title: "About Us: The UK's Eye Test Comparison Platform | eyetest.co.uk",
+    title: "About Us: The Eye Test Comparison Platform | eyetest.co.uk",
     description:
       clampDescription("Founded in 2019, eyetest.co.uk helps you compare 2,400+ opticians across the UK. Free, transparent, and independent."),
     url: "https://www.eyetest.co.uk/about",

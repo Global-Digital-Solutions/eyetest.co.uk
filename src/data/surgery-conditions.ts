@@ -31,7 +31,7 @@ export const surgeryConditions: SurgeryCondition[] = [
   {
     name: "Cataracts",
     slug: "cataracts",
-    metaTitle: "Cataract Surgery in the UK | Types, Recovery & NHS Options",
+    metaTitle: "Cataract Surgery | Types, Recovery & NHS Options",
     metaDescription:
       "Cataract surgery in the UK: NHS and private options, lens choices, recovery times and how to find a specialist near you.",
     overview: `<p>A cataract is a clouding of the natural crystalline lens inside the eye, causing vision to become progressively blurred, misty, or faded. Cataracts are very common and mostly affect older adults. The condition develops gradually over months or years as proteins in the lens break down and clump together, scattering light instead of focusing it clearly on the retina.</p>
@@ -143,7 +143,7 @@ export const surgeryConditions: SurgeryCondition[] = [
     name: "Glaucoma Surgery",
     slug: "glaucoma-surgery",
     metaTitle:
-      "Glaucoma Surgery UK: Treatments, Costs and Clinics",
+      "Glaucoma Surgery: Treatments, Costs and Clinics",
     metaDescription:
       "Learn about glaucoma surgery options in the UK including SLT laser, trabeculectomy, and MIGS. Compare NHS and private treatment pathways and find specialist providers.",
     overview: `<p>Glaucoma is a group of eye conditions in which the optic nerve is progressively damaged, usually due to raised pressure inside the eye (intraocular pressure, or IOP).</p>
@@ -251,7 +251,7 @@ export const surgeryConditions: SurgeryCondition[] = [
     name: "Macular Degeneration",
     slug: "macular-degeneration",
     metaTitle:
-      "Macular Degeneration Treatment UK: AMD Injections",
+      "Macular Degeneration Treatment: AMD Injections",
     metaDescription:
       "Macular degeneration (AMD) treatment in the UK: anti-VEGF injections for wet AMD, options for dry AMD, NHS care and specialist providers.",
     overview: `<p>Age-related macular degeneration (AMD) is a progressive eye condition that affects the <strong>macula</strong>, the small central area of the retina responsible for sharp, detailed vision used for reading, driving, and recognising faces.</p>
@@ -355,7 +355,7 @@ export const surgeryConditions: SurgeryCondition[] = [
     name: "Laser Eye Surgery",
     slug: "laser-eye-surgery",
     metaTitle:
-      "Laser Eye Surgery UK: LASIK, LASEK, SMILE and Costs",
+      "Laser Eye Surgery: LASIK, LASEK, SMILE and Costs",
     metaDescription:
       "Laser eye surgery in the UK: LASIK, LASEK and SMILE compared, typical costs, who is suitable and how to find a clinic near you.",
     overview: `<p>Laser eye surgery, also known as laser vision correction, is a group of refractive procedures that use precisely controlled laser energy to reshape the cornea, the clear front surface of the eye, to correct common vision problems. The goal is to reduce or eliminate dependence on glasses or contact lenses for short-sightedness (myopia), long-sightedness (hyperopia), astigmatism, and age-related reading difficulty (presbyopia).</p>
@@ -466,7 +466,7 @@ export const surgeryConditions: SurgeryCondition[] = [
     name: "Retinal Detachment",
     slug: "retinal-detachment",
     metaTitle:
-      "Retinal Detachment Surgery UK: Treatment and Recovery",
+      "Retinal Detachment Surgery: Treatment and Recovery",
     metaDescription:
       "Retinal detachment surgery in the UK: the warning signs, emergency treatment, what recovery involves and where to find specialist care.",
     overview: `<p>Retinal detachment is a <strong>sight-threatening emergency</strong> in which the retina, the thin layer of light-sensitive tissue that lines the back of the eye, separates from its underlying supportive tissue. When the retina detaches. It is cut off from its blood supply and oxygen, causing the affected photoreceptor cells to begin dying. Without prompt surgical treatment, retinal detachment can lead to <strong>permanent vision loss</strong> in the affected eye.</p>
@@ -570,7 +570,7 @@ export const surgeryConditions: SurgeryCondition[] = [
     name: "Eyelid Surgery",
     slug: "eyelid-surgery",
     metaTitle:
-      "Eyelid Surgery in the UK | Blepharoplasty, Ptosis Repair & Costs",
+      "Eyelid Surgery | Blepharoplasty, Ptosis Repair & Costs",
     metaDescription:
       "Eyelid surgery (blepharoplasty) in the UK: ptosis repair, entropion and ectropion correction, NHS eligibility and private costs.",
     overview: `<p>Eyelid surgery, known medically as <strong>oculoplastic surgery</strong>, encompasses a range of procedures that address conditions affecting the eyelids, tear ducts, and the tissues surrounding the eyes. These procedures may be performed for medical reasons, to improve vision obstructed by drooping or excess eyelid tissue, or for cosmetic purposes to rejuvenate the appearance of the eye area.</p>
@@ -678,7 +678,7 @@ export const surgeryConditions: SurgeryCondition[] = [
     name: "Corneal Conditions",
     slug: "corneal-conditions",
     metaTitle:
-      "Corneal Surgery UK: Keratoconus and Transplants",
+      "Corneal Surgery: Keratoconus and Transplants",
     metaDescription:
       "Corneal conditions and surgery in the UK: keratoconus, cross-linking and corneal transplants, and how to find a specialist provider.",
     overview: `<p>The cornea is the <strong>clear, dome-shaped front surface of the eye</strong> that plays a critical role in focusing light onto the retina. It accounts for approximately two-thirds of the eye's total focusing power. Corneal conditions encompass a wide range of diseases, injuries, and degenerative changes that affect the clarity, shape, or integrity of the cornea, potentially causing significant visual impairment.</p>
@@ -784,7 +784,7 @@ export const surgeryConditions: SurgeryCondition[] = [
     name: "Diabetic Eye Disease",
     slug: "diabetic-eye-disease",
     metaTitle:
-      "Diabetic Eye Disease Treatment UK: Injections and Surgery",
+      "Diabetic Eye Disease Treatment: Injections and Surgery",
     metaDescription:
       "Diabetic eye disease treatment in the UK: retinopathy and maculopathy, laser treatment, injections and NHS diabetic eye screening.",
     overview: `<p>Diabetic eye disease refers to a group of eye conditions that affect people with diabetes mellitus. The most important of these is <strong>diabetic retinopathy</strong>, a condition in which high blood sugar levels damage the tiny blood vessels in the retina over time. Diabetic retinopathy is the <strong>leading cause of preventable blindness in working-age adults</strong> in the UK, yet with early detection through screening and timely treatment, the vast majority of severe sight loss can be prevented.</p>

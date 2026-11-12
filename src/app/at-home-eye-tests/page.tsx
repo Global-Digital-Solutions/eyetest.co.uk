@@ -12,7 +12,7 @@ import { AtHomeBookingForm } from "@/components/AtHomeBookingForm";
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "At-Home Eye Tests UK: Free NHS Home Visits & How to Book",
+  title: "At-Home Eye Tests: Free NHS Home Visits & How to Book",
   description:
     clampDescription("At-home eye tests in the UK: who qualifies for a free NHS home visit, what happens on the day, and how to book a mobile optician near you."),
   keywords: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: OG_IMAGES,
-    title: "At-Home Eye Tests UK: Free NHS Home Visits & How to Book",
+    title: "At-Home Eye Tests: Free NHS Home Visits & How to Book",
     description:
       clampDescription("Complete guide to at-home eye tests in the UK. Learn who qualifies for free NHS home visits, what to expect, and how to book a mobile optician near you."),
     url: "https://www.eyetest.co.uk/at-home-eye-tests",

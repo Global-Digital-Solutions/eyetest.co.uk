@@ -485,7 +485,7 @@ Whatever you decide, the most important thing is to have your eyes tested regula
   },
   {
     slug: "contact-lenses",
-    title: "Contact Lenses: A UK Guide",
+    title: "Contact Lenses: A Complete Guide",
     excerpt: "The main types of contact lens, how a fitting works, the safety rules that matter most, and what UK law says about buying lenses online.",
     image: "/images/eye-test-phoropter-sm.jpg",
     category: "Guides",
@@ -505,7 +505,7 @@ Whatever you decide, the most important thing is to have your eyes tested regula
   },
   {
     slug: "varifocals",
-    title: "Varifocals: A UK Guide",
+    title: "Varifocals: A Complete Guide",
     excerpt: "How varifocal lenses work, how they compare with bifocals and reading glasses, who they suit and how to get used to them.",
     image: "/images/elderly-eye-test-sm.jpg",
     category: "Guides",
@@ -525,7 +525,7 @@ Whatever you decide, the most important thing is to have your eyes tested regula
   },
   {
     slug: "laser-eye-surgery-cost",
-    title: "Laser Eye Surgery Cost in the UK",
+    title: "Laser Eye Surgery Cost: Prices From Each Clinic",
     excerpt: "Laser eye surgery prices from Optical Express, Optimax, Optegra and Moorfields Private, checked on each clinic's own website, plus what to check before you book.",
     image: "/images/eye-test-phoropter-sm.jpg",
     category: "Guides",

@@ -30,7 +30,7 @@ const providerImages: Record<string, string> = {
 
 export const metadata: Metadata = {
   title:
-    "UK Eye Surgery: Compare Specialist Surgeons | eyetest.co.uk",
+    "Eye Surgery: Compare Specialist Surgeons | eyetest.co.uk",
   description:
     clampDescription("Compare NHS and private eye surgery providers across the UK, from cataract and laser eye surgery to glaucoma treatment, and find a clinic near you."),
   keywords: [

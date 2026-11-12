@@ -15,7 +15,7 @@ import {
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Compare UK Opticians & Eye Test Prices | eyetest.co.uk",
+  title: "Compare Opticians & Eye Test Prices | eyetest.co.uk",
   description:
     clampDescription("Compare leading UK optician chains side by side. See services, prices, NHS availability, and store locations for Boots, ASDA, Leightons, Scrivens, and more. Book your eye test online."),
   keywords: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: OG_IMAGES,
-    title: "Compare UK Opticians: Find the Best Eye Test Near You",
+    title: "Compare Opticians: Find the Best Eye Test Near You",
     description:
       clampDescription("Compare leading UK optician chains side by side. See services, prices, NHS availability, and book your eye test online."),
     url: "https://www.eyetest.co.uk/opticians",
@@ -55,7 +55,7 @@ export default function OpticiansPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Compare UK Opticians: Find the Best Eye Test Near You",
+    name: "Compare Opticians: Find the Best Eye Test Near You",
     description:
       "Compare leading UK optician chains side by side. See services, prices, NHS availability, and book your eye test online.",
     url: "https://www.eyetest.co.uk/opticians",
@@ -120,7 +120,7 @@ export default function OpticiansPage() {
         {/* ── Hero ────────────────────────────────────────────────────── */}
         <PageHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Opticians" }]}>
           <h1 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Compare UK Opticians
+            Compare Opticians
           </h1>
           <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto">
             Find an eye test near you. Compare services, prices and NHS

@@ -328,7 +328,7 @@ export function Footer() {
                   className="text-sm font-bold text-white/70"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
-                  Eye Tests Across the UK
+                  Eye Tests by Location
                 </h3>
                 <span className="text-xs text-white/30 hidden sm:inline">
                  : 97 cities &amp; towns

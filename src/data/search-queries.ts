@@ -82,8 +82,8 @@ export const searchQueries: SearchQuery[] = [
   {
     slug: "eye-test-cost",
     keyword: "eye test cost",
-    title: "How Much Does an Eye Test Cost in the UK? (2026 Prices)",
-    seoTitle: "Eye Test Cost UK 2026: Specsavers, Boots, Vision Express Prices",
+    title: "How Much Does an Eye Test Cost? (2026 Prices)",
+    seoTitle: "Eye Test Cost 2026: Specsavers, Boots, Vision Express Prices",
     seoDescription:
       "Eye test prices at Specsavers, Boots, Vision Express, Asda and M&S, checked November 2026, plus who gets a free NHS eye test.",
     h1: "How Much Does an Eye Test Cost?",
@@ -96,7 +96,7 @@ export const searchQueries: SearchQuery[] = [
 The biggest difference between opticians is what the price includes. Some include an OCT scan (a 3D scan of the back of the eye), while others charge extra for it or offer it as a separate, higher-priced test. Prices can also vary from store to store, so confirm the fee with your local practice when you book.`,
     sections: [
       {
-        heading: "Eye test prices at the main UK opticians",
+        heading: "Eye test prices at the main opticians",
         table: {
           caption: "Private eye test prices published by each optician, checked November 2026",
           headers: ["Optician", "Private eye test", "OCT scan", "Source"],
@@ -194,7 +194,7 @@ The biggest difference between opticians is what the price includes. Some includ
   {
     slug: "free-eye-test",
     keyword: "free eye test",
-    title: "Free Eye Tests in the UK: Who Qualifies and How to Book",
+    title: "Free Eye Tests: Who Qualifies and How to Book",
     seoTitle: "Free Eye Test: Who Gets a Free NHS Eye Test? (2026 Guide)",
     seoDescription:
       "Check if you get a free NHS eye test in England, Scotland, Wales or Northern Ireland, what proof to bring, and when opticians run free test offers.",
@@ -337,8 +337,8 @@ An NHS-funded test checks your vision and the health of your eyes and is carried
   {
     slug: "cheap-eye-test",
     keyword: "cheap eye test",
-    title: "Cheapest Eye Tests in the UK (2026 Price Comparison)",
-    seoTitle: "Cheapest Eye Test UK 2026: Prices Compared and How to Pay Less",
+    title: "Cheapest Eye Tests (2026 Price Comparison)",
+    seoTitle: "Cheapest Eye Test 2026: Prices Compared and How to Pay Less",
     seoDescription:
       "Where to get the cheapest eye test in the UK: published prices at Specsavers, Asda, Boots, Vision Express and M&S, free NHS tests and current ways to pay less.",
     dateModified: "2026-11-10",
@@ -422,7 +422,7 @@ A lower price does not mean a less thorough sight test, since every test is carr
     slug: "private-eye-test-cost",
     dateModified: "2026-11-11",
     keyword: "private eye test cost",
-    title: "Private Eye Test Cost UK: What to Expect to Pay (2026)",
+    title: "Private Eye Test Cost: What to Expect to Pay (2026)",
     category: "cost",
     shortDescription:
       "How much a private eye test costs across the UK in 2026, from basic sight tests to enhanced examinations with OCT scans.",
@@ -746,7 +746,7 @@ The values below are for England and come from the NHSBSA guide for April 2026. 
     slug: "same-day-eye-test",
     keyword: "same day eye test",
     title: "Same-Day Eye Test: How to Find an Appointment Today",
-    seoTitle: "Same-Day Eye Test Near Me: Find an Appointment Today (UK)",
+    seoTitle: "Same-Day Eye Test Near Me: Find an Appointment Today",
     seoDescription:
       "How to find a same-day eye test near you. See the next available appointment at opticians near you and book direct. Free if you qualify for an NHS eye test.",
     h1: "Same-Day Eye Test: Find an Appointment Today",
@@ -821,7 +821,7 @@ If you have a sudden eye problem, such as a red or painful eye, new flashes or f
     slug: "walk-in-eye-test",
     keyword: "walk in eye test",
     title: "Walk-In Eye Test: Can You Get Seen Without an Appointment?",
-    seoTitle: "Walk-In Eye Test Near Me: Get Seen Without Booking (UK)",
+    seoTitle: "Walk-In Eye Test Near Me: Get Seen Without Booking",
     seoDescription:
       "Can you walk in for an eye test? Most opticians work by appointment, so check the next available slot near you and book direct, even for today.",
     h1: "Walk-In Eye Tests",
@@ -883,7 +883,7 @@ If you have a sudden eye problem, such as a red or painful eye, new flashes or f
     slug: "weekend-eye-test",
     keyword: "weekend eye test",
     title: "Weekend Eye Test: Saturday and Sunday Appointments",
-    seoTitle: "Saturday and Sunday Eye Test Near Me: Weekend Appointments (UK)",
+    seoTitle: "Saturday and Sunday Eye Test Near Me: Weekend Appointments",
     seoDescription:
       "Find a Saturday or Sunday eye test near you. Opening hours vary by store, so check the next available weekend appointment and book direct with the optician.",
     h1: "Weekend Eye Tests: Saturday and Sunday",
@@ -1029,7 +1029,7 @@ Store pages on eyetest.co.uk show opening hours where the optician publishes the
     slug: "eye-test-at-home",
     canonicalPath: "/at-home-eye-tests",
     keyword: "eye test at home",
-    title: "Eye Tests at Home: Domiciliary Eye Care in the UK",
+    title: "Eye Tests at Home: Domiciliary Eye Care Explained",
     category: "availability",
     shortDescription:
       "If you cannot visit an optician, a qualified optometrist can carry out a full eye test in your own home. Learn about domiciliary eye care.",
@@ -1068,7 +1068,7 @@ Private home visit eye tests are also available for anyone who simply prefers th
     slug: "online-eye-test",
     keyword: "online eye test",
     title: "Online Eye Test: What It Can and Can't Tell You",
-    seoTitle: "Online Eye Test UK: Can It Replace a Proper Eye Test?",
+    seoTitle: "Online Eye Test: Can It Replace a Proper Eye Test?",
     seoDescription:
       "Online eye tests can give a rough idea of how well you see, but in the UK only a registered optometrist or doctor can carry out a sight test. What online checks miss.",
     h1: "Online Eye Tests: What They Can and Can't Do",
@@ -1191,7 +1191,7 @@ Both chains provide free NHS-funded eye tests if you qualify, along with childre
   {
     slug: "book-eye-test",
     keyword: "book eye test",
-    title: "Book an Eye Test Online: How to Book with Any UK Optician",
+    title: "Book an Eye Test Online: How to Book with Any Optician",
     seoTitle: "Book an Eye Test Online: Boots, Specsavers and More",
     seoDescription:
       "How to book an eye test online or by phone with Specsavers, Boots, Vision Express, Asda, M&S and independents, what to bring and how to book a free NHS test.",
@@ -1339,8 +1339,8 @@ Almost every high-street optician offers NHS-funded eye tests for people who qua
   {
     slug: "eye-test-what-to-expect",
     keyword: "what happens during an eye test",
-    title: "What Happens During an Eye Test? Step-by-Step UK Guide",
-    seoTitle: "What Happens During an Eye Test? Step by Step (UK, 2026)",
+    title: "What Happens During an Eye Test? A Step-by-Step Guide",
+    seoTitle: "What Happens During an Eye Test? Step by Step (2026)",
     seoDescription:
       "What happens at a UK eye test, step by step: the questions you are asked, vision and eye health checks, glaucoma tests, how long it takes and what to bring.",
     h1: "What Happens During an Eye Test?",
@@ -1456,7 +1456,7 @@ Your optometrist will explain each part as they go. Some opticians also offer ex
   {
     slug: "how-long-does-eye-test-take",
     keyword: "how long does an eye test take",
-    title: "How Long Does an Eye Test Take? (UK Appointment Guide)",
+    title: "How Long Does an Eye Test Take? (Appointment Guide)",
     category: "general",
     shortDescription:
       "Find out how long an eye test takes in the UK, from a standard 20-minute sight test to specialist assessments.",
@@ -1496,8 +1496,8 @@ If you are short on time, let the receptionist know when you book. They can advi
   {
     slug: "how-often-eye-test",
     keyword: "how often should you have an eye test",
-    title: "How Often Should You Have an Eye Test? UK Guidance",
-    seoTitle: "How Often Should You Have an Eye Test? UK Guidance (2026)",
+    title: "How Often Should You Have an Eye Test? NHS Guidance",
+    seoTitle: "How Often Should You Have an Eye Test? NHS Guidance (2026)",
     seoDescription:
       "The NHS recommends an eye test every 2 years, or more often if your optometrist advises. Who gets free NHS eye tests, diabetic eye screening and when to go sooner.",
     h1: "How Often Should You Have an Eye Test?",
@@ -1668,7 +1668,7 @@ Do not put it off. Eye tests are quick, painless, widely available, and may be f
     slug: "eye-test-failed-driving",
     keyword: "failed driving test eyesight check",
     title: "Failed the Eyesight Check on Your Driving Test? What Happens Next",
-    seoTitle: "Failed the Driving Test Eyesight Check? What Happens Next (UK)",
+    seoTitle: "Failed the Driving Test Eyesight Check? What Happens Next",
     seoDescription:
       "If you can't read the number plate at the start of your driving test, you fail, the DVLA is told and your licence is revoked. How to reapply and the DVSA eyesight test.",
     h1: "Failed the Eyesight Check on Your Driving Test?",
@@ -1746,8 +1746,8 @@ When you reapply for your driving licence, the DVLA will ask you to have an eyes
   {
     slug: "oct-scan-cost",
     keyword: "OCT scan cost",
-    title: "OCT Scan Cost UK: How Much Is an OCT Eye Scan? (2026 Prices)",
-    seoTitle: "OCT Scan Cost UK 2026: Specsavers, Boots, Vision Express and M&S",
+    title: "OCT Scan Cost: How Much Is an OCT Eye Scan? (2026 Prices)",
+    seoTitle: "OCT Scan Cost 2026: Specsavers, Boots, Vision Express and M&S",
     seoDescription:
       "How much an OCT eye scan costs at Specsavers, Boots, Vision Express and M&S Opticians, checked November 2026, what it shows and whether you need one.",
     dateModified: "2026-11-11",
@@ -1839,7 +1839,7 @@ The scan is quick, painless and does not touch your eye. You rest your chin on a
     slug: "eye-test-for-driving",
     keyword: "eye test for driving",
     title: "Eye Test for Driving: DVLA Eyesight Rules and Where to Get Tested",
-    seoTitle: "Driving Eye Test UK 2026: DVLA Eyesight Rules and Standards",
+    seoTitle: "Driving Eye Test 2026: DVLA Eyesight Rules and Standards",
     seoDescription:
       "The DVLA eyesight standard for driving: read a number plate at 20 metres, 6/12 vision and an adequate field of vision. Lorry and bus rules, and when to tell the DVLA.",
     h1: "Eye Test for Driving: The DVLA Eyesight Rules",
@@ -1949,7 +1949,7 @@ GOV.UK says you could be prosecuted if you drive without meeting the standards o
     slug: "contact-lens-eye-test",
     keyword: "contact lens eye test",
     title: "Contact Lens Eye Test: Fittings, Check-Ups and Your Specification",
-    seoTitle: "Contact Lens Eye Test UK: Fittings, Check-Ups and Specifications",
+    seoTitle: "Contact Lens Eye Test: Fittings, Check-Ups and Specifications",
     seoDescription:
       "How contact lens fittings and check-ups work in the UK, why you need an in-date contact lens specification, and how it differs from a glasses eye test.",
     h1: "Contact Lens Eye Tests and Fittings",
@@ -2033,8 +2033,8 @@ The General Optical Council says that to be supplied with prescription contact l
   {
     slug: "childrens-eye-test-guide",
     keyword: "children's eye test",
-    title: "Children's Eye Test UK: Free NHS Tests, When to Book and What Happens",
-    seoTitle: "Children's Eye Test UK: Free on the NHS and What to Expect",
+    title: "Children's Eye Test: Free NHS Tests, When to Book and What Happens",
+    seoTitle: "Children's Eye Test: Free on the NHS and What to Expect",
     seoDescription:
       "Children's eye tests are free on the NHS for under 16s. When to book, school vision screening, what happens at the optician and signs to look for.",
     h1: "Children's Eye Tests: A Parent's Guide",
@@ -2212,11 +2212,11 @@ A private glaucoma assessment, if needed, typically costs £30 to £60 and inclu
   {
     slug: "colour-blind-test",
     keyword: "colour blind test",
-    title: "Colour Blind Test UK: How to Get Tested for Colour Vision Deficiency",
-    seoTitle: "Colour Blind Test UK 2026: How to Get Tested at an Optician",
+    title: "Colour Blind Test: How to Get Tested for Colour Vision Deficiency",
+    seoTitle: "Colour Blind Test 2026: How to Get Tested at an Optician",
     seoDescription:
       "How to get a colour blind test in the UK, what the Ishihara test involves, signs in children, and what colour blindness means for driving and work.",
-    h1: "Colour Blind Test: How to Get Your Colour Vision Checked in the UK",
+    h1: "Colour Blind Test: How to Get Your Colour Vision Checked",
     dateModified: "2026-11-11",
     category: "specialist",
     shortDescription:
@@ -2334,7 +2334,7 @@ Online colour blind tests can give you an idea of whether you might have a colou
   {
     slug: "blurry-vision-causes",
     keyword: "blurry vision causes",
-    title: "Blurry Vision Causes: When to See an Optician (UK Guide)",
+    title: "Blurry Vision Causes: When to See an Optician",
     category: "concern",
     shortDescription:
       "The most common causes of blurry vision and when you should book an urgent eye test to get it checked.",
@@ -2497,7 +2497,7 @@ Floaters can look like small dark dots, squiggly lines, rings or cobwebs. Flashe
   {
     slug: "sudden-vision-changes",
     keyword: "sudden vision changes",
-    title: "Sudden Vision Changes: When to Seek Urgent Help (UK Guide)",
+    title: "Sudden Vision Changes: When to Seek Urgent Help",
     category: "concern",
     shortDescription:
       "What to do if you experience sudden changes in your vision, including which symptoms are medical emergencies.",
@@ -3471,7 +3471,7 @@ An optician can check for it with an eye test, and it can usually be corrected w
     slug: "colour-blindness",
     keyword: "colour blindness",
     title: "Colour Blindness (Colour Vision Deficiency): Signs, Causes and Living With It",
-    seoTitle: "Colour Blindness: Signs, Causes, Tests and Living With It (UK)",
+    seoTitle: "Colour Blindness: Signs, Causes, Tests and Living With It",
     seoDescription:
       "Colour blindness affects about 1 in 12 men and 1 in 200 women in the UK. Signs in children, causes, how it is tested, and what it means for school, work and driving.",
     h1: "Colour Blindness (Colour Vision Deficiency)",
@@ -4602,11 +4602,11 @@ Children often cannot tell that they have double vision. Signs include squinting
   {
     slug: "contact-lenses",
     keyword: "contact lenses",
-    title: "Contact Lenses: Types, Fitting, Safe Wear and Buying Online (UK)",
-    seoTitle: "Contact Lenses UK: Types, Fitting, Safe Wear and Buying",
+    title: "Contact Lenses: Types, Fitting, Safe Wear and Buying Online",
+    seoTitle: "Contact Lenses: Types, Fitting, Safe Wear and Buying",
     seoDescription:
       "A UK guide to contact lenses: the main types, who can fit them, children and lenses, safe wear rules on water and sleep, check-ups and buying lenses online.",
-    h1: "Contact Lenses: A UK Guide",
+    h1: "Contact Lenses: A Complete Guide",
     dateModified: "2026-11-11",
     canonicalPath: "/articles/contact-lenses",
     parentCrumbs: [{ label: "Articles", href: "/articles" }],
@@ -4736,8 +4736,8 @@ In the UK, contact lenses can only be fitted by a registered optometrist, a cont
   {
     slug: "blue-light-glasses",
     keyword: "blue light glasses",
-    title: "Do Blue Light Glasses Work? What the UK Evidence Says",
-    seoTitle: "Do Blue Light Glasses Work? What the Evidence Says (UK)",
+    title: "Do Blue Light Glasses Work? What the Evidence Says",
+    seoTitle: "Do Blue Light Glasses Work? What the Evidence Says",
     seoDescription:
       "Do blue light glasses help with eye strain, sleep or eye health? What the College of Optometrists and a 2023 Cochrane review found, and what helps instead.",
     h1: "Do Blue Light Glasses Work?",
@@ -4767,7 +4767,7 @@ That does not mean screen discomfort is imagined. Long spells of close work can 
         ],
       },
       {
-        heading: "What UK eye care bodies advise",
+        heading: "What eye care bodies advise",
         body: `The College of Optometrists says opticians who sell blue-blocking lenses should tell patients there is no strong evidence that they improve vision, ease eye strain or improve sleep, and that it is unclear whether they protect the macula. The Association of Optometrists says there is no clear evidence that blue light from screens causes eye disease, and notes that the blue light from most devices is a small fraction of what your eyes receive outdoors on a sunny day.`,
       },
       {
@@ -4830,10 +4830,10 @@ That does not mean screen discomfort is imagined. Long spells of close work can 
     slug: "varifocals",
     keyword: "varifocals",
     title: "Varifocals: What They Are, Who Needs Them and How to Get Used to Them",
-    seoTitle: "Varifocals: What They Are and Who Needs Them (UK Guide)",
+    seoTitle: "Varifocals: What They Are and Who Needs Them",
     seoDescription:
       "What varifocal lenses are, how they differ from bifocals and reading glasses, who they suit, tips for getting used to them, and help with the cost.",
-    h1: "Varifocals: A UK Guide",
+    h1: "Varifocals: A Complete Guide",
     dateModified: "2026-11-11",
     canonicalPath: "/articles/varifocals",
     parentCrumbs: [{ label: "Articles", href: "/articles" }],
@@ -4946,7 +4946,7 @@ Most people consider varifocals from their forties onwards, when the eye's natur
     slug: "optician-vs-optometrist",
     keyword: "optician vs optometrist",
     title: "Optician vs Optometrist: What Is the Difference?",
-    seoTitle: "Optician vs Optometrist: What Is the Difference? (UK)",
+    seoTitle: "Optician vs Optometrist: What Is the Difference?",
     seoDescription:
       "Optometrist, dispensing optician, ophthalmologist or orthoptist? Who does what in UK eye care, who tests your eyes, and how to check someone is registered.",
     h1: "Optician vs Optometrist: What Is the Difference?",
@@ -5052,11 +5052,11 @@ Optometrists and dispensing opticians are both regulated by the General Optical 
   {
     slug: "laser-eye-surgery-cost",
     keyword: "laser eye surgery cost",
-    title: "Laser Eye Surgery Cost UK: Prices From Each Clinic",
-    seoTitle: "Laser Eye Surgery Cost UK: Clinic Prices Compared",
+    title: "Laser Eye Surgery Cost: Prices From Each Clinic",
+    seoTitle: "Laser Eye Surgery Cost: Clinic Prices Compared",
     seoDescription:
       "How much laser eye surgery costs in the UK, with prices from Optical Express, Optimax, Optegra and Moorfields Private checked on each clinic's own website.",
-    h1: "Laser Eye Surgery Cost in the UK",
+    h1: "Laser Eye Surgery Cost: Prices From Each Clinic",
     dateModified: "2026-11-12",
     canonicalPath: "/articles/laser-eye-surgery-cost",
     parentCrumbs: [{ label: "Articles", href: "/articles" }],
@@ -5687,7 +5687,7 @@ Eye cancer does not always cause obvious symptoms and may only be picked up duri
     slug: "free-nhs-eye-test-checker",
     keyword: "free NHS eye test checker",
     title: "Free NHS Eye Test Checker: Do You Qualify?",
-    seoTitle: "Free NHS Eye Test Checker: Do You Qualify? (UK)",
+    seoTitle: "Free NHS Eye Test Checker: Do You Qualify?",
     seoDescription:
       "Answer a few quick questions to see if you get a free NHS eye test and help with glasses in England, Scotland, Wales or Northern Ireland.",
     h1: "Free NHS Eye Test Checker",
