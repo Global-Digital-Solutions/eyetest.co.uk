@@ -155,11 +155,12 @@ export async function POST(request: Request) {
         await transporter.sendMail({
           from: getFromAddress(),
           to: email,
-          subject: "Thanks for your application — eyetest.co.uk",
+          subject: `${practiceName} is now listed on eyetest.co.uk`,
           html: applicantThankYouEmail({
             contactName,
             practiceName,
             listingId,
+            postcode,
           }),
         });
       } catch (emailErr) {

@@ -95,7 +95,7 @@ export async function GET(req: NextRequest) {
       await transporter.sendMail({
         from: getFromAddress(),
         to: listing.email,
-        subject: `Your listing renews in ${daysUntilExpiry} days — ${listing.practice_name}`,
+        subject: `Your listing renews in ${daysUntilExpiry} days: ${listing.practice_name}`,
         html: renewalReminderEmail({
           contactName: listing.contact_name,
           practiceName: listing.practice_name,

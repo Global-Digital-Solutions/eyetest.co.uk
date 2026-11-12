@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
               await transporter.sendMail({
                 from: getFromAddress(),
                 to: listing.email,
-                subject: `Your ${tier === "platinum" ? "Platinum" : "Gold"} listing is live — ${listing.practice_name}`,
+                subject: `Your ${tier === "platinum" ? "Platinum" : "Gold"} listing is live: ${listing.practice_name}`,
                 html: paymentConfirmationEmail({
                   contactName: listing.contact_name,
                   practiceName: listing.practice_name,

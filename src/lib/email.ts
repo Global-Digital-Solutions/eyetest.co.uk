@@ -291,35 +291,36 @@ export function applicantThankYouEmail(data: {
   contactName: string;
   practiceName: string;
   listingId: string;
+  postcode: string;
 }): string {
+  const searchUrl = `${SITE_URL}/search?postcode=${encodeURIComponent(data.postcode)}`;
+  const upgradeUrl = `${SITE_URL}/get-listed/thank-you?listing_id=${data.listingId}`;
   const body = `
     ${para(`Hi ${data.contactName},`)}
-    ${para(`Thanks for applying to list <strong>${data.practiceName}</strong> on eyetest.co.uk. We&rsquo;ve received your details and your application is being reviewed.`)}
+    ${para(`Thanks for registering <strong>${data.practiceName}</strong> with eyetest.co.uk. Your standard listing is now live in our local search results, with your practice name, address, phone number and a link to your website.`)}
 
-    ${infoBox(`
-      <p style="font-size: 14px; font-weight: 600; color: ${NAVY}; margin: 0 0 12px;">What happens next</p>
-      <p style="font-size: 14px; color: ${GRAY_TEXT}; margin: 0; line-height: 1.6;">
-        1. We review your application (1&ndash;2 business days)<br/>
-        2. We verify your details and set up your listing<br/>
-        3. Your practice appears in local search results
-      </p>
-    `)}
-
-    ${para(`Your free standard listing includes your practice name, contact details, and visibility in local search results.`)}
+    ${ctaButton(searchUrl, "See your listing")}
 
     ${divider()}
 
-    <p style="font-size: 14px; font-weight: 600; color: ${NAVY}; margin: 0 0 8px;">Want to stand out?</p>
-    ${para(`Upgrade to <strong>Gold</strong> (&pound;149/yr) or <strong>Platinum</strong> (&pound;199/yr) for priority placement, a trust badge, highlighted card, and your practice logo in search results.`)}
+    <p style="font-size: 14px; font-weight: 600; color: ${NAVY}; margin: 0 0 8px;">Want more visibility?</p>
+    ${para(`You can upgrade to a featured listing, subject to availability in your area:`)}
+    ${infoBox(`
+      <p style="font-size: 14px; color: ${GRAY_TEXT}; margin: 0; line-height: 1.7;">
+        <strong>Gold</strong> (&pound;149 a year): featured above the standard listings with a &ldquo;Recommended&rdquo; badge.<br/>
+        <strong>Platinum</strong> (&pound;199 a year): the top spot in local results with a &ldquo;Top Rated&rdquo; badge and highlighted card.
+      </p>
+    `)}
+    ${para(`Just click the button below. It shows which plans are still available for ${data.postcode.replace(" ", "&nbsp;")}, and your listing switches to featured as soon as payment is confirmed.`)}
 
-    ${ctaButton(`https://www.eyetest.co.uk/get-listed/thank-you?listing_id=${data.listingId}`, "View upgrade options")}
+    ${ctaButton(upgradeUrl, "Upgrade my listing")}
 
     ${divider()}
 
     <div style="padding: 16px; background: #f9fafb; border: 1px solid ${BORDER}; border-radius: 8px; margin: 0 0 20px;">
       <p style="font-size: 14px; font-weight: 600; color: ${NAVY}; margin: 0 0 6px;">Also offer hearing tests?</p>
       <p style="font-size: 13px; color: ${MUTED_TEXT}; margin: 0; line-height: 1.5;">
-        Get listed on our sister site <a href="https://www.hearingtest.co.uk/get-listed" style="color: ${TEAL}; text-decoration: none; font-weight: 500;">hearingtest.co.uk</a> from &pound;69/yr.
+        Add a listing on our sister site hearingtest.co.uk for &pound;69 a year when you upgrade.
       </p>
     </div>
 
@@ -328,8 +329,8 @@ export function applicantThankYouEmail(data: {
     ${para(`Best regards,<br/><strong>The eyetest.co.uk Team</strong>`)}`;
 
   return brandedEmail({
-    heading: "Application received",
-    preheader: `Thanks for applying, ${data.contactName} — here's what happens next`,
+    heading: "Your listing is live",
+    preheader: `${data.practiceName} is now listed on eyetest.co.uk`,
     body,
   });
 }
@@ -374,7 +375,7 @@ export function paymentConfirmationEmail(data: {
 
   return brandedEmail({
     heading: "Your listing is live",
-    preheader: `Great news, ${data.contactName} — your ${tierLabel} listing is now live`,
+    preheader: `Great news, ${data.contactName}, your ${tierLabel} listing is now live`,
     body,
   });
 }
