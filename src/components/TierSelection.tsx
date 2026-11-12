@@ -177,7 +177,7 @@ export function TierSelection({
           Thank you, <span className="font-semibold">{practiceName}</span>.
           We&rsquo;ve received your listing details for{" "}
           <span className="font-semibold">{postcode}</span>.
-          Choose a plan below to get listed.
+          Your standard listing now shows in local search results. Choose Gold or Platinum to feature it above other opticians nearby.
         </p>
       </div>
 
@@ -194,7 +194,7 @@ export function TierSelection({
           {
             step: "1",
             title: "Choose a plan",
-            desc: "Select Gold or Platinum below",
+            desc: "Gold or Platinum, subject to availability",
             icon: (
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
             ),
@@ -372,7 +372,7 @@ export function TierSelection({
             <ul className="space-y-3 text-sm text-gray-700">
               <li className="flex items-start gap-2">
                 <Check />
-                <span>Standard listing in local search results</span>
+                <span>Featured above standard listings, with a &ldquo;Recommended&rdquo; badge</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check />
