@@ -48,7 +48,11 @@ export function PartnerSpotlight({ lat, lng, townName }: { lat: number; lng: num
 
               <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-start">
                 <div>
-                  <h2 className="text-2xl font-bold text-[var(--color-navy)] mb-1" style={{ fontFamily: "var(--font-display)" }}>
+                  {p.logo && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={p.logo} alt={`${p.name} logo`} width={180} height={86} className="h-20 w-auto mb-3 rounded-xl bg-white border border-gray-100 px-3 py-2 shadow-sm" loading="lazy" />
+                  )}
+                  <h2 className={p.logo ? "sr-only" : "text-2xl font-bold text-[var(--color-navy)] mb-1"} style={{ fontFamily: "var(--font-display)" }}>
                     {p.name}
                   </h2>
                   <p className="text-sm text-gray-500 mb-3">

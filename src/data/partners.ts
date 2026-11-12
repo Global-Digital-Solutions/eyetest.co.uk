@@ -18,6 +18,8 @@ export type Partner = {
   phone: string;
   website: string;
   bookingUrl: string;
+  /** Logo in /public, shown on the partner card */
+  logo?: string;
   /** Location pages within this distance show the partner */
   radiusKm: number;
   summary: string;
@@ -41,6 +43,7 @@ export const PARTNERS: Partner[] = [
     phone: "020 7385 9772",
     website: "https://www.aristoneopticians.com/",
     bookingUrl: "https://www.aristoneopticians.com/contact",
+    logo: "/partners/aristone-optical.png",
     radiusKm: 1.5,
     summary:
       "An independent, family-run optician that has served Fulham for 70 years, offering NHS and private eye tests for all ages.",
@@ -50,9 +53,9 @@ export const PARTNERS: Partner[] = [
       "Same-day glasses from their on-site lab, often ready within a few hours",
       "Contact lenses and myopia management for children",
     ],
-    priceFrom: "Private eye test from £65",
+    priceFrom: "Eye test from £30",
     hours: "Mon to Fri 9:30 to 18:00, Sat 10:00 to 16:00",
     checked: "November 2026",
-    source: "aristoneopticians.com",
+    source: "Aristone Optical and aristoneopticians.com",
   },
 ];
