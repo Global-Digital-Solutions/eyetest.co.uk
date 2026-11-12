@@ -28,6 +28,7 @@ export default async function ThankYouPage({
   let practiceName = "";
   let postcode = "";
   let audiologyAddon = false;
+  let isFeatured = false;
 
   if (listing_id) {
     // Service role bypasses RLS — new users aren't authenticated
@@ -37,7 +38,7 @@ export default async function ThankYouPage({
     );
     const { data } = await supabase
       .from("optician_listings")
-      .select("practice_name, postcode, audiology_addon")
+      .select("practice_name, postcode, audiology_addon, active")
       .eq("id", listing_id)
       .single();
 
@@ -45,6 +46,7 @@ export default async function ThankYouPage({
       practiceName = data.practice_name;
       postcode = data.postcode;
       audiologyAddon = data.audiology_addon ?? false;
+      isFeatured = data.active === true;
     }
   }
 
@@ -79,12 +81,22 @@ export default async function ThankYouPage({
               className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              We&rsquo;ve received your listing
+              {isFeatured ? "Your featured listing is live" : "Your listing is live"}
             </h1>
             <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
-              Your free listing for <strong className="text-white">{practiceName || "your practice"}</strong> is
-              now under review. We&rsquo;ll check the details and get it live shortly.
+              <strong className="text-white">{practiceName || "Your practice"}</strong>{" "}
+              {isFeatured
+                ? "is featured in our local search results."
+                : <>is now showing as a standard listing in our local search results{postcode ? <> for {postcode}</> : null}.</>}
             </p>
+            {postcode && (
+              <a
+                href={`/search?postcode=${encodeURIComponent(postcode)}`}
+                className="inline-flex items-center gap-2 mt-6 rounded-full bg-white text-[var(--color-navy)] px-5 py-2.5 text-sm font-semibold hover:bg-white/90"
+              >
+                See your listing &rarr;
+              </a>
+            )}
           </div>
         </section>
 
@@ -94,18 +106,16 @@ export default async function ThankYouPage({
         <section className="py-12 sm:py-16">
           <div className="max-w-4xl mx-auto px-4">
             {/* ---- Premium upsell intro ---- */}
-            {listing_id && (
-              <div className="text-center mb-10">
+            {listing_id && !isFeatured && (
+              <div className="text-center mb-8">
                 <h2
                   className="text-2xl sm:text-3xl font-bold text-[var(--color-navy)] mb-3"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
-                  Boost your visibility
+                  Feature your practice
                 </h2>
                 <p className="text-gray-600 max-w-xl mx-auto text-base sm:text-lg">
-                  After years of helping patients find eye tests, many practices asked
-                  how they could stand out more in their area. So we built premium listings, increased visibility exclusive to your postcode area, from as little as 40p
-                  per day, locked in for a whole year.
+                  Appear above other opticians near {postcode || "you"}, exclusive to your area, from about 41p a day, fixed for a year. Subject to availability.
                 </p>
               </div>
             )}

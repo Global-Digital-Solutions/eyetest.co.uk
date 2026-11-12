@@ -5,6 +5,8 @@ import {
   getTransporter,
   getFromAddress,
   paymentConfirmationEmail,
+  adminPaidAlertEmail,
+  getAdminAlertAddress,
 } from "@/lib/email";
 
 // Use service role for webhooks (no auth context)
@@ -101,6 +103,35 @@ export async function POST(req: NextRequest) {
             }
           } catch (emailErr) {
             console.error("Post-payment confirmation email failed:", emailErr);
+          }
+
+          // Alert admin so the paid listing can be checked
+          try {
+            const transporter = getTransporter();
+            if (transporter) {
+              await transporter.sendMail({
+                from: getFromAddress(),
+                to: getAdminAlertAddress(),
+                replyTo: listing.email,
+                subject: `New ${tier === "platinum" ? "Platinum" : "Gold"} listing paid: ${listing.practice_name}, ${listing.postcode}`,
+                html: adminPaidAlertEmail({
+                  practiceName: listing.practice_name,
+                  contactName: listing.contact_name,
+                  email: listing.email,
+                  phone: listing.phone,
+                  website: listing.website,
+                  address: listing.address,
+                  postcode: listing.postcode,
+                  town: listing.town,
+                  tier,
+                  audiologyAddon,
+                  listingId,
+                  expiresAt: expiresAt.toISOString(),
+                }),
+              });
+            }
+          } catch (emailErr) {
+            console.error("Admin paid alert email failed:", emailErr);
           }
 
           // Cross-list on hearingtest.co.uk if audiology add-on purchased

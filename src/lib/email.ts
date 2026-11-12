@@ -27,6 +27,11 @@ export function getTransporter(): nodemailer.Transporter | null {
   return _transporter;
 }
 
+/** Where admin alerts go (new listings, payments). Override with ADMIN_ALERT_EMAIL. */
+export function getAdminAlertAddress(): string {
+  return process.env.ADMIN_ALERT_EMAIL || "admin@eyetest.co.uk";
+}
+
 export function getFromAddress(): string {
   const from = process.env.EMAIL_FROM || "hello@eyetest.co.uk";
   return `"eyetest.co.uk" <${from}>`;
@@ -224,7 +229,8 @@ export function adminNotificationEmail(data: {
   const no = `<span style="color: ${MUTED_TEXT};">No</span>`;
 
   const body = `
-    ${para(`New listing application from <strong>${d.practiceName}</strong> in <strong>${d.town}</strong>.`)}
+    ${para(`<strong>${d.practiceName}</strong> in <strong>${d.town}</strong> has registered. Their free standard listing is <strong>already showing in search results</strong>, so please check the details below.`)}
+    ${para(`If anything looks wrong, open <a href="https://www.eyetest.co.uk/admin" style="color: ${TEAL};">Admin &gt; Listings</a> and edit or delete it.`)}
 
     ${sectionHeading("Contact")}
     <table style="width: 100%; border-collapse: collapse;">
@@ -280,8 +286,8 @@ export function adminNotificationEmail(data: {
     </div>`;
 
   return brandedEmail({
-    heading: `New listing: ${d.practiceName}`,
-    preheader: `New listing: ${d.practiceName} in ${d.town}`,
+    heading: `New free listing: ${d.practiceName}`,
+    preheader: `${d.practiceName} in ${d.town} is now listed. Please check the details.`,
     body,
   });
 }
@@ -331,6 +337,44 @@ export function applicantThankYouEmail(data: {
   return brandedEmail({
     heading: "Your listing is live",
     preheader: `${data.practiceName} is now listed on eyetest.co.uk`,
+    body,
+  });
+}
+
+/** Admin alert when a practice pays for Gold or Platinum */
+export function adminPaidAlertEmail(d: {
+  practiceName: string;
+  contactName: string;
+  email: string;
+  phone: string;
+  website?: string | null;
+  address?: string | null;
+  postcode: string;
+  town?: string | null;
+  tier: "gold" | "platinum";
+  audiologyAddon: boolean;
+  listingId: string;
+  expiresAt: string;
+}): string {
+  const tierLabel = d.tier === "platinum" ? "Platinum" : "Gold";
+  const price = (d.tier === "platinum" ? 199 : 149) + (d.audiologyAddon ? 69 : 0);
+  const row = (k: string, v: string) =>
+    `<tr><td style="padding: 6px 0; color: ${MUTED_TEXT}; width: 140px; font-size: 14px;">${k}</td><td style="padding: 6px 0; color: ${GRAY_TEXT}; font-size: 14px;">${v}</td></tr>`;
+  const body = `
+    ${para(`<strong>${d.practiceName}</strong> has paid for a <strong>${tierLabel}</strong> listing (&pound;${price} a year${d.audiologyAddon ? ", including hearingtest.co.uk" : ""}). It is now featured in search results.`)}
+    <table style="width: 100%; border-collapse: collapse; margin: 0 0 20px;">
+      ${row("Contact", d.contactName)}
+      ${row("Email", d.email)}
+      ${row("Phone", d.phone)}
+      ${row("Website", d.website || "Not given")}
+      ${row("Address", [d.address, d.town, d.postcode].filter(Boolean).join(", "))}
+      ${row("Renews", new Date(d.expiresAt).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }))}
+      ${row("Listing ID", d.listingId)}
+    </table>
+    ${para(`Please check the details. If anything looks wrong, open <a href="https://www.eyetest.co.uk/admin" style="color: ${TEAL};">Admin &gt; Subscriptions</a>.`)}`;
+  return brandedEmail({
+    heading: `New ${tierLabel} listing: ${d.practiceName}`,
+    preheader: `${d.practiceName} has paid for ${tierLabel}. Please check the details.`,
     body,
   });
 }

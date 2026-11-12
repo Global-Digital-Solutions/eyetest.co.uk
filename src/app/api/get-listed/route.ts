@@ -13,6 +13,7 @@ import {
   getFromAddress,
   adminNotificationEmail,
   applicantThankYouEmail,
+  getAdminAlertAddress,
 } from "@/lib/email";
 
 export async function POST(request: Request) {
@@ -122,9 +123,9 @@ export async function POST(request: Request) {
         // Admin notification
         await transporter.sendMail({
           from: getFromAddress(),
-          to: "hello@eyetest.co.uk",
+          to: getAdminAlertAddress(),
           replyTo: email,
-          subject: `Listing Application — ${practiceName} (${locationCount || "1"} location${locationCount === "1" ? "" : "s"})`,
+          subject: `New free listing, now live: ${practiceName}, ${postcode}`,
           html: adminNotificationEmail({
             practiceName,
             contactName,
