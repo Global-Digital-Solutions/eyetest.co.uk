@@ -96,6 +96,11 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Detached Retina](https://www.eyetest.co.uk/eye-health/conditions/retinal-detachment): Warning signs that need NHS 111 straight away, surgery and recovery
 - [Watery Eyes](https://www.eyetest.co.uk/eye-health/conditions/watery-eyes): Common causes and when to see a GP
 - [Double Vision](https://www.eyetest.co.uk/eye-health/conditions/double-vision): Always get it checked; urgent signs and the DVLA rule
+- [Blurred Vision](https://www.eyetest.co.uk/eye-health/conditions/blurred-vision): Causes of blurred vision, when it is urgent and when to go to A&E, from NHS guidance
+- [Sore or Itchy Eyes](https://www.eyetest.co.uk/eye-health/conditions/itchy-eyes): Common causes including hay fever, dry eyes, blepharitis and conjunctivitis, self-care and when to get help (NHS)
+- [Eye Infections](https://www.eyetest.co.uk/eye-health/conditions/eye-infections): Conjunctivitis, styes and contact lens infections, self-care and urgent signs (NHS)
+- [Thyroid Eye Disease](https://www.eyetest.co.uk/eye-health/conditions/thyroid-eye-disease): Symptoms, treatment and the effect of smoking, from NHS hospital guidance
+- [Eye Cancer](https://www.eyetest.co.uk/eye-health/conditions/eye-cancer): Symptoms to get checked, diagnosis at UK specialist centres and treatment (NHS)
 
 ## Eye Health Guides
 - [How to Read Your Glasses Prescription](https://www.eyetest.co.uk/eye-health/guides/how-to-read-your-prescription)

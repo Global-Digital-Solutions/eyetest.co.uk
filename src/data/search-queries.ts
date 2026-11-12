@@ -5161,6 +5161,524 @@ Prices vary between clinics and between types of treatment. Some clinics charge 
       { label: "Moorfields Private: Laser eye surgery cost", url: "https://www.moorfields.nhs.uk/private/eye-conditions-and-treatments/laser-eye-surgery/laser-eye-surgery-cost" },
     ],
   },
+  {
+    slug: "blurred-vision",
+    keyword: "blurred vision",
+    title: "Blurred Vision: Causes, When It Is Urgent and What to Do",
+    seoTitle: "Blurred Vision: Causes, When It Is Urgent and What to Do",
+    seoDescription:
+      "Blurred vision has many causes, from needing glasses to cataracts or glaucoma. NHS guidance on when to see an optician, when it is urgent and when to go to A&E.",
+    h1: "Blurred Vision",
+    dateModified: "2026-11-12",
+    canonicalPath: "/eye-health/conditions/blurred-vision",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "What can cause blurred vision, when to see an optician, and the signs that need urgent help.",
+    content: `Blurred vision means things look out of focus or hazy. It can come on slowly or suddenly, and affect one eye or both. Often the cause is simple, such as needing glasses or a new prescription, but it can also be a sign of an eye condition that needs treatment.
+
+The NHS says to see an optician if you think your vision is getting worse. Sudden blurred vision needs urgent advice, and sudden loss of sight in one or both eyes is an emergency.`,
+    keyFacts: [
+      { label: "Gradual blurring", value: "See an optician" },
+      { label: "Sudden blurring", value: "Urgent GP or NHS 111" },
+      { label: "Sudden loss of sight", value: "Call 999 or go to A&E" },
+      { label: "Common cause", value: "Needing glasses or a new prescription" },
+    ],
+    sections: [
+      {
+        heading: "When it is urgent",
+        body: `The NHS advises asking for an urgent GP appointment or getting help from NHS 111 if you have:`,
+        items: [
+          "Changes in your vision, such as blurred vision, double vision, or seeing flashing lights or shapes",
+          "A dark shadow moving across your vision",
+          "Pain in one or both eyes",
+          "A red and painful eye",
+          "Eyes that feel painful or uncomfortable in bright light",
+        ],
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+      {
+        heading: "When to go to A&E",
+        body: `Go to A&E or call 999 if you suddenly cannot see from one or both eyes, or suddenly have severe eye pain. Do not drive yourself. Ask someone to take you, or call 999.`,
+      },
+      {
+        heading: "Possible causes",
+        body: `The NHS lists these as common causes of changes in vision. Your symptoms can give a clue, but only an eye examination can tell for sure.`,
+        table: {
+          headers: ["What you notice", "Possible cause"],
+          rows: [
+            ["Blurred or cloudy vision, halos around lights, colours looking less bright", "Cataracts"],
+            ["A distorted area in the middle of your vision, difficulty reading or seeing faces", "Age-related macular degeneration (AMD)"],
+            ["Gradual worsening of sight if you have diabetes", "Diabetic retinopathy"],
+            ["Blurred vision with severe eye pain and a red eye", "Glaucoma"],
+            ["Dots, lines, flashes or a shadow appearing suddenly", "Detached retina"],
+            ["Sore, blurry or watery eyes", "Dry eyes"],
+          ],
+        },
+        links: [
+          { label: "Cataracts", href: "/eye-health/conditions/cataracts" },
+          { label: "Macular degeneration", href: "/eye-health/conditions/age-related-macular-degeneration" },
+          { label: "Diabetic retinopathy", href: "/eye-health/conditions/diabetic-retinopathy" },
+          { label: "Glaucoma", href: "/eye-health/conditions/glaucoma" },
+          { label: "Detached retina", href: "/eye-health/conditions/retinal-detachment" },
+          { label: "Dry eyes", href: "/eye-health/conditions/dry-eye-syndrome" },
+        ],
+      },
+      {
+        heading: "Blurred vision and your glasses",
+        body: `Blurred vision is often a sign that you need glasses or that your prescription has changed. Short sight blurs things in the distance, long sight and presbyopia blur things close up, and astigmatism can blur things at any distance. An eye test checks your prescription and the health of your eyes at the same time.`,
+        links: [
+          { label: "Short-sightedness", href: "/eye-health/conditions/myopia" },
+          { label: "Presbyopia", href: "/eye-health/conditions/presbyopia" },
+          { label: "Astigmatism", href: "/eye-health/conditions/astigmatism" },
+          { label: "Book an eye test", href: "/find/book-eye-test" },
+        ],
+      },
+      {
+        heading: "Driving",
+        body: `You must be able to meet the legal eyesight standard for driving, with glasses or contact lenses if you need them. If your vision has become blurred, do not drive until you have had your eyes checked.`,
+        links: [
+          { label: "DVLA eyesight rules", href: "/eye-tests/dvla-driving-vision-test" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is blurred vision serious?",
+        answer:
+          "Often it is not, and simply means you need glasses or a new prescription. But sudden blurred vision, or blurring with eye pain or a red eye, needs urgent advice from a GP or NHS 111.",
+      },
+      {
+        question: "Who should I see about blurred vision?",
+        answer:
+          "For gradual changes, see an optician for an eye test. For sudden changes, ask for an urgent GP appointment or contact NHS 111. For sudden loss of sight, go to A&E or call 999.",
+      },
+      {
+        question: "Can tiredness cause blurred vision?",
+        answer:
+          "Dry or tired eyes, for example after long spells at a screen, can make vision blur for a while. If it does not settle with rest, or keeps happening, have an eye test.",
+      },
+      {
+        question: "Is a sight test free?",
+        answer:
+          "NHS sight tests are free for some groups, including children under 16, people aged 60 and over, and people with diabetes or glaucoma. Others pay the optician's price.",
+      },
+    ],
+    relatedQueries: ["sudden-vision-changes", "double-vision", "free-eye-test", "book-eye-test"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. Sudden blurred vision needs urgent advice.",
+    sources: [
+      { label: "NHS: Vision loss", url: "https://www.nhs.uk/conditions/vision-loss/" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+      { label: "GOV.UK: Driving eyesight rules", url: "https://www.gov.uk/driving-eyesight-rules" },
+    ],
+  },
+  {
+    slug: "itchy-eyes",
+    keyword: "itchy eyes",
+    title: "Sore or Itchy Eyes: Common Causes and What Helps",
+    seoTitle: "Sore or Itchy Eyes: Causes, What Helps and When to Get Help",
+    seoDescription:
+      "Sore or itchy eyes are often caused by hay fever, dry eyes, blepharitis or conjunctivitis. What you can do, when a pharmacist can help and when it is urgent.",
+    h1: "Sore or Itchy Eyes",
+    dateModified: "2026-11-12",
+    canonicalPath: "/eye-health/conditions/itchy-eyes",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "The common causes of sore or itchy eyes, simple things that help, and when to see a pharmacist, optician or GP.",
+    content: `Sore or itchy eyes are very common and are usually not serious. The most common causes are allergies such as hay fever, dry eyes, inflamed eyelids (blepharitis) and conjunctivitis. They often get better with simple self-care.
+
+A pharmacist is a good first stop for advice and eye drops. See an optician or GP if your eyes do not improve, and get urgent help if you have eye pain, very red eyes or changes in your vision.`,
+    keyFacts: [
+      { label: "Usually", value: "Not serious" },
+      { label: "First stop", value: "A pharmacist" },
+      { label: "Contact lens wearers", value: "Take lenses out and get advice" },
+      { label: "Pain or vision changes", value: "Urgent GP or NHS 111" },
+    ],
+    sections: [
+      {
+        heading: "Common causes",
+        table: {
+          headers: ["What you notice", "Possible cause"],
+          rows: [
+            ["Itchy, red, watery eyes with sneezing or a runny nose", "Allergy, such as hay fever (allergic conjunctivitis)"],
+            ["Sore, gritty, blurry or watery eyes, often worse with screens", "Dry eyes"],
+            ["Itchy, sore or red eyelids with crusts around the lashes", "Blepharitis"],
+            ["Red, gritty eyes with sticky pus on the lashes", "Infective conjunctivitis"],
+            ["A painful lump on the eyelid", "Stye"],
+          ],
+        },
+        links: [
+          { label: "Conjunctivitis", href: "/eye-health/conditions/conjunctivitis" },
+          { label: "Dry eyes", href: "/eye-health/conditions/dry-eye-syndrome" },
+          { label: "Blepharitis", href: "/eye-health/conditions/blepharitis" },
+          { label: "Stye", href: "/eye-health/conditions/stye" },
+        ],
+      },
+      {
+        heading: "Things that can help",
+        body: `The NHS suggests these simple steps for many common causes:`,
+        items: [
+          "Try not to rub your eyes, as this can make them more irritated",
+          "Hold a cold flannel on closed eyes for a few minutes to soothe them",
+          "Clean your eyelids gently with a warm flannel if they are crusty or sore",
+          "Take breaks from screens and blink often if your eyes feel dry",
+          "Leave contact lenses out until your eyes feel better, and wear glasses instead",
+          "Avoid eye make-up while your eyes are sore",
+        ],
+      },
+      {
+        heading: "How a pharmacist can help",
+        body: `A pharmacist can suggest treatments such as lubricating eye drops for dry eyes, or antihistamine drops or tablets for allergies. They can also tell you if you need to see an optician or GP.`,
+      },
+      {
+        heading: "When to see an optician or GP",
+        items: [
+          "Your symptoms have not improved after trying self-care for a few days",
+          "You have red eyes with a sticky discharge",
+          "You have problems with your eyelids or eyelashes that last more than a few days",
+          "Your child is under 2 and has a red eye",
+        ],
+        links: [
+          { label: "Find an optician", href: "/opticians" },
+        ],
+      },
+      {
+        heading: "When it is urgent",
+        body: `Ask for an urgent GP or optician appointment, or get help from NHS 111, if your eye is very painful and red, you are sensitive to light, you notice changes in your vision, or you have a red eye and wear contact lenses, as you could have an eye infection. Call 999 or go to A&E if something is stuck in your eye or a chemical has got into it.`,
+        links: [
+          { label: "Red eye", href: "/eye-health/conditions/red-eye" },
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Why are my eyes itchy?",
+        answer:
+          "The most common causes are allergies such as hay fever, dry eyes, blepharitis and conjunctivitis. Itching with sneezing or a runny nose usually points to an allergy.",
+      },
+      {
+        question: "What can I put on sore eyes?",
+        answer:
+          "A cold flannel can soothe sore eyes. A pharmacist can recommend lubricating drops for dry eyes or antihistamine drops for allergies.",
+      },
+      {
+        question: "Should I stop wearing contact lenses?",
+        answer:
+          "Yes, leave them out until your eyes feel better. If you wear lenses and have a red or painful eye, get advice quickly, as you could have an eye infection.",
+      },
+      {
+        question: "When are sore eyes an emergency?",
+        answer:
+          "Get urgent help if you have severe eye pain, a very red eye, sensitivity to light or changes in your vision, or if something or a chemical has got into your eye.",
+      },
+    ],
+    relatedQueries: ["conjunctivitis", "dry-eyes", "blepharitis", "red-eye"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. Eye pain or changes in your vision need urgent advice.",
+    sources: [
+      { label: "NHS: Red eye", url: "https://www.nhs.uk/conditions/red-eye/" },
+      { label: "NHS: Conjunctivitis", url: "https://www.nhs.uk/conditions/conjunctivitis/" },
+      { label: "NHS: Dry eyes", url: "https://www.nhs.uk/conditions/dry-eyes/" },
+      { label: "NHS: Blepharitis", url: "https://www.nhs.uk/conditions/blepharitis/" },
+    ],
+  },
+  {
+    slug: "eye-infections",
+    keyword: "eye infection",
+    title: "Eye Infections: Types, Symptoms and When to Get Help",
+    seoTitle: "Eye Infection: Symptoms, Common Types and When to Get Help",
+    seoDescription:
+      "The most common eye infections, from conjunctivitis to styes, how to tell them apart, what you can do yourself and the signs that need urgent help.",
+    h1: "Eye Infections",
+    dateModified: "2026-11-12",
+    canonicalPath: "/eye-health/conditions/eye-infections",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Common eye infections, how to tell them apart, self-care, and the signs that need urgent help.",
+    content: `Most eye infections are mild and get better on their own or with simple treatment from a pharmacist. The most common is conjunctivitis, which makes the eyes red, gritty and sticky. Styes, small painful lumps on the eyelid, are also caused by infection.
+
+Some eye infections are more serious, particularly in people who wear contact lenses. If you wear lenses and have a red or painful eye, take your lenses out and get advice quickly.`,
+    keyFacts: [
+      { label: "Most common", value: "Conjunctivitis" },
+      { label: "Often treated by", value: "A pharmacist" },
+      { label: "Contact lens wearers", value: "Get advice quickly" },
+      { label: "Baby under 30 days with sticky eyes", value: "Urgent GP appointment" },
+    ],
+    sections: [
+      {
+        heading: "Common eye infections",
+        table: {
+          headers: ["Infection", "Typical signs"],
+          rows: [
+            ["Infective conjunctivitis", "Red, gritty eyes, often both, with pus that sticks to the lashes"],
+            ["Stye", "A painful lump on the edge of the eyelid"],
+            ["Blepharitis", "Sore, itchy eyelids with crusts around the lashes. Not always an infection"],
+            ["Infection linked to contact lenses", "A red, painful eye, sometimes with blurred vision or sensitivity to light"],
+          ],
+        },
+        links: [
+          { label: "Conjunctivitis", href: "/eye-health/conditions/conjunctivitis" },
+          { label: "Stye", href: "/eye-health/conditions/stye" },
+          { label: "Blepharitis", href: "/eye-health/conditions/blepharitis" },
+          { label: "Contact lens safety", href: "/articles/contact-lenses" },
+        ],
+      },
+      {
+        heading: "What you can do yourself",
+        body: `For mild conjunctivitis, the NHS suggests these steps while it clears up:`,
+        items: [
+          "Clean your eyelids with a clean cotton pad and cooled boiled water",
+          "Hold a cold flannel on your eyes for a few minutes to soothe them",
+          "Do not wear contact lenses until your eyes are better",
+          "Wash your hands often, and do not share towels or pillows",
+          "Try not to rub your eyes",
+        ],
+      },
+      {
+        heading: "How a pharmacist can help",
+        body: `A pharmacist can give advice and suggest eye drops or other treatment. They can also tell you whether you need to see a GP or optician. You do not usually need to stay away from work or school with conjunctivitis unless you feel very unwell.`,
+      },
+      {
+        heading: "When it is urgent",
+        body: `The NHS advises asking for an urgent GP appointment or getting help from NHS 111 if you have:`,
+        items: [
+          "Pain in your eyes",
+          "Sensitivity to light",
+          "Changes in your vision, such as wavy lines or flashing",
+          "Very red eyes, in one eye or both",
+          "A red eye and you wear contact lenses",
+          "A baby less than 30 days old with red, sticky eyes",
+        ],
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How do I know if I have an eye infection?",
+        answer:
+          "Common signs are red, gritty or sticky eyes, pus on the lashes, or a painful lump on the eyelid. A pharmacist or optician can check and advise.",
+      },
+      {
+        question: "Is conjunctivitis contagious?",
+        answer:
+          "The NHS says conjunctivitis that produces sticky pus, or makes eyes red and gritty, is usually contagious. Conjunctivitis caused by allergies is not.",
+      },
+      {
+        question: "Do I need antibiotics for an eye infection?",
+        answer:
+          "Often not, as many eye infections clear up on their own. A pharmacist or GP will tell you if you need treatment.",
+      },
+      {
+        question: "I wear contact lenses and my eye is red. What should I do?",
+        answer:
+          "Take your lenses out and get advice quickly from an optician, GP or NHS 111. Infections linked to contact lenses can be serious.",
+      },
+    ],
+    relatedQueries: ["conjunctivitis", "stye", "red-eye", "contact-lenses"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. Eye pain, light sensitivity or vision changes need urgent advice.",
+    sources: [
+      { label: "NHS: Conjunctivitis", url: "https://www.nhs.uk/conditions/conjunctivitis/" },
+      { label: "NHS: Red eye", url: "https://www.nhs.uk/conditions/red-eye/" },
+      { label: "NHS: Blepharitis", url: "https://www.nhs.uk/conditions/blepharitis/" },
+    ],
+  },
+  {
+    slug: "thyroid-eye-disease",
+    keyword: "thyroid eye disease",
+    title: "Thyroid Eye Disease (TED): Symptoms, Treatment and Support",
+    seoTitle: "Thyroid Eye Disease (TED): Symptoms, Treatment and Support",
+    seoDescription:
+      "Thyroid eye disease causes sore, bulging or red eyes and sometimes double vision. Symptoms, why stopping smoking matters, treatment and where to get support.",
+    h1: "Thyroid Eye Disease",
+    dateModified: "2026-11-12",
+    canonicalPath: "/eye-health/conditions/thyroid-eye-disease",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "What thyroid eye disease is, its symptoms, treatment, and why stopping smoking makes a difference.",
+    content: `Thyroid eye disease (TED), also called Graves' ophthalmopathy, is an autoimmune condition where the tissues around the eyes, including the eye muscles and eyelids, become inflamed. It is most often linked to an overactive thyroid, but can also happen with an underactive or normally working thyroid.
+
+It usually has an active phase, often lasting one to three years, before settling into a stable phase. Treatment aims to protect your eyes and your sight during the active phase. Care is often shared between a thyroid specialist and an eye specialist.`,
+    keyFacts: [
+      { label: "Type", value: "Autoimmune condition" },
+      { label: "Most linked to", value: "An overactive thyroid" },
+      { label: "Active phase", value: "Often 1 to 3 years" },
+      { label: "Loss of vision", value: "Go to eye casualty quickly" },
+    ],
+    sections: [
+      {
+        heading: "Symptoms",
+        body: `Leeds Teaching Hospitals NHS Trust lists these signs of active thyroid eye disease:`,
+        items: [
+          "Dry, red, gritty or irritated eyes",
+          "Watery eyes and sensitivity to light",
+          "An ache behind the eyes, especially when looking up",
+          "Eyes that look more bulging, or eyelids pulled back so more white shows",
+          "Puffy, red eyelids",
+          "Double vision",
+          "Loss of vision, including changes in colour vision",
+        ],
+        links: [
+          { label: "Double vision", href: "/eye-health/conditions/double-vision" },
+          { label: "Dry eyes", href: "/eye-health/conditions/dry-eye-syndrome" },
+        ],
+      },
+      {
+        heading: "When to get urgent help",
+        body: `If you notice any loss of vision, go to an eye casualty or A&E as soon as possible. Tell your GP or clinic if your other symptoms get worse.`,
+        links: [
+          { label: "Emergency eye care", href: "/find/emergency-eye-test-near-me" },
+        ],
+      },
+      {
+        heading: "Treatment",
+        body: `There is no single treatment for thyroid eye disease. Depending on how severe it is, treatment may include lubricating eye drops, selenium supplements for mild cases, anti-inflammatory medicines including steroids, and occasionally radiotherapy or surgery. Prisms in glasses can help with double vision, and some people choose surgery to realign the eyes once the condition is stable.`,
+      },
+      {
+        heading: "Why stopping smoking matters",
+        body: `Smoking makes thyroid eye disease more likely, can make it progress faster and can make treatment work less well. Stopping smoking is one of the most helpful things you can do. Your GP or local NHS stop smoking service can help.`,
+      },
+      {
+        heading: "Support",
+        body: `The British Thyroid Foundation, the Thyroid Eye Disease Charitable Trust (TEDct) and RNIB offer information and support for people living with thyroid eye disease.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "What causes thyroid eye disease?",
+        answer:
+          "It is an autoimmune condition. The immune system attacks the tissues around the eyes as well as the thyroid gland. It is most common in people with an overactive thyroid.",
+      },
+      {
+        question: "Does thyroid eye disease go away?",
+        answer:
+          "The active phase usually settles after one to three years. Some people are left with changes, such as bulging eyes, which can sometimes be improved with surgery once the condition is stable.",
+      },
+      {
+        question: "Can thyroid eye disease affect my sight?",
+        answer:
+          "Most people have mild symptoms, but it can affect vision. Go to an eye casualty or A&E quickly if you notice any loss of sight.",
+      },
+      {
+        question: "Does smoking make thyroid eye disease worse?",
+        answer:
+          "Yes. Smoking increases the risk of getting it, can make it progress faster and can stop treatment working as well.",
+      },
+    ],
+    relatedQueries: ["double-vision", "dry-eyes", "free-eye-test"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS hospital guidance, not medical advice. Any loss of vision needs urgent attention.",
+    sources: [
+      { label: "Leeds Teaching Hospitals NHS Trust: Thyroid eye disease", url: "https://www.leedsth.nhs.uk/patients/resources/thyroid-eye-disease/" },
+      { label: "NHS: Overactive thyroid (hyperthyroidism)", url: "https://www.nhs.uk/conditions/overactive-thyroid-hyperthyroidism/" },
+    ],
+  },
+  {
+    slug: "eye-cancer",
+    keyword: "eye cancer",
+    title: "Eye Cancer: Symptoms, Diagnosis and Treatment",
+    seoTitle: "Eye Cancer: Symptoms, Diagnosis and Treatment (NHS Guide)",
+    seoDescription:
+      "Eye cancer is rare and may only be found at a routine eye test. Symptoms to get checked, how it is diagnosed at UK specialist centres, and the main treatments.",
+    h1: "Eye Cancer",
+    dateModified: "2026-11-12",
+    canonicalPath: "/eye-health/conditions/eye-cancer",
+    parentCrumbs: [{ label: "Eye Health", href: "/eye-health" }],
+    category: "concern",
+    shortDescription:
+      "Eye cancer is rare. The symptoms to get checked, how it is diagnosed and the main treatments.",
+    content: `Eye cancer is rare. The NHS says around 850 cases are diagnosed in the UK each year. The most common type in adults is eye melanoma, and there is also a childhood eye cancer called retinoblastoma.
+
+Eye cancer does not always cause obvious symptoms and may only be picked up during a routine eye test. The symptoms below are much more often caused by minor eye conditions, but it is important to get them checked.`,
+    keyFacts: [
+      { label: "How common", value: "Around 850 UK cases a year" },
+      { label: "Most common type in adults", value: "Eye melanoma" },
+      { label: "Often found at", value: "A routine eye test" },
+      { label: "Specialist centres", value: "London, Sheffield, Liverpool, Glasgow" },
+    ],
+    sections: [
+      {
+        heading: "Symptoms to get checked",
+        body: `The NHS lists these possible symptoms. They are not necessarily a sign of cancer, but see an optician or GP as soon as possible if you notice them:`,
+        items: [
+          "Shadows, flashes of light or wiggly lines in your vision",
+          "Blurred vision",
+          "A dark patch in your eye that is getting bigger",
+          "Partial or total loss of vision",
+          "Bulging of one eye",
+          "A lump on your eyelid or in your eye that is getting bigger",
+          "Eye irritation that does not go away",
+          "Pain in or around the eye, although this is rare",
+        ],
+        links: [
+          { label: "Book an eye test", href: "/find/book-eye-test" },
+          { label: "Blurred vision", href: "/eye-health/conditions/blurred-vision" },
+        ],
+      },
+      {
+        heading: "How it is diagnosed",
+        body: `If an optician or GP finds something that needs a closer look, they will refer you to an eye specialist (ophthalmologist). If eye melanoma is suspected, you will be referred to one of four specialist eye cancer centres in the UK, in London, Sheffield, Liverpool and Glasgow. Tests can include a detailed eye examination, an ultrasound scan of the eye and photographs taken after a dye is injected.`,
+      },
+      {
+        heading: "Treatment",
+        body: `Treatment depends on the size and position of the tumour, and aims to keep the eye whenever possible. The main treatments for eye melanoma include radiotherapy, either from small radioactive plates placed near the tumour or from an external machine, surgery to remove the tumour or part of the eye, and immunotherapy. If the eye has to be removed, it is replaced with an artificial eye made to match your other eye.`,
+      },
+      {
+        heading: "Why routine eye tests matter",
+        body: `Because eye cancer may not cause symptoms early on, regular eye tests give an optometrist the chance to spot changes inside the eye. The NHS recommends most people have an eye test at least every 2 years.`,
+        links: [
+          { label: "How often to have an eye test", href: "/eye-health/guides/how-often-should-you-have-an-eye-test" },
+        ],
+      },
+      {
+        heading: "Support",
+        body: `Cancer Research UK and Macmillan Cancer Support offer information and support for anyone affected by cancer, including eye cancer.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "Is eye cancer common?",
+        answer:
+          "No. The NHS says around 850 cases are diagnosed in the UK each year. Most eye symptoms are caused by much more common, minor conditions.",
+      },
+      {
+        question: "Can an optician spot eye cancer?",
+        answer:
+          "Eye cancer is sometimes picked up during a routine eye test, before it causes symptoms. If an optometrist sees something unusual, they will refer you to an eye specialist.",
+      },
+      {
+        question: "What are the first signs of eye cancer?",
+        answer:
+          "There may be none. When there are symptoms, they can include shadows or flashes in your vision, blurred vision, or a dark patch in the eye that is getting bigger.",
+      },
+      {
+        question: "How is eye cancer treated?",
+        answer:
+          "It depends on the type, size and position of the tumour. Treatments include radiotherapy, surgery and immunotherapy, with the aim of keeping the eye where possible.",
+      },
+    ],
+    relatedQueries: ["book-eye-test", "free-eye-test", "sudden-vision-changes"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "This page is general information based on NHS guidance, not medical advice. If you are worried about any eye symptom, see an optician or GP.",
+    sources: [
+      { label: "NHS: Eye cancer", url: "https://www.nhs.uk/conditions/eye-cancer/" },
+      { label: "Cancer Research UK: Eye cancer", url: "https://www.cancerresearchuk.org/about-cancer/eye-cancer" },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
