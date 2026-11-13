@@ -114,6 +114,7 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [Eye Test Reminder](https://www.eyetest.co.uk/tools/eye-test-reminder): Work out when your next eye test is due and add a calendar reminder
 - [Frames Your NHS Voucher Covers](https://www.eyetest.co.uk/tools/frames-nhs-voucher-covers): Choose an NHS England voucher band and see glasses frames priced at or under its value from opticians with high street stores
 - [Which Glasses Suit My Face Shape?](https://www.eyetest.co.uk/tools/glasses-for-my-face-shape): Pick a face shape to see which frame shapes to try, with matching frames
+- [Glasses Frame Size Checker](https://www.eyetest.co.uk/tools/glasses-frame-size-checker): Explains lens width, bridge and arm length and finds frames in the same size
 - [Choosing the Right Optician](https://www.eyetest.co.uk/eye-health/guides/choosing-the-right-optician)
 - [When to Get an Emergency Eye Test](https://www.eyetest.co.uk/eye-health/guides/when-to-get-an-emergency-eye-test)
 

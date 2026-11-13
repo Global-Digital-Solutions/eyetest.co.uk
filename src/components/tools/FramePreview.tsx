@@ -16,6 +16,11 @@ export type Frame = {
   m: string | null;
   img: string;
   u: string;
+  /** Lens width, bridge, temple and frame width in mm, where the retailer lists them */
+  lw?: number;
+  br?: number;
+  tl?: number;
+  fw?: number;
 };
 
 export const FRAMES_CHECKED = "12 November 2026";

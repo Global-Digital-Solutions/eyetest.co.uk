@@ -16,6 +16,8 @@ type Frame = {
   m: string | null;
   img: string;
   u: string;
+  lw?: number;
+  br?: number;
 };
 
 // A product with its colour options grouped together, like an ecommerce listing.
@@ -82,6 +84,9 @@ type Filters = {
   price: string[];
   /** Upper price limit from a tool link, e.g. an NHS voucher value */
   max?: number;
+  /** Size from the frame size tool: lens width and bridge in mm, matched within 2mm */
+  lw?: number;
+  br?: number;
 };
 const EMPTY: Filters = {
   g: "",
@@ -112,6 +117,8 @@ function frameMatches(f: Frame, F: Filters, skip?: keyof Filters) {
   )
     return false;
   if (skip !== "max" && F.max && f.p > F.max) return false;
+  if (F.lw && (!f.lw || Math.abs(f.lw - F.lw) > 2)) return false;
+  if (F.br && (!f.br || Math.abs(f.br - F.br) > 2)) return false;
   return true;
 }
 
@@ -834,7 +841,11 @@ export function FrameSearch() {
       .then(setFrames);
     // Tools can link straight to a filtered view, e.g. /glasses?t=Glasses&max=64.26&s=Round,Oval
     const q = new URLSearchParams(window.location.search);
-    if ([...q.keys()].some((k) => ["g", "t", "s", "c", "max"].includes(k))) {
+    if (
+      [...q.keys()].some((k) =>
+        ["g", "t", "s", "c", "max", "lw", "br"].includes(k),
+      )
+    ) {
       const list = (k: string) =>
         q.get(k) ? q.get(k)!.split(",").filter(Boolean) : [];
       const g = q.get("g");
@@ -847,6 +858,8 @@ export function FrameSearch() {
         s: list("s"),
         c: list("c"),
         max: max > 0 ? max : undefined,
+        lw: parseInt(q.get("lw") ?? "", 10) || undefined,
+        br: parseInt(q.get("br") ?? "", 10) || undefined,
       });
       setFinder(false);
       setFromLink(true);
@@ -934,6 +947,14 @@ export function FrameSearch() {
     ...(["s", "c", "m", "b", "r"] as const).flatMap((k) =>
       F[k].map((v) => ({ label: v, clear: () => toggle(k, v) })),
     ),
+    ...(F.lw || F.br
+      ? [
+          {
+            label: `Size about ${F.lw ?? "?"}-${F.br ?? "?"}`,
+            clear: () => set({ ...F, lw: undefined, br: undefined }),
+          },
+        ]
+      : []),
     ...(F.max
       ? [
           {

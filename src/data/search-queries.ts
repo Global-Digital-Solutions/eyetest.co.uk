@@ -34,7 +34,7 @@ export type SearchQuery = {
   /** Breadcrumb parents shown before the page title when canonicalPath is used */
   parentCrumbs?: { label: string; href: string }[];
   /** Interactive tool shown after the introduction */
-  tool?: "free-eye-test-checker" | "prescription-decoder" | "which-eye-test" | "voucher-calculator" | "driving-check" | "eye-test-reminder" | "voucher-frames" | "face-shape";
+  tool?: "free-eye-test-checker" | "prescription-decoder" | "which-eye-test" | "voucher-calculator" | "driving-check" | "eye-test-reminder" | "voucher-frames" | "face-shape" | "frame-size";
 };
 
 export type QuerySection = {
@@ -6135,7 +6135,7 @@ Pick the outline closest to your face below to see which frame shapes to try, th
         links: [
           { label: "Browse all frames", href: "/glasses" },
           { label: "Frames your NHS voucher covers", href: "/tools/frames-nhs-voucher-covers" },
-          { label: "Read your prescription", href: "/tools/glasses-prescription-decoder" },
+          { label: "Frame size checker", href: "/tools/glasses-frame-size-checker" },
         ],
       },
     ],
@@ -6154,6 +6154,69 @@ Pick the outline closest to your face below to see which frame shapes to try, th
     ctaText: "Find an optician near you",
     disclaimer:
       "A style guide only. Frame prices come from retailer websites, were checked on 12 November 2026 and can change. eyetest.co.uk may earn a commission from retailer links.",
+  },
+  {
+    slug: "glasses-frame-size-checker",
+    keyword: "glasses frame size",
+    title: "Glasses Frame Size Checker",
+    seoTitle: "Glasses Frame Size Checker: What Do the Numbers Mean?",
+    seoDescription:
+      "Find the size numbers on your glasses, see what lens width, bridge and arm length mean, and browse frames from high street opticians in your size.",
+    h1: "Glasses Frame Size Checker",
+    dateModified: "2026-11-13",
+    canonicalPath: "/tools/glasses-frame-size-checker",
+    parentCrumbs: [{ label: "Tools", href: "/tools" }],
+    category: "general",
+    tool: "frame-size",
+    shortDescription:
+      "Enter the numbers printed on your current glasses to see your frame size and browse frames that match it.",
+    content: `Most glasses have three numbers printed on the inside of an arm, such as 52□18 140. They are the lens width, the bridge width and the arm length, all in millimetres. If your current glasses fit well, these numbers are the quickest way to find new frames that will too.
+
+Enter your numbers below to see your frame size and frames from opticians with high street stores that match it.`,
+    keyFacts: [
+      { label: "First number", value: "Lens width" },
+      { label: "Second number", value: "Bridge width" },
+      { label: "Third number", value: "Arm length" },
+      { label: "Units", value: "Millimetres" },
+    ],
+    sections: [
+      {
+        heading: "What the numbers on your glasses mean",
+        table: {
+          headers: ["Number", "What it measures", "Typical range"],
+          rows: [
+            ["Lens width", "The width of one lens at its widest point", "About 40 to 60mm"],
+            ["Bridge", "The gap between the lenses, where the frame sits on your nose", "About 14 to 24mm"],
+            ["Arm length", "The length of each arm, from the hinge to the tip", "About 135 to 150mm"],
+          ],
+        },
+        body: `Frames with a lens width of about 50mm or less are often called small, 51 to 54mm medium, and 55mm or more large. The bridge matters most for comfort, as it decides how the frame sits on your nose. Some frames also show a fourth number for lens height.`,
+        links: [
+          { label: "Which glasses suit my face shape?", href: "/tools/glasses-for-my-face-shape" },
+          { label: "Read your prescription", href: "/tools/glasses-prescription-decoder" },
+          { label: "Browse all frames", href: "/glasses" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Where is the size on my glasses?",
+        answer: "Usually on the inside of one of the arms. Some frames print it on the bridge or behind a lens. The numbers may be faint, so look under good light.",
+      },
+      {
+        question: "What does the box between the numbers mean?",
+        answer: "The small square shows the frame was measured using the boxing system, the standard way of measuring lenses. It does not change the numbers.",
+      },
+      {
+        question: "Can I buy frames a size up or down?",
+        answer:
+          "Yes. A millimetre or two either way is hard to notice. If your current pair feels too tight or too loose, try a couple of millimetres larger or smaller in lens width, and ask an optician to adjust the fit.",
+      },
+    ],
+    relatedQueries: ["glasses-prescription-explained", "varifocals", "book-eye-test"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "A guide only. Frame sizes come from retailer websites, were checked on 12 November 2026 and can change. An optician can measure you and adjust the fit. eyetest.co.uk may earn a commission from retailer links.",
   },
   {
     slug: "glasses-prescription-explained",
