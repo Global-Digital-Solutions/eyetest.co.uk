@@ -3,14 +3,23 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-type Eye = { sph: string; cyl: string; axis: string; add: string; prism: string };
+type Eye = {
+  sph: string;
+  cyl: string;
+  axis: string;
+  add: string;
+  prism: string;
+};
 const BLANK: Eye = { sph: "", cyl: "", axis: "", add: "", prism: "" };
 
 /** Parse a lens power such as "-2.25", "+1.00", "1", "plano", "pl" or "0". */
 function power(v: string): number | null {
   const s = v.trim().toLowerCase().replace(/\s+/g, "").replace(/d$/, "");
   if (!s) return null;
-  if (["pl", "plano", "0", "0.00", "+0.00", "-0.00", "∞", "infinity"].includes(s)) return 0;
+  if (
+    ["pl", "plano", "0", "0.00", "+0.00", "-0.00", "∞", "infinity"].includes(s)
+  )
+    return 0;
   const n = Number(s.replace("+", ""));
   return Number.isFinite(n) ? n : NaN;
 }
@@ -20,7 +29,11 @@ function fmt(n: number): string {
   return n > 0 ? `+${s}` : n < 0 ? `-${s}` : "0.00";
 }
 
-function explainEye(e: Eye): { lines: string[]; warnings: string[]; near: number | null } {
+function explainEye(e: Eye): {
+  lines: string[];
+  warnings: string[];
+  near: number | null;
+} {
   const lines: string[] = [];
   const warnings: string[] = [];
   const sph = power(e.sph);
@@ -32,7 +45,9 @@ function explainEye(e: Eye): { lines: string[]; warnings: string[]; near: number
   if (sph === null) {
     // nothing entered
   } else if (Number.isNaN(sph)) {
-    warnings.push("The sphere (SPH) value does not look like a number, for example -2.25 or +1.50.");
+    warnings.push(
+      "The sphere (SPH) value does not look like a number, for example -2.25 or +1.50.",
+    );
   } else if (sph < 0) {
     lines.push(
       `Sphere ${fmt(sph)}: a minus number means short-sightedness (myopia). Things in the distance look blurred, and the lens helps you see far away.`,
@@ -42,7 +57,9 @@ function explainEye(e: Eye): { lines: string[]; warnings: string[]; near: number
       `Sphere ${fmt(sph)}: a plus number means long-sightedness (hyperopia). The lens helps your eyes focus, especially on things close up.`,
     );
   } else {
-    lines.push("Sphere plano (0.00): no correction is needed for short or long sight in this eye.");
+    lines.push(
+      "Sphere plano (0.00): no correction is needed for short or long sight in this eye.",
+    );
   }
 
   if (cyl !== null && !Number.isNaN(cyl) && cyl !== 0) {
@@ -50,7 +67,9 @@ function explainEye(e: Eye): { lines: string[]; warnings: string[]; near: number
       `Cylinder ${fmt(cyl)}: this corrects astigmatism, where the front of the eye is shaped more like a rugby ball than a football.`,
     );
     if (axis === null) {
-      warnings.push("A cylinder value should come with an axis between 1 and 180. Check your prescription.");
+      warnings.push(
+        "A cylinder value should come with an axis between 1 and 180. Check your prescription.",
+      );
     } else if (!Number.isFinite(axis) || axis < 0 || axis > 180) {
       warnings.push("The axis should be a number between 1 and 180 degrees.");
     } else {
@@ -94,15 +113,20 @@ export function PrescriptionDecoder() {
   const [left, setLeft] = useState<Eye>(BLANK);
   const r = useMemo(() => explainEye(right), [right]);
   const l = useMemo(() => explainEye(left), [left]);
-  const anything = r.lines.length + l.lines.length + r.warnings.length + l.warnings.length > 0;
+  const anything =
+    r.lines.length + l.lines.length + r.warnings.length + l.warnings.length > 0;
 
   const row = (name: string, eye: Eye, setEye: (e: Eye) => void) => (
     <div className="bg-white border border-gray-100 rounded-2xl p-4">
-      <p className="text-sm font-semibold text-[var(--color-navy)] mb-3">{name}</p>
+      <p className="text-sm font-semibold text-[var(--color-navy)] mb-3">
+        {name}
+      </p>
       <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
         {FIELDS.map((f) => (
           <label key={f.key} className="block">
-            <span className="block text-xs font-semibold text-gray-500 mb-1 text-center">{f.label}</span>
+            <span className="block text-xs font-semibold text-gray-500 mb-1 text-center">
+              {f.label}
+            </span>
             <input
               aria-label={`${name} ${f.label}`}
               inputMode={f.key === "prism" ? "text" : "decimal"}
@@ -132,9 +156,10 @@ export function PrescriptionDecoder() {
             <li className="flex gap-2">
               <span className="text-[var(--color-primary)]">●</span>
               <span>
-                For reading only, the sphere and add are combined: {fmt(res.near)}. Ask your
-                optician before buying ready-made reading glasses, as they cannot correct
-                astigmatism or different strengths in each eye.
+                For reading only, the sphere and add are combined:{" "}
+                {fmt(res.near)}. Ask your optician before buying ready-made
+                reading glasses, as they cannot correct astigmatism or different
+                strengths in each eye.
               </span>
             </li>
           )}
@@ -157,8 +182,8 @@ export function PrescriptionDecoder() {
         Decode your glasses prescription
       </h2>
       <p className="text-sm text-gray-500 mb-6">
-        Copy the numbers from your prescription. Leave boxes blank if they are empty on yours.
-        Nothing you enter is saved or sent anywhere.
+        Copy the numbers from your prescription. Leave boxes blank if they are
+        empty on yours. Nothing you enter is saved or sent anywhere.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -166,7 +191,10 @@ export function PrescriptionDecoder() {
         {row("Left eye (L)", left, setLeft)}
       </div>
 
-      <div aria-live="polite" className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div
+        aria-live="polite"
+        className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3"
+      >
         {panel("Right eye", r)}
         {panel("Left eye", l)}
       </div>
@@ -189,8 +217,9 @@ export function PrescriptionDecoder() {
       )}
 
       <p className="text-xs text-gray-500 mt-5">
-        This explains what the numbers mean. It cannot check whether your prescription is right for
-        you, and a glasses prescription cannot be used to buy contact lenses.
+        This explains what the numbers mean. It cannot check whether your
+        prescription is right for you, and a glasses prescription cannot be used
+        to buy contact lenses.
       </p>
     </div>
   );

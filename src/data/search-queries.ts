@@ -34,7 +34,7 @@ export type SearchQuery = {
   /** Breadcrumb parents shown before the page title when canonicalPath is used */
   parentCrumbs?: { label: string; href: string }[];
   /** Interactive tool shown after the introduction */
-  tool?: "free-eye-test-checker" | "prescription-decoder" | "which-eye-test" | "voucher-calculator" | "driving-check" | "eye-test-reminder";
+  tool?: "free-eye-test-checker" | "prescription-decoder" | "which-eye-test" | "voucher-calculator" | "driving-check" | "eye-test-reminder" | "voucher-frames" | "face-shape";
 };
 
 export type QuerySection = {
@@ -6040,6 +6040,120 @@ Enter when you last had your eyes tested and we will work out when your next tes
     sources: [
       { label: "NHS: How often can I have a free NHS eye test?", url: "https://www.nhs.uk/nhs-services/opticians/how-often-can-i-have-a-free-nhs-eye-test/" },
     ],
+  },
+  {
+    slug: "frames-nhs-voucher-covers",
+    keyword: "nhs voucher glasses frames",
+    title: "Which Frames Does My NHS Voucher Cover?",
+    seoTitle: "NHS Voucher Glasses: Frames Your Voucher Covers",
+    seoDescription:
+      "Choose your NHS optical voucher band and see glasses frames priced at or under its value, from opticians with high street stores. Free and quick.",
+    h1: "Which Frames Does My NHS Voucher Cover?",
+    dateModified: "2026-11-13",
+    canonicalPath: "/tools/frames-nhs-voucher-covers",
+    parentCrumbs: [{ label: "Tools", href: "/tools" }],
+    category: "general",
+    tool: "voucher-frames",
+    shortDescription:
+      "Pick your NHS voucher band and see frames priced at or under its value from opticians with high street stores.",
+    content: `If you qualify for an NHS optical voucher, it pays towards your glasses or contact lenses. You can choose any frames you like. If they cost more than the voucher, you pay the difference.
+
+Choose your voucher band below to see frames from opticians with high street stores that are priced at or under its value.`,
+    keyFacts: [
+      { label: "Band A (single vision)", value: "£42.40" },
+      { label: "Band H (complex bifocal)", value: "£233.56" },
+      { label: "Dearer frames", value: "Pay the difference" },
+      { label: "Area", value: "England values" },
+    ],
+    sections: [
+      {
+        heading: "How NHS optical vouchers work with frames",
+        body: `The voucher is a set amount towards the cost of glasses or contact lenses. The band depends on your prescription, and your optometrist tells you which one applies after your sight test. You can use it at any optician that accepts NHS vouchers, and you can put it towards dearer glasses and pay the rest yourself.
+
+Check what the price includes. Some retailers include standard single vision lenses in the frame price, while thinner lenses, coatings and bifocal or varifocal lenses usually cost extra.`,
+        links: [
+          { label: "Work out your voucher band", href: "/tools/nhs-optical-voucher-calculator" },
+          { label: "Do I qualify for a voucher?", href: "/tools/free-nhs-eye-test-checker" },
+          { label: "Browse all frames", href: "/glasses" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Can I use my NHS voucher towards more expensive glasses?",
+        answer: "Yes. The voucher is a set amount towards your glasses or contact lenses. If you choose glasses that cost more, you pay the difference.",
+      },
+      {
+        question: "Can I use an NHS voucher online?",
+        answer:
+          "Vouchers are usually handled in store, because the optician needs to see your voucher and proof of entitlement. Ask the retailer before you order online.",
+      },
+      {
+        question: "Do frame prices include lenses?",
+        answer:
+          "It depends on the retailer. Vision Express and Ace & Tate say their prices include standard single vision lenses. Thinner lenses, coatings and multifocal lenses usually cost extra.",
+      },
+    ],
+    relatedQueries: ["nhs-optical-voucher", "free-eye-test", "glasses-prescription-explained"],
+    ctaText: "Find an optician that accepts NHS vouchers",
+    disclaimer:
+      "A guide only. Voucher values are for England from April 2026. Frame prices come from retailer websites, were checked on 12 November 2026 and can change. eyetest.co.uk may earn a commission from retailer links.",
+    sources: [
+      { label: "NHS: NHS voucher values for glasses and lenses", url: "https://www.nhs.uk/nhs-services/opticians/nhs-voucher-values-for-glasses-and-lenses" },
+      { label: "NHSBSA: HC12 quick guide to help with health costs (April 2026)", url: "https://www.nhsbsa.nhs.uk/sites/default/files/2026-04/HC12%20(V24)%2004.2026.pdf" },
+      { label: "NHS: Free NHS eye tests and optical vouchers", url: "https://www.nhs.uk/nhs-services/opticians/free-nhs-eye-tests-and-optical-vouchers/" },
+    ],
+  },
+  {
+    slug: "glasses-for-my-face-shape",
+    keyword: "glasses for face shape",
+    title: "Which Glasses Suit My Face Shape?",
+    seoTitle: "Which Glasses Suit My Face Shape? Free Frame Finder",
+    seoDescription:
+      "Pick your face shape, round, oval, square, heart or long, to see which glasses frame shapes to try, with real frames from high street opticians.",
+    h1: "Which Glasses Suit My Face Shape?",
+    dateModified: "2026-11-13",
+    canonicalPath: "/tools/glasses-for-my-face-shape",
+    parentCrumbs: [{ label: "Tools", href: "/tools" }],
+    category: "general",
+    tool: "face-shape",
+    shortDescription:
+      "Pick the outline closest to your face to see which frame shapes to try, with real frames from high street opticians.",
+    content: `Choosing frames is easier when you know which shapes balance your features. A simple rule is contrast: angular frames suit softer, rounder faces, and curved frames soften strong, angular ones.
+
+Pick the outline closest to your face below to see which frame shapes to try, then browse matching frames from opticians with high street stores.`,
+    keyFacts: [
+      { label: "Round face", value: "Try angular frames" },
+      { label: "Square face", value: "Try curved frames" },
+      { label: "Oval face", value: "Most shapes suit" },
+      { label: "Best test", value: "Try frames on" },
+    ],
+    sections: [
+      {
+        heading: "Fit matters as much as shape",
+        body: `Whatever the shape, glasses should sit level, rest comfortably on your nose and not press behind your ears. Your eyes should sit near the centre of each lens. An optician can adjust the fit and check the frame size for your prescription, which matters more with stronger or varifocal lenses.`,
+        links: [
+          { label: "Browse all frames", href: "/glasses" },
+          { label: "Frames your NHS voucher covers", href: "/tools/frames-nhs-voucher-covers" },
+          { label: "Read your prescription", href: "/tools/glasses-prescription-decoder" },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How do I work out my face shape?",
+        answer:
+          "Tie your hair back and look straight into a mirror. Compare the width of your forehead, cheekbones and jaw, and whether your face is longer than it is wide. The outline that matches most closely is a good starting point.",
+      },
+      {
+        question: "Do I have to stick to these frame shapes?",
+        answer: "No. These are style suggestions, not rules. Plenty of people wear shapes outside the usual advice, so try frames on and choose what you like.",
+      },
+    ],
+    relatedQueries: ["glasses-prescription-explained", "varifocals", "book-eye-test"],
+    ctaText: "Find an optician near you",
+    disclaimer:
+      "A style guide only. Frame prices come from retailer websites, were checked on 12 November 2026 and can change. eyetest.co.uk may earn a commission from retailer links.",
   },
   {
     slug: "glasses-prescription-explained",

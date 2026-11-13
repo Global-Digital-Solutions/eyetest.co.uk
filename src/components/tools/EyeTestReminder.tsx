@@ -5,13 +5,22 @@ import { useMemo, useState } from "react";
 import { Choice, Note, Result, Step, ToolCard } from "./ToolUi";
 
 const pad = (n: number) => String(n).padStart(2, "0");
-const ymd = (d: Date) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
-const nice = (d: Date) => d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+const ymd = (d: Date) =>
+  `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+const nice = (d: Date) =>
+  d.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
 function buildIcs(due: Date): string {
   const end = new Date(due);
   end.setDate(end.getDate() + 1);
-  const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  const stamp = new Date()
+    .toISOString()
+    .replace(/[-:]/g, "")
+    .replace(/\.\d{3}/, "");
   return [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -50,7 +59,9 @@ export function EyeTestReminder() {
 
   const download = () => {
     if (!due) return;
-    const blob = new Blob([buildIcs(due)], { type: "text/calendar;charset=utf-8" });
+    const blob = new Blob([buildIcs(due)], {
+      type: "text/calendar;charset=utf-8",
+    });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -66,7 +77,10 @@ export function EyeTestReminder() {
     : "";
 
   return (
-    <ToolCard title="When is my next eye test due?" intro="Add a reminder to your calendar. Nothing you enter is saved or sent anywhere.">
+    <ToolCard
+      title="When is my next eye test due?"
+      intro="Add a reminder to your calendar. Nothing you enter is saved or sent anywhere."
+    >
       <Step n={1} label="When was your last eye test?">
         <input
           type="month"
@@ -76,7 +90,9 @@ export function EyeTestReminder() {
           aria-label="Month and year of your last eye test"
           className="rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/40"
         />
-        <p className="text-xs text-gray-500 mt-2">Not sure? Your optician can tell you, or pick your best guess.</p>
+        <p className="text-xs text-gray-500 mt-2">
+          Not sure? Your optician can tell you, or pick your best guess.
+        </p>
       </Step>
 
       <Step n={2} label="How often should you go?">
@@ -91,28 +107,59 @@ export function EyeTestReminder() {
       </Step>
 
       {due && (
-        <Result tone={overdue ? "warn" : "info"} title={overdue ? `Your eye test was due in ${due.toLocaleDateString("en-GB", { month: "long", year: "numeric" })}` : `Your next eye test is due in ${due.toLocaleDateString("en-GB", { month: "long", year: "numeric" })}`}>
+        <Result
+          tone={overdue ? "warn" : "info"}
+          title={
+            overdue
+              ? `Your eye test was due in ${due.toLocaleDateString("en-GB", { month: "long", year: "numeric" })}`
+              : `Your next eye test is due in ${due.toLocaleDateString("en-GB", { month: "long", year: "numeric" })}`
+          }
+        >
           {overdue ? (
-            <p>You are overdue, so it is worth booking now. Many NHS eye tests are free.</p>
+            <p>
+              You are overdue, so it is worth booking now. Many NHS eye tests
+              are free.
+            </p>
           ) : (
-            <p>Add it to your calendar and we will remind you 2 weeks before, on {nice(new Date(due.getFullYear(), due.getMonth(), due.getDate() - 14))}.</p>
+            <p>
+              Add it to your calendar and we will remind you 2 weeks before, on{" "}
+              {nice(
+                new Date(due.getFullYear(), due.getMonth(), due.getDate() - 14),
+              )}
+              .
+            </p>
           )}
           <div className="flex flex-wrap gap-2 pt-2">
             {overdue ? (
-              <Link href="/find/book-eye-test" className="inline-flex items-center rounded-full bg-amber-600 text-white px-4 py-2 text-sm font-semibold">
+              <Link
+                href="/find/book-eye-test"
+                className="inline-flex items-center rounded-full bg-amber-600 text-white px-4 py-2 text-sm font-semibold"
+              >
                 Book an eye test
               </Link>
             ) : (
               <>
-                <button type="button" onClick={download} className="inline-flex items-center rounded-full bg-[var(--color-primary)] text-white px-4 py-2 text-sm font-semibold">
+                <button
+                  type="button"
+                  onClick={download}
+                  className="inline-flex items-center rounded-full bg-[var(--color-primary)] text-white px-4 py-2 text-sm font-semibold"
+                >
                   Add to calendar (Apple, Outlook)
                 </button>
-                <a href={googleUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-full bg-white border border-gray-200 text-[var(--color-navy)] px-4 py-2 text-sm font-semibold">
+                <a
+                  href={googleUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center rounded-full bg-white border border-gray-200 text-[var(--color-navy)] px-4 py-2 text-sm font-semibold"
+                >
                   Add to Google Calendar
                 </a>
               </>
             )}
-            <Link href="/tools/free-nhs-eye-test-checker" className="inline-flex items-center rounded-full bg-white border border-gray-200 text-[var(--color-navy)] px-4 py-2 text-sm font-semibold">
+            <Link
+              href="/tools/free-nhs-eye-test-checker"
+              className="inline-flex items-center rounded-full bg-white border border-gray-200 text-[var(--color-navy)] px-4 py-2 text-sm font-semibold"
+            >
               Is my test free?
             </Link>
           </div>
@@ -120,7 +167,9 @@ export function EyeTestReminder() {
       )}
 
       <Note>
-        The NHS says most people should have an eye test every 2 years, or more often if your optometrist recommends it. Book sooner if you notice any change in your vision.
+        The NHS says most people should have an eye test every 2 years, or more
+        often if your optometrist recommends it. Book sooner if you notice any
+        change in your vision.
       </Note>
     </ToolCard>
   );

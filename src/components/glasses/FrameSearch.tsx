@@ -80,6 +80,8 @@ type Filters = {
   b: string[];
   r: string[];
   price: string[];
+  /** Upper price limit from a tool link, e.g. an NHS voucher value */
+  max?: number;
 };
 const EMPTY: Filters = {
   g: "",
@@ -109,6 +111,7 @@ function frameMatches(f: Frame, F: Filters, skip?: keyof Filters) {
     )
   )
     return false;
+  if (skip !== "max" && F.max && f.p > F.max) return false;
   return true;
 }
 
@@ -822,13 +825,42 @@ export function FrameSearch() {
   const [shown, setShown] = useState(PAGE);
   const [finder, setFinder] = useState(true);
   const [more, setMore] = useState(false);
+  const [fromLink, setFromLink] = useState(false);
   const resultsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch("/data/frames.json")
       .then((r) => r.json())
       .then(setFrames);
+    // Tools can link straight to a filtered view, e.g. /glasses?t=Glasses&max=64.26&s=Round,Oval
+    const q = new URLSearchParams(window.location.search);
+    if ([...q.keys()].some((k) => ["g", "t", "s", "c", "max"].includes(k))) {
+      const list = (k: string) =>
+        q.get(k) ? q.get(k)!.split(",").filter(Boolean) : [];
+      const g = q.get("g");
+      const t = q.get("t");
+      const max = parseFloat(q.get("max") ?? "");
+      setF({
+        ...EMPTY,
+        g: g === "Women" || g === "Men" ? g : "",
+        t: t === "Glasses" || t === "Sunglasses" ? t : "",
+        s: list("s"),
+        c: list("c"),
+        max: max > 0 ? max : undefined,
+      });
+      setFinder(false);
+      setFromLink(true);
+    }
   }, []);
+
+  // Arriving from a tool link: jump straight to the matching frames.
+  useEffect(() => {
+    if (frames && fromLink)
+      setTimeout(
+        () => resultsRef.current?.scrollIntoView({ block: "start" }),
+        100,
+      );
+  }, [frames, fromLink]);
 
   const set = (f: Filters) => {
     setF(f);
@@ -902,6 +934,14 @@ export function FrameSearch() {
     ...(["s", "c", "m", "b", "r"] as const).flatMap((k) =>
       F[k].map((v) => ({ label: v, clear: () => toggle(k, v) })),
     ),
+    ...(F.max
+      ? [
+          {
+            label: `Up to £${F.max.toFixed(2)}`,
+            clear: () => set({ ...F, max: undefined }),
+          },
+        ]
+      : []),
     ...F.price.map((id) => ({
       label: PRICE_BANDS.find((b) => b.id === id)!.label,
       clear: () => toggle("price", id),

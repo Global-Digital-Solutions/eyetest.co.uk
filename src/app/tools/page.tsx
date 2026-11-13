@@ -8,7 +8,7 @@ import { getToolQueries } from "@/data/search-queries";
 
 const title = "Free Eye Care Tools: NHS Eye Test Checker and More";
 const description =
-  "Free eye care tools: check for a free NHS eye test, find the right test, work out your NHS voucher, check the driving eyesight rules and set a reminder.";
+  "Free eye care tools: check for a free NHS eye test, work out your NHS voucher and the frames it covers, find glasses for your face shape and more.";
 
 export const metadata: Metadata = {
   title,

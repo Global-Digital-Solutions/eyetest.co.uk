@@ -112,6 +112,8 @@ Each brand has a page for each of the 97 towns, at https://www.eyetest.co.uk/opt
 - [NHS Optical Voucher Calculator](https://www.eyetest.co.uk/tools/nhs-optical-voucher-calculator): Enter SPH and CYL to see the likely NHS England voucher band and value
 - [Driving Eyesight Check](https://www.eyetest.co.uk/tools/driving-eyesight-check): Check the GOV.UK eyesight rules for driving and when to tell DVLA
 - [Eye Test Reminder](https://www.eyetest.co.uk/tools/eye-test-reminder): Work out when your next eye test is due and add a calendar reminder
+- [Frames Your NHS Voucher Covers](https://www.eyetest.co.uk/tools/frames-nhs-voucher-covers): Choose an NHS England voucher band and see glasses frames priced at or under its value from opticians with high street stores
+- [Which Glasses Suit My Face Shape?](https://www.eyetest.co.uk/tools/glasses-for-my-face-shape): Pick a face shape to see which frame shapes to try, with matching frames
 - [Choosing the Right Optician](https://www.eyetest.co.uk/eye-health/guides/choosing-the-right-optician)
 - [When to Get an Emergency Eye Test](https://www.eyetest.co.uk/eye-health/guides/when-to-get-an-emergency-eye-test)
 

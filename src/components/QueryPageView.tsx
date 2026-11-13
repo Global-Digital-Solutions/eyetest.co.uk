@@ -10,6 +10,8 @@ import { WhichEyeTest } from "@/components/tools/WhichEyeTest";
 import { VoucherCalculator } from "@/components/tools/VoucherCalculator";
 import { DrivingEyesightCheck } from "@/components/tools/DrivingEyesightCheck";
 import { EyeTestReminder } from "@/components/tools/EyeTestReminder";
+import { VoucherFrames } from "@/components/tools/VoucherFrames";
+import { FaceShapeFinder } from "@/components/tools/FaceShapeFinder";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero, HeroSearchForm } from "@/components/PageHero";
@@ -334,6 +336,8 @@ export function QueryPageView({ query }: { query: SearchQuery }) {
                 {query.tool === "voucher-calculator" && <VoucherCalculator />}
                 {query.tool === "driving-check" && <DrivingEyesightCheck />}
                 {query.tool === "eye-test-reminder" && <EyeTestReminder />}
+                {query.tool === "voucher-frames" && <VoucherFrames />}
+                {query.tool === "face-shape" && <FaceShapeFinder />}
 
                 {sections.map((section) => (
                   <section key={section.heading} className="mt-10">

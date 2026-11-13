@@ -75,7 +75,8 @@ export function FreeEyeTestChecker() {
   const [nation, setNation] = useState<Nation | "">("");
   const [age, setAge] = useState<Age>("");
   const [a, setA] = useState<Answers>(EMPTY);
-  const set = (k: keyof Answers) => (v: boolean) => setA((p) => ({ ...p, [k]: v }));
+  const set = (k: keyof Answers) => (v: boolean) =>
+    setA((p) => ({ ...p, [k]: v }));
 
   const result = useMemo(() => {
     if (!nation || !age) return null;
@@ -93,8 +94,12 @@ export function FreeEyeTestChecker() {
     if (a.diabetesOrGlaucoma) reasons.push("you have diabetes or glaucoma");
     if (a.familyGlaucoma && (age === "40to59" || age === "60plus"))
       reasons.push("you are 40 or over and a close family member has glaucoma");
-    if (a.atRiskGlaucoma) reasons.push("an ophthalmologist has said you are at risk of glaucoma");
-    if (a.sightImpaired) reasons.push("you are registered as sight impaired or severely sight impaired");
+    if (a.atRiskGlaucoma)
+      reasons.push("an ophthalmologist has said you are at risk of glaucoma");
+    if (a.sightImpaired)
+      reasons.push(
+        "you are registered as sight impaired or severely sight impaired",
+      );
     if (a.complexLenses) {
       reasons.push("you need complex lenses");
       voucher.push("you need complex lenses");
@@ -133,7 +138,9 @@ export function FreeEyeTestChecker() {
       </p>
 
       <fieldset className="mb-6">
-        <legend className="text-sm font-semibold text-[var(--color-navy)] mb-2">1. Where do you live?</legend>
+        <legend className="text-sm font-semibold text-[var(--color-navy)] mb-2">
+          1. Where do you live?
+        </legend>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {NATIONS.map((n) => (
             <button
@@ -154,10 +161,13 @@ export function FreeEyeTestChecker() {
 
       {nation === "scotland" && (
         <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 mb-2">
-          <p className="font-semibold text-emerald-900 mb-1">Yes. NHS eye examinations are free for everyone in Scotland.</p>
+          <p className="font-semibold text-emerald-900 mb-1">
+            Yes. NHS eye examinations are free for everyone in Scotland.
+          </p>
           <p className="text-sm text-emerald-900/80">
-            This applies to everyone ordinarily resident in the UK. Help with the cost of glasses is
-            available for some groups, so ask your optician when you book.
+            This applies to everyone ordinarily resident in the UK. Help with
+            the cost of glasses is available for some groups, so ask your
+            optician when you book.
           </p>
         </div>
       )}
@@ -165,7 +175,9 @@ export function FreeEyeTestChecker() {
       {nation && nation !== "scotland" && (
         <>
           <fieldset className="mb-6">
-            <legend className="text-sm font-semibold text-[var(--color-navy)] mb-2">2. How old are you?</legend>
+            <legend className="text-sm font-semibold text-[var(--color-navy)] mb-2">
+              2. How old are you?
+            </legend>
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
               {AGES.map((g) => (
                 <button
@@ -191,45 +203,73 @@ export function FreeEyeTestChecker() {
               </legend>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {age === "16to18" && (
-                  <Check checked={a.fullTimeEducation} onChange={set("fullTimeEducation")}>
+                  <Check
+                    checked={a.fullTimeEducation}
+                    onChange={set("fullTimeEducation")}
+                  >
                     I am in full-time education
                   </Check>
                 )}
-                <Check checked={a.diabetesOrGlaucoma} onChange={set("diabetesOrGlaucoma")}>
+                <Check
+                  checked={a.diabetesOrGlaucoma}
+                  onChange={set("diabetesOrGlaucoma")}
+                >
                   I have diabetes or glaucoma
                 </Check>
                 {showFamily && (
-                  <Check checked={a.familyGlaucoma} onChange={set("familyGlaucoma")}>
+                  <Check
+                    checked={a.familyGlaucoma}
+                    onChange={set("familyGlaucoma")}
+                  >
                     My parent, brother, sister or child has glaucoma
                   </Check>
                 )}
-                <Check checked={a.atRiskGlaucoma} onChange={set("atRiskGlaucoma")}>
+                <Check
+                  checked={a.atRiskGlaucoma}
+                  onChange={set("atRiskGlaucoma")}
+                >
                   An eye specialist has told me I am at risk of glaucoma
                 </Check>
-                <Check checked={a.sightImpaired} onChange={set("sightImpaired")}>
+                <Check
+                  checked={a.sightImpaired}
+                  onChange={set("sightImpaired")}
+                >
                   I am registered as sight impaired or severely sight impaired
                 </Check>
-                <Check checked={a.complexLenses} onChange={set("complexLenses")}>
+                <Check
+                  checked={a.complexLenses}
+                  onChange={set("complexLenses")}
+                >
                   My optician has said I need complex (very strong) lenses
                 </Check>
                 <Check checked={a.benefits} onChange={set("benefits")}>
-                  I or my partner get income-based Jobseeker&apos;s Allowance, income-related ESA or
-                  Pension Credit Guarantee Credit
+                  I or my partner get income-based Jobseeker&apos;s Allowance,
+                  income-related ESA or Pension Credit Guarantee Credit
                 </Check>
-                <Check checked={a.universalCredit} onChange={set("universalCredit")}>
-                  I or my partner get Universal Credit with no earnings, or take-home pay of £435 or
-                  less in the last assessment period (£935 or less with a child element or limited
-                  capability for work)
+                <Check
+                  checked={a.universalCredit}
+                  onChange={set("universalCredit")}
+                >
+                  I or my partner get Universal Credit with no earnings, or
+                  take-home pay of £435 or less in the last assessment period
+                  (£935 or less with a child element or limited capability for
+                  work)
                 </Check>
                 <Check checked={a.hc2} onChange={set("hc2")}>
                   I am named on a valid HC2 certificate
                 </Check>
                 {nation === "wales" && (
                   <>
-                    <Check checked={a.walesOneEye} onChange={set("walesOneEye")}>
+                    <Check
+                      checked={a.walesOneEye}
+                      onChange={set("walesOneEye")}
+                    >
                       I have sight in one eye only
                     </Check>
-                    <Check checked={a.walesHearing} onChange={set("walesHearing")}>
+                    <Check
+                      checked={a.walesHearing}
+                      onChange={set("walesHearing")}
+                    >
                       I have a hearing impairment
                     </Check>
                   </>
@@ -257,18 +297,21 @@ export function FreeEyeTestChecker() {
                   </p>
                   {result.voucher.length > 0 ? (
                     <p className="text-sm text-emerald-900/80">
-                      You are also likely to get an NHS optical voucher towards glasses or contact
-                      lenses.
+                      You are also likely to get an NHS optical voucher towards
+                      glasses or contact lenses.
                     </p>
                   ) : (
                     <p className="text-sm text-emerald-900/80">
-                      This does not by itself include help with the cost of glasses.
+                      This does not by itself include help with the cost of
+                      glasses.
                     </p>
                   )}
                   {nation !== "england" && (
                     <p className="text-xs text-emerald-900/70 mt-2">
-                      Rules in {nation === "wales" ? "Wales" : "Northern Ireland"} are similar to
-                      England but not identical, so your optician will confirm.
+                      Rules in{" "}
+                      {nation === "wales" ? "Wales" : "Northern Ireland"} are
+                      similar to England but not identical, so your optician
+                      will confirm.
                     </p>
                   )}
                 </>
@@ -278,9 +321,10 @@ export function FreeEyeTestChecker() {
                     You may need to pay for your eye test.
                   </p>
                   <p className="text-sm text-amber-900/80">
-                    If your income is low, you may still get help through the NHS Low Income Scheme
-                    (an HC2 or HC3 certificate). If you use a screen for work, your employer may pay.
-                    Many opticians also run offers.
+                    If your income is low, you may still get help through the
+                    NHS Low Income Scheme (an HC2 or HC3 certificate). If you
+                    use a screen for work, your employer may pay. Many opticians
+                    also run offers.
                   </p>
                 </>
               )}
@@ -304,8 +348,8 @@ export function FreeEyeTestChecker() {
       )}
 
       <p className="text-xs text-gray-500 mt-5">
-        A guide only, based on NHS rules. Your optician makes the final check and may ask for proof,
-        such as an award letter or certificate.
+        A guide only, based on NHS rules. Your optician makes the final check
+        and may ask for proof, such as an award letter or certificate.
       </p>
     </div>
   );
